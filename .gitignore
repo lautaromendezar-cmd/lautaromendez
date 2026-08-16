@@ -3,3 +3,9 @@ node_modules/
 
 # 22 MB de PNG originales del hero: no tienen por qué viajar al repo
 generaciones/
+
+# Los deja `npm i puppeteer-core sharp`, que es SÓLO para tools/. No van al
+# repo a propósito: con un package.json en la raíz, Vercel deja de tratar esto
+# como un sitio estático y se pone a buscar un build que no existe.
+package.json
+package-lock.json

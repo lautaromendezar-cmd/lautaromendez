@@ -1,0 +1,326 @@
+/* ══════════════════════════════════════════════════════════════════════════
+   PORTFOLIO — sólo lo propio de esta página.
+
+   Los tokens, el reset, la tipografía, el logotipo, .wrap, .btn, .link, el
+   header y el pie salen de ../css/style.css. Acá NO se declara ni un color
+   nuevo ni una familia nueva: todo sale de las variables de esa hoja. Si
+   cambia la paleta allá, esta página cambia sola.
+
+   Orden: hero → filtros → grilla → cierre → breakpoints → reduced-motion
+   ══════════════════════════════════════════════════════════════════════════ */
+
+/* ═══ HERO ═══════════════════════════════════════════════════════════════ */
+.pf-hero {
+  position: relative;
+  padding-block: calc(var(--hd-h) + clamp(56px, 8vw, 104px)) clamp(42px, 5.4vw, 76px);
+  overflow: hidden;
+}
+
+/* el mismo grano del hero de la home, a la mitad: acá no hay foto debajo que
+   lo justifique a full, sólo el fondo plano */
+.pf-hero__grain {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: .028;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.pf-hero__in { position: relative; z-index: 1; }
+
+/* El titular vive en un <svg> porque el morph necesita <path>, no texto. Las
+   dos capas <text> de adentro son el estado estático: se ven siempre, y el JS
+   recién las apaga cuando pudo construir los paths. Si no hay JS, si falla el
+   CDN o si el visitante pidió menos movimiento, lo que queda es este texto
+   plano — igual que el H1 de la home. */
+/* El <svg> se dimensiona en em y no en px para que el titular use EXACTAMENTE
+   la misma escala que el H1 de la home. Los paths están dibujados a 150
+   unidades de cuerpo, así que el ancho es (tinta ÷ 150) em: cambiando el
+   font-size de acá, el titular escala igual que cualquier texto.
+   --pf-h1-w es el ancho de la tinta medida; el 646 de respaldo es lo que mide
+   "Proyectos" en Archivo si el JS nunca llega a medir nada. */
+.pf-h1 {
+  font-size: clamp(32px, 5.6vw, 80px);   /* el mismo clamp que .hero__h1 */
+  width: calc(var(--pf-h1-w, 646) / 150 * 1em);
+  max-width: 100%;
+  height: auto;
+  margin: clamp(20px, 2.6vw, 34px) 0 0;
+  overflow: visible;
+}
+.pf-h1__t {
+  font-family: var(--sans);
+  font-variation-settings: var(--fv-display);
+  font-size: 150px;
+  letter-spacing: -.026em;
+  fill: var(--bone);
+}
+/* El punto final es el único rojo del titular. Es el mismo gesto que el punto
+   de "Lautaro Mendez." del logotipo, y mantiene el acento en dosis mínima:
+   si las 16 letras entraran en rojo se comería el presupuesto de toda la
+   página de una sola vez. */
+.pf-h1__dot { fill: var(--signal); }
+
+.pf-hero__sub {
+  margin-top: clamp(20px, 2.4vw, 30px);
+  max-width: 46ch;
+  color: var(--fog);
+  text-wrap: pretty;
+}
+.pf-hero__sub b {
+  color: var(--bone);
+  font-variation-settings: 'wdth' 100, 'wght' 500;
+}
+
+.pf-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 28px;
+  margin-top: clamp(26px, 3vw, 38px);
+  font-family: var(--mono);
+  font-size: 11.5px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--fog);
+}
+.pf-meta b {
+  color: var(--bone);
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ═══ FILTROS ════════════════════════════════════════════════════════════
+   Pegados abajo del header. Fondo opaco con blur: la grilla les pasa por
+   debajo y sin fondo el texto se mezclaba con las capturas.
+   ═══════════════════════════════════════════════════════════════════════ */
+.pf-bar {
+  position: sticky;
+  top: var(--hd-h);
+  z-index: 60;
+  background: var(--void-88);
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  border-block: 1px solid var(--steel);
+}
+.pf-bar__in {
+  display: flex;
+  gap: 8px;
+  padding-block: 13px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.pf-bar__in::-webkit-scrollbar { display: none; }
+
+.pf-f {
+  flex: none;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 9px 15px;
+  border: 1px solid var(--bone-12);
+  border-radius: var(--r);
+  background: transparent;
+  color: var(--fog);
+  font-family: var(--mono);
+  font-size: 11.5px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  line-height: 1;
+  white-space: nowrap;
+  transition: color .26s var(--ease), border-color .26s var(--ease),
+              background .26s var(--ease);
+}
+.pf-f:hover { color: var(--bone); border-color: var(--fog); }
+/* El activo va en hueso, no en rojo: es el mismo criterio que el CTA
+   principal de la home. */
+.pf-f[aria-pressed="true"] {
+  background: var(--bone);
+  border-color: var(--bone);
+  color: var(--void);
+}
+.pf-f__n {
+  font-size: 10px;
+  opacity: .55;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ═══ GRILLA ═════════════════════════════════════════════════════════════ */
+.pf-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  /* Abajo NO va --pad-y: el cierre ya trae el suyo y los dos juntos dejaban
+     320px de nada entre la última tarjeta y el título. */
+  padding-block: clamp(34px, 4.6vw, 58px) clamp(46px, 6vw, 92px);
+}
+
+/* Misma tarjeta que el bento de la home: 16/9, foto desaturada que vuelve al
+   color al pasar por encima, epígrafe sobre un degradé al pie. Lo único que
+   se agrega es la fila de "ver sitio", que acá sí hace falta porque cada
+   pieza sale a otro dominio. */
+.pf-card {
+  position: relative;
+  display: block;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: var(--r);
+  border: 1px solid var(--steel);
+  background: var(--carbon);
+  transition: border-color .3s var(--ease), transform .3s var(--ease),
+              opacity .26s var(--ease);
+}
+.pf-card:hover { border-color: var(--bone-12); transform: translateY(-3px); }
+
+.pf-card__img,
+.pf-card__gl {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 4%;
+  filter: grayscale(.6) contrast(1.02);
+  transform: scale(1.03);
+  transition: filter .6s var(--ease), transform .8s var(--ease);
+}
+.pf-card:hover .pf-card__img,
+.pf-card:hover .pf-card__gl {
+  filter: grayscale(0) contrast(1);
+  transform: scale(1.09);
+}
+.pf-card__gl { pointer-events: none; }
+
+.pf-card__cap {
+  position: absolute;
+  inset: auto 0 0 0;
+  z-index: 2;
+  padding: 16px 16px 13px;
+  background: linear-gradient(0deg, rgb(10 11 13 / .92) 12%, var(--void-00));
+}
+.pf-card__n {
+  display: block;
+  font-size: 15px;
+  /* igual que en el bento: a este cuerpo y sobre una foto, el 330 desaparece */
+  font-variation-settings: 'wdth' 100, 'wght' 500;
+  letter-spacing: -.004em;
+}
+.pf-card__r {
+  display: block;
+  margin-top: 4px;
+  font-family: var(--mono);
+  font-size: 10px;
+  font-style: normal;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--fog);
+}
+
+/* "Ver sitio ↗" — aparece al pasar por encima. Con el teclado aparece igual,
+   por el :focus-visible de más abajo: si sólo respondiera a :hover, quien
+   navega tabulando nunca sabría que la tarjeta sale a otro sitio. */
+.pf-card__go {
+  position: absolute;
+  top: 13px; right: 14px;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 11px;
+  border-radius: var(--r);
+  background: var(--void-88);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--bone);
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: opacity .28s var(--ease), transform .28s var(--ease);
+}
+.pf-card__go svg { width: 10px; height: 10px; }
+.pf-card:hover .pf-card__go,
+.pf-card:focus-visible .pf-card__go { opacity: 1; transform: none; }
+
+/* Estado de salida del filtro: lo escribe el JS antes de esconder de verdad */
+.pf-card.is-out { opacity: 0; transform: scale(.97); pointer-events: none; }
+.pf-card[hidden] { display: none; }
+
+.pf-empty {
+  padding: clamp(60px, 9vw, 110px) 0;
+  text-align: center;
+  font-family: var(--mono);
+  font-size: 12.5px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--fog);
+}
+
+/* ═══ CIERRE ═════════════════════════════════════════════════════════════ */
+.pf-end {
+  border-top: 1px solid var(--steel);
+  padding-block: var(--pad-y);
+}
+.pf-end__t {
+  margin-top: clamp(18px, 2.2vw, 28px);
+  font-size: clamp(34px, 5.6vw, 74px);
+  line-height: 1.03;
+  letter-spacing: -.026em;
+  font-variation-settings: var(--fv-display);
+  text-wrap: balance;
+}
+.pf-end__t em {
+  font-family: var(--serif);
+  font-style: italic;
+  font-variation-settings: normal;
+  /* Instrument Serif tiene la caja más chica que Archivo — el mismo 1.08 que
+     empareja las dos cajas en el logotipo */
+  font-size: 1.08em;
+}
+.pf-end__d {
+  margin-top: clamp(16px, 1.8vw, 22px);
+  max-width: 44ch;
+  color: var(--fog);
+}
+.pf-end__acts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: clamp(28px, 3.4vw, 42px);
+}
+
+/* El pie de la home lleva arriba el aire donde respira la obra en trama de
+   puntos. Acá esa obra no está —es el cierre de la portada, no de una
+   subpágina— así que el aire sobra. */
+.pf-page .ft { padding-block: clamp(64px, 8vw, 112px) 34px; }
+
+/* ═══ BREAKPOINTS — 1080 / 860 / 560 ═════════════════════════════════════ */
+@media (max-width: 1080px) {
+  .pf-grid { gap: 12px; }
+}
+@media (max-width: 860px) {
+  .pf-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .pf-h1__t { font-size: 150px; }
+}
+@media (max-width: 560px) {
+  .pf-grid { grid-template-columns: minmax(0, 1fr); }
+  /* En el teléfono no hay hover: sin esto la foto se quedaba gris para
+     siempre y el "ver sitio" no aparecía nunca. */
+  .pf-card__img, .pf-card__gl { filter: none; transform: none; }
+  .pf-card__go { opacity: 1; transform: none; }
+}
+
+/* ═══ REDUCED-MOTION ═════════════════════════════════════════════════════
+   Mismo criterio que la home: la página queda COMPLETA y quieta, no vacía.
+   El titular es el texto plano del <svg>, las tarjetas se ven todas, y el
+   shader de las capturas directamente no se instancia (eso lo decide el JS).
+   ═══════════════════════════════════════════════════════════════════════ */
+@media (prefers-reduced-motion: reduce) {
+  .pf-card, .pf-card__img, .pf-card__gl, .pf-card__go, .pf-f {
+    transition: none;
+  }
+  .pf-card:hover { transform: none; }
+  .pf-card:hover .pf-card__img { transform: scale(1.03); }
+  .pf-card__go { opacity: 1; transform: none; }
+}

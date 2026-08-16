@@ -1,5 +1,6 @@
 import puppeteer from 'puppeteer-core';
 import sharp from 'sharp';
+import fs from 'node:fs/promises';
 
 const CHROME = 'C:/Program Files/Google/Chrome/Application/chrome.exe';
 const URL = 'file:///C:/Users/Lautaro/Desktop/Claude/lautaromendezv3/index.html';
@@ -324,7 +325,16 @@ console.log('\n[5] Zoom del bento');
   is(!centro.img, 'la celda del centro NO es una captura de web');
   is(centro.pos === 5, 'y está en la posición 5, que es donde el zoom entra', `posición ${centro.pos}`);
   is(/portfolio/.test(centro.link), 'lleva al portfolio', centro.link);
-  is(centro.n === '26', 'muestra el contador de proyectos', centro.n);
+  /* El contador de la celda 5 está escrito a mano en el HTML, pero la verdad
+     la tiene el array de portfolio/portfolio.js. Se compara contra ese array y
+     no contra un número fijo: así el día que se agregue un proyecto, es este
+     chequeo el que avisa que hay que tocar el index — que es exactamente lo
+     que pasó cuando la home decía 26 y el portfolio ya tenía 34. */
+  const enPortfolio = (await fs.readFile('portfolio/portfolio.js', 'utf8'))
+    .match(/^\s*\{ img: '/gm)?.length ?? 0;
+  is(centro.n === String(enPortfolio),
+     'el contador de la celda 5 coincide con el portfolio',
+     `la home dice ${centro.n} y el portfolio tiene ${enPortfolio}`);
 
   const a = await enP(0), b2 = await enP(.5), c = await enP(1);
   is(a.escala === 1, 'arranca sin escalar', `escala ${a.escala}`);

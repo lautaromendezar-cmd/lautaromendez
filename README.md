@@ -12,11 +12,13 @@ assets/work/        las 8 capturas del bento
 assets/og.jpg       imagen de Open Graph (1200×630)
 assets/arte.js      La escuela de Atenas como grilla de puntos (pie)
 assets/favicon.svg
-portfolio/          otro sitio, se rehace aparte
+portfolio/          la grilla completa — mismo sistema visual, ver portfolio/portfolio.md
 tools/              generadores y chequeos — el sitio NO los necesita
 ```
 
 Dependencias externas: GSAP 3.15 y Google Fonts, las dos por CDN. Nada más.
+El portfolio suma dos plugins de GSAP (MorphSVG) y opentype.js, los tres
+opcionales: si no llegan, esa página queda completa igual.
 
 ---
 
@@ -39,9 +41,12 @@ están propuestos, no dictados:
 | `/institucional` | 3 a 4 semanas |
 | `/a-medida` | Según alcance |
 
-**3. Confirmar el contador del bento.** La séptima celda dice **26 proyectos
-publicados**. Si el portfolio cambia de cantidad, se edita a mano en
-`.tile__more-n` — acá no hay JS que lo cuente.
+**3. El contador de proyectos está escrito a mano en tres lugares** de este
+`index.html`: `.hero__meta`, el `.card__n` de la celda 5 del bento y el
+`.work__cap-t`, que lo dice con letras ("Treinta y cuatro proyectos"). La
+verdad la tiene el array `PROYECTOS` de `portfolio/portfolio.js`, y
+`tools/check.mjs` compara los dos y falla si no coinciden — que es como se
+descubrió que acá decía 26 mientras el portfolio ya tenía 34.
 
 ---
 
@@ -211,7 +216,8 @@ scrub del bento se apague abajo de 860px, que no haya scroll horizontal entre
 
 ```bash
 npm i puppeteer-core sharp    # SÓLO para las herramientas, el sitio no usa nada
-node tools/check.mjs
+node tools/check.mjs             # la home — 87 aserciones
+node tools/check-portfolio.mjs   # /portfolio — 48 aserciones
 ```
 
 Instalá eso cuando vayas a correr algo de `tools/`, y después borrá

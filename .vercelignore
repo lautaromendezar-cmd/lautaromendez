@@ -4,5 +4,11 @@ generaciones/
 tools/
 README.md
 lautaro-personal.md
+portfolio/portfolio.md
 assets/hero/vectorial/
 assets/hero/parallax/
+
+# si alguna vez se sube con el CLI desde esta carpeta: con un package.json a la
+# vista, Vercel deja de tratar esto como estático y busca un build que no hay
+package.json
+package-lock.json
