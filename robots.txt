@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://lautaromendez.com.ar/sitemap.xml

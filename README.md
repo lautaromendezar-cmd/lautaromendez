@@ -5,6 +5,10 @@ Se sube tal cual a Vercel o Cloudflare Pages y anda.
 
 ```
 index.html          la página entera
+404.html            la sirve Vercel para cualquier ruta que no exista
+robots.txt          apunta al sitemap
+sitemap.xml         dos URLs, a mano
+vercel.json         redirects, trailingSlash, headers de caché y seguridad
 css/style.css       una sola hoja, secciones separadas por banner
 js/main.js          funciones con nombre llamadas desde init()
 assets/hero/        el video del hero + su imagen fija (parallax/ y vectorial/ archivados)
@@ -202,6 +206,40 @@ Lo que costó acertar, por si hay que cambiar la obra:
 **Los datos de contacto.** El número de WhatsApp aparece en `index.html` (tres
 links con `data-wa`) y en `js/main.js` (`WA_BASE`). Si cambia, hay que tocar los
 dos: el JS reescribe los `href` cuando alguien clickea un CTA de servicio.
+
+---
+
+## SEO y publicación
+
+Las dos páginas tienen title, description, canonical, Open Graph completo con
+`assets/og.jpg` (1200×630) y Twitter Card. La home además lleva JSON-LD de
+`ProfessionalService`. Nada de eso depende de JS: está todo en el HTML.
+
+**Las URLs canónicas llevan barra final y no llevan `index.html`.** Como los
+links internos sí son relativos —para que el sitio siga abriéndose desde el
+disco con doble clic—, `vercel.json` cierra la brecha:
+
+| | |
+|---|---|
+| `trailingSlash: true` | `/portfolio` → `/portfolio/` |
+| dos `redirects` | `/index.html` → `/` y `/portfolio/index.html` → `/portfolio/` |
+
+Sin eso, cada página quedaba servida en dos URLs distintas con 200 en las dos.
+
+`vercel.json` también pone lo que Vercel no trae por defecto:
+
+- **Caché.** Vercel sirve TODO el estático con `max-age=0, must-revalidate`:
+  cada captura y el video de 600 KB se revalidan en cada visita. Las imágenes
+  y el video van a una hora, y CSS/JS a diez minutos, los dos con
+  `stale-while-revalidate` para que la actualización pase en segundo plano.
+  Deliberadamente **no** se usa `immutable`: los archivos no llevan hash en el
+  nombre, así que reemplazar una captura tiene que verse el mismo día.
+- **Seguridad.** `nosniff`, `Referrer-Policy`, `X-Frame-Options` y
+  `Permissions-Policy`. El HSTS ya lo agrega Vercel solo. No hay CSP: el sitio
+  usa scripts en línea y meterla con `unsafe-inline` no aportaría nada real.
+
+⚠️ **El `sitemap.xml` es a mano.** Si se agrega una página hay que sumarla ahí
+y que la `<loc>` coincida EXACTO con su `canonical`.
 
 ---
 

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Dos páginas, escrito a mano. Las URLs tienen que coincidir EXACTO con el
+  <link rel="canonical"> de cada una: con barra final y sin index.html.
+  Si algún día se agrega una página, se agrega acá y se actualiza lastmod.
+-->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://lautaromendez.com.ar/</loc>
+    <lastmod>2026-08-16</lastmod>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://lautaromendez.com.ar/portfolio/</loc>
+    <lastmod>2026-08-16</lastmod>
+    <priority>0.8</priority>
+  </url>
+</urlset>

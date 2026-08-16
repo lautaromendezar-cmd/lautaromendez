@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Página no encontrada — Lautaro Mendez</title>
+<!-- una 404 no se indexa: el status ya lo dice, esto lo deja por escrito -->
+<meta name="robots" content="noindex, follow">
+<meta name="theme-color" content="#0A0B0D">
+
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@200..700&display=swap">
+
+<!-- Todas las rutas van ABSOLUTAS: Vercel sirve esta página para cualquier
+     URL que no exista, y desde /una/ruta/inventada/ las relativas no resuelven. -->
+<link rel="stylesheet" href="/css/style.css">
+
+<style>
+  .e404 {
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-block: clamp(90px, 14vw, 150px);
+  }
+  .e404__n {
+    font-family: var(--mono);
+    font-size: clamp(56px, 13vw, 132px);
+    font-weight: 200;
+    line-height: 1;
+    letter-spacing: -.02em;
+    color: var(--steel);
+    /* el cero del medio en acento: el rojo entra como destello, no como bloque */
+  }
+  .e404__n i { font-style: normal; color: var(--signal); }
+  .e404__t {
+    margin-top: clamp(18px, 2.4vw, 30px);
+    font-size: clamp(30px, 5.6vw, 68px);
+    line-height: 1.04;
+    letter-spacing: -.022em;
+    font-variation-settings: var(--fv-display);
+    text-wrap: balance;
+  }
+  .e404__d {
+    margin-top: clamp(14px, 1.8vw, 22px);
+    max-width: 44ch;
+    color: var(--fog);
+  }
+  .e404__acts { display: flex; flex-wrap: wrap; gap: 12px; margin-top: clamp(26px, 3.4vw, 40px); }
+</style>
+</head>
+
+<body>
+<header class="hd is-stuck">
+  <div class="hd__in">
+    <a class="mark" href="/" aria-label="Lautaro Mendez, ir al inicio">
+      <span class="lock lock--mark"><span class="lock__a">Lautaro</span><span class="lock__b">Mendez.</span></span>
+    </a>
+  </div>
+</header>
+
+<main class="wrap e404">
+  <p class="eyebrow"><i class="dot"></i>Error 404</p>
+  <p class="e404__n" aria-hidden="true">4<i>0</i>4</p>
+  <h1 class="e404__t">Esta página no existe.</h1>
+  <p class="e404__d">Puede que el link esté viejo o que me haya equivocado yo escribiéndolo.
+    Lo que sí está, está acá abajo.</p>
+  <div class="e404__acts">
+    <a class="btn btn--solid" href="/">Ir al inicio</a>
+    <a class="btn btn--ghost" href="/portfolio/">Ver el portfolio</a>
+    <a class="btn btn--ghost" href="https://wa.me/5491130011145?text=Hola%20Lautaro%2C%20te%20escribo%20desde%20la%20web." target="_blank" rel="noopener">WhatsApp</a>
+  </div>
+</main>
+
+<footer class="ft" style="padding-block: clamp(48px, 7vw, 90px) 34px">
+  <div class="wrap ft__in">
+    <div class="ft__bar">
+      <p>© <span id="year">2026</span> Lautaro Mendez · Buenos Aires</p>
+      <nav class="ft__nav" aria-label="Pie">
+        <a href="/">Inicio</a>
+        <a href="/portfolio/">Portfolio</a>
+        <a href="https://www.instagram.com/lautaromendez" target="_blank" rel="noopener">Instagram</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
