@@ -526,6 +526,10 @@ function contactForm() {
         form.reset();
         if (texto) texto.textContent = 'Enviado';
         decir('Listo, me llegó. Te contesto hoy mismo.', 'ok');
+        /* Aviso para quien quiera medirlo (hoy js/pixel.js). Va por evento y
+           no llamando a fbq() acá: si el píxel no está, o lo bloquearon, o
+           mañana se cambia por otro, este archivo no se entera de nada. */
+        document.dispatchEvent(new CustomEvent('lm:form-ok'));
       } else {
         throw new Error(json.message || 'respuesta no exitosa');
       }

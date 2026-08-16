@@ -11,6 +11,7 @@ sitemap.xml         dos URLs, a mano
 vercel.json         redirects, trailingSlash, headers de caché y seguridad
 css/style.css       una sola hoja, secciones separadas por banner
 js/main.js          funciones con nombre llamadas desde init()
+js/pixel.js         el píxel de Meta, compartido por las dos páginas
 assets/hero/        el video del hero + su imagen fija (parallax/ y vectorial/ archivados)
 assets/work/        las 8 capturas del bento
 assets/og.jpg       imagen de Open Graph (1200×630)
@@ -241,6 +242,41 @@ Sin eso, cada página quedaba servida en dos URLs distintas con 200 en las dos.
 ⚠️ **El `sitemap.xml` es a mano.** Si se agrega una página hay que sumarla ahí
 y que la `<loc>` coincida EXACTO con su `canonical`.
 
+### El píxel de Meta
+
+`js/pixel.js`, cargado con `defer` por las dos páginas. **El ID está escrito
+una sola vez, adentro de ese archivo** — por eso es un archivo aparte y no el
+fragmento suelto que da Facebook pegado en cada `<head>`. Por lo mismo no
+lleva el `<noscript><img>` del fragmento oficial: obligaría a repetir el ID en
+cada HTML y sólo mediría visitantes con JS apagado, que además no pueden
+completar el formulario.
+
+Mide **PageView** en las dos páginas y **Lead** en las dos vías reales de
+contacto: click en cualquier CTA de WhatsApp y envío correcto del formulario.
+Un click en una de las 34 tarjetas del portfolio **no** es un Lead.
+
+- **Es `Lead` y no `Contact`** porque el píxel ya venía midiendo "Cliente
+  potencial" del sitio viejo: cambiar el evento partiría el histórico en dos y
+  dejaría a las campañas optimizando sobre la mitad de los datos.
+- **Los CTAs se buscan por `href*="wa.me"`, no por clase.** Hay botones de
+  WhatsApp en el header, el hero, los tres servicios, contacto y el portfolio,
+  y `main.js` encima les reescribe el `href` al vuelo. El dominio es lo único
+  que no se desactualiza.
+- **El formulario avisa por `lm:form-ok`**, un evento propio que despacha
+  `contactForm()`. `pixel.js` no le mira las tripas a nadie: si mañana se
+  cambia Web3Forms, mientras siga despachando ese evento no se entera.
+- **Se respeta Global Privacy Control.** Si el visitante lo tiene activo no se
+  dispara nada y ni siquiera se baja el script de Facebook.
+
+Se verifica con `node tools/check-pixel.mjs` (19 aserciones), que **no le manda
+un solo evento real a Facebook**: define un `fbq` falso antes de que corra
+`pixel.js` y aborta cualquier pedido a `facebook.net`.
+
+⚠️ **El sitio no tiene aviso de privacidad.** Desde que hay píxel se mandan
+datos de visitantes a Meta. En Argentina no hay obligación de cartel de
+cookies para un sitio así, pero si algún día se suma público europeo hay que
+resolverlo.
+
 ⚠️ **`googlef3a31e2c3e58ba21.html` NO se borra.** Son 53 bytes con un nombre
 que parece basura, pero es lo que le prueba a Google Search Console que el
 sitio es nuestro. Si desaparece, la propiedad se des-verifica sola y se
@@ -262,6 +298,7 @@ scrub del bento se apague abajo de 860px, que no haya scroll horizontal entre
 npm i puppeteer-core sharp    # SÓLO para las herramientas, el sitio no usa nada
 node tools/check.mjs             # la home — 87 aserciones
 node tools/check-portfolio.mjs   # /portfolio — 48 aserciones
+node tools/check-pixel.mjs       # el píxel de Meta — 19 aserciones
 ```
 
 Instalá eso cuando vayas a correr algo de `tools/`, y después borrá
