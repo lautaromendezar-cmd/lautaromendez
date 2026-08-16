@@ -1,0 +1,1215 @@
+/* ══════════════════════════════════════════════════════════════════════════
+   LAUTARO MENDEZ — hoja única
+   Orden: variables → reset → tipografía → utilidades → preloader → header →
+          hero → franja → servicios → bento → contacto → footer →
+          accesibilidad → breakpoints → reduced-motion
+
+   Regla de oro del espaciado: el padding vertical de una sección lo pone
+   SIEMPRE .section (vía --pad-y) y el horizontal SIEMPRE .wrap. Ninguna clase
+   hija vuelve a declarar padding-block ni padding-inline de sección: así no
+   hay dos reglas peleándose por el mismo valor.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+/* ═══ VARIABLES ══════════════════════════════════════════════════════════ */
+:root {
+  /* paleta — todo color del sitio sale de acá */
+  --void:   #0A0B0D;   /* fondo base, negro azulado */
+  --carbon: #101217;   /* superficies elevadas */
+  --steel:  #191C23;   /* bordes y separadores */
+  --fog:    #7D8491;   /* texto secundario */
+  --bone:   #EDEBE8;   /* texto principal, blanco cálido */
+  --signal: #FF2D46;   /* acento único */
+  --ember:  #FF7A3D;   /* sólo dentro de degradés */
+
+  /* derivados: mismos colores con alfa, para no inventar hex nuevos */
+  --bone-12: rgb(237 235 232 / .12);
+  --bone-06: rgb(237 235 232 / .06);
+  --signal-40: rgb(255 45 70 / .40);
+  --signal-14: rgb(255 45 70 / .14);
+  --void-88: rgb(10 11 13 / .88);
+  --void-00: rgb(10 11 13 / 0);
+
+  /* tipografía */
+  --sans:  'Archivo', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --serif: 'Instrument Serif', Georgia, 'Times New Roman', serif;
+  --mono:  'JetBrains Mono', ui-monospace, 'SFMono-Regular', Consolas, monospace;
+
+  /* Todo el display del sitio usa el mismo trazo que el "Lautaro" del
+     logotipo: Archivo liviano de ancho normal. Ni expandido ni bold — el peso
+     lo dan el tamaño y el aire, no el grosor. Un solo lugar para cambiarlo. */
+  --fv-display: 'wdth' 100, 'wght' 330;   /* titulares grandes */
+  --fv-title:   'wdth' 100, 'wght' 380;   /* titulares chicos y cifras */
+
+  /* medidas */
+  --max: 1280px;
+  --gut: clamp(20px, 4.4vw, 56px);
+  --pad-y: clamp(84px, 10.5vw, 156px);
+  --r: 4px;
+  --hd-h: 74px;
+
+  /* curvas */
+  --ease: cubic-bezier(.22, 1, .36, 1);
+  --ease-io: cubic-bezier(.76, 0, .24, 1);
+}
+
+/* ═══ RESET ══════════════════════════════════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; }
+* { margin: 0; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--void);
+  color: var(--bone);
+  font-family: var(--sans);
+  font-size: 17px;
+  line-height: 1.62;
+  font-variation-settings: 'wdth' 100, 'wght' 380;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+img, svg, video { display: block; max-width: 100%; }
+img { height: auto; }
+a { color: inherit; text-decoration: none; }
+ul, ol { list-style: none; padding: 0; }
+button, input, select, textarea { font: inherit; color: inherit; }
+button { background: none; border: 0; cursor: pointer; }
+
+::selection { background: var(--signal); color: var(--bone); }
+
+/* ═══ TIPOGRAFÍA ═════════════════════════════════════════════════════════ */
+.eyebrow {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: .26em;
+  text-transform: uppercase;
+  color: var(--fog);
+  display: flex;
+  /* flex-start y no center: cuando el texto se parte en dos líneas el punto
+     tiene que quedar pegado a la primera, no flotando en el medio */
+  align-items: flex-start;
+  gap: 10px;
+}
+
+/* ── LOGOTIPO ───────────────────────────────────────────────────────────────
+   Dos estilos al mismo tamaño óptico, no dos tamaños: palo seco liviano +
+   cursiva serif de alto contraste. El contraste sale de la FORMA de la letra,
+   no de que una sea más chica que la otra. Se usa igual en preloader, header
+   y pie: sólo cambia el font-size del contenedor.
+   ───────────────────────────────────────────────────────────────────────── */
+.lock {
+  display: inline-flex;
+  align-items: baseline;
+  gap: .26em;
+  line-height: 1;
+  white-space: nowrap;
+}
+.lock__a {
+  font-family: var(--sans);
+  font-variation-settings: 'wdth' 100, 'wght' 330;
+  letter-spacing: -.014em;
+}
+.lock__b {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+  /* Instrument Serif tiene la caja bastante más chica que Archivo: con el
+     mismo font-size la cursiva se ve más petisa. Este 1.16 las empareja. */
+  font-size: 1.16em;
+  letter-spacing: -.008em;
+}
+
+/* punto rojo de 5px: acento en dosis mínima */
+.dot {
+  width: 5px; height: 5px;
+  margin-top: .42em;
+  border-radius: 50%;
+  background: var(--signal);
+  box-shadow: 0 0 0 4px var(--signal-14);
+  flex: none;
+}
+
+/* ═══ UTILIDADES ═════════════════════════════════════════════════════════ */
+.wrap {
+  width: 100%;
+  max-width: calc(var(--max) + var(--gut) * 2);
+  margin-inline: auto;
+  padding-inline: var(--gut);
+}
+
+.section {
+  padding-block: var(--pad-y);
+  scroll-margin-top: calc(var(--hd-h) + 8px);
+  position: relative;
+}
+
+/* Botones. El acento NUNCA rellena un bloque: el CTA principal va en hueso. */
+.btn {
+  --btn-bg: transparent;
+  --btn-fg: var(--bone);
+  --btn-bd: var(--bone-12);
+  font-family: var(--mono);
+  font-size: 12.5px;
+  font-weight: 500;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 15px 24px;
+  border: 1px solid var(--btn-bd);
+  border-radius: var(--r);
+  background: var(--btn-bg);
+  color: var(--btn-fg);
+  cursor: pointer;
+  transition: background .28s var(--ease), color .28s var(--ease),
+              border-color .28s var(--ease), transform .28s var(--ease);
+}
+.btn--solid { --btn-bg: var(--bone); --btn-fg: var(--void); --btn-bd: var(--bone); }
+.btn--solid:hover { --btn-bg: #FFFDFA; transform: translateY(-2px); }
+.btn--ghost:hover { --btn-bd: var(--fog); background: var(--bone-06); transform: translateY(-2px); }
+
+.link {
+  font-family: var(--mono);
+  font-size: 12.5px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--fog);
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--steel);
+  transition: color .28s var(--ease), border-color .28s var(--ease);
+}
+.link:hover { color: var(--bone); border-bottom-color: var(--signal); }
+
+.skip {
+  position: fixed; top: 10px; left: 10px;
+  z-index: 999;
+  padding: 12px 18px;
+  background: var(--bone); color: var(--void);
+  border-radius: var(--r);
+  font-family: var(--mono); font-size: 13px;
+  transform: translateY(-160%);
+  transition: transform .2s var(--ease);
+}
+.skip:focus-visible { transform: none; }
+
+/* Encabezado de sección */
+.shead { margin-bottom: clamp(48px, 6vw, 82px); }
+.shead .eyebrow { margin-bottom: 22px; }
+.shead__t {
+  font-size: clamp(28px, 4.2vw, 54px);
+  font-variation-settings: var(--fv-display);
+  /* el trazo liviano necesita más aire entre líneas que el bold */
+  line-height: 1.06;
+  letter-spacing: -.014em;
+}
+.shead__d {
+  max-width: 52ch;
+  margin-top: 20px;
+  color: var(--fog);
+  font-size: 16.5px;
+}
+.shead--split {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   PRELOADER
+   ══════════════════════════════════════════════════════════════════════════ */
+.pre {
+  position: fixed; inset: 0;
+  z-index: 200;
+  background: var(--void);
+  display: grid;
+  place-items: center;
+}
+.pre__lock { text-align: center; padding-inline: var(--gut); }
+.lock--pre { font-size: clamp(30px, 7.4vw, 88px); }
+.pre__bar {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 1px;
+  background: var(--steel);
+}
+.pre__fill {
+  display: block;
+  height: 100%;
+  width: 100%;
+  background: var(--signal);
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+}
+.pre.is-off { display: none; }
+
+/* ══════════════════════════════════════════════════════════════════════════
+   HEADER
+   ══════════════════════════════════════════════════════════════════════════ */
+.hd {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 100;
+  height: var(--hd-h);
+  background: transparent;
+  border-bottom: 1px solid transparent;
+  transition: background .38s var(--ease), border-color .38s var(--ease),
+              backdrop-filter .38s var(--ease);
+}
+.hd.is-stuck {
+  background: var(--void-88);
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  border-bottom-color: var(--steel);
+}
+.hd__in {
+  height: 100%;
+  width: 100%;
+  max-width: calc(var(--max) + var(--gut) * 2);
+  margin-inline: auto;
+  padding-inline: var(--gut);
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+.hd__prog {
+  position: absolute;
+  left: 0; bottom: -1px;
+  height: 1px; width: 100%;
+  background: var(--signal);
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+}
+
+/* el mismo lockup del preloader, en chico */
+.mark { margin-right: auto; display: flex; }
+.lock--mark { font-size: 21px; }
+.mark .lock__b { color: var(--bone); transition: color .3s var(--ease); }
+.mark:hover .lock__b { color: var(--signal); }
+
+.hd__nav { display: flex; gap: 30px; }
+.hd__nav a {
+  position: relative;
+  font-family: var(--mono);
+  font-size: 12.5px;
+  letter-spacing: .08em;
+  color: var(--fog);
+  padding-block: 6px;
+  transition: color .26s var(--ease);
+}
+.hd__nav a::after {
+  content: '';
+  position: absolute;
+  left: 0; bottom: 0;
+  height: 1px; width: 100%;
+  background: var(--signal);
+  transform: scaleX(0);
+  transform-origin: 100% 50%;
+  transition: transform .38s var(--ease);
+}
+.hd__nav a:hover { color: var(--bone); }
+.hd__nav a:hover::after { transform: scaleX(1); transform-origin: 0 50%; }
+.hd__cta { padding: 11px 18px; font-size: 11.5px; }
+
+/* ══════════════════════════════════════════════════════════════════════════
+   HERO
+   ══════════════════════════════════════════════════════════════════════════ */
+.hero {
+  position: relative;
+  /* pantalla completa. svh y no vh: en el navegador del teléfono, vh mide
+     con la barra de direcciones retraída y el hero termina más alto que la
+     ventana, dejando el CTA cortado abajo. Con min-height, si el contenido
+     no entra la sección crece y no se recorta nada. */
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  align-items: flex-end;
+  padding-block: calc(var(--hd-h) + 40px) clamp(56px, 8vw, 104px);
+  padding-inline: var(--gut);
+  overflow: clip;
+  isolation: isolate;
+}
+
+/* La escena entera se mueve como una sola pieza: el parallax dejó de ser por
+   capas y pasó a ser una deriva de cámara. El -6% de sobra y el scale son
+   para que ese desplazamiento nunca descubra un borde. */
+.hero__scene {
+  position: absolute;
+  inset: -6%;
+  z-index: -1;
+  will-change: transform;
+}
+.hero__still,
+.hero__video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+/* El video nace invisible y se funde encima de la imagen fija recién cuando
+   empieza a reproducirse de verdad. Si no carga, si el autoplay queda
+   bloqueado o si el visitante pidió menos movimiento, abajo está la fija y
+   no se ve ningún hueco. */
+.hero__video {
+  opacity: 0;
+  transition: opacity .9s var(--ease);
+}
+.hero__video.is-on { opacity: 1; }
+
+/* Velo. Un degradé plano de izquierda a derecha apagaba media ciudad para
+   salvar cuatro líneas de texto; en cambio este scrim elíptico oscurece sólo
+   el rincón donde vive el bloque de texto y deja la ciudad prendida arriba
+   a la derecha, que es donde tiene que impactar. */
+.hero__veil {
+  position: absolute; inset: 0;
+  background:
+    /* techo: header y eyebrow */
+    linear-gradient(180deg, rgb(10 11 13 / .88) 0%, rgb(10 11 13 / .34) 13%, var(--void-00) 26%),
+    /* La columna de texto entera, no sólo el rincón de abajo: el eyebrow vive
+       arriba del todo y le pasa una estela roja por encima. La elipse va
+       anclada fuera del encuadre a la izquierda y muere antes de la mitad,
+       así el lado derecho —que es donde la ciudad tiene el mejor detalle—
+       queda intacto. */
+    radial-gradient(64% 128% at -6% 58%,
+      rgb(10 11 13 / .96) 0%, rgb(10 11 13 / .80) 26%,
+      rgb(10 11 13 / .42) 52%, var(--void-00) 78%),
+    /* piso: empalma con el fondo de la página */
+    linear-gradient(0deg, var(--void) 0%, rgb(10 11 13 / .76) 10%, var(--void-00) 34%),
+    /* un punto de sombra parejo sobre todo: la foto es contrastada y el texto
+       blanco necesita un piso de oscuridad para no vibrar */
+    linear-gradient(0deg, rgb(10 11 13 / .16), rgb(10 11 13 / .16));
+}
+.hero__grain {
+  position: absolute; inset: 0;
+  opacity: .05;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.hero__body { width: 100%; max-width: var(--max); margin-inline: auto; }
+.hero__brow { margin-bottom: 26px; }
+
+.hero__h1 {
+  font-size: clamp(32px, 5.6vw, 80px);
+  font-variation-settings: var(--fv-display);
+  line-height: 1.04;
+  letter-spacing: -.016em;
+  max-width: 17ch;
+}
+/* una máscara por línea: el reveal entra desde abajo sin desbordar */
+.hero__h1 .ln { display: block; overflow: hidden; padding-bottom: .04em; }
+.hero__h1 .ln > span { display: block; }
+.js .hero__h1 .ln > span { transform: translateY(112%); }
+
+.hero__sub {
+  margin-top: 28px;
+  max-width: 48ch;
+  color: var(--fog);
+  font-size: clamp(16px, 1.5vw, 18.5px);
+}
+.hero__acts { margin-top: 38px; display: flex; flex-wrap: wrap; gap: 12px; }
+
+.hero__meta {
+  margin-top: clamp(44px, 6vw, 72px);
+  padding-top: 20px;
+  border-top: 1px solid var(--steel);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 34px;
+  font-family: var(--mono);
+  font-size: 11.5px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--fog);
+}
+.hero__meta li { display: flex; align-items: center; gap: 12px; }
+.hero__meta li + li::before {
+  content: '';
+  width: 3px; height: 3px;
+  border-radius: 50%;
+  background: var(--steel);
+}
+
+/* elementos que entran con GSAP: estado inicial sólo si hay JS */
+.js .hero__brow,
+.js .hero__sub,
+.js .hero__acts,
+.js .hero__meta { opacity: 0; }
+
+/* ══════════════════════════════════════════════════════════════════════════
+   FRANJA SCRAMBLE
+   ══════════════════════════════════════════════════════════════════════════ */
+.strip {
+  background: var(--carbon);
+  border-top: 1px solid var(--steel);
+  border-bottom: 1px solid var(--steel);
+  padding-block: clamp(26px, 3.4vw, 40px);
+  overflow: hidden;
+}
+.strip__in {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  /* Monoespaciada obligatoria: con fuente proporcional el ancho salta
+     mientras el texto se arma y parece que se rompió. */
+  font-family: var(--mono);
+  font-size: clamp(13px, 1.75vw, 20px);
+  letter-spacing: .04em;
+  white-space: nowrap;
+}
+.strip__caret { color: var(--signal); font-weight: 600; flex: none; }
+.strip__label { color: var(--fog); }
+.strip__word {
+  color: var(--bone);
+  font-weight: 600;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   SERVICIOS — slider a pantalla completa
+
+   El estado de REPOSO es apilado: los tres paneles uno abajo del otro, se
+   leen scrolleando normal. Eso es lo que se ve sin JS, si el CDN de GSAP no
+   llega, con prefers-reduced-motion y en el teléfono.
+
+   La versión a pantalla completa se enciende sola: servicesSlider() le pone
+   la clase `is-slider` al escenario recién cuando pudo montar el pin. Al
+   revés —full-screen por defecto y apilado como excepción— los paneles
+   quedarían uno encima del otro e ilegibles en todos esos casos, y haría
+   falta desarmarlo desde tres media queries distintas.
+   ══════════════════════════════════════════════════════════════════════════ */
+.svc { position: relative; }
+/* el intro NO lleva la clase .shead: esa trae margin-bottom propio y se
+   sumaría al padding de acá, que es justo la pelea que hay que evitar */
+.svc__intro { padding-block: var(--pad-y) clamp(38px, 5vw, 60px); }
+.svc__intro .eyebrow { margin-bottom: 22px; }
+.svc__stage { position: relative; }
+
+/* ── Reposo: apilados ──────────────────────────────────────────────────── */
+.panel__inner { position: relative; background: var(--void); border-top: 1px solid var(--steel); }
+.panel__body { padding-block: clamp(52px, 8vw, 88px); }
+.panel__mark, .svc__nav { display: none; }
+
+/* ── Encendido: pantalla completa ──────────────────────────────────────── */
+.svc__stage.is-slider { height: 100svh; overflow: hidden; }
+.svc__stage.is-slider .panels { position: absolute; inset: 0; }
+.svc__stage.is-slider .panel { position: absolute; inset: 0; }
+/* El truco de la cortina: .panel__outer es la ventana que se desplaza y
+   .panel__inner mueve el contenido en sentido contrario adentro. Los dos
+   recortan, si no el contenido se ve fuera de la ventana. */
+.svc__stage.is-slider .panel__outer,
+.svc__stage.is-slider .panel__inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  will-change: transform;
+}
+.svc__stage.is-slider .panel__inner { border-top: 0; }
+
+/* El filo de la cortina. Sin esto, a mitad de transición se ve el titular de
+   un panel con la lista del otro justo abajo y parece contenido roto, no dos
+   placas pasando: los dos paneles comparten layout, así que la costura hay
+   que dibujarla.
+
+   Va en __outer y NO en __inner: __inner es justamente lo que se queda quieto
+   —ése es el truco de la cortina—, así que una línea ahí no marca nada. La
+   que se mueve es la ventana. En reposo queda arriba de todo, tapada por el
+   header. */
+.svc__stage.is-slider .panel__outer::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto;
+  height: 1px;
+  z-index: 5;
+  background: linear-gradient(90deg,
+    var(--signal) 0%, rgb(255 45 70 / .35) 26%, var(--steel) 55%, transparent 100%);
+}
+.svc__stage.is-slider .panel__body {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-block: calc(var(--hd-h) + 40px) 132px;
+}
+.svc__stage.is-slider .panel__mark { display: block; }
+.svc__stage.is-slider .svc__nav { display: flex; }
+
+/* Cada panel trae su propio resplandor, en otra posición y otro tinte: eso es
+   lo que hace que el fondo "cambie" al pasar de uno a otro. Son difusos y de
+   alfa baja, no bloques de color: el acento sigue siendo un detalle. */
+/* A · noche cerrada. Base la más oscura de las tres y el rojo entrando bajo,
+   desde la izquierda. */
+.panel--a .panel__inner {
+  background:
+    radial-gradient(92% 100% at 2% 100%, rgb(255 45 70 / .30), transparent 58%),
+    radial-gradient(58% 72% at 96% 2%, rgb(125 132 145 / .10), transparent 56%),
+    #08090C;
+}
+/* B · el escalón frío. Es el único con la base levantada: ese salto de
+   luminancia es lo que hace que el cambio de panel se lea de golpe. */
+.panel--b .panel__inner {
+  background:
+    radial-gradient(96% 100% at 100% 62%, rgb(139 158 184 / .30), transparent 60%),
+    radial-gradient(64% 72% at 0% 0%, rgb(10 11 13 / .55), transparent 58%),
+    #131A24;
+}
+/* C · vuelve a lo oscuro pero cálido, con el ámbar subiendo desde abajo. */
+.panel--c .panel__inner {
+  background:
+    radial-gradient(120% 88% at 50% 116%, rgb(255 122 61 / .34), transparent 56%),
+    radial-gradient(60% 70% at 6% 0%, rgb(255 45 70 / .13), transparent 54%),
+    #0A080A;
+}
+
+/* la ruta repetida enorme y casi apagada: marca de agua tipográfica, no adorno */
+.panel__mark {
+  position: absolute;
+  right: -.08em;
+  bottom: 9%;
+  font-family: var(--mono);
+  /* Tiene que entrar en el ancho: /institucional son 14 caracteres, y a 240px
+     de cuerpo se derramaba por la izquierda y se leía como un error de
+     maquetación en vez de una marca de agua. */
+  font-size: clamp(52px, 8.4vw, 118px);
+  font-weight: 200;
+  letter-spacing: -.04em;
+  line-height: 1;
+  color: var(--bone);
+  opacity: .035;
+  pointer-events: none;
+  user-select: none;
+  white-space: nowrap;
+}
+
+.panel__path {
+  font-family: var(--mono);
+  font-size: 13px;
+  letter-spacing: .04em;
+  color: var(--signal);
+  margin-bottom: 20px;
+}
+/* Las palabras recortan para que las letras entren desde abajo sin asomar
+   antes de tiempo. El padding/margin compensados devuelven el espacio que el
+   overflow le comería a las colas de la g y la p. */
+.panel__t .w {
+  display: inline-block;
+  overflow: hidden;
+  padding-bottom: .14em;
+  margin-bottom: -.14em;
+}
+.panel__t .c { display: inline-block; will-change: transform; }
+
+.panel__t {
+  font-size: clamp(32px, 5.6vw, 84px);
+  font-variation-settings: var(--fv-display);
+  line-height: 1.02;
+  letter-spacing: -.018em;
+}
+.panel__d {
+  margin-top: 22px;
+  max-width: 44ch;
+  color: var(--fog);
+  font-size: clamp(16px, 1.5vw, 18.5px);
+}
+
+.panel__cols {
+  margin-top: clamp(32px, 4.4vw, 58px);
+  padding-top: clamp(24px, 3vw, 36px);
+  border-top: 1px solid var(--steel);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 250px;
+  gap: clamp(28px, 4vw, 60px);
+  align-items: start;
+}
+.panel__list { display: grid; gap: 10px; }
+.panel__list li {
+  position: relative;
+  padding-left: 22px;
+  font-size: 15.5px;
+  color: var(--fog);
+}
+.panel__list li::before {
+  content: '';
+  position: absolute;
+  left: 0; top: .7em;
+  width: 9px; height: 1px;
+  background: var(--fog);
+  opacity: .6;
+}
+
+.panel__end { display: flex; flex-direction: column; align-items: flex-start; gap: 24px; }
+.panel__time { font-family: var(--mono); font-size: 14px; color: var(--bone); }
+.panel__time span {
+  display: block;
+  font-size: 10.5px;
+  letter-spacing: .26em;
+  text-transform: uppercase;
+  color: var(--fog);
+  margin-bottom: 8px;
+}
+
+.svc-cta {
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--bone);
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--steel);
+  transition: gap .3s var(--ease), border-color .3s var(--ease);
+}
+.svc-cta::after { content: '→'; color: var(--signal); }
+.svc-cta:hover { gap: 15px; border-bottom-color: var(--signal); }
+
+/* ── Índice fijo del escenario: no viaja con los paneles ───────────────── */
+.svc__nav {
+  position: absolute;
+  left: var(--gut);
+  right: var(--gut);
+  bottom: clamp(28px, 4vw, 48px);
+  z-index: 10;
+  gap: clamp(18px, 3vw, 40px);
+  max-width: var(--max);
+  margin-inline: auto;
+  border-top: 1px solid var(--steel);
+  padding-top: 18px;
+}
+.svc__nav button {
+  position: relative;
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: .06em;
+  color: var(--fog);
+  padding: 4px 0;
+  transition: color .34s var(--ease);
+}
+.svc__nav button::after {
+  content: '';
+  position: absolute;
+  left: 0; top: -19px;
+  height: 1px; width: 100%;
+  background: var(--signal);
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  transition: transform .5s var(--ease);
+}
+.svc__nav button:hover,
+.svc__nav button[aria-current="true"] { color: var(--bone); }
+.svc__nav button[aria-current="true"]::after { transform: scaleX(1); }
+
+.svc__foot {
+  margin-top: clamp(48px, 6vw, 80px);
+  font-family: var(--mono);
+  font-size: 12.5px;
+  letter-spacing: .04em;
+  color: var(--fog);
+  line-height: 1.8;
+}
+/* separador antes de la coda: distingue sin bajar el contraste del texto */
+.svc__foot span::before { content: '·'; margin: 0 .7em; color: var(--steel); }
+
+/* ══════════════════════════════════════════════════════════════════════════
+   TRABAJOS — bento con zoom scrubbeado
+
+   Igual que el slider de servicios: el estado de REPOSO es una grilla normal
+   que se scrollea, y el zoom se enciende con `is-zoom` recién cuando el JS
+   pudo montarlo. Sin JS, con reduced-motion o en el teléfono queda la grilla.
+   ══════════════════════════════════════════════════════════════════════════ */
+.work { position: relative; }
+.work__intro { padding-block: var(--pad-y) clamp(30px, 4vw, 48px); }
+.work__intro .eyebrow { margin-bottom: 22px; }
+
+.work__stage { position: relative; }
+/* Aire abajo SÓLO cuando no hay zoom. Con el zoom encendido el panel termina a
+   sangre y la sección siguiente tiene que entrar pegada; un padding acá se
+   vería como un hueco muerto justo después del momento más fuerte. */
+.work__stage:not(.is-zoom) { padding-bottom: clamp(54px, 7vw, 92px); }
+
+/* La grilla tiene que ser SIMÉTRICA de 3×3: el zoom escala desde 50% 50%, que
+   es justo el centro de la celda 5. Con una celda que ocupe dos columnas o
+   dos filas, ese punto deja de coincidir con el centro del destacado y el
+   encuadre final queda corrido. */
+.bento {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  width: min(1180px, calc(100% - var(--gut) * 2));
+  margin-inline: auto;
+}
+
+.tile {
+  position: relative;
+  display: block;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: var(--r);
+  border: 1px solid var(--steel);
+  background: var(--carbon);
+}
+.tile img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: 50% 4%;
+  filter: grayscale(.6) contrast(1.02);
+  transform: scale(1.03);
+  transition: filter .6s var(--ease), transform .8s var(--ease);
+}
+.tile:hover img { filter: grayscale(0) contrast(1); transform: scale(1.09); }
+
+
+.tile__cap {
+  position: absolute;
+  inset: auto 0 0 0;
+  padding: 16px 16px 13px;
+  background: linear-gradient(0deg, rgb(10 11 13 / .92) 12%, var(--void-00));
+}
+.tile__cap b {
+  display: block;
+  font-size: 15px;
+  /* acá NO va el 330: a este cuerpo y sobre una foto el trazo liviano
+     desaparece */
+  font-variation-settings: 'wdth' 100, 'wght' 500;
+  letter-spacing: -.004em;
+}
+.tile__cap i {
+  display: block;
+  margin-top: 4px;
+  font-family: var(--mono);
+  font-size: 10px;
+  font-style: normal;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--fog);
+}
+
+/* ── La celda 5: la invitación, no un trabajo ──────────────────────────────
+   Es la única sin foto y eso está buscado: la vuelve el punto de fuga de la
+   grilla, que es justo por donde el zoom va a entrar. Además se rasteriza
+   sola —es color y texto, no un bitmap— así que a 4x no se ablanda nada. */
+.tile--hero {
+  background:
+    radial-gradient(122% 132% at 50% 120%, rgb(255 45 70 / .32), transparent 62%),
+    radial-gradient(80% 92% at 10% 0%, rgb(255 122 61 / .11), transparent 60%),
+    #0B0C10;
+  border-color: var(--bone-12);
+}
+.card {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.card__k {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: .26em;
+  text-transform: uppercase;
+  color: var(--signal);
+}
+.card__n {
+  margin-top: .14em;
+  font-size: 58px;
+  font-variation-settings: var(--fv-display);
+  line-height: 1;
+  letter-spacing: -.03em;
+}
+.card__d {
+  margin-top: .9em;
+  font-family: var(--mono);
+  font-size: 9.5px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--fog);
+}
+
+/* ── Encendido: el escenario se fija y la grilla crece ─────────────────── */
+.work__stage.is-zoom {
+  height: 100svh;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+}
+.work__stage.is-zoom .bento { will-change: transform; }
+.work__stage.is-zoom .tile:hover img { transform: scale(1.03); }
+
+/* Cartel final. Vive en el escenario y NO en la grilla: adentro se escalaría
+   4x junto con todo lo demás. Centrado a propósito — es una tarjeta de cierre,
+   no un bloque de contenido, y el centrado avisa que ahí se termina algo. */
+/* Fuera del modo zoom no existe: sin él quedaría una capa invisible tapando
+   toda la grilla, y el rótulo no tiene sentido si nunca se va a revelar. */
+.work__stage:not(.is-zoom) .work__cap { display: none; }
+.work__cap {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  text-align: center;
+  padding-inline: var(--gut);
+  opacity: 0;
+  /* deja pasar el clic al <a> del panel, que ocupa toda la pantalla */
+  pointer-events: none;
+}
+.work__cap .eyebrow { justify-content: center; margin-bottom: 24px; }
+.work__cap-t {
+  font-size: clamp(28px, 5.2vw, 74px);
+  font-variation-settings: var(--fv-display);
+  line-height: 1.06;
+  letter-spacing: -.018em;
+}
+.work__cap-d {
+  margin-top: 20px;
+  max-width: 46ch;
+  color: var(--fog);
+  font-size: clamp(15px, 1.4vw, 17px);
+}
+.work__cap-cta {
+  margin-top: clamp(28px, 3.4vw, 40px);
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+  padding: 15px 26px;
+  border-radius: var(--r);
+  background: var(--bone);
+  color: var(--void);
+  font-family: var(--mono);
+  font-size: 12.5px;
+  font-weight: 500;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+.work__cap-cta::after { content: '→'; }
+
+.ct { border-top: 1px solid var(--steel); }
+.ct__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.02fr) minmax(0, 1fr);
+  gap: clamp(40px, 6vw, 88px);
+  align-items: start;
+}
+.ct__left .eyebrow { margin-bottom: 22px; }
+.ct__t {
+  font-size: clamp(28px, 4vw, 52px);
+  font-variation-settings: var(--fv-display);
+  line-height: 1.06;
+  letter-spacing: -.014em;
+}
+.ct__d { margin-top: 20px; max-width: 48ch; color: var(--fog); font-size: 16.5px; }
+
+/* WhatsApp es la acción principal: en Argentina el formulario convierte peor */
+.wa {
+  margin-top: 34px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 4px 16px;
+  padding: 24px 26px;
+  border: 1px solid var(--bone-12);
+  border-radius: var(--r);
+  background: var(--carbon);
+  transition: border-color .34s var(--ease), background .34s var(--ease), transform .34s var(--ease);
+}
+.wa:hover { border-color: var(--signal-40); background: #13161C; transform: translateY(-2px); }
+.wa__k {
+  grid-column: 1;
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: .26em;
+  text-transform: uppercase;
+  color: var(--fog);
+}
+.wa__n {
+  grid-column: 1;
+  font-size: clamp(21px, 2.4vw, 29px);
+  font-variation-settings: var(--fv-title);
+  letter-spacing: -.004em;
+}
+.wa__go { grid-column: 2; grid-row: 1 / span 2; font-size: 21px; color: var(--signal); }
+
+.ct__data {
+  margin-top: 36px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px 28px;
+}
+.ct__data dt {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: .26em;
+  text-transform: uppercase;
+  color: var(--fog);
+  margin-bottom: 7px;
+}
+.ct__data dd { font-size: 15px; }
+.ct__data a { border-bottom: 1px solid var(--steel); padding-bottom: 2px; transition: border-color .28s var(--ease); }
+.ct__data a:hover { border-bottom-color: var(--signal); }
+
+/* ── Formulario ─────────────────────────────────────────────────────────── */
+.form__alt {
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--fog);
+  padding-bottom: 18px;
+  margin-bottom: 26px;
+  border-bottom: 1px solid var(--steel);
+}
+.form { display: grid; gap: 18px; }
+.f { display: grid; gap: 8px; }
+.f label {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--fog);
+}
+.f input, .f select, .f textarea {
+  width: 100%;
+  padding: 14px 16px;
+  background: var(--carbon);
+  border: 1px solid var(--steel);
+  border-radius: var(--r);
+  font-size: 15.5px;
+  transition: border-color .26s var(--ease), background .26s var(--ease);
+}
+.f textarea { resize: vertical; min-height: 116px; line-height: 1.55; }
+/* El placeholder va en --fog (4.98:1 sobre --carbon) y no en un gris más
+   apagado: es texto y tiene que leerse. Lo escrito se distingue igual porque
+   entra en --bone, bastante más claro. `opacity:1` es por Firefox, que le
+   aplica una opacidad propia por defecto. */
+.f input::placeholder, .f textarea::placeholder { color: var(--fog); opacity: 1; }
+.f input:hover, .f select:hover, .f textarea:hover { border-color: #232833; }
+.f input:focus, .f select:focus, .f textarea:focus {
+  outline: none;
+  border-color: var(--fog);
+  background: #13161C;
+}
+.f select {
+  appearance: none;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11' height='7' fill='none'%3E%3Cpath d='M1 1l4.5 4.5L10 1' stroke='%237D8491' stroke-width='1.4'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  padding-right: 42px;
+}
+.f select option { background: var(--carbon); color: var(--bone); }
+
+/* honeypot: fuera de pantalla, nunca oculto con display:none (los bots lo leen) */
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+
+.form__send { margin-top: 6px; justify-self: start; }
+.form.is-sending .form__send { opacity: .55; pointer-events: none; }
+
+.form__note {
+  min-height: 1.3em;
+  font-family: var(--mono);
+  font-size: 12.5px;
+  letter-spacing: .03em;
+  color: var(--fog);
+}
+.form__note.is-ok  { color: var(--bone); }
+.form__note.is-err { color: var(--signal); }
+
+/* ══════════════════════════════════════════════════════════════════════════
+   FOOTER
+   ══════════════════════════════════════════════════════════════════════════ */
+.ft {
+  position: relative;
+  border-top: 1px solid var(--steel);
+  /* mucho aire arriba: es el espacio donde respira el Vitruvio antes de que
+     el logotipo se le monte encima */
+  padding-block: clamp(96px, 15vw, 210px) 34px;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* El Vitruvio ocupa el alto del pie y el logotipo se le monta encima. Va
+   detrás de todo (z-index -1) y no captura el mouse: el seguimiento lo hace
+   el JS sobre coordenadas, no con eventos del canvas. */
+.ft__art {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  /* a todo el ancho: la obra es una banda apaisada y el logotipo se le monta
+     encima en el tercio de abajo */
+  width: 100%;
+  /* valor de arranque; el JS lo pisa con la proporción real de la obra */
+  aspect-ratio: 108 / 100;
+  z-index: -1;
+  pointer-events: none;
+  /* Se apaga hacia los bordes y sobre todo abajo: a sangre y pareja, la trama
+     le pasaba por encima a la línea legal y peleaba con el logotipo. */
+  -webkit-mask-image:
+    linear-gradient(0deg, transparent 4%, #000 32%, #000 74%, transparent 99%),
+    linear-gradient(90deg, transparent 0%, #000 14%, #000 86%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-image:
+    linear-gradient(0deg, transparent 4%, #000 32%, #000 74%, transparent 99%),
+    linear-gradient(90deg, transparent 0%, #000 14%, #000 86%, transparent 100%);
+  mask-composite: intersect;
+}
+.ft__in { position: relative; }
+.ft__lock { text-align: center; }
+.lock--ft { font-size: clamp(34px, 8.6vw, 132px); }
+.ft__bar {
+  margin-top: clamp(42px, 5vw, 66px);
+  padding-top: 24px;
+  border-top: 1px solid var(--steel);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px 32px;
+  flex-wrap: wrap;
+  font-family: var(--mono);
+  font-size: 11.5px;
+  letter-spacing: .08em;
+  color: var(--fog);
+}
+.ft__nav { display: flex; gap: 24px; flex-wrap: wrap; }
+.ft__nav a { transition: color .26s var(--ease); }
+.ft__nav a:hover { color: var(--bone); }
+
+/* ══════════════════════════════════════════════════════════════════════════
+   ACCESIBILIDAD
+   ══════════════════════════════════════════════════════════════════════════ */
+:focus-visible {
+  outline: 2px solid var(--signal);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+.tile:focus-within { border-color: var(--signal-40); }
+
+/* ══════════════════════════════════════════════════════════════════════════
+   BREAKPOINTS — 1080 / 860 / 560
+   ══════════════════════════════════════════════════════════════════════════ */
+@media (max-width: 1080px) {
+  :root { --hd-h: 68px; }
+
+  /* el panel pierde la columna del plazo: pasa abajo de la lista */
+  .panel__cols { grid-template-columns: minmax(0, 1fr); row-gap: 30px; }
+  .panel__end { flex-direction: row; align-items: center; gap: 36px; }
+
+  .hd__nav { gap: 22px; }
+  .ct__grid { grid-template-columns: 1fr; }
+  .ct__right { max-width: 620px; }
+}
+
+/* Portátiles de pantalla baja (1366×768 deja unos 620px útiles). Ahora que el
+   hero mide una pantalla completa, si el bloque de texto no se achica el CTA
+   queda abajo del pliegue justo en la resolución más común de oficina. Va por
+   altura y no por ancho: el problema es cuánto entra a lo alto. */
+@media (min-width: 861px) and (max-height: 800px) {
+  .hero { padding-block: calc(var(--hd-h) + 26px) 42px; }
+  /* un escalón real y no un retoque: con el mismo 5.6vw del tamaño base esta
+     regla no hacía nada y quedaban dos declaraciones peleando por el valor */
+  .hero__h1 { font-size: clamp(30px, 4.6vw, 62px); }
+  .hero__brow { margin-bottom: 18px; }
+  .hero__sub { margin-top: 18px; font-size: 16px; }
+  .hero__acts { margin-top: 26px; }
+  .hero__meta { margin-top: 30px; padding-top: 16px; }
+}
+
+@media (max-width: 860px) {
+  .hero { padding-block: calc(var(--hd-h) + 76px) 72px; }
+
+  .hero__h1 { max-width: 100%; }
+
+  /* En vertical el `cover` sólo deja ver un cuarto del ancho, y centrado ese
+     cuarto cae entre el Obelisco y la figura: queda una franja de edificios
+     sin nada que mirar. Corriendo el encuadre al 70% entran la silueta con la
+     notebook y el borde del Obelisco, que es de lo que trata la imagen. */
+  .hero__still, .hero__video { object-position: 70% 50%; }
+
+  /* Además, acá no hay "lado derecho" que preservar porque el texto ocupa el
+     ancho entero. El velo deja de ser lateral y pasa a subir desde abajo. */
+  .hero__veil {
+    background:
+      linear-gradient(180deg, rgb(10 11 13 / .9) 0%, rgb(10 11 13 / .2) 12%, var(--void-00) 22%),
+      linear-gradient(0deg, var(--void) 0%, rgb(10 11 13 / .9) 32%,
+        rgb(10 11 13 / .64) 66%, rgb(10 11 13 / .34) 100%),
+      linear-gradient(0deg, rgb(10 11 13 / .22), rgb(10 11 13 / .22));
+  }
+
+  .hd__nav { display: none; }
+
+  /* sin zoom: dos columnas y a scrollear */
+  .bento { grid-template-columns: repeat(2, 1fr); }
+
+  .strip__in { white-space: normal; flex-wrap: wrap; row-gap: 6px; }
+}
+
+@media (max-width: 560px) {
+  body { font-size: 16px; }
+
+  /* en pantallas de 740px de alto el hero no entra entero: recupero lo que
+     puedo del aire de arriba antes que achicar el titular */
+  .hero { padding-block: calc(var(--hd-h) + 44px) 56px; }
+  .hero__meta { margin-top: clamp(30px, 5vw, 44px); }
+
+  .panel__end { flex-direction: column; align-items: flex-start; gap: 22px; }
+
+  .bento { grid-template-columns: 1fr; }
+
+  .ct__data { grid-template-columns: 1fr; }
+  .hero__acts .btn { width: 100%; }
+
+  /* apilados, el separador queda como viñeta suelta al principio de la línea */
+  .hero__meta { gap: 10px 28px; }
+  .hero__meta li + li::before { display: none; }
+
+  .ft__bar { flex-direction: column; align-items: flex-start; }
+  /* el lockup del pie se parte en dos líneas antes que desbordar */
+  .lock--ft { flex-wrap: wrap; justify-content: center; white-space: normal; row-gap: .1em; }
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   PREFERS-REDUCED-MOTION
+   Sin preloader, sin parallax, sin scramble, sin estelas. El sitio queda
+   completo y legible: nada depende de que una animación termine.
+   ══════════════════════════════════════════════════════════════════════════ */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+
+  *, *::before, *::after {
+    animation-duration: .001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .001ms !important;
+  }
+
+  .pre { display: none; }
+  /* el video no se carga siquiera: main.js ni le pone el src, queda la fija */
+  .hero__video { display: none; }
+
+  /* los estados iniciales de GSAP no se aplican: todo nace visible */
+  .js .hero__h1 .ln > span { transform: none; }
+  .js .hero__brow,
+  .js .hero__sub,
+  .js .hero__acts,
+  .js .hero__meta { opacity: 1; }
+
+  .tile img { transform: none; }
+  .tile:hover img { transform: none; }
+}

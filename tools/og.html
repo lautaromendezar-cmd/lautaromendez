@@ -1,0 +1,41 @@
+<!doctype html><html lang="es-AR"><head><meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@200..700&display=swap">
+<style>
+  :root{--void:#0A0B0D;--steel:#191C23;--fog:#7D8491;--bone:#EDEBE8;--signal:#FF2D46}
+  *{margin:0;box-sizing:border-box}
+  body{width:1200px;height:630px;background:var(--void);color:var(--bone);
+       font-family:'Archivo',sans-serif;overflow:hidden;position:relative}
+  .scene{position:absolute;inset:0}
+  .scene img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .veil{position:absolute;inset:0;background:
+    linear-gradient(180deg,rgb(10 11 13/.72) 0%,rgb(10 11 13/0) 26%),
+    radial-gradient(96% 132% at -10% 62%,rgb(10 11 13/.97) 0%,rgb(10 11 13/.88) 30%,
+      rgb(10 11 13/.55) 58%,rgb(10 11 13/0) 84%),
+    linear-gradient(0deg,var(--void) 0%,rgb(10 11 13/.7) 12%,rgb(10 11 13/0) 42%),
+    /* más parejo que en el sitio: esto se mira en miniatura dentro de un chat,
+       ahí la legibilidad vale más que el brillo de la foto */
+    linear-gradient(0deg,rgb(10 11 13/.3),rgb(10 11 13/.3))}
+  .body{position:absolute;inset:0;padding:64px 72px;display:flex;flex-direction:column;justify-content:flex-end}
+  .brow{font-family:'JetBrains Mono',monospace;font-size:17px;letter-spacing:.26em;
+        text-transform:uppercase;color:var(--fog);display:flex;align-items:center;gap:14px;margin-bottom:30px}
+  .dot{width:8px;height:8px;border-radius:50%;background:var(--signal);box-shadow:0 0 0 6px rgb(255 45 70/.14)}
+  .lock{display:inline-flex;align-items:baseline;gap:.26em;line-height:1;white-space:nowrap;font-size:104px}
+  .lock__a{font-variation-settings:'wdth' 100,'wght' 330;letter-spacing:-.014em}
+  .lock__b{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;
+           font-size:1.16em;letter-spacing:-.008em}
+  .bar{margin-top:44px;padding-top:24px;border-top:1px solid var(--steel);
+       font-family:'JetBrains Mono',monospace;font-size:18px;letter-spacing:.1em;
+       text-transform:uppercase;color:var(--fog);display:flex;gap:34px}
+  .bar b{color:var(--bone);font-weight:500}
+</style></head><body>
+<div class="scene">
+  <img src="../assets/hero/hero-poster.jpg">
+  <div class="veil"></div>
+</div>
+<div class="body">
+  <p class="brow"><i class="dot"></i>Diseño + desarrollo web · Buenos Aires</p>
+  <span class="lock"><span class="lock__a">Lautaro</span><span class="lock__b">Mendez.</span></span>
+  <div class="bar"><span><b>Landing pages</b></span><span><b>Sitios institucionales</b></span><span><b>Desarrollo a medida</b></span></div>
+</div>
+</body></html>

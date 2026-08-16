@@ -1,0 +1,505 @@
+<!doctype html>
+<html lang="es-AR" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lautaro Mendez — Diseño y desarrollo web en Buenos Aires</title>
+<meta name="description" content="Diseño y programo sitios a mano, uno por uno. Landing pages, sitios institucionales y desarrollos a medida en Buenos Aires. Escribime por WhatsApp.">
+<meta name="author" content="Lautaro Mendez">
+<meta name="theme-color" content="#0A0B0D">
+<link rel="canonical" href="https://lautaromendez.com.ar/">
+
+<!-- ═══ Open Graph / Twitter ══════════════════════════════════════════════ -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_AR">
+<meta property="og:site_name" content="Lautaro Mendez">
+<meta property="og:url" content="https://lautaromendez.com.ar/">
+<meta property="og:title" content="Lautaro Mendez — Diseño y desarrollo web en Buenos Aires">
+<meta property="og:description" content="Diseño y programo sitios a mano, uno por uno. Landing pages, sitios institucionales y desarrollos a medida.">
+<meta property="og:image" content="https://lautaromendez.com.ar/assets/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Lautaro Mendez — diseño y desarrollo web, Buenos Aires">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Lautaro Mendez — Diseño y desarrollo web en Buenos Aires">
+<meta name="twitter:description" content="Diseño y programo sitios a mano, uno por uno. Landing pages, sitios institucionales y desarrollos a medida.">
+<meta name="twitter:image" content="https://lautaromendez.com.ar/assets/og.jpg">
+
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<!-- la imagen fija del hero es el elemento más grande de la primera pantalla:
+     precargarla evita que aparezca después del titular -->
+<link rel="preload" as="image" href="assets/hero/hero-poster.jpg" fetchpriority="high">
+
+<!-- ═══ Fuentes ═══════════════════════════════════════════════════════════ -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@200..700&display=swap">
+
+<link rel="stylesheet" href="css/style.css">
+
+<!--
+  Marca `js` antes de pintar: los estados iniciales de las animaciones viven
+  en CSS bajo `html.js`. Si el CDN de GSAP no carga, main.js saca la clase y
+  todo queda visible igual. Sin esto habría un flash de texto ya montado.
+-->
+<script>document.documentElement.className = 'js';</script>
+
+<!-- ═══ Datos estructurados ══════════════════════════════════════════════ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Lautaro Mendez — Diseño y desarrollo web",
+  "url": "https://lautaromendez.com.ar/",
+  "email": "hola@lautaromendez.com.ar",
+  "telephone": "+5491130011145",
+  "areaServed": "AR",
+  "address": { "@type": "PostalAddress", "addressLocality": "Buenos Aires", "addressCountry": "AR" },
+  "sameAs": ["https://www.instagram.com/lautaromendez"]
+}
+</script>
+</head>
+
+<body>
+<a class="skip" href="#main">Saltar al contenido</a>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     PRELOADER — una vez por sesión, máximo 1,5s. Lo remueve main.js.
+     ═══════════════════════════════════════════════════════════════════════ -->
+<div class="pre" id="pre" aria-hidden="true">
+  <div class="pre__lock">
+    <span class="lock lock--pre"><span class="lock__a">Lautaro</span><span class="lock__b">Mendez.</span></span>
+  </div>
+  <div class="pre__bar"><i class="pre__fill"></i></div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     HEADER — fijo, gana fondo con blur después de 80px.
+     ═══════════════════════════════════════════════════════════════════════ -->
+<header class="hd" id="hd">
+  <div class="hd__in">
+    <a class="mark" href="#top" aria-label="Lautaro Mendez, ir al inicio">
+      <span class="lock lock--mark"><span class="lock__a">Lautaro</span><span class="lock__b">Mendez.</span></span>
+    </a>
+
+    <nav class="hd__nav" aria-label="Principal">
+      <a href="#servicios">Servicios</a>
+      <a href="#trabajos">Trabajos</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+
+    <a class="btn btn--solid hd__cta" data-wa href="https://wa.me/5491130011145?text=Hola%20Lautaro%2C%20te%20escribo%20desde%20la%20web." target="_blank" rel="noopener">
+      WhatsApp
+    </a>
+  </div>
+  <!-- barra de progreso de lectura: 1px, el mismo gesto que el preloader -->
+  <i class="hd__prog" id="hdProg" aria-hidden="true"></i>
+</header>
+
+<main id="main">
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     1. HERO — video en loop sobre una imagen fija.
+
+        La imagen fija (hero-poster.jpg) es el primer fotograma del video y
+        está SIEMPRE: es el LCP y es lo único que se ve con reduced-motion, en
+        mobile o si el autoplay queda bloqueado. El video se le funde encima
+        recién cuando arranca de verdad, y lo carga el JS: por eso el <video>
+        no trae src ni <source> en el HTML.
+
+        El video sale del original de Higgsfield (guardado en
+        generaciones/video-original/) con un fundido cruzado de 1,2s entre el
+        final y el arranque, si no el corte del loop se nota. La receta está
+        en el README.
+
+        No hay estelas de CSS acá: el video ya trae las suyas.
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="hero" id="top">
+
+  <div class="hero__scene" id="scene" aria-hidden="true">
+    <img class="hero__still" src="assets/hero/hero-poster.jpg" alt=""
+         width="1600" height="892" decoding="async" fetchpriority="high">
+    <video class="hero__video" id="heroVideo" muted loop playsinline
+           preload="none" tabindex="-1"></video>
+
+    <div class="hero__veil"></div>
+    <div class="hero__grain"></div>
+  </div>
+
+  <div class="hero__body">
+    <p class="eyebrow hero__brow"><i class="dot"></i>Diseño + desarrollo web · Buenos Aires</p>
+
+    <h1 class="hero__h1">
+      <span class="ln"><span>Tu sitio tiene</span></span>
+      <span class="ln"><span>siete segundos</span></span>
+      <span class="ln"><span>para convencer.</span></span>
+    </h1>
+
+    <p class="hero__sub">
+      Diseño y programo sitios a mano, uno por uno. Rápidos, con una idea atrás
+      y pensados para que el que entra te escriba.
+    </p>
+
+    <div class="hero__acts">
+      <a class="btn btn--solid" data-wa href="https://wa.me/5491130011145?text=Hola%20Lautaro%2C%20te%20escribo%20desde%20la%20web." target="_blank" rel="noopener">Escribime por WhatsApp</a>
+      <a class="btn btn--ghost" href="#servicios">Ver qué hago</a>
+    </div>
+
+    <ul class="hero__meta">
+      <li>26 proyectos publicados</li>
+      <li>Buenos Aires · trabajo remoto</li>
+      <li>Respondo el mismo día</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     2. FRANJA SCRAMBLE — arranca con ScrollTrigger, no al cargar.
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="strip" aria-label="Qué podés lanzar">
+  <div class="wrap strip__in">
+    <span class="strip__caret">&gt;</span>
+    <span class="strip__label">lo próximo que vas a lanzar:</span>
+    <span class="strip__word" id="scramble">UNA LANDING PAGE</span>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     3. SERVICIOS — slider a pantalla completa.
+
+        Cada servicio es un panel de 100svh. Al scrollear, el panel actual sube
+        y sale mientras el siguiente sube desde abajo, con el truco de doble
+        contenedor: .panel__outer es la ventana que se corre y .panel__inner
+        mueve el contenido en sentido contrario dentro de ella. Por eso el
+        texto parece quedarse quieto mientras lo descubren, en vez de viajar.
+
+        No usa el plugin Observer como el demo de GSAP: Observer secuestra la
+        rueda del mouse y en un one-page eso te deja trabado en la sección
+        hasta ver los tres paneles, sin barra de scroll ni teclado. Acá va
+        ScrollTrigger pinneado con snap: mismo gesto, el scroll sigue siendo
+        del visitante.
+
+        Abajo de 861px no hay pin ni animación: los paneles se apilan y se
+        leen scrolleando normal.
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="svc" id="servicios">
+
+  <div class="wrap svc__intro">
+    <p class="eyebrow">[ Servicios ]</p>
+    <h2 class="shead__t">Tres formas de empezar.</h2>
+    <p class="shead__d">
+      No hay precio de lista porque no hay dos proyectos iguales. Contame qué
+      necesitás y te paso un número cerrado, sin vueltas.
+    </p>
+  </div>
+
+  <div class="svc__stage" id="svcStage">
+    <div class="panels">
+
+      <article class="panel panel--a">
+        <div class="panel__outer"><div class="panel__inner">
+          <span class="panel__mark" aria-hidden="true">/landing</span>
+          <div class="wrap panel__body">
+            <p class="panel__path">/landing</p>
+            <h3 class="panel__t">Landing Page</h3>
+            <p class="panel__d">
+              Una sola página con un solo objetivo: que el que entra te deje el
+              mensaje. Es lo que va abajo de una campaña de Ads.
+            </p>
+            <div class="panel__cols">
+              <ul class="panel__list">
+                <li>Diseño propio, no plantilla</li>
+                <li>Hasta 6 secciones</li>
+                <li>Formulario + WhatsApp directo</li>
+                <li>Preparada para Google&nbsp;Ads</li>
+                <li>Carga en menos de 2 segundos</li>
+              </ul>
+              <div class="panel__end">
+                <p class="panel__time"><span>Plazo</span>7 a 10 días</p>
+                <a class="svc-cta" href="#contacto" data-servicio="landing">Pedir presupuesto</a>
+              </div>
+            </div>
+          </div>
+        </div></div>
+      </article>
+
+      <article class="panel panel--b">
+        <div class="panel__outer"><div class="panel__inner">
+          <span class="panel__mark" aria-hidden="true">/institucional</span>
+          <div class="wrap panel__body">
+            <p class="panel__path">/institucional</p>
+            <h3 class="panel__t">Sitio Institucional</h3>
+            <p class="panel__d">
+              El sitio completo de la empresa: quiénes son, qué hacen, trabajos
+              y contacto. Es el que te googlean antes de llamarte.
+            </p>
+            <div class="panel__cols">
+              <ul class="panel__list">
+                <li>5 a 10 páginas</li>
+                <li>Panel para editar el contenido</li>
+                <li>Blog o novedades</li>
+                <li>SEO técnico + Analytics</li>
+                <li>Ficha de Google y mail propio</li>
+              </ul>
+              <div class="panel__end">
+                <p class="panel__time"><span>Plazo</span>3 a 4 semanas</p>
+                <a class="svc-cta" href="#contacto" data-servicio="institucional">Pedir presupuesto</a>
+              </div>
+            </div>
+          </div>
+        </div></div>
+      </article>
+
+      <article class="panel panel--c">
+        <div class="panel__outer"><div class="panel__inner">
+          <span class="panel__mark" aria-hidden="true">/a-medida</span>
+          <div class="wrap panel__body">
+            <p class="panel__path">/a-medida</p>
+            <h3 class="panel__t">Desarrollo a Medida</h3>
+            <p class="panel__d">
+              Cuando lo que necesitás no es un sitio: tienda, reservas, panel
+              interno, algo conectado al sistema que ya usás.
+            </p>
+            <div class="panel__cols">
+              <ul class="panel__list">
+                <li>Alcance por escrito antes de arrancar</li>
+                <li>Base de datos y usuarios</li>
+                <li>Pagos e integraciones</li>
+                <li>Panel de administración</li>
+                <li>Deploy, monitoreo y soporte</li>
+              </ul>
+              <div class="panel__end">
+                <p class="panel__time"><span>Plazo</span>Según alcance</p>
+                <a class="svc-cta" href="#contacto" data-servicio="a-medida">Hablemos del proyecto</a>
+              </div>
+            </div>
+          </div>
+        </div></div>
+      </article>
+
+    </div>
+
+    <!-- chrome fijo: no viaja con los paneles -->
+    <nav class="svc__nav" id="svcNav" aria-label="Servicios">
+      <button type="button" data-go="0" aria-current="true">/landing</button>
+      <button type="button" data-go="1">/institucional</button>
+      <button type="button" data-go="2">/a-medida</button>
+    </nav>
+  </div>
+
+  <div class="wrap">
+    <p class="svc__foot">
+      También armo y administro las campañas de Google Ads y Meta Ads de los
+      sitios que hago. <span>Se conversa aparte.</span>
+    </p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     4. TRABAJOS — bento con zoom scrubbeado.
+
+        La grilla es 3×3 y escala en bloque hasta que la celda del CENTRO
+        ocupa la pantalla entera. Por eso tiene que ser simétrica: el origen
+        del transform es 50% 50%, que es exactamente el centro de la celda 5.
+        Si movés una celda o cambiás el número de columnas, se rompe.
+
+        PARA CAMBIAR UNA PIEZA: guardá la captura en assets/work/ y cambiá
+        src, alt y los dos textos del <span>. Las del anillo van a 900px de
+        ancho; la del centro a 1920, porque es la única que se ve grande.
+
+        Abajo de 861px no hay zoom ni pin: queda una grilla de 2 columnas que
+        se scrollea normal.
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="work" id="trabajos">
+
+  <div class="wrap work__intro">
+    <p class="eyebrow">[ Trabajos ]</p>
+    <h2 class="shead__t">Algunos de los últimos.</h2>
+  </div>
+
+  <div class="work__stage" id="workStage">
+    <div class="bento" id="bento">
+
+      <a class="tile" href="portfolio/index.html">
+        <img src="assets/work/place-vendome.webp" alt="Sitio de Place Vendôme" loading="lazy" decoding="async">
+        <span class="tile__cap"><b>Place Vendôme</b><i>Desarrollos inmobiliarios</i></span>
+      </a>
+
+      <a class="tile" href="portfolio/index.html">
+        <img src="assets/work/house-in-baires.webp" alt="Sitio de House in Baires" loading="lazy" decoding="async">
+        <span class="tile__cap"><b>House in Baires</b><i>Alquileres temporales</i></span>
+      </a>
+
+      <a class="tile" href="portfolio/index.html">
+        <img src="assets/work/adequate.webp" alt="Sitio de Adequate" loading="lazy" decoding="async">
+        <span class="tile__cap"><b>Adequate</b><i>Fintech B2B</i></span>
+      </a>
+
+      <a class="tile" href="portfolio/index.html">
+        <img src="assets/work/liliana-donato.webp" alt="Sitio de Liliana Donato" loading="lazy" decoding="async">
+        <span class="tile__cap"><b>Liliana Donato</b><i>Portfolio de artista</i></span>
+      </a>
+
+      <!-- LA CELDA 5 NO ES UN TRABAJO: es la invitación al portfolio.
+           Una captura de web ampliada 4x no le dice nada a nadie; esto sí.
+           Todo el panel es el link, así que a pantalla completa se puede
+           clickear en cualquier lado. -->
+      <a class="tile tile--hero" href="portfolio/index.html">
+        <span class="card">
+          <span class="card__k">/portfolio</span>
+          <span class="card__n">26</span>
+          <span class="card__d">proyectos publicados</span>
+        </span>
+      </a>
+
+      <a class="tile" href="portfolio/index.html">
+        <img src="assets/work/tr3.webp" alt="Sitio de TR3 Turismo" loading="lazy" decoding="async">
+        <span class="tile__cap"><b>TR3 Turismo</b><i>Excursiones · pagos online</i></span>
+      </a>
+
+      <a class="tile" href="portfolio/index.html">
+        <img src="assets/work/barba.webp" alt="Sitio de Grupo Barba" loading="lazy" decoding="async">
+        <span class="tile__cap"><b>Grupo Barba</b><i>E-commerce mayorista</i></span>
+      </a>
+
+      <a class="tile" href="portfolio/index.html">
+        <img src="assets/work/jorgeribak.webp" alt="Sitio de Jorge Ribak" loading="lazy" decoding="async">
+        <span class="tile__cap"><b>Jorge Ribak</b><i>Sitio para mago</i></span>
+      </a>
+
+      <a class="tile" href="portfolio/index.html">
+        <img src="assets/work/bacity.webp" alt="Sitio de Transfer BA City" loading="lazy" decoding="async">
+        <span class="tile__cap"><b>Transfer BA City</b><i>Turismo receptivo</i></span>
+      </a>
+
+    </div>
+
+    <!-- La invitación entra recién cuando el panel llena la pantalla. Va acá
+         y no adentro de la grilla porque adentro se escalaría 4x junto con
+         todo lo demás; así se dibuja a su tamaño real y queda nítida. -->
+    <div class="work__cap" id="workCap" aria-hidden="true">
+      <p class="eyebrow"><i class="dot"></i>Portfolio</p>
+      <p class="work__cap-t">Veintiséis proyectos,<br>todos publicados.</p>
+      <p class="work__cap-d">Inmobiliarias, turismo, e-commerce, estudios, artistas.</p>
+      <span class="work__cap-cta">Ver el portfolio completo</span>
+    </div>
+  </div>
+
+</section>
+<!-- ═══════════════════════════════════════════════════════════════════════
+     5. CONTACTO — WhatsApp primero, formulario como alternativa.
+        ⚠ REEMPLAZAR: el value del input `access_key` por la clave real de
+        Web3Forms (se saca gratis en web3forms.com, llega por mail).
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="section ct" id="contacto">
+  <div class="wrap ct__grid">
+
+    <div class="ct__left">
+      <p class="eyebrow">[ Contacto ]</p>
+      <h2 class="ct__t">Contame qué necesitás.</h2>
+      <p class="ct__d">
+        Si me escribís por WhatsApp te contesto el mismo día. Decime qué querés
+        hacer y para cuándo, y te digo si me da el tiempo y cuánto sale.
+      </p>
+
+      <a class="wa" data-wa href="https://wa.me/5491130011145?text=Hola%20Lautaro%2C%20te%20escribo%20desde%20la%20web." target="_blank" rel="noopener">
+        <span class="wa__k">WhatsApp</span>
+        <span class="wa__n">+54 9 11 3001-1145</span>
+        <span class="wa__go" aria-hidden="true">↗</span>
+      </a>
+
+      <dl class="ct__data">
+        <div><dt>Mail</dt><dd><a href="mailto:hola@lautaromendez.com.ar">hola@lautaromendez.com.ar</a></dd></div>
+        <div><dt>Instagram</dt><dd><a href="https://www.instagram.com/lautaromendez" target="_blank" rel="noopener">@lautaromendez</a></dd></div>
+        <div><dt>Base</dt><dd>Buenos Aires, Argentina</dd></div>
+        <div><dt>Horario</dt><dd>Lunes a viernes, 9 a 19h</dd></div>
+      </dl>
+    </div>
+
+    <div class="ct__right">
+      <p class="form__alt">O dejame los datos y te escribo yo:</p>
+
+      <form class="form" id="form" action="https://api.web3forms.com/submit" method="POST" novalidate>
+        <input type="hidden" name="access_key" value="REEMPLAZAR-CON-TU-ACCESS-KEY-DE-WEB3FORMS">
+        <input type="hidden" name="subject" value="Consulta nueva desde lautaromendez.com.ar">
+        <input type="hidden" name="from_name" value="Web Lautaro Mendez">
+        <!-- honeypot de Web3Forms: si un bot lo completa, descarta el envío -->
+        <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off">
+
+        <div class="f">
+          <label for="f-svc">Qué necesitás</label>
+          <select id="f-svc" name="servicio" required>
+            <option value="landing">Una landing page</option>
+            <option value="institucional">Un sitio institucional</option>
+            <option value="a-medida">Un desarrollo a medida</option>
+            <option value="ads">Campañas de Ads</option>
+            <option value="otro">Otra cosa</option>
+          </select>
+        </div>
+
+        <div class="f">
+          <label for="f-name">Nombre</label>
+          <input id="f-name" name="nombre" type="text" required autocomplete="name" placeholder="Cómo te llamás">
+        </div>
+
+        <div class="f">
+          <label for="f-mail">Mail o WhatsApp</label>
+          <input id="f-mail" name="contacto" type="text" required autocomplete="email" placeholder="Por dónde te contesto">
+        </div>
+
+        <div class="f">
+          <label for="f-msg">Contame un poco</label>
+          <textarea id="f-msg" name="mensaje" rows="4" required placeholder="Qué hacés, qué necesitás y para cuándo"></textarea>
+        </div>
+
+        <button class="btn btn--solid form__send" type="submit">
+          <span class="form__send-t">Enviar consulta</span>
+        </button>
+
+        <p class="form__note" id="formNote" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+
+  </div>
+</section>
+
+</main>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     FOOTER — cierra con el mismo bloque tipográfico del preloader.
+     ═══════════════════════════════════════════════════════════════════════ -->
+<footer class="ft">
+  <!-- Hombre de Vitruvio (Leonardo, c.1490, dominio público) dibujado como
+       trama de puntos en canvas. Los datos vienen precocinados en
+       assets/arte.js: leer píxeles de una imagen con canvas desde file://
+       tira SecurityError, así que el muestreo se hace en la máquina con
+       tools/gen-arte.mjs y el navegador sólo dibuja. -->
+  <canvas class="ft__art" id="ftArt" aria-hidden="true"></canvas>
+
+  <div class="wrap ft__in">
+    <div class="ft__lock" aria-hidden="true">
+      <span class="lock lock--ft"><span class="lock__a">Lautaro</span><span class="lock__b">Mendez.</span></span>
+    </div>
+    <div class="ft__bar">
+      <p>© <span id="year">2026</span> Lautaro Mendez · Buenos Aires</p>
+      <nav class="ft__nav" aria-label="Pie">
+        <a href="#servicios">Servicios</a>
+        <a href="portfolio/index.html">Portfolio</a>
+        <a href="https://www.instagram.com/lautaromendez" target="_blank" rel="noopener">Instagram</a>
+        <a href="mailto:hola@lautaromendez.com.ar">Mail</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══ GSAP 3.15 desde jsDelivr. Todos los plugins son gratis desde 3.13. ══ -->
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrambleTextPlugin.min.js"></script>
+<!-- EasePack trae expoScale, que es lo que hace que el zoom del bento se
+     perciba parejo en vez de acelerando -->
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/EasePack.min.js"></script>
+<script src="assets/arte.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

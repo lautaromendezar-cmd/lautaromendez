@@ -1,0 +1,5 @@
+node_modules/
+*.log
+
+# 22 MB de PNG originales del hero: no tienen por qué viajar al repo
+generaciones/

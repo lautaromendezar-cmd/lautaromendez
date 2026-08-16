@@ -1,0 +1,8 @@
+# lo que no tiene por qué viajar al servidor
+node_modules/
+generaciones/
+tools/
+README.md
+lautaro-personal.md
+assets/hero/vectorial/
+assets/hero/parallax/
