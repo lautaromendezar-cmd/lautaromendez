@@ -241,6 +241,12 @@ Sin eso, cada página quedaba servida en dos URLs distintas con 200 en las dos.
 ⚠️ **El `sitemap.xml` es a mano.** Si se agrega una página hay que sumarla ahí
 y que la `<loc>` coincida EXACTO con su `canonical`.
 
+⚠️ **`googlef3a31e2c3e58ba21.html` NO se borra.** Son 53 bytes con un nombre
+que parece basura, pero es lo que le prueba a Google Search Console que el
+sitio es nuestro. Si desaparece, la propiedad se des-verifica sola y se
+pierden los datos de búsqueda. Tiene que seguir respondiendo 200 para
+siempre.
+
 ---
 
 ## Chequeo
