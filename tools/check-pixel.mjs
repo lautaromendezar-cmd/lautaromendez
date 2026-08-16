@@ -131,6 +131,33 @@ console.log('\n[3] Lead por formulario');
   await page.close();
 }
 
+/* ── 3b. Un envío real cuenta UN solo Lead ────────────────────────────────
+   Desde que el formulario abre WhatsApp, hay dos caminos que podrían medir lo
+   mismo: el delegado de clicks en `a[href*="wa.me"]` y el evento del
+   formulario. No se pisan porque el form usa window.open y no un <a> — pero
+   si mañana alguien lo cambia por un enlace, cada consulta contaría doble y
+   las campañas optimizarían sobre datos inflados. Esto lo caza.
+   ─────────────────────────────────────────────────────────────────────── */
+console.log('\n[3b] Un envío = un Lead');
+{
+  const page = await abrir('/index.html');
+  await sleep(1500);
+  await page.evaluate(() => { window.open = () => ({}); });
+  await page.evaluate(() => {
+    document.querySelector('#f-svc').value  = 'landing';
+    document.querySelector('#f-name').value = 'Ana';
+    document.querySelector('#f-mail').value = 'ana@correo.com';
+    document.querySelector('#f-msg').value  = 'hola';
+    document.querySelector('#form').requestSubmit();
+  });
+  await sleep(300);
+  const leads = (await llamadas(page)).filter((x) => x[0] === 'track' && x[1] === 'Lead');
+  is(leads.length === 1, 'enviar el formulario cuenta UN Lead, no dos', `${leads.length}`);
+  is(leads[0]?.[2]?.content_name === 'formulario',
+     'y queda atribuido al formulario, no a WhatsApp', leads[0]?.[2]?.content_name);
+  await page.close();
+}
+
 /* ── 4. Portfolio ─────────────────────────────────────────────────────────── */
 console.log('\n[4] Portfolio');
 {

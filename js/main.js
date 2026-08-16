@@ -495,55 +495,55 @@ function contactForm() {
     nota.className = 'form__note' + (estado ? ' is-' + estado : '');
   };
 
-  form.addEventListener('submit', async (e) => {
+  /* TODO el manejador es SÍNCRONO. Ni un await antes de abrir la ventana: el
+     navegador sólo deja abrir pestañas dentro del gesto del usuario, y en
+     cuanto se cede el control a una promesa el permiso se pierde y el
+     bloqueador de popups se come el envío. */
+  form.addEventListener('submit', (e) => {
     e.preventDefault();
 
     if (!form.reportValidity()) return;
 
     const datos = Object.fromEntries(new FormData(form).entries());
 
-    /* Aviso claro mientras la clave siga sin poner: sin esto el error que
-       devuelve la API es genérico y cuesta darse cuenta de qué falta. */
-    if (String(datos.access_key).startsWith('REEMPLAZAR')) {
-      decir('Falta cargar la access key de Web3Forms en index.html.', 'err');
-      console.warn('[form] Poné tu access key de web3forms.com en el input hidden `access_key`.');
-      return;
-    }
+    /* Honeypot: una persona no ve esa casilla. Se corta en silencio y con cara
+       de éxito — avisarle al bot que lo detectamos sólo le enseña a evitarlo. */
+    if (datos.botcheck) { decir('Listo, abrí WhatsApp para enviarlo.', 'ok'); return; }
 
-    form.classList.add('is-sending');
-    if (texto) texto.textContent = 'Enviando…';
-    decir('');
+    /* La etiqueta sale del <option> elegido y no de un diccionario acá: así
+       agregar un servicio al <select> no obliga a tocar el JS. */
+    const svc = $('#f-svc', form);
+    const servicio = svc?.selectedOptions[0]?.textContent.trim() || datos.servicio || '—';
 
-    try {
-      const res = await fetch(form.action, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify(datos)
-      });
-      const json = await res.json();
+    const mensaje = [
+      'Hola Lautaro, te escribo desde la web.',
+      '',
+      'Qué necesito: ' + servicio,
+      'Nombre: ' + (datos.nombre || '').trim(),
+      'Contacto: ' + (datos.contacto || '').trim(),
+      '',
+      (datos.text || '').trim()
+    ].join('\n');
 
-      if (res.ok && json.success) {
-        form.reset();
-        if (texto) texto.textContent = 'Enviado';
-        decir('Listo, me llegó. Te contesto hoy mismo.', 'ok');
-        /* Aviso para quien quiera medirlo (hoy js/pixel.js). Va por evento y
-           no llamando a fbq() acá: si el píxel no está, o lo bloquearon, o
-           mañana se cambia por otro, este archivo no se entera de nada. */
-        document.dispatchEvent(new CustomEvent('lm:form-ok'));
-      } else {
-        throw new Error(json.message || 'respuesta no exitosa');
-      }
-    } catch (err) {
-      console.error('[form]', err);
-      if (texto) texto.textContent = original;
-      decir('No se pudo enviar. Escribime por WhatsApp y lo resolvemos.', 'err');
-    } finally {
-      form.classList.remove('is-sending');
-      /* si salió bien el botón queda en "Enviado" un rato y después vuelve */
-      if (texto && texto.textContent === 'Enviado') {
-        setTimeout(() => { texto.textContent = original; }, 4000);
-      }
-    }
+    const url = WA_BASE + '?text=' + encodeURIComponent(mensaje);
+
+    /* Si el bloqueador igual se lo come, window.open devuelve null: ahí se
+       navega en la misma pestaña, que siempre funciona. Perder el mensaje
+       escrito por un popup bloqueado sería la peor forma de fallar. */
+    const win = window.open(url, '_blank', 'noopener');
+    if (!win) { location.href = url; return; }
+
+    form.reset();
+    if (texto) texto.textContent = 'Enviado';
+    decir('Listo, te abrí WhatsApp con el mensaje escrito. Dale enviar y llega.', 'ok');
+
+    /* Aviso para quien quiera medirlo (hoy js/pixel.js). Va por evento y no
+       llamando a fbq() acá: si el píxel no está, o lo bloquearon, o mañana se
+       cambia por otro, este archivo no se entera de nada. */
+    document.dispatchEvent(new CustomEvent('lm:form-ok'));
+
+    /* el botón vuelve a su texto después de un rato */
+    if (texto) setTimeout(() => { texto.textContent = original; }, 4000);
   });
 }
 

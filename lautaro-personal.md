@@ -151,10 +151,15 @@ Preview de 6 piezas con efecto scrubbed. Referencia:
 el form convierte mucho peor que WhatsApp.
 
 - Link `wa.me` con mensaje prearmado.
-- Formulario vía Web3Forms (`https://api.web3forms.com/submit`), submit por
-  `fetch` sin recargar, con estados de envío y error. Honeypot `botcheck`.
+- ~~Formulario vía Web3Forms (`https://api.web3forms.com/submit`), submit por
+  `fetch` sin recargar, con estados de envío y error. Honeypot `botcheck`.~~
+  ⚠ **Superado.** El formulario no manda un mail: arma un mensaje de WhatsApp
+  con las respuestas y lo abre. Sin servicio de terceros, sin clave, sin
+  cuota. Lo empujó este mismo párrafo: si el form convierte peor que WhatsApp,
+  hacerlo depender de un servicio de mail es pagar un costo por el canal
+  malo. El valor del bloque son las preguntas, no el mail. Ver el README.
 - Placeholders visibles para lo que hay que completar: número de WhatsApp,
-  access key, mail, Instagram.
+  ~~access key~~, mail, Instagram. (El mail se sacó: no lo usa.)
 
 ---
 

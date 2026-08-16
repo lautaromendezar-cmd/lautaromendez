@@ -29,15 +29,7 @@ opcionales: si no llegan, esa página queda completa igual.
 
 ## Falta completar
 
-**1. Access key de Web3Forms.** El formulario no envía hasta que se cargue.
-Se saca gratis en [web3forms.com](https://web3forms.com) poniendo un mail: la clave
-llega por correo. Va en `index.html`, en el `<input type="hidden" name="access_key">`
-que hoy dice `REEMPLAZAR-CON-TU-ACCESS-KEY-DE-WEB3FORMS`.
-
-Mientras esté sin poner, el formulario avisa en pantalla en vez de tirar un error
-raro de la API.
-
-**2. Revisar el copy de servicios.** Los plazos y los ítems de "qué incluye"
+**1. Revisar el copy de servicios.** Los plazos y los ítems de "qué incluye"
 están propuestos, no dictados:
 
 | Servicio | Plazo puesto |
@@ -46,7 +38,7 @@ están propuestos, no dictados:
 | `/institucional` | 3 a 4 semanas |
 | `/a-medida` | Según alcance |
 
-**3. El contador de proyectos está escrito a mano en tres lugares** de este
+**2. El contador de proyectos está escrito a mano en tres lugares** de este
 `index.html`: `.hero__meta`, el `.card__n` de la celda 5 del bento y el
 `.work__cap-t`, que lo dice con letras ("Treinta y cuatro proyectos"). La
 verdad la tiene el array `PROYECTOS` de `portfolio/portfolio.js`, y
@@ -207,6 +199,38 @@ Lo que costó acertar, por si hay que cambiar la obra:
 **Los datos de contacto.** El número de WhatsApp aparece en `index.html` (tres
 links con `data-wa`) y en `js/main.js` (`WA_BASE`). Si cambia, hay que tocar los
 dos: el JS reescribe los `href` cuando alguien clickea un CTA de servicio.
+
+**El formulario NO manda un mail.** Arma un mensaje de WhatsApp con las
+respuestas y lo abre. Por eso el sitio no depende de ningún servicio de
+formularios: no hay clave que cargar, ni cuota mensual, ni cuenta que se
+venza, ni un tercero guardando las consultas.
+
+La razón de fondo: el valor de ese bloque nunca fue el mail, son **las
+preguntas**. Alguien que escribe "hola" por WhatsApp no dice nada; de acá sale
+con servicio, nombre, contacto y necesidad. Eso se conserva entero — lo único
+que cambia es por dónde llega.
+
+Cuatro cosas de la implementación que parecen detalle:
+
+1. **El manejador del `submit` es SÍNCRONO, sin un solo `await`.** El navegador
+   sólo deja abrir pestañas dentro del gesto del usuario: en cuanto se cede el
+   control a una promesa, el permiso se pierde y el bloqueador de popups se
+   come el envío.
+2. **Si el popup igual se bloquea**, `window.open` devuelve `null` y se navega
+   en la misma pestaña. Perder lo que la persona escribió por un bloqueador
+   sería la peor forma de fallar.
+3. **El `<textarea>` se llama `text`, no `mensaje`**, y el `<form>` va con
+   `action="https://wa.me/…"` y `method="get"`. Es el camino sin JS: el
+   navegador manda el formulario solo y WhatsApp abre el chat con el texto ya
+   puesto, porque `text` es el parámetro que lee `wa.me`. Los demás campos
+   viajan como parámetros que WhatsApp ignora.
+4. **La etiqueta del servicio sale del `<option>` elegido**, no de un
+   diccionario en el JS: agregar un servicio al `<select>` no obliga a tocar
+   `main.js`.
+
+El honeypot ahora se resuelve acá (antes lo filtraba Web3Forms): si la casilla
+oculta viene marcada, el envío se descarta **con cara de éxito**. Avisarle al
+bot que lo detectamos sólo le enseña a evitarlo la próxima.
 
 ---
 

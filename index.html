@@ -386,9 +386,9 @@
 
 </section>
 <!-- ═══════════════════════════════════════════════════════════════════════
-     5. CONTACTO — WhatsApp primero, formulario como alternativa.
-        ⚠ REEMPLAZAR: el value del input `access_key` por la clave real de
-        Web3Forms (se saca gratis en web3forms.com, llega por mail).
+     5. CONTACTO — WhatsApp directo, o el formulario que arma el mensaje.
+        Las dos vías terminan en el mismo lugar: no hay servicio de terceros
+        ni clave que cargar en ningún lado.
      ═══════════════════════════════════════════════════════════════════════ -->
 <section class="section ct" id="contacto">
   <div class="wrap ct__grid">
@@ -417,13 +417,25 @@
     </div>
 
     <div class="ct__right">
-      <p class="form__alt">O dejame los datos y te escribo yo:</p>
+      <p class="form__alt">O armá el mensaje acá y te lo abro en WhatsApp:</p>
 
-      <form class="form" id="form" action="https://api.web3forms.com/submit" method="POST" novalidate>
-        <input type="hidden" name="access_key" value="REEMPLAZAR-CON-TU-ACCESS-KEY-DE-WEB3FORMS">
-        <input type="hidden" name="subject" value="Consulta nueva desde lautaromendez.com.ar">
-        <input type="hidden" name="from_name" value="Web Lautaro Mendez">
-        <!-- honeypot de Web3Forms: si un bot lo completa, descarta el envío -->
+      <!--
+        El formulario NO manda un mail: arma un mensaje de WhatsApp con las
+        respuestas y lo abre. Por eso no hay servicio de terceros, ni clave que
+        cargar, ni cuota mensual, ni nada que se venza. El valor de este bloque
+        nunca fue el mail: son las preguntas. Alguien que escribe "hola" no
+        dice nada; acá sale con servicio, nombre, contacto y necesidad.
+
+        `action` apunta a wa.me y el método es GET a propósito: si no hay JS,
+        el navegador manda el formulario igual y WhatsApp abre el chat con el
+        texto ya puesto. Ese es el motivo de que el <textarea> se llame `text`
+        y no `mensaje` — es el parámetro que lee wa.me. Los otros campos
+        viajan como parámetros que WhatsApp ignora. Con JS (el 99,9% de los
+        casos) `contactForm()` intercepta y arma el mensaje completo.
+      -->
+      <form class="form" id="form" action="https://wa.me/5491130011145" method="get" novalidate>
+        <!-- honeypot: los bots completan todo lo que encuentran; una persona
+             no ve esta casilla. Si viene marcada, el envío se descarta. -->
         <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off">
 
         <div class="f">
@@ -449,11 +461,11 @@
 
         <div class="f">
           <label for="f-msg">Contame un poco</label>
-          <textarea id="f-msg" name="mensaje" rows="4" required placeholder="Qué hacés, qué necesitás y para cuándo"></textarea>
+          <textarea id="f-msg" name="text" rows="4" required placeholder="Qué hacés, qué necesitás y para cuándo"></textarea>
         </div>
 
         <button class="btn btn--solid form__send" type="submit">
-          <span class="form__send-t">Enviar consulta</span>
+          <span class="form__send-t">Enviar por WhatsApp</span>
         </button>
 
         <p class="form__note" id="formNote" role="status" aria-live="polite"></p>

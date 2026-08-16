@@ -143,6 +143,68 @@ console.log('\n[3] CTA de servicios');
   await page.close();
 }
 
+/* ── 3c. Formulario → mensaje de WhatsApp ─────────────────────────────── */
+console.log('\n[3c] Formulario');
+{
+  const page = await open();
+  await sleep(1800);
+
+  /* No depende de ningún servicio de formularios: si algún día alguien vuelve
+     a meter un endpoint de terceros, esto lo caza. */
+  const accion = await page.$eval('#form', (f) => f.getAttribute('action'));
+  is(/^https:\/\/wa\.me\//.test(accion), 'el form apunta a wa.me, no a un servicio externo', accion);
+  is(await page.$eval('#form', (f) => f.method) === 'get',
+     'con method=get, que es el camino sin JS');
+  is(await page.$eval('#f-msg', (t) => t.name) === 'text',
+     'el textarea se llama `text`: es el parámetro que lee wa.me sin JS');
+  is((await page.$$('#form input[type=hidden]')).length === 0,
+     'no quedaron campos ocultos de ningún servicio de formularios');
+
+  /* Se intercepta window.open para leer la URL sin abrir nada */
+  await page.evaluate(() => {
+    window.__abierto = null;
+    window.open = (u) => { window.__abierto = u; return {}; };
+  });
+  await page.evaluate(() => {
+    document.querySelector('#f-svc').value = 'institucional';
+    document.querySelector('#f-name').value = 'Ana Gómez';
+    document.querySelector('#f-mail').value = 'ana@correo.com';
+    document.querySelector('#f-msg').value  = 'Tengo un estudio y necesito web.';
+    document.querySelector('#form').requestSubmit();
+  });
+  await sleep(300);
+
+  const abierto = await page.evaluate(() => window.__abierto);
+  is(!!abierto, 'al enviarse abre WhatsApp');
+  /* a mano y no con new URL(): en este archivo `URL` es la constante de más
+     arriba con la ruta de la página, que tapa al constructor global */
+  const msg = abierto ? decodeURIComponent((abierto.split('?text=')[1] || '')) : '';
+  is(msg.includes('Un sitio institucional'),
+     'el mensaje trae la ETIQUETA del servicio, no el value', msg.split('\n')[2]);
+  is(msg.includes('Ana Gómez') && msg.includes('ana@correo.com'),
+     'y el nombre y el contacto');
+  is(msg.includes('Tengo un estudio y necesito web.'), 'y lo que la persona escribió');
+
+  is(await page.$eval('#f-name', (i) => i.value) === '', 'el formulario se limpia después');
+  is(/whatsapp/i.test(await page.$eval('#formNote', (n) => n.textContent)),
+     'y avisa en pantalla que se abrió WhatsApp',
+     await page.$eval('#formNote', (n) => n.textContent));
+
+  /* honeypot: se descarta en silencio y sin abrir nada */
+  await page.evaluate(() => {
+    window.__abierto = null;
+    document.querySelector('[name=botcheck]').checked = true;
+    document.querySelector('#f-name').value = 'bot';
+    document.querySelector('#f-mail').value = 'bot';
+    document.querySelector('#f-msg').value  = 'bot';
+    document.querySelector('#form').requestSubmit();
+  });
+  await sleep(250);
+  is(await page.evaluate(() => window.__abierto) === null,
+     'con el honeypot marcado NO abre nada');
+  await page.close();
+}
+
 /* ── 3b. Slider de servicios ──────────────────────────────────────────── */
 console.log('\n[3b] Slider de servicios');
 {
