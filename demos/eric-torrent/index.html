@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Eric Sebastián Torrent — Obra espiritual y literaria</title>
+<meta name="description" content="Las cinco obras de Eric Sebastián Torrent: Despertar Interior, Trascender la Victoria, Eres la Luz, Palabras de Poder y Hacia la Iluminación y la Unificación. En papel, en digital y en audiolibro gratuito.">
+
+<!-- Google Fonts: única dependencia externa del sitio. Elementor las carga de forma nativa. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/styles.css">
+<link rel="icon" href="assets/img/logo.svg" type="image/svg+xml">
+
+<!-- El CSS sólo oculta para animar si esta clase existe. Si el JS no corre,
+     o si el sistema pide movimiento reducido, la página se ve completa. -->
+<script>
+  if (!window.matchMedia || !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.documentElement.className += ' js';
+  }
+</script>
+</head>
+
+<body>
+
+<a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+<!-- ===================================================================
+     HEADER — fijo, logo + navegación
+     =================================================================== -->
+<header class="header">
+  <div class="container header__inner">
+
+    <a class="logo" href="index.html">
+      <span class="logo__nombre">Eric Sebastián Torrent</span>
+      <span class="logo__sello">Abarcar Ediciones</span>
+    </a>
+
+    <nav class="nav" aria-label="Navegación principal">
+      <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="menu">
+        <span class="nav__toggle-barras" aria-hidden="true"></span>
+        Menú
+      </button>
+      <ul class="nav__lista" id="menu">
+        <li><a class="nav__link" href="index.html" aria-current="page">Inicio</a></li>
+        <li><a class="nav__link" href="libros.html">Los libros</a></li>
+        <li><a class="nav__link" href="autor.html">Sobre el autor</a></li>
+        <li><a class="nav__link" href="contacto.html">Contacto</a></li>
+      </ul>
+    </nav>
+
+  </div>
+</header>
+
+<main id="contenido">
+
+  <!-- ===================================================================
+       1. HERO — la frase con la que firma sus cinco libros, y la estantería
+       =================================================================== -->
+  <section class="section section--mesa hero">
+    <div class="container">
+
+      <p class="eyebrow">Obra espiritual y literaria &middot; Abarcar Ediciones</p>
+
+      <h1 class="hero__frase">Amar es la máxima victoria y tú eres la luz.</h1>
+
+      <p class="hero__lead">
+        Cinco obras de Eric Sebastián Torrent. Más de 2.800 páginas escritas a lo largo
+        de tres décadas de trabajo, para acompañar el despertar de conciencia de todos
+        los seres humanos de buena voluntad.
+      </p>
+
+      <div class="botonera">
+        <a class="btn btn--primary" href="libros.html">Conocer las cinco obras</a>
+        <a class="btn btn--ghost" href="https://www.youtube.com/@" target="_blank" rel="noopener">Escuchar los audiolibros gratis</a>
+      </div>
+
+      <!-- La estantería: cada tapa lleva su propio color al pie. -->
+      <div class="estanteria grid grid--5 reveal">
+
+        <a class="estanteria__item acento-despertar" href="libro.html">
+          <img class="tapa" src="assets/img/portada-01.jpg" width="800" height="1200"
+               alt="Tapa de Despertar Interior, de Eric Sebastián Torrent">
+          <p class="estanteria__titulo">Despertar Interior</p>
+          <p class="estanteria__paginas">916 páginas</p>
+        </a>
+
+        <a class="estanteria__item acento-trascender" href="libro.html">
+          <img class="tapa" src="assets/img/portada-02.jpg" width="800" height="1200"
+               alt="Tapa de Trascender la Victoria, de Eric Sebastián Torrent">
+          <p class="estanteria__titulo">Trascender la Victoria</p>
+          <p class="estanteria__paginas">428 páginas</p>
+        </a>
+
+        <a class="estanteria__item acento-luz" href="libro.html">
+          <img class="tapa" src="assets/img/portada-03.jpg" width="800" height="1200"
+               alt="Tapa de Eres la Luz, de Eric Sebastián Torrent">
+          <p class="estanteria__titulo">Eres la Luz</p>
+          <p class="estanteria__paginas">412 páginas</p>
+        </a>
+
+        <a class="estanteria__item acento-palabras" href="libro.html">
+          <img class="tapa" src="assets/img/portada-04.jpg" width="800" height="1200"
+               alt="Tapa de Palabras de Poder, de Eric Sebastián Torrent">
+          <p class="estanteria__titulo">Palabras de Poder</p>
+          <p class="estanteria__paginas">404 páginas</p>
+        </a>
+
+        <a class="estanteria__item acento-iluminacion" href="libro.html">
+          <img class="tapa" src="assets/img/portada-05.jpg" width="800" height="1200"
+               alt="Tapa de Hacia la Iluminación y la Unificación, de Eric Sebastián Torrent">
+          <p class="estanteria__titulo">Hacia la Iluminación y la Unificación</p>
+          <p class="estanteria__paginas">652 páginas</p>
+        </a>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       2. PRESENTACIÓN — quién es, en pocas líneas
+       =================================================================== -->
+  <section class="section section--pagina">
+    <div class="container">
+      <div class="grid grid--13 grid--top">
+
+        <div class="reveal">
+          <img class="retrato" src="assets/img/autor-retrato.jpg" width="800" height="1000"
+               alt="Eric Sebastián Torrent junto a un lector, con un ejemplar de Palabras de Poder">
+        </div>
+
+        <div class="reveal">
+          <p class="eyebrow">Quién escribe</p>
+          <h2>Tres décadas escribiendo para que otros se encuentren con su propia esencia</h2>
+
+          <p class="dropcap">
+            Eric Sebastián Torrent nació en Argentina y hace más de treinta años dedica su
+            tiempo y su energía de vida al despertar de la conciencia. Escribió cinco obras
+            —más de 2.800 páginas en total— que ofrece sin reclamar ningún derecho sobre ellas.
+          </p>
+
+          <p>
+            No es una manera de decir: en el prólogo de <em>Palabras de Poder</em> lo deja por
+            escrito. Los audiolibros completos están publicados y son gratuitos, capítulo por
+            capítulo, para quien quiera escucharlos. Los libros en papel se consiguen a través
+            de Abarcar Ediciones.
+          </p>
+
+          <p>
+            «Lo importante es el mensaje y no el mensajero», escribe. Por eso en sus cinco tapas
+            no aparece su cara: aparece alguien de espaldas, mirando hacia la luz.
+          </p>
+
+          <p><a class="link" href="autor.html"><span>Leer la historia completa</span></a></p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       3. LAS OBRAS — la trilogía (3 columnas) y las posteriores (2 columnas)
+       =================================================================== -->
+  <section class="section section--mesa">
+    <div class="container">
+
+      <div class="encabezado-seccion reveal">
+        <p class="eyebrow">Las cinco obras</p>
+        <h2>La primera trilogía</h2>
+        <p>
+          <em>Despertar Interior</em>, <em>Trascender la Victoria</em> y <em>Eres la Luz</em> se
+          escribieron y se publicaron como una sola cosa en tres partes. Cada una se lee sola,
+          pero fueron pensadas para leerse en orden.
+        </p>
+      </div>
+
+      <div class="grid grid--3 reveal">
+
+        <!-- Obra 1 -->
+        <article class="obra acento-despertar">
+          <p class="obra__numero">Primera obra &middot; [REEMPLAZAR: año]</p>
+          <a class="obra__tapa" href="libro.html">
+            <img class="tapa" src="assets/img/portada-01.jpg" width="800" height="1200"
+                 alt="Tapa de Despertar Interior">
+          </a>
+          <h3 class="obra__titulo">Despertar Interior</h3>
+          <p class="obra__subtitulo">Un viaje hacia la autoliberación y la unificación con el Total bajo el techo del amor</p>
+          <p class="obra__sinopsis">
+            A lo largo de sus 916 páginas, guía al lector por los matices, las alternativas y las
+            herramientas necesarias para impulsar el encuentro con la propia esencia divina interna
+            y el potencial que late en ella.
+          </p>
+          <div class="obra__pie">
+            <p class="obra__datos">916 páginas &middot; Tapa blanda</p>
+            <span class="obra__precio">U$S 50 &middot; $ [REEMPLAZAR] ARS</span>
+            <span class="obra__precio-nota">Formato digital: U$S 10 &middot; $ [REEMPLAZAR] ARS</span>
+            <div class="obra__acciones">
+              <a class="btn btn--ghost" href="https://www.youtube.com/@" target="_blank" rel="noopener">Escuchar gratis</a>
+              <a class="btn btn--primary" href="libro.html">Ver la obra</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Obra 2 -->
+        <article class="obra acento-trascender">
+          <p class="obra__numero">Segunda obra &middot; [REEMPLAZAR: año]</p>
+          <a class="obra__tapa" href="libro.html">
+            <img class="tapa" src="assets/img/portada-02.jpg" width="800" height="1200"
+                 alt="Tapa de Trascender la Victoria">
+          </a>
+          <h3 class="obra__titulo">Trascender la Victoria</h3>
+          <p class="obra__subtitulo">El camino desde la ignorancia hasta la iluminación</p>
+          <p class="obra__sinopsis">
+            Sobre el significado de trascender la dualidad, la importancia de comprender el propio
+            propósito existencial, y el paso desde la mente de tercera dimensión hacia la mente
+            universal.
+          </p>
+          <div class="obra__pie">
+            <p class="obra__datos">428 páginas &middot; Tapa blanda</p>
+            <span class="obra__precio">U$S 35 &middot; $ [REEMPLAZAR] ARS</span>
+            <span class="obra__precio-nota">Formato digital: U$S 10 &middot; $ [REEMPLAZAR] ARS</span>
+            <div class="obra__acciones">
+              <a class="btn btn--ghost" href="https://www.youtube.com/@" target="_blank" rel="noopener">Escuchar gratis</a>
+              <a class="btn btn--primary" href="libro.html">Ver la obra</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Obra 3 -->
+        <article class="obra acento-luz">
+          <p class="obra__numero">Tercera obra &middot; [REEMPLAZAR: año]</p>
+          <a class="obra__tapa" href="libro.html">
+            <img class="tapa" src="assets/img/portada-03.jpg" width="800" height="1200"
+                 alt="Tapa de Eres la Luz">
+          </a>
+          <h3 class="obra__titulo">Eres la Luz</h3>
+          <p class="obra__subtitulo">El reconocimiento y la manifestación de tu grandeza</p>
+          <p class="obra__sinopsis">
+            Sin importar el pasado ni las adversidades que se atraviesen, nada ni nadie puede
+            quitarle a una persona la grandeza que le es propia. Sobre eso trata este libro, y
+            sobre cómo manifestarla.
+          </p>
+          <div class="obra__pie">
+            <p class="obra__datos">412 páginas &middot; Tapa blanda</p>
+            <span class="obra__precio">U$S 35 &middot; $ [REEMPLAZAR] ARS</span>
+            <span class="obra__precio-nota">Formato digital: U$S 10 &middot; $ [REEMPLAZAR] ARS</span>
+            <div class="obra__acciones">
+              <a class="btn btn--ghost" href="https://www.youtube.com/@" target="_blank" rel="noopener">Escuchar gratis</a>
+              <a class="btn btn--primary" href="libro.html">Ver la obra</a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- Las dos obras posteriores: presentación distinta, a propósito. -->
+      <div class="encabezado-seccion encabezado-seccion--separado reveal">
+        <h2>Las obras posteriores</h2>
+        <p>Lo que vino después de la trilogía: un libro sobre el uso de la palabra y otro escrito con las preguntas de los lectores.</p>
+      </div>
+
+      <div class="grid grid--2 reveal">
+
+        <article class="obra-fila acento-palabras">
+          <a href="libro.html">
+            <img class="tapa" src="assets/img/portada-04.jpg" width="800" height="1200"
+                 alt="Tapa de Palabras de Poder">
+          </a>
+          <div>
+            <p class="obra__numero">Cuarta obra &middot; [REEMPLAZAR: año]</p>
+            <h3 class="obra__titulo">Palabras de Poder</h3>
+            <p class="obra__subtitulo">El uso correcto del verbo creador</p>
+            <p class="obra__sinopsis">
+              404 páginas sobre la responsabilidad de hablar. Incluye ocho meditaciones y un
+              índice de más de cien textos breves para leer de a uno.
+            </p>
+            <span class="obra__precio">U$S 35 &middot; $ [REEMPLAZAR] ARS</span>
+            <span class="obra__precio-nota">404 páginas &middot; Digital: U$S 10</span>
+            <div class="obra__acciones">
+              <a class="btn btn--ghost" href="https://www.youtube.com/@" target="_blank" rel="noopener">Escuchar gratis</a>
+              <a class="btn btn--primary" href="libro.html">Ver la obra</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="obra-fila acento-iluminacion">
+          <a href="libro.html">
+            <img class="tapa" src="assets/img/portada-05.jpg" width="800" height="1200"
+                 alt="Tapa de Hacia la Iluminación y la Unificación">
+          </a>
+          <div>
+            <p class="obra__numero">Quinta obra &middot; [REEMPLAZAR: año]</p>
+            <h3 class="obra__titulo">Hacia la Iluminación y la Unificación</h3>
+            <p class="obra__subtitulo">Alcanzar el máximo potencial para unificarse y evolucionar</p>
+            <p class="obra__sinopsis">
+              El único de los cinco que no escribió solo: son las preguntas que le mandaron
+              lectores de distintas partes del mundo, con sus respuestas.
+            </p>
+            <span class="obra__precio">U$S 45 &middot; $ [REEMPLAZAR] ARS</span>
+            <span class="obra__precio-nota">652 páginas &middot; Digital: U$S 10</span>
+            <div class="obra__acciones">
+              <a class="btn btn--ghost" href="https://www.youtube.com/@" target="_blank" rel="noopener">Escuchar gratis</a>
+              <a class="btn btn--primary" href="libro.html">Ver la obra</a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       4. LECTORES — testimonios reales, de largo desparejo
+       =================================================================== -->
+  <section class="section section--pagina">
+    <div class="container">
+
+      <div class="encabezado-seccion reveal">
+        <p class="eyebrow">Los lectores</p>
+        <h2>Lo que escriben quienes ya lo leyeron</h2>
+        <p>Mensajes que llegan por YouTube, por Facebook y en las presentaciones, desde Argentina, México y Uruguay.</p>
+      </div>
+
+      <div class="testimonios reveal">
+
+        <div class="testimonios__columna">
+
+          <blockquote class="testimonio">
+            <p class="testimonio__texto">
+              «Estimado Eric, gracias por estos regalos tan maravillosos, gracias por tu labor de
+              amor incansable, gracias por ocupar tu energía de vida en traer la palabra de amor
+              a cada uno de nosotros.»
+            </p>
+            <p class="testimonio__firma">
+              <span class="testimonio__nombre">Lector de YouTube</span> [REEMPLAZAR: nombre y ciudad]
+              &middot; sobre el audiolibro de Despertar Interior
+            </p>
+          </blockquote>
+
+          <blockquote class="testimonio">
+            <p class="testimonio__texto">
+              «Hola, Maestro Eric. Excelente información en sus libros: sabiduría para toda la
+              humanidad y sobre todo para los jóvenes de la nueva era. Gracias por su trabajo.»
+            </p>
+            <p class="testimonio__firma">
+              <span class="testimonio__nombre">Martha L. Castro González</span> &middot;
+              [REEMPLAZAR: ciudad] &middot; Facebook
+            </p>
+          </blockquote>
+
+        </div>
+
+        <div class="testimonios__columna">
+
+          <blockquote class="testimonio">
+            <p class="testimonio__texto">
+              «Lo empecé sin saber bien qué esperar y lo terminé subrayado entero. Hay páginas que
+              volví a leer tres veces.»
+            </p>
+            <p class="testimonio__firma">
+              <span class="testimonio__nombre">[REEMPLAZAR: nombre]</span> &middot;
+              [REEMPLAZAR: ciudad] &middot; sobre Trascender la Victoria
+            </p>
+          </blockquote>
+
+          <blockquote class="testimonio">
+            <p class="testimonio__texto">
+              «Lo compré en la Feria del Libro y me lo firmó ahí mismo. Se lo regalé a mi mamá y
+              terminó comprándose los otros cuatro.»
+            </p>
+            <p class="testimonio__firma">
+              <span class="testimonio__nombre">[REEMPLAZAR: nombre]</span> &middot;
+              [REEMPLAZAR: ciudad] &middot; Feria del Libro de Buenos Aires
+            </p>
+          </blockquote>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       5. FRANJA DE FOTOS — encuentros, presentaciones y lectores
+       =================================================================== -->
+  <section class="section section--mesa">
+    <div class="container">
+
+      <div class="encabezado-seccion reveal">
+        <p class="eyebrow">Encuentros</p>
+        <h2>Las fotos las mandan ellos</h2>
+        <p>Lectores con su ejemplar, presentaciones, ferias y firmas. Es la parte del trabajo que no está escrita en ningún libro.</p>
+      </div>
+
+      <div class="grid grid--4 reveal">
+        <img class="foto" src="assets/img/galeria-01.jpg" width="1200" height="800" alt="Dos lectores con un ejemplar de Trascender la Victoria" loading="lazy">
+        <img class="foto" src="assets/img/galeria-02.jpg" width="1200" height="800" alt="Eric Sebastián Torrent junto a un lector, después de una presentación" loading="lazy">
+        <img class="foto" src="assets/img/galeria-03.jpg" width="1200" height="800" alt="El autor en el stand de la Feria del Libro de Buenos Aires" loading="lazy">
+        <img class="foto" src="assets/img/galeria-04.jpg" width="1200" height="800" alt="Dos lectores sosteniendo un ejemplar de Eres la Luz" loading="lazy">
+        <img class="foto" src="assets/img/galeria-05.jpg" width="1200" height="800" alt="Una lectora con su ejemplar de Trascender la Victoria" loading="lazy">
+        <img class="foto" src="assets/img/galeria-06.jpg" width="1200" height="800" alt="Una lectora leyendo uno de los libros" loading="lazy">
+        <img class="foto" src="assets/img/galeria-07.jpg" width="1200" height="800" alt="Un lector con su ejemplar de Hacia la Iluminación y la Unificación" loading="lazy">
+        <img class="foto" src="assets/img/galeria-08.jpg" width="1200" height="800" alt="El autor con un lector en un encuentro" loading="lazy">
+      </div>
+
+      <p class="pie-de-bloque"><a class="link" href="autor.html"><span>Ver todas las fotos</span></a></p>
+
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       6. RECONOCIMIENTOS — franja compacta. La sección completa va en autor.html
+       =================================================================== -->
+  <section class="section section--pagina">
+    <div class="container">
+
+      <div class="encabezado-seccion reveal">
+        <p class="eyebrow">Dónde estuvo</p>
+        <h2>Presentaciones, televisión y radio</h2>
+      </div>
+
+      <div class="grid grid--4 reveal">
+
+        <div class="reconocimiento">
+          <p class="reconocimiento__donde">Buenos Aires</p>
+          <p class="reconocimiento__que">Feria Internacional del Libro</p>
+        </div>
+
+        <div class="reconocimiento">
+          <p class="reconocimiento__donde">Argentina</p>
+          <p class="reconocimiento__que">Televisión abierta y Radio Rivadavia</p>
+        </div>
+
+        <div class="reconocimiento">
+          <p class="reconocimiento__donde">México</p>
+          <p class="reconocimiento__que">Entrevistas en Aguascalientes</p>
+        </div>
+
+        <div class="reconocimiento">
+          <p class="reconocimiento__donde">Uruguay</p>
+          <p class="reconocimiento__que">Entrevistas en Minas, Lavalleja</p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       7. CIERRE — la sección de tinta
+       =================================================================== -->
+  <section class="section section--tinta">
+    <div class="container">
+      <div class="encabezado-seccion encabezado-seccion--sin-pie reveal">
+        <p class="eyebrow">Las cinco obras</p>
+        <h2>En papel, en digital, y en audiolibro gratuito</h2>
+        <p class="lead">
+          Los libros en papel y en PDF se piden directamente. Los audiolibros están completos
+          y son gratuitos: no hace falta comprar nada para empezar a escuchar.
+        </p>
+        <div class="botonera">
+          <a class="btn btn--inverso" href="libros.html">Ver precios y formatos</a>
+          <a class="btn btn--inverso-ghost" href="contacto.html">Escribirle a Eric</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       8. COLOFÓN — cierra como cierran sus cinco libros. Va en todas las páginas.
+       =================================================================== -->
+  <section class="section--pagina colofon">
+    <div class="container">
+      <p class="colofon__frase">
+        Amar es la máxima victoria y tú eres la luz.<br>
+        Te amo allí en donde estés.
+      </p>
+      <p class="colofon__firma">Eric</p>
+    </div>
+  </section>
+
+</main>
+
+<!-- ===================================================================
+     FOOTER
+     =================================================================== -->
+<footer class="footer">
+  <div class="container">
+
+    <div class="footer__grid">
+
+      <div>
+        <span class="logo__nombre">Eric Sebastián Torrent</span>
+        <span class="logo__sello">Abarcar Ediciones</span>
+        <p class="footer__texto">
+          Obra espiritual y literaria. Cinco libros publicados por Abarcar Ediciones.
+          Consultas y pedidos: <a href="mailto:ericdespertarinterior@gmail.com">ericdespertarinterior@gmail.com</a>
+        </p>
+      </div>
+
+      <div>
+        <p class="footer__titulo">Navegación</p>
+        <ul class="footer__lista">
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="libros.html">Los libros</a></li>
+          <li><a href="autor.html">Sobre el autor</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <p class="footer__titulo">Redes</p>
+        <div class="redes">
+
+          <a class="redes__link" href="https://www.facebook.com/YOSOYUNIFICANDOALAHUMANIDAD" target="_blank" rel="noopener" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647Z"/></svg>
+          </a>
+
+          <a class="redes__link" href="https://www.instagram.com/eric_despertarinterior/" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.308.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.295 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.28-.0607 2.147-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.056-1.2809.0692-1.6898.063-4.948-.0063-3.2583-.021-3.6668-.0817-4.9465-.0607-1.2797-.264-2.1487-.5633-2.9117-.3084-.7889-.72-1.4568-1.3876-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.408-.5606-.216-.96-.4771-1.3819-.895-.422-.4178-.6811-.8186-.9-1.378-.1644-.4234-.3624-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.007-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.408-2.2282.216-.5613.4762-.96.895-1.3816.4188-.4217.8184-.6814 1.3783-.9003.423-.1651 1.0575-.3614 2.227-.4171 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.007 3.5835.005 4.8495.0608 1.169.0508 1.8053.2445 2.228.408.5608.216.96.4754 1.3816.895.4217.4194.6816.8176.9005 1.3787.1653.4217.3617 1.056.4169 2.2263.0602 1.2655.0739 1.645.0796 4.848.0058 3.203-.0055 3.5834-.061 4.848-.051 1.17-.245 1.8055-.408 2.2294-.216.5604-.4763.96-.8954 1.3814-.419.4215-.8181.6811-1.3783.9-.4224.1649-1.0577.3617-2.2262.4174-1.2656.0595-1.6448.072-4.8493.079-3.2045.007-3.5825-.006-4.848-.0608M16.953 5.5864A1.44 1.44 0 1 0 18.39 4.144a1.44 1.44 0 0 0-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.173 6.1493 3.4026-.0065 6.157-2.7701 6.1506-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.156 2.771-6.1496 6.1738M8 12.0077a4 4 0 1 1 4.008 3.9921A3.9996 3.9996 0 0 1 8 12.0077"/></svg>
+          </a>
+
+          <a class="redes__link" href="https://www.tiktok.com/@sebastianeric" target="_blank" rel="noopener" aria-label="TikTok">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+          </a>
+
+          <a class="redes__link" href="https://x.com/ServidoresEra" target="_blank" rel="noopener" aria-label="X">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.234 10.162 22.977 0h-2.072l-7.591 8.824L7.251 0H.258l9.168 13.343L.258 24H2.33l8.016-9.318L16.749 24h6.993zm-2.837 3.299-.929-1.329L3.076 1.56h3.182l5.965 8.532.929 1.329 7.754 11.09h-3.182z"/></svg>
+          </a>
+
+          <a class="redes__link" href="https://www.youtube.com/@" target="_blank" rel="noopener" aria-label="YouTube — Canal Servidores de la Nueva Era">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          </a>
+
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer__legal">
+      <p>&copy; 2026 Eric Sebastián Torrent</p>
+      <p>Abarcar Ediciones &middot; [REEMPLAZAR: razón social y CUIT]</p>
+      <p>[REEMPLAZAR: domicilio]</p>
+      <p>Términos y condiciones &middot; Política de privacidad [REEMPLAZAR: enlaces]</p>
+    </div>
+
+  </div>
+</footer>
+
+<!-- Botón flotante de WhatsApp — en todas las páginas -->
+<a class="whatsapp" href="https://wa.me/54900000000" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+</a>
+
+<script src="js/main.js"></script>
+
+</body>
+</html>

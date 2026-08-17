@@ -1,0 +1,914 @@
+/* =========================================================================
+   Eric Sebastián Torrent — Boceto navegable
+   Sistema: "Cinco libros, cinco luces".
+   El sitio es papel y tinta. El único color de cada pantalla es el del
+   libro que se está mirando, tomado de su propia tapa.
+
+   ORDEN DEL ARCHIVO
+   01. Custom properties (→ Global Colors / Global Fonts de Elementor)
+   02. Reset y base
+   03. Layout: secciones y contenedor (→ modelo de Elementor)
+   04. Grillas
+   05. Tipografía
+   06. Botones y enlaces
+   07. Header y navegación
+   08. Componentes
+   09. Utilidades y animación
+   10. Breakpoints 1024px (tablet) y 767px (mobile)
+   ========================================================================= */
+
+/* == 01. CUSTOM PROPERTIES ============================================== */
+
+:root {
+  /* --- Global Colors --- */
+  --color-text:        #23201C;  /* Tinta. Cuerpo de texto.            */
+  --color-text-muted:  #56514A;  /* Metadatos, pies, datos técnicos.   */
+  --color-primary:     #1C1A17;  /* Botones y acciones.                */
+  --color-secondary:   #DCD8CF;  /* La mesa. Fondo de secciones.       */
+  --color-surface:     #FFFFFF;  /* La página. Fondo del contenido.    */
+  --color-border:      #C9C4B8;  /* Filetes y separadores.             */
+  --color-inverse:     #F5F3EE;  /* Texto sobre secciones de tinta.    */
+
+  /* --- Un acento por obra, tomado de su propia tapa ---
+     Los cinco están calibrados para pasar AA (4.5:1) tanto sobre la página
+     blanca como sobre la mesa, porque se usan en texto chico sobre ambas.
+     Si se cambia alguno, hay que volver a medirlo contra #FFFFFF y #DCD8CF. */
+  --color-libro-despertar:    #7E5210;  /* ámbar del atardecer      */
+  --color-libro-trascender:   #4A4F55;  /* grafito, la tapa es b/n  */
+  --color-libro-luz:          #1F3C88;  /* azul                     */
+  --color-libro-palabras:     #9E2B62;  /* magenta                  */
+  --color-libro-iluminacion:  #2A6270;  /* celeste del águila       */
+
+  /* Acento activo. Por defecto tinta: el sitio no tiene color propio. */
+  --acento: var(--color-primary);
+
+  /* --- Global Fonts --- */
+  --font-body:    'Source Serif 4', Georgia, 'Times New Roman', serif;
+  --font-display: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
+
+  --fs-hero:  58px;
+  --fs-h1:    46px;
+  --fs-h2:    34px;
+  --fs-h3:    26px;
+  --fs-lead:  22px;
+  --fs-body:  19px;
+  --fs-meta:  16px;   /* mínimo absoluto. Nunca menos. */
+
+  /* --- Medidas --- */
+  --container: 1140px;   /* default de Elementor */
+  --gap: 32px;
+  --sp-section: 88px;
+  --radius: 2px;
+  --header-h: 76px;
+
+  /* Una sola sombra en todo el sitio: el papel apoyado sobre la mesa.
+     Elementor la reproduce con el control Box Shadow (una sola sombra). */
+  --sombra: 0 10px 24px rgba(28, 26, 23, 0.14);
+}
+
+/* == 02. RESET Y BASE =================================================== */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--color-secondary);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  line-height: 1.7;
+  overflow-x: hidden;   /* red de seguridad contra scroll horizontal */
+}
+
+img { max-width: 100%; height: auto; display: block; }
+
+a { color: inherit; }
+
+button { font: inherit; }
+
+/* Foco visible en todo el sitio. Requisito, no preferencia. */
+:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 3px;
+  border-radius: 1px;
+}
+.section--tinta :focus-visible,
+.btn--primary:focus-visible { outline-color: var(--color-inverse); }
+
+/* Saltar al contenido (teclado / lector de pantalla) */
+.skip-link {
+  position: absolute; left: 12px; top: -80px; z-index: 200;
+  background: var(--color-primary); color: #fff;
+  padding: 12px 20px; font-family: var(--font-display); font-size: var(--fs-meta);
+  text-decoration: none; transition: top .2s;
+}
+.skip-link:focus { top: 12px; }
+
+/* == 03. SECCIONES Y CONTENEDOR ========================================= */
+/* Cada bloque es un <section> de ancho completo con un .container interno.
+   El espaciado vertical vive en el padding de la sección. */
+
+.section { padding-block: var(--sp-section); }
+
+.section--mesa   { background: var(--color-secondary); }
+.section--pagina { background: var(--color-surface); }
+.section--tinta  { background: var(--color-primary); color: var(--color-inverse); }
+.section--tinta .eyebrow { color: #A8A29A; }
+
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: 24px;
+}
+
+/* == 04. GRILLAS ======================================================== */
+/* Sólo grillas de columnas iguales o 1/3 + 2/3. Nada de masonry. */
+
+.grid { display: grid; gap: var(--gap); }
+.grid--2  { grid-template-columns: repeat(2, 1fr); }
+.grid--3  { grid-template-columns: repeat(3, 1fr); }
+.grid--4  { grid-template-columns: repeat(4, 1fr); }
+.grid--5  { grid-template-columns: repeat(5, 1fr); gap: 20px; }
+.grid--13 { grid-template-columns: 1fr 2fr; gap: 48px; }
+.grid--21 { grid-template-columns: 2fr 1fr; gap: 48px; }
+
+.grid--top { align-items: start; }
+
+/* == 05. TIPOGRAFÍA ===================================================== */
+
+h1, h2, h3 {
+  font-family: var(--font-body);
+  font-weight: 700;
+  line-height: 1.15;
+  margin: 0 0 20px;
+  letter-spacing: -0.01em;
+}
+
+h1 { font-size: var(--fs-h1); }
+h2 { font-size: var(--fs-h2); }
+h3 { font-size: var(--fs-h3); line-height: 1.25; }
+
+p { margin: 0 0 20px; max-width: 68ch; }
+p:last-child { margin-bottom: 0; }
+
+.lead { font-size: var(--fs-lead); line-height: 1.6; }
+
+/* La capa de imprenta: rótulos, metadatos, precios, navegación. */
+.eyebrow {
+  font-family: var(--font-display);
+  font-size: var(--fs-meta);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin: 0 0 16px;
+}
+
+.meta {
+  font-family: var(--font-display);
+  font-size: var(--fs-meta);
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+/* Capitular: en Elementor es el toggle "Drop Cap" del widget Text Editor. */
+.dropcap::first-letter {
+  float: left;
+  font-size: 64px;
+  line-height: 0.82;
+  font-weight: 700;
+  padding: 6px 12px 0 0;
+  color: var(--acento);
+}
+
+/* Filete de acento: el color del libro entra siempre por acá. */
+.filete {
+  width: 56px; height: 3px;
+  background: var(--acento);
+  border: 0; margin: 0 0 20px;
+}
+
+.encabezado-seccion { margin-bottom: 48px; max-width: 68ch; }
+.encabezado-seccion p:last-child { margin-bottom: 0; }
+.encabezado-seccion--separado { margin-top: 72px; }
+.encabezado-seccion--sin-pie { margin-bottom: 0; }
+
+.pie-de-bloque { margin-top: 32px; }
+
+/* == 06. BOTONES Y ENLACES ============================================= */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 52px;              /* > 44px de área clickeable */
+  padding: 12px 26px;
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none;
+  border: 1.5px solid transparent;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: background-color .2s ease, color .2s ease, border-color .2s ease;
+}
+
+.btn--primary { background: var(--color-primary); color: #fff; }
+.btn--primary:hover { background: #000; }
+
+.btn--ghost { background: transparent; color: var(--color-primary); border-color: var(--color-border); }
+.btn--ghost:hover { border-color: var(--color-primary); background: rgba(28,26,23,.04); }
+
+.btn--inverso { background: var(--color-inverse); color: var(--color-primary); }
+.btn--inverso:hover { background: #fff; }
+
+.btn--inverso-ghost { background: transparent; color: var(--color-inverse); border-color: rgba(245,243,238,.4); }
+.btn--inverso-ghost:hover { border-color: var(--color-inverse); background: rgba(245,243,238,.08); }
+
+.botonera { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 28px; }
+
+/* Enlace de texto con subrayado en el color del libro.
+   El <span> interno lleva el subrayado pegado al texto; el <a> lleva el
+   alto de 44px del área clickeable. Sin el span, el subrayado queda
+   despegado o el área táctil queda chica: no se puede tener las dos
+   cosas en un solo elemento. */
+.link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-family: var(--font-display);
+  font-size: var(--fs-meta);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--color-text);
+}
+.link > span {
+  border-bottom: 2px solid var(--acento);
+  padding-bottom: 3px;
+}
+.link:hover { color: var(--acento); }
+
+/* == 07. HEADER Y NAVEGACIÓN =========================================== */
+
+.header {
+  position: sticky; top: 0; z-index: 100;
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  min-height: var(--header-h);
+}
+
+/* Logotipo tipográfico. Ver assets/img/logo.svg para la versión en imagen. */
+.logo {
+  text-decoration: none;
+  display: block;
+  padding-block: 10px;
+}
+.logo__nombre {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  line-height: 1.1;
+  color: var(--color-text);
+}
+.logo__sello {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-top: 4px;
+}
+
+.nav__lista {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin: 0; padding: 0;
+}
+
+.nav__link {
+  display: flex;
+  align-items: center;
+  min-height: 48px;
+  padding: 0 16px;
+  font-family: var(--font-display);
+  font-size: var(--fs-meta);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  color: var(--color-text);
+  border-bottom: 2px solid transparent;
+}
+.nav__link:hover { border-bottom-color: var(--color-border); }
+.nav__link[aria-current="page"] { font-weight: 700; border-bottom-color: var(--color-primary); }
+
+.nav__toggle {
+  display: none;
+  align-items: center;
+  gap: 10px;
+  min-height: 48px;
+  padding: 0 14px;
+  background: transparent;
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius);
+  font-family: var(--font-display);
+  font-size: var(--fs-meta);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text);
+  cursor: pointer;
+}
+.nav__toggle-barras { display: block; width: 20px; height: 2px; background: currentColor; position: relative; }
+.nav__toggle-barras::before,
+.nav__toggle-barras::after { content: ""; position: absolute; left: 0; width: 20px; height: 2px; background: currentColor; }
+.nav__toggle-barras::before { top: -6px; }
+.nav__toggle-barras::after  { top: 6px; }
+
+/* == 08. COMPONENTES =================================================== */
+
+/* --- 08.a Hero ------------------------------------------------------- */
+
+.hero { padding-block: 96px 72px; text-align: center; }
+.hero .eyebrow { margin-bottom: 24px; }
+
+.hero__frase {
+  font-size: var(--fs-hero);
+  line-height: 1.1;
+  max-width: 20ch;
+  margin: 0 auto 24px;
+}
+
+.hero__lead {
+  font-size: var(--fs-lead);
+  line-height: 1.6;
+  color: var(--color-text-muted);
+  max-width: 62ch;
+  margin: 0 auto;
+}
+
+.hero .botonera { justify-content: center; margin-top: 36px; }
+
+/* La estantería: las cinco tapas, cada una con su luz. */
+.estanteria { margin-top: 72px; }
+
+.estanteria__item { text-decoration: none; display: block; }
+
+.tapa {
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+  width: 100%;
+  background: var(--color-border);
+  box-shadow: var(--sombra);
+  border-bottom: 4px solid var(--acento);
+  transition: transform .25s ease;
+}
+.estanteria__item:hover .tapa { transform: translateY(-6px); }
+
+.estanteria__titulo {
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text);
+  margin: 16px 0 0;
+  line-height: 1.4;
+}
+.estanteria__paginas {
+  font-family: var(--font-display);
+  font-size: 13px;
+  color: var(--color-text-muted);
+  margin: 4px 0 0;
+}
+
+/* --- 08.b Ficha del autor (presentación breve) ------------------------ */
+
+.retrato {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  background: var(--color-border);
+  box-shadow: var(--sombra);
+}
+
+/* --- 08.c Tarjeta de obra (trilogía, 3 columnas) ---------------------- */
+
+.obra {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.obra__numero {
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--acento);
+  margin: 0 0 12px;
+}
+
+.obra__tapa { margin-bottom: 24px; }
+
+.obra__titulo { font-size: var(--fs-h3); margin: 0 0 8px; }
+
+.obra__subtitulo {
+  font-size: 17px;
+  line-height: 1.45;
+  color: var(--color-text-muted);
+  margin: 0 0 16px;
+}
+
+.obra__sinopsis { font-size: 17px; line-height: 1.6; margin: 0 0 20px; }
+
+.obra__pie { margin-top: auto; padding-top: 20px; border-top: 1px solid var(--color-border); }
+
+.obra__datos {
+  font-family: var(--font-display);
+  font-size: var(--fs-meta);
+  color: var(--color-text-muted);
+  margin: 0 0 16px;
+}
+
+.obra__precio {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--color-text);
+  display: block;
+}
+.obra__precio-nota {
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--color-text-muted);
+  display: block;
+  margin-top: 2px;
+}
+
+.obra__acciones { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+.obra__acciones .btn { min-height: 48px; padding: 10px 20px; font-size: 16px; }
+
+/* --- 08.d Obra en fila (las dos posteriores, 2 columnas) -------------- */
+/* Deliberadamente distinta de la tarjeta: son las obras que vinieron
+   después de la trilogía y se presentan de otra manera. */
+
+.obra-fila {
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  gap: 28px;
+  align-items: start;
+  background: var(--color-surface);
+  padding: 28px;
+  border-top: 3px solid var(--acento);
+  box-shadow: var(--sombra);
+}
+.section--pagina .obra-fila { background: var(--color-secondary); box-shadow: none; }
+
+/* --- 08.e Testimonios de lectores ------------------------------------ */
+/* Largos desparejos a propósito: son comentarios reales, no cards. */
+
+.testimonios { display: grid; grid-template-columns: repeat(2, 1fr); gap: 48px; }
+.testimonios__columna { display: flex; flex-direction: column; gap: 40px; }
+
+.testimonio__texto { font-size: 20px; line-height: 1.6; margin: 0 0 16px; }
+
+.testimonio__firma {
+  font-family: var(--font-display);
+  font-size: var(--fs-meta);
+  color: var(--color-text-muted);
+  margin: 0;
+  padding-top: 14px;
+  border-top: 1px solid var(--color-border);
+}
+.testimonio__nombre { font-weight: 700; color: var(--color-text); }
+
+/* --- 08.f Franja de fotos -------------------------------------------- */
+
+.foto {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  background: var(--color-border);
+}
+
+/* --- 08.g Reconocimientos -------------------------------------------- */
+
+.reconocimiento { border-top: 2px solid var(--color-primary); padding-top: 16px; }
+.reconocimiento__donde {
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin: 0 0 6px;
+}
+.reconocimiento__que { font-size: 18px; font-weight: 600; line-height: 1.35; margin: 0; }
+.reconocimiento__texto { font-size: 17px; line-height: 1.6; margin: 12px 0 0; }
+
+/* --- 08.f-bis Encabezado de página interior --------------------------- */
+
+.cabecera { padding-block: 72px 64px; }
+.cabecera__titulo { font-size: var(--fs-h1); max-width: 22ch; }
+.cabecera__bajada { font-size: var(--fs-lead); color: var(--color-text-muted); max-width: 62ch; margin: 0; }
+
+/* Migas de pan */
+.migas {
+  font-family: var(--font-display);
+  font-size: var(--fs-meta);
+  color: var(--color-text-muted);
+  margin: 0 0 20px;
+}
+.migas a { display: inline-block; min-height: 24px; }
+.migas a:hover { color: var(--color-text); }
+
+/* --- 08.f-ter Índice de obras (como el índice de sus libros) ---------- */
+
+.indice { list-style: none; margin: 48px 0 0; padding: 0; border-top: 1px solid var(--color-border); }
+
+.indice__fila {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  min-height: 56px;
+  padding-block: 14px;
+  border-bottom: 1px solid var(--color-border);
+  text-decoration: none;
+}
+.indice__fila:hover .indice__obra { color: var(--acento); }
+
+.indice__num {
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--acento);
+  flex: 0 0 28px;
+}
+.indice__obra { font-size: 20px; font-weight: 600; flex: 0 1 auto; }
+.indice__guia { flex: 1 1 auto; border-bottom: 1px dotted var(--color-border); min-width: 20px; }
+.indice__paginas {
+  font-family: var(--font-display);
+  font-size: var(--fs-meta);
+  color: var(--color-text-muted);
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
+
+/* --- 08.f-quater Extracto destacado ---------------------------------- */
+
+.extracto { border-top: 3px solid var(--acento); padding-top: 32px; }
+.extracto__texto { font-size: 24px; line-height: 1.55; max-width: 60ch; }
+.extracto__fuente {
+  font-family: var(--font-display);
+  font-size: var(--fs-meta);
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+/* --- 08.f-quinquies Datos técnicos ----------------------------------- */
+
+.dato { border-top: 2px solid var(--color-border); padding-top: 14px; }
+.dato__rotulo {
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin: 0 0 4px;
+}
+.dato__valor { font-family: var(--font-display); font-size: 18px; font-weight: 600; margin: 0; }
+
+/* Aviso de precios: la cotización se mueve, esto tiene que verse. */
+.aviso {
+  font-family: var(--font-display);
+  font-size: var(--fs-meta);
+  line-height: 1.5;
+  color: var(--color-text-muted);
+  background: var(--color-surface);
+  border-left: 3px solid var(--acento);
+  padding: 16px 20px;
+  margin: 0;
+  max-width: 68ch;
+}
+.section--pagina .aviso { background: var(--color-secondary); }
+.aviso--separado { margin-top: 40px; }
+
+/* --- 08.f-sexies Formulario (sólo visual, no envía nada) ------------- */
+
+.formulario { display: grid; gap: 24px; }
+
+.campo { display: flex; flex-direction: column; gap: 8px; }
+
+.campo__etiqueta {
+  font-family: var(--font-display);
+  font-size: var(--fs-meta);
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.campo__control {
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  color: var(--color-text);
+  background: var(--color-surface);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 12px 14px;
+  min-height: 52px;
+  width: 100%;
+}
+.campo__control:focus { border-color: var(--color-primary); }
+textarea.campo__control { min-height: 160px; resize: vertical; }
+
+.campo__ayuda { font-family: var(--font-display); font-size: 14px; color: var(--color-text-muted); margin: 0; }
+
+/* Nota que existe sólo mientras esto sea un boceto. Se borra al pasar a
+   WordPress: no es parte del diseño. */
+.nota-boceto { margin-top: 14px; }
+
+/* Epígrafe debajo del retrato */
+.retrato__epigrafe { margin-top: 16px; }
+
+/* Ficha de contacto directo */
+.contacto-directo { display: flex; flex-direction: column; gap: 28px; }
+.contacto-directo__bloque { border-top: 2px solid var(--color-primary); padding-top: 16px; }
+.contacto-directo__dato { font-size: 20px; font-weight: 600; margin: 0; }
+.contacto-directo__dato a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;          /* es una acción principal: tiene que ser tocable */
+  text-decoration: none;
+  box-shadow: inset 0 -2px 0 var(--acento);
+}
+.contacto-directo__dato a:hover { color: var(--acento); }
+
+/* --- 08.g-bis Hito de la línea de tiempo ----------------------------- */
+
+.hito {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 28px;
+  padding-block: 24px;
+  border-bottom: 1px solid var(--color-border);
+}
+.hito:first-child { border-top: 1px solid var(--color-border); }
+.hito__cuando {
+  font-family: var(--font-display);
+  font-size: var(--fs-meta);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+.hito__que { font-size: 20px; font-weight: 600; margin: 0 0 6px; }
+.hito__detalle { font-size: 17px; color: var(--color-text-muted); margin: 0; }
+
+/* --- 08.h Colofón ----------------------------------------------------- */
+/* Cierra como cierran sus cinco libros. Va en todas las páginas. */
+
+.colofon { padding-block: 72px; text-align: center; }
+.colofon__frase {
+  font-size: 26px;
+  line-height: 1.5;
+  margin: 0 auto;
+  max-width: 32ch;
+}
+.colofon__firma {
+  font-family: var(--font-display);
+  font-size: var(--fs-meta);
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin: 24px 0 0;
+}
+
+/* --- 08.i Footer ------------------------------------------------------ */
+
+.footer { background: var(--color-primary); color: var(--color-inverse); padding-block: 64px 40px; }
+.footer a { color: var(--color-inverse); }
+.footer .logo__nombre { color: var(--color-inverse); }
+.footer .logo__sello  { color: #A8A29A; }
+
+.footer__grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px; }
+
+.footer__titulo {
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #A8A29A;
+  margin: 0 0 16px;
+}
+
+.footer__lista { list-style: none; margin: 0; padding: 0; }
+.footer__lista li { margin-bottom: 4px; }
+.footer__lista a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-family: var(--font-display);
+  font-size: var(--fs-meta);
+  text-decoration: none;
+}
+.footer__lista a:hover { text-decoration: underline; }
+
+.footer__texto { font-size: var(--fs-meta); color: #A8A29A; line-height: 1.6; margin: 16px 0 0; max-width: 42ch; }
+
+.redes { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+.redes__link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px; height: 48px;
+  border: 1px solid rgba(245,243,238,.28);
+  border-radius: var(--radius);
+}
+.redes__link:hover { background: rgba(245,243,238,.1); border-color: var(--color-inverse); }
+.redes__link svg { width: 20px; height: 20px; fill: currentColor; }
+
+.footer__legal {
+  margin-top: 48px; padding-top: 24px;
+  border-top: 1px solid rgba(245,243,238,.2);
+  font-family: var(--font-display);
+  font-size: 14px;
+  color: #A8A29A;
+  display: flex; flex-wrap: wrap; gap: 8px 24px;
+}
+.footer__legal p { margin: 0; max-width: none; }
+
+/* --- 08.j Botón flotante de WhatsApp ---------------------------------- */
+
+.whatsapp {
+  position: fixed;
+  right: 20px; bottom: 20px;
+  z-index: 120;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px; height: 60px;
+  background: var(--color-primary);
+  color: #fff;
+  border-radius: 50%;
+  box-shadow: var(--sombra);
+  transition: background-color .2s ease;
+}
+.whatsapp:hover { background: #000; }
+.whatsapp svg { width: 28px; height: 28px; fill: currentColor; }
+
+/* == 09. UTILIDADES Y ANIMACIÓN ======================================== */
+
+.visually-hidden {
+  position: absolute; width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
+/* Acentos por obra: la única fuente de color del sitio. */
+.acento-despertar   { --acento: var(--color-libro-despertar); }
+.acento-trascender  { --acento: var(--color-libro-trascender); }
+.acento-luz         { --acento: var(--color-libro-luz); }
+.acento-palabras    { --acento: var(--color-libro-palabras); }
+.acento-iluminacion { --acento: var(--color-libro-iluminacion); }
+
+/* Una sola animación en todo el sitio.
+   IMPORTANTE: sólo oculta si el <head> agregó la clase .js. Si el
+   JavaScript no corre, nunca queda nada invisible. */
+.js .reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity .5s ease-out, transform .5s ease-out;
+}
+.js .reveal.is-visible { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .js .reveal { opacity: 1; transform: none; transition: none; }
+  * { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+}
+
+/* == 10. BREAKPOINTS =================================================== */
+/* Exactamente los de Elementor: 1024px (tablet) y 767px (mobile). */
+
+@media (max-width: 1024px) {
+  :root {
+    --fs-hero: 44px;
+    --fs-h1: 38px;
+    --fs-h2: 30px;
+    --fs-h3: 24px;
+    --fs-lead: 20px;
+    --sp-section: 64px;
+    --gap: 24px;
+  }
+
+  .grid--4  { grid-template-columns: repeat(2, 1fr); }
+  .grid--13 { grid-template-columns: 1fr 1.6fr; gap: 32px; }
+  .grid--21 { grid-template-columns: 1.6fr 1fr; gap: 32px; }
+  .footer__grid { grid-template-columns: 1fr 1fr; }
+  .obra-fila { grid-template-columns: 120px 1fr; gap: 20px; padding: 24px; }
+  .testimonios { gap: 32px; }
+}
+
+@media (max-width: 767px) {
+  :root {
+    --fs-hero: 34px;
+    --fs-h1: 32px;
+    --fs-h2: 28px;
+    --fs-h3: 22px;
+    --fs-lead: 20px;
+    --fs-body: 18px;
+    --sp-section: 56px;
+  }
+
+  .container { padding-inline: 20px; }
+
+  .hero { padding-block: 56px 48px; }
+  .hero__frase { max-width: none; }
+  .estanteria { margin-top: 48px; }
+
+  .grid--2, .grid--3, .grid--13, .grid--21 { grid-template-columns: 1fr; }
+  .grid--5 { grid-template-columns: repeat(2, 1fr); }
+  .grid--13 { gap: 32px; }
+
+  .testimonios { grid-template-columns: 1fr; gap: 40px; }
+  .testimonios__columna { gap: 40px; }
+
+  .footer__grid { grid-template-columns: 1fr; gap: 32px; }
+
+  .obra-fila { grid-template-columns: 1fr; }
+  .obra-fila .tapa { max-width: 160px; }
+
+  .colofon__frase { font-size: 22px; }
+  .dropcap::first-letter { font-size: 52px; padding-right: 10px; }
+
+  .cabecera { padding-block: 48px 40px; }
+  .extracto__texto { font-size: 21px; }
+  .hito { grid-template-columns: 1fr; gap: 8px; }
+
+  /* En el índice, el título de la obra puede necesitar dos líneas. */
+  .indice__fila { flex-wrap: wrap; }
+  .indice__obra { font-size: 18px; flex: 1 1 auto; }
+  .indice__guia { display: none; }
+  .indice__paginas { flex: 0 0 100%; padding-left: 40px; }
+
+  /* Navegación mobile: el menú se despliega debajo del header. */
+  .nav__toggle { display: inline-flex; }
+  .nav__lista {
+    display: none;
+    position: absolute;
+    left: 0; right: 0; top: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    background: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
+    padding: 8px 20px 16px;
+  }
+  .nav.is-open .nav__lista { display: flex; }
+  .nav__link {
+    min-height: 52px;
+    padding: 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .nav__link[aria-current="page"] { border-bottom-color: var(--color-primary); }
+  .header__inner { position: relative; }
+
+  .whatsapp { width: 56px; height: 56px; right: 16px; bottom: 16px; }
+
+  /* El logotipo entra en dos líneas, no en tres. */
+  .logo__nombre { font-size: 15px; letter-spacing: 0.10em; }
+  .logo__sello  { font-size: 10px; letter-spacing: 0.18em; }
+}
+
+/* Muy angosto (360px y menos): que nada empuje el ancho.
+   Las tapas se quedan en dos columnas: en una sola la página se vuelve
+   interminable y se pierde la lectura de "cinco libros, cinco luces". */
+@media (max-width: 380px) {
+  .botonera .btn, .obra__acciones .btn { width: 100%; }
+  .grid--5 { gap: 16px; }
+}

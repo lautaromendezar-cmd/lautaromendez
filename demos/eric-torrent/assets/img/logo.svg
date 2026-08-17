@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 128" width="520" height="128" role="img" aria-label="Eric Sebastián Torrent — Abarcar Ediciones">
+  <title>Eric Sebastián Torrent — Abarcar Ediciones</title>
+  <!--
+    Logotipo tipográfico provisorio, hecho con el nombre.
+    En el sitio el logo del header está armado con texto HTML (.logo), que
+    carga Archivo desde Google Fonts y escala mejor. Este SVG es la versión
+    en imagen, para donde haga falta un archivo (favicon, og:image, firma
+    de mail). Si aparece un logo real, se reemplaza este archivo.
+  -->
+  <g fill="#23201C" font-family="Archivo, 'Helvetica Neue', Arial, sans-serif">
+    <text x="0" y="46" font-size="34" font-weight="700" letter-spacing="5.4">ERIC SEBASTIÁN</text>
+    <text x="0" y="88" font-size="34" font-weight="700" letter-spacing="5.4">TORRENT</text>
+    <rect x="252" y="72" width="268" height="2" fill="#C9C4B8"/>
+    <text x="252" y="93" font-size="11" font-weight="500" letter-spacing="3.6" fill="#56514A">ABARCAR EDICIONES</text>
+  </g>
+</svg>
