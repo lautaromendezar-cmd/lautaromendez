@@ -9,7 +9,7 @@ familia nueva — si cambia la paleta de la home, esta página cambia sola.
 index.html      la página
 portfolio.css   sólo lo propio: hero, filtros, grilla, cierre
 portfolio.js    los datos + el comportamiento
-trabajos/       las 34 capturas (webp, 16:9)
+trabajos/       las 35 capturas (webp, 16:9)
 ```
 
 ---
@@ -29,6 +29,17 @@ página.
 La captura va en `trabajos/` en **webp y 16:9** (las demás están a 1600×900).
 La tarjeta recorta con `object-position: 50% 4%`, o sea que muestra la parte de
 arriba del sitio: conviene capturar desde el borde superior.
+
+Para eso está `tools/cap-portfolio.mjs`, que la saca con el mismo formato que
+las que ya están:
+
+```bash
+node tools/cap-portfolio.mjs https://sitio.com/ port-nombre.webp
+```
+
+Captura al doble y baja a 1600×900 —así el texto chico no queda sucio— y
+espera unos segundos después de `networkidle0`: casi todos estos sitios entran
+con animación y sin esa pausa se captura a mitad del reveal.
 
 `cat` tiene que ser una de estas ocho: `ecommerce`, `gastronomia`,
 `servicios`, `educacion`, `turismo`, `industria`, `tecnologia`, `otros`. Los
@@ -79,7 +90,7 @@ build UMD hace varias versiones. El efecto nunca llegó a correr.)
 Cuatro cosas de ese shader que parecen detalle y no lo son:
 
 1. **La `<img>` queda visible debajo del canvas.** El navegador aguanta unos 16
-   contextos WebGL vivos; con 34 tarjetas, esconder la imagen significaba que
+   contextos WebGL vivos; con 35 tarjetas, esconder la imagen significaba que
    al pasar ese tope las más viejas se quedaban en blanco. Con la foto abajo,
    perder el contexto sólo cuesta el efecto.
 2. **Al salir de pantalla el contexto se destruye, no se pausa**, y además hay
@@ -90,7 +101,7 @@ Cuatro cosas de ese shader que parecen detalle y no lo son:
    opaco y `texImage2D` tira `SecurityError` — el mismo motivo por el que la
    obra del pie viene precocinada en `assets/arte.js`. Está adentro de un
    `try`: queda la foto y listo.
-4. **Abajo de 861px no se instancia nada.** Son 34 texturas sobre una GPU de
+4. **Abajo de 861px no se instancia nada.** Son 35 texturas sobre una GPU de
    teléfono, justo donde peor se conecta. Mismo corte que el zoom del bento.
 
 **Los filtros** desvanecen en dos tiempos (primero la opacidad, después salen
@@ -122,7 +133,7 @@ del flujo); de una sola vez la grilla pega un salto seco.
 
 ## Chequeo
 
-`tools/check-portfolio.mjs` — 48 aserciones. Se sirve por HTTP y no por
+`tools/check-portfolio.mjs` — 49 aserciones. Se sirve por HTTP y no por
 `file://` a propósito: con `file://` las capturas son origen opaco y el shader
 no se podría probar nunca.
 
@@ -131,10 +142,13 @@ npm i puppeteer-core          # sólo para la herramienta
 node tools/check-portfolio.mjs
 ```
 
+**El total no está escrito en el chequeo**: lo lee del array de `portfolio.js`,
+igual que la página. Sumar un proyecto no obliga a tocarlo.
+
 Verifica lo que no se ve mirando: que la grilla se arme completa, que las
 cuentas de los rubros sumen el total, que el filtro deje sólo lo que
 corresponde, que el titular respete la escala del H1 de la home, que el tope de
-contextos WebGL se respete al recorrer las 34 tarjetas, que con
+contextos WebGL se respete al recorrer todas las tarjetas, que con
 `prefers-reduced-motion` quede completa y quieta, que **sin GSAP la página no
 quede en negro**, que los links vuelvan a la home, que no haya scroll
 horizontal entre 360 y 1920px y que el foco de teclado tenga outline rojo.

@@ -40,7 +40,7 @@ están propuestos, no dictados:
 
 **2. El contador de proyectos está escrito a mano en tres lugares** de este
 `index.html`: `.hero__meta`, el `.card__n` de la celda 5 del bento y el
-`.work__cap-t`, que lo dice con letras ("Treinta y cuatro proyectos"). La
+`.work__cap-t`, que lo dice con letras ("Treinta y cinco proyectos"). La
 verdad la tiene el array `PROYECTOS` de `portfolio/portfolio.js`, y
 `tools/check.mjs` compara los dos y falla si no coinciden — que es como se
 descubrió que acá decía 26 mientras el portfolio ya tenía 34.
@@ -277,7 +277,7 @@ completar el formulario.
 
 Mide **PageView** en las dos páginas y **Lead** en las dos vías reales de
 contacto: click en cualquier CTA de WhatsApp y envío correcto del formulario.
-Un click en una de las 34 tarjetas del portfolio **no** es un Lead.
+Un click en una de las tarjetas del portfolio **no** es un Lead.
 
 - **Es `Lead` y no `Contact`** porque el píxel ya venía midiendo "Cliente
   potencial" del sitio viejo: cambiar el evento partiría el histórico en dos y
@@ -320,9 +320,20 @@ scrub del bento se apague abajo de 860px, que no haya scroll horizontal entre
 
 ```bash
 npm i puppeteer-core sharp    # SÓLO para las herramientas, el sitio no usa nada
-node tools/check.mjs             # la home — 87 aserciones
-node tools/check-portfolio.mjs   # /portfolio — 48 aserciones
+node tools/check.mjs             # la home — 98 aserciones
+node tools/check-portfolio.mjs   # /portfolio — 49 aserciones
 node tools/check-pixel.mjs       # el píxel de Meta — 19 aserciones
+```
+
+⚠ En una máquina sin GPU disponible —Chrome headless cayendo a render por
+software— la única que falla es **"el pie anima sin comerse los cuadros"**: mide
+cuadros por segundo con el canvas de la obra corriendo y da 20-30 en vez de 50.
+Es el entorno, no el sitio.
+
+Para sumar una captura al portfolio:
+
+```bash
+node tools/cap-portfolio.mjs https://sitio.com/ port-nombre.webp
 ```
 
 Instalá eso cuando vayas a correr algo de `tools/`, y después borrá

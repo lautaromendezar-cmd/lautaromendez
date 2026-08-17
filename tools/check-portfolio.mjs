@@ -18,6 +18,14 @@ const CHROME = 'C:/Program Files/Google/Chrome/Application/chrome.exe';
 const RAIZ   = path.resolve(import.meta.dirname, '..');
 const sleep  = (ms) => new Promise((r) => setTimeout(r, ms));
 
+/* El total no se escribe acá: sale del mismo array que arma la página, que es
+   la única fuente. Con el número a mano, sumar un proyecto rompía siete
+   aserciones que no tenían nada de malo y había que ir a corregirlas de a una. */
+const FUENTE = fs.readFileSync(path.join(RAIZ, 'portfolio/portfolio.js'), 'utf8');
+const CATS   = [...FUENTE.matchAll(/^\s*\{ img: .*?cat: '([a-z]+)'/gm)].map((m) => m[1]);
+const TOTAL  = CATS.length;
+const porCat = (c) => CATS.filter((x) => x === c).length;
+
 let pass = 0, fail = 0;
 const ok  = (n, x = '') => { pass++; console.log(`  OK   ${n}${x ? '  — ' + x : ''}`); };
 const bad = (n, x = '') => { fail++; console.log(`  FAIL ${n}${x ? '  — ' + x : ''}`); };
@@ -71,7 +79,7 @@ console.log('\n[1] Armado');
   is(page.__errs.length === 0, 'sin errores de consola', page.__errs[0] || '');
 
   const n = await page.$$eval('.pf-card', (e) => e.length);
-  is(n === 34, 'la grilla tiene 34 tarjetas', `hay ${n}`);
+  is(n === TOTAL, `la grilla tiene ${TOTAL} tarjetas`, `hay ${n}`);
 
   /* Hay que recorrer la página: las capturas van con loading="lazy" y las de
      abajo del pliegue todavía no empezaron a bajar. Medir sin scrollear daba
@@ -93,11 +101,11 @@ console.log('\n[1] Armado');
   await sleep(400);
   const rotas = await page.$$eval('.pf-card__img', (imgs) =>
     imgs.filter((i) => !i.complete || i.naturalWidth === 0).map((i) => i.getAttribute('src')));
-  is(rotas.length === 0, 'las 34 capturas cargan', rotas.join(', '));
+  is(rotas.length === 0, `las ${TOTAL} capturas cargan`, rotas.join(', '));
 
   const cont = await page.$eval('#pfN', (e) => e.textContent.trim());
   const rub  = await page.$eval('#pfR', (e) => e.textContent.trim());
-  is(cont === '34', 'el contador del hero dice 34', `dice ${cont}`);
+  is(cont === String(TOTAL), `el contador del hero dice ${TOTAL}`, `dice ${cont}`);
   is(rub === '8', 'el contador de rubros dice 8', `dice ${rub}`);
   await page.close();
 }
@@ -121,7 +129,7 @@ console.log('\n[2] Filtros');
   await sleep(500);
   const vis = await page.$$eval('.pf-card', (c) =>
     c.filter((x) => !x.hidden).map((x) => x.dataset.cat));
-  const nTurismo = 5;   /* house in baires, luxor, uantu, tr3, ba city */
+  const nTurismo = porCat('turismo');   /* house in baires, luxor, uantu, tr3, ba city */
   is(vis.length === nTurismo && vis.every((c) => c === 'turismo'),
      'filtrar por turismo deja sólo turismo', `${vis.length} visibles`);
   is(await page.$eval('.pf-f[data-cat="turismo"]', (b) => b.getAttribute('aria-pressed')) === 'true',
@@ -130,7 +138,7 @@ console.log('\n[2] Filtros');
   await page.click('.pf-f[data-cat="all"]');
   await sleep(500);
   const todas = await page.$$eval('.pf-card', (c) => c.filter((x) => !x.hidden).length);
-  is(todas === 34, 'volver a "Todos" muestra las 34', `${todas}`);
+  is(todas === TOTAL, `volver a "Todos" muestra las ${TOTAL}`, `${todas}`);
   await page.close();
 }
 
@@ -147,8 +155,29 @@ console.log('\n[3] Titular');
     t.every((x) => getComputedStyle(x).visibility === 'hidden' || +getComputedStyle(x).opacity === 0));
   is(plano, 'el texto plano se apagó recién después del morph');
 
-  const rojos = await page.$$eval('#pfH1 path', (p) =>
-    p.filter((x) => x.getAttribute('fill').toUpperCase().includes('FF2D46')).length);
+  /* El color se lee normalizado a rgb y se espera a que la entrada del morph
+     cierre. Mientras el tween corre GSAP escribe el fill como rgb(); buscar el
+     texto "FF2D46" a los 2,2s ataba la aserción al milisegundo exacto en que
+     se miraba, y una tarjeta más en la grilla ya alcanzaba para romperla. */
+  const CANON = `(el) => {
+    const f = el.getAttribute('fill');
+    if (!f.startsWith('#')) return f.replace(/\\s/g, '');
+    const h = f.slice(1);
+    return 'rgb(' + [0, 2, 4].map((i) => parseInt(h.slice(i, i + 2), 16)) + ')';
+  }`;
+  const SIGNAL = 'rgb(255,45,70)', HUESO = 'rgb(237,235,232)';
+
+  let cerro = true;
+  await page.waitForFunction(
+    `[...document.querySelectorAll('#pfH1 path')].map(${CANON})
+       .filter((c) => c === '${HUESO}').length === 15`,
+    { timeout: 8000 }
+  ).catch(() => (cerro = false));
+  is(cerro, 'la entrada del morph cierra en las letras armadas');
+
+  const rojos = await page.$$eval('#pfH1 path',
+    (p, canon, signal) => p.map(new Function('return ' + canon)()).filter((c) => c === signal).length,
+    CANON, SIGNAL);
   is(rojos === 1, 'sólo el punto final va en rojo', `${rojos} paths rojos`);
 
   const vb = await page.$eval('#pfH1', (s) => s.getAttribute('viewBox'));
@@ -189,8 +218,8 @@ console.log('\n[4] Shader de las capturas');
   is(foto === 'visible', 'la captura queda visible debajo del canvas (respaldo)');
 
   /* Recorrer la grilla entera contando contextos vivos: lo que se prueba es
-     que la baja al salir de pantalla realmente ocurre. Sin eso las 34
-     tarjetas dejarían 34 contextos y el navegador corta cerca de 16. */
+     que la baja al salir de pantalla realmente ocurre. Sin eso cada tarjeta
+     dejaría su contexto vivo y el navegador corta cerca de 16. */
   let pico = 0;
   for (let i = 0; i < 14; i++) {
     await page.evaluate(() => window.scrollBy(0, 420));
@@ -200,7 +229,7 @@ console.log('\n[4] Shader de las capturas');
   /* El tope del código es 10. Se deja margen de uno por si la baja de un
      desalojo y la alta del que entra se cruzan en el mismo cuadro. */
   is(pico > 0 && pico <= 11, 'el tope de contextos WebGL se respeta al recorrer la grilla',
-     `pico de ${pico} simultáneos sobre 34 tarjetas`);
+     `pico de ${pico} simultáneos sobre ${TOTAL} tarjetas`);
   is(page.__errs.filter((e) => /context lost|context_lost/i.test(e)).length === 0,
      'ningún contexto se perdió por llegar al tope', page.__errs.find((e) => /context/i.test(e)) || '');
   await page.close();
@@ -213,7 +242,7 @@ console.log('\n[5] prefers-reduced-motion');
   await sleep(900);
 
   const n = await page.$$eval('.pf-card', (c) => c.filter((x) => !x.hidden).length);
-  is(n === 34, 'la grilla queda completa', `${n}`);
+  is(n === TOTAL, 'la grilla queda completa', `${n}`);
 
   const opacas = await page.$$eval('.pf-card', (c) =>
     c.every((x) => +getComputedStyle(x).opacity === 1));
@@ -223,7 +252,7 @@ console.log('\n[5] prefers-reduced-motion');
   is(await page.$$eval('#pfH1 path', (p) => p.length) === 0, 'el titular no se morphea');
   is(await page.$eval('#pfH1 text', (t) => getComputedStyle(t).visibility) === 'visible',
      'el titular queda como texto plano legible');
-  is(await page.$eval('#pfN', (e) => e.textContent.trim()) === '34', 'el contador muestra el total sin animar');
+  is(await page.$eval('#pfN', (e) => e.textContent.trim()) === String(TOTAL), 'el contador muestra el total sin animar');
   await page.close();
 }
 
@@ -234,7 +263,7 @@ console.log('\n[6] Sin GSAP');
   await sleep(600);
 
   const n = await page.$$eval('.pf-card', (c) => c.length);
-  is(n === 34, 'la grilla se arma igual', `${n}`);
+  is(n === TOTAL, 'la grilla se arma igual', `${n}`);
 
   const opacas = await page.$$eval('.pf-card', (c) =>
     c.every((x) => +getComputedStyle(x).opacity === 1));

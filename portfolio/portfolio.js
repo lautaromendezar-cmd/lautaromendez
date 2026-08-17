@@ -35,6 +35,7 @@ const RUBROS = {
 };
 
 const PROYECTOS = [
+  { img: 'port-pll.webp',               n: 'PLL Estudio Jurídico',       r: 'Servicios · Estudio jurídico',      cat: 'servicios',   url: 'https://www.estudiopll.com.ar/' },
   { img: 'port-place-vendome.webp',     n: 'Place Vendôme',              r: 'Inmobiliaria · Desarrollo premium', cat: 'otros',       url: 'https://placevendome.com.ar/' },
   { img: 'port-house-in-baires.webp',   n: 'House in Baires',            r: 'Turismo · Alquiler temporario',     cat: 'turismo',     url: 'https://www.houseinbaires.com.ar/' },
   { img: 'port-liliana-donato.webp',    n: 'Liliana Donato',             r: 'Arte · Portfolio de artista',       cat: 'otros',       url: 'https://www.liliana-donato.com.ar/' },
