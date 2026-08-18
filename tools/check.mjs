@@ -598,6 +598,136 @@ console.log('\n[9] Recursos y links');
   await page.close();
 }
 
+/* ── 10. Animaciones de mobile ─────────────────────────────────────────
+   Abajo de 861px no hay slider ni zoom: en su lugar cada panel entra cuando
+   lo alcanzás y las celdas del bento suben escalonadas. Lo que se chequea acá
+   NO es que se vea lindo —eso se mira— sino el modo de falla que NO se ve al
+   mirar: que algo quede escondido en opacity 0 esperando un disparo que nunca
+   llegó, o que cruzar los 861px deje restos de la otra versión.
+   ─────────────────────────────────────────────────────────────────────── */
+console.log('\n[10] Animaciones de mobile');
+{
+  const mob = await open(390, 844);
+  await sleep(2200);
+
+  /* el título del primer panel arranca escondido y termina visible.
+
+     OJO con el scroll: la hoja trae `scroll-behavior: smooth`, así que un
+     scrollTo normal PLANEA hasta el destino y el chequeo se pone a medir
+     mientras todavía está viajando. Todo lo de acá abajo va con
+     `behavior: 'instant'`: lo que se está probando es la animación de la
+     página, no la del scroll. */
+  await mob.evaluate(() => {
+    const p = document.querySelector('.panel--a');
+    window.scrollTo({ top: window.scrollY + p.getBoundingClientRect().top - window.innerHeight * .6, behavior: 'instant' });
+  });
+  const paso = [];
+  for (let i = 0; i < 12; i++) {
+    paso.push(await mob.evaluate(() => {
+      const c = document.querySelectorAll('.panel--a .panel__t .c');
+      const cs = getComputedStyle(c[Math.min(3, c.length - 1)]);
+      return { op: +cs.opacity, color: cs.color };
+    }));
+    await sleep(90);
+  }
+  is(paso.some(m => m.op < .9), 'el título del panel entra animado');
+  is(paso.some(m => { const [r, g] = m.color.match(/\d+/g).map(Number); return r > 200 && g < 200; }),
+     'y pasa por el acento antes de asentarse');
+
+  /* El bento: las celdas se mueven y el 35 se cuenta solo.
+
+     Se para la celda JUSTO antes de su disparador y recién ahí se cruza, de un
+     paso corto. Muestrear mientras se scrollea a saltos grandes hacía pasar la
+     ventana entera —la entrada dura .7s— entre dos muestras, y el chequeo
+     fallaba o no según cómo cayera el redondeo.
+
+     El destino sale del `start` que calculó el propio ScrollTrigger y no de
+     medir el rect a mano. Y antes de medir hay que estabilizar la página: las
+     8 imágenes del anillo son lazy, van cargando a medida que se baja y cada
+     una corre el disparador de la celda que estamos por cruzar. Sin esto el
+     destino se movía 250px abajo de los pies y la celda quedaba parada donde
+     ya no había nada que disparar. */
+  await mob.evaluate(async () => {
+    const imgs = [...document.querySelectorAll('#bento img')];
+    imgs.forEach((i) => { i.loading = 'eager'; });
+    await Promise.all(imgs.map((i) => i.complete ? null
+      : new Promise((r) => { i.onload = i.onerror = r; })));
+    ScrollTrigger.refresh();
+  });
+  await sleep(400);
+  await mob.evaluate(() => {
+    const h = document.querySelector('.tile--hero');
+    const st = ScrollTrigger.getAll().find(t => t.trigger === h);
+    window.scrollTo({ top: st.start - 40, behavior: 'instant' });
+  });
+  await sleep(500);
+  /* cruza el disparador y nada más */
+  await mob.evaluate(() => window.scrollBy({ top: 60, behavior: 'instant' }));
+  const bento = [];
+  for (let i = 0; i < 14; i++) {
+    bento.push(await mob.evaluate(() => ({
+      op: +getComputedStyle(document.querySelector('.tile--hero')).opacity,
+      n: +document.querySelector('.card__n').textContent
+    })));
+    await sleep(55);
+  }
+  is(bento.some(x => x.op < .95), 'las celdas del bento entran animadas');
+  is(bento.some(x => x.n < 35 && x.n > 0), 'el 35 se cuenta solo',
+     'valores ' + [...new Set(bento.map(x => x.n))].join('/'));
+  /* el reinicio a cero SÓLO puede pasar con la celda todavía transparente: si
+     no, el visitante lee 35 y lo ve volver a cero de golpe */
+  is(!bento.some(x => x.op > .9 && x.n < 5), 'y el reinicio a cero no se llega a ver');
+
+  /* recorrer toda la página y verificar que NADA quedó escondido */
+  const alto = await mob.evaluate(() => document.documentElement.scrollHeight);
+  for (let y = 0; y < alto; y += 420) {
+    await mob.evaluate((y) => window.scrollTo({ top: y, behavior: 'instant' }), y);
+    await sleep(110);
+  }
+  await sleep(1500);
+  const invisibles = await mob.evaluate(() => [...document.querySelectorAll(
+    '.panel__t .c, .panel__path, .panel__d, .panel__cols, #bento .tile, .work__intro, .svc__intro')]
+    .filter(el => +getComputedStyle(el).opacity < .95 || getComputedStyle(el).visibility === 'hidden')
+    .map(el => el.className));
+  is(invisibles.length === 0, 'nada queda invisible después de recorrer la página',
+     invisibles.slice(0, 3).join(', '));
+  is(await mob.evaluate(() => document.querySelector('.card__n').textContent === '35'),
+     'el contador termina en 35');
+  is(mob.__errs.length === 0, 'sin errores de consola en mobile', mob.__errs.slice(0, 2).join(' | '));
+  await mob.close();
+
+  /* ── el cruce de los 861px, en los dos sentidos ────────────────────── */
+  const cruce = await open(390, 844);
+  await sleep(2000);
+  await cruce.evaluate(() => window.scrollTo({ top: 3000, behavior: 'instant' }));
+  await sleep(900);
+  await cruce.setViewport({ width: 1440, height: 900 });
+  await sleep(1700);
+  const aEscritorio = await cruce.evaluate(() => ({
+    slider: document.querySelector('#svcStage').classList.contains('is-slider'),
+    zoom: document.querySelector('#workStage').classList.contains('is-zoom')
+  }));
+  is(aEscritorio.slider && aEscritorio.zoom, 'al pasar a 1440 se encienden el slider y el zoom');
+
+  await cruce.setViewport({ width: 390, height: 844 });
+  await sleep(1700);
+  const deVuelta = await cruce.evaluate(() => ({
+    slider: document.querySelector('#svcStage').classList.contains('is-slider'),
+    zoom: document.querySelector('#workStage').classList.contains('is-zoom'),
+    escala: gsap.getProperty('#bento', 'scale'),
+    n: document.querySelector('.card__n').textContent,
+    escondidos: [...document.querySelectorAll('.panel__t .c, #bento .tile')]
+      .filter(el => +getComputedStyle(el).opacity < .95).length
+  }));
+  is(!deVuelta.slider && !deVuelta.zoom && deVuelta.escala === 1,
+     'y al volver a 390 se apagan sin dejar la grilla escalada', 'escala ' + deVuelta.escala);
+  is(deVuelta.escondidos === 0, 'el cruce no deja nada escondido', deVuelta.escondidos + ' escondidos');
+  is(deVuelta.n === '35', 'ni el contador a medio camino', 'quedó en ' + deVuelta.n);
+  is(cruce.__errs.length === 0, 'y sin errores al cruzar', cruce.__errs.slice(0, 2).join(' | '));
+  await cruce.close();
+}
+
+
 console.log(`\n${'─'.repeat(56)}\n  ${pass} OK · ${fail} FAIL\n`);
 await browser.close();
 process.exit(fail ? 1 : 0);

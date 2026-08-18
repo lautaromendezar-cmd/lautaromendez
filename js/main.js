@@ -291,7 +291,9 @@ function servicesSlider() {
 
   /* matchMedia crea y destruye todo al cruzar los 861px, y revierte los
      estilos inline que dejó GSAP: abajo de eso los paneles se apilan. */
-  gsap.matchMedia().add('(min-width: 861px)', () => {
+  const mm = gsap.matchMedia();
+
+  mm.add('(min-width: 861px)', () => {
     /* recién acá el CSS pasa de apilado a pantalla completa */
     stage.classList.add('is-slider');
 
@@ -388,6 +390,66 @@ function servicesSlider() {
       marcar(0);
     };
   });
+
+  /* ── Mobile: la misma coreografía, sin cortina ───────────────────────────
+     Abajo de 861px los paneles se leen apilados y hasta acá se quedaban
+     quietos: el slider era TODO el movimiento de la sección y en el teléfono
+     no existe. Esto no es el slider achicado —tres paneles de 100svh no
+     entran en 390px— sino la entrada de cada panel cuando lo alcanzás.
+
+     `once`: el recorrido vertical es largo y volver a animar al subir
+     convierte la lectura en un parpadeo. */
+  mm.add('(max-width: 860px)', () => {
+    /* con reduced-motion no hay nada que encender: apilado y quieto ya es
+       exactamente lo que pidió el visitante */
+    if (REDUCED) return;
+
+    const vivas = [];
+
+    const disparos = paneles.map((p, i) => {
+      const extras = [$('.panel__path', p), ...restos[i]].filter(Boolean);
+
+      return ScrollTrigger.create({
+        trigger: p,
+        start: 'top 76%',
+        once: true,
+        /* La timeline se arma ACÁ ADENTRO y no antes. Un fromTo aplica su
+           estado inicial apenas se crea: armadas de entrada, las tres
+           quedarían en opacity 0 esperando un disparo que, si algo falla, no
+           llega nunca. Construida en el onEnter, lo peor que puede pasar es
+           que no se anime — el texto ya está en pantalla. */
+        onEnter: () => {
+          const tl = gsap.timeline({
+            /* el clearProps devuelve el color al del CSS y saca los transform
+               inline, que si no le ganan a cualquier cosa que venga después */
+            onComplete: () => gsap.set([...letras[i], ...extras],
+              { clearProps: 'transform,opacity,color' })
+          });
+
+          tl.fromTo(letras[i],
+              { yPercent: 116, opacity: 0 },
+              { yPercent: 0, opacity: 1, duration: .62, ease: 'expo.out', stagger: .018 })
+            /* mismo destello del acento al hueso que en escritorio: el rojo
+               pasa por el título, no se queda a vivir ahí */
+            .fromTo(letras[i],
+              { color: token('--signal') },
+              { color: token('--bone'), duration: .45, ease: 'power2.out', stagger: .018 }, .08)
+            .fromTo(extras,
+              { y: 18, opacity: 0 },
+              { y: 0, opacity: 1, duration: .55, ease: 'expo.out', stagger: .07 }, .14);
+
+          vivas.push(tl);
+        }
+      });
+    });
+
+    return () => {
+      disparos.forEach((t) => t.kill());
+      vivas.forEach((t) => t.kill());
+      gsap.set([...letras.flat(), ...restos.flat(), ...$$('.panel__path', stage)],
+        { clearProps: 'all' });
+    };
+  });
 }
 
 /* ══════════════════════════════════════════════════════════════════════════
@@ -412,7 +474,9 @@ function bento() {
 
   const anillo = $$('.tile:not(.tile--hero)', grid);
 
-  gsap.matchMedia().add('(min-width: 861px)', () => {
+  const mm = gsap.matchMedia();
+
+  mm.add('(min-width: 861px)', () => {
     stage.classList.add('is-zoom');
 
     /* offsetWidth y no getBoundingClientRect: el rect ya viene multiplicado
@@ -459,6 +523,74 @@ function bento() {
         { clearProps: 'all' });
     };
   });
+
+  /* ── Mobile: sin zoom, pero no muerto ────────────────────────────────────
+     El zoom pide una pantalla ancha y una GPU que no sea la de un teléfono,
+     así que abajo de 861px la grilla se scrollea y listo. El problema es que
+     era el momento más fuerte de la página y en mobile no quedaba NADA: una
+     lista de capturas quietas. Lo reemplazan dos cosas mucho más baratas.
+     ─────────────────────────────────────────────────────────────────────── */
+  mm.add('(max-width: 860px)', () => {
+    if (REDUCED) return;
+
+    const tiles = $$('.tile', grid);
+
+    /* 2. El premio de la sección pasa a ser el número: en escritorio el zoom
+       termina en el cartel del portfolio, acá el 35 se cuenta solo. Es la
+       misma promesa contada en un gesto que entra en 390px.
+
+       El HTML trae el 35 puesto —tiene que estar ahí sin JS— así que contar
+       arranca por REINICIARLO a cero, y eso sólo puede pasar mientras la celda
+       está invisible. Por eso no tiene ScrollTrigger propio: lo dispara el
+       fundido de su propia celda, abajo. Con un trigger aparte el visitante
+       llegaba a leer el 35 y lo veía volver a cero. */
+    const nEl = $('.card__n', hero);
+    const destino = parseInt(nEl ? nEl.textContent : '', 10);
+    let cuenta;
+
+    const contar = () => {
+      if (!nEl || !(destino > 0)) return;
+      const obj = { v: 0 };
+      nEl.textContent = '0';
+      cuenta = gsap.to(obj, {
+        v: destino,
+        duration: 1.1,
+        ease: 'expo.out',
+        /* onUpdate y no un tween sobre textContent: gsap.to({}) no dispara
+           onUpdate si el objeto no tiene la propiedad que se anima */
+        onUpdate: () => { nEl.textContent = Math.round(obj.v); },
+        onComplete: () => { nEl.textContent = destino; }
+      });
+    };
+
+    /* 1. Las celdas entran escalonadas. batch y no un trigger por celda: las
+       que aparecen juntas tienen que moverse juntas y en cascada entre sí, no
+       cada una arrancando por su cuenta. batchMax 3 es lo más que puede
+       entrar de una en el peor caso (dos columnas entre 561 y 860px). */
+    const lote = ScrollTrigger.batch(tiles, {
+      start: 'top 92%',
+      once: true,
+      batchMax: 3,
+      /* fromTo adentro del onEnter, igual que en los paneles: nada queda
+         escondido de antemano esperando un disparo que puede no llegar */
+      onEnter: (grupo) => {
+        gsap.fromTo(grupo,
+          { y: 26, opacity: 0 },
+          { y: 0, opacity: 1, duration: .7, ease: 'expo.out', stagger: .09,
+            clearProps: 'transform,opacity' });
+        if (grupo.includes(hero)) contar();
+      }
+    });
+
+    return () => {
+      lote.forEach((t) => t.kill());
+      if (cuenta) cuenta.kill();
+      /* el número vuelve a su valor final: si el visitante cruza a escritorio
+         a mitad del conteo, la celda se quedaría con un 19 */
+      if (nEl && destino > 0) nEl.textContent = destino;
+      gsap.set(tiles, { clearProps: 'transform,opacity' });
+    };
+  });
 }
 
 /* ══════════════════════════════════════════════════════════════════════════
@@ -467,7 +599,7 @@ function bento() {
 function reveals() {
   /* los paneles de servicios NO entran acá: ya los mueve el slider, y dos
      animaciones sobre el mismo transform se pisan */
-  $$('.shead, .svc__intro, .svc__foot, .ct__left, .ct__right, .ft__lock').forEach((el) => {
+  $$('.svc__intro, .work__intro, .svc__foot, .ct__left, .ct__right, .ft__lock').forEach((el) => {
     gsap.from(el, {
       y: 26,
       opacity: 0,

@@ -318,11 +318,21 @@ links de WhatsApp, que el scramble arranque recién al entrar en pantalla, que e
 scrub del bento se apague abajo de 860px, que no haya scroll horizontal entre
 360 y 1920px y que el foco de teclado tenga outline rojo.
 
+El bloque 10 mira la versión de mobile, y ahí lo que importa no es que se vea
+lindo —eso se mira— sino el modo de falla que NO se ve mirando: que nada quede
+escondido en `opacity: 0` esperando un disparo que nunca llegó, que el reinicio
+del contador a cero pase con la celda todavía transparente, y que cruzar los
+861px en los dos sentidos no deje restos de la otra versión. Un detalle para el
+que vaya a escribir más chequeos ahí: la hoja trae `scroll-behavior: smooth`,
+así que todo scroll de prueba va con `behavior: 'instant'` — si no, el chequeo
+se pone a medir mientras la página todavía está viajando y falla o pasa según
+cómo caiga el redondeo.
+
 ```bash
 npm i puppeteer-core sharp    # SÓLO para las herramientas, el sitio no usa nada
-node tools/check.mjs             # la home — 98 aserciones
+node tools/check.mjs             # la home — 111 aserciones
 node tools/check-portfolio.mjs   # /portfolio — 49 aserciones
-node tools/check-pixel.mjs       # el píxel de Meta — 19 aserciones
+node tools/check-pixel.mjs       # el píxel de Meta — 21 aserciones
 ```
 
 ⚠ En una máquina sin GPU disponible —Chrome headless cayendo a render por
@@ -390,6 +400,16 @@ funciona igual abriendo el `index.html` desde el disco.
   de tamaño y no el absoluto. `expoScale(1, S)` compensa eso. Es la diferencia
   entre que parezca un efecto y que parezca una cámara. Viene de `EasePack`,
   que por eso es el cuarto script de GSAP en el HTML.
+- **En mobile el premio del bento es el número, no el zoom.** El zoom pide
+  pantalla ancha y una GPU que no sea la de un teléfono, así que abajo de
+  861px la grilla se scrollea y listo — pero era el momento más fuerte de la
+  página y no quedaba nada. Lo reemplazan las celdas entrando escalonadas
+  (`ScrollTrigger.batch`, hasta 3 juntas) y el 35 contándose solo. El contador
+  NO tiene disparador propio: lo llama el fundido de su propia celda. El HTML
+  trae el 35 puesto —tiene que estar ahí sin JS— así que contar arranca por
+  reiniciarlo a cero, y eso sólo puede pasar mientras la celda está invisible;
+  con un trigger aparte el visitante llegaba a leer el 35 y lo veía volver a
+  cero de golpe.
 - **La celda del centro es la invitación al portfolio, no un trabajo.** Si
   algún día se pone una foto ahí: probé el caso y medí con varianza del
   laplaciano que Chrome re-rasteriza bien al escalar (renderizado 528 contra
@@ -426,8 +446,16 @@ funciona igual abriendo el `index.html` desde el disco.
      acento de la página.
   5. **Las timelines de entrada se construyen adentro de `matchMedia`.** Un
      `fromTo` aplica su estado inicial apenas se crea, así que fuera de ahí
-     dejaría los títulos invisibles en mobile, donde nadie los va a animar.
-  6. **El panel B es el único con la base levantada** (#131A24 contra ~#09090C
+     dejaría los títulos invisibles del otro lado del breakpoint.
+  6. **En mobile el panel entra igual, pero sin cortina.** El slider era TODO
+     el movimiento de la sección y abajo de 861px no existe: los paneles se
+     quedaban quietos. No se achica el slider —tres paneles de 100svh no
+     entran en 390px— sino que cada panel apilado hace su entrada cuando lo
+     alcanzás, con la misma cascada de letras y el mismo destello del acento.
+     La timeline se arma adentro del `onEnter`, no antes: así lo peor que
+     puede pasar es que no se anime, en vez de dejar el texto escondido
+     esperando un disparo que si algo falla no llega nunca.
+  7. **El panel B es el único con la base levantada** (#131A24 contra ~#09090C
      de los otros dos). Ese salto de luminancia —medido: 15 → 34 → 16 sobre
      255— es lo que hace que el cambio de panel se lea de golpe. Con tres
      negros distintos no se notaba nada.
