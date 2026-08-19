@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Propuesta — Samba Discos</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --negro: #0a0a0a;
+    --hueso: #f0ebe0;
+    --naranja: #e85d04;
+    --gris: #1a1a1a;
+    --gris-medio: #2e2e2e;
+    --gris-texto: #888;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--negro);
+    color: var(--hueso);
+    font-family: 'Crimson Text', Georgia, serif;
+    font-size: 18px;
+    line-height: 1.7;
+  }
+
+  /* Grain overlay */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.4;
+  }
+
+  .wrap {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 60px 32px 100px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Header */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 70px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid var(--gris-medio);
+  }
+
+  .logo-area h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 13px;
+    letter-spacing: 4px;
+    color: var(--naranja);
+    margin-bottom: 4px;
+  }
+
+  .logo-area p {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--gris-texto);
+    letter-spacing: 1px;
+  }
+
+  .fecha {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--gris-texto);
+    text-align: right;
+    letter-spacing: 1px;
+  }
+
+  /* Hero */
+  .hero {
+    margin-bottom: 64px;
+  }
+
+  .hero-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--naranja);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .hero h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(52px, 9vw, 82px);
+    line-height: 0.95;
+    letter-spacing: 1px;
+    color: var(--hueso);
+    margin-bottom: 28px;
+  }
+
+  .hero h2 span {
+    color: var(--naranja);
+  }
+
+  .hero-intro {
+    font-size: 19px;
+    color: #c5bfb0;
+    max-width: 560px;
+    line-height: 1.75;
+  }
+
+  /* Demo highlight */
+  .demo-box {
+    background: var(--gris);
+    border: 1px solid var(--gris-medio);
+    border-left: 3px solid var(--naranja);
+    padding: 28px 32px;
+    margin: 48px 0;
+    border-radius: 2px;
+  }
+
+  .demo-box p {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: var(--gris-texto);
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+  }
+
+  .demo-box a {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    color: var(--naranja);
+    text-decoration: none;
+    letter-spacing: 2px;
+    transition: opacity 0.2s;
+  }
+
+  .demo-box a:hover { opacity: 0.7; }
+
+  .demo-box .demo-desc {
+    font-family: 'Crimson Text', serif;
+    font-size: 15px;
+    color: var(--gris-texto);
+    margin-top: 10px;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+
+  /* Secciones */
+  section {
+    margin-bottom: 60px;
+  }
+
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--naranja);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--gris-medio);
+  }
+
+  h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 32px;
+    letter-spacing: 1px;
+    color: var(--hueso);
+    margin-bottom: 20px;
+  }
+
+  p {
+    color: #c5bfb0;
+    margin-bottom: 16px;
+  }
+
+  /* Lista de features */
+  .features {
+    list-style: none;
+    margin: 24px 0;
+  }
+
+  .features li {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--gris-medio);
+    color: #c5bfb0;
+    font-size: 17px;
+  }
+
+  .features li:last-child { border-bottom: none; }
+
+  .features li::before {
+    content: '●';
+    color: var(--naranja);
+    font-size: 8px;
+    margin-top: 7px;
+    flex-shrink: 0;
+  }
+
+  .features li strong {
+    color: var(--hueso);
+    font-weight: 600;
+  }
+
+  /* Pricing */
+  .pricing-card {
+    background: var(--gris);
+    border: 1px solid var(--gris-medio);
+    border-radius: 4px;
+    padding: 40px;
+    margin: 32px 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .pricing-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--naranja);
+  }
+
+  .precio-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--gris-texto);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  .precio-valor {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 64px;
+    color: var(--hueso);
+    line-height: 1;
+    margin-bottom: 6px;
+    letter-spacing: 1px;
+  }
+
+  .precio-valor span {
+    font-size: 28px;
+    color: var(--gris-texto);
+  }
+
+  .precio-sub {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--gris-texto);
+    margin-bottom: 32px;
+    letter-spacing: 1px;
+  }
+
+  .precio-incluye {
+    list-style: none;
+    margin-bottom: 32px;
+  }
+
+  .precio-incluye li {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--gris-medio);
+    color: #c5bfb0;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .precio-incluye li::before {
+    content: '✓';
+    color: var(--naranja);
+    font-weight: bold;
+    font-family: monospace;
+  }
+
+  /* Retainer */
+  .retainer-card {
+    background: transparent;
+    border: 1px solid var(--gris-medio);
+    border-radius: 4px;
+    padding: 32px 40px;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .retainer-card .r-left p {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--gris-texto);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .retainer-card .r-left h4 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 26px;
+    color: var(--hueso);
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+  }
+
+  .retainer-card .r-left span {
+    font-size: 14px;
+    color: var(--gris-texto);
+  }
+
+  .retainer-precio {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 42px;
+    color: var(--naranja);
+    letter-spacing: 1px;
+    white-space: nowrap;
+  }
+
+  /* Timeline */
+  .timeline {
+    margin: 24px 0;
+  }
+
+  .timeline-item {
+    display: flex;
+    gap: 24px;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--gris-medio);
+    align-items: flex-start;
+  }
+
+  .timeline-item:last-child { border-bottom: none; }
+
+  .timeline-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 42px;
+    color: var(--gris-medio);
+    line-height: 1;
+    min-width: 44px;
+  }
+
+  .timeline-content h4 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 20px;
+    letter-spacing: 1px;
+    color: var(--hueso);
+    margin-bottom: 6px;
+  }
+
+  .timeline-content p {
+    font-size: 16px;
+    margin: 0;
+  }
+
+  /* Condiciones */
+  .condiciones {
+    background: var(--gris);
+    border-radius: 4px;
+    padding: 32px 40px;
+    margin-top: 16px;
+  }
+
+  .condiciones p {
+    font-size: 16px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .condiciones p::before {
+    content: '—';
+    color: var(--naranja);
+    flex-shrink: 0;
+    font-family: monospace;
+  }
+
+  /* CTA final */
+  .cta-final {
+    margin-top: 72px;
+    padding-top: 48px;
+    border-top: 1px solid var(--gris-medio);
+    text-align: center;
+  }
+
+  .cta-final h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 48px;
+    margin-bottom: 16px;
+  }
+
+  .cta-final p {
+    font-size: 17px;
+    color: var(--gris-texto);
+    margin-bottom: 36px;
+  }
+
+  .cta-firma {
+    margin-top: 48px;
+    padding-top: 32px;
+    border-top: 1px solid var(--gris-medio);
+  }
+
+  .cta-firma p {
+    font-size: 15px;
+    color: var(--gris-texto);
+    margin-bottom: 6px;
+  }
+
+  .cta-firma strong {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 20px;
+    color: var(--hueso);
+    letter-spacing: 2px;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  /* Disco SVG decorativo */
+  .disco-deco {
+    position: fixed;
+    right: -120px;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0.03;
+    pointer-events: none;
+    z-index: 0;
+    animation: spin 40s linear infinite;
+  }
+
+  @keyframes spin {
+    from { transform: translateY(-50%) rotate(0deg); }
+    to { transform: translateY(-50%) rotate(360deg); }
+  }
+
+  @media (max-width: 600px) {
+    .wrap { padding: 40px 20px 80px; }
+    .header { flex-direction: column; gap: 16px; }
+    .fecha { text-align: left; }
+    .retainer-card { flex-direction: column; }
+    .disco-deco { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Disco decorativo de fondo -->
+<svg class="disco-deco" width="500" height="500" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="100" cy="100" r="99" stroke="white" stroke-width="1"/>
+  <circle cx="100" cy="100" r="80" stroke="white" stroke-width="0.5"/>
+  <circle cx="100" cy="100" r="60" stroke="white" stroke-width="0.5"/>
+  <circle cx="100" cy="100" r="40" stroke="white" stroke-width="0.5"/>
+  <circle cx="100" cy="100" r="20" stroke="white" stroke-width="0.5"/>
+  <circle cx="100" cy="100" r="8" fill="white"/>
+  <circle cx="100" cy="100" r="4" fill="#0a0a0a"/>
+</svg>
+
+<div class="wrap">
+
+  <!-- Header -->
+  <header class="header">
+    <div class="logo-area">
+      <h1>Lautaro Méndez</h1>
+      <p>Diseño Web · Sistemas Digitales</p>
+    </div>
+    <div class="fecha">
+      <p>PROPUESTA COMERCIAL</p>
+      <p id="fecha-hoy"></p>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <div class="hero">
+    <p class="hero-label">Para Samba Discos — Cucho</p>
+    <h2>Tu catálogo.<br>Tu <span>vitrina</span>.<br>Tus reglas.</h2>
+    <p class="hero-intro">
+      Un sistema hecho a medida para mostrar tu colección, recibir pedidos por WhatsApp, y gestionar todo desde un panel propio. Sin depender de plataformas genéricas, sin comisiones, sin límites.
+    </p>
+  </div>
+
+  <!-- Demo -->
+  <div class="demo-box">
+    <p>Podés ver cómo queda antes de decidir</p>
+    <a href="http://lautaromendez.com.ar/demos/samba" target="_blank">lautaromendez.com.ar/demos/samba →</a>
+    <p class="demo-desc">Demo funcional con base de datos real. Navegá el catálogo, sumá discos al carrito, y probá cómo llega el pedido por WhatsApp.</p>
+  </div>
+
+  <!-- Qué incluye -->
+  <section>
+    <p class="section-label">01 — Lo que vas a tener</p>
+    <h3>El sistema completo</h3>
+    <p>No es una plantilla adaptada. Es un sistema construido específicamente para una disquería que vende y comunica por WhatsApp.</p>
+
+    <ul class="features">
+      <li><span><strong>Catálogo digital con buscador y filtros por género.</strong> Tus clientes encuentran el disco que buscan en segundos, sin scrollear todo.</span></li>
+      <li><span><strong>Carrito de compras con selector de envío.</strong> El cliente arma su pedido, elige si lo retira o pide envío, y con un clic te manda todo el detalle por WhatsApp.</span></li>
+      <li><span><strong>Pedido automático a WhatsApp.</strong> Llega con la lista de discos, cantidades, método de envío y total. Sin errores, sin idas y vueltas.</span></li>
+      <li><span><strong>Panel de administración propio.</strong> Agregás, editás o desactivás productos, gestionás eventos y revisás el historial de pedidos. Todo desde un mismo lugar, sin tocar código.</span></li>
+      <li><span><strong>Historial de pedidos.</strong> Cada orden que llega por WhatsApp queda guardada con fecha, productos, total y método de envío. Podés marcarlos como pendiente, confirmado o entregado.</span></li>
+      <li><span><strong>Eventos editables.</strong> Fechas, shows, ferias — los cargás y modificás desde el panel. Se muestran en el sitio al instante.</span></li>
+      <li><span><strong>Base de datos real (Supabase).</strong> Soporta hasta 1.000 productos sin problema. Los cambios se reflejan en el catálogo al instante.</span></li>
+      <li><span><strong>Diseño adaptado a celular.</strong> El 80% de tus clientes entra desde el teléfono. El catálogo funciona perfecto en cualquier pantalla.</span></li>
+    </ul>
+  </section>
+
+  <!-- Cómo funciona -->
+  <section>
+    <p class="section-label">02 — El proceso</p>
+    <h3>De cero a online en tres semanas</h3>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <span class="timeline-num">01</span>
+        <div class="timeline-content">
+          <h4>Semana 1 — Base y diseño</h4>
+          <p>Configuración del sistema, carga inicial de productos con las fotos y datos que me pasés, y definición del diseño visual alineado con la identidad de Samba Discos.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-num">02</span>
+        <div class="timeline-content">
+          <h4>Semana 2 — Desarrollo y ajustes</h4>
+          <p>Construcción del catálogo, carrito, flujo de WhatsApp y panel admin. Te muestro una versión para revisar y ajustamos lo que haga falta.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-num">03</span>
+        <div class="timeline-content">
+          <h4>Semana 3 — Publicación</h4>
+          <p>Subida al dominio, pruebas finales, y capacitación de 30 minutos para que cualquiera del equipo pueda gestionar el catálogo.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Inversión -->
+  <section>
+    <p class="section-label">03 — Inversión</p>
+    <h3>Precio del proyecto</h3>
+
+    <div class="pricing-card">
+      <p class="precio-label">Sistema de catálogo completo</p>
+      <div class="precio-valor"><span>$</span> 700.000</div>
+      <p class="precio-sub">ARS · PAGO ÚNICO</p>
+
+      <ul class="precio-incluye">
+        <li>Catálogo con hasta 1.000 productos</li>
+        <li>Carrito y generación de pedido por WhatsApp</li>
+        <li>Historial de pedidos con estados (pendiente / confirmado / entregado)</li>
+        <li>Sección de eventos editable desde el panel</li>
+        <li>Panel de administración con login</li>
+        <li>Importación de productos desde Excel (datos y precios)</li>
+        <li>Publicación en tu dominio</li>
+        <li>Capacitación y 30 días de soporte incluidos</li>
+      </ul>
+    </div>
+
+    <div class="retainer-card">
+      <div class="r-left">
+        <p>Opcional — Carga de imágenes de productos</p>
+        <h4>Carga por lote</h4>
+        <span>Los datos y precios se importan desde Excel sin costo adicional. Las imágenes requieren carga manual una por una — este servicio lo cubre si no querés hacerlo internamente.</span>
+      </div>
+      <div class="retainer-precio">$15.000<br><span style="font-size:16px;color:var(--gris-texto);font-family:'DM Mono',monospace;letter-spacing:1px">/&nbsp;100 DISCOS</span></div>
+    </div>
+
+    <div class="retainer-card">
+      <div class="r-left">
+        <p>Opcional — Mantenimiento mensual</p>
+        <h4>Soporte Continuo</h4>
+        <span>Actualizaciones, cambios de precios masivos, soporte técnico, y ajustes de diseño. Cancelable en cualquier momento.</span>
+      </div>
+      <div class="retainer-precio">$80.000<br><span style="font-size:16px;color:var(--gris-texto);font-family:'DM Mono',monospace;letter-spacing:1px">/ MES</span></div>
+    </div>
+  </section>
+
+  <!-- Condiciones -->
+  <section>
+    <p class="section-label">04 — Condiciones</p>
+    <h3>Cómo trabajamos</h3>
+
+    <div class="condiciones">
+      <p>50% de anticipo para arrancar, 50% al publicar el sitio.</p>
+      <p>Los cambios durante el desarrollo están incluidos. Cambios mayores de alcance se presupuestan aparte.</p>
+      <p>La propuesta tiene validez de 15 días corridos.</p>
+      <p>El hosting de la base de datos (Supabase) es gratuito en el plan que usamos. Si el catálogo crece mucho, el upgrade tiene un costo mínimo que coordinamos juntos.</p>
+      <p>Los datos de productos (nombre, artista, precio, género) se importan desde Excel sin costo adicional. Las imágenes de tapa se cargan una por una — si Samba Discos quiere que lo hagamos nosotros, está disponible como servicio aparte a $15.000 cada 100 discos.</p>
+    </div>
+  </section>
+
+  <!-- CTA final -->
+  <div class="cta-final">
+    <h3>¿Seguimos?</h3>
+    <p>Cualquier duda sobre la demo o el proyecto, escribime y lo charlamos.</p>
+
+    <div class="cta-firma">
+      <p>Lautaro Méndez</p>
+      <strong>DISEÑO WEB · SISTEMAS DIGITALES</strong>
+      <p>lautaromendez.com.ar</p>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  const meses = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+  const hoy = new Date();
+  document.getElementById('fecha-hoy').textContent = `${hoy.getDate()} DE ${meses[hoy.getMonth()].toUpperCase()} ${hoy.getFullYear()}`;
+</script>
+
+</body>
+</html>
