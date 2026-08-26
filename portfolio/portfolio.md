@@ -9,7 +9,7 @@ familia nueva — si cambia la paleta de la home, esta página cambia sola.
 index.html      la página
 portfolio.css   sólo lo propio: hero, filtros, grilla, cierre
 portfolio.js    los datos + el comportamiento
-trabajos/       las 35 capturas (webp, 16:9)
+trabajos/       las 36 capturas (webp, 16:9)
 ```
 
 ---
@@ -51,7 +51,7 @@ nada adentro.
 
 El número de la home **sí** está escrito a mano, en tres lugares de
 `../index.html`: `.hero__meta`, `.card__n` de la celda 5 del bento y el
-`.work__cap-t` (que lo dice con letras: "Treinta y cuatro proyectos"). No hay
+`.work__cap-t` (que lo dice con letras: "Treinta y seis proyectos"). No hay
 JS que los calcule. `tools/check.mjs` compara ese número contra este array y
 falla si no coinciden — que es exactamente cómo se descubrió que la home decía
 26 mientras acá ya había 34.

@@ -40,7 +40,7 @@ están propuestos, no dictados:
 
 **2. El contador de proyectos está escrito a mano en tres lugares** de este
 `index.html`: `.hero__meta`, el `.card__n` de la celda 5 del bento y el
-`.work__cap-t`, que lo dice con letras ("Treinta y cinco proyectos"). La
+`.work__cap-t`, que lo dice con letras ("Treinta y seis proyectos"). La
 verdad la tiene el array `PROYECTOS` de `portfolio/portfolio.js`, y
 `tools/check.mjs` compara los dos y falla si no coinciden — que es como se
 descubrió que acá decía 26 mientras el portfolio ya tenía 34.
@@ -69,8 +69,8 @@ seguir en la **posición 5**. El zoom escala desde `50% 50%`, que es exactamente
 el centro de esa celda; si metés una que ocupe dos columnas, ese punto deja de
 coincidir y el encuadre final queda corrido.
 
-El contador ("26") está escrito a mano en dos lugares: la celda chica
-(`.card__n`) y el cartel final (`.work__cap-t`). No hay JS que lo calcule.
+El contador está escrito a mano en dos lugares: la celda chica (`.card__n`)
+y el cartel final (`.work__cap-t`). No hay JS que lo calcule.
 
 **El hero es un video en loop sobre una imagen fija.** Los prompts que lo
 generaron están en `tools/prompts-hero-v2.md`.

@@ -11,6 +11,12 @@ const ok  = (n, extra = '') => { pass++; console.log(`  OK   ${n}${extra ? '  �
 const bad = (n, extra = '') => { fail++; console.log(`  FAIL ${n}${extra ? '  — ' + extra : ''}`); };
 const is  = (cond, n, extra) => cond ? ok(n, extra) : bad(n, extra);
 
+/* Cuántos proyectos hay. La verdad la tiene SIEMPRE el array de
+   portfolio/portfolio.js: acá no se escribe el número a mano ni una vez, o el
+   día que se suma un proyecto este archivo falla por sí mismo. */
+const TOTAL = (await fs.readFile('portfolio/portfolio.js', 'utf8'))
+  .match(/^\s*\{ img: '/gm)?.length ?? 0;
+
 const browser = await puppeteer.launch({ executablePath: CHROME, headless: 'new', args: ['--hide-scrollbars'] });
 
 async function open(w = 1440, h = 900, opts = {}) {
@@ -392,8 +398,7 @@ console.log('\n[5] Zoom del bento');
      no contra un número fijo: así el día que se agregue un proyecto, es este
      chequeo el que avisa que hay que tocar el index — que es exactamente lo
      que pasó cuando la home decía 26 y el portfolio ya tenía 34. */
-  const enPortfolio = (await fs.readFile('portfolio/portfolio.js', 'utf8'))
-    .match(/^\s*\{ img: '/gm)?.length ?? 0;
+  const enPortfolio = TOTAL;
   is(centro.n === String(enPortfolio),
      'el contador de la celda 5 coincide con el portfolio',
      `la home dice ${centro.n} y el portfolio tiene ${enPortfolio}`);
@@ -634,7 +639,7 @@ console.log('\n[10] Animaciones de mobile');
   is(paso.some(m => { const [r, g] = m.color.match(/\d+/g).map(Number); return r > 200 && g < 200; }),
      'y pasa por el acento antes de asentarse');
 
-  /* El bento: las celdas se mueven y el 35 se cuenta solo.
+  /* El bento: las celdas se mueven y el contador se cuenta solo.
 
      Se para la celda JUSTO antes de su disparador y recién ahí se cruza, de un
      paso corto. Muestrear mientras se scrollea a saltos grandes hacía pasar la
@@ -672,10 +677,10 @@ console.log('\n[10] Animaciones de mobile');
     await sleep(55);
   }
   is(bento.some(x => x.op < .95), 'las celdas del bento entran animadas');
-  is(bento.some(x => x.n < 35 && x.n > 0), 'el 35 se cuenta solo',
+  is(bento.some(x => x.n < TOTAL && x.n > 0), 'el contador se cuenta solo',
      'valores ' + [...new Set(bento.map(x => x.n))].join('/'));
   /* el reinicio a cero SÓLO puede pasar con la celda todavía transparente: si
-     no, el visitante lee 35 y lo ve volver a cero de golpe */
+     no, el visitante lee el total y lo ve volver a cero de golpe */
   is(!bento.some(x => x.op > .9 && x.n < 5), 'y el reinicio a cero no se llega a ver');
 
   /* recorrer toda la página y verificar que NADA quedó escondido */
@@ -691,8 +696,8 @@ console.log('\n[10] Animaciones de mobile');
     .map(el => el.className));
   is(invisibles.length === 0, 'nada queda invisible después de recorrer la página',
      invisibles.slice(0, 3).join(', '));
-  is(await mob.evaluate(() => document.querySelector('.card__n').textContent === '35'),
-     'el contador termina en 35');
+  is(await mob.evaluate((t) => document.querySelector('.card__n').textContent === t, String(TOTAL)),
+     'el contador termina en ' + TOTAL);
   is(mob.__errs.length === 0, 'sin errores de consola en mobile', mob.__errs.slice(0, 2).join(' | '));
   await mob.close();
 
@@ -722,7 +727,7 @@ console.log('\n[10] Animaciones de mobile');
   is(!deVuelta.slider && !deVuelta.zoom && deVuelta.escala === 1,
      'y al volver a 390 se apagan sin dejar la grilla escalada', 'escala ' + deVuelta.escala);
   is(deVuelta.escondidos === 0, 'el cruce no deja nada escondido', deVuelta.escondidos + ' escondidos');
-  is(deVuelta.n === '35', 'ni el contador a medio camino', 'quedó en ' + deVuelta.n);
+  is(deVuelta.n === String(TOTAL), 'ni el contador a medio camino', 'quedó en ' + deVuelta.n);
   is(cruce.__errs.length === 0, 'y sin errores al cruzar', cruce.__errs.slice(0, 2).join(' | '));
   await cruce.close();
 }
