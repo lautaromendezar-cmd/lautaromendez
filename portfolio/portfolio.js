@@ -35,6 +35,7 @@ const RUBROS = {
 };
 
 const PROYECTOS = [
+  { img: 'port-batata-studio.webp',     n: 'Batata Studio',              r: 'Servicios · Estudio de diseño',     cat: 'servicios',   url: 'https://batatastudio.com.ar/' },
   { img: 'port-lga.webp',               n: 'Legal Group Abogados',       r: 'Servicios · Landings por área',     cat: 'servicios',   url: 'https://lga-beta.vercel.app/' },
   { img: 'port-pll.webp',               n: 'PLL Estudio Jurídico',       r: 'Servicios · Estudio jurídico',      cat: 'servicios',   url: 'https://www.estudiopll.com.ar/' },
   { img: 'port-place-vendome.webp',     n: 'Place Vendôme',              r: 'Inmobiliaria · Desarrollo premium', cat: 'otros',       url: 'https://placevendome.com.ar/' },
