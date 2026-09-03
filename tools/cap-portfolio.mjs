@@ -7,12 +7,18 @@
    lo que importa es el encabezado, no el fold entero.
 
        npm i puppeteer-core sharp
-       node tools/cap-portfolio.mjs https://sitio.com/ port-nombre.webp
+       node tools/cap-portfolio.mjs https://sitio.com/ port-nombre.webp [espera_ms]
 
    Espera a networkidle0 y después un par de segundos más: casi todos estos
    sitios entran con animación y sin esa pausa se captura la pantalla a mitad
    del reveal (o directamente en negro, si el CSS oculta hasta que el JS
    revela).
+
+   Esos 3,5 s alcanzan para casi todos, pero no para los que abren con una
+   intro larga: Fosque tarda unos 15 s en terminar de armar el encabezado y
+   sin el tercer argumento se capturaba el titular solo, sin logotipo ni menú.
+   Si la captura sale a medias, subí la espera antes de dar por perdido el
+   sitio.
    ══════════════════════════════════════════════════════════════════════════ */
 import puppeteer from 'puppeteer-core';
 import sharp from 'sharp';
@@ -23,7 +29,8 @@ const CHROME = 'C:/Program Files/Google/Chrome/Application/chrome.exe';
 const RAIZ   = path.resolve(import.meta.dirname, '..');
 const sleep  = (ms) => new Promise((r) => setTimeout(r, ms));
 
-const [url, nombre] = process.argv.slice(2);
+const [url, nombre, espera] = process.argv.slice(2);
+const PAUSA = Number(espera) || 3500;
 if (!url || !nombre) {
   console.error('uso: node tools/cap-portfolio.mjs <url> <port-nombre.webp>');
   process.exit(1);
@@ -49,7 +56,7 @@ console.log(`  ${res.status()}  ${res.url()}`);
 if (!res.ok()) { console.error('  la página no respondió 200'); process.exit(1); }
 
 await page.evaluate(() => document.fonts.ready);
-await sleep(3500);
+await sleep(PAUSA);
 
 const png = await page.screenshot({ type: 'png' });
 await sharp(png).resize(1600, 900).webp({ quality: 82 }).toFile(destino);

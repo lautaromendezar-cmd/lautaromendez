@@ -9,7 +9,7 @@ familia nueva — si cambia la paleta de la home, esta página cambia sola.
 index.html      la página
 portfolio.css   sólo lo propio: hero, filtros, grilla, cierre
 portfolio.js    los datos + el comportamiento
-trabajos/       las 37 capturas (webp, 16:9)
+trabajos/       las 39 capturas (webp, 16:9)
 ```
 
 ---
@@ -34,12 +34,17 @@ Para eso está `tools/cap-portfolio.mjs`, que la saca con el mismo formato que
 las que ya están:
 
 ```bash
-node tools/cap-portfolio.mjs https://sitio.com/ port-nombre.webp
+node tools/cap-portfolio.mjs https://sitio.com/ port-nombre.webp [espera_ms]
 ```
 
 Captura al doble y baja a 1600×900 —así el texto chico no queda sucio— y
 espera unos segundos después de `networkidle0`: casi todos estos sitios entran
 con animación y sin esa pausa se captura a mitad del reveal.
+
+Los 3,5 s por defecto alcanzan para casi todos menos para los que abren con
+una intro larga. Fosque tarda unos 15 s en terminar de armar el encabezado: sin
+el tercer argumento la captura salía con el titular solo, sin logotipo ni menú,
+que en una tarjeta de 16:9 no identifica al sitio. Ahí va `16000`.
 
 `cat` tiene que ser una de estas ocho: `ecommerce`, `gastronomia`,
 `servicios`, `educacion`, `turismo`, `industria`, `tecnologia`, `otros`. Los
@@ -51,7 +56,7 @@ nada adentro.
 
 El número de la home **sí** está escrito a mano, en tres lugares de
 `../index.html`: `.hero__meta`, `.card__n` de la celda 5 del bento y el
-`.work__cap-t` (que lo dice con letras: "Treinta y siete proyectos"). No hay
+`.work__cap-t` (que lo dice con letras: "Treinta y nueve proyectos"). No hay
 JS que los calcule. `tools/check.mjs` compara ese número contra este array y
 falla si no coinciden — que es exactamente cómo se descubrió que la home decía
 26 mientras acá ya había 34.
