@@ -739,6 +739,16 @@ textarea.campo__control { min-height: 160px; resize: vertical; }
    WordPress: no es parte del diseño. */
 .nota-boceto { margin-top: 14px; }
 
+/* Un dato que todavía no tenemos: se ve como hueco, no como texto real. */
+.dato-pendiente {
+  font-family: var(--font-display);
+  font-size: 0.92em;
+  color: var(--color-text-muted);
+  background: rgba(158, 43, 98, .09);
+  padding: 2px 8px;
+  border-radius: 2px;
+}
+
 /* La séptima obra todavía no salió: se anuncia, no se vende.
    La tapa va apagada y con un sello encima para que se lea de un vistazo
    que no se puede comprar. El acento acá es la tinta, no un color de libro:
