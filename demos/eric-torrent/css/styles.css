@@ -273,9 +273,12 @@ p:last-child { margin-bottom: 0; }
 
 /* Logotipo: el símbolo a la izquierda y el nombre al lado.
    El símbolo es el colgante que Eric usa, recortado del fondo negro de la foto
-   que mandó. Va en tinta y no en el dorado original: a 44 px el dorado se apaga
-   y tira a verdoso sobre blanco. El archivo dorado queda en assets/img/simbolo.png
-   por si hace falta en grande.
+   que mandó. Va en el dorado original, que es como él lo quiere.
+   El archivo se genera a 132 px de alto —3x los 44 de pantalla— porque el
+   dorado es una FOTO, no un vector: si se deja que el navegador lo reduzca
+   desde un original grande, los brillos y las sombras se promedian y el oro
+   se apaga hasta parecer oliva. A 3x conserva el brillo y pesa 9 KB.
+   Queda simbolo-tinta.png por si alguna vez se necesita monocromo.
    En Elementor: contenedor en fila con widget Imagen + widget Título del sitio. */
 .logo {
   text-decoration: none;
