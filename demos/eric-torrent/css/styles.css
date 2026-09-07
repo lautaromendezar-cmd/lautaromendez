@@ -271,12 +271,26 @@ p:last-child { margin-bottom: 0; }
   min-height: var(--header-h);
 }
 
-/* Logotipo tipográfico. Ver assets/img/logo.svg para la versión en imagen. */
+/* Logotipo: el símbolo a la izquierda y el nombre al lado.
+   El símbolo es el colgante que Eric usa, recortado del fondo negro de la foto
+   que mandó. Va en tinta y no en el dorado original: a 44 px el dorado se apaga
+   y tira a verdoso sobre blanco. El archivo dorado queda en assets/img/simbolo.png
+   por si hace falta en grande.
+   En Elementor: contenedor en fila con widget Imagen + widget Título del sitio. */
 .logo {
   text-decoration: none;
-  display: block;
+  display: flex;
+  align-items: center;
+  gap: 14px;
   padding-block: 10px;
 }
+.logo__simbolo {
+  flex: none;
+  display: block;
+  width: auto;
+  height: 44px;
+}
+.logo__textos { display: block; }
 .logo__nombre {
   display: block;
   font-family: var(--font-display);
@@ -903,6 +917,13 @@ textarea.campo__control { min-height: 160px; resize: vertical; }
   /* El logotipo entra en dos líneas, no en tres. */
   .logo__nombre { font-size: 15px; letter-spacing: 0.10em; }
   .logo__sello  { font-size: 10px; letter-spacing: 0.18em; }
+  /* El símbolo achica con el nombre, si no se come el ancho del header.
+     Y hay que cerrar el tracking del nombre: al meterle el símbolo al lado,
+     el texto pierde unos 44 px y "Eric Sebastián Torrent" se iba a tres
+     líneas, que es justo lo que este bloque venía evitando. */
+  .logo { gap: 10px; }
+  .logo__simbolo { height: 34px; }
+  .logo__nombre { letter-spacing: 0.05em; }
 }
 
 /* Muy angosto (360px y menos): que nada empuje el ancho.
