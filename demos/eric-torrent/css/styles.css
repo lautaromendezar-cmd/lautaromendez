@@ -1,6 +1,6 @@
 /* =========================================================================
    Eric Sebastián Torrent — Boceto navegable
-   Sistema: "Cinco libros, cinco luces".
+   Sistema: "Un libro, una luz" (arrancó siendo cinco; ya son seis).
    El sitio es papel y tinta. El único color de cada pantalla es el del
    libro que se está mirando, tomado de su propia tapa.
 
@@ -30,7 +30,7 @@
   --color-inverse:     #F5F3EE;  /* Texto sobre secciones de tinta.    */
 
   /* --- Un acento por obra, tomado de su propia tapa ---
-     Los cinco están calibrados para pasar AA (4.5:1) tanto sobre la página
+     Todos están calibrados para pasar AA (4.5:1) tanto sobre la página
      blanca como sobre la mesa, porque se usan en texto chico sobre ambas.
      Si se cambia alguno, hay que volver a medirlo contra #FFFFFF y #DCD8CF. */
   --color-libro-despertar:    #7E5210;  /* ámbar del atardecer      */
@@ -38,6 +38,7 @@
   --color-libro-luz:          #1F3C88;  /* azul                     */
   --color-libro-palabras:     #9E2B62;  /* magenta                  */
   --color-libro-iluminacion:  #2A6270;  /* celeste del águila       */
+  --color-libro-divinas:      #54459E;  /* violeta del cielo        */
 
   /* Acento activo. Por defecto tinta: el sitio no tiene color propio. */
   --acento: var(--color-primary);
@@ -132,6 +133,7 @@ button { font: inherit; }
 .grid--3  { grid-template-columns: repeat(3, 1fr); }
 .grid--4  { grid-template-columns: repeat(4, 1fr); }
 .grid--5  { grid-template-columns: repeat(5, 1fr); gap: 20px; }
+.grid--6  { grid-template-columns: repeat(6, 1fr); gap: 18px; }
 .grid--13 { grid-template-columns: 1fr 2fr; gap: 48px; }
 .grid--21 { grid-template-columns: 2fr 1fr; gap: 48px; }
 
@@ -369,11 +371,32 @@ p:last-child { margin-bottom: 0; }
 .hero { padding-block: 96px 72px; text-align: center; }
 .hero .eyebrow { margin-bottom: 24px; }
 
+/* El isologotipo, el eje del hero. Va antes del título y en grande. */
+.hero__simbolo {
+  display: block;
+  width: auto;
+  height: 180px;
+  margin: 0 auto 32px;
+}
+
 .hero__frase {
   font-size: var(--fs-hero);
   line-height: 1.1;
   max-width: 20ch;
-  margin: 0 auto 24px;
+  margin: 0 auto 12px;
+}
+
+/* El mantram: "Amar es la Máxima Victoria y Tú Eres la Luz".
+   Dejó de ser el título y pasó a subtítulo, pero sigue siendo la frase con la
+   que firma cada texto de sus libros, así que se compone en la serif del
+   cuerpo y no en la tipografía de rótulos. */
+.hero__mantram {
+  font-family: var(--font-body);
+  font-size: clamp(20px, 2.4vw, 27px);
+  line-height: 1.35;
+  color: var(--color-text);
+  max-width: 26ch;
+  margin: 0 auto 28px;
 }
 
 .hero__lead {
@@ -667,6 +690,18 @@ textarea.campo__control { min-height: 160px; resize: vertical; }
    WordPress: no es parte del diseño. */
 .nota-boceto { margin-top: 14px; }
 
+/* La séptima obra todavía no salió: se anuncia, no se vende.
+   La tapa va apagada y con un sello encima para que se lea de un vistazo
+   que no se puede comprar. El acento acá es la tinta, no un color de libro:
+   el sistema le da su luz a cada obra cuando se publica. */
+.obra--proxima .tapa {
+  filter: grayscale(0.55) contrast(0.92) brightness(1.04);
+}
+.obra--proxima .obra__numero {
+  color: var(--color-text-muted);
+}
+
+
 /* Epígrafe debajo del retrato */
 .retrato__epigrafe { margin-top: 16px; }
 
@@ -813,6 +848,7 @@ textarea.campo__control { min-height: 160px; resize: vertical; }
 .acento-luz         { --acento: var(--color-libro-luz); }
 .acento-palabras    { --acento: var(--color-libro-palabras); }
 .acento-iluminacion { --acento: var(--color-libro-iluminacion); }
+.acento-divinas     { --acento: var(--color-libro-divinas); }
 
 /* Una sola animación en todo el sitio.
    IMPORTANTE: sólo oculta si el <head> agregó la clase .js. Si el
@@ -844,6 +880,8 @@ textarea.campo__control { min-height: 160px; resize: vertical; }
   }
 
   .grid--4  { grid-template-columns: repeat(2, 1fr); }
+  /* Seis tapas en 1024 quedan de 155 px: se parten en dos filas de tres. */
+  .grid--6  { grid-template-columns: repeat(3, 1fr); }
   .grid--13 { grid-template-columns: 1fr 1.6fr; gap: 32px; }
   .grid--21 { grid-template-columns: 1.6fr 1fr; gap: 32px; }
   .footer__grid { grid-template-columns: 1fr 1fr; }
@@ -866,10 +904,13 @@ textarea.campo__control { min-height: 160px; resize: vertical; }
 
   .hero { padding-block: 56px 48px; }
   .hero__frase { max-width: none; }
+  /* El isologotipo achica en móvil o se come la pantalla de entrada. */
+  .hero__simbolo { height: 118px; margin-bottom: 24px; }
+  .hero__mantram { max-width: none; }
   .estanteria { margin-top: 48px; }
 
   .grid--2, .grid--3, .grid--13, .grid--21 { grid-template-columns: 1fr; }
-  .grid--5 { grid-template-columns: repeat(2, 1fr); }
+  .grid--5, .grid--6 { grid-template-columns: repeat(2, 1fr); }
   .grid--13 { gap: 32px; }
 
   .testimonios { grid-template-columns: 1fr; gap: 40px; }
@@ -934,5 +975,5 @@ textarea.campo__control { min-height: 160px; resize: vertical; }
    interminable y se pierde la lectura de "cinco libros, cinco luces". */
 @media (max-width: 380px) {
   .botonera .btn, .obra__acciones .btn { width: 100%; }
-  .grid--5 { gap: 16px; }
+  .grid--5, .grid--6 { gap: 16px; }
 }
