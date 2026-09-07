@@ -56,8 +56,17 @@ visibles para los demás». Esperando respuesta.
 automática de abuso marcó "alguna actividad" de la cuenta para revisión manual, y pregunta
 una sola cosa: para qué pienso usar GitHub. No acusa de nada concreto ni nombra un repo.
 
-**Falta mandar la respuesta.** El borrador está en `zz-borrador-respuesta-github.txt`, al
-lado de este archivo.
+**La carta se mandó el 7-sep a la noche.** Quedó guardada en
+`zz-borrador-respuesta-github.txt`. Reconoce el patrón de `cyc` con los números medidos y
+ofrece dos salidas: agrupar los cambios en menos commits, o sacar ese contenido de GitHub.
+
+**Queda un seguimiento escrito y sin mandar**, en `zz-seguimiento-github.txt`: avisa que el
+token venció solo y que el tráfico automático ya está cortado desde el 3-sep, y corrige el
+único detalle que la carta afirmó de más (dijo que se estaba sacando el token del repo, y el
+token nunca estuvo en el repo).
+
+**El nombre del token cierra con el cliente**: `cyc` publica en `www.papeleracyc.com.ar`, así
+que el fine-grained `catalogo-papelera` que venció es el del catálogo de `cyc`.
 
 **El candidato a haber disparado la marca es `cyc`, medido sobre los espejos.** De sus 1312
 commits, **1310 los hace la máquina**: 679 "Foto: fotos/N.jpg", 562 "Actualizar catálogo" y
@@ -191,11 +200,22 @@ trabajo; en casa hay que repetir el `npm i -g` y el login.
 
 ```
 npm i -g vercel
-vercel login lautaromendez.ar@gmail.com     # llega un mail, se confirma con un clic
+vercel login                                # NO pasar el mail: quedó deprecado
+```
+
+El login ya no manda un mail con un clic: imprime una URL tipo
+`vercel.com/oauth/device?user_code=XXXX-XXXX` y espera a que la abras y confirmes. El código
+caduca en pocos minutos.
+
+```
 vercel link --yes --project <proyecto> --scope lautaro-mendez-s-projects
 vercel deploy          # preview: NO toca el dominio
 vercel deploy --prod   # promueve y hace el alias al dominio
 ```
+
+**En la PC de casa ya está todo hecho**: sesión abierta como `lautaromendezar-5992` y
+`centenaria`, `lga` y `physiomove` vinculados y verificados en vivo. Ojo que el nombre del
+proyecto no siempre es el de la carpeta: `lga-group` es el proyecto `lga`.
 
 Sube lo que hay **en disco** en esa carpeta y respeta `.vercelignore`, así que antes conviene
 confirmar que el working tree está limpio y a la par de `origin`.
