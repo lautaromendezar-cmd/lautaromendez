@@ -368,22 +368,71 @@ p:last-child { margin-bottom: 0; }
 
 /* --- 08.a Hero ------------------------------------------------------- */
 
-.hero { padding-block: 96px 72px; text-align: center; }
-.hero .eyebrow { margin-bottom: 24px; }
+/* Centrar de verdad dentro de los bloques centrados.
+   Los <p> heredan max-width: 68ch de la regla general. En un contenedor con
+   text-align: center eso centra el TEXTO pero no la CAJA: el párrafo de 68ch
+   se queda pegado a la izquierda y todo aparece corrido ~230 px. Pasaba con
+   el rótulo del hero y con la firma del colofón en las cinco páginas. */
+.hero > .container > p,
+.hero .eyebrow,
+.colofon p { margin-inline: auto; }
+
+/* El hero ocupa exactamente una pantalla y su contenido va centrado
+   verticalmente. Con 100svh (no 100vh) el móvil no cuenta la barra del
+   navegador que se esconde al scrollear.
+   El símbolo y los espacios se miden en vh además de px: en una pantalla
+   baja (un portátil de 760) achican solos en vez de empujar los botones
+   fuera de la vista. */
+.hero {
+  /* El fondo: el cielo rosa y celeste de la tapa de Palabras de Poder, muy
+     bajado, CON una luz cálida encima en el centro. Las dos capas importan:
+     el cielo solo enfría el medio y apaga el isologotipo dorado; la luz
+     cálida lo devuelve. Medido: el texto suave queda en 6,27 sobre el pixel
+     real del fondo, o sea AA con margen.
+     En Elementor son dos capas, así que no sale con el control de Fondo:
+     va como CSS personalizado del contenedor (ver MAPEO-ELEMENTOR). */
+  background:
+    radial-gradient(88% 62% at 50% 34%, rgba(255,251,242,.94) 0%, rgba(252,246,235,.55) 45%, rgba(250,245,236,0) 72%),
+    linear-gradient(168deg, #EFE4E6 0%, #EBE1E3 34%, #E0E1E5 68%, #D9DEE4 100%);
+  min-height: calc(100svh - var(--header-h));
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-block: clamp(32px, 6vh, 72px);
+  text-align: center;
+}
+/* La estantería, ya fuera del hero, arranca pegada: se lee como una sola
+   pieza y las tapas asoman por debajo del pliegue. */
+
+/* En pantallas muy bajas (un teléfono chico en horizontal, o un 360x640)
+   forzar la pantalla completa apretaría el texto hasta lo ilegible. Ahí el
+   hero deja de imponer alto y el contenido scrollea como cualquier sección. */
+@media (max-height: 700px) {
+  .hero { min-height: 0; padding-block: 40px; }
+}
+
+/* Arranca en el mismo tono en el que termina el hero, para que se lea
+   como una sola pieza y no como dos bloques pegados. */
+.estanteria-seccion {
+  padding-bottom: var(--sp-section);
+  background: linear-gradient(180deg, #D9DEE4 0%, var(--color-secondary) 55%);
+}
+.estanteria-seccion .estanteria { margin-top: 0; }
+.hero .eyebrow { margin-bottom: clamp(12px, 2.2vh, 24px); }
 
 /* El isologotipo, el eje del hero. Va antes del título y en grande. */
 .hero__simbolo {
   display: block;
   width: auto;
-  height: 180px;
-  margin: 0 auto 32px;
+  height: clamp(96px, 15vh, 180px);
+  margin: 0 auto clamp(16px, 3vh, 32px);
 }
 
 .hero__frase {
   font-size: var(--fs-hero);
   line-height: 1.1;
   max-width: 20ch;
-  margin: 0 auto 12px;
+  margin: 0 auto clamp(6px, 1.2vh, 12px);
 }
 
 /* El mantram: "Amar es la Máxima Victoria y Tú Eres la Luz".
@@ -396,7 +445,7 @@ p:last-child { margin-bottom: 0; }
   line-height: 1.35;
   color: var(--color-text);
   max-width: 26ch;
-  margin: 0 auto 28px;
+  margin: 0 auto clamp(14px, 2.6vh, 28px);
 }
 
 .hero__lead {
@@ -407,7 +456,7 @@ p:last-child { margin-bottom: 0; }
   margin: 0 auto;
 }
 
-.hero .botonera { justify-content: center; margin-top: 36px; }
+.hero .botonera { justify-content: center; margin-top: clamp(20px, 3.4vh, 36px); }
 
 /* La estantería: las cinco tapas, cada una con su luz. */
 .estanteria { margin-top: 72px; }
