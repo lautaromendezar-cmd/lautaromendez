@@ -22,8 +22,9 @@ Un perfil normal responde 200 aunque todos sus repos sean privados. Se comprobó
 
 ## Qué rompe y qué no
 
-**No rompe nada de lo que está publicado.** El 7-sep respondían 200 los ocho sitios con
-backend, incluido `/studio` de Place Vendôme. Son deploys ya hechos: corren sin consultar
+**No rompe nada de lo que está publicado.** El 7-sep a la tarde se verificaron **los 20
+proyectos de Vercel uno por uno, con parámetro anti-caché: los 20 dan 200**, más `/studio` de
+Place Vendôme. Son deploys ya hechos: corren sin consultar
 GitHub. Siguen andando los formularios, las funciones y el CMS — el circuito de Sanity le
 pega al webhook del propio sitio, no pasa por GitHub.
 
@@ -48,45 +49,49 @@ síntoma que manda es el perfil dando 404 desde afuera.
 *Reinstatement request* → «Puedo iniciar sesión, pero mi perfil y contribuciones no son
 visibles para los demás». Esperando respuesta.
 
+**Reverificado el 7-sep a la tarde: sigue marcada.** Perfil y API siguen dando 404, y
+`torvalds` da 200 desde la misma conexión.
+
 ⚠️ **No abrir una cuenta nueva mientras el ticket esté abierto.** Crear otra para esquivar
 una suspensión suele terminar con la nueva suspendida también. Si GitHub confirma que no la
 restablece, recién ahí preguntarle explícitamente si se puede abrir otra.
 
-## Lo que falta hacer en la PC de casa
+## Backup espejo — HECHO (7-sep, PC del trabajo)
 
-**Backup espejo de todos los repos, mientras la cuenta siga dejando clonar.** Hoy se puede
-porque el push y el clone van autenticados; si la cuenta pasara de *oculta* a *desactivada*,
-eso se termina.
+**Los 21 repos conocidos están espejados en `Desktop\Claude\zz-backup-github\`**, 479 MB,
+sin un solo fallo. Se hizo clonando de GitHub, así que también confirma que el clone
+autenticado sigue funcionando con la cuenta marcada.
+
+Un `--mirror` guarda ramas, tags e historial completos, y sirve para republicar en otra
+cuenta o en otro servicio con `git push --mirror <nuevo-remoto>`:
 
 ```
 git clone --mirror https://github.com/lautaromendezar-cmd/<repo>.git
 ```
 
-Un `--mirror` guarda ramas, tags e historial completos, y sirve para republicar en otra
-cuenta o en otro servicio con `git push --mirror <nuevo-remoto>`.
+**Conviene repetirlo cada tanto** mientras siga el problema: los espejos son de la foto del
+7-sep, y lo que se trabaje después no está adentro hasta que se vuelva a correr. Con la
+carpeta ya creada, un `git -C zz-backup-github/<repo>.git remote update` la pone al día.
 
-⚠️ **Comparar contra `github.com/settings/repositories`**, que sí se ve estando logueado. El
-inventario de abajo salió de cruzar los proyectos de Vercel con los clones locales, así que
-**puede faltar algún repo que no tenga proyecto ni clon**. No se pudo listar la cuenta
-entera: con la cuenta marcada, la API responde 404.
+### Lo único que falta: cerrar el inventario
 
-### Ya respaldado en la PC del trabajo (7-sep)
+Se necesita el navegador, logueado, porque con la cuenta marcada la API responde 404 y no hay
+forma de listar la cuenta desde la terminal.
 
-Los tres que no estaban en ninguna máquina quedaron como espejo en
-`Desktop\Claude\zz-backup-github\`:
+**Abrir `github.com/settings/repositories` y comparar contra la lista de 21 de abajo.** Si
+aparece alguno que no esté, espejarlo también. Los 21 salieron de cruzar los 20 proyectos de
+Vercel con los 21 clones locales, así que podría faltar alguno que no tenga ni proyecto ni
+clon en ninguna de las dos PC.
 
-| repo | commits | último cambio |
-|---|---|---|
-| `empanadas-jaque` | 9 | 27-ago-2026 |
-| `federestivo` | 8 | 12-jul-2026 |
-| `sistema-barba` | 3 | 12-ago-2026 |
+### Sobre los clones de trabajo de esta PC
 
-Y se corrió `git fetch --all --tags` en los 18 clones que ya estaban. **Ocho estaban
-atrasados** y ahora tienen los objetos bajados, aunque el working tree siga sin actualizar:
-`pll-studio` (14 commits), `cyc-repo` (7), `autoservicio-krb` (6), `liliana-donato` (6),
-`perezlegales` (4), `Terrestre3` (3), `centenaria` (3), `diegocarbone-repo` (1).
+Ninguno tiene commits sin pushear: los 21 espejos tienen todo lo que hay. Ocho clones sí
+están **atrasados** respecto de origin (se trabajó en la otra PC): `pll-studio` (14 commits),
+`cyc-repo` (7), `autoservicio-krb` (6), `liliana-donato` (6), `perezlegales` (4),
+`Terrestre3` (3), `centenaria` (3), `diegocarbone-repo` (1). Los objetos ya están bajados;
+falta el `git pull` cuando se vaya a tocar cada uno.
 
-### Los 21 repos conocidos
+### Los 21 repos espejados
 
 `batata-studio` · `centenaria` · `cyc` · `diegocarbone` · `dist-nahuel` · `empanadas-jaque` ·
 `equiponeurodialectico` · `eric-torrent` · `federestivo` · `house-in-baires` · `krb` ·
