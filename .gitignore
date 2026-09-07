@@ -9,3 +9,5 @@ generaciones/
 # como un sitio estático y se pone a buscar un build que no existe.
 package.json
 package-lock.json
+.vercel
+.env*
