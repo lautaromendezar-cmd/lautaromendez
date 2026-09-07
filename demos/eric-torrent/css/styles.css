@@ -384,22 +384,61 @@ p:last-child { margin-bottom: 0; }
    baja (un portátil de 760) achican solos en vez de empujar los botones
    fuera de la vista. */
 .hero {
-  /* El fondo: el cielo rosa y celeste de la tapa de Palabras de Poder, muy
-     bajado, CON una luz cálida encima en el centro. Las dos capas importan:
-     el cielo solo enfría el medio y apaga el isologotipo dorado; la luz
-     cálida lo devuelve. Medido: el texto suave queda en 6,27 sobre el pixel
-     real del fondo, o sea AA con margen.
-     En Elementor son dos capas, así que no sale con el control de Fondo:
-     va como CSS personalizado del contenedor (ver MAPEO-ELEMENTOR). */
-  background:
-    radial-gradient(88% 62% at 50% 34%, rgba(255,251,242,.94) 0%, rgba(252,246,235,.55) 45%, rgba(250,245,236,0) 72%),
-    linear-gradient(168deg, #EFE4E6 0%, #EBE1E3 34%, #E0E1E5 68%, #D9DEE4 100%);
+  /* El fondo es el cielo en movimiento (`.hero__cielo`) con el velo de
+     `.hero::after` encima. El velo no es decorativo: sostiene el contraste
+     del texto y evita que el isologotipo dorado se apague contra el azul. */
+  /* El poster del cielo va también acá: es el fondo cuando el video no está
+     (movimiento reducido, error de carga, o mientras baja). */
+  background-image: url("../assets/img/cielo-hero-poster.jpg");
+  background-size: cover;
+  background-position: center;
+  background-color: #E4E6E9;
+  position: relative;
+  overflow: hidden;
   min-height: calc(100svh - var(--header-h));
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding-block: clamp(32px, 6vh, 72px);
   text-align: center;
+}
+
+/* El video, detrás de todo. */
+.hero__cielo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* El velo, encima del cielo y debajo del texto. Son las dos capas que antes
+   eran el fondo del hero, ahora semitransparentes: la luz cálida del centro
+   sostiene el contraste del texto y evita que el isologotipo dorado se
+   apague contra el azul, y el lavado general baja las nubes para que no
+   compitan. Si se toca alguno de los dos valores hay que volver a medir el
+   contraste sobre el pixel real (ver CONTINUAR.md).
+   En Elementor son dos «superposiciones de fondo» sobre el mismo contenedor. */
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    radial-gradient(92% 78% at 50% 40%, rgba(255,251,242,.94) 0%, rgba(252,246,235,.72) 48%, rgba(250,245,236,.14) 76%),
+    linear-gradient(168deg, rgba(239,228,230,.62) 0%, rgba(235,225,227,.55) 34%, rgba(224,225,229,.62) 68%, rgba(217,222,228,.86) 100%);
+}
+
+/* El contenido, por encima del velo. */
+.hero > .container { position: relative; z-index: 2; }
+
+/* Con movimiento reducido no hay video: queda el poster, que es el mismo
+   fotograma, quieto. */
+@media (prefers-reduced-motion: reduce) {
+  .hero__cielo { display: none; }
 }
 /* La estantería, ya fuera del hero, arranca pegada: se lee como una sola
    pieza y las tapas asoman por debajo del pliegue. */
@@ -560,22 +599,6 @@ p:last-child { margin-bottom: 0; }
 .obra__acciones { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
 .obra__acciones .btn { min-height: 48px; padding: 10px 20px; font-size: 16px; }
 
-/* --- 08.d Obra en fila (las dos posteriores, 2 columnas) -------------- */
-/* Deliberadamente distinta de la tarjeta: son las obras que vinieron
-   después de la trilogía y se presentan de otra manera. */
-
-.obra-fila {
-  display: grid;
-  grid-template-columns: 150px 1fr;
-  gap: 28px;
-  align-items: start;
-  background: var(--color-surface);
-  padding: 28px;
-  border-top: 3px solid var(--acento);
-  box-shadow: var(--sombra);
-}
-.section--pagina .obra-fila { background: var(--color-secondary); box-shadow: none; }
-
 /* --- 08.e Testimonios de lectores ------------------------------------ */
 /* Largos desparejos a propósito: son comentarios reales, no cards. */
 
@@ -606,6 +629,28 @@ p:last-child { margin-bottom: 0; }
 /* --- 08.g Reconocimientos -------------------------------------------- */
 
 .reconocimiento { border-top: 2px solid var(--color-primary); padding-top: 16px; }
+
+/* La foto va arriba del rótulo y antes del borde no: el borde superior es lo
+   que ata la tarjeta a la grilla. 3:2 fijo para que las tres midan igual
+   aunque los originales vengan de una foto, de un set de TV y de un video.
+   En Elementor es un widget Imagen con la proporción fijada en 3:2. */
+.reconocimiento__foto {
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  margin-bottom: 16px;
+  background: var(--color-border);
+}
+
+/* México y Uruguay, que todavía no tienen foto. Va como una línea al pie de
+   la grilla, no como una tarjeta vacía. */
+.reconocimiento__afuera {
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--color-text-muted);
+  margin: 32px 0 0;
+}
 .reconocimiento__donde {
   font-family: var(--font-display);
   font-size: 13px;
@@ -802,7 +847,20 @@ textarea.campo__control { min-height: 160px; resize: vertical; }
 /* --- 08.h Colofón ----------------------------------------------------- */
 /* Cierra como cierran sus cinco libros. Va en todas las páginas. */
 
-.colofon { padding-block: 72px; text-align: center; }
+/* El colofón cierra como cierran sus libros, así que lleva el mismo cielo
+   que el hero —recortado de la franja de arriba, donde hay más aire— pero
+   quieto y muy lavado: acá el texto es lo único que importa. Va en las cinco
+   páginas, que es donde está el bloque. */
+.colofon {
+  padding-block: 88px;
+  text-align: center;
+  background-image:
+    linear-gradient(rgba(253,252,250,.74), rgba(253,252,250,.82)),
+    url("../assets/img/cielo-colofon.jpg");
+  background-size: cover;
+  background-position: center;
+  background-color: var(--color-secondary);
+}
 .colofon__frase {
   font-size: 26px;
   line-height: 1.5;
@@ -919,8 +977,26 @@ textarea.campo__control { min-height: 160px; resize: vertical; }
 }
 .js .reveal.is-visible { opacity: 1; transform: none; }
 
+/* Las palabras del hero entran de a una. Los <span> los crea el JS, así que
+   si no corre no hay nada que ocultar y el título se ve entero — el mismo
+   criterio que .reveal. El escalonado sale de --i, que el JS numera.
+   En Elementor: este mismo CSS como código personalizado, más el script
+   corto de main.js en un widget HTML. */
+.js .hero__palabra {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(14px);
+  animation: heroPalabra .7s cubic-bezier(.22,.61,.36,1) forwards;
+  animation-delay: calc(var(--i, 0) * 65ms + 120ms);
+}
+
+@keyframes heroPalabra {
+  to { opacity: 1; transform: none; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .js .reveal { opacity: 1; transform: none; transition: none; }
+  .js .hero__palabra { opacity: 1; transform: none; animation: none; }
   * { animation-duration: .01ms !important; transition-duration: .01ms !important; }
 }
 
@@ -944,7 +1020,6 @@ textarea.campo__control { min-height: 160px; resize: vertical; }
   .grid--13 { grid-template-columns: 1fr 1.6fr; gap: 32px; }
   .grid--21 { grid-template-columns: 1.6fr 1fr; gap: 32px; }
   .footer__grid { grid-template-columns: 1fr 1fr; }
-  .obra-fila { grid-template-columns: 120px 1fr; gap: 20px; padding: 24px; }
   .testimonios { gap: 32px; }
 }
 
@@ -977,8 +1052,6 @@ textarea.campo__control { min-height: 160px; resize: vertical; }
 
   .footer__grid { grid-template-columns: 1fr; gap: 32px; }
 
-  .obra-fila { grid-template-columns: 1fr; }
-  .obra-fila .tapa { max-width: 160px; }
 
   .colofon__frase { font-size: 22px; }
   .dropcap::first-letter { font-size: 52px; padding-right: 10px; }

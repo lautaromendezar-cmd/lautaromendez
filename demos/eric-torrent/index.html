@@ -63,6 +63,17 @@
        1. HERO — la frase con la que firma cada texto, y la estantería
        =================================================================== -->
   <section class="section section--mesa hero">
+
+    <!-- El cielo de la tapa de «Palabras Divinas de Poder», en movimiento.
+         Va mudo, en bucle y con playsinline, que es lo que pide iOS para
+         reproducir solo. El poster es el primer fotograma: es lo que se ve
+         mientras carga, si el video falla, y si el sistema pide movimiento
+         reducido. En Elementor esto es el Fondo > Video del contenedor. -->
+    <video class="hero__cielo" autoplay muted loop playsinline preload="auto"
+           poster="assets/img/cielo-hero-poster.jpg" aria-hidden="true" tabindex="-1">
+      <source src="assets/video/cielo-hero.mp4" type="video/mp4">
+    </video>
+
     <div class="container">
 
       <p class="eyebrow">Obra Espiritual y Literaria</p>
@@ -231,27 +242,6 @@
           </div>
         </article>
 
-        <article class="obra-fila acento-divinas">
-          <a href="libros.html#divinas">
-            <img class="tapa" src="assets/img/portada-06.jpg" width="800" height="1200"
-                 alt="Tapa de Palabras Divinas de Poder">
-          </a>
-          <div>
-            <p class="obra__numero">Sexta obra &middot; 2026</p>
-            <h3 class="obra__titulo">Palabras Divinas de Poder</h3>
-            <p class="obra__subtitulo">La Manifestación</p>
-            <p class="obra__sinopsis">
-              La última que publicó, y la única cuya tapa lleva su isologotipo.
-              [REEMPLAZAR: sinopsis]
-            </p>
-            <span class="obra__precio">[REEMPLAZAR: precio]</span>
-            <span class="obra__precio-nota">244 páginas</span>
-            <div class="obra__acciones">
-              <a class="btn btn--ghost" href="https://www.youtube.com/@ServidoresDeLaNuevaEra" target="_blank" rel="noopener">Escuchar el Audiolibro</a>
-              <a class="btn btn--primary" href="libros.html#divinas">Ver la obra</a>
-            </div>
-          </div>
-        </article>
 
         <!-- Obra 2 -->
         <article class="obra acento-trascender">
@@ -313,19 +303,20 @@
 
       <div class="grid grid--3 reveal">
 
-        <article class="obra-fila acento-palabras">
-          <a href="libro.html">
+        <!-- Obra 4 -->
+        <article class="obra acento-palabras">
+          <p class="obra__numero">Cuarta obra &middot; [REEMPLAZAR: año]</p>
+          <a class="obra__tapa" href="libro.html">
             <img class="tapa" src="assets/img/portada-04.jpg" width="800" height="1200"
                  alt="Tapa de Palabras de Poder">
           </a>
-          <div>
-            <p class="obra__numero">Cuarta obra &middot; [REEMPLAZAR: año]</p>
-            <h3 class="obra__titulo">Palabras de Poder</h3>
-            <p class="obra__subtitulo">El uso correcto del verbo creador</p>
-            <p class="obra__sinopsis">
-              404 páginas sobre la responsabilidad de hablar. Incluye ocho meditaciones y un
-              índice de más de cien textos breves para leer de a uno.
-            </p>
+          <h3 class="obra__titulo">Palabras de Poder</h3>
+          <p class="obra__subtitulo">El uso correcto del verbo creador</p>
+          <p class="obra__sinopsis">
+            404 páginas sobre la responsabilidad de hablar. Incluye ocho meditaciones y un
+            índice de más de cien textos breves para leer de a uno.
+          </p>
+          <div class="obra__pie">
             <span class="obra__precio">U$S 35 &middot; $ [REEMPLAZAR] ARS</span>
             <span class="obra__precio-nota">404 páginas &middot; Digital: U$S 10</span>
             <div class="obra__acciones">
@@ -335,24 +326,48 @@
           </div>
         </article>
 
-        <article class="obra-fila acento-iluminacion">
-          <a href="libro.html">
+        <!-- Obra 5 -->
+        <article class="obra acento-iluminacion">
+          <p class="obra__numero">Quinta obra &middot; [REEMPLAZAR: año]</p>
+          <a class="obra__tapa" href="libro.html">
             <img class="tapa" src="assets/img/portada-05.jpg" width="800" height="1200"
                  alt="Tapa de Hacia la Iluminación y la Unificación">
           </a>
-          <div>
-            <p class="obra__numero">Quinta obra &middot; [REEMPLAZAR: año]</p>
-            <h3 class="obra__titulo">Hacia la Iluminación y la Unificación</h3>
-            <p class="obra__subtitulo">Alcanzar el máximo potencial para unificarse y evolucionar</p>
-            <p class="obra__sinopsis">
-              El único que no escribió solo: son las preguntas que le mandaron
-              lectores de distintas partes del mundo, con sus respuestas.
-            </p>
+          <h3 class="obra__titulo">Hacia la Iluminación y la Unificación</h3>
+          <p class="obra__subtitulo">Alcanzar el máximo potencial para unificarse y evolucionar</p>
+          <p class="obra__sinopsis">
+            El único que no escribió solo: son las preguntas que le mandaron
+            lectores de distintas partes del mundo, con sus respuestas.
+          </p>
+          <div class="obra__pie">
             <span class="obra__precio">U$S 45 &middot; $ [REEMPLAZAR] ARS</span>
             <span class="obra__precio-nota">652 páginas &middot; Digital: U$S 10</span>
             <div class="obra__acciones">
               <a class="btn btn--ghost" href="https://www.youtube.com/@ServidoresDeLaNuevaEra" target="_blank" rel="noopener">Escuchar el Audiolibro</a>
               <a class="btn btn--primary" href="libro.html">Ver la obra</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Obra 6 -->
+        <article class="obra acento-divinas">
+          <p class="obra__numero">Sexta obra &middot; 2026</p>
+          <a class="obra__tapa" href="libros.html#divinas">
+            <img class="tapa" src="assets/img/portada-06.jpg" width="800" height="1200"
+                 alt="Tapa de Palabras Divinas de Poder">
+          </a>
+          <h3 class="obra__titulo">Palabras Divinas de Poder</h3>
+          <p class="obra__subtitulo">La Manifestación</p>
+          <p class="obra__sinopsis">
+            La última que publicó, y la única cuya tapa lleva su isologotipo.
+            [REEMPLAZAR: sinopsis]
+          </p>
+          <div class="obra__pie">
+            <span class="obra__precio">[REEMPLAZAR: precio]</span>
+            <span class="obra__precio-nota">244 páginas</span>
+            <div class="obra__acciones">
+              <a class="btn btn--ghost" href="https://www.youtube.com/@ServidoresDeLaNuevaEra" target="_blank" rel="noopener">Escuchar el Audiolibro</a>
+              <a class="btn btn--primary" href="libros.html#divinas">Ver la obra</a>
             </div>
           </div>
         </article>
@@ -478,29 +493,41 @@
         <h2>Presentaciones, televisión y radio</h2>
       </div>
 
-      <div class="grid grid--4 reveal">
+      <div class="grid grid--3 reveal">
 
         <div class="reconocimiento">
+          <img class="reconocimiento__foto" src="assets/img/reconocimiento-feria.jpg"
+               width="800" height="533" loading="lazy"
+               alt="Las obras de Eric Sebastián Torrent sobre la mesa del stand en la Feria Internacional del Libro">
           <p class="reconocimiento__donde">Buenos Aires</p>
           <p class="reconocimiento__que">Feria Internacional del Libro</p>
         </div>
 
         <div class="reconocimiento">
+          <img class="reconocimiento__foto" src="assets/img/reconocimiento-tv.jpg"
+               width="800" height="533" loading="lazy"
+               alt="Eric Sebastián Torrent en el estudio, durante una entrevista de televisión">
           <p class="reconocimiento__donde">Argentina</p>
-          <p class="reconocimiento__que">Televisión abierta y Radio Rivadavia</p>
+          <p class="reconocimiento__que">Televisión abierta</p>
         </div>
 
         <div class="reconocimiento">
-          <p class="reconocimiento__donde">México</p>
-          <p class="reconocimiento__que">Entrevistas en Aguascalientes</p>
-        </div>
-
-        <div class="reconocimiento">
-          <p class="reconocimiento__donde">Uruguay</p>
-          <p class="reconocimiento__que">Entrevistas en Minas, Lavalleja</p>
+          <img class="reconocimiento__foto" src="assets/img/reconocimiento-radio.jpg"
+               width="800" height="533" loading="lazy"
+               alt="El estudio de Radio Rivadavia AM 630 durante la entrevista">
+          <p class="reconocimiento__donde">Argentina</p>
+          <p class="reconocimiento__que">Radio Rivadavia AM 630</p>
         </div>
 
       </div>
+
+      <!-- México y Uruguay van como texto porque no hay una sola foto de esos
+           viajes en el material (se revisaron las 179): están pedidos en
+           PEDIDO-A-ERIC.md. Cuando lleguen, entran como una cuarta tarjeta y
+           el grid pasa a grid--4. -->
+      <p class="reconocimiento__afuera reveal">
+        También lo entrevistaron en Aguascalientes, México, y en Minas, Lavalleja, Uruguay.
+      </p>
 
     </div>
   </section>

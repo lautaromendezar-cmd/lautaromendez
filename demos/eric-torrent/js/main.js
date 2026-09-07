@@ -38,6 +38,44 @@
     });
   }
 
+  /* --- Las palabras del hero, de a una -------------------------------- */
+  /* Parte el título y el mantram en <span> y los numera con --i, que es lo
+     que el CSS usa para escalonar la entrada. Como los span los crea acá,
+     si este script no corre no queda nada invisible: el texto ya está en el
+     HTML y se ve entero. No toca nada si el sistema pide movimiento
+     reducido, que es cuando falta la clase .js. */
+
+  if (document.documentElement.className.indexOf('js') > -1) {
+    var enHero = document.querySelectorAll('.hero__frase, .hero__mantram');
+    var orden = 0;
+
+    for (var h = 0; h < enHero.length; h++) {
+      orden = partirEnPalabras(enHero[h], orden);
+    }
+  }
+
+  function partirEnPalabras(el, desde) {
+    var palabras = el.textContent.trim().split(/\s+/);
+    var fragmento = document.createDocumentFragment();
+
+    for (var i = 0; i < palabras.length; i++) {
+      var span = document.createElement('span');
+      span.className = 'hero__palabra';
+      span.style.setProperty('--i', desde + i);
+      span.textContent = palabras[i];
+      fragmento.appendChild(span);
+      // El espacio va suelto y no dentro del span: si no, al cortar la línea
+      // el navegador se queda con un hueco colgando al final del renglón.
+      if (i < palabras.length - 1) {
+        fragmento.appendChild(document.createTextNode(' '));
+      }
+    }
+
+    el.textContent = '';
+    el.appendChild(fragmento);
+    return desde + palabras.length;
+  }
+
   /* --- Aparición al entrar en pantalla -------------------------------- */
   /* La clase .js la agrega un script inline en el <head>, y sólo si el
      navegador NO pide movimiento reducido. Si algo de esto falla, el CSS
