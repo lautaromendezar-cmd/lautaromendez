@@ -429,7 +429,7 @@ p:last-child { margin-bottom: 0; }
   pointer-events: none;
   background:
     radial-gradient(92% 78% at 50% 40%, rgba(255,251,242,.94) 0%, rgba(252,246,235,.72) 48%, rgba(250,245,236,.14) 76%),
-    linear-gradient(168deg, rgba(239,228,230,.62) 0%, rgba(235,225,227,.55) 34%, rgba(224,225,229,.62) 68%, rgba(217,222,228,.86) 100%);
+    linear-gradient(168deg, rgba(239,228,230,.62) 0%, rgba(235,225,227,.55) 34%, rgba(224,225,229,.62) 68%, rgba(220,216,207,.92) 92%, var(--color-secondary) 100%);
 }
 
 /* El contenido, por encima del velo. */
@@ -454,7 +454,7 @@ p:last-child { margin-bottom: 0; }
    como una sola pieza y no como dos bloques pegados. */
 .estanteria-seccion {
   padding-bottom: var(--sp-section);
-  background: linear-gradient(180deg, #D9DEE4 0%, var(--color-secondary) 55%);
+  background: var(--color-secondary);
 }
 .estanteria-seccion .estanteria { margin-top: 0; }
 .hero .eyebrow { margin-bottom: clamp(12px, 2.2vh, 24px); }
@@ -665,7 +665,23 @@ p:last-child { margin-bottom: 0; }
 
 /* --- 08.f-bis Encabezado de página interior --------------------------- */
 
-.cabecera { padding-block: 72px 64px; }
+/* La cabecera de las páginas interiores lleva cielo, como el hero y el
+   colofón, en lugar del ocre liso: es lo que ata las cinco páginas. Va otra
+   franja de la misma foto —la de abajo, con los cúmulos más grandes— para que
+   no repita el cielo del colofón, que cierra esa misma página.
+   El velo es más fuerte arriba que abajo —arriba viven el título y la bajada—
+   y en el último tramo cierra en el color de la mesa, para empalmar sin corte
+   con la sección que sigue. Es el mismo recurso que usa el hero.
+   En Elementor: Fondo → Imagen + una superposición con degradado. */
+.cabecera {
+  padding-block: 72px 64px;
+  background-image:
+    linear-gradient(rgba(252,251,249,.88) 0%, rgba(252,251,249,.68) 55%, rgba(220,216,207,.86) 93%, var(--color-secondary) 100%),
+    url("../assets/img/cielo-cabecera.jpg");
+  background-size: cover;
+  background-position: center;
+  background-color: var(--color-secondary);
+}
 .cabecera__titulo { font-size: var(--fs-h1); max-width: 22ch; }
 .cabecera__bajada { font-size: var(--fs-lead); color: var(--color-text-muted); max-width: 62ch; margin: 0; }
 
