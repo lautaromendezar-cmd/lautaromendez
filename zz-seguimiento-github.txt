@@ -1,0 +1,19 @@
+Hi Tessa,
+
+A quick follow-up, with one update and one correction.
+
+The token that function used has now expired on its own, and I have not regenerated
+it, so the automated commits I described have already stopped: the last one was on
+September 3rd. I'd rather leave it that way while you review the account, and when I
+set it up again I'll batch the changes into far fewer commits, as I offered.
+
+The correction: I said I was moving that token out of the repository. That was wrong.
+I checked afterwards, and the token was never stored in the repository at all — the
+.env file there has only ever contained variable names with empty values, and the
+same holds across all 24 of my repositories. The token has only ever lived in the
+hosting provider's environment variables. I'd rather correct that than leave an
+inaccurate detail in my own account of things.
+
+Thanks for your time.
+
+Lautaro Méndez

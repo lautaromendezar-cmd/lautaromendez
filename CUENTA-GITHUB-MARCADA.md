@@ -52,15 +52,82 @@ visibles para los demás». Esperando respuesta.
 **Reverificado el 7-sep a la tarde: sigue marcada.** Perfil y API siguen dando 404, y
 `torvalds` da 200 desde la misma conexión.
 
+**GitHub contestó el mismo 7-sep, a la noche.** Firma Tessa. Dice que la detección
+automática de abuso marcó "alguna actividad" de la cuenta para revisión manual, y pregunta
+una sola cosa: para qué pienso usar GitHub. No acusa de nada concreto ni nombra un repo.
+
+**Falta mandar la respuesta.** El borrador está en `zz-borrador-respuesta-github.txt`, al
+lado de este archivo.
+
+**El candidato a haber disparado la marca es `cyc`, medido sobre los espejos.** De sus 1312
+commits, **1310 los hace la máquina**: 679 "Foto: fotos/N.jpg", 562 "Actualizar catálogo" y
+49 subidas por la web. Los escriben `api/publish.js` y `api/upload-image.js` por la API REST,
+un commit por cambio, con picos de **148 commits en un día** y 10 en un mismo minuto. Son el
+**69% de los 1905 commits de toda la cuenta**. Mecánicamente es un bot, aunque atrás haya un
+cliente cargando su catálogo de verdad.
+
+**"Con panel" no quiere decir nada por sí solo: lo que importa es contra qué escribe.** Son
+dos familias distintas y sólo una se ve desde GitHub.
+
+- **Panel contra Supabase o Sanity — invisible para GitHub.** `Terrestre3` y `krb` y
+  `house-in-baires` y `federestivo` van a Supabase; `place-vendome` va a Sanity. El cliente
+  puede usarlos todos los días y no generan ni un commit.
+- **Panel que commitea por la API — visible.** Sólo tres: `cyc`, `empanadas-jaque` y
+  `liliana-donato`. De esos, dos nunca se usaron.
+
+Así que **los paneles que los clientes sí usan son justo los que no tocan GitHub**, y el que
+mueve el 69% de los commits es `cyc`, el que menos parece un "panel en uso".
+
+⚠️ **`tr3` está vacío de verdad**: cero refs y cero objetos, nunca se le pusheó nada. La web
+de turismo que el cliente usa es `Terrestre3` (59 commits, panel contra Supabase, deploy por
+Vercel). `tr3` es un nombre viejo que quedó dando vueltas; se puede borrar cuando vuelva la
+cuenta.
+
+**Los otros dos paneles no tienen nada que ver**, contra lo que parecía: `empanadas-jaque`
+**nunca** commiteó (el cliente ni sabe que existe el panel) y `liliana-donato` tiene **dos**
+commits, los dos del 10-ago, pruebas propias del día que se armó. Ningún otro repo pasa de 4
+commits automáticos. Conviene no repetir esa hipótesis: se verificó y es falsa.
+
+**No hay ninguna credencial versionada, y esto se verificó bien.** Al principio se
+anotó acá que `cyc/.env` tenía el `GITHUB_TOKEN` adentro y que había que rotarlo por estar en
+el historial: **era falso**. Ese `.env` se commiteó una sola vez, el 9-jun, con los tres
+nombres de variable y **ningún valor**. Se revisaron además todos los `.env*` de los 24 repos
+en todo el historial: los únicos valores que existen son URLs, nombres de dataset, un host
+SMTP y variables `NEXT_PUBLIC_*`. Ni una clave real. **El escaneo de secretos queda descartado
+como causa de la marca.**
+
+**El token del panel de `cyc` venció solo.** El 7-sep llegó el mail de GitHub avisando que el
+fine-grained `catalogo-papelera` expiró. Encaja con que **el último commit de `cyc` es del
+3-sep 17:36** y desde entonces el repo está quieto, después de meses de actividad diaria. O
+sea que **el tráfico automático ya está cortado sin haber tocado nada**, y lo estaba desde
+antes de que se mandara la carta.
+
+⚠️ **No regenerar ese token mientras dure la revisión manual.** Volver a meter cien commits
+por día en medio de un caso abierto por actividad automática es lo peor que se puede hacer, y
+además la carta dice que se está sacando. Conviene aprovechar la pausa para que el panel
+agrupe los cambios en menos commits, que es justo una de las dos salidas que se le ofrecieron
+a GitHub.
+
+⚠️ **El cliente de `cyc` no puede actualizar el catálogo desde el 3-sep** y capaz todavía no
+avisó. Conviene decírselo antes de que lo descubra él.
+
+**Tampoco hay Actions**: ni un workflow en los 24 repos. Eso se afirma en la carta y está
+verificado.
+
+**Reverificado el 7-sep a la noche, ya desde la PC de casa: sigue marcada.** Las dos URL dan
+404 y `torvalds` da 200 desde esta otra conexión, así que no es la red de una máquina. El
+`clone` y el `ls-remote` autenticados siguen andando.
+
 ⚠️ **No abrir una cuenta nueva mientras el ticket esté abierto.** Crear otra para esquivar
 una suspensión suele terminar con la nueva suspendida también. Si GitHub confirma que no la
 restablece, recién ahí preguntarle explícitamente si se puede abrir otra.
 
-## Backup espejo — HECHO (7-sep, PC del trabajo)
+## Backup espejo — HECHO en las dos PC (7-sep)
 
-**Los 21 repos conocidos están espejados en `Desktop\Claude\zz-backup-github\`**, 479 MB,
-sin un solo fallo. Se hizo clonando de GitHub, así que también confirma que el clone
-autenticado sigue funcionando con la cuenta marcada.
+**Los 24 repos están espejados en las dos PC**, en `Desktop\Claude\zz-backup-github\`.
+En la del trabajo se hicieron 21 al mediodía (479 MB) y en la de casa los 24 a la noche
+(570 MB), las dos veces sin un solo fallo. Se hizo clonando de GitHub, así que también
+confirma que el clone autenticado sigue funcionando con la cuenta marcada.
 
 Un `--mirror` guarda ramas, tags e historial completos, y sirve para republicar en otra
 cuenta o en otro servicio con `git push --mirror <nuevo-remoto>`:
@@ -73,30 +140,46 @@ git clone --mirror https://github.com/lautaromendezar-cmd/<repo>.git
 7-sep, y lo que se trabaje después no está adentro hasta que se vuelva a correr. Con la
 carpeta ya creada, un `git -C zz-backup-github/<repo>.git remote update` la pone al día.
 
-### Lo único que falta: cerrar el inventario
+### El inventario, cerrado el 7-sep a la noche
 
-Se necesita el navegador, logueado, porque con la cuenta marcada la API responde 404 y no hay
-forma de listar la cuenta desde la terminal.
+**Sí se puede listar la cuenta desde la terminal, no hacía falta el navegador.** Lo que
+responde 404 es el endpoint público (`/users/lautaromendezar-cmd`). El autenticado,
+`/user/repos`, contesta igual de bien con la cuenta marcada, y de ahí salió el inventario
+completo.
 
-**Abrir `github.com/settings/repositories` y comparar contra la lista de 21 de abajo.** Si
-aparece alguno que no esté, espejarlo también. Los 21 salieron de cruzar los 20 proyectos de
-Vercel con los 21 clones locales, así que podría faltar alguno que no tenga ni proyecto ni
-clon en ninguna de las dos PC.
+**Son 24 repos, no 21.** Los tres que faltaban en el espejo del mediodía:
 
-### Sobre los clones de trabajo de esta PC
+- `fosque` — con contenido. **Estaba afuera del backup.**
+- `luraschi` — con contenido, privado. **Estaba afuera del backup.**
+- `tr3` — vacío, ni una sola ref. No hay nada que perder; el proyecto de verdad es
+  `Terrestre3`.
 
-Ninguno tiene commits sin pushear: los 21 espejos tienen todo lo que hay. Ocho clones sí
-están **atrasados** respecto de origin (se trabajó en la otra PC): `pll-studio` (14 commits),
+Los dos primeros son justo los que no tienen proyecto en Vercel: `fosque` sube por FTP y
+`luraschi` está en Cloudflare Pages. Por eso el cruce contra los 20 proyectos de Vercel no
+podía encontrarlos, y por eso no conviene volver a inventariar por ahí.
+
+### Sobre los clones de trabajo
+
+**En la PC del trabajo**, ninguno tiene commits sin pushear. Ocho sí están **atrasados**
+respecto de origin, porque se trabajó en la otra máquina: `pll-studio` (14 commits),
 `cyc-repo` (7), `autoservicio-krb` (6), `liliana-donato` (6), `perezlegales` (4),
 `Terrestre3` (3), `centenaria` (3), `diegocarbone-repo` (1). Los objetos ya están bajados;
 falta el `git pull` cuando se vaya a tocar cada uno.
 
-### Los 21 repos espejados
+**En la PC de casa**, los 21 clones se compararon contra el espejo recién hecho y el HEAD de
+todos está adentro: tampoco hay nada sin pushear. La comprobación no necesita red, que es la
+gracia de tener el espejo al lado:
+
+```
+git -C zz-backup-github/<repo>.git cat-file -e $(git -C <clon> rev-parse HEAD)^{commit}
+```
+
+### Los 24 repos de la cuenta
 
 `batata-studio` · `centenaria` · `cyc` · `diegocarbone` · `dist-nahuel` · `empanadas-jaque` ·
-`equiponeurodialectico` · `eric-torrent` · `federestivo` · `house-in-baires` · `krb` ·
-`latina` · `lautaromendez` · `lga` · `liliana-donato` · `perezlegales` · `physiomove` ·
-`place-vendome` · `pll-studio` · `sistema-barba` · `Terrestre3`
+`equiponeurodialectico` · `eric-torrent` · `federestivo` · `fosque` · `house-in-baires` ·
+`krb` · `latina` · `lautaromendez` · `lga` · `liliana-donato` · `luraschi` · `perezlegales` ·
+`physiomove` · `place-vendome` · `pll-studio` · `sistema-barba` · `Terrestre3` · `tr3`
 
 Ojo con dos nombres que no coinciden con el proyecto de Vercel: el repo `dist-nahuel` es el
 proyecto `venta-latina-cente`, y `Terrestre3` es `terrestre3`.

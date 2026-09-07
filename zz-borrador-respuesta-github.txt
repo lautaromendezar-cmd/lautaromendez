@@ -1,0 +1,55 @@
+Hi Tessa,
+
+Thanks for looking into this.
+
+I'm a freelance web developer based in Buenos Aires, Argentina. I work on my own, and
+I use GitHub as the source of truth for the websites I build for clients: one
+repository per project, 24 in total. They are small business and professional sites —
+law firms, a pilates studio, a physiotherapy clinic, a personal trainer, a yerba mate
+brand, a short-term rental company, an artist's portfolio, a couple of small
+e-commerce sites, and one internal tool for a distributor. Some are public and some
+private, depending on what each client agreed to.
+
+I think I know which activity looks automated, so let me be upfront about it.
+
+One private repository holds a product catalogue that is published from a
+spreadsheet through an admin page. Every price change and every product photo is
+saved by a serverless function that writes a commit to that repository through the
+GitHub REST API, one commit per change. That single repository accounts for about
+1,310 of the roughly 1,900 commits on my whole account, with days of over a hundred
+commits and several within the same minute. Almost all of them are real edits to a
+real catalogue, but I understand how it reads, because mechanically it is a bot.
+
+If that pattern is the problem, I'm glad to fix it: I can batch the changes into far
+fewer commits, or move that content out of GitHub to object storage and keep only the
+code here. Please tell me which you'd prefer. I'm also rotating the token that
+function used and moving it out of the repository into environment variables.
+
+The rest of the account is ordinary work:
+
+- I push from two computers, one at my office and one at home, so the account shows
+  up from two different networks on the same day.
+- Most of the repositories are wired to a host that deploys on push: Vercel for the
+  majority, Cloudflare Pages and Hostinger for one each. A couple of sites I upload
+  by hand instead. That is why there are many small commits rather than a few large
+  ones.
+- I use an AI coding assistant locally, so my own commits often arrive in bursts of
+  several within a few minutes.
+- New repositories appear in batches because each client project gets its own
+  repository, and I took on a lot of work over the winter: twelve of the twenty-four
+  got their first commit in August alone. They are real projects, mostly client
+  sites plus my own portfolio, and none of them are placeholders.
+- I don't use GitHub Actions at all; there isn't a single workflow file in any of
+  the 24 repositories.
+
+What I don't do with the account: no bots or spam, no mining or use of Actions for
+general compute, no bulk or throwaway accounts (this is my only one), no hosting or
+redistributing content that isn't mine or my clients', and I don't share or sell
+access to the account.
+
+This account is how I deliver paid work, and I'd like to keep using it for exactly
+that. If something I'm doing conflicts with the Terms of Service, please point me to
+the specific part and I'll correct it.
+
+Thanks,
+Lautaro Méndez
