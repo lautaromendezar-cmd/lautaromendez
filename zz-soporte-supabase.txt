@@ -1,0 +1,38 @@
+To: support@supabase.com
+Subject: Locked out of a paid account — GitHub is my only sign-in method
+
+Hi,
+
+I can't sign in to my Supabase account and I can't fix it from my side, because
+GitHub is the only identity linked to it.
+
+Account email: lautaromendez.ar@gmail.com
+GitHub identity: lautaromendezar-cmd
+Organizations: two under the same login
+  - Pro (paid): project refs fywsbdtuprfjlpvxminb and atzdzazqzvwnzczxqhms
+  - Free: project ref valwsiljbrrslrmphrfv
+There is a fourth project I can identify if you need it.
+
+What happened: GitHub flagged my personal account for manual review on September 7th.
+I can still sign in to GitHub itself, but OAuth authorization is blocked while the
+review is open, so "Continue with GitHub" no longer gets me into the Supabase
+dashboard. I have a reinstatement request open with GitHub Support, and I don't know
+how long it will take.
+
+I tried the password reset first. The reply says my account is linked to GitHub and
+that I can only sign in through GitHub, so that path is closed too.
+
+What I'm asking for: please add email sign-in to my existing account, or detach the
+GitHub identity so I can set up another method. I am not asking for a new account.
+The projects above are client databases in production, and I need access to both
+organizations under this login, not just the paid one.
+
+Attached: the password reset email in which Supabase states that my account is linked
+to GitHub and can only be signed in through it, and a screenshot of the GitHub sign-in
+error.
+
+I'm happy to prove ownership however you prefer: billing email, the card on file,
+invoice numbers, or details of the projects themselves.
+
+Thanks for your help,
+Lautaro Méndez

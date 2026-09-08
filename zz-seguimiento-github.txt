@@ -14,6 +14,13 @@ same holds across all 24 of my repositories. The token has only ever lived in th
 hosting provider's environment variables. I'd rather correct that than leave an
 inaccurate detail in my own account of things.
 
+There is one more consequence I should mention, because it is getting expensive. The
+flag also blocks GitHub as an identity provider for third-party services. I am now
+locked out of my paid Supabase account, where several client databases run in
+production, because GitHub OAuth is the only sign-in method linked to it. Supabase
+has confirmed in writing that they cannot reset it for me, since my identity there
+depends on GitHub. I have opened a ticket with them as well.
+
 Thanks for your time.
 
 Lautaro Méndez

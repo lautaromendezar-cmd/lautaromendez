@@ -193,6 +193,41 @@ git -C zz-backup-github/<repo>.git cat-file -e $(git -C <clon> rev-parse HEAD)^{
 Ojo con dos nombres que no coinciden con el proyecto de Vercel: el repo `dist-nahuel` es el
 proyecto `venta-latina-cente`, y `Terrestre3` es `terrestre3`.
 
+
+## Lo que rompe afuera de GitHub: los logins con "Continue with GitHub"
+
+**Esto es lo que más caro sale y no se ve venir.** Todo servicio donde la identidad es
+GitHub queda cerrado, y desde adentro no se puede arreglar porque para pedir ayuda hay
+que estar logueado.
+
+**Supabase: bloqueado.** Es el caso real. El reseteo de contraseña **no sirve**: contestan
+por escrito que la cuenta está atada a GitHub y que sólo se entra por ahí. Se mandó pedido
+a **`support@supabase.com`** el 7-sep (borrador en `zz-soporte-supabase.txt`), que es la vía
+documentada para quien no puede entrar al panel; piden captura del error y que el mail salga
+de la casilla registrada. Lo que se pide es que **agreguen acceso por email a la cuenta que
+ya existe**, no una cuenta nueva.
+
+Son **dos organizaciones** bajo el mismo login, y hay que nombrar las dos o devuelven sólo
+la paga:
+
+- **Pro**: `fywsbdtuprfjlpvxminb` (Terrestre3 y TR3) y `atzdzazqzvwnzczxqhms` (KRB)
+- **Free**: `valwsiljbrrslrmphrfv` (House in Baires)
+- Hay un cuarto proyecto, el de `federestivo`, que usa Supabase sólo del lado del servidor.
+  Su ref no está en el bundle: sale de `vercel env ls --project federestivo`.
+
+⚠️ **Nunca mandar la service role key como prueba de titularidad.** Soporte legítimo no la
+pide. Alcanza con la facturación y los refs.
+
+**Vercel: a salvo, verificado.** El login es por Google, y además hay email registrado. La
+conexión con GitHub figura ahí pero sin usar desde el 31-may. **No borrarla**: hace falta
+para reinstalar la GitHub App cuando vuelva la cuenta.
+
+**Sin revisar todavía**: Cloudflare, Sanity, Hostinger, Tienda Nube. En cada uno donde el
+botón diga GitHub, conviene agregar un segundo método **antes** de que caduque la sesión
+abierta.
+
+**Mientras no haya panel de Supabase**, se puede consultar la base igual con la service role
+key: `Terrestre3/.env.local` la tiene, y las de los otros se bajan con `vercel env pull`. . 
 ## Cómo publicar mientras tanto
 
 Con el CLI de Vercel, que no pasa por GitHub. Ya quedó instalado y logueado en la PC del
