@@ -534,7 +534,7 @@ p:last-child { margin-bottom: 0; }
 
 .retrato {
   width: 100%;
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 800 / 1103;   /* la nativa del retrato: no se recorta nada */
   object-fit: cover;
   background: var(--color-border);
   box-shadow: var(--sombra);
@@ -1062,6 +1062,12 @@ textarea.campo__control { min-height: 160px; resize: vertical; }
   .grid--2, .grid--3, .grid--13, .grid--21 { grid-template-columns: 1fr; }
   .grid--5, .grid--6 { grid-template-columns: repeat(2, 1fr); }
   .grid--13 { gap: 32px; }
+
+  /* A una columna el retrato ocupaba la pantalla entera (696 x 960): se lee un
+     scroll de cara antes de llegar al texto. Se le pone tope y se centra, que
+     es lo único que lo baja sin recortarlo. */
+  .retrato { max-width: 420px; margin-inline: auto; }
+  .retrato__epigrafe { max-width: 420px; margin-inline: auto; }
 
   .testimonios { grid-template-columns: 1fr; gap: 40px; }
   .testimonios__columna { gap: 40px; }
