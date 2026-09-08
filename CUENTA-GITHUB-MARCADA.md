@@ -222,9 +222,13 @@ pide. Alcanza con la facturación y los refs.
 conexión con GitHub figura ahí pero sin usar desde el 31-may. **No borrarla**: hace falta
 para reinstalar la GitHub App cuando vuelva la cuenta.
 
-**Sin revisar todavía**: Cloudflare, Sanity, Hostinger, Tienda Nube. En cada uno donde el
-botón diga GitHub, conviene agregar un segundo método **antes** de que caduque la sesión
-abierta.
+**Sanity, Hostinger y Tienda Nube: a salvo, verificado.** Sanity entra por Google, y en
+Hostinger y Tienda Nube la cuenta es propia, sin GitHub de por medio.
+
+**Cloudflare: el acceso no corre riesgo**, porque su panel no ofrece login con GitHub. Lo que
+sí queda roto ahí es lo mismo que en Vercel: si `luraschi` es un proyecto de Pages conectado
+al repo, no reconstruye con un push. Se republica por subida directa con
+`wrangler pages deploy`, que no pasa por GitHub.
 
 **Mientras no haya panel de Supabase**, se puede consultar la base igual con la service role
 key: `Terrestre3/.env.local` la tiene, y las de los otros se bajan con `vercel env pull`. . 
