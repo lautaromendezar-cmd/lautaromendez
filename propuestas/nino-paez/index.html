@@ -8,20 +8,28 @@
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --negro: #0a0a0a;
-    --hueso: #f0ebe0;
-    --acento: #f8ab2c;
-    --gris: #171717;
-    --gris-medio: #2b2b2b;
-    --gris-texto: #8a847a;
-    --texto: #c3bdb2;
+    /* paleta del sitio de Lautaro — void/carbon/steel/fog/bone */
+    --void:   #0A0B0D;   /* fondo base, negro azulado */
+    --carbon: #101217;   /* superficies elevadas */
+    --steel:  #191C23;   /* bordes de bloque */
+    --fog:    #7D8491;   /* texto secundario */
+    --bone:   #EDEBE8;   /* texto principal, blanco cálido */
+
+    /* el acento único, acá con el naranja de la marca del cliente */
+    --acento:    #F8AB2C;
+    --acento-40: rgb(248 171 44 / .40);
+
+    /* derivados: el mismo color con alfa, sin inventar hex nuevos */
+    --texto:   rgb(237 235 232 / .80);
+    --bone-12: rgb(237 235 232 / .12);
+    --bone-06: rgb(237 235 232 / .06);
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   body {
-    background: var(--negro);
-    color: var(--hueso);
+    background: var(--void);
+    color: var(--bone);
     font-family: 'Crimson Text', Georgia, serif;
     font-size: 18px;
     line-height: 1.7;
@@ -53,7 +61,7 @@
     align-items: flex-start;
     margin-bottom: 60px;
     padding-bottom: 28px;
-    border-bottom: 1px solid var(--gris-medio);
+    border-bottom: 1px solid var(--bone-12);
   }
 
   .logo-area h1 {
@@ -67,14 +75,14 @@
   .logo-area p {
     font-family: 'DM Mono', monospace;
     font-size: 11px;
-    color: var(--gris-texto);
+    color: var(--fog);
     letter-spacing: 1px;
   }
 
   .fecha {
     font-family: 'DM Mono', monospace;
     font-size: 11px;
-    color: var(--gris-texto);
+    color: var(--fog);
     text-align: right;
     letter-spacing: 1px;
   }
@@ -96,7 +104,7 @@
     font-size: clamp(44px, 7.4vw, 68px);
     line-height: 0.98;
     letter-spacing: 1px;
-    color: var(--hueso);
+    color: var(--bone);
     margin-bottom: 24px;
   }
 
@@ -128,14 +136,14 @@
     content: '';
     flex: 1;
     height: 1px;
-    background: var(--gris-medio);
+    background: var(--bone-12);
   }
 
   h3 {
     font-family: 'Bebas Neue', sans-serif;
     font-size: 30px;
     letter-spacing: 1px;
-    color: var(--hueso);
+    color: var(--bone);
     margin-bottom: 18px;
   }
 
@@ -146,8 +154,8 @@
 
   /* Detalles del diagnóstico */
   .detalles {
-    background: var(--gris);
-    border: 1px solid var(--gris-medio);
+    background: var(--carbon);
+    border: 1px solid var(--steel);
     border-left: 3px solid var(--acento);
     padding: 24px 28px;
     margin: 26px 0;
@@ -157,7 +165,7 @@
   .detalles > p:first-child {
     font-family: 'DM Mono', monospace;
     font-size: 11px;
-    color: var(--gris-texto);
+    color: var(--fog);
     letter-spacing: 2px;
     text-transform: uppercase;
     margin-bottom: 14px;
@@ -180,7 +188,7 @@
     font-family: 'DM Mono', monospace;
   }
 
-  .detalles strong { color: var(--hueso); font-weight: 600; }
+  .detalles strong { color: var(--bone); font-weight: 600; }
 
   /* Lista de features */
   .features { list-style: none; margin: 22px 0; }
@@ -190,7 +198,7 @@
     align-items: flex-start;
     gap: 14px;
     padding: 13px 0;
-    border-bottom: 1px solid var(--gris-medio);
+    border-bottom: 1px solid var(--bone-12);
     color: var(--texto);
     font-size: 17px;
   }
@@ -206,7 +214,7 @@
   }
 
   .features li strong {
-    color: var(--hueso);
+    color: var(--bone);
     font-weight: 600;
   }
 
@@ -224,7 +232,7 @@
     letter-spacing: 1px;
     text-transform: uppercase;
     color: var(--acento);
-    border: 1px solid rgba(248, 171, 44, 0.35);
+    border: 1px solid var(--acento-40);
     border-radius: 2px;
     padding: 3px 9px;
   }
@@ -234,9 +242,9 @@
 
   .fuera li {
     font-size: 16px;
-    color: var(--gris-texto);
+    color: var(--fog);
     padding: 11px 0 11px 24px;
-    border-bottom: 1px solid var(--gris-medio);
+    border-bottom: 1px solid var(--bone-12);
     position: relative;
   }
 
@@ -247,7 +255,7 @@
     position: absolute;
     left: 2px;
     top: 10px;
-    color: #5a544c;
+    color: var(--fog);
     font-family: 'DM Mono', monospace;
     font-size: 15px;
   }
@@ -260,7 +268,7 @@
     align-items: flex-start;
     gap: 14px;
     padding: 13px 0;
-    border-bottom: 1px solid var(--gris-medio);
+    border-bottom: 1px solid var(--bone-12);
     color: var(--texto);
     font-size: 17px;
   }
@@ -278,14 +286,14 @@
   }
 
   .checklist li strong {
-    color: var(--hueso);
+    color: var(--bone);
     font-weight: 600;
   }
 
   .checklist .nota {
     display: block;
     font-size: 15px;
-    color: var(--gris-texto);
+    color: var(--fog);
   }
 
   /* Timeline */
@@ -295,7 +303,7 @@
     display: flex;
     gap: 22px;
     padding: 18px 0;
-    border-bottom: 1px solid var(--gris-medio);
+    border-bottom: 1px solid var(--bone-12);
     align-items: flex-start;
   }
 
@@ -304,7 +312,7 @@
   .timeline-num {
     font-family: 'Bebas Neue', sans-serif;
     font-size: 38px;
-    color: var(--gris-medio);
+    color: var(--bone-12);
     line-height: 1;
     min-width: 40px;
   }
@@ -313,7 +321,7 @@
     font-family: 'Bebas Neue', sans-serif;
     font-size: 19px;
     letter-spacing: 1px;
-    color: var(--hueso);
+    color: var(--bone);
     margin-bottom: 5px;
   }
 
@@ -321,8 +329,8 @@
 
   /* Pricing */
   .pricing-card {
-    background: var(--gris);
-    border: 1px solid var(--gris-medio);
+    background: var(--carbon);
+    border: 1px solid var(--steel);
     border-radius: 4px;
     padding: 36px 40px;
     margin: 28px 0 20px;
@@ -341,7 +349,7 @@
   .precio-label {
     font-family: 'DM Mono', monospace;
     font-size: 11px;
-    color: var(--gris-texto);
+    color: var(--fog);
     letter-spacing: 2px;
     text-transform: uppercase;
     margin-bottom: 10px;
@@ -350,18 +358,18 @@
   .precio-valor {
     font-family: 'Bebas Neue', sans-serif;
     font-size: 58px;
-    color: var(--hueso);
+    color: var(--bone);
     line-height: 1;
     margin-bottom: 6px;
     letter-spacing: 1px;
   }
 
-  .precio-valor span { font-size: 26px; color: var(--gris-texto); }
+  .precio-valor span { font-size: 26px; color: var(--fog); }
 
   .precio-sub {
     font-family: 'DM Mono', monospace;
     font-size: 11px;
-    color: var(--gris-texto);
+    color: var(--fog);
     letter-spacing: 1px;
     margin-bottom: 0;
   }
@@ -375,17 +383,17 @@
   }
 
   .opcion {
-    border: 1px solid var(--gris-medio);
+    border: 1px solid var(--bone-12);
     border-radius: 4px;
     padding: 24px 26px;
   }
 
-  .opcion.destacada { border-color: rgba(248, 171, 44, 0.5); }
+  .opcion.destacada { border-color: var(--acento-40); }
 
   .opcion .op-label {
     font-family: 'DM Mono', monospace;
     font-size: 10px;
-    color: var(--gris-texto);
+    color: var(--fog);
     letter-spacing: 2px;
     text-transform: uppercase;
     margin-bottom: 10px;
@@ -394,7 +402,7 @@
   .opcion h4 {
     font-family: 'Bebas Neue', sans-serif;
     font-size: 32px;
-    color: var(--hueso);
+    color: var(--bone);
     letter-spacing: 1px;
     line-height: 1.05;
     margin-bottom: 8px;
@@ -404,14 +412,14 @@
 
   .opcion span {
     font-size: 15px;
-    color: var(--gris-texto);
+    color: var(--fog);
     line-height: 1.6;
     display: block;
   }
 
   /* Mensual */
   .mensual {
-    border: 1px solid var(--gris-medio);
+    border: 1px solid var(--bone-12);
     border-radius: 4px;
     padding: 26px 32px;
     margin-top: 20px;
@@ -425,7 +433,7 @@
   .mensual .m-left p {
     font-family: 'DM Mono', monospace;
     font-size: 11px;
-    color: var(--gris-texto);
+    color: var(--fog);
     letter-spacing: 2px;
     text-transform: uppercase;
     margin-bottom: 8px;
@@ -434,12 +442,12 @@
   .mensual .m-left h4 {
     font-family: 'Bebas Neue', sans-serif;
     font-size: 24px;
-    color: var(--hueso);
+    color: var(--bone);
     letter-spacing: 1px;
     margin-bottom: 6px;
   }
 
-  .mensual .m-left span { font-size: 15px; color: var(--gris-texto); }
+  .mensual .m-left span { font-size: 15px; color: var(--fog); }
 
   .mensual-precio {
     font-family: 'Bebas Neue', sans-serif;
@@ -454,13 +462,13 @@
     font-family: 'DM Mono', monospace;
     font-size: 11px;
     font-style: normal;
-    color: var(--gris-texto);
+    color: var(--fog);
     letter-spacing: 1px;
   }
 
   /* Condiciones */
   .condiciones {
-    background: var(--gris);
+    background: var(--carbon);
     border-radius: 4px;
     padding: 28px 36px;
     margin-top: 16px;
@@ -485,8 +493,8 @@
 
   /* Portfolio */
   .portfolio-box {
-    background: var(--gris);
-    border: 1px solid var(--gris-medio);
+    background: var(--carbon);
+    border: 1px solid var(--steel);
     border-left: 3px solid var(--acento);
     padding: 26px 30px;
     margin: 46px 0;
@@ -496,7 +504,7 @@
   .portfolio-box .pb-label {
     font-family: 'DM Mono', monospace;
     font-size: 11px;
-    color: var(--gris-texto);
+    color: var(--fog);
     letter-spacing: 1px;
     margin-bottom: 10px;
     text-transform: uppercase;
@@ -516,7 +524,7 @@
 
   .portfolio-box .pb-desc {
     font-size: 15px;
-    color: var(--gris-texto);
+    color: var(--fog);
     margin-top: 10px;
     margin-bottom: 0;
   }
@@ -525,7 +533,7 @@
   .cta-final {
     margin-top: 64px;
     padding-top: 44px;
-    border-top: 1px solid var(--gris-medio);
+    border-top: 1px solid var(--bone-12);
     text-align: center;
   }
 
@@ -537,26 +545,26 @@
 
   .cta-final > p {
     font-size: 17px;
-    color: var(--gris-texto);
+    color: var(--fog);
     margin-bottom: 0;
   }
 
   .cta-firma {
     margin-top: 44px;
     padding-top: 30px;
-    border-top: 1px solid var(--gris-medio);
+    border-top: 1px solid var(--bone-12);
   }
 
   .cta-firma p {
     font-size: 15px;
-    color: var(--gris-texto);
+    color: var(--fog);
     margin-bottom: 6px;
   }
 
   .cta-firma strong {
     font-family: 'Bebas Neue', sans-serif;
     font-size: 20px;
-    color: var(--hueso);
+    color: var(--bone);
     letter-spacing: 2px;
     display: block;
     margin-bottom: 4px;
@@ -612,7 +620,6 @@
 </svg>
 
 <div class="wrap">
-
   <!-- Header -->
   <header class="header">
     <div class="logo-area">
@@ -630,7 +637,7 @@
     <p class="hero-label">Para Niño Paez Inmobiliaria</p>
     <h2>Tu marca<br>Tus propiedades<br>Tu <span>panel</span></h2>
     <p class="hero-intro">
-      Hoy tus propiedades viven dentro de una plantilla que compartís con muchas otras inmobiliarias. Te propongo mudarlas a una plataforma propia: tu diseño, tu dominio, tus datos, y un panel desde donde cargás cada propiedad sin depender de nadie.
+      Una plataforma propia para reemplazar la plantilla de BuscadorProp: tu diseño, tu dominio, tus datos, y un panel desde donde cargás cada propiedad vos.
     </p>
   </div>
 
@@ -638,40 +645,38 @@
   <section>
     <p class="section-label">01 — Diagnóstico</p>
     <h3>Dónde estás hoy</h3>
-    <p>La web actual es una plantilla de BuscadorProp. La ventaja real de esa plataforma es que ya te carga las propiedades y te resuelve el buscador, y eso no es poco. El costo es el otro lado de la misma moneda: dependés de un proveedor, no tenés control sobre el diseño, y el template lo comparte tu competencia.</p>
-    <p>Hay tres detalles que se ven desde afuera y que muestran hasta dónde llega ese límite:</p>
+    <p>La web actual es una plantilla de BuscadorProp. Te carga las propiedades y te resuelve el buscador; a cambio dependés de ellos, no manejás el diseño y compartís template con la competencia.</p>
 
     <div class="detalles">
       <p>Lo que encontré navegando el sitio</p>
       <ul>
-        <li>El logo todavía dice <strong>housebeach</strong>, la marca anterior. La imagen sigue colgada de esa época y no hay manera de cambiarla desde donde estás.</li>
+        <li>El logo todavía dice <strong>housebeach</strong>, la marca anterior.</li>
         <li>El link de <strong>Facebook</strong> lleva a la home de Facebook, no a tu página.</li>
         <li>El de <strong>Twitter</strong> apunta a la cuenta de otra marca.</li>
       </ul>
     </div>
 
-    <p>Ninguno de los tres es grave por separado. Juntos cuentan la misma historia: son cosas que no podés arreglar vos. La propuesta es construirte una plataforma propia, con tu marca, tus datos y tus enlaces, donde cada uno de esos detalles se resuelve desde un panel en dos minutos.</p>
+    <p>Tres cosas chicas que hoy no dependen de vos. En plataforma propia se cambian desde el panel.</p>
   </section>
 
   <!-- Web pública -->
   <section>
     <p class="section-label">02 — La web pública</p>
     <h3>Lo que ve tu cliente</h3>
-    <p>Todo construido alrededor de una sola cosa: que quien entra encuentre rápido la propiedad que busca y te escriba.</p>
 
     <ul class="features">
-      <li><span><strong>Buscador principal.</strong> Por operación (venta, alquiler, alquiler temporal), por tipo de propiedad y por localidad — las ocho en las que ya trabajás, de Costa Azul y San Bernardo a Mar del Plata, Ramos Mejía y San Antonio de Padua.</span></li>
-      <li><span><strong>Los filtros los definís vos.</strong> Arriba de operación, tipo y localidad va el set de filtros que de verdad te preguntan por teléfono: dormitorios, ambientes, cochera, pileta, superficie, rango de precio, apto crédito. Me pasás tu lista y esos son los filtros del sitio.</span></li>
-      <li><span><strong>Mapa interactivo con las propiedades marcadas.</strong> Cada propiedad es un pin. Se toca el pin y se abre la ficha, y el mapa respeta los filtros que estén puestos. Sirve para el que no busca por localidad sino por zona: mira el mapa y ve qué hay cerca de la playa, de la avenida o de donde le interese.</span></li>
-      <li><span><strong>Listado con filtros siempre a mano.</strong> El resultado se sigue afinando sin volver a empezar la búsqueda.</span></li>
-      <li><span><strong>Ficha de propiedad completa.</strong> Galería de fotos, características, ubicación en el mapa y etiquetas que se ven de un vistazo:
+      <li><span><strong>Buscador principal.</strong> Operación (venta, alquiler, alquiler temporal), tipo de propiedad y localidad: las ocho en las que trabajás, de Costa Azul y San Bernardo a Mar del Plata, Ramos Mejía y San Antonio de Padua.</span></li>
+      <li><span><strong>Los filtros los definís vos.</strong> Dormitorios, ambientes, cochera, pileta, superficie, rango de precio, apto crédito — los que me pases son los que van.</span></li>
+      <li><span><strong>Mapa interactivo.</strong> Cada propiedad es un pin, el pin abre la ficha, y el mapa respeta los filtros activos.</span></li>
+      <li><span><strong>Listado con los filtros a mano.</strong> Se afina el resultado sin volver a empezar la búsqueda.</span></li>
+      <li><span><strong>Ficha completa.</strong> Galería, características, ubicación en el mapa y etiquetas:
         <span class="chips"><span>Apto crédito</span><span>Acepta permuta</span><span>Oportunidad</span><span>Rebajado</span><span>Destacado</span></span>
       </span></li>
-      <li><span><strong>Precios como corresponde a cada operación.</strong> Dólares para venta, pesos por quincena para los temporarios.</span></li>
-      <li><span><strong>Botón de WhatsApp con mensaje prearmado.</strong> El mensaje llega con el código de la propiedad adentro, así sabés de entrada por cuál te escriben.</span></li>
-      <li><span><strong>Vista previa con imagen al compartir el link.</strong> Cuando pegás la dirección de una propiedad en WhatsApp o en Instagram aparece la foto, el título y el precio, en lugar de un link pelado.</span></li>
-      <li><span><strong>Secciones Nosotros, Tasaciones y Contacto.</strong> Tasaciones con formulario propio, para que la consulta te llegue ordenada.</span></li>
-      <li><span><strong>Pensada primero para celular.</strong> La mayoría de tus consultas entra desde el teléfono, así que el diseño arranca ahí y después se adapta a las pantallas grandes.</span></li>
+      <li><span><strong>Precios por operación.</strong> Dólares para venta, pesos por quincena para temporarios.</span></li>
+      <li><span><strong>Botón de WhatsApp con mensaje prearmado.</strong> Te llega con el código de la propiedad adentro.</span></li>
+      <li><span><strong>Vista previa al compartir el link.</strong> En WhatsApp o Instagram aparece la foto, el título y el precio, no un link pelado.</span></li>
+      <li><span><strong>Secciones Nosotros, Tasaciones y Contacto.</strong> Tasaciones con formulario propio.</span></li>
+      <li><span><strong>Mobile-first y responsive.</strong></span></li>
     </ul>
   </section>
 
@@ -679,31 +684,30 @@
   <section>
     <p class="section-label">03 — El panel</p>
     <h3>Lo que manejás vos</h3>
-    <p>El panel es la mitad importante del proyecto. Sin él seguirías dependiendo de que otro cargue tus propiedades.</p>
 
     <ul class="features">
-      <li><span><strong>Crear, editar, pausar o marcar como vendida.</strong> Cada propiedad tiene su estado y lo cambiás cuando querés, sin pedirle permiso a nadie.</span></li>
-      <li><span><strong>Varias fotos por propiedad.</strong> Las subís todas juntas y ordenás cuál va primero.</span></li>
-      <li><span><strong>Destacados a dedo.</strong> Elegís qué propiedades aparecen adelante.</span></li>
-      <li><span><strong>Precios en dólares o en pesos.</strong> Según el tipo de operación, sin mezclar.</span></li>
-      <li><span><strong>Tarifas por quincena y por temporada.</strong> Para los temporarios, con la grilla que uses vos.</span></li>
-      <li><span><strong>El pin en el mapa, desde el mismo formulario.</strong> Al cargar la propiedad marcás su ubicación y ya queda en el mapa del sitio.</span></li>
-      <li><span><strong>Se instala como aplicación, en la compu y en el celular.</strong> En el escritorio queda con su propio ícono y se abre en una ventana aparte: se siente como un programa, sin ser un programa que haya que instalar de verdad. En el celular sirve para lo más útil de todo — cargar una propiedad con las fotos que sacás durante la visita, ahí mismo.</span></li>
+      <li><span><strong>Crear, editar, pausar o marcar como vendida.</strong></span></li>
+      <li><span><strong>Varias fotos por propiedad.</strong> Las subís juntas y elegís cuál va primero.</span></li>
+      <li><span><strong>Destacados a dedo.</strong></span></li>
+      <li><span><strong>Precios en dólares o en pesos,</strong> según la operación.</span></li>
+      <li><span><strong>Tarifas por quincena y por temporada</strong> para los temporarios.</span></li>
+      <li><span><strong>El pin del mapa,</strong> desde el mismo formulario de carga.</span></li>
+      <li><span><strong>Se instala como aplicación, en la compu y en el celular.</strong> En el escritorio queda con su ícono y se abre en ventana aparte: se usa como un programa sin serlo. En el celular cargás la propiedad con las fotos durante la visita.</span></li>
     </ul>
   </section>
 
   <!-- Fuera de alcance -->
   <section>
     <p class="section-label">04 — Fuera de alcance</p>
-    <h3>Lo que no entra en esta propuesta</h3>
-    <p>Lo dejo por escrito para que no haya sorpresas. Nada de esto es imposible: son proyectos aparte, y si más adelante hacen falta los presupuesto.</p>
+    <h3>Lo que no entra</h3>
+    <p>Lo dejo por escrito. Si más adelante hace falta algo de esto, lo presupuesto aparte.</p>
 
     <ul class="fuera">
       <li>Calendario de disponibilidad y reservas online para los temporarios</li>
       <li>Publicación automática a portales tipo Zonaprop o Argenprop</li>
       <li>CRM de clientes</li>
       <li>Campañas de publicidad</li>
-      <li>Migración de las propiedades que ya están cargadas en BuscadorProp — esas las cargás vos en el panel nuevo</li>
+      <li>Migración de las propiedades ya cargadas en BuscadorProp — esas las cargás vos en el panel nuevo</li>
     </ul>
   </section>
 
@@ -711,16 +715,16 @@
   <section>
     <p class="section-label">05 — Lo que necesito de vos</p>
     <h3>Materiales para arrancar</h3>
-    <p>El plazo empieza a correr cuando tengo esto. Es la lista completa, no hay letra chica después.</p>
+    <p>El plazo empieza a correr cuando tengo esto:</p>
 
     <ul class="checklist">
-      <li><span><strong>Logo actualizado en alta calidad.</strong> <span class="nota">El que está hoy en la web todavía dice housebeach.</span></span></li>
-      <li><span><strong>Dominio a tu nombre en NIC Argentina.</strong> <span class="nota">Conviene verificar que niñopaez.com.ar esté registrado a tu nombre y no al de BuscadorProp. Si está a nombre de ellos, lo vemos antes de publicar.</span></span></li>
-      <li><span><strong>Enlaces actualizados de tus redes.</strong> <span class="nota">Facebook hoy apunta a la home genérica y Twitter a otra marca.</span></span></li>
-      <li><span><strong>Datos de contacto, matrícula, dirección y horarios.</strong> <span class="nota">Tal como querés que figuren, para confirmar lo que ya está publicado.</span></span></li>
+      <li><span><strong>Logo actualizado en alta calidad.</strong> <span class="nota">El de la web dice housebeach.</span></span></li>
+      <li><span><strong>Dominio a tu nombre en NIC Argentina.</strong> <span class="nota">Verificá que niñopaez.com.ar no figure a nombre de BuscadorProp.</span></span></li>
+      <li><span><strong>Enlaces actualizados de tus redes.</strong></span></li>
+      <li><span><strong>Datos de contacto, matrícula, dirección y horarios.</strong></span></li>
       <li><span><strong>El mail o los mails donde querés recibir las consultas.</strong></span></li>
       <li><span><strong>Fotos y textos para la sección Nosotros.</strong></span></li>
-      <li><span><strong>Tu lista de filtros.</strong> <span class="nota">Los que te sirven a vos para buscar rápido cuando te llama un cliente.</span></span></li>
+      <li><span><strong>Tu lista de filtros.</strong></span></li>
     </ul>
   </section>
 
@@ -728,28 +732,28 @@
   <section>
     <p class="section-label">06 — Plazo</p>
     <h3>Tres a cuatro semanas</h3>
-    <p>Contadas desde que tengo los accesos y los materiales de la lista de arriba. Así se reparte el trabajo:</p>
+    <p>Desde que tengo los accesos y los materiales:</p>
 
     <div class="timeline">
       <div class="timeline-item">
         <span class="timeline-num">01</span>
         <div class="timeline-content">
           <h4>Etapa 1 — Diseño y base</h4>
-          <p>Tu identidad aplicada al sitio, la estructura de secciones y el modelo de datos de las propiedades: operaciones, tipos, localidades, etiquetas, monedas y los filtros que me pases.</p>
+          <p>Tu identidad aplicada al sitio, estructura de secciones y modelo de datos: operaciones, tipos, localidades, etiquetas, monedas y tus filtros.</p>
         </div>
       </div>
       <div class="timeline-item">
         <span class="timeline-num">02</span>
         <div class="timeline-content">
           <h4>Etapa 2 — Web pública y panel</h4>
-          <p>Buscador, filtros, mapa, listado, ficha, WhatsApp, formularios y el panel completo. A mitad de camino te muestro una versión navegable para que la pruebes y me digas qué ajustar.</p>
+          <p>Buscador, filtros, mapa, listado, ficha, WhatsApp, formularios y panel completo. A mitad de camino te paso una versión navegable para que me digas qué ajustar.</p>
         </div>
       </div>
       <div class="timeline-item">
         <span class="timeline-num">03</span>
         <div class="timeline-content">
           <h4>Etapa 3 — Publicación</h4>
-          <p>Conexión del dominio, pruebas en celular y en escritorio, instalación del panel en tus equipos y una charla para que lo uses con confianza desde el primer día.</p>
+          <p>Dominio conectado, pruebas en celular y escritorio, panel instalado en tus equipos y una charla para arrancar.</p>
         </div>
       </div>
     </div>
@@ -766,18 +770,18 @@
       <p class="precio-sub">ARS · PRECIO TOTAL DEL PROYECTO</p>
     </div>
 
-    <p>Podés pagarlo de dos maneras, la que te venga mejor:</p>
+    <p>Dos formas de pago, la que te venga mejor:</p>
 
     <div class="opciones">
       <div class="opcion">
         <p class="op-label">Opción 1 — En dos pagos</p>
         <h4>$400.000<br>+ $400.000</h4>
-        <span>La mitad al arrancar y la otra mitad a la entrega.</span>
+        <span>Al inicio y a la entrega.</span>
       </div>
       <div class="opcion destacada">
         <p class="op-label">Opción 2 — Todo al inicio</p>
         <h4>$720.000</h4>
-        <span>Pago total al arrancar, con 10% de descuento. Te ahorrás $80.000.</span>
+        <span>Pago total al arrancar, 10% de descuento. Son $80.000 menos.</span>
       </div>
     </div>
 
@@ -785,7 +789,7 @@
       <div class="m-left">
         <p>Costo mensual a tu cargo</p>
         <h4>Base de datos</h4>
-        <span>Es lo único que se paga todos los meses. Lo factura Supabase directo a tu nombre, no pasa por mí. El hosting del sitio corre por mi cuenta.</span>
+        <span>Lo único mensual. Lo factura Supabase directo a tu nombre. El hosting del sitio corre por mi cuenta.</span>
       </div>
       <div class="mensual-precio">U$D 15<em>APROX. / MES</em></div>
     </div>
@@ -798,24 +802,24 @@
 
     <div class="condiciones">
       <p>El plazo arranca cuando tengo los accesos y los materiales, no cuando se firma.</p>
-      <p>Los ajustes durante el desarrollo están incluidos. Si aparece algo que cambia el alcance, lo presupuesto aparte y decidís con el número a la vista.</p>
-      <p>Trabajo como monotributista y facturo con factura C.</p>
-      <p>Esta propuesta tiene validez de 15 días corridos.</p>
-      <p>El sitio y el contenido quedan a tu nombre. El dominio también, registrado a vos en NIC Argentina.</p>
+      <p>Los ajustes durante el desarrollo están incluidos. Si cambia el alcance, lo presupuesto aparte.</p>
+      <p>Trabajo como monotributista, factura C.</p>
+      <p>Validez de la propuesta: 15 días corridos.</p>
+      <p>El sitio, el contenido y el dominio quedan a tu nombre.</p>
     </div>
   </section>
 
   <!-- Portfolio -->
   <div class="portfolio-box">
-    <p class="pb-label">Antes de decidir, mirá lo que vengo haciendo</p>
+    <p class="pb-label">Lo que vengo haciendo</p>
     <a href="https://lautaromendez.com.ar/portfolio" target="_blank" rel="noopener">lautaromendez.com.ar/portfolio →</a>
-    <p class="pb-desc">Sitios y sistemas que están funcionando hoy, varios con su panel de administración. Podés entrar y navegarlos.</p>
+    <p class="pb-desc">Sitios y sistemas funcionando hoy, varios con su panel de administración.</p>
   </div>
 
   <!-- CTA final -->
   <div class="cta-final">
     <h3>¿Arrancamos?</h3>
-    <p>Cualquier duda sobre el alcance, el panel o el precio, escribime y lo charlamos tranquilos.</p>
+    <p>Cualquier duda sobre el alcance o el precio, escribime.</p>
 
     <div class="cta-firma">
       <p>Lautaro Méndez</p>
