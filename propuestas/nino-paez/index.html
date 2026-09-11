@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Propuesta — Niño Paez Inmobiliaria</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --negro: #0a0a0a;
+    --hueso: #f0ebe0;
+    --acento: #f8ab2c;
+    --gris: #171717;
+    --gris-medio: #2b2b2b;
+    --gris-texto: #8a847a;
+    --texto: #c3bdb2;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--negro);
+    color: var(--hueso);
+    font-family: 'Crimson Text', Georgia, serif;
+    font-size: 18px;
+    line-height: 1.7;
+  }
+
+  /* Grain overlay */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.4;
+  }
+
+  .wrap {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 56px 32px 90px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Header */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 60px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid var(--gris-medio);
+  }
+
+  .logo-area h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 13px;
+    letter-spacing: 4px;
+    color: var(--acento);
+    margin-bottom: 4px;
+  }
+
+  .logo-area p {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--gris-texto);
+    letter-spacing: 1px;
+  }
+
+  .fecha {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--gris-texto);
+    text-align: right;
+    letter-spacing: 1px;
+  }
+
+  /* Hero */
+  .hero { margin-bottom: 54px; }
+
+  .hero-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--acento);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .hero h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(44px, 7.4vw, 68px);
+    line-height: 0.98;
+    letter-spacing: 1px;
+    color: var(--hueso);
+    margin-bottom: 24px;
+  }
+
+  .hero h2 span { color: var(--acento); }
+
+  .hero-intro {
+    font-size: 19px;
+    color: var(--texto);
+    max-width: 580px;
+    line-height: 1.75;
+  }
+
+  /* Secciones */
+  section { margin-bottom: 52px; }
+
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--acento);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--gris-medio);
+  }
+
+  h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 30px;
+    letter-spacing: 1px;
+    color: var(--hueso);
+    margin-bottom: 18px;
+  }
+
+  p {
+    color: var(--texto);
+    margin-bottom: 16px;
+  }
+
+  /* Detalles del diagnóstico */
+  .detalles {
+    background: var(--gris);
+    border: 1px solid var(--gris-medio);
+    border-left: 3px solid var(--acento);
+    padding: 24px 28px;
+    margin: 26px 0;
+    border-radius: 2px;
+  }
+
+  .detalles > p:first-child {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--gris-texto);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+
+  .detalles ul { list-style: none; }
+
+  .detalles li {
+    font-size: 16px;
+    color: var(--texto);
+    padding: 7px 0 7px 20px;
+    position: relative;
+  }
+
+  .detalles li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--acento);
+    font-family: 'DM Mono', monospace;
+  }
+
+  .detalles strong { color: var(--hueso); font-weight: 600; }
+
+  /* Lista de features */
+  .features { list-style: none; margin: 22px 0; }
+
+  .features li {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 13px 0;
+    border-bottom: 1px solid var(--gris-medio);
+    color: var(--texto);
+    font-size: 17px;
+  }
+
+  .features li:last-child { border-bottom: none; }
+
+  .features li::before {
+    content: '●';
+    color: var(--acento);
+    font-size: 8px;
+    margin-top: 7px;
+    flex-shrink: 0;
+  }
+
+  .features li strong {
+    color: var(--hueso);
+    font-weight: 600;
+  }
+
+  /* Etiquetas de la ficha */
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin-top: 10px;
+  }
+
+  .chips span {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--acento);
+    border: 1px solid rgba(248, 171, 44, 0.35);
+    border-radius: 2px;
+    padding: 3px 9px;
+  }
+
+  /* Fuera de alcance */
+  .fuera { list-style: none; margin: 20px 0 0; }
+
+  .fuera li {
+    font-size: 16px;
+    color: var(--gris-texto);
+    padding: 11px 0 11px 24px;
+    border-bottom: 1px solid var(--gris-medio);
+    position: relative;
+  }
+
+  .fuera li:last-child { border-bottom: none; }
+
+  .fuera li::before {
+    content: '\00d7';
+    position: absolute;
+    left: 2px;
+    top: 10px;
+    color: #5a544c;
+    font-family: 'DM Mono', monospace;
+    font-size: 15px;
+  }
+
+  /* Checklist de materiales */
+  .checklist { list-style: none; margin: 20px 0 0; }
+
+  .checklist li {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 13px 0;
+    border-bottom: 1px solid var(--gris-medio);
+    color: var(--texto);
+    font-size: 17px;
+  }
+
+  .checklist li:last-child { border-bottom: none; }
+
+  .checklist li::before {
+    content: '';
+    width: 11px;
+    height: 11px;
+    border: 1px solid var(--acento);
+    border-radius: 2px;
+    margin-top: 8px;
+    flex-shrink: 0;
+  }
+
+  .checklist li strong {
+    color: var(--hueso);
+    font-weight: 600;
+  }
+
+  .checklist .nota {
+    display: block;
+    font-size: 15px;
+    color: var(--gris-texto);
+  }
+
+  /* Timeline */
+  .timeline { margin: 22px 0; }
+
+  .timeline-item {
+    display: flex;
+    gap: 22px;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--gris-medio);
+    align-items: flex-start;
+  }
+
+  .timeline-item:last-child { border-bottom: none; }
+
+  .timeline-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 38px;
+    color: var(--gris-medio);
+    line-height: 1;
+    min-width: 40px;
+  }
+
+  .timeline-content h4 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 19px;
+    letter-spacing: 1px;
+    color: var(--hueso);
+    margin-bottom: 5px;
+  }
+
+  .timeline-content p { font-size: 16px; margin: 0; }
+
+  /* Pricing */
+  .pricing-card {
+    background: var(--gris);
+    border: 1px solid var(--gris-medio);
+    border-radius: 4px;
+    padding: 36px 40px;
+    margin: 28px 0 20px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .pricing-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--acento);
+  }
+
+  .precio-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--gris-texto);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  .precio-valor {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 58px;
+    color: var(--hueso);
+    line-height: 1;
+    margin-bottom: 6px;
+    letter-spacing: 1px;
+  }
+
+  .precio-valor span { font-size: 26px; color: var(--gris-texto); }
+
+  .precio-sub {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--gris-texto);
+    letter-spacing: 1px;
+    margin-bottom: 0;
+  }
+
+  /* Opciones de pago */
+  .opciones {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 22px;
+  }
+
+  .opcion {
+    border: 1px solid var(--gris-medio);
+    border-radius: 4px;
+    padding: 24px 26px;
+  }
+
+  .opcion.destacada { border-color: rgba(248, 171, 44, 0.5); }
+
+  .opcion .op-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--gris-texto);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  .opcion h4 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 32px;
+    color: var(--hueso);
+    letter-spacing: 1px;
+    line-height: 1.05;
+    margin-bottom: 8px;
+  }
+
+  .opcion.destacada h4 { color: var(--acento); }
+
+  .opcion span {
+    font-size: 15px;
+    color: var(--gris-texto);
+    line-height: 1.6;
+    display: block;
+  }
+
+  /* Mensual */
+  .mensual {
+    border: 1px solid var(--gris-medio);
+    border-radius: 4px;
+    padding: 26px 32px;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 22px;
+    flex-wrap: wrap;
+  }
+
+  .mensual .m-left p {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--gris-texto);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .mensual .m-left h4 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 24px;
+    color: var(--hueso);
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+  }
+
+  .mensual .m-left span { font-size: 15px; color: var(--gris-texto); }
+
+  .mensual-precio {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 36px;
+    color: var(--acento);
+    letter-spacing: 1px;
+    white-space: nowrap;
+  }
+
+  .mensual-precio em {
+    display: block;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    font-style: normal;
+    color: var(--gris-texto);
+    letter-spacing: 1px;
+  }
+
+  /* Condiciones */
+  .condiciones {
+    background: var(--gris);
+    border-radius: 4px;
+    padding: 28px 36px;
+    margin-top: 16px;
+  }
+
+  .condiciones p {
+    font-size: 16px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .condiciones p:last-child { margin-bottom: 0; }
+
+  .condiciones p::before {
+    content: '—';
+    color: var(--acento);
+    flex-shrink: 0;
+    font-family: monospace;
+  }
+
+  /* Portfolio */
+  .portfolio-box {
+    background: var(--gris);
+    border: 1px solid var(--gris-medio);
+    border-left: 3px solid var(--acento);
+    padding: 26px 30px;
+    margin: 46px 0;
+    border-radius: 2px;
+  }
+
+  .portfolio-box .pb-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--gris-texto);
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+  }
+
+  .portfolio-box a {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    color: var(--acento);
+    text-decoration: none;
+    letter-spacing: 2px;
+    transition: opacity 0.2s;
+    word-break: break-word;
+  }
+
+  .portfolio-box a:hover { opacity: 0.7; }
+
+  .portfolio-box .pb-desc {
+    font-size: 15px;
+    color: var(--gris-texto);
+    margin-top: 10px;
+    margin-bottom: 0;
+  }
+
+  /* CTA final */
+  .cta-final {
+    margin-top: 64px;
+    padding-top: 44px;
+    border-top: 1px solid var(--gris-medio);
+    text-align: center;
+  }
+
+  .cta-final h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 44px;
+    margin-bottom: 14px;
+  }
+
+  .cta-final > p {
+    font-size: 17px;
+    color: var(--gris-texto);
+    margin-bottom: 0;
+  }
+
+  .cta-firma {
+    margin-top: 44px;
+    padding-top: 30px;
+    border-top: 1px solid var(--gris-medio);
+  }
+
+  .cta-firma p {
+    font-size: 15px;
+    color: var(--gris-texto);
+    margin-bottom: 6px;
+  }
+
+  .cta-firma strong {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 20px;
+    color: var(--hueso);
+    letter-spacing: 2px;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  /* Plano decorativo de fondo */
+  .plano-deco {
+    position: fixed;
+    right: -90px;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0.035;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  @media (max-width: 700px) {
+    .opciones { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 600px) {
+    body { font-size: 17px; }
+    .wrap { padding: 38px 20px 72px; }
+    .header { flex-direction: column; gap: 14px; }
+    .fecha { text-align: left; }
+    .hero-intro { font-size: 18px; }
+    .pricing-card { padding: 28px 24px; }
+    .precio-valor { font-size: 48px; }
+    .condiciones { padding: 24px 22px; }
+    .detalles { padding: 20px 22px; }
+    .portfolio-box { padding: 22px 20px; }
+    .mensual { flex-direction: column; align-items: flex-start; padding: 24px 22px; }
+    .timeline-item { gap: 16px; }
+    .timeline-num { font-size: 32px; min-width: 34px; }
+    .cta-final h3 { font-size: 38px; }
+    .plano-deco { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Plano decorativo de fondo -->
+<svg class="plano-deco" width="460" height="460" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <rect x="20" y="60" width="160" height="120" stroke="white" stroke-width="1"/>
+  <path d="M10 62 L100 12 L190 62" stroke="white" stroke-width="1"/>
+  <rect x="44" y="92" width="40" height="34" stroke="white" stroke-width="0.5"/>
+  <rect x="116" y="92" width="40" height="34" stroke="white" stroke-width="0.5"/>
+  <rect x="84" y="142" width="32" height="38" stroke="white" stroke-width="0.5"/>
+  <line x1="64" y1="92" x2="64" y2="126" stroke="white" stroke-width="0.5"/>
+  <line x1="44" y1="109" x2="84" y2="109" stroke="white" stroke-width="0.5"/>
+  <line x1="136" y1="92" x2="136" y2="126" stroke="white" stroke-width="0.5"/>
+  <line x1="116" y1="109" x2="156" y2="109" stroke="white" stroke-width="0.5"/>
+</svg>
+
+<div class="wrap">
+
+  <!-- Header -->
+  <header class="header">
+    <div class="logo-area">
+      <h1>Lautaro Méndez</h1>
+      <p>Diseño Web · Sistemas Digitales</p>
+    </div>
+    <div class="fecha">
+      <p>PROPUESTA COMERCIAL</p>
+      <p id="fecha-hoy"></p>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <div class="hero">
+    <p class="hero-label">Para Niño Paez Inmobiliaria</p>
+    <h2>Tu marca<br>Tus propiedades<br>Tu <span>panel</span></h2>
+    <p class="hero-intro">
+      Hoy tus propiedades viven dentro de una plantilla que compartís con muchas otras inmobiliarias. Te propongo mudarlas a una plataforma propia: tu diseño, tu dominio, tus datos, y un panel desde donde cargás cada propiedad sin depender de nadie.
+    </p>
+  </div>
+
+  <!-- Diagnóstico -->
+  <section>
+    <p class="section-label">01 — Diagnóstico</p>
+    <h3>Dónde estás hoy</h3>
+    <p>La web actual es una plantilla de BuscadorProp. La ventaja real de esa plataforma es que ya te carga las propiedades y te resuelve el buscador, y eso no es poco. El costo es el otro lado de la misma moneda: dependés de un proveedor, no tenés control sobre el diseño, y el template lo comparte tu competencia.</p>
+    <p>Hay tres detalles que se ven desde afuera y que muestran hasta dónde llega ese límite:</p>
+
+    <div class="detalles">
+      <p>Lo que encontré navegando el sitio</p>
+      <ul>
+        <li>El logo todavía dice <strong>housebeach</strong>, la marca anterior. La imagen sigue colgada de esa época y no hay manera de cambiarla desde donde estás.</li>
+        <li>El link de <strong>Facebook</strong> lleva a la home de Facebook, no a tu página.</li>
+        <li>El de <strong>Twitter</strong> apunta a la cuenta de otra marca.</li>
+      </ul>
+    </div>
+
+    <p>Ninguno de los tres es grave por separado. Juntos cuentan la misma historia: son cosas que no podés arreglar vos. La propuesta es construirte una plataforma propia, con tu marca, tus datos y tus enlaces, donde cada uno de esos detalles se resuelve desde un panel en dos minutos.</p>
+  </section>
+
+  <!-- Web pública -->
+  <section>
+    <p class="section-label">02 — La web pública</p>
+    <h3>Lo que ve tu cliente</h3>
+    <p>Todo construido alrededor de una sola cosa: que quien entra encuentre rápido la propiedad que busca y te escriba.</p>
+
+    <ul class="features">
+      <li><span><strong>Buscador principal.</strong> Por operación (venta, alquiler, alquiler temporal), por tipo de propiedad y por localidad — las ocho en las que ya trabajás, de Costa Azul y San Bernardo a Mar del Plata, Ramos Mejía y San Antonio de Padua.</span></li>
+      <li><span><strong>Los filtros los definís vos.</strong> Arriba de operación, tipo y localidad va el set de filtros que de verdad te preguntan por teléfono: dormitorios, ambientes, cochera, pileta, superficie, rango de precio, apto crédito. Me pasás tu lista y esos son los filtros del sitio.</span></li>
+      <li><span><strong>Mapa interactivo con las propiedades marcadas.</strong> Cada propiedad es un pin. Se toca el pin y se abre la ficha, y el mapa respeta los filtros que estén puestos. Sirve para el que no busca por localidad sino por zona: mira el mapa y ve qué hay cerca de la playa, de la avenida o de donde le interese.</span></li>
+      <li><span><strong>Listado con filtros siempre a mano.</strong> El resultado se sigue afinando sin volver a empezar la búsqueda.</span></li>
+      <li><span><strong>Ficha de propiedad completa.</strong> Galería de fotos, características, ubicación en el mapa y etiquetas que se ven de un vistazo:
+        <span class="chips"><span>Apto crédito</span><span>Acepta permuta</span><span>Oportunidad</span><span>Rebajado</span><span>Destacado</span></span>
+      </span></li>
+      <li><span><strong>Precios como corresponde a cada operación.</strong> Dólares para venta, pesos por quincena para los temporarios.</span></li>
+      <li><span><strong>Botón de WhatsApp con mensaje prearmado.</strong> El mensaje llega con el código de la propiedad adentro, así sabés de entrada por cuál te escriben.</span></li>
+      <li><span><strong>Vista previa con imagen al compartir el link.</strong> Cuando pegás la dirección de una propiedad en WhatsApp o en Instagram aparece la foto, el título y el precio, en lugar de un link pelado.</span></li>
+      <li><span><strong>Secciones Nosotros, Tasaciones y Contacto.</strong> Tasaciones con formulario propio, para que la consulta te llegue ordenada.</span></li>
+      <li><span><strong>Pensada primero para celular.</strong> La mayoría de tus consultas entra desde el teléfono, así que el diseño arranca ahí y después se adapta a las pantallas grandes.</span></li>
+    </ul>
+  </section>
+
+  <!-- Panel -->
+  <section>
+    <p class="section-label">03 — El panel</p>
+    <h3>Lo que manejás vos</h3>
+    <p>El panel es la mitad importante del proyecto. Sin él seguirías dependiendo de que otro cargue tus propiedades.</p>
+
+    <ul class="features">
+      <li><span><strong>Crear, editar, pausar o marcar como vendida.</strong> Cada propiedad tiene su estado y lo cambiás cuando querés, sin pedirle permiso a nadie.</span></li>
+      <li><span><strong>Varias fotos por propiedad.</strong> Las subís todas juntas y ordenás cuál va primero.</span></li>
+      <li><span><strong>Destacados a dedo.</strong> Elegís qué propiedades aparecen adelante.</span></li>
+      <li><span><strong>Precios en dólares o en pesos.</strong> Según el tipo de operación, sin mezclar.</span></li>
+      <li><span><strong>Tarifas por quincena y por temporada.</strong> Para los temporarios, con la grilla que uses vos.</span></li>
+      <li><span><strong>El pin en el mapa, desde el mismo formulario.</strong> Al cargar la propiedad marcás su ubicación y ya queda en el mapa del sitio.</span></li>
+      <li><span><strong>Se instala como aplicación, en la compu y en el celular.</strong> En el escritorio queda con su propio ícono y se abre en una ventana aparte: se siente como un programa, sin ser un programa que haya que instalar de verdad. En el celular sirve para lo más útil de todo — cargar una propiedad con las fotos que sacás durante la visita, ahí mismo.</span></li>
+    </ul>
+  </section>
+
+  <!-- Fuera de alcance -->
+  <section>
+    <p class="section-label">04 — Fuera de alcance</p>
+    <h3>Lo que no entra en esta propuesta</h3>
+    <p>Lo dejo por escrito para que no haya sorpresas. Nada de esto es imposible: son proyectos aparte, y si más adelante hacen falta los presupuesto.</p>
+
+    <ul class="fuera">
+      <li>Calendario de disponibilidad y reservas online para los temporarios</li>
+      <li>Publicación automática a portales tipo Zonaprop o Argenprop</li>
+      <li>CRM de clientes</li>
+      <li>Campañas de publicidad</li>
+      <li>Migración de las propiedades que ya están cargadas en BuscadorProp — esas las cargás vos en el panel nuevo</li>
+    </ul>
+  </section>
+
+  <!-- Materiales -->
+  <section>
+    <p class="section-label">05 — Lo que necesito de vos</p>
+    <h3>Materiales para arrancar</h3>
+    <p>El plazo empieza a correr cuando tengo esto. Es la lista completa, no hay letra chica después.</p>
+
+    <ul class="checklist">
+      <li><span><strong>Logo actualizado en alta calidad.</strong> <span class="nota">El que está hoy en la web todavía dice housebeach.</span></span></li>
+      <li><span><strong>Dominio a tu nombre en NIC Argentina.</strong> <span class="nota">Conviene verificar que niñopaez.com.ar esté registrado a tu nombre y no al de BuscadorProp. Si está a nombre de ellos, lo vemos antes de publicar.</span></span></li>
+      <li><span><strong>Enlaces actualizados de tus redes.</strong> <span class="nota">Facebook hoy apunta a la home genérica y Twitter a otra marca.</span></span></li>
+      <li><span><strong>Datos de contacto, matrícula, dirección y horarios.</strong> <span class="nota">Tal como querés que figuren, para confirmar lo que ya está publicado.</span></span></li>
+      <li><span><strong>El mail o los mails donde querés recibir las consultas.</strong></span></li>
+      <li><span><strong>Fotos y textos para la sección Nosotros.</strong></span></li>
+      <li><span><strong>Tu lista de filtros.</strong> <span class="nota">Los que te sirven a vos para buscar rápido cuando te llama un cliente.</span></span></li>
+    </ul>
+  </section>
+
+  <!-- Plazo -->
+  <section>
+    <p class="section-label">06 — Plazo</p>
+    <h3>Tres a cuatro semanas</h3>
+    <p>Contadas desde que tengo los accesos y los materiales de la lista de arriba. Así se reparte el trabajo:</p>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <span class="timeline-num">01</span>
+        <div class="timeline-content">
+          <h4>Etapa 1 — Diseño y base</h4>
+          <p>Tu identidad aplicada al sitio, la estructura de secciones y el modelo de datos de las propiedades: operaciones, tipos, localidades, etiquetas, monedas y los filtros que me pases.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-num">02</span>
+        <div class="timeline-content">
+          <h4>Etapa 2 — Web pública y panel</h4>
+          <p>Buscador, filtros, mapa, listado, ficha, WhatsApp, formularios y el panel completo. A mitad de camino te muestro una versión navegable para que la pruebes y me digas qué ajustar.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-num">03</span>
+        <div class="timeline-content">
+          <h4>Etapa 3 — Publicación</h4>
+          <p>Conexión del dominio, pruebas en celular y en escritorio, instalación del panel en tus equipos y una charla para que lo uses con confianza desde el primer día.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Inversión -->
+  <section>
+    <p class="section-label">07 — Inversión</p>
+    <h3>Precio del proyecto</h3>
+
+    <div class="pricing-card">
+      <p class="precio-label">Plataforma completa — web pública y panel</p>
+      <div class="precio-valor"><span>$</span> 800.000</div>
+      <p class="precio-sub">ARS · PRECIO TOTAL DEL PROYECTO</p>
+    </div>
+
+    <p>Podés pagarlo de dos maneras, la que te venga mejor:</p>
+
+    <div class="opciones">
+      <div class="opcion">
+        <p class="op-label">Opción 1 — En dos pagos</p>
+        <h4>$400.000<br>+ $400.000</h4>
+        <span>La mitad al arrancar y la otra mitad a la entrega.</span>
+      </div>
+      <div class="opcion destacada">
+        <p class="op-label">Opción 2 — Todo al inicio</p>
+        <h4>$720.000</h4>
+        <span>Pago total al arrancar, con 10% de descuento. Te ahorrás $80.000.</span>
+      </div>
+    </div>
+
+    <div class="mensual">
+      <div class="m-left">
+        <p>Costo mensual a tu cargo</p>
+        <h4>Base de datos</h4>
+        <span>Es lo único que se paga todos los meses. Lo factura Supabase directo a tu nombre, no pasa por mí. El hosting del sitio corre por mi cuenta.</span>
+      </div>
+      <div class="mensual-precio">U$D 15<em>APROX. / MES</em></div>
+    </div>
+  </section>
+
+  <!-- Condiciones -->
+  <section>
+    <p class="section-label">08 — Condiciones</p>
+    <h3>Cómo trabajo</h3>
+
+    <div class="condiciones">
+      <p>El plazo arranca cuando tengo los accesos y los materiales, no cuando se firma.</p>
+      <p>Los ajustes durante el desarrollo están incluidos. Si aparece algo que cambia el alcance, lo presupuesto aparte y decidís con el número a la vista.</p>
+      <p>Trabajo como monotributista y facturo con factura C.</p>
+      <p>Esta propuesta tiene validez de 15 días corridos.</p>
+      <p>El sitio y el contenido quedan a tu nombre. El dominio también, registrado a vos en NIC Argentina.</p>
+    </div>
+  </section>
+
+  <!-- Portfolio -->
+  <div class="portfolio-box">
+    <p class="pb-label">Antes de decidir, mirá lo que vengo haciendo</p>
+    <a href="https://lautaromendez.com.ar/portfolio" target="_blank" rel="noopener">lautaromendez.com.ar/portfolio →</a>
+    <p class="pb-desc">Sitios y sistemas que están funcionando hoy, varios con su panel de administración. Podés entrar y navegarlos.</p>
+  </div>
+
+  <!-- CTA final -->
+  <div class="cta-final">
+    <h3>¿Arrancamos?</h3>
+    <p>Cualquier duda sobre el alcance, el panel o el precio, escribime y lo charlamos tranquilos.</p>
+
+    <div class="cta-firma">
+      <p>Lautaro Méndez</p>
+      <strong>DISEÑO WEB · SISTEMAS DIGITALES</strong>
+      <p>lautaromendez.com.ar</p>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  const meses = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+  const hoy = new Date();
+  document.getElementById('fecha-hoy').textContent = `${hoy.getDate()} DE ${meses[hoy.getMonth()].toUpperCase()} ${hoy.getFullYear()}`;
+</script>
+
+</body>
+</html>
