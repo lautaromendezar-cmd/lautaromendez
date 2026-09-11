@@ -5,666 +5,537 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow">
 <title>Propuesta — Niño Paez Inmobiliaria</title>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@200..700&display=swap">
 <style>
   :root {
-    /* paleta del sitio de Lautaro — void/carbon/steel/fog/bone */
-    --void:   #0A0B0D;   /* fondo base, negro azulado */
-    --carbon: #101217;   /* superficies elevadas */
-    --steel:  #191C23;   /* bordes de bloque */
-    --fog:    #7D8491;   /* texto secundario */
-    --bone:   #EDEBE8;   /* texto principal, blanco cálido */
+    /* paleta del sitio — void/carbon/steel/fog/bone */
+    --void:   #0A0B0D;
+    --carbon: #101217;
+    --steel:  #191C23;
+    --fog:    #7D8491;
+    --bone:   #EDEBE8;
 
     /* el acento único, acá con el naranja de la marca del cliente */
     --acento:    #F8AB2C;
     --acento-40: rgb(248 171 44 / .40);
+    --acento-14: rgb(248 171 44 / .14);
+    --acento-06: rgb(248 171 44 / .06);
 
-    /* derivados: el mismo color con alfa, sin inventar hex nuevos */
-    --texto:   rgb(237 235 232 / .80);
+    /* derivados con alfa, sin inventar hex nuevos */
     --bone-12: rgb(237 235 232 / .12);
     --bone-06: rgb(237 235 232 / .06);
+
+    /* tipografía */
+    --sans:  'Archivo', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    --serif: 'Instrument Serif', Georgia, 'Times New Roman', serif;
+    --mono:  'JetBrains Mono', ui-monospace, 'SFMono-Regular', Consolas, monospace;
+
+    --fv-display: 'wdth' 100, 'wght' 330;
+    --fv-title:   'wdth' 100, 'wght' 380;
+
+    /* medidas */
+    --max:   880px;
+    --gut:   clamp(20px, 5.2vw, 52px);
+    --pad-y: clamp(54px, 7.4vw, 96px);
+    --r: 4px;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
+  html { -webkit-text-size-adjust: 100%; }
+
   body {
     background: var(--void);
     color: var(--bone);
-    font-family: 'Crimson Text', Georgia, serif;
-    font-size: 18px;
-    line-height: 1.7;
+    font-family: var(--sans);
+    font-size: 17px;
+    line-height: 1.62;
+    font-variation-settings: 'wdth' 100, 'wght' 380;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
   }
 
-  /* Grain overlay */
+  /* el resplandor del acento, en dosis mínima */
   body::before {
     content: '';
     position: fixed;
     inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    background:
+      radial-gradient(720px 520px at 8% 92%, var(--acento-06), transparent 68%),
+      radial-gradient(640px 460px at 96% 4%, var(--acento-06), transparent 64%);
     pointer-events: none;
     z-index: 0;
-    opacity: 0.4;
   }
 
+  ul { list-style: none; }
+  a { color: inherit; text-decoration: none; }
+  strong { font-variation-settings: 'wdth' 100, 'wght' 520; color: var(--bone); }
+
+  ::selection { background: var(--acento); color: var(--void); }
+
   .wrap {
-    max-width: 780px;
+    max-width: var(--max);
     margin: 0 auto;
-    padding: 56px 32px 90px;
+    padding-inline: var(--gut);
     position: relative;
     z-index: 1;
   }
 
-  /* Header */
-  .header {
+  /* ── LOGOTIPO ─────────────────────────────────────────────────────────── */
+  .lock {
+    display: inline-flex;
+    align-items: baseline;
+    gap: .26em;
+    line-height: 1;
+    white-space: nowrap;
+  }
+
+  .lock__a {
+    font-variation-settings: 'wdth' 100, 'wght' 330;
+    letter-spacing: -.014em;
+  }
+
+  .lock__b {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1.16em;
+    letter-spacing: -.008em;
+  }
+
+  .dot {
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: var(--acento);
+    box-shadow: 0 0 0 4px var(--acento-14);
+    flex: none;
+    align-self: center;
+  }
+
+  /* ── CABECERA ─────────────────────────────────────────────────────────── */
+  .hd {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 60px;
-    padding-bottom: 28px;
+    align-items: center;
+    gap: 20px;
+    padding-block: 30px;
     border-bottom: 1px solid var(--bone-12);
   }
 
-  .logo-area h1 {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 13px;
-    letter-spacing: 4px;
-    color: var(--acento);
-    margin-bottom: 4px;
-  }
+  .hd__logo { font-size: 19px; }
 
-  .logo-area p {
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    color: var(--fog);
-    letter-spacing: 1px;
-  }
-
-  .fecha {
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
+  .hd__meta {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    font-weight: 500;
+    letter-spacing: .18em;
+    text-transform: uppercase;
     color: var(--fog);
     text-align: right;
-    letter-spacing: 1px;
+    line-height: 1.9;
   }
 
-  /* Hero */
-  .hero { margin-bottom: 54px; }
-
-  .hero-label {
-    font-family: 'DM Mono', monospace;
+  /* ── EYEBROW ──────────────────────────────────────────────────────────── */
+  .brow {
+    font-family: var(--mono);
     font-size: 11px;
+    font-weight: 500;
+    letter-spacing: .06em;
     color: var(--acento);
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    margin-bottom: 16px;
-  }
-
-  .hero h2 {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(44px, 7.4vw, 68px);
-    line-height: 0.98;
-    letter-spacing: 1px;
-    color: var(--bone);
-    margin-bottom: 24px;
-  }
-
-  .hero h2 span { color: var(--acento); }
-
-  .hero-intro {
-    font-size: 19px;
-    color: var(--texto);
-    max-width: 580px;
-    line-height: 1.75;
-  }
-
-  /* Secciones */
-  section { margin-bottom: 52px; }
-
-  .section-label {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    color: var(--acento);
-    letter-spacing: 4px;
-    text-transform: uppercase;
     margin-bottom: 20px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
   }
 
-  .section-label::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: var(--bone-12);
+  /* ── HERO ─────────────────────────────────────────────────────────────── */
+  .hero { padding-block: clamp(52px, 8.4vw, 104px) clamp(44px, 6vw, 76px); }
+
+  .hero h1 {
+    font-size: clamp(33px, 5.8vw, 62px);
+    font-variation-settings: var(--fv-display);
+    font-weight: 400;
+    line-height: 1.05;
+    letter-spacing: -.018em;
+    max-width: 15ch;
   }
 
-  h3 {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 30px;
-    letter-spacing: 1px;
-    color: var(--bone);
-    margin-bottom: 18px;
+  .hero__d {
+    margin-top: 24px;
+    max-width: 52ch;
+    color: var(--fog);
+    font-size: 17.5px;
   }
 
-  p {
-    color: var(--texto);
-    margin-bottom: 16px;
+  /* ── SECCIONES ────────────────────────────────────────────────────────── */
+  .sec {
+    padding-block: var(--pad-y);
+    border-top: 1px solid var(--bone-12);
   }
 
-  /* Detalles del diagnóstico */
-  .detalles {
+  .sec h2 {
+    font-size: clamp(25px, 3.4vw, 40px);
+    font-variation-settings: var(--fv-display);
+    font-weight: 400;
+    line-height: 1.08;
+    letter-spacing: -.015em;
+  }
+
+  .sec__d {
+    margin-top: 18px;
+    max-width: 54ch;
+    color: var(--fog);
+    font-size: 16.5px;
+  }
+
+  .sec__d + .sec__d { margin-top: 12px; }
+
+  /* ── LISTAS ───────────────────────────────────────────────────────────── */
+  .lista { margin-top: clamp(30px, 4vw, 44px); }
+
+  .lista li {
+    display: grid;
+    grid-template-columns: 18px minmax(0, 1fr);
+    gap: 14px;
+    padding-block: 13px;
+    color: var(--fog);
+    font-size: 16.5px;
+    max-width: 62ch;
+  }
+
+  .lista li::before {
+    content: '—';
+    color: var(--bone-12);
+    line-height: 1.62;
+  }
+
+  .lista--sep li { border-top: 1px solid var(--bone-06); }
+  .lista--sep li:first-child { border-top: 0; }
+
+  /* ── DETALLES DEL DIAGNÓSTICO ─────────────────────────────────────────── */
+  .caja {
+    margin-top: clamp(30px, 4vw, 42px);
     background: var(--carbon);
     border: 1px solid var(--steel);
-    border-left: 3px solid var(--acento);
-    padding: 24px 28px;
-    margin: 26px 0;
-    border-radius: 2px;
+    border-left: 2px solid var(--acento);
+    border-radius: var(--r);
+    padding: clamp(22px, 3.4vw, 32px);
   }
 
-  .detalles > p:first-child {
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    color: var(--fog);
-    letter-spacing: 2px;
+  .caja__t {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    font-weight: 500;
+    letter-spacing: .2em;
     text-transform: uppercase;
-    margin-bottom: 14px;
+    color: var(--fog);
+    margin-bottom: 16px;
   }
 
-  .detalles ul { list-style: none; }
+  .caja .lista { margin-top: 0; }
+  .caja .lista li { padding-block: 8px; }
 
-  .detalles li {
-    font-size: 16px;
-    color: var(--texto);
-    padding: 7px 0 7px 20px;
-    position: relative;
-  }
-
-  .detalles li::before {
-    content: '—';
-    position: absolute;
-    left: 0;
-    color: var(--acento);
-    font-family: 'DM Mono', monospace;
-  }
-
-  .detalles strong { color: var(--bone); font-weight: 600; }
-
-  /* Lista de features */
-  .features { list-style: none; margin: 22px 0; }
-
-  .features li {
-    display: flex;
-    align-items: flex-start;
-    gap: 14px;
-    padding: 13px 0;
-    border-bottom: 1px solid var(--bone-12);
-    color: var(--texto);
-    font-size: 17px;
-  }
-
-  .features li:last-child { border-bottom: none; }
-
-  .features li::before {
-    content: '●';
-    color: var(--acento);
-    font-size: 8px;
-    margin-top: 7px;
-    flex-shrink: 0;
-  }
-
-  .features li strong {
-    color: var(--bone);
-    font-weight: 600;
-  }
-
-  /* Etiquetas de la ficha */
+  /* ── ETIQUETAS ────────────────────────────────────────────────────────── */
   .chips {
     display: flex;
     flex-wrap: wrap;
-    gap: 7px;
-    margin-top: 10px;
+    gap: 6px;
+    margin-top: 12px;
   }
 
   .chips span {
-    font-family: 'DM Mono', monospace;
+    font-family: var(--mono);
     font-size: 10px;
-    letter-spacing: 1px;
+    letter-spacing: .1em;
     text-transform: uppercase;
     color: var(--acento);
     border: 1px solid var(--acento-40);
     border-radius: 2px;
-    padding: 3px 9px;
+    padding: 3px 8px;
   }
 
-  /* Fuera de alcance */
-  .fuera { list-style: none; margin: 20px 0 0; }
+  /* ── ETAPAS ───────────────────────────────────────────────────────────── */
+  .etapas { margin-top: clamp(30px, 4vw, 44px); }
 
-  .fuera li {
-    font-size: 16px;
-    color: var(--fog);
-    padding: 11px 0 11px 24px;
-    border-bottom: 1px solid var(--bone-12);
-    position: relative;
+  .etapa {
+    display: grid;
+    grid-template-columns: 54px minmax(0, 1fr);
+    gap: 18px;
+    padding-block: 22px;
+    border-top: 1px solid var(--bone-06);
   }
 
-  .fuera li:last-child { border-bottom: none; }
+  .etapa:first-child { border-top: 0; padding-top: 0; }
 
-  .fuera li::before {
-    content: '\00d7';
-    position: absolute;
-    left: 2px;
-    top: 10px;
-    color: var(--fog);
-    font-family: 'DM Mono', monospace;
-    font-size: 15px;
+  .etapa__n {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: .16em;
+    color: var(--acento);
+    padding-top: 5px;
   }
 
-  /* Checklist de materiales */
-  .checklist { list-style: none; margin: 20px 0 0; }
-
-  .checklist li {
-    display: flex;
-    align-items: flex-start;
-    gap: 14px;
-    padding: 13px 0;
-    border-bottom: 1px solid var(--bone-12);
-    color: var(--texto);
-    font-size: 17px;
+  .etapa__t {
+    font-size: 18px;
+    font-variation-settings: var(--fv-title);
+    font-weight: 400;
+    letter-spacing: -.008em;
+    margin-bottom: 6px;
   }
 
-  .checklist li:last-child { border-bottom: none; }
+  .etapa__d { color: var(--fog); font-size: 16px; max-width: 58ch; }
 
-  .checklist li::before {
-    content: '';
-    width: 11px;
-    height: 11px;
-    border: 1px solid var(--acento);
-    border-radius: 2px;
-    margin-top: 8px;
-    flex-shrink: 0;
-  }
-
-  .checklist li strong {
-    color: var(--bone);
-    font-weight: 600;
-  }
-
-  .checklist .nota {
-    display: block;
-    font-size: 15px;
-    color: var(--fog);
-  }
-
-  /* Timeline */
-  .timeline { margin: 22px 0; }
-
-  .timeline-item {
-    display: flex;
-    gap: 22px;
-    padding: 18px 0;
-    border-bottom: 1px solid var(--bone-12);
-    align-items: flex-start;
-  }
-
-  .timeline-item:last-child { border-bottom: none; }
-
-  .timeline-num {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 38px;
-    color: var(--bone-12);
-    line-height: 1;
-    min-width: 40px;
-  }
-
-  .timeline-content h4 {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 19px;
-    letter-spacing: 1px;
-    color: var(--bone);
-    margin-bottom: 5px;
-  }
-
-  .timeline-content p { font-size: 16px; margin: 0; }
-
-  /* Pricing */
-  .pricing-card {
+  /* ── PRECIO ───────────────────────────────────────────────────────────── */
+  .precio {
+    margin-top: clamp(30px, 4vw, 44px);
     background: var(--carbon);
     border: 1px solid var(--steel);
-    border-radius: 4px;
-    padding: 36px 40px;
-    margin: 28px 0 20px;
-    position: relative;
-    overflow: hidden;
+    border-radius: var(--r);
+    padding: clamp(26px, 4vw, 40px);
   }
 
-  .pricing-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 3px;
-    background: var(--acento);
-  }
-
-  .precio-label {
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    color: var(--fog);
-    letter-spacing: 2px;
+  .precio__l {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    font-weight: 500;
+    letter-spacing: .2em;
     text-transform: uppercase;
-    margin-bottom: 10px;
-  }
-
-  .precio-valor {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 58px;
-    color: var(--bone);
-    line-height: 1;
-    margin-bottom: 6px;
-    letter-spacing: 1px;
-  }
-
-  .precio-valor span { font-size: 26px; color: var(--fog); }
-
-  .precio-sub {
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
     color: var(--fog);
-    letter-spacing: 1px;
-    margin-bottom: 0;
   }
 
-  /* Opciones de pago */
+  .precio__n {
+    margin-top: 14px;
+    font-size: clamp(42px, 7vw, 68px);
+    font-variation-settings: var(--fv-display);
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: -.03em;
+  }
+
+  .precio__n i {
+    font-style: normal;
+    color: var(--fog);
+    font-size: .42em;
+    letter-spacing: 0;
+    margin-right: .12em;
+    vertical-align: .34em;
+  }
+
+  .precio__s {
+    margin-top: 12px;
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--fog);
+  }
+
+  .pago { margin-top: 26px; color: var(--fog); font-size: 16.5px; }
+
   .opciones {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 16px;
-    margin-top: 22px;
+    gap: 14px;
+    margin-top: 18px;
   }
 
-  .opcion {
+  .op {
     border: 1px solid var(--bone-12);
-    border-radius: 4px;
-    padding: 24px 26px;
+    border-radius: var(--r);
+    padding: clamp(20px, 3vw, 28px);
   }
 
-  .opcion.destacada { border-color: var(--acento-40); }
+  .op--dest { border-color: var(--acento-40); background: var(--acento-06); }
 
-  .opcion .op-label {
-    font-family: 'DM Mono', monospace;
+  .op__l {
+    font-family: var(--mono);
     font-size: 10px;
-    color: var(--fog);
-    letter-spacing: 2px;
+    font-weight: 500;
+    letter-spacing: .16em;
     text-transform: uppercase;
-    margin-bottom: 10px;
-  }
-
-  .opcion h4 {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 32px;
-    color: var(--bone);
-    letter-spacing: 1px;
-    line-height: 1.05;
-    margin-bottom: 8px;
-  }
-
-  .opcion.destacada h4 { color: var(--acento); }
-
-  .opcion span {
-    font-size: 15px;
     color: var(--fog);
-    line-height: 1.6;
-    display: block;
-  }
-
-  /* Mensual */
-  .mensual {
-    border: 1px solid var(--bone-12);
-    border-radius: 4px;
-    padding: 26px 32px;
-    margin-top: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 22px;
-    flex-wrap: wrap;
-  }
-
-  .mensual .m-left p {
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    color: var(--fog);
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    margin-bottom: 8px;
-  }
-
-  .mensual .m-left h4 {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 24px;
-    color: var(--bone);
-    letter-spacing: 1px;
-    margin-bottom: 6px;
-  }
-
-  .mensual .m-left span { font-size: 15px; color: var(--fog); }
-
-  .mensual-precio {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 36px;
-    color: var(--acento);
-    letter-spacing: 1px;
-    white-space: nowrap;
-  }
-
-  .mensual-precio em {
-    display: block;
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    font-style: normal;
-    color: var(--fog);
-    letter-spacing: 1px;
-  }
-
-  /* Condiciones */
-  .condiciones {
-    background: var(--carbon);
-    border-radius: 4px;
-    padding: 28px 36px;
-    margin-top: 16px;
-  }
-
-  .condiciones p {
-    font-size: 16px;
-    margin-bottom: 10px;
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-  }
-
-  .condiciones p:last-child { margin-bottom: 0; }
-
-  .condiciones p::before {
-    content: '—';
-    color: var(--acento);
-    flex-shrink: 0;
-    font-family: monospace;
-  }
-
-  /* Portfolio */
-  .portfolio-box {
-    background: var(--carbon);
-    border: 1px solid var(--steel);
-    border-left: 3px solid var(--acento);
-    padding: 26px 30px;
-    margin: 46px 0;
-    border-radius: 2px;
-  }
-
-  .portfolio-box .pb-label {
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    color: var(--fog);
-    letter-spacing: 1px;
-    margin-bottom: 10px;
-    text-transform: uppercase;
-  }
-
-  .portfolio-box a {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 22px;
-    color: var(--acento);
-    text-decoration: none;
-    letter-spacing: 2px;
-    transition: opacity 0.2s;
-    word-break: break-word;
-  }
-
-  .portfolio-box a:hover { opacity: 0.7; }
-
-  .portfolio-box .pb-desc {
-    font-size: 15px;
-    color: var(--fog);
-    margin-top: 10px;
-    margin-bottom: 0;
-  }
-
-  /* CTA final */
-  .cta-final {
-    margin-top: 64px;
-    padding-top: 44px;
-    border-top: 1px solid var(--bone-12);
-    text-align: center;
-  }
-
-  .cta-final h3 {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 44px;
     margin-bottom: 14px;
   }
 
-  .cta-final > p {
-    font-size: 17px;
-    color: var(--fog);
-    margin-bottom: 0;
+  .op__n {
+    font-size: clamp(26px, 3.6vw, 34px);
+    font-variation-settings: var(--fv-display);
+    font-weight: 400;
+    line-height: 1.12;
+    letter-spacing: -.024em;
   }
 
-  .cta-firma {
-    margin-top: 44px;
-    padding-top: 30px;
-    border-top: 1px solid var(--bone-12);
+  .op--dest .op__n { color: var(--acento); }
+
+  .op__d { margin-top: 12px; color: var(--fog); font-size: 15.5px; }
+
+  .mensual {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 26px;
+    margin-top: 14px;
+    border: 1px solid var(--bone-12);
+    border-radius: var(--r);
+    padding: clamp(20px, 3vw, 28px);
   }
 
-  .cta-firma p {
-    font-size: 15px;
-    color: var(--fog);
+  .mensual__t {
+    font-size: 18px;
+    font-variation-settings: var(--fv-title);
+    letter-spacing: -.008em;
     margin-bottom: 6px;
   }
 
-  .cta-firma strong {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 20px;
-    color: var(--bone);
-    letter-spacing: 2px;
+  .mensual__d { color: var(--fog); font-size: 15.5px; max-width: 52ch; }
+
+  .mensual__n {
+    font-size: clamp(24px, 3.4vw, 30px);
+    font-variation-settings: var(--fv-display);
+    font-weight: 400;
+    letter-spacing: -.02em;
+    color: var(--acento);
+    white-space: nowrap;
+    text-align: right;
+  }
+
+  .mensual__n em {
     display: block;
-    margin-bottom: 4px;
+    font-family: var(--mono);
+    font-style: normal;
+    font-size: 10px;
+    letter-spacing: .16em;
+    color: var(--fog);
+    margin-top: 6px;
   }
 
-  /* Plano decorativo de fondo */
-  .plano-deco {
-    position: fixed;
-    right: -90px;
-    top: 50%;
-    transform: translateY(-50%);
-    opacity: 0.035;
-    pointer-events: none;
-    z-index: 0;
+  /* ── PORTFOLIO ────────────────────────────────────────────────────────── */
+  .pf {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 24px;
+    padding-block: clamp(30px, 4vw, 40px);
+    border-top: 1px solid var(--bone-12);
   }
 
-  @media (max-width: 700px) {
-    .opciones { grid-template-columns: 1fr; }
+  .pf__t {
+    font-size: clamp(20px, 2.6vw, 26px);
+    font-variation-settings: var(--fv-display);
+    font-weight: 400;
+    letter-spacing: -.014em;
   }
 
-  @media (max-width: 600px) {
-    body { font-size: 17px; }
-    .wrap { padding: 38px 20px 72px; }
-    .header { flex-direction: column; gap: 14px; }
-    .fecha { text-align: left; }
-    .hero-intro { font-size: 18px; }
-    .pricing-card { padding: 28px 24px; }
-    .precio-valor { font-size: 48px; }
-    .condiciones { padding: 24px 22px; }
-    .detalles { padding: 20px 22px; }
-    .portfolio-box { padding: 22px 20px; }
-    .mensual { flex-direction: column; align-items: flex-start; padding: 24px 22px; }
-    .timeline-item { gap: 16px; }
-    .timeline-num { font-size: 32px; min-width: 34px; }
-    .cta-final h3 { font-size: 38px; }
-    .plano-deco { display: none; }
+  .pf__d { margin-top: 10px; color: var(--fog); font-size: 15.5px; max-width: 46ch; }
+
+  .pf__go {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: .08em;
+    color: var(--acento);
+    border-bottom: 1px solid var(--acento-40);
+    padding-bottom: 4px;
+    transition: opacity .2s;
+    white-space: nowrap;
+  }
+
+  .pf__go:hover { opacity: .65; }
+
+  /* ── CIERRE ───────────────────────────────────────────────────────────── */
+  .end {
+    padding-block: clamp(54px, 7vw, 92px);
+    border-top: 1px solid var(--bone-12);
+  }
+
+  .end h2 {
+    font-size: clamp(28px, 4.4vw, 46px);
+    font-variation-settings: var(--fv-display);
+    font-weight: 400;
+    letter-spacing: -.018em;
+  }
+
+  .end__d { margin-top: 16px; color: var(--fog); font-size: 16.5px; max-width: 48ch; }
+
+  .firma {
+    margin-top: clamp(38px, 5vw, 56px);
+    padding-top: 26px;
+    border-top: 1px solid var(--bone-06);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 18px;
+    flex-wrap: wrap;
+  }
+
+  .firma__logo { font-size: 17px; }
+
+  .firma__w {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--fog);
+  }
+
+  /* ── RESPONSIVE ───────────────────────────────────────────────────────── */
+  @media (max-width: 720px) {
+    .opciones { grid-template-columns: minmax(0, 1fr); }
+    .mensual, .pf { grid-template-columns: minmax(0, 1fr); }
+    .mensual__n, .pf__go { text-align: left; }
+    .mensual__n { justify-self: start; }
+  }
+
+  @media (max-width: 560px) {
+    body { font-size: 16px; }
+    .hd { flex-direction: column; align-items: flex-start; gap: 14px; padding-block: 24px; }
+    .hd__meta { text-align: left; line-height: 1.8; }
+    .lista li { grid-template-columns: 14px minmax(0, 1fr); gap: 11px; font-size: 16px; }
+    .etapa { grid-template-columns: minmax(0, 1fr); gap: 8px; }
+    .etapa__n { padding-top: 0; }
   }
 </style>
 </head>
 <body>
 
-<!-- Plano decorativo de fondo -->
-<svg class="plano-deco" width="460" height="460" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-  <rect x="20" y="60" width="160" height="120" stroke="white" stroke-width="1"/>
-  <path d="M10 62 L100 12 L190 62" stroke="white" stroke-width="1"/>
-  <rect x="44" y="92" width="40" height="34" stroke="white" stroke-width="0.5"/>
-  <rect x="116" y="92" width="40" height="34" stroke="white" stroke-width="0.5"/>
-  <rect x="84" y="142" width="32" height="38" stroke="white" stroke-width="0.5"/>
-  <line x1="64" y1="92" x2="64" y2="126" stroke="white" stroke-width="0.5"/>
-  <line x1="44" y1="109" x2="84" y2="109" stroke="white" stroke-width="0.5"/>
-  <line x1="136" y1="92" x2="136" y2="126" stroke="white" stroke-width="0.5"/>
-  <line x1="116" y1="109" x2="156" y2="109" stroke="white" stroke-width="0.5"/>
-</svg>
-
 <div class="wrap">
-  <!-- Header -->
-  <header class="header">
-    <div class="logo-area">
-      <h1>Lautaro Méndez</h1>
-      <p>Diseño Web · Sistemas Digitales</p>
-    </div>
-    <div class="fecha">
-      <p>PROPUESTA COMERCIAL</p>
-      <p id="fecha-hoy"></p>
+
+  <header class="hd">
+    <span class="lock hd__logo"><span class="lock__a">Lautaro</span><span class="lock__b">Méndez</span><span class="dot"></span></span>
+    <div class="hd__meta">
+      Propuesta comercial<br>
+      <span id="fecha-hoy"></span>
     </div>
   </header>
 
-  <!-- Hero -->
-  <div class="hero">
-    <p class="hero-label">Para Niño Paez Inmobiliaria</p>
-    <h2>Tu marca<br>Tus propiedades<br>Tu <span>panel</span></h2>
-    <p class="hero-intro">
-      Una plataforma propia para reemplazar la plantilla de BuscadorProp: tu diseño, tu dominio, tus datos, y un panel desde donde cargás cada propiedad vos.
-    </p>
-  </div>
+  <section class="hero">
+    <p class="brow">/nino-paez-inmobiliaria</p>
+    <h1>Tu marca, tus propiedades, tu panel</h1>
+    <p class="hero__d">Una plataforma propia para reemplazar la plantilla de BuscadorProp: tu diseño, tu dominio, tus datos, y un panel desde donde cargás cada propiedad vos.</p>
+  </section>
 
-  <!-- Diagnóstico -->
-  <section>
-    <p class="section-label">01 — Diagnóstico</p>
-    <h3>Dónde estás hoy</h3>
-    <p>La web actual es una plantilla de BuscadorProp. Te carga las propiedades y te resuelve el buscador; a cambio dependés de ellos, no manejás el diseño y compartís template con la competencia.</p>
+  <section class="sec">
+    <p class="brow">/diagnostico</p>
+    <h2>Dónde estás hoy</h2>
+    <p class="sec__d">La web actual es una plantilla de BuscadorProp. Te carga las propiedades y te resuelve el buscador; a cambio dependés de ellos, no manejás el diseño y compartís template con la competencia.</p>
 
-    <div class="detalles">
-      <p>Lo que encontré navegando el sitio</p>
-      <ul>
-        <li>El logo todavía dice <strong>housebeach</strong>, la marca anterior.</li>
-        <li>El link de <strong>Facebook</strong> lleva a la home de Facebook, no a tu página.</li>
-        <li>El de <strong>Twitter</strong> apunta a la cuenta de otra marca.</li>
+    <div class="caja">
+      <p class="caja__t">Lo que encontré navegando el sitio</p>
+      <ul class="lista">
+        <li><span>El logo todavía dice <strong>housebeach</strong>, la marca anterior.</span></li>
+        <li><span>El link de <strong>Facebook</strong> lleva a la home de Facebook, no a tu página.</span></li>
+        <li><span>El de <strong>Twitter</strong> apunta a la cuenta de otra marca.</span></li>
       </ul>
     </div>
 
-    <p>Tres cosas chicas que hoy no dependen de vos. En plataforma propia se cambian desde el panel.</p>
+    <p class="sec__d">Tres cosas chicas que hoy no dependen de vos. En plataforma propia se cambian desde el panel.</p>
   </section>
 
-  <!-- Web pública -->
-  <section>
-    <p class="section-label">02 — La web pública</p>
-    <h3>Lo que ve tu cliente</h3>
+  <section class="sec">
+    <p class="brow">/web-publica</p>
+    <h2>Lo que ve tu cliente</h2>
 
-    <ul class="features">
+    <ul class="lista lista--sep">
       <li><span><strong>Buscador principal.</strong> Operación (venta, alquiler, alquiler temporal), tipo de propiedad y localidad: las ocho en las que trabajás, de Costa Azul y San Bernardo a Mar del Plata, Ramos Mejía y San Antonio de Padua.</span></li>
       <li><span><strong>Los filtros los definís vos.</strong> Dormitorios, ambientes, cochera, pileta, superficie, rango de precio, apto crédito — los que me pases son los que van.</span></li>
       <li><span><strong>Mapa interactivo.</strong> Cada propiedad es un pin, el pin abre la ficha, y el mapa respeta los filtros activos.</span></li>
@@ -680,12 +551,11 @@
     </ul>
   </section>
 
-  <!-- Panel -->
-  <section>
-    <p class="section-label">03 — El panel</p>
-    <h3>Lo que manejás vos</h3>
+  <section class="sec">
+    <p class="brow">/panel</p>
+    <h2>Lo que manejás vos</h2>
 
-    <ul class="features">
+    <ul class="lista lista--sep">
       <li><span><strong>Crear, editar, pausar o marcar como vendida.</strong></span></li>
       <li><span><strong>Varias fotos por propiedad.</strong> Las subís juntas y elegís cuál va primero.</span></li>
       <li><span><strong>Destacados a dedo.</strong></span></li>
@@ -696,30 +566,28 @@
     </ul>
   </section>
 
-  <!-- Fuera de alcance -->
-  <section>
-    <p class="section-label">04 — Fuera de alcance</p>
-    <h3>Lo que no entra</h3>
-    <p>Lo dejo por escrito. Si más adelante hace falta algo de esto, lo presupuesto aparte.</p>
+  <section class="sec">
+    <p class="brow">/fuera-de-alcance</p>
+    <h2>Lo que no entra</h2>
+    <p class="sec__d">Lo dejo por escrito. Si más adelante hace falta algo de esto, lo presupuesto aparte.</p>
 
-    <ul class="fuera">
-      <li>Calendario de disponibilidad y reservas online para los temporarios</li>
-      <li>Publicación automática a portales tipo Zonaprop o Argenprop</li>
-      <li>CRM de clientes</li>
-      <li>Campañas de publicidad</li>
-      <li>Migración de las propiedades ya cargadas en BuscadorProp — esas las cargás vos en el panel nuevo</li>
+    <ul class="lista">
+      <li><span>Calendario de disponibilidad y reservas online para los temporarios</span></li>
+      <li><span>Publicación automática a portales tipo Zonaprop o Argenprop</span></li>
+      <li><span>CRM de clientes</span></li>
+      <li><span>Campañas de publicidad</span></li>
+      <li><span>Migración de las propiedades ya cargadas en BuscadorProp — esas las cargás vos en el panel nuevo</span></li>
     </ul>
   </section>
 
-  <!-- Materiales -->
-  <section>
-    <p class="section-label">05 — Lo que necesito de vos</p>
-    <h3>Materiales para arrancar</h3>
-    <p>El plazo empieza a correr cuando tengo esto:</p>
+  <section class="sec">
+    <p class="brow">/materiales</p>
+    <h2>Lo que necesito de vos</h2>
+    <p class="sec__d">El plazo empieza a correr cuando tengo esto:</p>
 
-    <ul class="checklist">
-      <li><span><strong>Logo actualizado en alta calidad.</strong> <span class="nota">El de la web dice housebeach.</span></span></li>
-      <li><span><strong>Dominio a tu nombre en NIC Argentina.</strong> <span class="nota">Verificá que niñopaez.com.ar no figure a nombre de BuscadorProp.</span></span></li>
+    <ul class="lista lista--sep">
+      <li><span><strong>Logo actualizado en alta calidad.</strong> El de la web dice housebeach.</span></li>
+      <li><span><strong>Dominio a tu nombre en NIC Argentina.</strong> Verificá que niñopaez.com.ar no figure a nombre de BuscadorProp.</span></li>
       <li><span><strong>Enlaces actualizados de tus redes.</strong></span></li>
       <li><span><strong>Datos de contacto, matrícula, dirección y horarios.</strong></span></li>
       <li><span><strong>El mail o los mails donde querés recibir las consultas.</strong></span></li>
@@ -728,112 +596,108 @@
     </ul>
   </section>
 
-  <!-- Plazo -->
-  <section>
-    <p class="section-label">06 — Plazo</p>
-    <h3>Tres a cuatro semanas</h3>
-    <p>Desde que tengo los accesos y los materiales:</p>
+  <section class="sec">
+    <p class="brow">/plazo</p>
+    <h2>Tres a cuatro semanas</h2>
+    <p class="sec__d">Desde que tengo los accesos y los materiales:</p>
 
-    <div class="timeline">
-      <div class="timeline-item">
-        <span class="timeline-num">01</span>
-        <div class="timeline-content">
-          <h4>Etapa 1 — Diseño y base</h4>
-          <p>Tu identidad aplicada al sitio, estructura de secciones y modelo de datos: operaciones, tipos, localidades, etiquetas, monedas y tus filtros.</p>
+    <div class="etapas">
+      <div class="etapa">
+        <span class="etapa__n">01</span>
+        <div>
+          <p class="etapa__t">Diseño y base</p>
+          <p class="etapa__d">Tu identidad aplicada al sitio, estructura de secciones y modelo de datos: operaciones, tipos, localidades, etiquetas, monedas y tus filtros.</p>
         </div>
       </div>
-      <div class="timeline-item">
-        <span class="timeline-num">02</span>
-        <div class="timeline-content">
-          <h4>Etapa 2 — Web pública y panel</h4>
-          <p>Buscador, filtros, mapa, listado, ficha, WhatsApp, formularios y panel completo. A mitad de camino te paso una versión navegable para que me digas qué ajustar.</p>
+      <div class="etapa">
+        <span class="etapa__n">02</span>
+        <div>
+          <p class="etapa__t">Web pública y panel</p>
+          <p class="etapa__d">Buscador, filtros, mapa, listado, ficha, WhatsApp, formularios y panel completo. A mitad de camino te paso una versión navegable para que me digas qué ajustar.</p>
         </div>
       </div>
-      <div class="timeline-item">
-        <span class="timeline-num">03</span>
-        <div class="timeline-content">
-          <h4>Etapa 3 — Publicación</h4>
-          <p>Dominio conectado, pruebas en celular y escritorio, panel instalado en tus equipos y una charla para arrancar.</p>
+      <div class="etapa">
+        <span class="etapa__n">03</span>
+        <div>
+          <p class="etapa__t">Publicación</p>
+          <p class="etapa__d">Dominio conectado, pruebas en celular y escritorio, panel instalado en tus equipos y una charla para arrancar.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Inversión -->
-  <section>
-    <p class="section-label">07 — Inversión</p>
-    <h3>Precio del proyecto</h3>
+  <section class="sec">
+    <p class="brow">/inversion</p>
+    <h2>Precio del proyecto</h2>
 
-    <div class="pricing-card">
-      <p class="precio-label">Plataforma completa — web pública y panel</p>
-      <div class="precio-valor"><span>$</span> 800.000</div>
-      <p class="precio-sub">ARS · PRECIO TOTAL DEL PROYECTO</p>
+    <div class="precio">
+      <p class="precio__l">Plataforma completa — web pública y panel</p>
+      <p class="precio__n"><i>$</i>800.000</p>
+      <p class="precio__s">ARS · precio total del proyecto</p>
     </div>
 
-    <p>Dos formas de pago, la que te venga mejor:</p>
+    <p class="pago">Dos formas de pago, la que te venga mejor:</p>
 
     <div class="opciones">
-      <div class="opcion">
-        <p class="op-label">Opción 1 — En dos pagos</p>
-        <h4>$400.000<br>+ $400.000</h4>
-        <span>Al inicio y a la entrega.</span>
+      <div class="op">
+        <p class="op__l">Opción 1 — en dos pagos</p>
+        <p class="op__n">$400.000<br>+ $400.000</p>
+        <p class="op__d">Al inicio y a la entrega.</p>
       </div>
-      <div class="opcion destacada">
-        <p class="op-label">Opción 2 — Todo al inicio</p>
-        <h4>$720.000</h4>
-        <span>Pago total al arrancar, 10% de descuento. Son $80.000 menos.</span>
+      <div class="op op--dest">
+        <p class="op__l">Opción 2 — todo al inicio</p>
+        <p class="op__n">$720.000</p>
+        <p class="op__d">Pago total al arrancar, 10% de descuento. Son $80.000 menos.</p>
       </div>
     </div>
 
     <div class="mensual">
-      <div class="m-left">
-        <p>Costo mensual a tu cargo</p>
-        <h4>Base de datos</h4>
-        <span>Lo único mensual. Lo factura Supabase directo a tu nombre. El hosting del sitio corre por mi cuenta.</span>
+      <div>
+        <p class="op__l">Costo mensual a tu cargo</p>
+        <p class="mensual__t">Base de datos</p>
+        <p class="mensual__d">Lo único mensual. Lo factura Supabase directo a tu nombre. El hosting del sitio corre por mi cuenta.</p>
       </div>
-      <div class="mensual-precio">U$D 15<em>APROX. / MES</em></div>
+      <p class="mensual__n">U$D 15<em>aprox. / mes</em></p>
     </div>
   </section>
 
-  <!-- Condiciones -->
-  <section>
-    <p class="section-label">08 — Condiciones</p>
-    <h3>Cómo trabajo</h3>
+  <section class="sec">
+    <p class="brow">/condiciones</p>
+    <h2>Cómo trabajo</h2>
 
-    <div class="condiciones">
-      <p>El plazo arranca cuando tengo los accesos y los materiales, no cuando se firma.</p>
-      <p>Los ajustes durante el desarrollo están incluidos. Si cambia el alcance, lo presupuesto aparte.</p>
-      <p>Trabajo como monotributista, factura C.</p>
-      <p>Validez de la propuesta: 15 días corridos.</p>
-      <p>El sitio, el contenido y el dominio quedan a tu nombre.</p>
-    </div>
+    <ul class="lista lista--sep">
+      <li><span>El plazo arranca cuando tengo los accesos y los materiales, no cuando se firma.</span></li>
+      <li><span>Los ajustes durante el desarrollo están incluidos. Si cambia el alcance, lo presupuesto aparte.</span></li>
+      <li><span>Trabajo como monotributista, factura C.</span></li>
+      <li><span>Validez de la propuesta: 15 días corridos.</span></li>
+      <li><span>El sitio, el contenido y el dominio quedan a tu nombre.</span></li>
+    </ul>
   </section>
 
-  <!-- Portfolio -->
-  <div class="portfolio-box">
-    <p class="pb-label">Lo que vengo haciendo</p>
-    <a href="https://lautaromendez.com.ar/portfolio" target="_blank" rel="noopener">lautaromendez.com.ar/portfolio →</a>
-    <p class="pb-desc">Sitios y sistemas funcionando hoy, varios con su panel de administración.</p>
-  </div>
-
-  <!-- CTA final -->
-  <div class="cta-final">
-    <h3>¿Arrancamos?</h3>
-    <p>Cualquier duda sobre el alcance o el precio, escribime.</p>
-
-    <div class="cta-firma">
-      <p>Lautaro Méndez</p>
-      <strong>DISEÑO WEB · SISTEMAS DIGITALES</strong>
-      <p>lautaromendez.com.ar</p>
+  <div class="pf">
+    <div>
+      <p class="pf__t">Lo que vengo haciendo</p>
+      <p class="pf__d">Sitios y sistemas funcionando hoy, varios con su panel de administración.</p>
     </div>
+    <a class="pf__go" href="https://lautaromendez.com.ar/portfolio" target="_blank" rel="noopener">ver portfolio →</a>
   </div>
+
+  <section class="end">
+    <h2>¿Arrancamos?</h2>
+    <p class="end__d">Cualquier duda sobre el alcance o el precio, escribime.</p>
+
+    <div class="firma">
+      <span class="lock firma__logo"><span class="lock__a">Lautaro</span><span class="lock__b">Méndez</span><span class="dot"></span></span>
+      <span class="firma__w">lautaromendez.com.ar</span>
+    </div>
+  </section>
 
 </div>
 
 <script>
   const meses = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
   const hoy = new Date();
-  document.getElementById('fecha-hoy').textContent = `${hoy.getDate()} DE ${meses[hoy.getMonth()].toUpperCase()} ${hoy.getFullYear()}`;
+  document.getElementById('fecha-hoy').textContent = `${hoy.getDate()} de ${meses[hoy.getMonth()]} ${hoy.getFullYear()}`;
 </script>
 
 </body>
