@@ -76,6 +76,86 @@
     return desde + palabras.length;
   }
 
+  /* --- Visor de fotos -------------------------------------------------- */
+  /* Eric pidió el 13-sep poder abrir las fotos: «si yo quiero abrirla no
+     tiene para abrir». Esto es el lightbox del boceto; en WordPress lo hace
+     el widget Galería de Elementor y este archivo no se traduce.
+
+     Va ANTES del bloque de aparición a propósito: ahí abajo hay un return
+     para los navegadores sin IntersectionObserver, y si el visor quedara
+     después, en esos navegadores no se armaría.
+
+     El click se escucha en el contenedor, no en cada foto: son 216 y poner
+     216 escuchas es tirar memoria al vacío. */
+
+  var muro = document.querySelector('.muro');
+  var visor = document.querySelector('.visor');
+
+  if (muro && visor && typeof visor.showModal === 'function') {
+    var visorFoto = visor.querySelector('.visor__foto');
+    var visorCuenta = visor.querySelector('.visor__cuenta');
+    var botones = Array.prototype.slice.call(
+      document.querySelectorAll('.muro .muro__item')
+    );
+    var actual = 0;
+    var volverA = null;
+
+    function fotoDe(i) {
+      return botones[i] ? botones[i].querySelector('img') : null;
+    }
+
+    function pintar(i) {
+      // Da la vuelta en las dos puntas: desde la última, "siguiente" va a la
+      // primera. Sin esto la flecha queda muerta y parece rota.
+      actual = (i + botones.length) % botones.length;
+      var img = fotoDe(actual);
+      if (!img) return;
+      visorFoto.src = img.src;
+      visorFoto.alt = img.alt;
+      visorCuenta.textContent = (actual + 1) + ' de ' + botones.length;
+
+      // Se le pide al navegador la siguiente y la anterior mientras la
+      // persona mira ésta, así la flecha responde de una.
+      [actual + 1, actual - 1].forEach(function (v) {
+        var vecina = fotoDe((v + botones.length) % botones.length);
+        if (vecina) new Image().src = vecina.src;
+      });
+    }
+
+    function abrir(i) {
+      volverA = botones[i] || null;
+      pintar(i);
+      visor.showModal();
+    }
+
+    muro.addEventListener('click', function (e) {
+      var item = e.target.closest ? e.target.closest('.muro__item') : null;
+      if (!item) return;
+      var i = botones.indexOf(item);
+      if (i > -1) abrir(i);
+    });
+
+    visor.addEventListener('click', function (e) {
+      if (e.target.closest('.visor__cerrar')) { visor.close(); return; }
+      if (e.target.closest('.visor__paso--antes')) { pintar(actual - 1); return; }
+      if (e.target.closest('.visor__paso--despues')) { pintar(actual + 1); return; }
+      // Clic en el fondo: el <dialog> ocupa toda la pantalla, así que el
+      // fondo es el propio dialog. La foto y los botones ya frenaron arriba.
+      if (e.target === visor) visor.close();
+    });
+
+    visor.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowLeft') { e.preventDefault(); pintar(actual - 1); }
+      if (e.key === 'ArrowRight') { e.preventDefault(); pintar(actual + 1); }
+    });
+
+    // Al cerrar, el foco vuelve a la foto desde la que se abrió: si no,
+    // queda al principio de la página y hay que bajar 200 fotos de nuevo.
+    visor.addEventListener('close', function () {
+      if (volverA) volverA.focus();
+    });
+  }
+
   /* --- Aparición al entrar en pantalla -------------------------------- */
   /* La clase .js la agrega un script inline en el <head>, y sólo si el
      navegador NO pide movimiento reducido. Si algo de esto falla, el CSS

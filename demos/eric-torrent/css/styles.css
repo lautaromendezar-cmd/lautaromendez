@@ -617,13 +617,165 @@ p:last-child { margin-bottom: 0; }
 }
 .testimonio__nombre { font-weight: 700; color: var(--color-text); }
 
-/* --- 08.f Franja de fotos -------------------------------------------- */
+/* --- 08.f Muro de fotos de lectores ---------------------------------- */
+
+/* Estas fotos las saca y las manda la gente con el celular: 209 de las 216
+   son verticales, y hay 27 proporciones distintas. La versión anterior las
+   metía en celdas de 3:2 apaisadas con object-fit: cover, y Eric lo marcó
+   textual: «las imágenes están cortadas, están fuera del cuadro».
+   Por eso acá NO hay proporción fija ni recorte. Columnas tipo mosaico:
+   cada foto entra entera y las columnas se acomodan solas.
+   En Elementor es el widget Galería en modo Mosaico con proporción Original;
+   no hace falta traducir nada de esto a mano. */
+
+.muro {
+  columns: 5;
+  column-gap: 14px;
+}
+
+.muro--muestra { columns: 5; }
+
+.muro__item {
+  /* Es un <button> para que se pueda abrir con el teclado, no sólo con el
+     mouse. Se le saca todo el aspecto de botón. */
+  display: block;
+  width: 100%;
+  margin: 0 0 14px;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: zoom-in;
+  /* Sin esto una foto se parte al final de la columna y se ve la mitad
+     arriba y la mitad abajo: exactamente el corte que estamos sacando. */
+  break-inside: avoid;
+  -webkit-column-break-inside: avoid;
+}
+
+.muro__item:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 3px;
+}
 
 .foto {
+  display: block;
   width: 100%;
-  aspect-ratio: 3 / 2;
-  object-fit: cover;
+  height: auto;
   background: var(--color-border);
+  transition: opacity .2s ease;
+}
+
+.muro__item:hover .foto,
+.muro__item:focus-visible .foto { opacity: .82; }
+
+/* --- 08.f.3 Video autoalojado ---------------------------------------- */
+/* Los cuatro son verticales de celular (9:16). El fondo negro y el
+   object-fit: contain están para que, si Eric cambia alguno por uno
+   apaisado, quede con banda arriba y abajo en vez de recortado — que es
+   justo lo que marcó de las fotos.
+   En Elementor: widget Video, Fuente = Self Hosted, con Poster. */
+
+.video { margin: 0; }
+
+.video__pieza {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 9 / 16;
+  object-fit: contain;
+  background: #14120F;
+}
+
+.video__pie { padding-top: 12px; }
+
+.video__donde {
+  margin: 0 0 2px;
+  color: var(--color-text-muted);
+  font-size: 14px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+.video__que {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+/* --- 08.f.2 Visor de foto ampliada ----------------------------------- */
+/* El equivalente en el boceto del Lightbox que el widget Galería de
+   Elementor trae de fábrica (Enlace → Lightbox). */
+
+.visor {
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  max-height: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  overflow: hidden;
+}
+
+.visor::backdrop { background: rgba(15, 14, 12, .92); }
+
+.visor__foto {
+  display: block;
+  margin: auto;
+  /* El alto disponible menos el aire de arriba y abajo. Con max-height en
+     porcentaje una foto vertical de 2252x4000 se iría abajo del pliegue. */
+  max-width: calc(100vw - 120px);
+  max-height: calc(100vh - 80px);
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+.visor__cerrar,
+.visor__paso {
+  position: fixed;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(245, 243, 238, .12);
+  color: var(--color-inverse);
+  font-size: 30px;
+  line-height: 1;
+  cursor: pointer;
+  transition: background .15s ease;
+}
+
+.visor__cerrar:hover,
+.visor__paso:hover { background: rgba(245, 243, 238, .28); }
+
+.visor__cerrar:focus-visible,
+.visor__paso:focus-visible {
+  outline: 3px solid var(--color-inverse);
+  outline-offset: 2px;
+}
+
+.visor__cerrar { top: 16px; right: 16px; font-size: 34px; }
+.visor__paso--antes   { top: 50%; left: 16px;  transform: translateY(-50%); }
+.visor__paso--despues { top: 50%; right: 16px; transform: translateY(-50%); }
+
+.visor__cuenta {
+  position: fixed;
+  bottom: 18px;
+  left: 0;
+  width: 100%;
+  /* El <p> global lleva max-width: 68ch. Sin anularlo la caja mide 504 px y
+     el texto se centra dentro de esos 504, o sea pegado a la izquierda. */
+  max-width: none;
+  margin: 0;
+  color: var(--color-inverse);
+  font-size: 14px;
+  text-align: center;
+  opacity: .75;
 }
 
 /* --- 08.g Reconocimientos -------------------------------------------- */
@@ -1033,6 +1185,9 @@ textarea.campo__control { min-height: 160px; resize: vertical; }
   .grid--4  { grid-template-columns: repeat(2, 1fr); }
   /* Seis tapas en 1024 quedan de 155 px: se parten en dos filas de tres. */
   .grid--6  { grid-template-columns: repeat(3, 1fr); }
+  /* A 1024 el contenedor da 5 columnas de 180 px: una cara de lector ahí ya
+     no se distingue. Con 3 quedan de 320 y se reconoce a la persona. */
+  .muro, .muro--muestra { columns: 3; }
   .grid--13 { grid-template-columns: 1fr 1.6fr; gap: 32px; }
   .grid--21 { grid-template-columns: 1.6fr 1fr; gap: 32px; }
   .footer__grid { grid-template-columns: 1fr 1fr; }
@@ -1062,6 +1217,19 @@ textarea.campo__control { min-height: 160px; resize: vertical; }
   .grid--2, .grid--3, .grid--13, .grid--21 { grid-template-columns: 1fr; }
   .grid--5, .grid--6 { grid-template-columns: repeat(2, 1fr); }
   .grid--13 { gap: 32px; }
+
+  .muro, .muro--muestra { columns: 2; column-gap: 10px; }
+  .muro__item { margin-bottom: 10px; }
+
+  /* En el celular las flechas quedan encima de la foto: se bajan al pie,
+     donde está el pulgar y donde no tapan la cara de nadie. */
+  .visor__foto { max-width: calc(100vw - 24px); max-height: calc(100vh - 140px); }
+  .visor__paso { top: auto; bottom: 20px; transform: none; }
+  .visor__paso--antes   { left: calc(50% - 74px); }
+  .visor__paso--despues { right: calc(50% - 74px); }
+  /* Arriba de las flechas, no entre las dos: "12 de 216" mide más que el
+     hueco de 52 px que queda libre en el medio. */
+  .visor__cuenta { bottom: 78px; }
 
   /* A una columna el retrato ocupaba la pantalla entera (696 x 960): se lee un
      scroll de cara antes de llegar al texto. Se le pone tope y se centra, que

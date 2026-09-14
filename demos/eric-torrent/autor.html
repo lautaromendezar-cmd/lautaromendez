@@ -245,13 +245,82 @@
 
       </div>
 
-      <p class="aviso aviso--separado reveal">
-        <strong>Hay video de casi todo esto.</strong> En el material del cliente están las
-        grabaciones de las conferencias, las entrevistas de México y Uruguay y los pasos por
-        televisión y radio. En el sitio final conviene subir tres o cuatro a YouTube y
-        embeberlas acá: el video de una entrevista en televisión convence más que cualquier
-        texto. [REEMPLAZAR: elegir cuáles]
-      </p>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       3.b EN VIDEO
+       Van AUTOALOJADOS, no embebidos de YouTube: lo pidió Eric el 7-sep
+       porque las grabaciones tienen música de fondo y se las dan de baja por
+       derechos de autor. En Elementor es el widget Video con Fuente = Self
+       Hosted, el archivo subido a la Biblioteca de Medios y la imagen de
+       portada en "Poster".
+       =================================================================== -->
+  <section class="section section--pagina">
+    <div class="container">
+
+      <div class="encabezado-seccion reveal">
+        <p class="eyebrow">En video</p>
+        <!-- Sin número: él va a ir cambiando y sumando videos, igual que con
+             las obras. Un "cuatro" acá queda viejo al primer cambio. -->
+        <h2>Algunas de esas veces, filmadas</h2>
+        <p>
+          Grabaciones de las presentaciones, las entrevistas y las conferencias.
+          [REEMPLAZAR: confirmar cuáles van]
+        </p>
+      </div>
+
+      <div class="grid grid--4 grid--top reveal">
+
+        <figure class="video">
+          <video class="video__pieza" controls preload="metadata" playsinline
+                 poster="assets/img/donde-feria-poster.jpg">
+            <source src="assets/video/donde-feria.mp4" type="video/mp4">
+            Este navegador no puede reproducir el video.
+          </video>
+          <figcaption class="video__pie">
+            <p class="video__donde">Buenos Aires</p>
+            <p class="video__que">Presentación en vivo de <em>Despertar Interior</em></p>
+          </figcaption>
+        </figure>
+
+        <figure class="video">
+          <video class="video__pieza" controls preload="metadata" playsinline
+                 poster="assets/img/donde-tv-poster.jpg">
+            <source src="assets/video/donde-tv.mp4" type="video/mp4">
+            Este navegador no puede reproducir el video.
+          </video>
+          <figcaption class="video__pie">
+            <p class="video__donde">Televisión</p>
+            <p class="video__que">El programa <em>A la tarde</em>. [REEMPLAZAR: canal y fecha]</p>
+          </figcaption>
+        </figure>
+
+        <figure class="video">
+          <video class="video__pieza" controls preload="metadata" playsinline
+                 poster="assets/img/donde-radio-poster.jpg">
+            <source src="assets/video/donde-radio.mp4" type="video/mp4">
+            Este navegador no puede reproducir el video.
+          </video>
+          <figcaption class="video__pie">
+            <p class="video__donde">Radio Rivadavia AM 630</p>
+            <p class="video__que">Con Jorge Pizarro. [REEMPLAZAR: nombre del programa]</p>
+          </figcaption>
+        </figure>
+
+        <figure class="video">
+          <video class="video__pieza" controls preload="metadata" playsinline
+                 poster="assets/img/donde-conferencia-poster.jpg">
+            <source src="assets/video/donde-conferencia.mp4" type="video/mp4">
+            Este navegador no puede reproducir el video.
+          </video>
+          <figcaption class="video__pie">
+            <p class="video__donde">Internacional</p>
+            <p class="video__que">Conferencia <em>Despertar Interior</em>. [REEMPLAZAR: sede y año]</p>
+          </figcaption>
+        </figure>
+
+      </div>
 
     </div>
   </section>
@@ -271,48 +340,666 @@
         </p>
       </div>
 
-      <!-- Las 30 fotos. En Elementor: widget Galería, 4 columnas.
-           Los alt se cargan en la Biblioteca de Medios, no en el HTML.
-           El origen de cada archivo está en assets/galeria-origen.txt -->
-      <div class="grid grid--4 reveal">
-        <img class="foto" src="assets/img/galeria-01.jpg" width="1200" height="800" alt="Eric Sebastián Torrent con una lectora, que sostiene su ejemplar de Despertar Interior" loading="lazy">
-        <img class="foto" src="assets/img/galeria-02.jpg" width="1200" height="800" alt="Una lectora en un encuentro al aire libre" loading="lazy">
-        <img class="foto" src="assets/img/galeria-03.jpg" width="1200" height="800" alt="Una lectora joven con su ejemplar de Despertar Interior" loading="lazy">
-        <img class="foto" src="assets/img/galeria-04.jpg" width="1200" height="800" alt="Dos lectoras abrazadas, con sus ejemplares en la mano" loading="lazy">
-        <img class="foto" src="assets/img/galeria-05.jpg" width="1200" height="800" alt="Un lector señala el ejemplar de Trascender la Victoria que sostiene junto al autor" loading="lazy">
-        <img class="foto" src="assets/img/galeria-06.jpg" width="1200" height="800" alt="Eric Sebastián Torrent con un lector que muestra Despertar Interior" loading="lazy">
-        <img class="foto" src="assets/img/galeria-07.jpg" width="1200" height="800" alt="El autor con un lector mayor y su ejemplar de Trascender la Victoria" loading="lazy">
-        <img class="foto" src="assets/img/galeria-08.jpg" width="1200" height="800" alt="El autor junto a un lector, con un ejemplar de Trascender la Victoria" loading="lazy">
-        <img class="foto" src="assets/img/galeria-09.jpg" width="1200" height="800" alt="Una lectora con su ejemplar de Trascender la Victoria, junto al autor" loading="lazy">
-        <img class="foto" src="assets/img/galeria-10.jpg" width="1200" height="800" alt="Eric Sebastián Torrent firmando ejemplares en la Feria del Libro" loading="lazy">
-        <img class="foto" src="assets/img/galeria-11.jpg" width="1200" height="800" alt="El autor con una lectora en el stand de la Feria del Libro" loading="lazy">
-        <img class="foto" src="assets/img/galeria-12.jpg" width="1200" height="800" alt="El autor junto a un lector, los dos con un ejemplar en la mano" loading="lazy">
-        <img class="foto" src="assets/img/galeria-13.jpg" width="1200" height="800" alt="Los libros en el stand de la 48° Feria Internacional del Libro de Buenos Aires" loading="lazy">
-        <img class="foto" src="assets/img/galeria-14.jpg" width="1200" height="800" alt="El autor con un lector en el stand de la Feria del Libro" loading="lazy">
-        <img class="foto" src="assets/img/galeria-15.jpg" width="1200" height="800" alt="El autor y un lector con un ejemplar de Despertar Interior" loading="lazy">
-        <img class="foto" src="assets/img/galeria-16.jpg" width="1200" height="800" alt="Una lectora con una remera de una de las portadas" loading="lazy">
-        <img class="foto" src="assets/img/galeria-17.jpg" width="1200" height="800" alt="Dos lectoras con sus ejemplares de Eres la Luz" loading="lazy">
-        <img class="foto" src="assets/img/galeria-18.jpg" width="1200" height="800" alt="El autor con un lector y su ejemplar" loading="lazy">
-        <img class="foto" src="assets/img/galeria-19.jpg" width="1200" height="800" alt="El autor con una lectora en una presentación" loading="lazy">
-        <img class="foto" src="assets/img/galeria-20.jpg" width="1200" height="800" alt="El autor con una lectora, que sostiene su ejemplar" loading="lazy">
-        <img class="foto" src="assets/img/galeria-21.jpg" width="1200" height="800" alt="Una lectora con su ejemplar de Trascender la Victoria" loading="lazy">
-        <img class="foto" src="assets/img/galeria-22.jpg" width="1200" height="800" alt="Una lectora con el libro, en su lugar de trabajo" loading="lazy">
-        <img class="foto" src="assets/img/galeria-23.jpg" width="1200" height="800" alt="El autor con un lector, que sostiene un ejemplar firmado" loading="lazy">
-        <img class="foto" src="assets/img/galeria-24.jpg" width="1200" height="800" alt="Un lector mayor con su ejemplar de Eres la Luz y un ramo de flores" loading="lazy">
-        <img class="foto" src="assets/img/galeria-25.jpg" width="1200" height="800" alt="El autor con dos lectores y sus ejemplares, en un bar" loading="lazy">
-        <img class="foto" src="assets/img/galeria-26.jpg" width="1200" height="800" alt="Retrato de un lector" loading="lazy">
-        <img class="foto" src="assets/img/galeria-27.jpg" width="1200" height="800" alt="Una lectora al aire libre" loading="lazy">
-        <img class="foto" src="assets/img/galeria-28.jpg" width="1200" height="800" alt="Un lector con su ejemplar" loading="lazy">
-        <img class="foto" src="assets/img/galeria-29.jpg" width="1200" height="800" alt="Una lectora con Hacia la Iluminación y la Unificación" loading="lazy">
-        <img class="foto" src="assets/img/galeria-30.jpg" width="1200" height="800" alt="El autor junto a un lector, después de una presentación" loading="lazy">
+      <!-- Las 217 fotos de lectores, SIN RECORTAR. Eric marcó el 13-sep que
+           las veía cortadas y que no se podían abrir: 210 de las 217 son
+           verticales de celular y se estaban recortando a 3:2 apaisado.
+           En Elementor: widget Galería, modo Mosaico, proporción Original,
+           5 columnas, enlace a Lightbox. Los alt se cargan en la Biblioteca
+           de Medios. El origen de cada archivo está en assets/galeria-origen.txt -->
+      <div class="muro reveal">
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-001.jpg" width="676" height="1200" alt="Una lectora en un encuentro al aire libre" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-002.jpg" width="676" height="1200" alt="Eric Sebastián Torrent con una lectora, que sostiene su ejemplar de Despertar Interior" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-003.jpg" width="601" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-004.jpg" width="676" height="1200" alt="Una lectora joven con su ejemplar de Despertar Interior" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-005.jpg" width="676" height="1200" alt="Dos lectoras abrazadas, con sus ejemplares en la mano" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-006.jpg" width="676" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-007.jpg" width="676" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-008.jpg" width="900" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-009.jpg" width="676" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-010.jpg" width="1200" height="900" alt="Un lector señala el ejemplar de Trascender la Victoria que sostiene junto al autor" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-011.jpg" width="900" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-012.jpg" width="676" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-013.jpg" width="676" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-014.jpg" width="676" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-015.jpg" width="676" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-016.jpg" width="676" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-017.jpg" width="675" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-018.jpg" width="676" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-019.jpg" width="676" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-020.jpg" width="676" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-021.jpg" width="900" height="1200" alt="Eric Sebastián Torrent con un lector que muestra Despertar Interior" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-022.jpg" width="676" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-023.jpg" width="676" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-024.jpg" width="767" height="1130" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-025.jpg" width="900" height="1200" alt="El autor con un lector mayor y su ejemplar de Trascender la Victoria" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-026.jpg" width="900" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-027.jpg" width="676" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-028.jpg" width="728" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-029.jpg" width="676" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-030.jpg" width="1200" height="1190" alt="El autor junto a un lector, con un ejemplar de Trascender la Victoria" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-031.jpg" width="676" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-032.jpg" width="900" height="1200" alt="Una lectora con su ejemplar de Trascender la Victoria, junto al autor" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-033.jpg" width="676" height="1200" alt="Eric Sebastián Torrent firmando ejemplares en la Feria del Libro" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-034.jpg" width="676" height="1200" alt="El autor con una lectora en el stand de la Feria del Libro" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-035.jpg" width="676" height="1200" alt="Los libros en el stand de la 48° Feria Internacional del Libro de Buenos Aires" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-036.jpg" width="676" height="1200" alt="El autor junto a un lector, los dos con un ejemplar en la mano" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-037.jpg" width="661" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-038.jpg" width="676" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-039.jpg" width="560" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-040.jpg" width="560" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-041.jpg" width="560" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-042.jpg" width="676" height="1200" alt="El autor con un lector en el stand de la Feria del Libro" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-043.jpg" width="560" height="1200" alt="El autor y un lector con un ejemplar de Despertar Interior" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-044.jpg" width="676" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-045.jpg" width="676" height="1200" alt="Una lectora con una remera de una de las portadas" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-046.jpg" width="676" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-047.jpg" width="676" height="1200" alt="Dos lectoras con sus ejemplares de Eres la Luz" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-048.jpg" width="962" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-049.jpg" width="676" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-050.jpg" width="900" height="1200" alt="El autor con un lector y su ejemplar" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-051.jpg" width="900" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-052.jpg" width="676" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-053.jpg" width="676" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-054.jpg" width="707" height="1200" alt="El autor con una lectora en una presentación" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-055.jpg" width="676" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-056.jpg" width="665" height="1200" alt="El autor con una lectora, que sostiene su ejemplar" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-057.jpg" width="676" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-058.jpg" width="742" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-059.jpg" width="676" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-060.jpg" width="676" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-061.jpg" width="676" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-062.jpg" width="676" height="1200" alt="Una lectora con su ejemplar de Trascender la Victoria" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-063.jpg" width="674" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-064.jpg" width="674" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-065.jpg" width="675" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-066.jpg" width="676" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-067.jpg" width="675" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-068.jpg" width="675" height="1200" alt="Una lectora con el libro, en su lugar de trabajo" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-069.jpg" width="676" height="1200" alt="El autor con un lector, que sostiene un ejemplar firmado" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-070.jpg" width="676" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-071.jpg" width="676" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-072.jpg" width="676" height="1200" alt="Un lector mayor con su ejemplar de Eres la Luz y un ramo de flores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-073.jpg" width="676" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-074.jpg" width="676" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-075.jpg" width="675" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-076.jpg" width="675" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-077.jpg" width="676" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-078.jpg" width="676" height="1200" alt="El autor con dos lectores y sus ejemplares, en un bar" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-079.jpg" width="596" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-080.jpg" width="797" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-081.jpg" width="676" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-082.jpg" width="676" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-083.jpg" width="676" height="1200" alt="Retrato de un lector" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-084.jpg" width="1200" height="676" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-085.jpg" width="675" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-086.jpg" width="598" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-087.jpg" width="734" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-088.jpg" width="676" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-089.jpg" width="740" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-090.jpg" width="676" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-091.jpg" width="870" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-092.jpg" width="675" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-093.jpg" width="537" height="727" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-094.jpg" width="723" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-095.jpg" width="724" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-096.jpg" width="674" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-097.jpg" width="676" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-098.jpg" width="676" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-099.jpg" width="676" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-100.jpg" width="676" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-101.jpg" width="668" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-102.jpg" width="676" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-103.jpg" width="675" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-104.jpg" width="554" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-105.jpg" width="675" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-106.jpg" width="676" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-107.jpg" width="675" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-108.jpg" width="675" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-109.jpg" width="674" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-110.jpg" width="676" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-111.jpg" width="675" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-112.jpg" width="1200" height="675" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-113.jpg" width="675" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-114.jpg" width="675" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-115.jpg" width="675" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-116.jpg" width="676" height="1200" alt="Una lectora al aire libre" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-117.jpg" width="675" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-118.jpg" width="675" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-119.jpg" width="675" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-120.jpg" width="676" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-121.jpg" width="675" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-122.jpg" width="675" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-123.jpg" width="675" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-124.jpg" width="675" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-125.jpg" width="675" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-126.jpg" width="675" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-127.jpg" width="675" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-128.jpg" width="675" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-129.jpg" width="675" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-130.jpg" width="675" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-131.jpg" width="675" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-132.jpg" width="675" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-133.jpg" width="675" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-134.jpg" width="675" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-135.jpg" width="558" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-136.jpg" width="415" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-137.jpg" width="676" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-138.jpg" width="676" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-139.jpg" width="674" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-140.jpg" width="676" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-141.jpg" width="675" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-142.jpg" width="675" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-143.jpg" width="675" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-144.jpg" width="675" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-145.jpg" width="675" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-146.jpg" width="611" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-147.jpg" width="675" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-148.jpg" width="676" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-149.jpg" width="676" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-150.jpg" width="675" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-151.jpg" width="895" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-152.jpg" width="676" height="1200" alt="Un lector con su ejemplar" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-153.jpg" width="749" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-154.jpg" width="676" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-155.jpg" width="485" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-156.jpg" width="676" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-157.jpg" width="675" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-158.jpg" width="710" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-159.jpg" width="676" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-160.jpg" width="1200" height="768" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-161.jpg" width="675" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-162.jpg" width="675" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-163.jpg" width="676" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-164.jpg" width="676" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-165.jpg" width="676" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-166.jpg" width="676" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-167.jpg" width="676" height="1200" alt="Una lectora con Hacia la Iluminación y la Unificación" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-168.jpg" width="676" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-169.jpg" width="676" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-170.jpg" width="676" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-171.jpg" width="676" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-172.jpg" width="680" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-173.jpg" width="676" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-174.jpg" width="676" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-175.jpg" width="675" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-176.jpg" width="492" height="1040" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-177.jpg" width="676" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-178.jpg" width="676" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-179.jpg" width="675" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-180.jpg" width="760" height="1200" alt="El autor junto a un lector, después de una presentación" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-181.jpg" width="675" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-182.jpg" width="676" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-183.jpg" width="675" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-184.jpg" width="676" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-185.jpg" width="676" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-186.jpg" width="676" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-187.jpg" width="676" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-188.jpg" width="512" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-189.jpg" width="675" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-190.jpg" width="676" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-191.jpg" width="676" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-192.jpg" width="676" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-193.jpg" width="676" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-194.jpg" width="676" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-195.jpg" width="676" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-196.jpg" width="676" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-197.jpg" width="1200" height="676" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-198.jpg" width="676" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-199.jpg" width="1200" height="676" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-200.jpg" width="676" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-201.jpg" width="675" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-202.jpg" width="675" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-203.jpg" width="676" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-204.jpg" width="676" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-205.jpg" width="674" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-206.jpg" width="675" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-207.jpg" width="675" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-208.jpg" width="675" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-209.jpg" width="675" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-210.jpg" width="639" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-211.jpg" width="675" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-212.jpg" width="674" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-213.jpg" width="986" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-214.jpg" width="675" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-215.jpg" width="675" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+        <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-216.jpg" width="900" height="1200" alt="Foto enviada por lectores" loading="lazy" decoding="async">
+        </button>
+              <button class="muro__item" type="button" aria-label="Ampliar la foto">
+          <img class="foto" src="assets/img/galeria/g-217.jpg" width="675" height="1200" alt="Victor y María Fernanda, de Chile, leyendo Despertar Interior" loading="lazy" decoding="async">
+        </button>
       </div>
 
-      <p class="aviso aviso--separado reveal">
-        <strong>Antes de publicar estas fotos</strong> hay que confirmar que las personas
-        retratadas den su permiso: son treinta lectores identificables. De las 179 fotos que
-        mandó Eric se eligieron estas treinta buscando variedad, y se dejaron afuera a
-        propósito las que muestran menores de edad. [REEMPLAZAR: confirmación]
-      </p>
 
     </div>
   </section>
@@ -411,7 +1098,19 @@
   <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
 </a>
 
-<script src="js/main.js"></script>
 
-</body>
+
+    <!-- Visor de fotos. En Elementor no se construye: el widget Galería trae
+         su propio lightbox, se activa en Enlace → Lightbox. Esto es el
+         equivalente para el boceto. -->
+    <dialog class="visor" aria-label="Foto ampliada">
+      <button class="visor__cerrar" type="button" aria-label="Cerrar">&times;</button>
+      <button class="visor__paso visor__paso--antes" type="button" aria-label="Foto anterior">&lsaquo;</button>
+      <img class="visor__foto" alt="">
+      <button class="visor__paso visor__paso--despues" type="button" aria-label="Foto siguiente">&rsaquo;</button>
+      <p class="visor__cuenta" aria-live="polite"></p>
+    </dialog>
+
+<script src="js/main.js"></script>
+  </body>
 </html>
