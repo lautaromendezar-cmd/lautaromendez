@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Propuesta — Fosque Reformer</title>
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --fondo:#191210;
+    --fondo-2:#221814;
+    --superficie:#2a1f19;
+    --arena:#ece1d4;
+    --arena-2:#c3b1a1;
+    --arena-3:#a08d7d;
+    --terracota:#b07358;
+    --ocre:#d38249;
+    --rosa:#d0b5b2;
+    --manteca:#ffe08c;
+    --salvia:#bfbbaa;
+    --linea:rgba(176,115,88,.22);
+    --linea-2:rgba(236,225,212,.10);
+    --disp:'Baloo Bhaijaan 2', system-ui, sans-serif;
+    --texto:'Montserrat', system-ui, sans-serif;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+
+  body{
+    background:var(--fondo);
+    color:var(--arena);
+    font-family:var(--texto);
+    font-weight:400;
+    font-size:16.5px;
+    line-height:1.72;
+    letter-spacing:.002em;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  .hoja{max-width:820px;margin:0 auto;padding:0 28px}
+
+  /* ---------- portada ---------- */
+
+  .portada{
+    position:relative;
+    overflow:hidden;
+    background:
+      radial-gradient(120% 90% at 78% 8%, rgba(211,130,73,.20) 0%, rgba(211,130,73,0) 58%),
+      linear-gradient(180deg,#2b201a 0%, #1f1713 62%, var(--fondo) 100%);
+    border-bottom:1px solid var(--linea);
+  }
+  .curvas{
+    position:absolute;inset:0;
+    width:100%;height:100%;
+    opacity:.30;
+    pointer-events:none;
+  }
+  .portada .hoja{position:relative;padding-top:96px;padding-bottom:78px}
+
+  .firma-sup{
+    font-size:13.5px;
+    color:var(--arena-3);
+    letter-spacing:.06em;
+    margin-bottom:54px;
+  }
+  .firma-sup b{color:var(--arena-2);font-weight:500}
+
+  .marca{
+    font-family:var(--disp);
+    font-weight:600;
+    font-size:clamp(38px,7.4vw,62px);
+    line-height:1.02;
+    letter-spacing:-.018em;
+    color:var(--arena);
+  }
+  .marca span{display:block;color:var(--terracota)}
+
+  .bajada{
+    margin-top:26px;
+    font-size:clamp(17px,2.4vw,19.5px);
+    font-weight:300;
+    line-height:1.6;
+    color:var(--arena-2);
+    max-width:31em;
+  }
+
+  .datos{
+    margin-top:52px;
+    padding-top:22px;
+    border-top:1px solid var(--linea);
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px 40px;
+    font-size:14.5px;
+    color:var(--arena-3);
+  }
+  .datos b{color:var(--arena-2);font-weight:500}
+
+  /* ---------- secciones ---------- */
+
+  section{padding:74px 0 0}
+  section:last-of-type{padding-bottom:20px}
+
+  .cabecera{
+    display:flex;
+    align-items:baseline;
+    gap:18px;
+    padding-bottom:10px;
+    margin-bottom:30px;
+    border-bottom:1px solid var(--linea);
+  }
+  .num{
+    font-family:var(--disp);
+    font-weight:500;
+    font-size:15px;
+    color:var(--ocre);
+    flex:none;
+    line-height:1;
+    position:relative;
+    top:-2px;
+  }
+  h2{
+    font-family:var(--disp);
+    font-weight:600;
+    font-size:clamp(25px,4.2vw,33px);
+    line-height:1.16;
+    letter-spacing:-.014em;
+    color:var(--arena);
+  }
+
+  h3{
+    font-family:var(--disp);
+    font-weight:600;
+    font-size:20.5px;
+    line-height:1.3;
+    color:var(--arena);
+    margin-bottom:4px;
+  }
+
+  p{margin-bottom:18px;max-width:38em}
+  p:last-child{margin-bottom:0}
+  .suelta{color:var(--arena-2);font-weight:300}
+
+  em{font-style:normal;color:var(--rosa)}
+  strong{font-weight:600;color:var(--arena)}
+
+  /* ---------- intro ---------- */
+
+  .intro{padding-top:64px}
+  .intro p{font-size:17.5px;line-height:1.75}
+
+  /* ---------- modulos ---------- */
+
+  .modulo{
+    background:var(--fondo-2);
+    border-top:2px solid var(--terracota);
+    padding:34px 32px 36px;
+    margin-bottom:14px;
+  }
+  .modulo-tope{
+    display:flex;
+    align-items:flex-end;
+    justify-content:space-between;
+    gap:20px 30px;
+    flex-wrap:wrap;
+    padding-bottom:20px;
+    margin-bottom:26px;
+    border-bottom:1px solid var(--linea-2);
+  }
+  .modulo-tope h3{
+    font-size:clamp(22px,3.6vw,27px);
+    margin-bottom:0;
+  }
+  .precio{
+    font-family:var(--disp);
+    font-weight:600;
+    font-size:clamp(23px,3.6vw,28px);
+    color:var(--manteca);
+    line-height:1;
+    white-space:nowrap;
+  }
+
+  .recorrido{margin-bottom:30px}
+  .recorrido:last-child{margin-bottom:0}
+  .recorrido > h4,
+  .comun > h4{
+    font-family:var(--disp);
+    font-weight:600;
+    font-size:17px;
+    color:var(--ocre);
+    margin-bottom:14px;
+  }
+
+  ul{list-style:none}
+  .lista li{
+    position:relative;
+    padding-left:22px;
+    margin-bottom:11px;
+    max-width:39em;
+    color:var(--arena-2);
+    font-weight:300;
+  }
+  .lista li:last-child{margin-bottom:0}
+  .lista li::before{
+    content:"";
+    position:absolute;
+    left:1px;top:.72em;
+    width:9px;height:1px;
+    background:var(--terracota);
+  }
+  .lista li b{color:var(--arena);font-weight:500}
+
+  .comun{
+    margin-top:30px;
+    padding-top:24px;
+    border-top:1px solid var(--linea-2);
+  }
+
+  /* ---------- inversion ---------- */
+
+  .cuenta{margin-bottom:34px}
+  .fila{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    gap:24px;
+    padding:15px 0;
+    border-bottom:1px solid var(--linea-2);
+  }
+  .fila span:first-child{color:var(--arena-2);font-weight:300}
+  .fila span:last-child{
+    font-family:var(--disp);
+    font-weight:500;
+    font-size:19px;
+    color:var(--arena);
+    white-space:nowrap;
+  }
+  .fila.total{border-bottom:none;border-top:1px solid var(--terracota);padding-top:20px;margin-top:4px}
+  .fila.total span:first-child{color:var(--arena);font-weight:500}
+  .fila.total span:last-child{font-size:27px;color:var(--manteca);font-weight:600}
+
+  .pagos{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:26px}
+  .pago{
+    background:var(--fondo-2);
+    border-left:2px solid var(--terracota);
+    padding:22px 24px 24px;
+  }
+  .pago.destacado{border-left-color:var(--manteca)}
+  .pago h4{
+    font-family:var(--disp);
+    font-weight:600;
+    font-size:17.5px;
+    color:var(--arena);
+    margin-bottom:8px;
+  }
+  .pago .monto{
+    font-family:var(--disp);
+    font-weight:600;
+    font-size:23px;
+    color:var(--manteca);
+    line-height:1.2;
+    margin-bottom:8px;
+  }
+  .pago p{font-size:14.5px;line-height:1.6;color:var(--arena-2);font-weight:300;margin:0}
+
+  .nota{
+    font-size:15px;
+    color:var(--arena-2);
+    font-weight:300;
+    padding-left:16px;
+    border-left:1px solid var(--linea);
+    max-width:40em;
+  }
+
+  /* ---------- clausulas ---------- */
+
+  .clausula{
+    background:var(--superficie);
+    border-left:3px solid var(--ocre);
+    padding:24px 26px 26px;
+    margin-bottom:14px;
+  }
+  .clausula h4{
+    font-family:var(--disp);
+    font-weight:600;
+    font-size:18px;
+    color:var(--manteca);
+    margin-bottom:9px;
+  }
+  .clausula p{font-size:15.5px;color:var(--arena-2);font-weight:300;margin-bottom:10px}
+  .clausula p:last-child{margin-bottom:0}
+
+  /* ---------- plazos ---------- */
+
+  .plazos{
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+    margin-bottom:26px;
+  }
+  .plazo{
+    flex:1 1 220px;
+    background:var(--fondo-2);
+    padding:20px 22px;
+    border-top:1px solid var(--linea);
+  }
+  .plazo .tiempo{
+    font-family:var(--disp);
+    font-weight:600;
+    font-size:26px;
+    color:var(--rosa);
+    line-height:1.1;
+    margin-bottom:4px;
+  }
+  .plazo p{font-size:14.5px;color:var(--arena-2);font-weight:300;margin:0}
+
+  /* ---------- cierre ---------- */
+
+  .cierre{
+    margin-top:76px;
+    padding:46px 0 70px;
+    border-top:1px solid var(--linea);
+  }
+  .cierre p{font-size:17px;max-width:36em}
+  .pie{
+    margin-top:34px;
+    padding-top:22px;
+    border-top:1px solid var(--linea-2);
+    font-size:14.5px;
+    color:var(--arena-3);
+    line-height:1.9;
+  }
+  .pie b{
+    display:block;
+    font-family:var(--disp);
+    font-weight:600;
+    font-size:18px;
+    color:var(--arena);
+    line-height:1.4;
+  }
+  .pie a{color:var(--arena-2);text-decoration:none;border-bottom:1px solid var(--linea)}
+
+  /* ---------- celular ---------- */
+
+  @media (max-width:640px){
+    body{font-size:16px;line-height:1.68}
+    .hoja{padding:0 20px}
+    .portada .hoja{padding-top:64px;padding-bottom:56px}
+    .firma-sup{margin-bottom:38px}
+    .datos{gap:6px 26px;font-size:13.5px}
+    section{padding-top:56px}
+    .cabecera{gap:13px}
+    .modulo{padding:26px 20px 28px;margin-left:-20px;margin-right:-20px}
+    .modulo-tope{align-items:flex-start;flex-direction:column;gap:10px}
+    .pagos{grid-template-columns:1fr}
+    .fila{gap:14px}
+    .fila.total span:last-child{font-size:24px}
+    .clausula{padding:20px 20px 22px;margin-left:-20px;margin-right:-20px;border-left-width:3px}
+    .cierre{margin-top:56px;padding-bottom:56px}
+  }
+
+  /* ---------- papel ---------- */
+
+  @media print{
+    :root{
+      --fondo:#fff;
+      --fondo-2:#faf7f2;
+      --superficie:#f6f1e9;
+      --arena:#231913;
+      --arena-2:#4a3b31;
+      --arena-3:#7b6a5d;
+      --manteca:#8a5a1f;
+      --rosa:#8a5a4a;
+      --linea:rgba(120,74,52,.35);
+      --linea-2:rgba(60,40,30,.16);
+    }
+    body{font-size:11.2pt;line-height:1.58;background:#fff}
+    .hoja{max-width:100%;padding:0}
+    .portada{background:none;border-bottom:1px solid var(--linea)}
+    .portada .hoja{padding-top:0;padding-bottom:22pt}
+    .curvas{display:none}
+    .marca{font-size:30pt}
+    .bajada{font-size:12pt}
+    .firma-sup{margin-bottom:26pt}
+    .datos{margin-top:24pt}
+    section{padding-top:22pt}
+    h2{font-size:16pt}
+    .modulo,.clausula,.pago,.plazo,.cuenta,.pagos,.recorrido,.comun{
+      margin-left:0;margin-right:0;
+      break-inside:avoid;page-break-inside:avoid;
+    }
+    .modulo{padding:16pt 18pt}
+    .cabecera{break-after:avoid;page-break-after:avoid}
+    h3,h4{break-after:avoid;page-break-after:avoid}
+    .lista li{break-inside:avoid;page-break-inside:avoid}
+    .cierre{margin-top:26pt;padding-bottom:0}
+    .pie a{border-bottom:none}
+    a{color:inherit}
+  }
+</style>
+</head>
+<body>
+
+<header class="portada">
+  <svg class="curvas" viewBox="0 0 1200 620" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <defs>
+      <path id="onda" d="M-40,310 C110,238 250,382 400,312 C550,242 690,384 840,314 C990,244 1130,386 1280,316"
+            fill="none" stroke="#c08d6c" stroke-width="1.15" stroke-linecap="round"/>
+    </defs>
+    <g opacity=".55">
+      <use href="#onda" y="-290"/><use href="#onda" y="-252"/><use href="#onda" y="-216"/>
+      <use href="#onda" y="-182"/><use href="#onda" y="-150"/><use href="#onda" y="-120"/>
+      <use href="#onda" y="-92"/><use href="#onda" y="-66"/><use href="#onda" y="-42"/>
+      <use href="#onda" y="-20"/><use href="#onda" y="0"/><use href="#onda" y="26"/>
+      <use href="#onda" y="56"/><use href="#onda" y="90"/><use href="#onda" y="128"/>
+      <use href="#onda" y="170"/><use href="#onda" y="216"/><use href="#onda" y="266"/>
+    </g>
+  </svg>
+
+  <div class="hoja">
+    <p class="firma-sup">Propuesta de desarrollo web · <b>Lautaro Méndez</b></p>
+
+    <h1 class="marca">Fosque Reformer<span>y el sitio personal de Gerardo</span></h1>
+
+    <p class="bajada">Dos sitios, dos dominios, un mismo estándar. Acá está lo que incluye cada uno, lo que no, cuánto sale y qué necesito de vos para empezar.</p>
+
+    <div class="datos">
+      <span>Para <b>Gerardo Fosque</b></span>
+      <span>13 de septiembre de 2026</span>
+      <span>Validez: <b>30 días</b></span>
+    </div>
+  </div>
+</header>
+
+<main class="hoja">
+
+  <section class="intro">
+    <p>Este documento existe por una razón concreta: la vez pasada trabajamos sin propuesta escrita y el alcance se fue corriendo sobre la marcha. No estuvo bueno para ninguno de los dos. Así que esta vez lo dejamos por escrito antes de arrancar.</p>
+    <p class="suelta">Antes de escribirlo leí todo lo que me pasaste: el manual de marca, el manual de arquitectura de Artagaveytia-Mantel y la Master Suite de Comunicación y Ventas. El diseño del sitio sale de ahí y no de otro lado: la luz cálida de los renders, la madera clara, los tonos tierra desaturados de tu paleta y las curvas de nivel de la tapa del manual.</p>
+    <p class="suelta">Me repetiste varias veces que querés que sea como una película. Para mí eso significa algo preciso, y es lo que estoy cotizando: que el scroll funcione como el tiempo de una toma. Cada sección entra cuando le toca, la luz cambia a medida que bajás, el ritmo lo maneja el sitio y no una suma de efectos pegados encima. Eso es lo que quiere decir <em>animaciones de scroll</em> en este presupuesto.</p>
+  </section>
+
+  <section>
+    <div class="cabecera"><span class="num">01</span><h2>Sitio Fosque Reformer</h2></div>
+
+    <div class="modulo">
+      <div class="modulo-tope">
+        <h3>Módulo 1 — Sitio Fosque Reformer</h3>
+        <span class="precio">$1.000.000</span>
+      </div>
+
+      <p class="suelta">Un solo dominio con dos recorridos. El mismo sitio atiende a la persona que busca dónde entrenar y a la que quiere abrir una sucursal, sin que ninguna de las dos tenga que pasar por el contenido de la otra.</p>
+
+      <div class="recorrido">
+        <h4>El recorrido público</h4>
+        <ul class="lista">
+          <li><b>Portada.</b> La entrada a la marca: el espacio, la luz y la promesa, antes de cualquier precio.</li>
+          <li><b>La diferencia Fosque.</b> Los tres argumentos de tu documento: disponibilidad real, entorno sensorial y método progresivo.</li>
+          <li><b>Selector de los 4 niveles.</b> Inicia, Activa, Avanzada y Master, cada uno con su enfoque. Es informativo: muestra los niveles, no evalúa a la persona.</li>
+          <li><b>El método.</b> Cómo se entrena en Fosque Reformer y por qué está armado así.</li>
+          <li><b>Membresías.</b> Los packs de 4, 8, 12 y 16 clases, con lo que incluye cada uno.</li>
+          <li><b>Buscador de sucursales.</b> Arranca con Núñez y queda armado para sumar sedes a medida que abren.</li>
+          <li><b>Contacto.</b> El botón principal abre WhatsApp con el mensaje ya escrito, desde cualquier punto del sitio.</li>
+        </ul>
+      </div>
+
+      <div class="recorrido">
+        <h4>El área de franquicias, en URL propia</h4>
+        <ul class="lista">
+          <li><b>El modelo asociativo.</b> Qué lo diferencia de una franquicia tradicional.</li>
+          <li><b>Los cuatro pilares</b> y las métricas de capacidad y expansión.</li>
+          <li><b>Formulario de calificación.</b> Contacto, zona pretendida, capital disponible y perfil del inversor. Las respuestas te llegan por mail.</li>
+          <li><b>Descarga del dossier en PDF</b>, atada al formulario o abierta, como prefieras.</li>
+        </ul>
+      </div>
+
+      <div class="comun">
+        <h4>En los dos recorridos</h4>
+        <ul class="lista">
+          <li><b>Diseño a medida</b> sobre tu manual de marca. No hay plantilla abajo.</li>
+          <li><b>Animaciones de scroll</b>, en el sentido que te describí arriba.</li>
+          <li><b>Responsive.</b> El celular se diseña aparte, no es el escritorio apretado.</li>
+          <li><b>Velocidad.</b> Que cargue rápido con conexión de celular, no sólo con wifi.</li>
+          <li><b>SEO de base.</b> Títulos, descripciones, estructura y sitemap.</li>
+          <li><b>Analítica y píxel de Meta</b> instalados y verificados.</li>
+          <li><b>Publicación y dominio</b>, hasta que esté en línea y andando.</li>
+          <li><b>Dos rondas de correcciones</b> sobre el diseño terminado.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="cabecera"><span class="num">02</span><h2>Tu sitio personal</h2></div>
+
+    <div class="modulo">
+      <div class="modulo-tope">
+        <h3>Módulo 2 — Sitio de asesoramiento</h3>
+        <span class="precio">$500.000</span>
+      </div>
+
+      <p class="suelta">Esto lo hablamos por teléfono y no está en la Master Suite. Va en dominio aparte y con identidad propia: no es una sección de Fosque Reformer ni se le parece. Es tu sitio, a tu nombre.</p>
+
+      <div class="recorrido">
+        <h4>Una página, con estas secciones</h4>
+        <ul class="lista">
+          <li><b>Portada.</b> Quién sos y qué ofrecés, en la primera pantalla.</li>
+          <li><b>Quién sos.</b> Tu trayectoria y desde dónde asesorás.</li>
+          <li><b>Servicios de asesoramiento</b> a estudios de pilates.</li>
+          <li><b>Cómo trabajás.</b> El proceso, paso por paso.</li>
+          <li><b>Casos y respaldo.</b> Con quién trabajaste y qué resultado hubo.</li>
+          <li><b>Contacto.</b> Formulario o WhatsApp, el que prefieras.</li>
+        </ul>
+      </div>
+
+      <div class="comun">
+        <p class="suelta" style="margin:0">Mismo estándar técnico que el Módulo 1 —diseño a medida, animaciones, responsive, velocidad, SEO de base, analítica, publicación y dominio— y las mismas dos rondas de correcciones. El contenido lo aportás vos: hoy no tengo nada escrito de este módulo, y no lo voy a inventar.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="cabecera"><span class="num">03</span><h2>La inversión</h2></div>
+
+    <div class="cuenta">
+      <div class="fila"><span>Módulo 1 — Sitio Fosque Reformer</span><span>$1.000.000</span></div>
+      <div class="fila"><span>Módulo 2 — Sitio de asesoramiento</span><span>$500.000</span></div>
+      <div class="fila total"><span>Total</span><span>$1.500.000</span></div>
+    </div>
+
+    <div class="pagos">
+      <div class="pago">
+        <h4>Opción A — Mitad y mitad</h4>
+        <div class="monto">$750.000 + $750.000</div>
+        <p>La primera mitad para arrancar, la segunda contra entrega, antes de publicar.</p>
+      </div>
+      <div class="pago destacado">
+        <h4>Opción B — Todo por adelantado</h4>
+        <div class="monto">$1.350.000</div>
+        <p>10% de descuento sobre el total. Un solo pago al arrancar.</p>
+      </div>
+    </div>
+
+    <p class="nota">En las dos opciones, el anticipo que ya transferiste se descuenta del primer pago.</p>
+  </section>
+
+  <section>
+    <div class="cabecera"><span class="num">04</span><h2>Qué no incluye</h2></div>
+
+    <p class="suelta">Lo pongo completo y con nombre propio para que no quede ninguna duda después.</p>
+
+    <ul class="lista">
+      <li><b>Contenidos para redes y la parrilla de 30 días.</b> El plan está en tu documento; producirlo es otro trabajo.</li>
+      <li><b>Campañas de Meta Ads.</b> Dejo el píxel instalado y midiendo; la pauta no la manejo yo.</li>
+      <li><b>Bot de IA en WhatsApp.</b> El sitio abre WhatsApp; del otro lado contesta una persona.</li>
+      <li><b>Portal de miembros y CRM.</b> Es un sistema de gestión, no una web, y necesita un relevamiento previo antes de poder cotizarlo.</li>
+      <li><b>Auditoría con sensores y NPS en tiempo real.</b> Eso es infraestructura del local —climatización, domótica—, no desarrollo web.</li>
+      <li><b>Test de nivelación con lógica de resultados.</b> El sitio muestra los 4 niveles; no evalúa a la persona ni le devuelve un nivel.</li>
+      <li><b>Versión en inglés.</b></li>
+      <li><b>Redacción de textos legales.</b> Términos y condiciones y políticas de privacidad los redacta tu abogado; yo los maqueto y los publico.</li>
+      <li><b>Producción de fotos y video.</b></li>
+      <li><b>Costos recurrentes</b> de dominio, hosting y plataformas. Van a tu nombre y los pagás vos directo, sin pasar por mí.</li>
+    </ul>
+
+    <p class="suelta" style="margin-top:22px">Nada de esto queda descartado para siempre. Cuando lo necesites, lo cotizamos aparte.</p>
+  </section>
+
+  <section>
+    <div class="cabecera"><span class="num">05</span><h2>Cómo crece después</h2></div>
+
+    <p class="suelta">Me dijiste que la base es un millón y que el sitio va a crecer: primero lo necesitás armado para salir a buscar inversores. Trabajo con eso en la cabeza, y significa dos cosas concretas.</p>
+
+    <ul class="lista">
+      <li><b>Lo armo para que crezca.</b> Sumar sedes al buscador, agregar secciones o cambiar los packs no va a obligar a rehacer el sitio.</li>
+      <li><b>Lo que aparezca después de las dos rondas se cotiza aparte.</b> Secciones nuevas, contenido nuevo o cualquier cosa de la lista de arriba. No es un no: es que no puedo ponerle precio hoy a algo que todavía no existe.</li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="cabecera"><span class="num">06</span><h2>Lo que necesito de vos</h2></div>
+
+    <p class="suelta">Esta es la lista completa. Mientras falte algo de acá, hay una parte del sitio que no puedo diagramar.</p>
+
+    <ul class="lista">
+      <li><b>Los textos y las cifras del área de inversores</b>, validados por vos.</li>
+      <li><b>El dossier de franquicias en PDF</b>, final y diseñado, listo para publicar. Si preferís que lo diseñe yo, lo cotizo aparte.</li>
+      <li><b>Los datos de cada sucursal</b> que entra al buscador: dirección, horarios y WhatsApp.</li>
+      <li><b>Los precios definitivos de los packs</b> y en qué moneda se muestran. El copy que me pasaste los tiene en dólares; es una decisión tuya, no un detalle.</li>
+      <li><b>La autorización para usar los renders</b> de Artagaveytia-Mantel, y si hay que acreditarlos.</li>
+      <li><b>Los dos dominios</b>, o el visto bueno para comprarlos yo a tu nombre.</li>
+      <li><b>Las cuentas de Google Analytics y el píxel de Meta.</b></li>
+      <li><b>El contenido del sitio personal:</b> servicios, casos y respaldo.</li>
+      <li><b>Fotos y video, si los hay.</b> El estudio todavía no está construido, así que si no hay material propio el sitio sale con los renders.</li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="cabecera"><span class="num">07</span><h2>Cómo trabajamos</h2></div>
+
+    <div class="plazos">
+      <div class="plazo">
+        <div class="tiempo">5 semanas</div>
+        <p>Módulo 1, desde que el material está completo.</p>
+      </div>
+      <div class="plazo">
+        <div class="tiempo">2 semanas</div>
+        <p>Módulo 2, con el contenido en mano.</p>
+      </div>
+    </div>
+
+    <p class="suelta">Trabajo solo. Vos hablás siempre conmigo y yo soy el que diseña, el que programa y el que publica. Te muestro avances en línea, desde el principio: no vas a ver el sitio recién cuando esté terminado.</p>
+
+    <div class="clausula">
+      <h4>Sobre el área de inversores</h4>
+      <p>Los textos, cifras y proyecciones del área de inversores —metas de expansión, estructura financiera y participación accionaria— los aportás vos ya validados. Yo los maqueto.</p>
+      <p>No los redacto ni los verifico. Son afirmaciones tuyas sobre tu negocio y se publican bajo tu responsabilidad.</p>
+    </div>
+
+    <div class="clausula">
+      <h4>Sobre cuándo arrancan los plazos</h4>
+      <p>Los plazos empiezan a correr cuando el material está completo. Si llega escalonado, los plazos se corren igual.</p>
+      <p>No es una penalidad. Es que una sección no se puede diseñar sin saber qué dice, y rehacerla después cuesta más que esperarla.</p>
+    </div>
+  </section>
+
+  <div class="cierre">
+    <p>Si hay algo acá que no te cierra, lo discutimos antes de arrancar y lo corrijo en el documento. Lo que no está escrito en esta propuesta, no está incluido: para eso la escribí.</p>
+
+    <div class="pie">
+      <b>Lautaro Méndez</b>
+      Desarrollo y diseño web · Buenos Aires<br>
+      <a href="mailto:lautaromendez.ar@gmail.com">lautaromendez.ar@gmail.com</a> · <a href="https://lautaromendez.com.ar">lautaromendez.com.ar</a>
+    </div>
+  </div>
+
+</main>
+
+</body>
+</html>
