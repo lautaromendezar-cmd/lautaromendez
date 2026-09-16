@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Propuesta — Requecho Landing Page</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script>document.documentElement.classList.add('js');</script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #FFFFFF;
+      --bg-card: #FAFAFA;
+      --ink: #111111;
+      --text: #111111;
+      --text-mid: #555555;
+      --text-dim: #8A8A8A;
+      --border: #E6E6E6;
+      --border-strong: #111111;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── PROGRESS BAR ── */
+    #progress {
+      position: fixed;
+      top: 0; left: 0;
+      height: 2px;
+      width: 0%;
+      background: var(--ink);
+      z-index: 999;
+      transition: width 0.1s linear;
+    }
+
+    /* ── LAYOUT ── */
+    .wrap {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 100px 0 80px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 32px;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 20px;
+      height: 1px;
+      background: var(--ink);
+    }
+
+    .hero h1 {
+      font-size: clamp(36px, 6vw, 56px);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      color: var(--ink);
+      margin-bottom: 20px;
+    }
+
+    .hero-sub {
+      font-size: 17px;
+      color: var(--text-mid);
+      max-width: 540px;
+      line-height: 1.6;
+      margin-bottom: 48px;
+    }
+
+    .hero-meta {
+      display: flex;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .hero-meta-item label {
+      display: block;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 4px;
+    }
+
+    .hero-meta-item span {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    /* ── SECTIONS ── */
+    section {
+      padding: 72px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink);
+      margin-bottom: 28px;
+    }
+
+    h2 {
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin-bottom: 16px;
+    }
+
+    .section-intro {
+      font-size: 15px;
+      color: var(--text-mid);
+      margin-bottom: 40px;
+      max-width: 580px;
+    }
+
+    /* ── ALCANCE ITEMS ── */
+    .alcance-list {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .alcance-item {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: start;
+      gap: 16px;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .alcance-item:last-child {
+      border-bottom: none;
+    }
+
+    .alcance-item-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 4px;
+    }
+
+    .alcance-item-desc {
+      font-size: 13px;
+      color: var(--text-mid);
+      line-height: 1.5;
+    }
+
+    .badge {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 4px;
+      white-space: nowrap;
+      letter-spacing: 0.04em;
+      border: 1px solid transparent;
+    }
+
+    .badge-included {
+      background: #F0F0F0;
+      color: var(--ink);
+    }
+
+    .badge-client {
+      background: transparent;
+      border-color: var(--border-strong);
+      color: var(--ink);
+    }
+
+    /* ── MARCA ── */
+    .marca-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
+
+    .marca-col {
+      padding: 28px 28px 30px;
+      border-right: 1px solid var(--border);
+    }
+
+    .marca-col:last-child { border-right: none; }
+
+    .marca-col-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 10px;
+    }
+
+    .marca-col-title {
+      font-size: 17px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      margin-bottom: 10px;
+    }
+
+    .marca-col p {
+      font-size: 13px;
+      color: var(--text-mid);
+      line-height: 1.55;
+    }
+
+    .marca-note {
+      font-size: 13px;
+      color: var(--text-mid);
+      line-height: 1.55;
+      padding: 16px 20px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+    }
+
+    .marca-note strong { color: var(--ink); font-weight: 600; }
+
+    /* ── NO INCLUYE ── */
+    .no-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .no-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 16px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      font-size: 14px;
+      color: var(--text-mid);
+    }
+
+    .no-item::before {
+      content: '—';
+      color: var(--text-dim);
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* ── PRECIO ── */
+    .precio-block {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .precio-main {
+      padding: 36px 32px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .precio-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 12px;
+    }
+
+    .precio-number {
+      font-size: clamp(40px, 7vw, 58px);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      color: var(--ink);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .precio-currency {
+      font-size: 20px;
+      font-weight: 500;
+      color: var(--text-mid);
+      vertical-align: super;
+      margin-right: 4px;
+    }
+
+    .precio-note {
+      font-size: 13px;
+      color: var(--text-dim);
+    }
+
+    .precio-options {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+
+    .precio-option {
+      padding: 24px 32px;
+      border-right: 1px solid var(--border);
+    }
+
+    .precio-option:last-child {
+      border-right: none;
+    }
+
+    .precio-option-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 8px;
+    }
+
+    .precio-option-value {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--ink);
+      letter-spacing: -0.01em;
+      margin-bottom: 4px;
+    }
+
+    .precio-option-desc {
+      font-size: 12px;
+      color: var(--text-dim);
+    }
+
+    .precio-option.highlight {
+      background: var(--ink);
+    }
+
+    .precio-option.highlight .precio-option-label { color: #BBBBBB; }
+    .precio-option.highlight .precio-option-value { color: #FFFFFF; }
+    .precio-option.highlight .precio-option-desc { color: #A3A3A3; }
+
+    /* ── PLAZO ── */
+    .plazo-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 40px;
+    }
+
+    .plazo-item {
+      background: var(--bg);
+      padding: 24px 20px;
+    }
+
+    .plazo-item-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 8px;
+    }
+
+    .plazo-item-value {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 4px;
+    }
+
+    .plazo-item-desc {
+      font-size: 12px;
+      color: var(--text-dim);
+      line-height: 1.4;
+    }
+
+    /* ── CHECKLIST ── */
+    .check-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 14px;
+    }
+
+    .check-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .check-list li {
+      position: relative;
+      padding: 10px 0 10px 22px;
+      font-size: 14px;
+      color: var(--text-mid);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .check-list li:last-child { border-bottom: none; }
+
+    .check-list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 18px;
+      width: 8px;
+      height: 8px;
+      border: 1px solid var(--ink);
+    }
+
+    /* ── PORTFOLIO ── */
+    .portfolio-link {
+      display: inline-block;
+      border: 1px solid var(--border-strong);
+      border-radius: 6px;
+      padding: 14px 24px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--ink);
+      text-decoration: none;
+      transition: background 0.15s, color 0.15s;
+    }
+
+    .portfolio-link:hover {
+      background: var(--ink);
+      color: #FFFFFF;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 32px 0;
+      text-align: center;
+      font-size: 13px;
+      color: var(--text-dim);
+    }
+
+    /* ── FADE IN (solo si corre el JS; sin JS la página se ve entera) ── */
+    .js .fade {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .js .fade.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .js .fade { opacity: 1; transform: none; transition: none; }
+    }
+
+    /* ── MOBILE ── */
+    @media (max-width: 600px) {
+      .hero { padding: 72px 0 60px; }
+      .hero-meta { gap: 24px; }
+      .marca-grid { grid-template-columns: 1fr; }
+      .marca-col { border-right: none; border-bottom: 1px solid var(--border); }
+      .marca-col:last-child { border-bottom: none; }
+      .precio-options { grid-template-columns: 1fr; }
+      .precio-option { border-right: none; border-bottom: 1px solid var(--border); }
+      .precio-option:last-child { border-bottom: none; }
+      .plazo-grid { grid-template-columns: 1fr; }
+      .alcance-item { grid-template-columns: 1fr; }
+    }
+
+    /* ── PRINT / PDF ── */
+    @page { size: A4; margin: 16mm 14mm; }
+
+    @media print {
+      body { -webkit-print-color-adjust: exact; print-color-adjust: exact; font-size: 13px; }
+      #progress { display: none; }
+      .js .fade { opacity: 1; transform: none; transition: none; }
+      .wrap { max-width: none; padding: 0; }
+      .hero { padding: 24px 0 40px; }
+      section { padding: 32px 0; }
+      section.keep { break-inside: avoid; }
+      .section-intro { break-after: avoid; }
+      .check-list li { padding-top: 7px; padding-bottom: 7px; }
+      .check-list li::before { top: 13px; }
+      .plazo-grid { margin-bottom: 24px; }
+      .plazo-item { padding: 18px 20px; }
+      .portfolio-section { padding: 18px 0 6px; break-inside: avoid; }
+      .portfolio-section .section-label { margin-bottom: 10px; }
+      .portfolio-section h2 { font-size: 18px; margin-bottom: 10px; }
+      .portfolio-section .section-intro { display: none; }
+      .portfolio-link { padding: 10px 16px; }
+      footer { display: none; }
+      .hero h1 { font-size: 40px; }
+      .precio-number { font-size: 44px; }
+      .alcance-item, .no-item, .marca-grid, .marca-note,
+      .precio-block, .plazo-grid, .check-list li { break-inside: avoid; }
+      h2, .section-label { break-after: avoid; }
+      a { color: inherit; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="progress"></div>
+
+<div class="wrap">
+
+  <!-- HERO -->
+  <header class="hero fade">
+    <div class="hero-eyebrow">Propuesta de desarrollo web</div>
+    <h1>Landing page para<br>Requecho</h1>
+    <p class="hero-sub">
+      Diseño y desarrollo de la página que presenta los paneles de Requecho: qué son, de qué están hechos, cómo se usan y por dónde pedirlos. Entrega única, sin retainer.
+    </p>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <label>Preparado para</label>
+        <span>Requecho</span>
+      </div>
+      <div class="hero-meta-item">
+        <label>Preparado por</label>
+        <span>Lautaro</span>
+      </div>
+      <div class="hero-meta-item">
+        <label>Fecha</label>
+        <span>Septiembre 2026</span>
+      </div>
+      <div class="hero-meta-item">
+        <label>Entrega</label>
+        <span>Antes del 28 de septiembre</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ALCANCE -->
+  <section class="fade">
+    <div class="section-label">Alcance</div>
+    <h2>Qué incluye el desarrollo</h2>
+    <p class="section-intro">
+      Todo lo que hablamos está contemplado. La estructura de la página parte de la base que ya tiene pensada Ariel; sobre eso sugiero ajustes, pero no se arranca de cero. Lo que necesita material de tu parte está marcado.
+    </p>
+    <div class="alcance-list">
+
+      <div class="alcance-item">
+        <div>
+          <div class="alcance-item-title">Diseño y desarrollo responsive</div>
+          <div class="alcance-item-desc">Desktop, tablet y celular. Una sola página, con fondo blanco y tipografía negra como base, pensada para que el producto sea lo que se ve.</div>
+        </div>
+        <span class="badge badge-included">Incluido</span>
+      </div>
+
+      <div class="alcance-item">
+        <div>
+          <div class="alcance-item-title">Presentación del producto</div>
+          <div class="alcance-item-desc">Qué es el panel, de qué está hecho (recortes textiles con aglutinante natural), medidas y espesor, y qué aporta a un ambiente (aislación acústica y térmica). Con lugar para mostrar el proceso de fabricación si quieren contarlo.</div>
+        </div>
+        <span class="badge badge-included">Incluido</span>
+      </div>
+
+      <div class="alcance-item">
+        <div>
+          <div class="alcance-item-title">Galería de aplicaciones</div>
+          <div class="alcance-item-desc">Paredes, biombos, divisores de ambientes y objetos. Grilla de fotos preparada para que se note la variedad de color que tiene cada lote.</div>
+        </div>
+        <span class="badge badge-client">Requiere tus fotos</span>
+      </div>
+
+      <div class="alcance-item">
+        <div>
+          <div class="alcance-item-title">Ficha técnica</div>
+          <div class="alcance-item-desc">Medidas, espesor, peso, composición, colocación y mantenimiento, ordenados en la misma página para que un arquitecto o un estudio los encuentre sin tener que escribirles.</div>
+        </div>
+        <span class="badge badge-client">Requiere tus datos</span>
+      </div>
+
+      <div class="alcance-item">
+        <div>
+          <div class="alcance-item-title">Contacto y consultas</div>
+          <div class="alcance-item-desc">Formulario de consulta (nombre, mail, tipo de proyecto y metros aproximados) con los envíos directo a tu casilla, más botón de WhatsApp.</div>
+        </div>
+        <span class="badge badge-included">Incluido</span>
+      </div>
+
+      <div class="alcance-item">
+        <div>
+          <div class="alcance-item-title">Adaptación al manual de marca</div>
+          <div class="alcance-item-desc">Cuando llegue el manual, una ronda dedicada a pasar la base al sistema de la marca: logo, colores, tipografía y reglas gráficas. Está dentro del precio.</div>
+        </div>
+        <span class="badge badge-included">Incluido</span>
+      </div>
+
+      <div class="alcance-item">
+        <div>
+          <div class="alcance-item-title">Dominio + SSL</div>
+          <div class="alcance-item-desc">Configuración del hosting, apuntamiento del dominio y certificado SSL. Si todavía no tienen dominio, los ayudo a registrarlo.</div>
+        </div>
+        <span class="badge badge-included">Incluido</span>
+      </div>
+
+      <div class="alcance-item">
+        <div>
+          <div class="alcance-item-title">SEO on-page + Open Graph</div>
+          <div class="alcance-item-desc">Metadatos, títulos, descripciones y configuración de OG para que el link se vea bien al compartirlo por WhatsApp o en redes.</div>
+        </div>
+        <span class="badge badge-included">Incluido</span>
+      </div>
+
+      <div class="alcance-item">
+        <div>
+          <div class="alcance-item-title">Textos, fotos y manual de marca</div>
+          <div class="alcance-item-desc">Los aportás vos. Yo los ordeno y los adapto al formato de la página, pero la redacción de base, las fotos de producto y el manual vienen de tu lado.</div>
+        </div>
+        <span class="badge badge-client">A cargo tuyo</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- MARCA -->
+  <section class="fade keep">
+    <div class="section-label">Marca</div>
+    <h2>Arrancamos antes de que llegue el manual</h2>
+    <p class="section-intro">
+      Me dijiste que el manual de marca llega en unos días. No hace falta esperarlo para empezar.
+    </p>
+    <div class="marca-grid">
+      <div class="marca-col">
+        <div class="marca-col-label">Con la seña</div>
+        <div class="marca-col-title">Base en blanco y negro</div>
+        <p>Empiezo con la base que ya definimos: fondo blanco, tipografía negra, una sola familia y el producto como protagonista. La estructura sale de lo que tiene pensado Ariel, y en esta etapa quedan resueltos secciones, textos y formulario.</p>
+      </div>
+      <div class="marca-col">
+        <div class="marca-col-label">Cuando llega el manual</div>
+        <div class="marca-col-title">Ronda de adaptación</div>
+        <p>Logo, paleta, tipografía y reglas gráficas del manual reemplazan a la base. Como la estructura ya está armada, el cambio se hace sobre lo construido y no reinicia el plazo.</p>
+      </div>
+    </div>
+    <div class="marca-note">
+      <strong>Qué pasa si el manual pide otra cosa.</strong> Todo el cambio visual entra en el precio. Si el manual trae algo que cambia la estructura acordada con Ariel (secciones nuevas o una forma distinta de presentar el producto), lo cotizo aparte y va después del 28, para no comprometer la fecha.
+    </div>
+  </section>
+
+  <!-- NO INCLUYE -->
+  <section class="fade">
+    <div class="section-label">Fuera de scope</div>
+    <h2>Qué no está incluido</h2>
+    <p class="section-intro">
+      Todo lo que queda fuera del alcance acordado.
+    </p>
+    <div class="no-list">
+      <div class="no-item">Tienda online, carrito o cobro por la web. La consulta se cierra por formulario o por WhatsApp.</div>
+      <div class="no-item">Fotografía de producto, renders y edición de imágenes. Trabajo con las fotos que me pasen.</div>
+      <div class="no-item">Diseño del manual de marca ni del logo. Eso lo hace quien ya lo está haciendo, y yo lo aplico a la página.</div>
+      <div class="no-item">Redacción de contenido desde cero. Ordeno y adapto lo que me manden.</div>
+      <div class="no-item">Pauta paga, manejo de redes y mantenimiento mensual. Es una entrega única.</div>
+    </div>
+  </section>
+
+  <!-- PRECIO -->
+  <section class="fade keep">
+    <div class="section-label">Inversión</div>
+    <h2>Precio y forma de pago</h2>
+    <p class="section-intro">
+      Pago único por el desarrollo completo, en dos partes. Sin costos recurrentes de honorarios.
+    </p>
+    <div class="precio-block">
+      <div class="precio-main">
+        <div class="precio-label">Desarrollo completo — pago único</div>
+        <div class="precio-number">
+          <span class="precio-currency">$</span>460.000
+        </div>
+        <div class="precio-note">Pesos argentinos</div>
+      </div>
+      <div class="precio-options">
+        <div class="precio-option highlight">
+          <div class="precio-option-label">Seña · 50%</div>
+          <div class="precio-option-value">$ 230.000</div>
+          <div class="precio-option-desc">Al confirmar. Con esto arranco.</div>
+        </div>
+        <div class="precio-option">
+          <div class="precio-option-label">Saldo · 50%</div>
+          <div class="precio-option-value">$ 230.000</div>
+          <div class="precio-option-desc">Al publicar el sitio</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PLAZO -->
+  <section class="fade keep">
+    <div class="section-label">Tiempos</div>
+    <h2>Plazo de entrega</h2>
+    <p class="section-intro">
+      Ustedes necesitan el sitio antes del 28 de septiembre. Se llega, pero el margen es corto y depende de que las cosas entren a tiempo de los dos lados. Si la seña o el material base entran después del viernes 18, la fecha se corre los mismos días.
+    </p>
+    <div class="plazo-grid">
+      <div class="plazo-item">
+        <div class="plazo-item-label">Entrega</div>
+        <div class="plazo-item-value">Antes del 28 de septiembre</div>
+        <div class="plazo-item-desc">Publicada en el dominio, con el manual ya aplicado</div>
+      </div>
+      <div class="plazo-item">
+        <div class="plazo-item-label">Inicio</div>
+        <div class="plazo-item-value">Esta semana</div>
+        <div class="plazo-item-desc">Seña acreditada y material base hasta el viernes 18</div>
+      </div>
+      <div class="plazo-item">
+        <div class="plazo-item-label">Manual de marca</div>
+        <div class="plazo-item-value">Hasta el martes 22</div>
+        <div class="plazo-item-desc">Después de esa fecha la adaptación se hace igual, pero puede correr la entrega</div>
+      </div>
+      <div class="plazo-item">
+        <div class="plazo-item-label">Revisiones</div>
+        <div class="plazo-item-value">2 rondas</div>
+        <div class="plazo-item-desc">Más la de marca. Para llegar, cada devolución dentro de las 48 horas</div>
+      </div>
+    </div>
+
+    <div class="check-title">Para arrancar necesito</div>
+    <ul class="check-list">
+      <li>La seña acreditada.</li>
+      <li>La estructura base que tiene pensada Ariel.</li>
+      <li>El logo actual, aunque sea provisorio.</li>
+      <li>Las fotos de producto y de aplicaciones que ya tengan.</li>
+      <li>Los textos base o el material que tengan (presentación, ficha, notas de prensa).</li>
+      <li>El dominio, si ya lo tienen. Si no, el nombre que quieren registrar.</li>
+      <li>El WhatsApp y el mail a donde llegan las consultas.</li>
+    </ul>
+  </section>
+
+  <!-- PORTFOLIO -->
+  <section class="fade portfolio-section">
+    <div class="section-label">Trabajos</div>
+    <h2>Portfolio</h2>
+    <p class="section-intro">Si querés ver proyectos anteriores antes de decidir.</p>
+    <a class="portfolio-link" href="https://lautaromendez.com.ar/portfolio" target="_blank" rel="noopener">lautaromendez.com.ar/portfolio →</a>
+  </section>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    Propuesta preparada por Lautaro · 16 de septiembre de 2026
+  </div>
+</footer>
+
+<script>
+  // Progress bar
+  window.addEventListener('scroll', () => {
+    const scrollTop = document.documentElement.scrollTop;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    document.getElementById('progress').style.width = pct + '%';
+  });
+
+  // Fade in on scroll
+  const fades = document.querySelectorAll('.fade');
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.08 });
+    fades.forEach(el => observer.observe(el));
+  } else {
+    fades.forEach(el => el.classList.add('visible'));
+  }
+</script>
+
+</body>
+</html>
