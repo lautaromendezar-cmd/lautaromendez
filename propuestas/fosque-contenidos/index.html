@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Propuesta — Contenido para redes de Fosque</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script>document.documentElement.classList.add('js');</script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #FFFFFF;
+      --bg-card: #FAFAFA;
+      --ink: #111111;
+      --text: #111111;
+      --text-mid: #555555;
+      --text-dim: #8A8A8A;
+      --border: #E6E6E6;
+      --border-strong: #111111;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── PROGRESS BAR ── */
+    #progress {
+      position: fixed;
+      top: 0; left: 0;
+      height: 2px;
+      width: 0%;
+      background: var(--ink);
+      z-index: 999;
+      transition: width 0.1s linear;
+    }
+
+    /* ── LAYOUT ── */
+    .wrap {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 100px 0 80px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 32px;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 20px;
+      height: 1px;
+      background: var(--ink);
+    }
+
+    .hero h1 {
+      font-size: clamp(36px, 6vw, 56px);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      color: var(--ink);
+      margin-bottom: 20px;
+    }
+
+    .hero-sub {
+      font-size: 17px;
+      color: var(--text-mid);
+      max-width: 540px;
+      line-height: 1.6;
+      margin-bottom: 48px;
+    }
+
+    .hero-meta {
+      display: flex;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .hero-meta-item label {
+      display: block;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 4px;
+    }
+
+    .hero-meta-item span {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    /* ── SECTIONS ── */
+    section {
+      padding: 72px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink);
+      margin-bottom: 28px;
+    }
+
+    h2 {
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin-bottom: 16px;
+    }
+
+    .section-intro {
+      font-size: 15px;
+      color: var(--text-mid);
+      margin-bottom: 40px;
+      max-width: 580px;
+    }
+
+    /* ── ALCANCE ITEMS ── */
+    .alcance-list {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .alcance-item {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: start;
+      gap: 16px;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .alcance-item:last-child {
+      border-bottom: none;
+    }
+
+    .alcance-item-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 4px;
+    }
+
+    .alcance-item-desc {
+      font-size: 13px;
+      color: var(--text-mid);
+      line-height: 1.5;
+    }
+
+    .badge {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 4px;
+      white-space: nowrap;
+      letter-spacing: 0.04em;
+      border: 1px solid transparent;
+    }
+
+    .badge-included {
+      background: #F0F0F0;
+      color: var(--ink);
+    }
+
+    .badge-client {
+      background: transparent;
+      border-color: var(--border-strong);
+      color: var(--ink);
+    }
+
+    /* ── MARCA ── */
+    .marca-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
+
+    .marca-col {
+      padding: 28px 28px 30px;
+      border-right: 1px solid var(--border);
+    }
+
+    .marca-col:last-child { border-right: none; }
+
+    .marca-col-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 10px;
+    }
+
+    .marca-col-title {
+      font-size: 17px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      margin-bottom: 10px;
+    }
+
+    .marca-col p {
+      font-size: 13px;
+      color: var(--text-mid);
+      line-height: 1.55;
+    }
+
+    .marca-note {
+      font-size: 13px;
+      color: var(--text-mid);
+      line-height: 1.55;
+      padding: 16px 20px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+    }
+
+    .marca-note strong { color: var(--ink); font-weight: 600; }
+
+    /* ── NO INCLUYE ── */
+    .no-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .no-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 16px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      font-size: 14px;
+      color: var(--text-mid);
+    }
+
+    .no-item::before {
+      content: '—';
+      color: var(--text-dim);
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* ── PRECIO ── */
+    .precio-block {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .precio-main {
+      padding: 36px 32px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .precio-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 12px;
+    }
+
+    .precio-number {
+      font-size: clamp(40px, 7vw, 58px);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      color: var(--ink);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .precio-currency {
+      font-size: 20px;
+      font-weight: 500;
+      color: var(--text-mid);
+      vertical-align: super;
+      margin-right: 4px;
+    }
+
+    .precio-note {
+      font-size: 13px;
+      color: var(--text-dim);
+    }
+
+    .precio-options {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+
+    .precio-option {
+      padding: 24px 32px;
+      border-right: 1px solid var(--border);
+    }
+
+    .precio-option:last-child {
+      border-right: none;
+    }
+
+    .precio-option-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 8px;
+    }
+
+    .precio-option-value {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--ink);
+      letter-spacing: -0.01em;
+      margin-bottom: 4px;
+    }
+
+    .precio-option-desc {
+      font-size: 12px;
+      color: var(--text-dim);
+    }
+
+    .precio-option.highlight {
+      background: var(--ink);
+    }
+
+    .precio-option.highlight .precio-option-label { color: #BBBBBB; }
+    .precio-option.highlight .precio-option-value { color: #FFFFFF; }
+    .precio-option.highlight .precio-option-desc { color: #A3A3A3; }
+
+    /* ── PLAZO ── */
+    .plazo-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 40px;
+    }
+
+    .plazo-item {
+      background: var(--bg);
+      padding: 24px 20px;
+    }
+
+    .plazo-item-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 8px;
+    }
+
+    .plazo-item-value {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 4px;
+    }
+
+    .plazo-item-desc {
+      font-size: 12px;
+      color: var(--text-dim);
+      line-height: 1.4;
+    }
+
+    /* ── CHECKLIST ── */
+    .check-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 14px;
+    }
+
+    .check-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .check-list li {
+      position: relative;
+      padding: 10px 0 10px 22px;
+      font-size: 14px;
+      color: var(--text-mid);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .check-list li:last-child { border-bottom: none; }
+
+    .check-list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 18px;
+      width: 8px;
+      height: 8px;
+      border: 1px solid var(--ink);
+    }
+
+    /* ── PORTFOLIO ── */
+    .portfolio-link {
+      display: inline-block;
+      border: 1px solid var(--border-strong);
+      border-radius: 6px;
+      padding: 14px 24px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--ink);
+      text-decoration: none;
+      transition: background 0.15s, color 0.15s;
+    }
+
+    .portfolio-link:hover {
+      background: var(--ink);
+      color: #FFFFFF;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 32px 0;
+      text-align: center;
+      font-size: 13px;
+      color: var(--text-dim);
+    }
+
+    /* ── FADE IN (solo si corre el JS; sin JS la página se ve entera) ── */
+    .js .fade {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .js .fade.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .js .fade { opacity: 1; transform: none; transition: none; }
+    }
+
+    /* ── MOBILE ── */
+    @media (max-width: 600px) {
+      .hero { padding: 72px 0 60px; }
+      .hero-meta { gap: 24px; }
+      .marca-grid { grid-template-columns: 1fr; }
+      .marca-col { border-right: none; border-bottom: 1px solid var(--border); }
+      .marca-col:last-child { border-bottom: none; }
+      .precio-options { grid-template-columns: 1fr; }
+      .precio-option { border-right: none; border-bottom: 1px solid var(--border); }
+      .precio-option:last-child { border-bottom: none; }
+      .plazo-grid { grid-template-columns: 1fr; }
+      .alcance-item { grid-template-columns: 1fr; }
+    }
+
+    /* ── PRINT / PDF ── */
+    @page { size: A4; margin: 16mm 14mm; }
+
+    @media print {
+      body { -webkit-print-color-adjust: exact; print-color-adjust: exact; font-size: 13px; }
+      #progress { display: none; }
+      .js .fade { opacity: 1; transform: none; transition: none; }
+      .wrap { max-width: none; padding: 0; }
+      .hero { padding: 24px 0 40px; }
+      section { padding: 32px 0; }
+      section.keep { break-inside: avoid; }
+      .section-intro { break-after: avoid; }
+      .check-list li { padding-top: 7px; padding-bottom: 7px; }
+      .check-list li::before { top: 13px; }
+      .plazo-grid { margin-bottom: 24px; }
+      .plazo-item { padding: 18px 20px; }
+      .portfolio-section { padding: 18px 0 6px; break-inside: avoid; }
+      .portfolio-section .section-label { margin-bottom: 10px; }
+      .portfolio-section h2 { font-size: 18px; margin-bottom: 10px; }
+      .portfolio-section .section-intro { display: none; }
+      .portfolio-link { padding: 10px 16px; }
+      footer { display: none; }
+      .hero h1 { font-size: 40px; }
+      .precio-number { font-size: 44px; }
+      .alcance-item, .no-item, .marca-grid, .marca-note,
+      .precio-block, .plazo-grid, .check-list li { break-inside: avoid; }
+      h2, .section-label { break-after: avoid; }
+      a { color: inherit; }
+    }
+  
+    /* ── MUESTRAS ── */
+    .muestras {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-bottom: 20px;
+    }
+
+    .muestra {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      background: var(--bg-card);
+    }
+
+    .muestra video {
+      width: 100%;
+      display: block;
+      aspect-ratio: 9 / 16;
+      background: #000;
+    }
+
+    .muestra-info { padding: 16px; }
+
+    .muestra-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 6px;
+    }
+
+    .muestra-title {
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      margin-bottom: 6px;
+    }
+
+    .muestra-desc {
+      font-size: 13px;
+      color: var(--text-mid);
+      line-height: 1.45;
+    }
+
+    .muestra-nota {
+      font-size: 13px;
+      color: var(--text-dim);
+      padding: 14px 16px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin-bottom: 40px;
+    }
+
+    @media (max-width: 600px) {
+      .muestras { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="progress"></div>
+
+<div class="wrap">
+
+  <!-- HERO -->
+  <header class="hero fade">
+    <div class="hero-eyebrow">Propuesta de producción de contenido</div>
+    <h1>30 cortos para<br>las redes de Fosque</h1>
+    <p class="hero-sub">
+      Videos verticales de 10 a 15 segundos que cuentan el producto y los beneficios, armados con el material que ya filmamos en las sedes y con la identidad del manual de marca.
+    </p>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <label>Preparado para</label>
+        <span>Gerardo — Fosque</span>
+      </div>
+      <div class="hero-meta-item">
+        <label>Preparado por</label>
+        <span>Lautaro</span>
+      </div>
+      <div class="hero-meta-item">
+        <label>Fecha</label>
+        <span>Septiembre 2026</span>
+      </div>
+      <div class="hero-meta-item">
+        <label>Entrega</label>
+        <span>3 tandas de 10</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- MUESTRAS -->
+  <section class="fade">
+    <div class="section-label">Muestras</div>
+    <h2>Tres formas de hacerlos</h2>
+    <p class="section-intro">
+      Las tres están hechas con material real de las sedes. Son caminos distintos y conviene elegir uno antes de producir los 30, porque de eso depende cómo se ve la serie entera. La tercera tiene sonido.
+    </p>
+
+    <div class="muestras">
+
+      <div class="muestra">
+        <video src="muestra-1.mp4" poster="poster-1.jpg" controls preload="metadata" playsinline></video>
+        <div class="muestra-info">
+          <div class="muestra-label">Ruta A</div>
+          <div class="muestra-title">Editorial</div>
+          <div class="muestra-desc">
+            El lenguaje de la web: fondo crema, el video contenido y los arcos del manual. Casi sin color. Funciona para los mitos y las piezas de marca, que piden silencio visual.
+          </div>
+        </div>
+      </div>
+
+      <div class="muestra">
+        <video src="muestra-2.mp4" poster="poster-2.jpg" controls preload="metadata" playsinline></video>
+        <div class="muestra-info">
+          <div class="muestra-label">Ruta B</div>
+          <div class="muestra-title">Bloques</div>
+          <div class="muestra-desc">
+            Los bloques redondeados, el color de acento y el logo calado de la página de redes sociales del manual. Es la más flexible: cambia de color según el tema y deja lugar para el llamado a la acción.
+          </div>
+        </div>
+      </div>
+
+      <div class="muestra">
+        <video src="muestra-3.mp4" poster="poster-3.jpg" controls preload="metadata" playsinline></video>
+        <div class="muestra-info">
+          <div class="muestra-label">Ruta C</div>
+          <div class="muestra-title">Presentadora</div>
+          <div class="muestra-desc">
+            A pantalla completa, sin marco, con voz y subtítulos. La presentadora y la voz están generadas con IA; el salón que se ve detrás es el de José Hernández.
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="muestra-nota">
+      Sobre la ruta C: la presentadora dice datos de Fosque —Reformer, las tres sedes, los horarios— y ahí cumple. No la usamos para testimonios en primera persona, porque sería inventar una alumna de un lugar al que la gente después va. Para testimonios están las entrevistas reales que ya filmamos.
+    </div>
+  </section>
+
+  <!-- ALCANCE -->
+  <section class="fade">
+    <div class="section-label">Alcance</div>
+    <h2>Qué incluye cada video</h2>
+    <p class="section-intro">
+      El precio es por paquete y no por video suelto. Esto es todo lo que entra, y lo que necesito de tu lado está marcado.
+    </p>
+    <div class="alcance-list">
+
+      <div class="alcance-item">
+        <div>
+          <div class="alcance-item-title">Guion y textos</div>
+          <div class="alcance-item-desc">Cada corte se escribe sobre lo que ya está aprobado: los siete mitos, los beneficios y los horarios de cada sede. Si querés cambiar el enfoque de alguno, se cambia en la ronda de corrección.</div>
+        </div>
+        <span class="badge badge-included">Incluido</span>
+      </div>
+
+      <div class="alcance-item">
+        <div>
+          <div class="alcance-item-title">Selección del material</div>
+          <div class="alcance-item-desc">De las 246 tomas filmadas se eligen las que sirven, mirando encuadre, foco y que no aparezcan caras que no correspondan.</div>
+        </div>
+        <span class="badge badge-included">Incluido</span>
+      </div>
+
+      <div class="alcance-item">
+        <div>
+          <div class="alcance-item-title">Edición y cámara lenta</div>
+          <div class="alcance-item-desc">El rodaje está a 120 cuadros por segundo, así que la cámara lenta es real y no un efecto agregado después. Es lo que le da la calma que tiene la marca.</div>
+        </div>
+        <span class="badge badge-included">Incluido</span>
+      </div>
+
+      <div class="alcance-item">
+        <div>
+          <div class="alcance-item-title">Corrección de color</div>
+          <div class="alcance-item-desc">Las tomas se llevan a la paleta del manual. Hoy el material está con la luz fría del local y nunca se gradeó, así que acá hay bastante por ganar.</div>
+        </div>
+        <span class="badge badge-included">Incluido</span>
+      </div>
+
+      <div class="alcance-item">
+        <div>
+          <div class="alcance-item-title">Identidad del manual</div>
+          <div class="alcance-item-desc">Tipografías, colores, arcos, bloques y el recuadro negro sobre la primera línea, tal como están en el manual. La tipografía se compone aparte y se estampa sobre el video, no la escribe la IA.</div>
+        </div>
+        <span class="badge badge-included">Incluido</span>
+      </div>
+
+      <div class="alcance-item">
+        <div>
+          <div class="alcance-item-title">Planos generados con IA</div>
+          <div class="alcance-item-desc">Para cuando la toma no existe, cuando la luz del local no alcanza o cuando no se puede mostrar una cara. Se generan a partir de un cuadro real de la sede, así que es el salón de Fosque y no un lugar inventado. Hasta dos por video.</div>
+        </div>
+        <span class="badge badge-included">Incluido</span>
+      </div>
+
+      <div class="alcance-item">
+        <div>
+          <div class="alcance-item-title">Formato vertical 1080 × 1920</div>
+          <div class="alcance-item-desc">Listos para reels e historias. Si hacen falta también en cuadrado o en 4:5 para el feed, se agregan.</div>
+        </div>
+        <span class="badge badge-included">Incluido</span>
+      </div>
+
+      <div class="alcance-item">
+        <div>
+          <div class="alcance-item-title">Subtítulos</div>
+          <div class="alcance-item-desc">Los videos con voz salen subtitulados con la tipografía de la marca, porque la mayoría los va a mirar sin sonido.</div>
+        </div>
+        <span class="badge badge-included">Incluido</span>
+      </div>
+
+      <div class="alcance-item">
+        <div>
+          <div class="alcance-item-title">Dos rondas de corrección por tanda</div>
+          <div class="alcance-item-desc">Sobre la tanda completa de 10, con las devoluciones juntas. Sale más rápido y más barato que corregir de a un video.</div>
+        </div>
+        <span class="badge badge-included">Incluido</span>
+      </div>
+
+      <div class="alcance-item">
+        <div>
+          <div class="alcance-item-title">Música</div>
+          <div class="alcance-item-desc">Casi nada de lo que se ofrece como libre de derechos sirve para uso comercial sin pagar licencia. O la licencias vos y me pasás las pistas, o los videos salen sin música.</div>
+        </div>
+        <span class="badge badge-client">A cargo tuyo</span>
+      </div>
+
+      <div class="alcance-item">
+        <div>
+          <div class="alcance-item-title">Autorización de las alumnas</div>
+          <div class="alcance-item-desc">Buena parte del material de clases muestra caras reconocibles. Para usarlas en pauta hace falta autorización. Decime con qué contás y ajusto la selección a eso.</div>
+        </div>
+        <span class="badge badge-client">A cargo tuyo</span>
+      </div>
+
+      <div class="alcance-item">
+        <div>
+          <div class="alcance-item-title">Publicación y pauta</div>
+          <div class="alcance-item-desc">Entrego los archivos listos para subir. Publicarlos y pautarlos queda de tu lado, salvo que lo veamos aparte.</div>
+        </div>
+        <span class="badge badge-client">A cargo tuyo</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- LOS 30 -->
+  <section class="fade">
+    <div class="section-label">Contenido</div>
+    <h2>Cómo se reparten los 30</h2>
+    <p class="section-intro">
+      La idea es que el paquete cubra todo el argumento de Fosque y no treinta variaciones de lo mismo. Esta es la distribución propuesta, y se puede mover antes de arrancar.
+    </p>
+    <div class="plazo-grid">
+      <div class="plazo-item">
+        <div class="plazo-item-label">7 videos</div>
+        <div class="plazo-item-value">Los mitos</div>
+        <div class="plazo-item-desc">Las siete objeciones del manual con su respuesta: "no tengo tiempo", "no me gustan los gimnasios", "tengo vergüenza"</div>
+      </div>
+      <div class="plazo-item">
+        <div class="plazo-item-label">5 videos</div>
+        <div class="plazo-item-value">El producto</div>
+        <div class="plazo-item-desc">Qué es el Reformer y por qué no se parece a un gimnasio. Máquinas, correas y detalles</div>
+      </div>
+      <div class="plazo-item">
+        <div class="plazo-item-label">6 videos</div>
+        <div class="plazo-item-value">Los beneficios</div>
+        <div class="plazo-item-desc">Postura, espalda, fuerza sin impacto, niveles progresivos, la grilla completa y el mes a mes sin pagar un año adelantado</div>
+      </div>
+      <div class="plazo-item">
+        <div class="plazo-item-label">3 videos</div>
+        <div class="plazo-item-value">Las sedes</div>
+        <div class="plazo-item-desc">Uno por sede, con la fachada real y el salón</div>
+      </div>
+      <div class="plazo-item">
+        <div class="plazo-item-label">2 videos</div>
+        <div class="plazo-item-value">Fuerza y Cardio</div>
+        <div class="plazo-item-desc">La sala de musculación de José Hernández, contada como complemento del Reformer</div>
+      </div>
+      <div class="plazo-item">
+        <div class="plazo-item-label">5 videos</div>
+        <div class="plazo-item-value">Testimonios</div>
+        <div class="plazo-item-desc">Con las entrevistas a alumnas que ya están filmadas y desgrabadas</div>
+      </div>
+      <div class="plazo-item">
+        <div class="plazo-item-label">2 videos</div>
+        <div class="plazo-item-value">Marca</div>
+        <div class="plazo-item-desc">Fachada, equipo y cierre de campaña</div>
+      </div>
+      <div class="plazo-item">
+        <div class="plazo-item-label">30 videos</div>
+        <div class="plazo-item-value">Total</div>
+        <div class="plazo-item-desc">Entregados en 3 tandas de 10</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MATERIAL -->
+  <section class="fade">
+    <div class="section-label">Material</div>
+    <h2>Lo que ya está filmado</h2>
+    <p class="section-intro">
+      No hace falta volver a filmar para arrancar. Esto es lo que hay hoy.
+    </p>
+    <ul class="check-list">
+      <li>27 minutos de material en las dos sedes de Mataderos, repartidos en 246 tomas.</li>
+      <li>Todo a 1080p y 120 cuadros por segundo, que es lo que permite la cámara lenta real.</li>
+      <li>La sala vacía, las clases, la sala de musculación, las fachadas con el cartel y los detalles de las máquinas.</li>
+      <li>Entrevistas a alumnas ya filmadas y desgrabadas, para los cinco testimonios.</li>
+      <li>99 fotos en RAW del mismo rodaje.</li>
+      <li>Núñez no está filmada. Para los videos de esa sede hace falta un rodaje corto o resolverla con planos generados.</li>
+    </ul>
+  </section>
+
+  <!-- PRECIO -->
+  <section class="fade keep">
+    <div class="section-label">Inversión</div>
+    <h2>Precio</h2>
+    <p class="section-intro">
+      Incluye la generación con IA que haga falta para los 30. Si después querés muchos más planos generados de los previstos, eso se cotiza aparte y te lo aviso antes de hacerlo.
+    </p>
+    <div class="precio-block">
+      <div class="precio-main">
+        <div class="precio-label">Paquete completo — 30 videos</div>
+        <div class="precio-number">
+          <span class="precio-currency">$</span>690.000
+        </div>
+        <div class="precio-note">Pesos argentinos · 3 tandas de 10 · 2 rondas de corrección por tanda</div>
+      </div>
+      <div class="precio-options">
+        <div class="precio-option highlight">
+          <div class="precio-option-label">Piloto · 3 videos</div>
+          <div class="precio-option-value">$ 150.000</div>
+          <div class="precio-option-desc">Para aprobar la estética antes de escalar. Se descuenta del paquete si seguimos.</div>
+        </div>
+        <div class="precio-option">
+          <div class="precio-option-label">Tanda suelta de 10</div>
+          <div class="precio-option-value">$ 250.000</div>
+          <div class="precio-option-desc">Si preferís ir por partes en vez de cerrar los 30.</div>
+        </div>
+        <div class="precio-option">
+          <div class="precio-option-label">Sostenido</div>
+          <div class="precio-option-value">$ 260.000 / mes</div>
+          <div class="precio-option-desc">10 videos por mes, para después del paquete.</div>
+        </div>
+        <div class="precio-option">
+          <div class="precio-option-label">Forma de pago</div>
+          <div class="precio-option-value">50 / 50</div>
+          <div class="precio-option-desc">Mitad al arrancar cada tanda, mitad al entregarla.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIEMPOS -->
+  <section class="fade keep">
+    <div class="section-label">Tiempos</div>
+    <h2>Plazos</h2>
+    <p class="section-intro">
+      La primera tanda tarda un poco más porque ahí se arma el sistema: las placas, la corrección de color y las plantillas que después se reusan en las otras veinte.
+    </p>
+    <div class="plazo-grid">
+      <div class="plazo-item">
+        <div class="plazo-item-label">Piloto</div>
+        <div class="plazo-item-value">4 días</div>
+        <div class="plazo-item-desc">Si arrancamos por los 3 de prueba</div>
+      </div>
+      <div class="plazo-item">
+        <div class="plazo-item-label">Primera tanda</div>
+        <div class="plazo-item-value">2 semanas</div>
+        <div class="plazo-item-desc">Incluye armar el sistema que se reusa después</div>
+      </div>
+      <div class="plazo-item">
+        <div class="plazo-item-label">Tandas 2 y 3</div>
+        <div class="plazo-item-value">10 días cada una</div>
+        <div class="plazo-item-desc">Desde que llega tu devolución de la anterior</div>
+      </div>
+      <div class="plazo-item">
+        <div class="plazo-item-label">Revisiones</div>
+        <div class="plazo-item-value">2 rondas por tanda</div>
+        <div class="plazo-item-desc">Con las marcas juntas sobre los 10, no de a un video</div>
+      </div>
+    </div>
+
+    <div class="check-title">Para arrancar necesito</div>
+    <ul class="check-list">
+      <li>Que confirmes que los cortos son de 10 a 15 <strong>segundos</strong>. En tu mensaje decía "10 a 15" con comilla simple, que en rigor son minutos, y quiero estar seguro.</li>
+      <li>Que elijas una de las tres rutas, o que me digas cuál te gusta para cada tipo de video.</li>
+      <li>Con qué autorización contás para mostrar caras de alumnas en pauta.</li>
+      <li>Qué hacemos con la música: la licenciás vos o van sin música.</li>
+      <li>El WhatsApp y la web que tienen que aparecer al cierre de cada video.</li>
+      <li>Dónde se publican, y si además del vertical hacen falta otros formatos.</li>
+    </ul>
+  </section>
+
+  <!-- PORTFOLIO -->
+  <section class="fade portfolio-section">
+    <div class="section-label">Trabajos</div>
+    <h2>Portfolio</h2>
+    <p class="section-intro">Si querés ver otros proyectos antes de decidir.</p>
+    <a class="portfolio-link" href="https://lautaromendez.com.ar/portfolio" target="_blank" rel="noopener">lautaromendez.com.ar/portfolio →</a>
+  </section>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    Propuesta preparada por Lautaro · 16 de septiembre de 2026
+  </div>
+</footer>
+
+<script>
+  // Progress bar
+  window.addEventListener('scroll', () => {
+    const scrollTop = document.documentElement.scrollTop;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    document.getElementById('progress').style.width = pct + '%';
+  });
+
+  // Fade in on scroll
+  const fades = document.querySelectorAll('.fade');
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.08 });
+    fades.forEach(el => observer.observe(el));
+  } else {
+    fades.forEach(el => el.classList.add('visible'));
+  }
+</script>
+
+</body>
+</html>
