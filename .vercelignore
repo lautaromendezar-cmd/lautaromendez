@@ -17,3 +17,8 @@ assets/hero/parallax/
 # vista, Vercel deja de tratar esto como estático y busca un build que no hay
 package.json
 package-lock.json
+zz-seguimiento-2-github.txt
+
+# .vercelignore REEMPLAZA al .gitignore, no se suma: lo que estaba cubierto
+# alla deja de estarlo aca. Sin esta linea, .env.local es candidato a viajar.
+.env*
