@@ -901,6 +901,74 @@ button { background: none; border: 0; cursor: pointer; }
 }
 .work__cap-cta::after { content: '→'; }
 
+/* ══════════════════════════════════════════════════════════════════════════
+   PREGUNTAS
+   Columna izquierda quieta y la lista scrolleando al lado: es un bloque de
+   lectura, no un acordeón. Las respuestas están siempre abiertas porque son
+   el único texto de la página que busca a alguien que no me conoce, y lo que
+   se esconde detrás de un click se lee la mitad.
+   ══════════════════════════════════════════════════════════════════════════ */
+.faq { border-top: 1px solid var(--steel); }
+.faq__grid {
+  display: grid;
+  grid-template-columns: minmax(0, .82fr) minmax(0, 1.18fr);
+  gap: clamp(40px, 6vw, 96px);
+  align-items: start;
+}
+.faq__head {
+  position: sticky;
+  top: calc(var(--hd-h) + 48px);
+}
+.faq__head .eyebrow { margin-bottom: 22px; }
+.faq__t {
+  font-size: clamp(28px, 3.6vw, 46px);
+  font-variation-settings: var(--fv-display);
+  line-height: 1.06;
+  letter-spacing: -.014em;
+}
+.faq__d {
+  margin-top: 20px;
+  max-width: 30ch;
+  color: var(--fog);
+  font-size: 16.5px;
+}
+
+/* el contador va en la hoja y no en el HTML: si mañana se agrega o se saca
+   una pregunta, la numeración no queda mintiendo */
+.faq__list { counter-reset: qa; }
+.qa { counter-increment: qa; }
+.qa + .qa {
+  margin-top: clamp(26px, 3vw, 38px);
+  padding-top: clamp(26px, 3vw, 38px);
+  border-top: 1px solid var(--steel);
+}
+.qa__q {
+  font-size: clamp(19px, 1.9vw, 23px);
+  font-variation-settings: var(--fv-title);
+  line-height: 1.24;
+  letter-spacing: -.004em;
+  display: grid;
+  grid-template-columns: 3.4ch minmax(0, 1fr);
+  gap: 14px;
+}
+.qa__q::before {
+  content: counter(qa, decimal-leading-zero);
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: .12em;
+  color: var(--fog);
+  /* la cifra se alinea con la primera línea del título, no con su caja */
+  padding-top: .62em;
+}
+.qa__a {
+  margin-top: 13px;
+  margin-left: calc(3.4ch + 14px);
+  max-width: 58ch;
+  color: var(--fog);
+  font-size: 16.5px;
+}
+
 .ct { border-top: 1px solid var(--steel); }
 .ct__grid {
   display: grid;
@@ -1114,6 +1182,11 @@ button { background: none; border: 0; cursor: pointer; }
 
   .hd__nav { gap: 22px; }
   .ct__grid { grid-template-columns: 1fr; }
+
+  /* apilado, la columna de la izquierda no tiene al lado de qué quedarse */
+  .faq__grid { grid-template-columns: 1fr; }
+  .faq__head { position: static; }
+  .faq__d { max-width: 52ch; }
   .ct__right { max-width: 620px; }
 }
 
@@ -1174,6 +1247,9 @@ button { background: none; border: 0; cursor: pointer; }
   .bento { grid-template-columns: 1fr; }
 
   .ct__data { grid-template-columns: 1fr; }
+
+  /* en 360px, 3.4ch de sangría más el gap se comen media pregunta */
+  .qa__a { margin-left: 0; }
   .hero__acts .btn { width: 100%; }
 
   /* apilados, el separador queda como viñeta suelta al principio de la línea */

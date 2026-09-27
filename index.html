@@ -52,9 +52,94 @@
   "name": "Lautaro Mendez — Diseño y desarrollo web",
   "url": "https://lautaromendez.com.ar/",
   "telephone": "+5491130011145",
-  "areaServed": "AR",
+  "areaServed": [
+    { "@type": "City",    "name": "Buenos Aires" },
+    { "@type": "Country", "name": "Argentina" }
+  ],
   "address": { "@type": "PostalAddress", "addressLocality": "Buenos Aires", "addressCountry": "AR" },
-  "sameAs": ["https://www.instagram.com/lautaromendez"]
+  "sameAs": ["https://www.instagram.com/lautaromendez"],
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+    "opens": "09:00",
+    "closes": "19:00"
+  },
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Servicios",
+    "itemListElement": [
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Landing page",
+        "description": "Una sola pagina con un solo objetivo, preparada para Google Ads. Entrega en 7 a 10 dias." } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Sitio institucional",
+        "description": "Sitio completo de 5 a 10 paginas, con panel para editar el contenido, SEO tecnico y Analytics. Entrega en 3 a 4 semanas." } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Desarrollo a medida",
+        "description": "Tienda, reservas o panel interno: base de datos, usuarios, pagos e integraciones, con alcance por escrito antes de arrancar." } }
+    ]
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Cuánto sale un sitio?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No tengo precio de lista. El número lo mueven tres cosas: cuántas páginas son, si necesitás editar el contenido vos, y si hay que conectarlo con algo que ya usás. Contame qué necesitás y te paso un número cerrado antes de arrancar."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cuánto tarda?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Una landing page, entre 7 y 10 días. Un sitio institucional completo, 3 a 4 semanas. Un desarrollo a medida depende del alcance, y ese alcance lo dejo por escrito antes de empezar."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Trabajás sólo en Buenos Aires?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "La base es Buenos Aires y es donde está la mayoría de los clientes, pero el trabajo es a distancia: videollamada o WhatsApp, y el sitio se va viendo en línea desde el primer día."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Usás WordPress o alguna plantilla?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Cada sitio lo diseño y lo programo a mano, uno por uno. Si hoy tenés WordPress y anda lento o pesado, se puede migrar respetando lo que ya tenés publicado."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Hay algo que pagar por mes?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "El dominio se renueva una vez al año. Un sitio común se publica sin costo mensual; si lleva base de datos, usuarios o un panel para cargar contenido, ahí sí hay un servicio mensual, y te digo cuál y cuánto sale antes de contratarlo."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué necesitás de mí para arrancar?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "El logo si lo tenés, fotos propias y una idea de qué querés que diga cada sección. Los textos los puedo escribir yo sobre eso. Lo que no se reemplaza son las fotos: las de banco se notan."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿El sitio va a aparecer en Google?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sale indexable, con sitemap, datos estructurados y Analytics puesto, y en los sitios institucionales también dejo armada la ficha de Google. Con eso te encuentra el que busca tu nombre. Pelear las búsquedas del rubro, donde ya hay diez competidores pagando, es un trabajo aparte y sostenido: si hace falta, te lo digo de entrada."
+      }
+    }
+  ]
 }
 </script>
 </head>
@@ -319,22 +404,22 @@
   <div class="work__stage" id="workStage">
     <div class="bento" id="bento">
 
-      <a class="tile" href="portfolio/index.html">
+      <a class="tile" href="/portfolio/">
         <img src="assets/work/place-vendome.webp" alt="Sitio de Place Vendôme" loading="lazy" decoding="async">
         <span class="tile__cap"><b>Place Vendôme</b><i>Desarrollos inmobiliarios</i></span>
       </a>
 
-      <a class="tile" href="portfolio/index.html">
+      <a class="tile" href="/portfolio/">
         <img src="assets/work/house-in-baires.webp" alt="Sitio de House in Baires" loading="lazy" decoding="async">
         <span class="tile__cap"><b>House in Baires</b><i>Alquileres temporales</i></span>
       </a>
 
-      <a class="tile" href="portfolio/index.html">
+      <a class="tile" href="/portfolio/">
         <img src="assets/work/adequate.webp" alt="Sitio de Adequate" loading="lazy" decoding="async">
         <span class="tile__cap"><b>Adequate</b><i>Fintech B2B</i></span>
       </a>
 
-      <a class="tile" href="portfolio/index.html">
+      <a class="tile" href="/portfolio/">
         <img src="assets/work/liliana-donato.webp" alt="Sitio de Liliana Donato" loading="lazy" decoding="async">
         <span class="tile__cap"><b>Liliana Donato</b><i>Portfolio de artista</i></span>
       </a>
@@ -343,7 +428,7 @@
            Una captura de web ampliada 4x no le dice nada a nadie; esto sí.
            Todo el panel es el link, así que a pantalla completa se puede
            clickear en cualquier lado. -->
-      <a class="tile tile--hero" href="portfolio/index.html">
+      <a class="tile tile--hero" href="/portfolio/">
         <span class="card">
           <span class="card__k">/portfolio</span>
           <span class="card__n">39</span>
@@ -351,22 +436,22 @@
         </span>
       </a>
 
-      <a class="tile" href="portfolio/index.html">
+      <a class="tile" href="/portfolio/">
         <img src="assets/work/tr3.webp" alt="Sitio de TR3 Turismo" loading="lazy" decoding="async">
         <span class="tile__cap"><b>TR3 Turismo</b><i>Excursiones · pagos online</i></span>
       </a>
 
-      <a class="tile" href="portfolio/index.html">
+      <a class="tile" href="/portfolio/">
         <img src="assets/work/barba.webp" alt="Sitio de Grupo Barba" loading="lazy" decoding="async">
         <span class="tile__cap"><b>Grupo Barba</b><i>E-commerce mayorista</i></span>
       </a>
 
-      <a class="tile" href="portfolio/index.html">
+      <a class="tile" href="/portfolio/">
         <img src="assets/work/jorgeribak.webp" alt="Sitio de Jorge Ribak" loading="lazy" decoding="async">
         <span class="tile__cap"><b>Jorge Ribak</b><i>Sitio para mago</i></span>
       </a>
 
-      <a class="tile" href="portfolio/index.html">
+      <a class="tile" href="/portfolio/">
         <img src="assets/work/bacity.webp" alt="Sitio de Transfer BA City" loading="lazy" decoding="async">
         <span class="tile__cap"><b>Transfer BA City</b><i>Turismo receptivo</i></span>
       </a>
@@ -385,8 +470,103 @@
   </div>
 
 </section>
+
 <!-- ═══════════════════════════════════════════════════════════════════════
-     5. CONTACTO — WhatsApp directo, o el formulario que arma el mensaje.
+     5. PREGUNTAS — el único bloque de la página pensado para alguien que
+        todavía no me conoce. Search Console dice que hoy entra gente que ya
+        buscó el nombre; las búsquedas de quien no lo buscó son estas
+        preguntas, así que las respuestas van en texto plano y visibles, sin
+        acordeón: nada de esconder detrás de un click lo único que lee Google.
+
+        Va antes de contacto a propósito: son las objeciones que aparecen
+        justo antes de escribir.
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="section faq" id="preguntas">
+  <div class="wrap faq__grid">
+
+    <div class="faq__head">
+      <p class="eyebrow"><i class="dot"></i>Preguntas</p>
+      <h2 class="faq__t">Lo que me<br>preguntan antes.</h2>
+      <p class="faq__d">
+        Si falta la tuya, escribime y te la contesto el mismo día.
+      </p>
+    </div>
+
+    <div class="faq__list">
+
+      <article class="qa">
+        <h3 class="qa__q">¿Cuánto sale un sitio?</h3>
+        <p class="qa__a">
+          No tengo precio de lista. El número lo mueven tres cosas: cuántas
+          páginas son, si necesitás editar el contenido vos, y si hay que
+          conectarlo con algo que ya usás. Contame qué necesitás y te paso un
+          número cerrado antes de arrancar.
+        </p>
+      </article>
+
+      <article class="qa">
+        <h3 class="qa__q">¿Cuánto tarda?</h3>
+        <p class="qa__a">
+          Una landing page, entre 7 y 10 días. Un sitio institucional completo,
+          3 a 4 semanas. Un desarrollo a medida depende del alcance, y ese
+          alcance lo dejo por escrito antes de empezar.
+        </p>
+      </article>
+
+      <article class="qa">
+        <h3 class="qa__q">¿Trabajás sólo en Buenos Aires?</h3>
+        <p class="qa__a">
+          La base es Buenos Aires y es donde está la mayoría de los clientes,
+          pero el trabajo es a distancia: videollamada o WhatsApp, y el sitio se
+          va viendo en línea desde el primer día.
+        </p>
+      </article>
+
+      <article class="qa">
+        <h3 class="qa__q">¿Usás WordPress o alguna plantilla?</h3>
+        <p class="qa__a">
+          No. Cada sitio lo diseño y lo programo a mano, uno por uno. Si hoy
+          tenés WordPress y anda lento o pesado, se puede migrar respetando lo
+          que ya tenés publicado.
+        </p>
+      </article>
+
+      <article class="qa">
+        <h3 class="qa__q">¿Hay algo que pagar por mes?</h3>
+        <p class="qa__a">
+          El dominio se renueva una vez al año. Un sitio común se publica sin
+          costo mensual; si lleva base de datos, usuarios o un panel para
+          cargar contenido, ahí sí hay un servicio mensual, y te digo cuál y
+          cuánto sale antes de contratarlo.
+        </p>
+      </article>
+
+      <article class="qa">
+        <h3 class="qa__q">¿Qué necesitás de mí para arrancar?</h3>
+        <p class="qa__a">
+          El logo si lo tenés, fotos propias y una idea de qué querés que diga
+          cada sección. Los textos los puedo escribir yo sobre eso. Lo que no
+          se reemplaza son las fotos: las de banco se notan.
+        </p>
+      </article>
+
+      <article class="qa">
+        <h3 class="qa__q">¿El sitio va a aparecer en Google?</h3>
+        <p class="qa__a">
+          Sale indexable, con sitemap, datos estructurados y Analytics puesto,
+          y en los sitios institucionales también dejo armada la ficha de
+          Google. Con eso te encuentra el que busca tu nombre. Pelear las
+          búsquedas del rubro, donde ya hay diez competidores pagando, es un
+          trabajo aparte y sostenido: si hace falta, te lo digo de entrada.
+        </p>
+      </article>
+
+    </div>
+
+  </div>
+</section>
+<!-- ═══════════════════════════════════════════════════════════════════════
+     6. CONTACTO — WhatsApp directo, o el formulario que arma el mensaje.
         Las dos vías terminan en el mismo lugar: no hay servicio de terceros
         ni clave que cargar en ningún lado.
      ═══════════════════════════════════════════════════════════════════════ -->
@@ -496,7 +676,7 @@
       <p>© <span id="year">2026</span> Lautaro Mendez · Buenos Aires</p>
       <nav class="ft__nav" aria-label="Pie">
         <a href="#servicios">Servicios</a>
-        <a href="portfolio/index.html">Portfolio</a>
+        <a href="/portfolio/">Portfolio</a>
         <a href="https://www.instagram.com/lautaromendez" target="_blank" rel="noopener">Instagram</a>
         <a href="#contacto">Contacto</a>
       </nav>
