@@ -73,7 +73,7 @@ const PROYECTOS = [
   { img: 'port-tr3.webp',               n: 'TR3 Viajes y Turismo',       r: 'Turismo · Hotelería',               cat: 'turismo',     url: 'https://www.tr3viajesyturismo.com/' },
   { img: 'port-magicdoor.webp',         n: 'Magic Door',                 r: 'Servicios · Eventos para empresas', cat: 'servicios',   url: 'https://www.magicdoor.com.ar/' },
   { img: 'port-adequate.webp',          n: 'Adequate',                   r: 'Inmobiliaria · Landing page',       cat: 'otros',       url: 'https://adequate.lat/' },
-  { img: 'port-bacity.webp',            n: 'Buenos Aires City Transfers', r: 'Turismo · Transfers',              cat: 'turismo',     url: 'https://www.transferbuenosairescity.com/' }
+  { img: 'port-bacity.webp',            n: 'Buenos Aires City Transfers', r: 'Turismo · Transfers',              cat: 'turismo',     url: 'https://www.transferbuenosaires.com/' }
 ];
 
 /* ══════════════════════════════════════════════════════════════════════════
