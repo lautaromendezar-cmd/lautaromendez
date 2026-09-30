@@ -131,6 +131,69 @@ verificado.
 una suspensión suele terminar con la nueva suspendida también. Si GitHub confirma que no la
 restablece, recién ahí preguntarle explícitamente si se puede abrir otra.
 
+### Actualización del 20-sep-2026 — dos semanas de silencio
+
+**Sigue marcada.** Los dos `curl` dan 404 y `torvalds` da 200 desde la misma conexión.
+
+**GitHub no volvió a contestar desde el 7-sep.** El ticket (#4736689) sigue *Open*, con 4
+comentarios: el pedido, la respuesta de Tessa, la carta y el seguimiento. Los dos últimos son
+míos y de la misma noche, así que **hace 13 días que el último que habló fui yo**.
+
+**Cambió un hecho de fondo que GitHub todavía no sabe.** El 13-sep el panel de `cyc` migró a
+Vercel Blob y **se sacó el camino de escritura a GitHub del código**: hoy no queda ni una
+referencia a `api.github.com` ni a `GITHUB_TOKEN` en el repo. Ya no es "el token venció": es
+que la función que hacía los commits no existe más. El último commit de máquina sigue siendo
+el del 3-sep, y los 5 commits posteriores son a mano. Eso es exactamente la segunda de las
+dos salidas que se le ofrecieron a Tessa, y es la que no se puede deshacer sin querer.
+
+**El segundo seguimiento se mandó el 20-sep-2026.** Texto en
+`zz-seguimiento-2-github.txt`. La idea es que tenga contenido: un "¿hay novedades?" pelado no
+le sirve al revisor y encima arriesga que el ticket se re-timestampee y vuelva al fondo de la
+cola. Después de este, **no mandar nada por tres semanas**.
+
+⚠️ **No abrir un segundo ticket.** Los duplicados se fusionan o se cierran y quedan peor.
+Tampoco cerrar este: el botón *Close ticket* de la pantalla lo cierra de verdad.
+
+**Supabase ya está resuelto**: se recuperó el acceso por una vía alternativa. No hace falta
+actualizar a GitHub sobre eso, no cambia lo que se les pide.
+
+**Espejos actualizados el 20-sep.** Los del 7-sep habían quedado atrás: había trabajo nuevo en
+`sistema-barba`, `cyc`, `empanadas-jaque`, `eric-torrent`, `lautaromendez`, `lga`,
+`physiomove` y `centenaria`.
+
+⚠️ **`destapacioneshoy` no está en ningún espejo**, porque nunca tuvo repo remoto. La carpeta
+del Escritorio es la única copia, y adentro está `_rescate/` con los originales del WordPress.
+
+### 20-sep: crear repos SÍ funciona con la cuenta marcada
+
+**Probado y confirmado.** Se creó `destapacioneshoy` desde `github.com/new` sin
+problema y se le pusheó el primer commit. Así que la marca **no** bloquea el trabajo
+normal de git: crear repos, `push`, `pull`, `clone` y `fetch` andan todos.
+
+Lo que sigue roto es solo lo de siempre: **instalar GitHub Apps** (y por eso los
+deploys automáticos). Conviene tenerlo claro para no frenar proyectos nuevos por las
+dudas.
+
+**Un proyecto nuevo hoy se trabaja así**, sin esperar a que destraben la cuenta:
+
+1. Repo en GitHub y `git push` como siempre. Esto es lo que guarda la historia y lo
+   que sincroniza las dos PC. **Vercel no reemplaza esto**: guarda los archivos del
+   deploy, no un repositorio.
+2. Publicar a mano con `vercel deploy --prod`, que no pasa por GitHub.
+
+**Y los 23 repos locales se barrieron contra sus remotos el 20-sep: cero commits sin
+subir.** GitHub tiene toda la historia. Lo único que vivía solo en una máquina eran
+cambios sin commitear, no commits sin pushear.
+
+⚠️ **Quedan archivos sin commitear en cuatro repos**, que sí existen en una sola PC:
+`fosque` (40 archivos, la sección de Fuerza y Cardio y el borrado del sorteo),
+`eric-torrent` (`scripts/` y `wordpress/` sin trackear), `house-in-baires` y
+`lautaromendez`.
+
+⚠️ **La carpeta `TR3` es una copia vieja** que apunta al remoto de `Terrestre3` y está
+27 commits atrasada. La buena es `Terrestre3`. Si se abre `TR3` por error se trabaja
+sobre algo de junio.
+
 ## Backup espejo — HECHO en las dos PC (7-sep)
 
 **Los 24 repos están espejados en las dos PC**, en `Desktop\Claude\zz-backup-github\`.
@@ -277,3 +340,40 @@ Detalles que hacen perder tiempo si no se saben:
 3. Reconectar cada proyecto que haya perdido el link. Desde la carpeta de cada uno:
    `vercel git connect`. Instalar la app **no** reconecta solos los proyectos.
 4. Probar con un push que el deploy automático vuelva a dispararse.
+
+## CERRADO — 30-sep-2026
+
+**GitHub restableció la cuenta el 29-sep a la noche.** Contestó Ciro, GitHub Support:
+"Sometimes our abuse detecting systems highlight accounts that need to be manually
+review. We've cleared the restrictions from your account." No confirmaron por escrito
+cuál fue el disparador — sigue siendo la hipótesis de `cyc`, nunca un hecho probado.
+
+**Reinstalación hecha el 30-sep**, siguiendo los 4 pasos de arriba. Reconectados:
+`physiomove` (ya tenía repo, solo el link), `dist-nahuel`, `house-in-baires`,
+`place-vendome` (los tres solo necesitaban `git pull`, estaban atrasados),
+`fosque-preview` (con la Production Branch corregida a `modificaciones-26-09`, ver
+`fosque/CONTINUAR.md`), `fosque-reformer`, `consultora-vita`, `destapacioneshoy`.
+Probado de punta a punta con un push real a `fosque-preview`: deploy automático en
+30s, `● Ready`. El circuito push → deploy funciona igual que antes de la marca.
+
+**Nuevos, sin repo hasta ahora**: `apex` y `seo` (seo-vigia) no tenían ningún Git,
+ni local ni remoto — se armaron y deployaron solo por Vercel CLI. Se les creó repo
+en GitHub y se conectaron.
+
+**`graciela-sistema` (sistema de Rosen Gourmet / Graciela Baña) migró de GitLab a
+GitHub.** Se pusheó el historial completo a un repo nuevo, se cambió `origin` local,
+y se conectó a Vercel. El remoto de GitLab tenía un token (`glpat-...`) embebido en
+la URL — quedó expuesto sin querer en una sesión de Claude Code; conviene revocarlo
+en GitLab cuando se dé de baja el repo viejo ahí.
+
+**Falta**: `sistema de barba` (repo `sistema-barba`, carpeta `barba-remitos`) seguía
+sin reconectar porque había otra sesión trabajando ahí en paralelo. Reconectar
+cuando esté libre — mismo procedimiento: `vercel git connect` desde su carpeta.
+
+**equipo.neurodialectico** no era un problema de la cuenta marcada: la carpeta local
+nunca tuvo `.git` (se había copiado de otro lado, no clonado). Se reclonó limpia
+desde GitHub el 29-sep; el contenido ya coincidía byte a byte (salvo CRLF).
+
+Con esto, el caso queda cerrado. Si vuelve a pasar, empezar por los mismos dos
+`curl` de arriba para confirmar, y no perder tiempo del lado de Vercel — el síntoma
+manda del lado de GitHub.
