@@ -366,9 +366,10 @@ y se conectó a Vercel. El remoto de GitLab tenía un token (`glpat-...`) embebi
 la URL — quedó expuesto sin querer en una sesión de Claude Code; conviene revocarlo
 en GitLab cuando se dé de baja el repo viejo ahí.
 
-**Falta**: `sistema de barba` (repo `sistema-barba`, carpeta `barba-remitos`) seguía
-sin reconectar porque había otra sesión trabajando ahí en paralelo. Reconectar
-cuando esté libre — mismo procedimiento: `vercel git connect` desde su carpeta.
+**`sistema de barba` (carpeta `barba-remitos`, proyecto Vercel `barba-remitos`)
+reconectado el 30-sep** por otra sesión en paralelo, mientras esta se ocupaba del
+resto. Verificado: deploy automático de producción, `● Ready`. No queda ningún
+proyecto sin reconectar.
 
 **equipo.neurodialectico** no era un problema de la cuenta marcada: la carpeta local
 nunca tuvo `.git` (se había copiado de otro lado, no clonado). Se reclonó limpia
