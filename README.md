@@ -40,7 +40,7 @@ están propuestos, no dictados:
 
 **2. El contador de proyectos está escrito a mano en tres lugares** de este
 `index.html`: `.hero__meta`, el `.card__n` de la celda 5 del bento y el
-`.work__cap-t`, que lo dice con letras ("Treinta y nueve proyectos"). La
+`.work__cap-t`, que lo dice con letras ("Cuarenta y un proyectos"). La
 verdad la tiene el array `PROYECTOS` de `portfolio/portfolio.js`, y
 `tools/check.mjs` compara los dos y falla si no coinciden — que es como se
 descubrió que acá decía 26 mientras el portfolio ya tenía 34.

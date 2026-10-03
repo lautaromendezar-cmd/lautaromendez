@@ -35,6 +35,8 @@ const RUBROS = {
 };
 
 const PROYECTOS = [
+  { img: 'port-requecho.webp',          n: 'Requecho',                   r: 'Industria · Revestimiento textil',  cat: 'industria',   url: 'https://requecho.vercel.app/' },
+  { img: 'port-thenosis.webp',          n: 'Thenosis',                   r: 'Servicios · Consultoría cross-border', cat: 'servicios', url: 'https://www.thenosis.com/' },
   { img: 'port-fosque.webp',            n: 'Fosque',                     r: 'Servicios · Pilates Reformer',      cat: 'servicios',   url: 'https://fosque.com/' },
   { img: 'port-physiomove.webp',        n: 'PhysioMove',                 r: 'Salud · Kinesiología deportiva',    cat: 'servicios',   url: 'https://physiomove-tau.vercel.app/' },
   { img: 'port-batata-studio.webp',     n: 'Batata Studio',              r: 'Servicios · Estudio de diseño',     cat: 'servicios',   url: 'https://batatastudio.com.ar/' },
