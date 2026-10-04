@@ -35,6 +35,8 @@ const RUBROS = {
 };
 
 const PROYECTOS = [
+  { img: 'port-smc.webp',               n: 'SMC Arquitectura',           r: 'Construcción · Llave en mano',      cat: 'industria',   url: 'https://smc-topaz.vercel.app/' },
+  { img: 'port-destapaciones-hoy.webp', n: 'Destapaciones HOY',          r: 'Servicios · Destapaciones 24 hs',   cat: 'servicios',   url: 'https://destapacioneshoy.com.ar/' },
   { img: 'port-requecho.webp',          n: 'Requecho',                   r: 'Industria · Revestimiento textil',  cat: 'industria',   url: 'https://requecho.vercel.app/' },
   { img: 'port-thenosis.webp',          n: 'Thenosis',                   r: 'Servicios · Consultoría cross-border', cat: 'servicios', url: 'https://www.thenosis.com/' },
   { img: 'port-fosque.webp',            n: 'Fosque',                     r: 'Servicios · Pilates Reformer',      cat: 'servicios',   url: 'https://fosque.com/' },
