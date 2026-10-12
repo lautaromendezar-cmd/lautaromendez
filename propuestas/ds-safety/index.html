@@ -41,6 +41,9 @@
   /* ---------- Encabezado ---------- */
   .cabecera { background: var(--azul); color: #fff; padding-block: 64px 48px; }
   .cabecera .rotulo { color: #aab4e6; }
+  .logo-cliente { display: block; width: 180px; height: auto; margin: -8px 0 36px -6px; }
+  .logo-ads { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; font-size: 13px; font-weight: 600; letter-spacing: .04em; color: #dfe4fb; }
+  .logo-ads svg { width: 40px; height: 40px; fill: #fff; flex: none; }
   .cabecera h1 { color: #fff; font-size: clamp(36px, 6.4vw, 60px); font-weight: 800; letter-spacing: -.03em; line-height: 1.04; }
   .cabecera .piloto { display: inline-block; margin-top: 18px; font-size: clamp(18px, 2.4vw, 22px); font-weight: 600; border-bottom: 3px solid #fff; padding-bottom: 3px; }
   .cabecera .resumen { margin: 28px 0 36px; max-width: 36em; font-size: 18px; color: #dfe4fb; }
@@ -135,6 +138,9 @@
     .wrap { max-width: none; padding-inline: 0; }
     .cabecera { padding: 9mm 12mm 7mm; border-radius: 6px; }
     .cabecera h1 { font-size: 30pt; }
+    .logo-cliente { width: 110pt; margin: -4pt 0 12pt -4pt; }
+    .logo-ads { margin-bottom: 6pt; }
+    .logo-ads svg { width: 22pt; height: 22pt; }
     .cabecera .piloto { font-size: 14pt; margin-top: 8pt; }
     .cabecera .resumen { font-size: 11pt; margin: 9pt 0 10pt; }
     .datos { font-size: 9pt; padding-top: 10pt; }
@@ -151,8 +157,24 @@
     .compromisos { gap: 8pt; }
     .compromiso { padding: 10pt 12pt; }
     .compromiso h3 { font-size: 11pt; margin-bottom: 4pt; }
-    main section { break-inside: avoid; }
-    main section:first-child { break-inside: auto; }
+    .compromisos, .campanias, .inversion, .etapas, .pasos { break-inside: avoid; }
+    .hoja-nueva { break-before: page; padding-top: 0; }
+    .cabecera { padding: 7mm 11mm 6mm; }
+    .cabecera h1 { font-size: 26pt; }
+    .cabecera .resumen { font-size: 10pt; margin: 7pt 0 8pt; }
+    .datos { flex-wrap: nowrap; gap: 18pt; padding-top: 7pt; font-size: 8.5pt; }
+    .logo-cliente { width: 95pt; margin: -2pt 0 8pt -3pt; }
+    .logo-ads svg { width: 18pt; height: 18pt; }
+    .hallazgo { padding: 7pt 11pt; }
+    .hallazgo p { font-size: 8.5pt; line-height: 1.4; }
+    main section:first-child { padding-top: 10pt; }
+    main section:first-child h2 { font-size: 15pt; margin-bottom: 5pt; }
+    main section:first-child .bajada { font-size: 9.5pt; margin-bottom: 7pt; }
+    .hallazgos { gap: 5pt; }
+    .hallazgo .busqueda { font-size: 10pt; }
+    .cabecera h1 { font-size: 24pt; }
+    .cabecera .piloto { font-size: 12pt; margin-top: 5pt; }
+    h2, .rotulo, .bajada, .reconocimiento { break-after: avoid; }
     .campanias, .inversion { gap: 10pt; }
     .campania, .bloque { padding: 12pt 14pt; }
     .campania h3, .bloque h3 { font-size: 13pt; margin: 2pt 0 6pt; }
@@ -179,9 +201,11 @@
 
 <header class="cabecera">
   <div class="wrap">
-    <div class="rotulo">Propuesta · D.S. Safety S.A.</div>
+    <img class="logo-cliente" src="logo-ds-safety.jpg" width="259" height="86" alt="DS Safety · Seguridad e Higiene">
+    <div class="rotulo">Propuesta</div>
+    <div class="logo-ads"><svg viewBox="0 0 24 24" role="img" aria-label="Google Ads"><path d="M3.9998 22.9291C1.7908 22.9291 0 21.1383 0 18.9293s1.7908-3.9998 3.9998-3.9998 3.9998 1.7908 3.9998 3.9998-1.7908 3.9998-3.9998 3.9998zm19.4643-6.0004L15.4632 3.072C14.3586 1.1587 11.9121.5028 9.9988 1.6074S7.4295 5.1585 8.5341 7.0718l8.0009 13.8567c1.1046 1.9133 3.5511 2.5679 5.4644 1.4646 1.9134-1.1046 2.568-3.5511 1.4647-5.4644zM7.5137 4.8438L1.5645 15.1484A4.5 4.5 0 0 1 4 14.4297c2.5597-.0075 4.6248 2.1585 4.4941 4.7148l3.2168-5.5723-3.6094-6.25c-.4499-.7793-.6322-1.6394-.5878-2.4784z"/></svg></div>
     <h1>Google Ads para D.S.&nbsp;Safety</h1>
-    <div class="piloto">Piloto de 90 días</div>
+    <div class="piloto">Piloto de 3 meses</div>
     <p class="resumen">Todos los días hay responsables de seguridad industrial buscando en Google calibraciones y alquiler de equipos Dräger. Esta propuesta busca que esas consultas lleguen a D.S. Safety y que cada una quede contada.</p>
     <div class="datos">
       <div><span>Para</span><b>Natacha Braun Acosta</b><br>Gerencia Financiera</div>
@@ -222,29 +246,29 @@
         <article class="hallazgo">
           <div class="busqueda"><small>Ficha de Google de la empresa</small>D.S. Safety en Google Maps</div>
           <div><h3>Hoy</h3><p>La ficha <span class="verificar">no tiene teléfono cargado</span>. Tiene <span class="verificar">19 reseñas con 4,4★, ninguna respondida</span>.</p></div>
-          <div><h3>Qué significa</h3><p>La calificación es buena. Con el teléfono cargado y las reseñas respondidas, la ficha está mejor parada para aparecer en el mapa. Lo resuelvo en la primera semana.</p></div>
+          <div><h3>Mi recomendación</h3><p>La calificación es buena. Cargar el teléfono y responder las reseñas es trabajo de una tarde y ayuda a aparecer en el mapa. No forma parte del servicio, pero conviene hacerlo antes de arrancar.</p></div>
         </article>
       </div>
     </div>
   </section>
 
-  <section>
+  <section class="hoja-nueva">
     <div class="wrap">
       <div class="rotulo">2 · Qué cambia</div>
       <h2>Primero la medición, después los anuncios.</h2>
-      <p class="reconocimiento">Hasta marzo, la publicidad la llevaba adelante junto con un socio, y la medición y los reportes no tuvieron el seguimiento que correspondía. Sin esos datos era imposible saber si convenía seguir. A partir de ahora me encargo yo personalmente de todo, de la configuración al reporte, y respondo directamente por los resultados.</p>
+      <p class="reconocimiento">Hasta marzo, la publicidad la llevaba adelante junto con un socio, y la medición, los reportes y el contacto con ustedes no tuvieron el seguimiento que correspondía. Sin esos datos era imposible saber si convenía seguir. A partir de ahora me encargo yo personalmente de todo, de la configuración al reporte, y respondo directamente por los resultados.</p>
       <div class="compromisos">
         <div class="compromiso">
           <h3>Consultas medidas</h3>
           <p>Instalo Google Analytics 4 y Tag Manager en el sitio y registro cada clic a WhatsApp, cada llamada y cada formulario. Lo pruebo antes de prender un solo anuncio.</p>
         </div>
         <div class="compromiso">
-          <h3>Reporte de una página</h3>
-          <p>Cada mes: cuánto se invirtió, cuántas consultas llegaron, cuánto costó cada una y qué búsquedas las trajeron.</p>
+          <h3>Revisión mensual en persona</h3>
+          <p>Una vez por mes me reúno con alguien del equipo o con quien esté a cargo. Repasamos cuánto se invirtió, cuántas consultas llegaron, cuánto costó cada una y qué búsquedas las trajeron.</p>
         </div>
         <div class="compromiso">
           <h3>Salida simple</h3>
-          <p>Si a los 90 días los números no lo justifican, se corta sin penalidad. La cuenta de Google Ads queda a nombre de D.S. Safety.</p>
+          <p>Si a los 3 meses los números no lo justifican, se corta sin penalidad. La cuenta de Google Ads queda a nombre de D.S. Safety.</p>
         </div>
       </div>
     </div>
@@ -254,7 +278,7 @@
     <div class="wrap">
       <div class="rotulo">3 · El plan</div>
       <h2>Dos campañas, donde la consulta vale más.</h2>
-      <p class="bajada">Arranco por las dos búsquedas con más chances de traer clientes al menor costo: servicio técnico, que se repite con cada calibración, y alquiler, donde casi no hay competencia.</p>
+      <p class="bajada">Mi sugerencia es arrancar por las dos búsquedas con más chances de traer clientes al menor costo: servicio técnico, que se repite con cada calibración, y alquiler, donde casi no hay competencia. Si prefieren empezar por otro objetivo, con gusto lo charlamos y lo definimos juntos.</p>
 
       <div class="campanias">
         <article class="campania">
@@ -285,7 +309,7 @@
     </div>
   </section>
 
-  <section>
+  <section class="hoja-nueva">
     <div class="wrap">
       <div class="rotulo">4 · Inversión</div>
       <h2>La pauta va directo a Google. Yo cobro el servicio.</h2>
@@ -302,33 +326,32 @@
           <h3>Gestión del piloto</h3>
           <div class="monto">$200.000 <small>por mes</small></div>
           <ul>
-            <li>Puesta a punto de la medición y de la ficha de Google</li>
+            <li>Creación de la cuenta y puesta a punto de la medición</li>
             <li>Las dos campañas, con revisión semanal de búsquedas</li>
             <li>Ajustes en las páginas de destino y, si hace falta, una página de aterrizaje propia para los anuncios, sin costo extra: va dentro del mantenimiento web</li>
-            <li>Reporte mensual</li>
+            <li>Reporte y reunión de revisión una vez por mes</li>
           </ul>
         </div>
       </div>
-      <p class="letra">El servicio se abona por mes adelantado. Para dos campañas es de $250.000 por mes; durante el piloto queda en $200.000. Si a los 90 días deciden seguir, pasa a la tarifa normal. Si no, se corta sin penalidad.</p>
+      <p class="letra">El servicio se abona por mes adelantado. Para dos campañas es de $250.000 por mes; durante el piloto queda en $200.000. Si a los 3 meses deciden seguir, pasa a la tarifa normal. Si no, se corta sin penalidad.</p>
     </div>
   </section>
 
   <section>
     <div class="wrap">
       <div class="rotulo">5 · Calendario</div>
-      <h2>Los 90 días, paso a paso.</h2>
+      <h2>Los 3 meses, paso a paso.</h2>
       <ol class="etapas">
-        <li class="etapa"><b>Semanas 1 y 2</b><p>Preparo todo antes de publicar: creo la cuenta, instalo la medición, completo la ficha de Google y les paso los anuncios para que los aprueben.</p></li>
-        <li class="etapa"><b>Días 15 a 45</b><p>Los anuncios salen al aire. Cada semana reviso qué búsquedas los activan y descarto las que no sirven. Al cerrar el mes les mando el primer reporte.</p></li>
-        <li class="etapa"><b>Días 46 a 75</b><p>Con un mes de datos, paso más presupuesto a la campaña que consigue consultas más baratas. Segundo reporte.</p></li>
-        <li class="etapa"><b>Días 76 a 90</b><p>Nos reunimos con los números del trimestre y decidimos si seguir, ajustar o cortar.</p></li>
+        <li class="etapa"><b>Mes 1</b><p>En las primeras dos semanas creo la cuenta, instalo la medición y les paso los anuncios para que los aprueben. Después salen al aire, y cada semana reviso qué búsquedas los activan para descartar las que no sirven. Al cierre, primera reunión de revisión.</p></li>
+        <li class="etapa"><b>Mes 2</b><p>Con los datos del primer mes, paso más presupuesto a la campaña que consigue consultas más baratas. Segunda reunión de revisión.</p></li>
+        <li class="etapa"><b>Mes 3</b><p>Afinamos lo que funciona y al cierre nos reunimos con los números de los tres meses para decidir si seguir, ajustar o cortar.</p></li>
       </ol>
 
       <div class="rotulo">Para arrancar</div>
       <ol class="pasos">
         <li><strong>Aprobar el piloto</strong> y el monto de pauta, y hacer la primera carga de saldo en Google.</li>
-        <li><strong>Darme acceso</strong> a la ficha de Google de la empresa. La cuenta de Google Ads la creo yo desde cero.</li>
-        <li><strong>Un teléfono o WhatsApp que se atienda</strong>, y alguien de ventas que una vez por mes marque qué consultas avanzaron.</li>
+        <li><strong>Definir quién participa de la revisión mensual</strong>: alguien del equipo o la persona a cargo.</li>
+        <li><strong>Un teléfono o WhatsApp que se atienda</strong> para recibir las consultas que lleguen.</li>
       </ol>
 
       <div class="firma">
