@@ -102,11 +102,11 @@
   .letra { font-size: 14.5px; max-width: 46em; }
 
   /* Cronograma */
-  .etapas { list-style: none; margin: 0 0 32px; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
-  .etapa { border-top: 3px solid var(--azul); padding-top: 10px; break-inside: avoid; }
-  .etapa b { display: block; font-size: 13px; color: var(--azul); }
-  .etapa h3 { font-size: 15px; font-weight: 700; margin: 2px 0 4px; }
-  .etapa p { font-size: 13.5px; margin: 0; }
+  .etapas { list-style: none; margin: 0 0 36px; padding: 0; }
+  .etapa { display: grid; grid-template-columns: 150px 1fr; gap: 20px; padding: 14px 0; border-top: 1px solid var(--linea); break-inside: avoid; }
+  .etapa:last-child { border-bottom: 1px solid var(--linea); }
+  .etapa b { font-size: 14px; font-weight: 700; color: var(--azul); }
+  .etapa p { font-size: 15px; margin: 0; }
 
   .pasos { margin: 0 0 32px; padding-left: 1.3em; }
   .pasos li { margin-bottom: 8px; }
@@ -124,7 +124,7 @@
     section { padding-block: 44px; }
     .hallazgo, .campanias, .inversion { grid-template-columns: 1fr; }
     .compromisos { grid-template-columns: 1fr; }
-    .etapas { grid-template-columns: 1fr 1fr; }
+    .etapa { grid-template-columns: 1fr; gap: 2px; }
   }
 
   /* ---------- Impresión A4: 3 hojas ---------- */
@@ -162,10 +162,10 @@
     .despues { margin-top: 10pt; font-size: 9.5pt; }
     .monto { font-size: 22pt; }
     .monto small { font-size: 10pt; }
-    .etapas { gap: 10pt; margin-bottom: 14pt; }
-    .etapa b { font-size: 8.5pt; }
-    .etapa h3 { font-size: 10pt; }
-    .etapa p { font-size: 8.5pt; }
+    .etapas { margin-bottom: 14pt; }
+    .etapa { grid-template-columns: 90pt 1fr; gap: 10pt; padding: 6pt 0; }
+    .etapa b { font-size: 9pt; }
+    .etapa p { font-size: 9pt; }
     .pasos { margin-bottom: 14pt; font-size: 10pt; }
     .pasos li { margin-bottom: 3pt; }
     .firma { padding: 12pt 14pt; }
@@ -295,39 +295,39 @@
           <div class="quien">La pagan ustedes, a Google</div>
           <h3>Pauta publicitaria</h3>
           <div class="monto"><span class="verificar">$300.000</span> <small>por mes, sugerido</small></div>
-          <p>Se paga por transferencia directamente a Google, desde la cuenta de D.S. Safety. Ese dinero no pasa por mí. Se puede subir, bajar o pausar en cualquier momento.</p>
+          <p>Creo una cuenta de Google Ads nueva, a nombre de D.S. Safety, en modalidad prepaga: sin tarjeta, se carga saldo por transferencia antes de que corran los anuncios. Ese dinero va directo a Google y no pasa por mí. Se puede subir, bajar o pausar en cualquier momento.</p>
         </div>
         <div class="bloque servicio">
           <div class="quien">Lo único que cobro</div>
           <h3>Gestión del piloto</h3>
-          <div class="monto">$200.000 <small>por mes, durante los 90 días</small></div>
+          <div class="monto">$200.000 <small>por mes</small></div>
           <ul>
             <li>Puesta a punto de la medición y de la ficha de Google</li>
             <li>Las dos campañas, con revisión semanal de búsquedas</li>
-            <li>Ajustes en las páginas de destino del sitio</li>
+            <li>Ajustes en las páginas de destino y, si hace falta, una página de aterrizaje propia para los anuncios, sin costo extra: va dentro del mantenimiento web</li>
             <li>Reporte mensual</li>
           </ul>
         </div>
       </div>
-      <p class="letra">El servicio para dos campañas es de $250.000 por mes; durante el piloto queda en $200.000. Si a los 90 días deciden seguir, pasa a la tarifa normal. Si no, se corta sin penalidad.</p>
+      <p class="letra">El servicio se abona por mes adelantado. Para dos campañas es de $250.000 por mes; durante el piloto queda en $200.000. Si a los 90 días deciden seguir, pasa a la tarifa normal. Si no, se corta sin penalidad.</p>
     </div>
   </section>
 
   <section>
     <div class="wrap">
-      <div class="rotulo">5 · Los 90 días</div>
-      <h2>Cómo sigue.</h2>
+      <div class="rotulo">5 · Calendario</div>
+      <h2>Los 90 días, paso a paso.</h2>
       <ol class="etapas">
-        <li class="etapa"><b>Días 1 a 14</b><h3>Puesta a punto</h3><p>Medición probada, ficha de Google y anuncios aprobados por ustedes.</p></li>
-        <li class="etapa"><b>Días 15 a 45</b><h3>Al aire</h3><p>Revisión semanal de búsquedas. Primer reporte.</p></li>
-        <li class="etapa"><b>Días 46 a 75</b><h3>Ajuste</h3><p>Más presupuesto a la campaña con menor costo por consulta. Segundo reporte.</p></li>
-        <li class="etapa"><b>Días 76 a 90</b><h3>Decisión</h3><p>Con los números del trimestre: seguir, ajustar o cortar.</p></li>
+        <li class="etapa"><b>Semanas 1 y 2</b><p>Preparo todo antes de publicar: creo la cuenta, instalo la medición, completo la ficha de Google y les paso los anuncios para que los aprueben.</p></li>
+        <li class="etapa"><b>Días 15 a 45</b><p>Los anuncios salen al aire. Cada semana reviso qué búsquedas los activan y descarto las que no sirven. Al cerrar el mes les mando el primer reporte.</p></li>
+        <li class="etapa"><b>Días 46 a 75</b><p>Con un mes de datos, paso más presupuesto a la campaña que consigue consultas más baratas. Segundo reporte.</p></li>
+        <li class="etapa"><b>Días 76 a 90</b><p>Nos reunimos con los números del trimestre y decidimos si seguir, ajustar o cortar.</p></li>
       </ol>
 
       <div class="rotulo">Para arrancar</div>
       <ol class="pasos">
-        <li><strong>Aprobar el piloto</strong> y el monto de pauta.</li>
-        <li><strong>Darme acceso</strong> a la ficha de Google de la empresa y a la cuenta de Google Ads, si todavía existe. Si no, la creo a nombre de D.S. Safety.</li>
+        <li><strong>Aprobar el piloto</strong> y el monto de pauta, y hacer la primera carga de saldo en Google.</li>
+        <li><strong>Darme acceso</strong> a la ficha de Google de la empresa. La cuenta de Google Ads la creo yo desde cero.</li>
         <li><strong>Un teléfono o WhatsApp que se atienda</strong>, y alguien de ventas que una vez por mes marque qué consultas avanzaron.</li>
       </ol>
 
