@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Propuesta — Google Ads para PLL Estudio Jurídico</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script>
+  // Las entradas animadas dependen de JS. Si a los 2,5 s el script del final no corrió, se muestra todo.
+  document.documentElement.classList.add('js');
+  if (/[?&]revisar\b/.test(location.search)) document.documentElement.classList.add('revisar');
+  setTimeout(function () { if (!window.__revela) document.documentElement.classList.add('listo'); }, 2500);
+</script>
+<style>
+  :root {
+    /* PLL: espresso de fondo, cobre como acento (la versión oscura del cobre, que da contraste sobre blanco) */
+    --marca: #2e120c;
+    --azul: #8a5a2a;
+    --azul-suave: #f6efe6;
+    --azul-linea: #e9dccd;
+    --tinta: #21140f;
+    --texto: #4a3d37;
+    --tenue: #75675f;
+    --linea: #ebe4dd;
+    --fondo: #f8f5f1;
+    --blanco: #ffffff;
+    --ease: cubic-bezier(.16, 1, .3, 1);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 76px; }
+  body {
+    margin: 0;
+    font-family: "Montserrat", "Segoe UI", Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.65;
+    color: var(--texto);
+    background: var(--blanco);
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3 { color: var(--tinta); line-height: 1.12; margin: 0; }
+  p { margin: 0 0 1em; }
+  strong { color: var(--tinta); font-weight: 600; }
+  img { max-width: 100%; height: auto; display: block; }
+  figure { margin: 0; }
+  .hallazgo > *, .dos > *, .cambia > *, .plan-cab > *, .campanias > *, .inversion > *, .cierre > *, .ficha > *, .portada .wrap > * { min-width: 0; }
+
+  .revisar .verificar { background: #fff2a8; border-radius: 3px; padding: 0 .15em; }
+
+  .wrap { max-width: 1180px; margin: 0 auto; padding-inline: clamp(18px, 4vw, 48px); }
+  .rotulo { font-size: 12px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--azul); margin-bottom: 14px; display: flex; align-items: center; gap: 12px; }
+  .rotulo .n { font-variant-numeric: tabular-nums; color: var(--tenue); }
+  h2 { font-size: clamp(28px, 3.4vw, 44px); font-weight: 800; letter-spacing: -.025em; max-width: 20ch; }
+  .intro { font-size: 18px; max-width: 60ch; margin-top: 18px; }
+  .etiqueta { font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--tenue); }
+
+  /* ---------- Barra superior ---------- */
+  .barra {
+    position: fixed; left: 0; right: 0;
+    top: 0; padding-top: env(safe-area-inset-top, 0px);
+    z-index: 20;
+    background: rgba(255,255,255,.93);
+    backdrop-filter: saturate(1.4) blur(10px);
+    -webkit-backdrop-filter: saturate(1.4) blur(10px);
+    border-bottom: 1px solid var(--linea);
+    transform: translateY(-105%);
+    transition: transform .45s var(--ease);
+  }
+  .barra.visible { transform: none; }
+  .barra .wrap { display: flex; align-items: center; justify-content: space-between; gap: 24px; height: 60px; }
+  .barra .quien { font-size: 13px; font-weight: 700; color: var(--tinta); white-space: nowrap; }
+  .barra .quien span { color: var(--tenue); font-weight: 500; }
+  .barra nav { display: flex; gap: 4px; }
+  .barra nav a {
+    font-size: 13px; font-weight: 600; color: var(--tenue); text-decoration: none;
+    padding: 7px 12px; border-radius: 999px; transition: color .2s, background .2s;
+  }
+  .barra nav a:hover { color: var(--tinta); background: var(--fondo); }
+  .barra nav a.activo { color: var(--azul); background: var(--azul-suave); }
+  .progreso { position: absolute; left: 0; bottom: -1px; height: 2px; width: 100%; background: var(--azul); transform-origin: 0 50%; transform: scaleX(0); }
+
+  /* ---------- Portada ---------- */
+  .portada { background: var(--marca); color: #fff; position: relative; overflow: hidden; }
+  .portada::after {
+    content: ""; position: absolute; inset: 0; pointer-events: none;
+    background: radial-gradient(60% 80% at 88% 8%, rgba(210,160,106,.12), transparent 60%);
+  }
+  .portada .wrap { position: relative; z-index: 1; display: grid; grid-template-columns: 1.6fr 1fr; gap: 72px; align-items: end; padding-block: 52px 64px; min-height: min(90vh, 780px); }
+  .logo-cliente { width: 150px; height: auto; margin: 0 0 56px; }
+  .portada .rotulo { color: #d2a06a; }
+  .marca-ads { margin-bottom: 18px; }
+  .marca-ads svg { width: 40px; height: 40px; fill: #fff; display: block; }
+  .portada h1 { color: #fff; font-size: clamp(40px, 5vw, 64px); font-weight: 800; letter-spacing: -.035em; line-height: 1; }
+  .portada .bajada { margin-top: 26px; max-width: 34em; font-size: 19px; line-height: 1.55; color: #e6dcd1; }
+  .datos { display: flex; flex-wrap: wrap; gap: 14px 40px; margin-top: 40px; padding-top: 22px; border-top: 1px solid rgba(255,255,255,.22); font-size: 14px; line-height: 1.5; color: #e6dcd1; }
+  .datos span { display: block; font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: #d2a06a; margin-bottom: 2px; }
+  .datos b { color: #fff; font-weight: 600; }
+
+  .resumen-piloto { border-top: 1px solid rgba(255,255,255,.3); }
+  .resumen-piloto div { display: grid; grid-template-columns: 64px 1fr; align-items: baseline; gap: 18px; padding: 22px 0; border-bottom: 1px solid rgba(255,255,255,.3); }
+  .resumen-piloto b { font-size: clamp(36px, 3.8vw, 52px); font-weight: 800; letter-spacing: -.03em; color: #fff; font-variant-numeric: tabular-nums; line-height: 1; }
+  .resumen-piloto span { font-size: 15px; color: #e6dcd1; line-height: 1.45; }
+
+  /* ---------- Secciones ---------- */
+  section.bloque { padding-block: clamp(72px, 9vw, 120px); }
+  section.gris { background: var(--fondo); }
+
+  /* Hallazgos con captura */
+  .hallazgo { display: grid; grid-template-columns: 1fr 1.1fr; gap: clamp(32px, 6vw, 88px); align-items: center; margin-top: 80px; }
+  .hallazgo.invertido .texto { order: 2; }
+  .hallazgo { align-items: start; }
+  .hallazgo .texto { position: sticky; top: 120px; padding-top: 24px; }
+  .busqueda { font-size: clamp(22px, 2.3vw, 30px); font-weight: 700; color: var(--tinta); letter-spacing: -.015em; line-height: 1.25; margin: 6px 0 24px; }
+  .puntos { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--linea); }
+  .puntos li { display: grid; grid-template-columns: 120px 1fr; gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--linea); font-size: 15.5px; }
+  .puntos li b { font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--azul); padding-top: 3px; }
+
+  .navegador {
+    background: var(--blanco); border-radius: 14px; overflow: hidden;
+    box-shadow: 0 1px 0 rgba(18,22,42,.04), 0 30px 60px -28px rgba(46,18,12,.3);
+    border: 1px solid var(--linea);
+  }
+  .barra-nav { display: flex; align-items: center; gap: 7px; padding: 11px 14px; background: #f1f2f6; border-bottom: 1px solid var(--linea); }
+  .barra-nav i { width: 10px; height: 10px; border-radius: 50%; background: #d6d8e1; flex: none; }
+  .barra-nav span { margin-left: 10px; flex: 1; min-width: 0; font-size: 12px; color: var(--tenue); background: #fff; border-radius: 6px; padding: 4px 10px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .captura { position: relative; }
+  .captura img { width: 100%; height: auto; }
+  .marca-res {
+    position: absolute; left: 1.2%; right: 1.2%;
+    border: 3px solid var(--azul); border-radius: 10px;
+    background: rgba(138,90,42,.07);
+  }
+  .marca-res em {
+    position: absolute; right: -2px; top: -15px;
+    font-style: normal; font-size: 12px; font-weight: 700; letter-spacing: .02em;
+    background: var(--azul); color: #fff; padding: 4px 10px; border-radius: 999px;
+  }
+  .marca-res.otro { border: 2px dashed #9aa0b6; background: rgba(18,22,42,.03); }
+  .marca-res.otro em { background: var(--tenue); }
+  .pie-captura { font-size: 12.5px; color: var(--tenue); margin-top: 12px; }
+
+  /* Express y ficha */
+  .dos { display: grid; grid-template-columns: 1fr 1.6fr; gap: 24px; margin-top: 96px; }
+  .tarjeta { background: var(--blanco); border: 1px solid var(--linea); border-radius: 18px; padding: clamp(24px, 3vw, 38px); }
+  .tarjeta.azul { background: var(--marca); border-color: var(--marca); color: #e6dcd1; }
+  .tarjeta.azul h3, .tarjeta.azul strong { color: #fff; }
+  .tarjeta.azul .etiqueta { color: #d2a06a; }
+  .numeral { font-size: clamp(60px, 7vw, 96px); font-weight: 800; letter-spacing: -.045em; line-height: .95; color: #fff; margin: 22px 0; font-variant-numeric: tabular-nums; }
+  .numeral small { font-size: .38em; letter-spacing: -.01em; margin-left: 6px; }
+  .tarjeta h3 { font-size: 22px; font-weight: 700; margin: 8px 0 12px; letter-spacing: -.01em; }
+  .tarjeta p { font-size: 15px; }
+  .tarjeta p:last-child { margin-bottom: 0; }
+  .ficha { display: grid; grid-template-columns: 1.15fr 1fr; gap: 24px; margin-top: 14px; align-items: start; }
+  .ficha p { max-width: 58ch; }
+  .ficha .mini { border-radius: 10px; overflow: hidden; border: 1px solid var(--linea); }
+  .recomendacion { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: #7a5200; background: #fff1cc; padding: 4px 10px; border-radius: 999px; }
+
+  /* Qué cambia */
+  .cambia { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 6vw, 96px); align-items: start; }
+  .cita { font-size: clamp(19px, 1.9vw, 24px); font-weight: 500; line-height: 1.55; color: var(--tinta); letter-spacing: -.01em; margin-top: 28px; }
+  .cita strong { font-weight: 700; color: var(--azul); }
+  .compromisos { list-style: none; margin: 0; padding: 0; counter-reset: c; }
+  .compromisos li { display: grid; grid-template-columns: 56px 1fr; gap: 20px; padding: 28px 0; border-top: 1px solid var(--azul-linea); counter-increment: c; }
+  .compromisos li:last-child { border-bottom: 1px solid var(--azul-linea); }
+  .compromisos li::before { content: "0" counter(c); font-size: 15px; font-weight: 800; color: var(--azul); font-variant-numeric: tabular-nums; padding-top: 3px; }
+  .compromisos h3 { font-size: 20px; font-weight: 700; margin-bottom: 6px; letter-spacing: -.01em; }
+  .compromisos p { margin: 0; font-size: 15.5px; }
+
+  /* Plan */
+  .plan-cab { display: grid; grid-template-columns: 1.3fr 1fr; gap: 56px; align-items: end; }
+  .sugerencia { border-left: 3px solid var(--azul); padding: 4px 0 4px 20px; font-size: 16px; margin: 0; color: var(--tinta); }
+  .campanias { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 56px; }
+  .campania { background: var(--blanco); border: 1px solid var(--linea); border-radius: 18px; padding: clamp(26px, 3vw, 40px); transition: transform .5s var(--ease), box-shadow .5s var(--ease), opacity .9s var(--ease); }
+  .campania:hover { transform: translateY(-3px); box-shadow: 0 24px 48px -30px rgba(46,18,12,.35); }
+  .campania .num { font-size: 13px; font-weight: 800; color: var(--azul); font-variant-numeric: tabular-nums; }
+  .campania h3 { font-size: 26px; font-weight: 800; letter-spacing: -.02em; margin: 10px 0 14px; }
+  .campania > p { font-size: 15.5px; }
+  .kw { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0 22px; }
+  .kw span { background: var(--fondo); border: 1px solid var(--linea); border-radius: 999px; padding: 5px 13px; font-size: 13.5px; color: var(--tinta); }
+  .destino { display: flex; justify-content: space-between; gap: 12px; padding-top: 16px; border-top: 1px solid var(--linea); font-size: 14px; }
+  .destino b { color: var(--tinta); font-weight: 600; }
+  .despues { margin-top: 32px; max-width: 72ch; font-size: 15.5px; }
+
+  /* Inversión */
+  .inversion { display: grid; grid-template-columns: 1fr 1.15fr; gap: 24px; margin-top: 56px; align-items: stretch; }
+  .monto { font-size: clamp(42px, 4.6vw, 60px); font-weight: 800; letter-spacing: -.035em; line-height: 1; color: var(--tinta); margin: 18px 0 6px; font-variant-numeric: tabular-nums; }
+  .tarjeta.azul .monto { color: #fff; }
+  .monto-pie { font-size: 14px; font-weight: 600; color: var(--tenue); margin-bottom: 22px; }
+  .tarjeta.azul .monto-pie { color: #d2a06a; }
+  .incluye { list-style: none; margin: 0; padding: 0; }
+  .incluye li { display: grid; grid-template-columns: 22px 1fr; gap: 10px; padding: 10px 0; border-top: 1px solid rgba(255,255,255,.16); font-size: 15px; }
+  .incluye li::before { content: ""; width: 13px; height: 7px; border-left: 2px solid #fff; border-bottom: 2px solid #fff; transform: rotate(-45deg); margin-top: 7px; }
+  .letra { margin-top: 28px; max-width: 72ch; font-size: 15px; }
+
+  /* Calendario */
+  .linea-tiempo { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 60px; position: relative; }
+  .linea-tiempo::before { content: ""; position: absolute; left: 0; right: 0; top: 11px; height: 2px; background: var(--azul-linea); }
+  .linea-tiempo .relleno { position: absolute; left: 0; right: 0; top: 11px; height: 2px; background: var(--azul); transform-origin: 0 50%; transform: scaleX(0); transition: transform 1.6s var(--ease) .3s; }
+  .en-vista .relleno, .listo .relleno, html:not(.js) .relleno { transform: scaleX(1); }
+  .mes { position: relative; padding-right: 36px; }
+  .mes::before { content: ""; display: block; width: 24px; height: 24px; border-radius: 50%; background: var(--blanco); border: 2px solid var(--azul); margin-bottom: 24px; position: relative; z-index: 1; }
+  .mes b { font-size: 13px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: var(--azul); }
+  .mes h3 { font-size: 21px; font-weight: 700; margin: 6px 0 10px; letter-spacing: -.01em; }
+  .mes p { font-size: 15px; margin: 0 0 16px; }
+  .reunion { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; color: var(--azul); background: var(--azul-suave); padding: 6px 12px; border-radius: 999px; }
+  .reunion::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--azul); flex: none; }
+
+  /* Cierre */
+  .cierre { display: grid; grid-template-columns: 1.2fr 1fr; gap: clamp(32px, 6vw, 88px); align-items: start; }
+  .pasos { list-style: none; margin: 28px 0 0; padding: 0; counter-reset: p; }
+  .pasos li { display: grid; grid-template-columns: 44px 1fr; gap: 14px; padding: 18px 0; border-top: 1px solid var(--linea); counter-increment: p; font-size: 16px; }
+  .pasos li::before { content: counter(p); width: 32px; height: 32px; border-radius: 50%; background: var(--marca); color: #fff; font-weight: 700; font-size: 14px; display: flex; align-items: center; justify-content: center; }
+  .firma { background: var(--marca); color: #e6dcd1; border-radius: 18px; padding: 36px; }
+  .firma b { display: block; font-size: 24px; color: #fff; font-weight: 700; letter-spacing: -.01em; }
+  .firma p { font-size: 15px; margin: 12px 0 24px; }
+  .boton {
+    display: inline-flex; align-items: center; gap: 10px; text-decoration: none;
+    background: #fff; color: var(--marca); font-weight: 700; font-size: 15px;
+    padding: 13px 20px; border-radius: 999px; transition: transform .25s var(--ease);
+  }
+  .boton:hover { transform: translateY(-2px); }
+  .boton:active { transform: translateY(1px) scale(.98); }
+  .boton svg { width: 18px; height: 18px; fill: currentColor; flex: none; }
+
+  footer { padding-block: 28px calc(28px + env(safe-area-inset-bottom, 0px)); font-size: 12px; color: var(--tenue); text-align: center; border-top: 1px solid var(--linea); }
+
+  /* ---------- Entradas al bajar ---------- */
+  .js .entra { opacity: 0; transform: translateY(26px); transition: opacity .9s var(--ease), transform .9s var(--ease); transition-delay: calc(var(--i, 0) * 90ms); }
+  .js .entra.en-vista, .listo .entra { opacity: 1; transform: none; }
+  .js .campania.entra.en-vista:hover { transform: translateY(-3px); transition-delay: 0s; }
+  .js .marca-res { opacity: 0; transform: scale(1.05); transition: opacity .6s var(--ease) .6s, transform .6s var(--ease) .6s; }
+  .js .en-vista .marca-res, .listo .marca-res { opacity: 1; transform: none; }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .js .entra, .js .marca-res { opacity: 1; transform: none; transition: none; }
+    .linea-tiempo .relleno { transform: none; transition: none; }
+    .barra { transition: none; }
+  }
+
+  /* ---------- Tablet y celular ---------- */
+  @media screen and (max-width: 980px) {
+    .barra nav { display: none; }
+    .portada .wrap { grid-template-columns: 1fr; gap: 40px; min-height: 0; padding-block: 44px 48px; }
+    .logo-cliente { margin-bottom: 40px; width: 124px; }
+    .hallazgo, .dos, .cambia, .plan-cab, .campanias, .inversion, .cierre { grid-template-columns: 1fr; }
+    .hallazgo.invertido .texto { order: 0; }
+    .hallazgo { margin-top: 64px; }
+    .hallazgo .texto { position: static; padding-top: 0; }
+    .dos { margin-top: 64px; }
+    .ficha { grid-template-columns: 1fr; }
+    .linea-tiempo { grid-template-columns: 1fr; gap: 32px; padding-left: 44px; }
+    .linea-tiempo::before, .linea-tiempo .relleno { left: 11px; right: auto; top: 0; bottom: 0; width: 2px; height: auto; transform-origin: 50% 0; }
+    .linea-tiempo .relleno { transform: scaleY(0); }
+    .en-vista .relleno, .listo .relleno, html:not(.js) .relleno { transform: scaleY(1); }
+    .mes { padding-right: 0; }
+    .mes::before { position: absolute; left: -44px; top: 0; margin: 0; }
+  }
+  @media screen and (max-width: 560px) {
+    .puntos li { grid-template-columns: 1fr; gap: 2px; }
+    .destino { flex-direction: column; gap: 2px; }
+    .firma { padding: 26px; }
+    .marca-res em { font-size: 11px; top: -13px; padding: 3px 8px; }
+    .resumen-piloto div { grid-template-columns: 48px 1fr; }
+  }
+
+  /* ---------- Impresión ---------- */
+  @page { size: A4; margin: 14mm 14mm 15mm; }
+  @media print {
+    body { font-size: 10pt; line-height: 1.45; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .barra, footer { display: none !important; }
+    .revisar .verificar { background: none; padding: 0; }
+    .js .entra, .js .marca-res { opacity: 1 !important; transform: none !important; transition: none !important; }
+    .linea-tiempo .relleno { transform: none !important; }
+    .wrap { max-width: none; padding-inline: 0; }
+    .portada { border-radius: 8px; }
+    .portada .wrap { min-height: 0; padding: 10mm 11mm; gap: 10mm; grid-template-columns: 1.4fr 1fr; }
+    .logo-cliente { width: 80pt; margin-bottom: 12pt; }
+    .marca-ads svg { width: 22pt; height: 22pt; }
+    .portada h1 { font-size: 30pt; }
+    .portada .bajada { font-size: 11pt; margin-top: 10pt; }
+    .datos { margin-top: 12pt; padding-top: 8pt; font-size: 8.5pt; gap: 6pt 18pt; }
+    .resumen-piloto div { padding: 7pt 0; gap: 10pt; grid-template-columns: 30pt 1fr; }
+    .resumen-piloto b { font-size: 22pt; }
+    .resumen-piloto span { font-size: 9pt; }
+    section.bloque { padding-block: 10mm 0; }
+    section.gris { background: none; }
+    h2 { font-size: 19pt; }
+    .intro { font-size: 10.5pt; margin-top: 6pt; }
+    .hallazgo { margin-top: 8mm; gap: 8mm; break-inside: avoid; grid-template-columns: 1fr 1fr; }
+    .hallazgo.invertido .texto { order: 2; }
+    .hallazgo .texto { position: static; }
+    .busqueda { font-size: 14pt; margin-bottom: 8pt; }
+    .puntos li { font-size: 9.5pt; padding: 6pt 0; grid-template-columns: 70pt 1fr; }
+    .navegador { box-shadow: none; }
+    .dos { margin-top: 8mm; break-inside: avoid; }
+    .numeral { font-size: 40pt; margin: 6pt 0; }
+    .tarjeta { padding: 12pt 14pt; }
+    .tarjeta p, .compromisos p, .campania > p, .letra, .despues, .mes p, .pasos li { font-size: 9.5pt; }
+    .cambia, .campanias, .inversion, .linea-tiempo, .cierre { break-inside: avoid; }
+    .cita { font-size: 12pt; }
+    .compromisos li { padding: 9pt 0; }
+    .campanias, .inversion, .linea-tiempo { margin-top: 8mm; }
+    .campania h3 { font-size: 15pt; }
+    .monto { font-size: 26pt; }
+    .firma { padding: 14pt; }
+    #cambia, #plan, #inversion { break-before: page; padding-top: 0; }
+    .rotulo, h2, .intro, .plan-cab { break-after: avoid; }
+    .intro, .cita, .puntos li { break-inside: avoid; }
+    .hallazgo { grid-template-columns: 1.4fr 1fr; }
+    .hallazgo.invertido { grid-template-columns: 1fr 1.4fr; }
+    .dos { grid-template-columns: 1fr 1.6fr; }
+  }
+</style>
+</head>
+<body>
+<header class="barra" id="barra">
+  <div class="wrap">
+    <div class="quien">PLL Estudio Jurídico <span>· Propuesta de Google Ads</span></div>
+    <nav aria-label="Secciones">
+      <a href="#encontre">Lo que encontré</a>
+      <a href="#cambia">Qué cambia</a>
+      <a href="#plan">El plan</a>
+      <a href="#inversion">Inversión</a>
+      <a href="#calendario">Calendario</a>
+    </nav>
+  </div>
+  <div class="progreso" id="progreso"></div>
+</header>
+
+<section class="portada" id="inicio">
+  <div class="wrap">
+    <div>
+      <img class="logo-cliente" src="logo-pll.svg" width="150" height="100" alt="PLL Estudio Jurídico">
+      <div class="rotulo">Propuesta · Octubre 2026</div>
+      <div class="marca-ads"><svg viewBox="0 0 24 24" role="img" aria-label="Google Ads"><path d="M3.9998 22.9291C1.7908 22.9291 0 21.1383 0 18.9293s1.7908-3.9998 3.9998-3.9998 3.9998 1.7908 3.9998 3.9998-1.7908 3.9998-3.9998 3.9998zm19.4643-6.0004L15.4632 3.072C14.3586 1.1587 11.9121.5028 9.9988 1.6074S7.4295 5.1585 8.5341 7.0718l8.0009 13.8567c1.1046 1.9133 3.5511 2.5679 5.4644 1.4646 1.9134-1.1046 2.568-3.5511 1.4647-5.4644zM7.5137 4.8438L1.5645 15.1484A4.5 4.5 0 0 1 4 14.4297c2.5597-.0075 4.6248 2.1585 4.4941 4.7148l3.2168-5.5723-3.6094-6.25c-.4499-.7793-.6322-1.6394-.5878-2.4784z"/></svg></div>
+      <h1>Google Ads<br>para PLL Estudio&nbsp;Jurídico</h1>
+      <p class="bajada">Todos los días hay gente en Monte Grande y la zona sur buscando en Google un abogado por un despido o por un accidente. Esta propuesta busca que esas consultas lleguen a PLL y que cada una quede contada.</p>
+      <div class="datos">
+        <div><span>Para</span><b>Dr. Diego Fernando Pérez</b><br>PLL Estudio Jurídico</div>
+        <div><span>Preparado por</span><b>Lautaro Mendez</b><br>Desarrollo de estudiopll.com.ar</div>
+      </div>
+    </div>
+    <div class="resumen-piloto">
+      <div><b>3</b><span>meses de piloto, con una reunión de revisión por mes</span></div>
+      <div><b>2</b><span>campañas de búsqueda: laboral y accidentes de tránsito</span></div>
+      <div><b>0</b><span>penalidad si a los 3 meses deciden cortar</span></div>
+    </div>
+  </div>
+</section>
+
+<main>
+
+  <!-- ============ 1. LO QUE ENCONTRÉ ============ -->
+  <section class="bloque" id="encontre">
+    <div class="wrap">
+      <div class="rotulo entra"><span class="n">01</span> Lo que encontré</div>
+      <h2 class="entra">La gente ya busca abogado en Monte Grande. Falta que encuentre a PLL.</h2>
+      <p class="intro entra">Busqué en Google lo que buscaría alguien a quien acaban de despedir o que tuvo un choque. Cuando lo buscan por el nombre, PLL sale primero. Cuando buscan el servicio, en las 7 búsquedas que probé, PLL todavía no aparece en la primera página.</p>
+
+      <article class="hallazgo entra">
+        <div class="texto">
+          <div class="etiqueta">Búsqueda</div>
+          <div class="busqueda">“abogado laboral monte grande”</div>
+          <ul class="puntos">
+            <li><b>Hoy</b><span>Arriba de todo, el mapa muestra tres estudios de Monte Grande. Debajo aparece un cuarto estudio marcado como «Patrocinado»: paga para estar ahí. PLL no figura en la primera página.</span></li>
+            <li><b>Qué significa</b><span>Ya hay quien paga por esta búsqueda, y es uno solo: en una segunda carga, minutos después, el anuncio no salió. El lugar de arriba está libre buena parte del tiempo.</span></li>
+          </ul>
+        </div>
+        <figure>
+          <div class="navegador">
+            <div class="barra-nav"><i></i><i></i><i></i><span>google.com.ar · abogado laboral monte grande</span></div>
+            <div class="captura">
+              <img src="serp-laboral.jpg" width="1200" height="1714" alt="Resultados de Google para abogado laboral en Monte Grande: tres estudios en el mapa y un cuarto patrocinado" loading="lazy">
+              <div class="marca-res otro" style="top:35.6%;height:44%;right:34%"><em>Los 3 del mapa</em></div>
+              <div class="marca-res" style="top:80.6%;height:18.6%;right:34%"><em>Anuncio de otro estudio</em></div>
+            </div>
+          </div>
+          <figcaption class="pie-captura">Captura real de Google, 12 de octubre de 2026, desde CABA.</figcaption>
+        </figure>
+      </article>
+
+      <article class="hallazgo invertido entra">
+        <div class="texto">
+          <div class="etiqueta">Búsqueda</div>
+          <div class="busqueda">“abogado accidente de tránsito monte grande”</div>
+          <ul class="puntos">
+            <li><b>Hoy</b><span>El mapa muestra tres estudios y el primer resultado web es otro estudio de la zona con una página dedicada a accidentes de tránsito. No hay ningún anuncio. PLL no figura en la primera página.</span></li>
+            <li><b>Qué significa</b><span>Quien busca esto tuvo un choque hace poco y quiere hablar con un abogado ya. Nadie estaba pautando esta búsqueda: con un anuncio, PLL queda arriba de todo.</span></li>
+          </ul>
+        </div>
+        <figure>
+          <div class="navegador">
+            <div class="barra-nav"><i></i><i></i><i></i><span>google.com.ar · abogado accidente de tránsito monte grande</span></div>
+            <div class="captura">
+              <img src="serp-accidente.jpg" width="1200" height="1714" alt="Resultados de Google para abogado por accidente de tránsito en Monte Grande: tres estudios en el mapa y otro estudio como primer resultado web, sin anuncios" loading="lazy">
+              <div class="marca-res otro" style="top:35.6%;height:43%;right:44%"><em>Los 3 del mapa</em></div>
+              <div class="marca-res otro" style="top:88.6%;height:11%"><em>Primer resultado web</em></div>
+            </div>
+          </div>
+          <figcaption class="pie-captura">Captura real de Google, 12 de octubre de 2026, desde CABA.</figcaption>
+        </figure>
+      </article>
+
+      <div class="dos">
+        <div class="tarjeta azul entra">
+          <div class="etiqueta">Comparación con el mapa de Google</div>
+          <div class="numeral">30<small>años</small></div>
+          <h3>El dato que nadie más puede poner</h3>
+          <p>En la búsqueda laboral, los tres estudios del mapa muestran 15, 7 y 25 años de actividad. PLL tiene más de 30. Hoy ese dato está en el sitio; en los anuncios va en el título, antes del clic.</p>
+        </div>
+        <div class="tarjeta entra" style="--i:1">
+          <span class="recomendacion">Recomendación, fuera del servicio</span>
+          <div class="ficha">
+            <div>
+              <h3>La ficha de Google Maps</h3>
+              <p>PLL ya tiene ficha en Google, pero nadie la reclamó todavía: Google pregunta «¿Eres propietario de esta empresa?» y ofrece agregar el horario y el sitio web. Tiene 4 opiniones; los estudios del mapa tienen entre 28 y 212.</p>
+              <p>Reclamar la ficha, cargar horario y sitio, y pedirles una opinión a clientes conformes es trabajo de pocos días. Conviene hacerlo antes de arrancar: el que ve un anuncio muchas veces mira la ficha antes de escribir.</p>
+            </div>
+            <div class="mini"><img src="ficha-pll.jpg" width="800" height="1220" alt="Ficha de Google de PLL Estudio Jurídico, sin reclamar, sin horario ni sitio web cargados" loading="lazy"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 2. QUÉ CAMBIA ============ -->
+  <section class="bloque gris" id="cambia">
+    <div class="wrap cambia">
+      <div>
+        <div class="rotulo entra"><span class="n">02</span> Qué cambia</div>
+        <h2 class="entra">Primero la medición, después los anuncios.</h2>
+        <p class="cita entra">Hoy el sitio no tiene medición instalada, así que no hay forma de saber cuántas consultas trae ni desde qué búsqueda. Antes de prender un solo anuncio la instalo, para que cada peso de pauta se pueda seguir hasta un WhatsApp o una llamada. <strong>Me encargo yo personalmente de todo</strong>, de la configuración al reporte, y respondo directamente por los resultados.</p>
+      </div>
+      <ol class="compromisos">
+        <li class="entra"><div><h3>Consultas medidas</h3><p>Instalo Google Analytics 4 y Tag Manager en el sitio y registro cada clic a WhatsApp y cada llamada, al celular y al fijo. Lo pruebo antes de que salga el primer anuncio.</p></div></li>
+        <li class="entra" style="--i:1"><div><h3>Revisión mensual en persona</h3><p>Una vez por mes me reúno con ustedes o con quien atienda las consultas. Repasamos cuánto se invirtió, cuántas consultas llegaron, cuánto costó cada una y qué búsquedas las trajeron.</p></div></li>
+        <li class="entra" style="--i:2"><div><h3>Salida simple</h3><p>Si a los 3 meses los números no lo justifican, se corta sin penalidad. La cuenta de Google Ads queda a nombre de PLL.</p></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============ 3. EL PLAN ============ -->
+  <section class="bloque" id="plan">
+    <div class="wrap">
+      <div class="plan-cab">
+        <div>
+          <div class="rotulo entra"><span class="n">03</span> El plan</div>
+          <h2 class="entra" style="max-width:24ch">Dos campañas, donde la consulta es urgente y local.</h2>
+          <p class="intro entra">Mi sugerencia es arrancar por las dos áreas en las que la gente busca un abogado con apuro y cerca de su casa: laboral y accidentes de tránsito. Son también las que el estudio ya destaca en sus redes.</p>
+        </div>
+        <p class="sugerencia entra">Si prefieren empezar por otra área, con gusto lo charlamos y lo definimos juntos.</p>
+      </div>
+
+      <div class="campanias">
+        <article class="campania entra">
+          <div class="num">Campaña 01</div>
+          <h3>Laboral: despidos y ART</h3>
+          <p>Para quien acaba de quedarse sin trabajo, tuvo un accidente laboral o tiene un reclamo con la ART. Los anuncios se muestran solo a quien busca desde Monte Grande y los partidos vecinos.</p>
+          <div class="etiqueta">Búsquedas de ejemplo</div>
+          <div class="kw"><span>abogado laboral monte grande</span><span>abogado despidos</span><span>abogado ART</span><span>accidente laboral abogado</span><span>abogado laboral esteban echeverría</span></div>
+          <div class="destino"><span>Página de destino</span><b>Derecho laboral</b></div>
+        </article>
+        <article class="campania entra" style="--i:1">
+          <div class="num">Campaña 02</div>
+          <h3>Accidentes de tránsito y daños</h3>
+          <p>Para quien tuvo un choque o sufrió un daño y necesita reclamarle al responsable o a la aseguradora. Misma zona que la campaña laboral.</p>
+          <div class="etiqueta">Búsquedas de ejemplo</div>
+          <div class="kw"><span>abogado accidente de tránsito</span><span>abogado choque monte grande</span><span>abogado daños y perjuicios</span><span>reclamo al seguro por choque</span></div>
+          <div class="destino"><span>Página de destino</span><b>Daños, civil y comercial</b></div>
+        </article>
+      </div>
+
+      <p class="despues entra"><strong>Los anuncios siguen las mismas pautas que el sitio:</strong> sin promesas de resultado y sin ofrecer la consulta sin cargo. Los textos se los paso para que los aprueben antes de publicarlos.</p>
+      <p class="despues entra"><strong>Si el piloto funciona,</strong> el paso siguiente puede ser derecho deportivo. Ahí la búsqueda es de todo el país y los primeros resultados son estudios grandes de la Capital, así que conviene entrar con los números del piloto en la mano.</p>
+    </div>
+  </section>
+
+  <!-- ============ 4. INVERSIÓN ============ -->
+  <section class="bloque gris" id="inversion">
+    <div class="wrap">
+      <div class="rotulo entra"><span class="n">04</span> Inversión</div>
+      <h2 class="entra">La pauta va directo a Google. Yo cobro el servicio.</h2>
+
+      <div class="inversion">
+        <div class="tarjeta entra">
+          <div class="etiqueta">La pagan ustedes, a Google</div>
+          <div class="monto"><span class="verificar">$300.000</span></div>
+          <div class="monto-pie">por mes, sugerido</div>
+          <h3>Pauta publicitaria</h3>
+          <p>Creo una cuenta de Google Ads nueva, a nombre de PLL, en modalidad prepaga: sin tarjeta, se carga saldo por transferencia antes de que corran los anuncios. Ese dinero va directo a Google y no pasa por mí. Se puede subir, bajar o pausar en cualquier momento.</p>
+        </div>
+        <div class="tarjeta azul entra" style="--i:1">
+          <div class="etiqueta">Lo único que cobro</div>
+          <div class="monto">$250.000</div>
+          <div class="monto-pie">por mes, las dos campañas</div>
+          <h3>Gestión del piloto</h3>
+          <ul class="incluye">
+            <li>Creación de la cuenta y puesta a punto de la medición</li>
+            <li>Las dos campañas, con revisión semanal de las búsquedas que activan los anuncios</li>
+            <li><span>Ajustes en las páginas de cada área y, si hace falta, una página de aterrizaje propia para los anuncios, sin costo extra: <span class="verificar">va dentro del mantenimiento web</span></span></li>
+            <li>Reporte y reunión de revisión una vez por mes</li>
+          </ul>
+        </div>
+      </div>
+      <p class="letra entra">El servicio se abona por mes adelantado. Con una sola campaña sería de $150.000 por mes. Si a los 3 meses deciden seguir, sigue en las mismas condiciones. Si no, se corta sin penalidad.</p>
+    </div>
+  </section>
+
+  <!-- ============ 5. CALENDARIO ============ -->
+  <section class="bloque" id="calendario">
+    <div class="wrap">
+      <div class="rotulo entra"><span class="n">05</span> Calendario</div>
+      <h2 class="entra">Los 3 meses, paso a paso.</h2>
+
+      <div class="linea-tiempo entra">
+        <span class="relleno"></span>
+        <div class="mes">
+          <b>Mes 1</b>
+          <h3>Preparar y salir al aire</h3>
+          <p>En las primeras dos semanas creo la cuenta, instalo la medición y les paso los anuncios para que los aprueben. Después salen al aire, y cada semana reviso qué búsquedas los activan para descartar las que no sirven.</p>
+          <span class="reunion">Primera reunión de revisión</span>
+        </div>
+        <div class="mes">
+          <b>Mes 2</b>
+          <h3>Ajustar con datos</h3>
+          <p>Con los números del primer mes, paso más presupuesto a la campaña que consigue consultas más baratas.</p>
+          <span class="reunion">Segunda reunión de revisión</span>
+        </div>
+        <div class="mes">
+          <b>Mes 3</b>
+          <h3>Decidir</h3>
+          <p>Afinamos lo que funciona y, al cierre, miramos juntos los números de los tres meses para decidir si seguir, ajustar o cortar.</p>
+          <span class="reunion">Reunión de cierre</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CIERRE ============ -->
+  <section class="bloque gris" id="arrancar">
+    <div class="wrap cierre">
+      <div>
+        <div class="rotulo entra">Para arrancar</div>
+        <h2 class="entra">Tres pasos.</h2>
+        <ol class="pasos">
+          <li class="entra"><span><strong>Aprobar el piloto</strong> y el monto de pauta, y hacer la primera carga de saldo en Google.</span></li>
+          <li class="entra" style="--i:1"><span><strong>Definir quién participa de la revisión mensual</strong>: alguno de los socios o quien atienda las consultas.</span></li>
+          <li class="entra" style="--i:2"><span><strong>Que el WhatsApp del estudio se atienda rápido</strong>, para responder en el día las consultas que lleguen por los anuncios.</span></li>
+        </ol>
+      </div>
+      <div class="firma entra" style="--i:1">
+        <b>Lautaro Mendez</b>
+        <p>Cualquier duda sobre la propuesta, me escriben y lo vemos.</p>
+        <a class="boton" href="https://wa.me/5491130011145"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.030-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.040 1.016-1.040 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>WhatsApp 11 3001-1145</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>Propuesta preparada para PLL Estudio Jurídico · Octubre 2026 · Documento privado</footer>
+
+<script>
+  (function () {
+    window.__revela = true;
+    var barra = document.getElementById('barra');
+    var progreso = document.getElementById('progreso');
+    var portada = document.getElementById('inicio');
+    var links = [].slice.call(document.querySelectorAll('.barra nav a'));
+
+    // La barra aparece al dejar la portada; la línea de abajo marca cuánto se leyó
+    var pedido = false;
+    function alScroll() {
+      pedido = false;
+      var y = window.scrollY;
+      barra.classList.toggle('visible', y > portada.offsetHeight * 0.6);
+      var max = document.documentElement.scrollHeight - window.innerHeight;
+      progreso.style.transform = 'scaleX(' + (max > 0 ? Math.min(1, y / max) : 0) + ')';
+    }
+    window.addEventListener('scroll', function () { if (!pedido) { pedido = true; requestAnimationFrame(alScroll); } }, { passive: true });
+    alScroll();
+
+    if (!('IntersectionObserver' in window)) { document.documentElement.classList.add('listo'); return; }
+
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('en-vista'); io.unobserve(e.target); } });
+    }, { rootMargin: '0px 0px -10% 0px', threshold: 0.06 });
+    document.querySelectorAll('.entra').forEach(function (el) { io.observe(el); });
+
+    var activa = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        links.forEach(function (a) { a.classList.toggle('activo', a.getAttribute('href') === '#' + e.target.id); });
+      });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+    links.forEach(function (a) { var s = document.querySelector(a.getAttribute('href')); if (s) activa.observe(s); });
+  })();
+</script>
+</body>
+</html>
