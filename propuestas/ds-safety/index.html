@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Propuesta — Google Ads para D.S. Safety</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script>if (/[?&]revisar\b/.test(location.search)) document.documentElement.classList.add('revisar');</script>
+<style>
+  :root {
+    --azul: #011882;
+    --azul-suave: #eceffa;
+    --tinta: #141829;
+    --texto: #3b4055;
+    --tenue: #6b7086;
+    --linea: #dfe2ec;
+    --fondo: #f5f6fa;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: "Montserrat", "Segoe UI", Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--texto);
+    background: var(--fondo);
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3 { color: var(--tinta); line-height: 1.15; margin: 0; }
+  p { margin: 0 0 1em; }
+  strong { color: var(--tinta); font-weight: 600; }
+
+  /* Datos a confirmar antes de la reunión: resaltados sólo con ?revisar en la URL */
+  .revisar .verificar { background: #fff2a8; border-radius: 3px; padding: 0 .15em; }
+
+  .wrap { max-width: 880px; margin: 0 auto; padding-inline: clamp(18px, 5vw, 56px); }
+
+  /* ---------- Encabezado ---------- */
+  .cabecera { background: var(--azul); color: #fff; padding-block: 64px 48px; }
+  .cabecera .rotulo { color: #aab4e6; }
+  .cabecera h1 { color: #fff; font-size: clamp(36px, 6.4vw, 60px); font-weight: 800; letter-spacing: -.03em; line-height: 1.04; }
+  .cabecera .piloto { display: inline-block; margin-top: 18px; font-size: clamp(18px, 2.4vw, 22px); font-weight: 600; border-bottom: 3px solid #fff; padding-bottom: 3px; }
+  .cabecera .resumen { margin: 28px 0 36px; max-width: 36em; font-size: 18px; color: #dfe4fb; }
+  .datos { display: flex; flex-wrap: wrap; gap: 16px 48px; padding-top: 22px; border-top: 1px solid rgba(255,255,255,.25); font-size: 14px; line-height: 1.5; }
+  .datos span { display: block; font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: #aab4e6; margin-bottom: 2px; }
+  .datos b { font-weight: 600; }
+
+  /* ---------- Secciones ---------- */
+  main { background: #fff; }
+  section { padding-block: 56px; }
+  section + section { border-top: 1px solid var(--linea); }
+  .rotulo { font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--azul); margin-bottom: 12px; }
+  h2 { font-size: clamp(26px, 3.8vw, 36px); font-weight: 800; letter-spacing: -.02em; margin-bottom: 18px; }
+  .bajada { font-size: 17px; max-width: 42em; margin-bottom: 28px; }
+
+  /* Hallazgos */
+  .hallazgos { display: grid; gap: 14px; }
+  .hallazgo { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 28px; padding: 20px 22px; border: 1px solid var(--linea); border-radius: 10px; break-inside: avoid; }
+  .hallazgo .busqueda { grid-column: 1 / -1; font-size: 17px; font-weight: 700; color: var(--tinta); }
+  .hallazgo .busqueda small { display: block; font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--tenue); }
+  .hallazgo h3 { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--azul); margin-bottom: 4px; }
+  .hallazgo p { font-size: 15px; margin: 0; }
+
+  /* Compromisos */
+  .reconocimiento { font-size: 18px; font-weight: 500; color: var(--tinta); max-width: 40em; margin-bottom: 24px; }
+  .compromisos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .compromiso { background: var(--azul-suave); border-radius: 10px; padding: 20px; break-inside: avoid; }
+  .compromiso h3 { font-size: 17px; font-weight: 700; margin-bottom: 8px; }
+  .compromiso p { font-size: 14.5px; margin: 0; }
+
+  /* Campañas */
+  .campanias { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .campania { border: 1px solid var(--linea); border-radius: 10px; padding: 22px; break-inside: avoid; }
+  .campania .num { font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--azul); }
+  .campania h3 { font-size: 20px; font-weight: 700; margin: 4px 0 10px; }
+  .campania p { font-size: 15px; }
+  .campania dl { margin: 0; font-size: 14px; }
+  .campania dt { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--tenue); margin-top: 12px; }
+  .campania dd { margin: 4px 0 0; }
+  .kw { display: flex; flex-wrap: wrap; gap: 6px; }
+  .kw span { background: var(--fondo); border: 1px solid var(--linea); border-radius: 999px; padding: 1px 10px; font-size: 13px; color: var(--tinta); }
+  .despues { margin: 22px 0 0; font-size: 15px; }
+
+  /* Inversión */
+  .inversion { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 18px; }
+  .bloque { border-radius: 10px; padding: 24px; break-inside: avoid; }
+  .bloque.pauta { border: 1px solid var(--linea); }
+  .bloque.servicio { background: var(--azul); color: #dfe4fb; }
+  .bloque.servicio h3, .bloque.servicio strong { color: #fff; }
+  .bloque .quien { font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--tenue); }
+  .bloque.servicio .quien { color: #aab4e6; }
+  .bloque h3 { font-size: 20px; font-weight: 700; margin: 4px 0 12px; }
+  .monto { font-size: 34px; font-weight: 800; letter-spacing: -.02em; color: var(--tinta); line-height: 1.1; }
+  .bloque.servicio .monto { color: #fff; }
+  .monto small { font-size: 15px; font-weight: 600; letter-spacing: 0; }
+  .bloque p { font-size: 14.5px; margin: 12px 0 0; }
+  .bloque ul { margin: 12px 0 0; padding-left: 1.1em; font-size: 14.5px; }
+  .bloque li { margin-bottom: 4px; }
+  .letra { font-size: 14.5px; max-width: 46em; }
+
+  /* Cronograma */
+  .etapas { list-style: none; margin: 0 0 32px; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+  .etapa { border-top: 3px solid var(--azul); padding-top: 10px; break-inside: avoid; }
+  .etapa b { display: block; font-size: 13px; color: var(--azul); }
+  .etapa h3 { font-size: 15px; font-weight: 700; margin: 2px 0 4px; }
+  .etapa p { font-size: 13.5px; margin: 0; }
+
+  .pasos { margin: 0 0 32px; padding-left: 1.3em; }
+  .pasos li { margin-bottom: 8px; }
+  .pasos li::marker { color: var(--azul); font-weight: 700; }
+  .firma { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px 32px; padding: 22px 24px; background: var(--azul-suave); border-radius: 10px; break-inside: avoid; }
+  .firma b { display: block; font-size: 18px; color: var(--tinta); }
+  .firma span { font-size: 14px; }
+  .firma a { color: var(--azul); font-weight: 600; text-decoration: none; }
+  .firma a:hover { text-decoration: underline; }
+
+  footer { padding-block: 28px calc(28px + env(safe-area-inset-bottom, 0px)); font-size: 12px; color: var(--tenue); text-align: center; }
+
+  @media screen and (max-width: 760px) {
+    .cabecera { padding-block: 48px 36px; }
+    section { padding-block: 44px; }
+    .hallazgo, .campanias, .inversion { grid-template-columns: 1fr; }
+    .compromisos { grid-template-columns: 1fr; }
+    .etapas { grid-template-columns: 1fr 1fr; }
+  }
+
+  /* ---------- Impresión A4: 3 hojas ---------- */
+  @page { size: A4; margin: 14mm 15mm 15mm; }
+  @media print {
+    body { background: #fff; font-size: 10pt; line-height: 1.45; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .revisar .verificar { background: none; padding: 0; }
+    .wrap { max-width: none; padding-inline: 0; }
+    .cabecera { padding: 9mm 12mm 7mm; border-radius: 6px; }
+    .cabecera h1 { font-size: 30pt; }
+    .cabecera .piloto { font-size: 14pt; margin-top: 8pt; }
+    .cabecera .resumen { font-size: 11pt; margin: 9pt 0 10pt; }
+    .datos { font-size: 9pt; padding-top: 10pt; }
+    section { padding-block: 14pt 0; }
+    section + section { border-top: none; }
+    .rotulo { font-size: 7.5pt; margin-bottom: 4pt; }
+    h2 { font-size: 17pt; margin-bottom: 8pt; }
+    .bajada, .reconocimiento { font-size: 10.5pt; margin-bottom: 10pt; }
+    .hallazgos { gap: 6pt; }
+    .hallazgo { padding: 9pt 12pt; gap: 3pt 16pt; }
+    .hallazgo .busqueda { font-size: 11pt; }
+    .hallazgo p, .compromiso p, .campania p, .bloque p, .bloque ul, .letra { font-size: 9pt; }
+    .hallazgo h3, .campania dt, .bloque .quien { font-size: 7pt; }
+    .compromisos { gap: 8pt; }
+    .compromiso { padding: 10pt 12pt; }
+    .compromiso h3 { font-size: 11pt; margin-bottom: 4pt; }
+    main section { break-inside: avoid; }
+    main section:first-child { break-inside: auto; }
+    .campanias, .inversion { gap: 10pt; }
+    .campania, .bloque { padding: 12pt 14pt; }
+    .campania h3, .bloque h3 { font-size: 13pt; margin: 2pt 0 6pt; }
+    .campania dl { font-size: 8.5pt; }
+    .campania dt { margin-top: 6pt; }
+    .kw span { font-size: 8pt; padding: 0 6pt; }
+    .despues { margin-top: 10pt; font-size: 9.5pt; }
+    .monto { font-size: 22pt; }
+    .monto small { font-size: 10pt; }
+    .etapas { gap: 10pt; margin-bottom: 14pt; }
+    .etapa b { font-size: 8.5pt; }
+    .etapa h3 { font-size: 10pt; }
+    .etapa p { font-size: 8.5pt; }
+    .pasos { margin-bottom: 14pt; font-size: 10pt; }
+    .pasos li { margin-bottom: 3pt; }
+    .firma { padding: 12pt 14pt; }
+    .firma b { font-size: 13pt; }
+    .firma span { font-size: 9.5pt; }
+    footer { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<header class="cabecera">
+  <div class="wrap">
+    <div class="rotulo">Propuesta · D.S. Safety S.A.</div>
+    <h1>Google Ads para D.S.&nbsp;Safety</h1>
+    <div class="piloto">Piloto de 90 días</div>
+    <p class="resumen">Todos los días hay responsables de seguridad industrial buscando en Google calibraciones y alquiler de equipos Dräger. Esta propuesta busca que esas consultas lleguen a D.S. Safety y que cada una quede contada.</p>
+    <div class="datos">
+      <div><span>Para</span><b>Natacha Braun Acosta</b><br>Gerencia Financiera</div>
+      <div><span>Preparado por</span><b>Lautaro Mendez</b><br>Mantenimiento web de dragersolutions.com.ar</div>
+      <div><span>Fecha</span><b>Octubre 2026</b></div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <section>
+    <div class="wrap">
+      <div class="rotulo">1 · Lo que vimos</div>
+      <h2>Las consultas ya existen. Falta estar donde aparecen.</h2>
+      <p class="bajada">Revisé en octubre qué encuentra en Google un jefe de seguridad o de mantenimiento cuando necesita un servicio. D.S. Safety tiene buena posición y una ventaja que nadie más publica.</p>
+
+      <div class="hallazgos">
+        <article class="hallazgo">
+          <div class="busqueda"><small>Búsqueda</small>“calibración detectores de gas buenos aires”</div>
+          <div><h3>Hoy</h3><p>D.S. Safety está <span class="verificar">#2 en los resultados orgánicos, fuera del mapa de empresas locales</span>. Arriba, con anuncio pago, aparece <span class="verificar">Dräger Argentina S.A.</span></p></div>
+          <div><h3>Qué significa</h3><p>Quien busca calibración ya tiene el equipo y necesita resolver. Con un anuncio, D.S. Safety aparece primero, al lado del fabricante.</p></div>
+        </article>
+        <!-- CAPTURA (opcional): SERP calibración -->
+
+        <article class="hallazgo">
+          <div class="busqueda"><small>Búsqueda</small>“alquiler equipos autónomos de respiración”</div>
+          <div><h3>Hoy</h3><p>D.S. Safety está <span class="verificar">#3, debajo de resultados poco relevantes (MercadoLibre y una empresa de oxigenoterapia)</span>.</p></div>
+          <div><h3>Qué significa</h3><p>Casi no hay competencia para este cliente, que necesita los equipos para una parada o un trabajo puntual. Es un lugar fácil de ganar.</p></div>
+        </article>
+
+        <article class="hallazgo">
+          <div class="busqueda"><small>Comparación con el resto del rubro</small>Plazo de servicio técnico</div>
+          <div><h3>Hoy</h3><p>D.S. Safety es <span class="verificar">el único que publica un plazo en horas: Express 24-48 h</span>. En el sitio aparece dentro de un párrafo.</p></div>
+          <div><h3>Qué significa</h3><p>Es el mejor argumento para un anuncio: al que tiene un equipo parado le contesta cuándo vuelve antes del clic.</p></div>
+        </article>
+
+        <article class="hallazgo">
+          <div class="busqueda"><small>Ficha de Google de la empresa</small>D.S. Safety en Google Maps</div>
+          <div><h3>Hoy</h3><p>La ficha <span class="verificar">no tiene teléfono cargado</span>. Tiene <span class="verificar">19 reseñas con 4,4★, ninguna respondida</span>.</p></div>
+          <div><h3>Qué significa</h3><p>La calificación es buena. Con el teléfono cargado y las reseñas respondidas, la ficha está mejor parada para aparecer en el mapa. Lo resuelvo en la primera semana.</p></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="rotulo">2 · Por qué esta vez es distinto</div>
+      <h2>Primero la medición, después los anuncios.</h2>
+      <p class="reconocimiento">Con la publicidad anterior no había forma de ver qué consultas generaba, así que era imposible saber si convenía seguir. El piloto empieza por resolver eso.</p>
+      <div class="compromisos">
+        <div class="compromiso">
+          <h3>Consultas medidas</h3>
+          <p>Instalo Google Analytics 4 y Tag Manager en el sitio y registro cada clic a WhatsApp, cada llamada y cada formulario. Lo pruebo antes de prender un solo anuncio.</p>
+        </div>
+        <div class="compromiso">
+          <h3>Reporte de una página</h3>
+          <p>Cada mes: cuánto se invirtió, cuántas consultas llegaron, cuánto costó cada una y qué búsquedas las trajeron.</p>
+        </div>
+        <div class="compromiso">
+          <h3>Salida simple</h3>
+          <p>Si a los 90 días los números no lo justifican, se corta sin penalidad. La cuenta de Google Ads queda a nombre de D.S. Safety.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="rotulo">3 · El plan</div>
+      <h2>Dos campañas, donde la consulta vale más.</h2>
+      <p class="bajada">Arranco por las dos búsquedas con más chances de traer clientes al menor costo: servicio técnico, que se repite con cada calibración, y alquiler, donde casi no hay competencia.</p>
+
+      <div class="campanias">
+        <article class="campania">
+          <div class="num">Campaña 1</div>
+          <h3>Servicio técnico y calibración</h3>
+          <p>Para quien ya tiene equipos Dräger y necesita calibrarlos o repararlos. El Express 24-48 h va en el título del anuncio.</p>
+          <dl>
+            <dt>Ejemplos de búsquedas</dt>
+            <dd class="kw"><span>calibración detectores de gas</span><span>service Dräger X-am</span><span>calibración detector multigas</span><span>mantenimiento equipo de respiración</span></dd>
+            <dt>Página de destino</dt>
+            <dd>Servicio técnico</dd>
+          </dl>
+        </article>
+        <article class="campania">
+          <div class="num">Campaña 2</div>
+          <h3>Alquiler de equipos</h3>
+          <p>Para contratistas y plantas que necesitan equipos por una parada o un trabajo puntual y no van a aprobar una compra.</p>
+          <dl>
+            <dt>Ejemplos de búsquedas</dt>
+            <dd class="kw"><span>alquiler equipos autónomos de respiración</span><span>alquiler detector de gases</span><span>alquiler equipos parada de planta</span></dd>
+            <dt>Página de destino</dt>
+            <dd>Alquiler de equipos</dd>
+          </dl>
+        </article>
+      </div>
+
+      <p class="despues"><strong>Si el piloto funciona,</strong> el paso siguiente es sumar el Alcotest 7510 AR homologado por INTI, donde D.S. Safety <span class="verificar">ya está #2 en Google</span>. El contenido de Instagram sigue como está: quien lo ve y después busca en Google encuentra a D.S. Safety primero.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="rotulo">4 · Inversión</div>
+      <h2>La pauta va directo a Google. Yo cobro el servicio.</h2>
+
+      <div class="inversion">
+        <div class="bloque pauta">
+          <div class="quien">La pagan ustedes, a Google</div>
+          <h3>Pauta publicitaria</h3>
+          <div class="monto"><span class="verificar">$300.000</span> <small>por mes, sugerido</small></div>
+          <p>Se paga por transferencia directamente a Google, desde la cuenta de D.S. Safety. Ese dinero no pasa por mí. Se puede subir, bajar o pausar en cualquier momento.</p>
+        </div>
+        <div class="bloque servicio">
+          <div class="quien">Lo único que cobro</div>
+          <h3>Gestión del piloto</h3>
+          <div class="monto">$200.000 <small>por mes, durante los 90 días</small></div>
+          <ul>
+            <li>Puesta a punto de la medición y de la ficha de Google</li>
+            <li>Las dos campañas, con revisión semanal de búsquedas</li>
+            <li>Ajustes en las páginas de destino del sitio</li>
+            <li>Reporte mensual</li>
+          </ul>
+        </div>
+      </div>
+      <p class="letra">El servicio para dos campañas es de $250.000 por mes; durante el piloto queda en $200.000. Si a los 90 días deciden seguir, pasa a la tarifa normal. Si no, se corta sin penalidad.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="rotulo">5 · Los 90 días</div>
+      <h2>Cómo sigue.</h2>
+      <ol class="etapas">
+        <li class="etapa"><b>Días 1 a 14</b><h3>Puesta a punto</h3><p>Medición probada, ficha de Google y anuncios aprobados por ustedes.</p></li>
+        <li class="etapa"><b>Días 15 a 45</b><h3>Al aire</h3><p>Revisión semanal de búsquedas. Primer reporte.</p></li>
+        <li class="etapa"><b>Días 46 a 75</b><h3>Ajuste</h3><p>Más presupuesto a la campaña con menor costo por consulta. Segundo reporte.</p></li>
+        <li class="etapa"><b>Días 76 a 90</b><h3>Decisión</h3><p>Con los números del trimestre: seguir, ajustar o cortar.</p></li>
+      </ol>
+
+      <div class="rotulo">Para arrancar</div>
+      <ol class="pasos">
+        <li><strong>Aprobar el piloto</strong> y el monto de pauta.</li>
+        <li><strong>Darme acceso</strong> a la ficha de Google de la empresa y a la cuenta de Google Ads, si todavía existe. Si no, la creo a nombre de D.S. Safety.</li>
+        <li><strong>Un teléfono o WhatsApp que se atienda</strong>, y alguien de ventas que una vez por mes marque qué consultas avanzaron.</li>
+      </ol>
+
+      <div class="firma">
+        <div><b>Lautaro Mendez</b><span>Octubre 2026</span></div>
+        <div><span><a href="https://wa.me/5491130011145">WhatsApp 11 3001-1145</a></span></div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>Propuesta preparada para D.S. Safety S.A. · Documento privado</footer>
+
+</body>
+</html>
