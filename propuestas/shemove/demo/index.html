@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>SheMove Club Academy — boceto de diseño</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400..800;1,500..700&display=swap" />
+  <script>if (/[?&]captura/.test(location.search)) document.documentElement.classList.add('captura');</script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* Paleta del sitio actual (--global-palette1/2/3) */
+    :root {
+      --bordo: #6E343E;
+      --bordo-hondo: #3A161E;
+      --bordo-noche: #2A0F15;
+      --amarillo: #FAD280;
+      --arena: #CFB395;
+      --crema: #FBF3E6;
+      --papel: #F4EBDD;
+      --tinta: #2B1217;
+      --tinta-baja: rgb(43 18 23 / .34);
+      --crema-media: rgb(251 243 230 / .74);
+      --font: 'Montserrat', system-ui, -apple-system, 'Segoe UI', sans-serif;
+      --grano: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+
+    html { scroll-behavior: smooth; }
+    body { background: var(--bordo-noche); color: var(--crema); font-family: var(--font); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    img { display: block; max-width: 100%; height: auto; }
+    a { color: inherit; }
+
+    .ico { width: 18px; height: 18px; flex: none; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+    /* ── AVISO DE BOCETO ── */
+    .aviso { background: var(--amarillo); color: var(--tinta); text-align: center; font-size: 12px; font-weight: 600; padding: 7px 16px; letter-spacing: .01em; }
+    .captura .aviso { display: none; }
+
+    /* ── BOTONES ── */
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 52px; padding: 0 28px; border-radius: 999px; font-size: 15px; font-weight: 700; text-decoration: none; letter-spacing: -.005em; transition: transform .2s ease, background .2s ease, color .2s ease; }
+    .btn:active { transform: scale(.97); }
+    .btn-amarillo { background: var(--amarillo); color: var(--tinta); box-shadow: 0 10px 30px -10px rgb(250 210 128 / .55); }
+    .btn-amarillo:hover { background: #FFE0A0; }
+    .btn-linea { border: 1.5px solid rgb(251 243 230 / .45); color: var(--crema); }
+    .btn-linea:hover { background: rgb(251 243 230 / .08); }
+    .btn-bordo { background: var(--bordo); color: var(--crema); box-shadow: 0 12px 30px -12px rgb(110 52 62 / .7); }
+    .btn-bordo:hover { background: #823E4A; }
+    .btn-linea-oscura { border: 1.5px solid rgb(43 18 23 / .25); color: var(--tinta); }
+    .btn-linea-oscura:hover { background: rgb(43 18 23 / .05); }
+
+    /* Las tres rayas de velocidad del logo, como firma */
+    .rayas { display: inline-flex; flex-direction: column; gap: 3px; width: 26px; flex: none; }
+    .rayas i { display: block; height: 2px; border-radius: 2px; background: var(--amarillo); }
+    .rayas i:nth-child(1) { width: 60%; margin-left: 40%; }
+    .rayas i:nth-child(2) { width: 100%; }
+    .rayas i:nth-child(3) { width: 75%; margin-left: 25%; }
+
+    .kicker { display: inline-flex; align-items: center; gap: 12px; font-size: 12px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--amarillo); }
+
+    /* ── HERO ── */
+    .hero { position: relative; min-height: 100svh; display: flex; flex-direction: column; overflow: hidden; isolation: isolate;
+      background: radial-gradient(120% 90% at 0% 100%, #4B1B25 0%, var(--bordo-hondo) 45%, var(--bordo-noche) 100%); }
+    .hero::after { content: ''; position: absolute; inset: 0; background-image: var(--grano); opacity: .22; mix-blend-mode: overlay; pointer-events: none; z-index: 3; }
+
+    .hero-foto { position: absolute; top: 0; right: 0; bottom: 0; width: 70%; z-index: -1; overflow: hidden;
+      -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 42%); mask-image: linear-gradient(90deg, transparent 0%, #000 42%); }
+    .hero-foto img { width: 100%; height: 100%; object-fit: cover; object-position: 38% 26%; animation: acercar 2.4s cubic-bezier(.2,.7,.2,1) both; }
+    .hero-foto::after { content: ''; position: absolute; inset: 0;
+      background:
+        linear-gradient(90deg, rgb(58 22 30 / .55) 0%, rgb(58 22 30 / 0) 60%),
+        linear-gradient(0deg, var(--bordo-noche) 0%, rgb(42 15 21 / 0) 34%),
+        linear-gradient(180deg, rgb(42 15 21 / .55) 0%, rgb(42 15 21 / 0) 22%); }
+
+    .nav { position: relative; z-index: 4; display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 22px 56px; }
+    .nav-logo img { height: 76px; width: auto; }
+    .nav-links { display: flex; align-items: center; gap: 34px; font-size: 14px; font-weight: 600; }
+    .nav-links a:not(.btn) { text-decoration: none; color: var(--crema-media); transition: color .2s; }
+    .nav-links a:not(.btn):hover { color: var(--crema); }
+    .nav .btn { min-height: 44px; padding: 0 22px; font-size: 14px; }
+
+    .hero-cuerpo { position: relative; z-index: 4; flex: 1; display: flex; flex-direction: column; justify-content: flex-end; padding: 0 56px 64px; max-width: 980px; }
+    .hero h1 { margin: 26px 0 26px; font-size: clamp(58px, 7.6vw, 118px); font-weight: 800; line-height: .9; letter-spacing: -.045em; color: var(--crema); }
+    .hero h1 span { display: block; animation: subir 1s cubic-bezier(.2,.7,.2,1) both; }
+    .hero h1 span:nth-child(2) { animation-delay: .08s; }
+    .hero h1 span:nth-child(3) { animation-delay: .16s; color: var(--amarillo); }
+    .hero h1 span:nth-child(4) { animation-delay: .24s; color: var(--amarillo); }
+    .hero-sub { max-width: 440px; font-size: 18px; line-height: 1.55; color: var(--crema-media); font-weight: 500; animation: subir 1s .3s cubic-bezier(.2,.7,.2,1) both; }
+    .hero-ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; animation: subir 1s .38s cubic-bezier(.2,.7,.2,1) both; }
+    .hero-pie { display: flex; flex-wrap: wrap; gap: 8px 28px; margin-top: 40px; font-size: 13px; font-weight: 600; color: rgb(251 243 230 / .6); animation: subir 1s .46s cubic-bezier(.2,.7,.2,1) both; }
+    .hero-pie span { display: inline-flex; align-items: center; gap: 8px; }
+    .hero-pie .ico { width: 15px; height: 15px; color: var(--amarillo); }
+
+    .hero-firma { position: absolute; right: 56px; bottom: 64px; z-index: 4; max-width: 300px; padding: 14px 18px; border-radius: 14px; background: rgb(42 15 21 / .55); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid rgb(251 243 230 / .12); font-size: 13px; line-height: 1.45; color: var(--crema-media); animation: subir 1s .6s cubic-bezier(.2,.7,.2,1) both; }
+    .hero-firma b { display: block; font-size: 14px; color: var(--crema); font-weight: 700; }
+
+    @keyframes subir { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: none; } }
+    @keyframes acercar { from { transform: scale(1.08); } to { transform: none; } }
+
+    /* ── QUÉ ES ── */
+    .que { position: relative; overflow: hidden; background: var(--crema); color: var(--tinta); padding: 140px 56px 120px; }
+    .que-marca { position: absolute; right: -170px; top: -60px; width: 640px; opacity: .2; pointer-events: none; filter: saturate(1.1); }
+    .que .kicker { color: var(--bordo); }
+    .que .rayas i { background: var(--bordo); }
+    .que-frase { position: relative; max-width: 1080px; margin: 28px 0 90px; font-size: clamp(34px, 4.4vw, 64px); font-weight: 700; line-height: 1.08; letter-spacing: -.035em; color: var(--tinta-baja); }
+    .que-frase em { font-style: normal; color: var(--bordo); }
+    .que-frase strong { color: var(--tinta); font-weight: 700; }
+
+    .pilares { position: relative; list-style: none; max-width: 1180px; margin-left: auto; }
+    .pilar { display: grid; grid-template-columns: 120px 1fr 1.1fr; gap: 32px; align-items: baseline; padding: 34px 0; border-top: 1px solid rgb(43 18 23 / .12); }
+    .pilar:last-child { border-bottom: 1px solid rgb(43 18 23 / .12); }
+    .pilar-num { font-size: 15px; font-weight: 700; color: var(--bordo); letter-spacing: .06em; }
+    .pilar h3 { font-size: clamp(30px, 3.2vw, 46px); font-weight: 800; letter-spacing: -.04em; line-height: 1; }
+    .pilar p { font-size: 18px; line-height: 1.5; color: rgb(43 18 23 / .72); font-weight: 500; max-width: 440px; }
+
+    /* ── PLANES ── */
+    .planes { position: relative; overflow: hidden; isolation: isolate; padding: 140px 56px 130px;
+      background: radial-gradient(70% 60% at 85% 0%, rgb(250 210 128 / .16) 0%, rgb(250 210 128 / 0) 60%), radial-gradient(90% 80% at 0% 100%, #4E1D27 0%, var(--bordo-noche) 70%); }
+    .planes::after { content: ''; position: absolute; inset: 0; background-image: var(--grano); opacity: .2; mix-blend-mode: overlay; pointer-events: none; z-index: -1; }
+    .planes-cab { display: flex; justify-content: space-between; align-items: flex-end; gap: 40px; flex-wrap: wrap; margin-bottom: 64px; }
+    .planes h2 { margin-top: 24px; font-size: clamp(48px, 6vw, 92px); font-weight: 800; line-height: .92; letter-spacing: -.045em; }
+    .planes h2 span { color: var(--amarillo); }
+    .planes-cab p { max-width: 380px; font-size: 17px; color: var(--crema-media); font-weight: 500; }
+
+    .planes-grilla { display: grid; grid-template-columns: 1fr 1fr 1.12fr; gap: 18px; align-items: stretch; }
+    .plan { position: relative; display: flex; flex-direction: column; padding: 34px 32px 32px; border-radius: 22px; background: rgb(251 243 230 / .05); border: 1px solid rgb(251 243 230 / .12); }
+    .plan-nombre { font-size: 13px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--crema-media); }
+    .plan-precio { margin-top: 18px; font-size: clamp(44px, 4.2vw, 62px); font-weight: 800; letter-spacing: -.045em; line-height: 1; }
+    .plan-periodo { margin-top: 8px; font-size: 15px; font-weight: 600; color: var(--crema-media); }
+    .plan-ahorro { margin-top: 18px; display: inline-flex; align-self: flex-start; padding: 6px 12px; border-radius: 999px; font-size: 13px; font-weight: 700; background: rgb(250 210 128 / .14); color: var(--amarillo); }
+    .plan-lista { list-style: none; margin: 28px 0 32px; display: flex; flex-direction: column; gap: 12px; font-size: 15px; font-weight: 500; }
+    .plan-lista li { display: flex; gap: 12px; align-items: center; }
+    .plan-lista .ico { color: var(--amarillo); }
+    .plan .btn { margin-top: auto; width: 100%; }
+
+    .plan-destacado { background: var(--amarillo); color: var(--tinta); border: none; transform: translateY(-14px); box-shadow: 0 40px 80px -30px rgb(250 210 128 / .45); }
+    .plan-destacado .plan-nombre, .plan-destacado .plan-periodo { color: rgb(43 18 23 / .62); }
+    .plan-destacado .plan-ahorro { background: var(--bordo); color: var(--crema); }
+    .plan-destacado .plan-lista .ico { color: var(--bordo); }
+    .plan-sello { position: absolute; top: 30px; right: 28px; font-size: 12px; font-weight: 800; letter-spacing: .04em; padding: 6px 12px; border-radius: 999px; background: var(--tinta); color: var(--amarillo); }
+
+    .planes-nota { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px 28px; margin-top: 44px; font-size: 14px; font-weight: 600; color: rgb(251 243 230 / .6); }
+    .planes-nota span { display: inline-flex; align-items: center; gap: 8px; }
+    .planes-nota .ico { width: 16px; height: 16px; color: var(--amarillo); }
+
+    /* ── LIBRO ── */
+    .libro { position: relative; overflow: hidden; background: var(--papel); color: var(--tinta); padding: 120px 56px 130px; }
+    .libro-grilla { display: grid; grid-template-columns: .9fr 1.1fr; gap: 80px; align-items: center; max-width: 1240px; margin: 0 auto; }
+    .libro-tapa { position: relative; justify-self: center; width: min(440px, 100%); }
+    .libro-tapa::before { content: ''; position: absolute; inset: 8% -12% -6% 10%; background: var(--bordo); border-radius: 28px; transform: rotate(6deg); }
+    .libro-tapa img { position: relative; border-radius: 6px 14px 14px 6px; transform: rotate(-4deg); box-shadow: 0 50px 80px -30px rgb(42 15 21 / .65), 0 18px 30px -12px rgb(42 15 21 / .4); }
+    .libro .kicker { color: var(--bordo); }
+    .libro .rayas i { background: var(--bordo); }
+    .libro h2 { margin: 24px 0 14px; font-size: clamp(42px, 5vw, 76px); font-weight: 800; line-height: .94; letter-spacing: -.045em; }
+    .libro h2 span { color: var(--bordo); }
+    .libro-autora { font-size: 15px; font-weight: 700; color: rgb(43 18 23 / .6); }
+    .libro-texto { margin: 28px 0 36px; max-width: 520px; font-size: 19px; line-height: 1.55; font-weight: 500; color: rgb(43 18 23 / .78); }
+    .libro-ctas { display: flex; flex-wrap: wrap; gap: 12px; }
+
+    /* ── ALIANZAS + PIE ── */
+    .alianzas { background: var(--crema); color: var(--tinta); padding: 80px 56px; display: flex; align-items: center; justify-content: center; gap: 72px; flex-wrap: wrap; }
+    .alianzas p { font-size: 13px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: rgb(43 18 23 / .5); }
+    .alianzas img.at { height: 96px; width: auto; }
+    .alianzas img.amev { height: 64px; width: auto; }
+
+    .pie { background: var(--bordo-noche); padding: 56px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; font-size: 14px; color: rgb(251 243 230 / .6); }
+    .pie img { height: 64px; width: auto; }
+
+    /* ── TABLET ── */
+    @media (max-width: 1080px) {
+      .nav-links a:not(.btn) { display: none; }
+      .planes-grilla { grid-template-columns: 1fr; max-width: 520px; margin: 0 auto; }
+      .plan-destacado { transform: none; order: -1; }
+      .libro-grilla { grid-template-columns: 1fr; gap: 64px; }
+      .pilar { grid-template-columns: 60px 1fr; }
+      .pilar p { grid-column: 2; }
+    }
+
+    /* ── CELULAR ── */
+    @media (max-width: 640px) {
+      .nav { padding: 14px 20px; }
+      .nav-logo img { height: 56px; }
+      .nav .btn { min-height: 40px; padding: 0 16px; font-size: 13px; }
+      .hero { min-height: auto; }
+      .hero-foto { position: relative; width: 100%; height: 58svh; min-height: 400px; margin-top: -84px; -webkit-mask-image: linear-gradient(180deg, #000 55%, transparent 100%); mask-image: linear-gradient(180deg, #000 55%, transparent 100%); }
+      .hero-foto img { object-position: 46% 22%; }
+      .hero-foto::after { background: linear-gradient(180deg, rgb(42 15 21 / .65) 0%, rgb(42 15 21 / 0) 26%); }
+      .hero-cuerpo { margin-top: -120px; padding: 0 20px 48px; }
+      .hero h1 { font-size: 50px; margin: 18px 0 20px; }
+      .hero-sub { font-size: 16px; }
+      .hero-ctas { flex-direction: column; margin-top: 26px; }
+      .hero-ctas .btn { width: 100%; }
+      .hero-pie { margin-top: 26px; }
+      .hero-firma { display: none; }
+      .que, .planes, .libro { padding: 84px 20px; }
+      .que-marca { width: 360px; right: -140px; top: auto; bottom: -90px; opacity: .22; }
+      .que-frase { margin-bottom: 52px; }
+      .pilar { grid-template-columns: 1fr; gap: 10px; padding: 26px 0; }
+      .pilar p { grid-column: auto; font-size: 16px; }
+      .planes-cab { margin-bottom: 40px; }
+      .plan { padding: 28px 22px 24px; }
+      .libro-texto { font-size: 17px; }
+      .libro-ctas .btn { flex: 1 1 100%; }
+      .alianzas { padding: 56px 20px; gap: 40px; }
+      .pie { padding: 40px 20px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+  <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><rect width="18" height="11" x="3" y="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></symbol>
+  <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></symbol>
+</svg>
+
+<div class="aviso">Boceto de diseño para SheMove Club Academy · Propuesta de Lautaro Méndez</div>
+
+<!-- HERO -->
+<header class="hero" id="inicio">
+  <nav class="nav">
+    <a class="nav-logo" href="#inicio"><img src="logo-nav.png" width="300" height="264" alt="SheMove" /></a>
+    <div class="nav-links">
+      <a href="#que-es">Qué es</a>
+      <a href="#planes">Planes</a>
+      <a href="#libro">El libro</a>
+      <a class="btn btn-amarillo" href="#planes">Sumarme</a>
+    </div>
+  </nav>
+
+  <div class="hero-foto"><img src="carito.jpg" width="1500" height="1252" alt="María Carolina Roldan junto a su auto, hablando por teléfono" fetchpriority="high" /></div>
+
+  <div class="hero-cuerpo">
+    <span class="kicker"><span class="rayas"><i></i><i></i><i></i></span>SheMove Club Academy</span>
+    <h1><span>Ella se mueve.</span><span>Ella conduce.</span><span>Ella conquista</span><span>su libertad.</span></h1>
+    <p class="hero-sub">La primera academia hispana que empodera a mujeres en la movilidad y la conducción profesional.</p>
+    <div class="hero-ctas">
+      <a class="btn btn-amarillo" href="#planes">Ver planes<svg class="ico"><use href="#i-arrow"/></svg></a>
+      <a class="btn btn-linea" href="#que-es">Sumarme al movimiento</a>
+    </div>
+    <div class="hero-pie">
+      <span><svg class="ico"><use href="#i-users"/></svg>Conductoras y pasajeras</span>
+      <span><svg class="ico"><use href="#i-globe"/></svg>Desde cualquier lugar del mundo</span>
+      <span><svg class="ico"><use href="#i-shield"/></svg>Moverse seguras es un derecho</span>
+    </div>
+  </div>
+
+  <div class="hero-firma"><b>María Carolina Roldan</b>Autora de «Guía: cómo ser una chofer 5 estrellas»</div>
+</header>
+
+<!-- QUÉ ES -->
+<section class="que" id="que-es">
+  <img class="que-marca" src="logo.png" width="720" height="692" alt="" aria-hidden="true" />
+  <span class="kicker"><span class="rayas"><i></i><i></i><i></i></span>Qué es SheMove</span>
+  <p class="que-frase">No es solo un curso: es un <em>club</em>, una <em>red de apoyo</em> y un <em>espacio de crecimiento</em> donde cada mujer encuentra <strong>las herramientas, la confianza y la comunidad</strong> para moverse con libertad.</p>
+  <ol class="pilares">
+    <li class="pilar"><span class="pilar-num">01</span><h3>Academia</h3><p>Formación práctica y accesible para tu desarrollo en la conducción.</p></li>
+    <li class="pilar"><span class="pilar-num">02</span><h3>Comunidad</h3><p>Mujeres que se apoyan, comparten y crecen juntas.</p></li>
+    <li class="pilar"><span class="pilar-num">03</span><h3>Red de apoyo</h3><p>Acompañamiento constante y vínculos con marcas de movilidad.</p></li>
+  </ol>
+</section>
+
+<!-- PLANES -->
+<section class="planes" id="planes">
+  <div class="planes-cab">
+    <div>
+      <span class="kicker"><span class="rayas"><i></i><i></i><i></i></span>Planes</span>
+      <h2>Un club.<br /><span>Tres duraciones.</span></h2>
+    </div>
+    <p>Todos los planes dan acceso a la comunidad, la academia y la red de apoyo. Solo cambia por cuánto tiempo.</p>
+  </div>
+
+  <div class="planes-grilla">
+    <article class="plan">
+      <span class="plan-nombre">Mensual</span>
+      <div class="plan-precio">$20.000</div>
+      <div class="plan-periodo">por mes</div>
+      <ul class="plan-lista">
+        <li><svg class="ico"><use href="#i-check"/></svg>Comunidad SheMove</li>
+        <li><svg class="ico"><use href="#i-check"/></svg>Academia</li>
+        <li><svg class="ico"><use href="#i-check"/></svg>Red de apoyo</li>
+      </ul>
+      <a class="btn btn-linea" href="#planes">Suscribirme</a>
+    </article>
+
+    <article class="plan">
+      <span class="plan-nombre">Trimestral</span>
+      <div class="plan-precio">$55.000</div>
+      <div class="plan-periodo">cada 3 meses · $18.333 por mes</div>
+      <span class="plan-ahorro">Ahorrás $5.000</span>
+      <ul class="plan-lista">
+        <li><svg class="ico"><use href="#i-check"/></svg>Comunidad SheMove</li>
+        <li><svg class="ico"><use href="#i-check"/></svg>Academia</li>
+        <li><svg class="ico"><use href="#i-check"/></svg>Red de apoyo</li>
+      </ul>
+      <a class="btn btn-linea" href="#planes">Suscribirme</a>
+    </article>
+
+    <article class="plan plan-destacado">
+      <span class="plan-sello">3 meses gratis</span>
+      <span class="plan-nombre">Anual</span>
+      <div class="plan-precio">$180.000</div>
+      <div class="plan-periodo">por año · $15.000 por mes</div>
+      <span class="plan-ahorro">Ahorrás $60.000</span>
+      <ul class="plan-lista">
+        <li><svg class="ico"><use href="#i-check"/></svg>Comunidad SheMove</li>
+        <li><svg class="ico"><use href="#i-check"/></svg>Academia</li>
+        <li><svg class="ico"><use href="#i-check"/></svg>Red de apoyo</li>
+      </ul>
+      <a class="btn btn-bordo" href="#planes">Suscribirme al anual</a>
+    </article>
+  </div>
+
+  <div class="planes-nota">
+    <span><svg class="ico"><use href="#i-lock"/></svg>Pago seguro con Mercado Pago</span>
+    <span><svg class="ico"><use href="#i-refresh"/></svg>Cancelación sin costo</span>
+  </div>
+</section>
+
+<!-- LIBRO -->
+<section class="libro" id="libro">
+  <div class="libro-grilla">
+    <div class="libro-tapa"><img src="libro.jpg" width="720" height="1007" alt="Tapa de «Guía: cómo ser una chofer 5 estrellas», de María Carolina Roldan" loading="lazy" /></div>
+    <div>
+      <span class="kicker"><span class="rayas"><i></i><i></i><i></i></span>El libro</span>
+      <h2>Cómo ser una chofer <span>5 estrellas</span></h2>
+      <p class="libro-autora">Guía de María Carolina Roldan</p>
+      <p class="libro-texto">Un manual práctico que reúne experiencias, anécdotas y estrategias para la movilidad. Desde calidad de servicio y seguridad, hasta finanzas y autocuidado: todo lo que una conductora necesita para destacar.</p>
+      <div class="libro-ctas">
+        <a class="btn btn-bordo" href="#libro">Comprar con Mercado Pago</a>
+        <a class="btn btn-linea-oscura" href="#libro">Hotmart</a>
+        <a class="btn btn-linea-oscura" href="#libro">Amazon</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ALIANZAS -->
+<section class="alianzas">
+  <p>Alianzas</p>
+  <img class="at" src="at.png" width="194" height="194" alt="AirportTransfer.com Partner" loading="lazy" />
+  <img class="amev" src="amev.webp" width="768" height="211" alt="AMEV, Asociación Mujeres Emprendedoras de Venezuela" loading="lazy" />
+</section>
+
+<footer class="pie">
+  <img src="logo-nav.png" width="300" height="264" alt="SheMove" loading="lazy" />
+  <span>© 2026 SheMove Club Academy</span>
+</footer>
+
+</body>
+</html>

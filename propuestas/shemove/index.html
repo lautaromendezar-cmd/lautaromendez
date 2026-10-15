@@ -203,6 +203,36 @@
 
     code { font-family: var(--mono); font-size: .88em; color: var(--ink); background: var(--bg-soft); padding: 1px 6px; border-radius: 3px; }
 
+
+    /* ── ANTES / DESPUÉS ── */
+    .ab-bloque { margin-bottom: 56px; }
+    .ab-cab { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap; margin-bottom: 14px; }
+    .ab-cab h3 { margin: 0; }
+    .ab-cab span { font-family: var(--mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--text-dim); }
+    .ab-nota { margin-top: 12px; font-size: 14px; color: var(--text-mid); line-height: 1.55; max-width: 760px; }
+
+    .ba { --pos: 50%; position: relative; aspect-ratio: 16 / 10; border: 1px solid var(--border-strong); border-radius: 6px; overflow: hidden; background: var(--bg-card); user-select: none; -webkit-user-select: none; }
+    .ba img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .ba .ba-antes { clip-path: inset(0 calc(100% - var(--pos)) 0 0); }
+    .ba-linea { position: absolute; top: 0; bottom: 0; left: var(--pos); width: 2px; margin-left: -1px; background: var(--ink); box-shadow: 0 0 0 1px rgb(0 0 0 / .25); pointer-events: none; }
+    .ba-tirador { position: absolute; top: 50%; left: var(--pos); width: 46px; height: 46px; margin: -23px 0 0 -23px; border-radius: 50%; background: var(--ink); box-shadow: 0 6px 20px rgb(0 0 0 / .45); display: flex; align-items: center; justify-content: center; pointer-events: none; }
+    .ba-tirador .ico { width: 16px; height: 16px; stroke: var(--bg); stroke-width: 2.2; }
+    .ba-tag { position: absolute; bottom: 14px; padding: 5px 11px; border-radius: 999px; font-family: var(--mono); font-size: 11px; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; background: rgb(10 11 13 / .78); color: var(--ink); pointer-events: none; }
+    .ba-tag-antes { left: 14px; }
+    .ba-tag-despues { right: 14px; background: var(--accent); }
+    .ba input { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: ew-resize; margin: 0; }
+    .ba:has(input:focus-visible) { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+    .ab-moviles { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; max-width: 620px; margin: 0 auto; }
+    .ab-movil { text-align: center; }
+    .ab-movil img { border: 1px solid var(--border-strong); border-radius: 28px; }
+    .ab-movil .ba-tag { position: static; display: inline-block; margin-top: 12px; }
+
+    .demo-cta { display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; padding: 22px 24px; border: 1px solid var(--accent); background: var(--accent-soft); border-radius: 6px; }
+    .demo-cta p { font-size: 15px; color: var(--text); max-width: 520px; }
+    .demo-cta .portfolio-link { background: var(--accent); color: var(--bg); }
+    .demo-cta .portfolio-link .ico { stroke: var(--bg); }
+
     /* ── HALLAZGOS ── */
     .hall { list-style: none; border: 1px solid var(--border); border-radius: 4px; overflow: hidden; margin-bottom: 28px; }
     .hall li { display: grid; grid-template-columns: 24px 1fr; gap: 12px; padding: 14px 18px; font-size: 14px; color: var(--text); line-height: 1.5; background: var(--bg-card); }
@@ -380,6 +410,9 @@
       .datos { grid-template-columns: 1fr; }
       .dato + .dato { border-left: none; border-top: 1px solid var(--border); }
       .pair, .recorrido { grid-template-columns: 1fr; }
+      .ba { aspect-ratio: 16 / 12; }
+      .ab-moviles { gap: 12px; }
+      .ab-movil img { border-radius: 18px; }
       .escala-head, .escala-price, .escala-body { padding-left: 18px; padding-right: 18px; }
       .pago-opts, .need-grid { grid-template-columns: 1fr; }
       .pagos-head { display: none; }
@@ -432,6 +465,8 @@
   <symbol id="i-chat" viewBox="0 0 24 24"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></symbol>
   <symbol id="i-play" viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m10 9 5 3-5 3z"/></symbol>
   <symbol id="i-dashboard" viewBox="0 0 24 24"><rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="16" rx="1"/></symbol>
+  <symbol id="i-chev-l" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></symbol>
+  <symbol id="i-chev-r" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></symbol>
   <symbol id="i-star" viewBox="0 0 24 24"><path d="M11.5 2.3a.6.6 0 0 1 1 0l2.6 5.4 5.9.8a.6.6 0 0 1 .3 1l-4.3 4.2 1 5.9a.6.6 0 0 1-.8.6L12 17.4l-5.3 2.8a.6.6 0 0 1-.8-.6l1-5.9-4.3-4.2a.6.6 0 0 1 .3-1l5.9-.8z"/></symbol>
 </svg>
 
@@ -452,6 +487,92 @@
       <div class="hero-meta-item"><label>Fecha</label><span>Octubre 2026</span></div>
     </div>
   </header>
+
+</div>
+
+<!-- ASÍ SE VERÍA -->
+<section class="fade">
+  <div class="wrap">
+    <div class="eyebrow">Así se vería</div>
+    <h2>Tu web, antes y después</h2>
+    <p class="section-intro">Bocetos hechos con tu logo, tus colores y tus propios textos. Arrastrá la línea de cada imagen para comparar.</p>
+  </div>
+  <div class="wrap-wide">
+
+    <div class="ab-bloque">
+      <div class="ab-cab"><h3>La primera pantalla</h3><span>Computadora</span></div>
+      <div class="ba">
+        <img class="ba-despues" src="par-hero-despues.jpg" width="1600" height="1000" alt="Primera pantalla propuesta, con la foto de Carolina y el título grande" loading="lazy" />
+        <img class="ba-antes" src="par-hero-antes.jpg" width="1600" height="1000" alt="Primera pantalla del sitio actual" loading="lazy" />
+        <span class="ba-linea"></span>
+        <span class="ba-tirador"><svg class="ico"><use href="#i-chev-l"/></svg><svg class="ico"><use href="#i-chev-r"/></svg></span>
+        <span class="ba-tag ba-tag-antes">Hoy</span><span class="ba-tag ba-tag-despues">Propuesta</span>
+        <input type="range" min="0" max="100" value="50" aria-label="Comparar la primera pantalla: hoy y propuesta" />
+      </div>
+      <p class="ab-nota">Tu frase pasa a ser lo primero que se lee, en grande y sobre tu foto. Dos botones claros: ver los planes o sumarse. Debajo, para quién es y desde dónde se puede participar.</p>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="ab-bloque">
+      <div class="ab-cab"><h3>En el celular</h3><span>Donde llegan las visitas de redes</span></div>
+      <div class="ab-moviles">
+        <div class="ab-movil"><img src="par-movil-antes.jpg" width="600" height="1298" alt="Sitio actual en el celular" loading="lazy" /><span class="ba-tag ba-tag-antes">Hoy</span></div>
+        <div class="ab-movil"><img src="par-movil-despues.jpg" width="600" height="1298" alt="Propuesta en el celular" loading="lazy" /><span class="ba-tag ba-tag-despues">Propuesta</span></div>
+      </div>
+      <p class="ab-nota" style="margin-left:auto;margin-right:auto;max-width:620px">Hoy la primera pantalla del celular se la lleva el logo. En la propuesta, en el primer vistazo ya estás vos, el mensaje y el botón para ver los planes.</p>
+    </div>
+  </div>
+  <div class="wrap-wide">
+
+    <div class="ab-bloque">
+      <div class="ab-cab"><h3>Qué es SheMove</h3><span>Computadora</span></div>
+      <div class="ba">
+        <img class="ba-despues" src="par-que-despues.jpg" width="1600" height="1000" alt="Sección «Qué es SheMove» propuesta" loading="lazy" />
+        <img class="ba-antes" src="par-que-antes.jpg" width="1600" height="1000" alt="Sección «mucho más que una formación» del sitio actual" loading="lazy" />
+        <span class="ba-linea"></span>
+        <span class="ba-tirador"><svg class="ico"><use href="#i-chev-l"/></svg><svg class="ico"><use href="#i-chev-r"/></svg></span>
+        <span class="ba-tag ba-tag-antes">Hoy</span><span class="ba-tag ba-tag-despues">Propuesta</span>
+        <input type="range" min="0" max="100" value="50" aria-label="Comparar qué es shemove: hoy y propuesta" />
+      </div>
+      <p class="ab-nota">El mismo texto que ya tenés, armado para leerse de un vistazo: lo importante resaltado y los tres pilares como filas grandes en lugar de tarjetas chicas.</p>
+    </div>
+
+    <div class="ab-bloque">
+      <div class="ab-cab"><h3>Los planes</h3><span>Computadora</span></div>
+      <div class="ba">
+        <img class="ba-despues" src="par-planes-despues.jpg" width="1600" height="1000" alt="Planes propuestos con el anual destacado" loading="lazy" />
+        <img class="ba-antes" src="par-planes-antes.jpg" width="1600" height="1000" alt="Planes del sitio actual" loading="lazy" />
+        <span class="ba-linea"></span>
+        <span class="ba-tirador"><svg class="ico"><use href="#i-chev-l"/></svg><svg class="ico"><use href="#i-chev-r"/></svg></span>
+        <span class="ba-tag ba-tag-antes">Hoy</span><span class="ba-tag ba-tag-despues">Propuesta</span>
+        <input type="range" min="0" max="100" value="50" aria-label="Comparar los planes: hoy y propuesta" />
+      </div>
+      <p class="ab-nota">Cada plan dice cuánto sale por mes y cuánto se ahorra. El anual queda destacado con «3 meses gratis», que es exactamente lo que ahorra, y abajo se aclara que se paga con Mercado Pago y se cancela sin costo.</p>
+    </div>
+
+    <div class="ab-bloque">
+      <div class="ab-cab"><h3>El libro</h3><span>Computadora</span></div>
+      <div class="ba">
+        <img class="ba-despues" src="par-libro-despues.jpg" width="1600" height="1000" alt="Sección del libro propuesta" loading="lazy" />
+        <img class="ba-antes" src="par-libro-antes.jpg" width="1600" height="1000" alt="Sección del libro en el sitio actual" loading="lazy" />
+        <span class="ba-linea"></span>
+        <span class="ba-tirador"><svg class="ico"><use href="#i-chev-l"/></svg><svg class="ico"><use href="#i-chev-r"/></svg></span>
+        <span class="ba-tag ba-tag-antes">Hoy</span><span class="ba-tag ba-tag-despues">Propuesta</span>
+        <input type="range" min="0" max="100" value="50" aria-label="Comparar el libro: hoy y propuesta" />
+      </div>
+      <p class="ab-nota">La tapa en primer plano, el título grande y la compra a un clic, con los tres medios que ya usás.</p>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="demo-cta">
+      <p><strong>Mirá el boceto completo.</strong> Te recomiendo abrirlo en el celular: es como lo va a ver la mayoría de las personas que llegan desde redes.</p>
+      <a class="portfolio-link" href="demo/" target="_blank" rel="noopener">Abrir el boceto<svg class="ico"><use href="#i-arrow"/></svg></a>
+    </div>
+    <p class="ab-nota">Es un boceto de las opciones 2 y 3. La foto es la de la tapa de tu libro; en la web final van las fotos de la comunidad que elijamos juntos.</p>
+  </div>
+</section>
+
+<div class="wrap">
 
   <!-- DIAGNÓSTICO -->
   <section class="fade">
@@ -810,6 +931,14 @@
     const docHeight = document.documentElement.scrollHeight - window.innerHeight;
     const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
     document.getElementById('progress').style.width = pct + '%';
+  });
+
+  // Antes / después
+  document.querySelectorAll('.ba').forEach(ba => {
+    const r = ba.querySelector('input');
+    const set = () => ba.style.setProperty('--pos', r.value + '%');
+    r.addEventListener('input', set);
+    set();
   });
 
   // Fade in on scroll
