@@ -23,7 +23,7 @@ dice `Ready` igual.
 
 | proyecto | dominio de producción | deployment al 7-sep |
 |---|---|---|
-| `lautaromendez` | lautaromendez.com.ar | `https://lautaromendez-8o4fk5tl4-lautaro-mendez-s-projects.vercel.app` (15-oct, SheMove precios 260/460) · anterior `https://lautaromendez-fjc40h4pz-lautaro-mendez-s-projects.vercel.app` |
+| `lautaromendez` | lautaromendez.com.ar | `https://lautaromendez-qqo4ke0tv-lautaro-mendez-s-projects.vercel.app` (15-oct, SheMove tabla compacta) · anterior `https://lautaromendez-ae0fwdb28-lautaro-mendez-s-projects.vercel.app` |
 | `batata-studio` | batatastudio.com.ar | `https://batata-studio-gugkz2kd1-lautaro-mendez-s-projects.vercel.app` |
 | `latina` | latina-jet.vercel.app | `https://latina-e44dmvs40-lautaro-mendez-s-projects.vercel.app` |
 | `cyc` | www.papeleracyc.com.ar | `https://cyc-br54g2rgq-lautaro-mendez-s-projects.vercel.app` |
