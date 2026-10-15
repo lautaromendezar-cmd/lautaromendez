@@ -326,6 +326,37 @@
     .recorrido li::before { content: counter(r, decimal-leading-zero); font-family: var(--mono); font-size: 11px; color: var(--accent); padding-top: 2px; }
     .recorrido b { display: block; font-size: 14px; color: var(--ink); font-weight: 560; margin-bottom: 2px; }
 
+
+    /* ── TABLA DE TILDES ── */
+    .tabla-wrap { margin-top: 48px; }
+    .tabla-titulo { font-size: 18px; font-weight: 560; color: var(--ink); margin-bottom: 14px; }
+    .tabla { width: 100%; border-collapse: separate; border-spacing: 0; border: 1px solid var(--border); border-radius: 6px; overflow: hidden; font-size: 14px; }
+    .tabla th, .tabla td { padding: 13px 16px; border-bottom: 1px solid var(--border); text-align: center; vertical-align: middle; color: var(--text); }
+    .tabla tr:last-child td { border-bottom: none; }
+    .tabla th:first-child, .tabla td:first-child { text-align: left; width: 38%; }
+    .tabla thead th { background: var(--bg-soft); font-weight: 560; color: var(--ink); line-height: 1.3; }
+    .tabla thead th small { display: block; font-size: 12px; font-weight: 400; color: var(--text-dim); margin-top: 2px; }
+    .tabla thead th .n { display: block; font-family: var(--mono); font-size: 11px; letter-spacing: .14em; color: var(--accent); margin-bottom: 4px; }
+    .tabla .col-reco { background: rgb(255 45 70 / .05); }
+    .tabla thead th.col-reco { background: rgb(255 45 70 / .1); }
+    .tabla .grupo td { padding: 18px 16px 8px; background: var(--bg); border-bottom: none; font-family: var(--mono); font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--text-dim); text-align: left; }
+    .tabla .si .ico { width: 18px; height: 18px; stroke: var(--ok); stroke-width: 2.2; margin: 0 auto; display: block; }
+    .tabla .no-tiene { color: var(--border-strong); font-size: 18px; line-height: 1; }
+    .tabla .valor { font-weight: 560; color: var(--ink); }
+    .tabla .valor small { display: block; font-weight: 400; font-size: 12px; color: var(--text-dim); }
+
+    /* ── TARJETAS DE PAGO ── */
+    .pago-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .pago-card { display: flex; flex-direction: column; gap: 10px; padding: 22px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 6px; }
+    .pago-card.is-reco { border-color: var(--accent); }
+    .pago-card .n { font-family: var(--mono); font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--accent); }
+    .pago-card .t { font-size: 15px; font-weight: 560; color: var(--ink); }
+    .pago-card .monto { font-size: 28px; font-weight: 560; letter-spacing: -.02em; color: var(--ink); line-height: 1.1; }
+    .pago-card p { font-size: 14px; color: var(--text-mid); line-height: 1.5; }
+    .pago-lineas { display: flex; flex-direction: column; gap: 8px; margin-top: 4px; }
+    .pago-lineas div { display: flex; justify-content: space-between; gap: 10px; padding: 10px 12px; border-radius: 4px; background: var(--bg-soft); font-size: 13px; color: var(--text-mid); font-variant-numeric: tabular-nums; }
+    .pago-lineas b { color: var(--ink); font-weight: 560; }
+
     /* ── PAGOS ── */
     .pago-opts { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
     .pago-opt { display: flex; gap: 14px; align-items: flex-start; background: var(--bg-card); border: 1px solid var(--border); border-radius: 4px; padding: 16px; }
@@ -411,6 +442,12 @@
       .dato + .dato { border-left: none; border-top: 1px solid var(--border); }
       .pair, .recorrido { grid-template-columns: 1fr; }
       .ba { aspect-ratio: 16 / 12; }
+      .pago-cards { grid-template-columns: 1fr; }
+      .tabla { font-size: 12.5px; }
+      .tabla th, .tabla td { padding: 11px 6px; }
+      .tabla th:first-child, .tabla td:first-child { padding-left: 12px; width: 34%; }
+      .tabla thead th small { display: none; }
+      .tabla .valor small { display: none; }
       .ab-moviles { gap: 12px; }
       .ab-movil img { border-radius: 18px; }
       .escala-head, .escala-price, .escala-body { padding-left: 18px; padding-right: 18px; }
@@ -495,7 +532,7 @@
   <div class="wrap">
     <div class="eyebrow">Así se vería</div>
     <h2>Tu web, antes y después</h2>
-    <p class="section-intro">Bocetos hechos con tu logo, tus colores y tus propios textos. Arrastrá la línea de cada imagen para comparar.</p>
+    <p class="section-intro">Una idea de hacia dónde puede ir tu web, hecha con tu logo, tus colores y tus propios textos. <strong>No es el diseño final</strong>: lo definimos juntos al arrancar. Arrastrá la línea de cada imagen para comparar.</p>
   </div>
   <div class="wrap-wide">
 
@@ -565,10 +602,10 @@
   </div>
   <div class="wrap">
     <div class="demo-cta">
-      <p><strong>Mirá el boceto completo.</strong> Te recomiendo abrirlo en el celular: es como lo va a ver la mayoría de las personas que llegan desde redes.</p>
-      <a class="portfolio-link" href="demo/" target="_blank" rel="noopener">Abrir el boceto<svg class="ico"><use href="#i-arrow"/></svg></a>
+      <p><strong>Mirá la idea completa.</strong> Te recomiendo abrirlo en el celular: es como lo va a ver la mayoría de las personas que llegan desde redes.</p>
+      <a class="portfolio-link" href="demo/" target="_blank" rel="noopener">Abrir la idea de diseño<svg class="ico"><use href="#i-arrow"/></svg></a>
     </div>
-    <p class="ab-nota">Es un boceto de las opciones 2 y 3. La foto es la de la tapa de tu libro; en la web final van las fotos de la comunidad que elijamos juntos.</p>
+    <p class="ab-nota">Es una idea de diseño y vale para cualquiera de las tres opciones. La foto es la de la tapa de tu libro; en la web final van las fotos de la comunidad que elijamos juntos.</p>
   </div>
 </section>
 
@@ -649,8 +686,8 @@
 <section class="fade">
   <div class="wrap">
     <div class="eyebrow">Las tres opciones</div>
-    <h2>Tres formas de resolverlo</h2>
-    <p class="section-intro">Cada una incluye todo lo de la anterior. Lo que cambia es cuánto trabajo hace la web por vos.</p>
+    <h2>Tres formas de hacerla</h2>
+    <p class="section-intro">Las tres incluyen el rediseño. Cada una suma lo de la anterior; lo que cambia es cuánto trabajo hace la web por vos.</p>
   </div>
 
   <div class="wrap-wide">
@@ -659,29 +696,30 @@
       <!-- OPCIÓN 1 -->
       <article class="escala">
         <div class="escala-head">
-          <div class="escala-top"><span class="ico-box"><svg class="ico"><use href="#i-wrench"/></svg></span><span class="escala-num">Opción 1</span></div>
-          <div class="escala-title">Puesta a punto</div>
-          <p class="escala-tagline">La misma página, sobre el WordPress que ya tenés, funcionando bien y diciendo lo que tiene que decir.</p>
+          <div class="escala-top"><span class="ico-box"><svg class="ico"><use href="#i-layout"/></svg></span><span class="escala-num">Opción 1</span></div>
+          <div class="escala-title">Rediseño en una página</div>
+          <p class="escala-tagline">Tu web nueva, con tu marca, en una sola página que se recorre de arriba abajo.</p>
         </div>
         <div class="escala-price">
-          <div class="escala-price-value">$220.000</div>
+          <div class="escala-price-value">$260.000</div>
           <div class="escala-facts">
-            <div><svg class="ico"><use href="#i-clock"/></svg><span><b>1 semana</b> desde que recibo los accesos</span></div>
+            <div><svg class="ico"><use href="#i-card"/></svg><span><b>Un solo pago</b> al empezar</span></div>
+            <div><svg class="ico"><use href="#i-clock"/></svg><span><b>2 semanas</b> desde que recibo el material</span></div>
             <div><svg class="ico"><use href="#i-wrench"/></svg><span>Mantenimiento <b>$40.000/mes</b>, opcional</span></div>
           </div>
         </div>
         <div class="escala-body">
           <ul class="ticks">
+            <li><svg class="ico"><use href="#i-check"/></svg>Diseño nuevo con tu marca, pensado primero para el celular.</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>Todo en una página: qué es, planes, libro, quién está detrás y preguntas frecuentes.</li>
             <li><svg class="ico"><use href="#i-check"/></svg>Los tres planes y el libro cobrando, probados de punta a punta.</li>
-            <li><svg class="ico"><use href="#i-check"/></svg>Textos corregidos: un solo tono, tildes, y cada plan con lo que incluye y cuánto se ahorra.</li>
-            <li><svg class="ico"><use href="#i-check"/></svg>Primera pantalla reordenada: el mensaje grande y dos botones claros, «Ver planes» y «Anotarme».</li>
-            <li><svg class="ico"><use href="#i-check"/></svg>Formulario arreglado: preguntas de conductora solo para conductoras y sin la pregunta vacía.</li>
-            <li><svg class="ico"><use href="#i-check"/></svg>Nombre correcto en Google, imagen para compartir por WhatsApp y entrada de ejemplo borrada.</li>
-            <li><svg class="ico"><use href="#i-check"/></svg>Redes en el pie y Google Analytics con el clic a cada plan medido.</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>Textos corregidos y el ahorro de cada plan a la vista.</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>Formulario de inscripción arreglado.</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>Bien presentada en Google y con Google Analytics.</li>
           </ul>
           <div class="escala-meta">
-            <div><svg class="ico"><use href="#i-shield"/></svg><span><b>Sirve si</b>querés dejar de perder pagos ya, sin cambiar la página.</span></div>
-            <div><svg class="ico"><use href="#i-card"/></svg><span><b>Costo mensual tuyo</b>El hosting que ya pagás. Nada nuevo.</span></div>
+            <div><svg class="ico"><use href="#i-shield"/></svg><span><b>Sirve si</b>querés una web linda y que cobre, en poco tiempo.</span></div>
+            <div><svg class="ico"><use href="#i-card"/></svg><span><b>Costo mensual tuyo</b>Ninguno nuevo. El dominio sigue siendo tuyo.</span></div>
           </div>
         </div>
       </article>
@@ -690,13 +728,14 @@
       <article class="escala is-reco">
         <span class="reco">La que recomiendo</span>
         <div class="escala-head">
-          <div class="escala-top"><span class="ico-box"><svg class="ico"><use href="#i-layout"/></svg></span><span class="escala-num">Opción 2</span></div>
-          <div class="escala-title">Web nueva</div>
-          <p class="escala-tagline">Diseño desde cero con la marca de SheMove, armada para que una visita entienda, confíe y se suscriba en el mismo recorrido.</p>
+          <div class="escala-top"><span class="ico-box"><svg class="ico"><use href="#i-copy"/></svg></span><span class="escala-num">Opción 2</span></div>
+          <div class="escala-title">Web con secciones</div>
+          <p class="escala-tagline">Cada tema en su propia página, para compartir el link justo: los planes, el libro o la academia.</p>
         </div>
         <div class="escala-price">
-          <div class="escala-price-value">$560.000</div>
+          <div class="escala-price-value">$460.000</div>
           <div class="escala-facts">
+            <div><svg class="ico"><use href="#i-card"/></svg><span><b>1 pago</b>, o <b>2 de $230.000</b></span></div>
             <div><svg class="ico"><use href="#i-clock"/></svg><span><b>3 a 4 semanas</b> desde que recibo el material</span></div>
             <div><svg class="ico"><use href="#i-wrench"/></svg><span>Mantenimiento <b>$40.000/mes</b>, opcional</span></div>
           </div>
@@ -704,15 +743,15 @@
         <div class="escala-body">
           <div class="ticks-plus">Todo lo de la opción 1, más</div>
           <ul class="ticks">
-            <li><svg class="ico"><use href="#i-check"/></svg>Diseño propio, pensado primero para el celular, que es donde llegan las visitas de redes.</li>
-            <li><svg class="ico"><use href="#i-check"/></svg>Un recorrido en orden: qué es, para quién, cómo funciona, planes, libro, quién está detrás y preguntas frecuentes.</li>
-            <li><svg class="ico"><use href="#i-check"/></svg>Inscripción propia en el sitio: los datos te llegan por mail y a una planilla, y del formulario se pasa directo al plan.</li>
-            <li><svg class="ico"><use href="#i-check"/></svg>Página de bienvenida después del pago, con el link al grupo de WhatsApp.</li>
-            <li><svg class="ico"><use href="#i-check"/></svg>Pixel de Meta además de Analytics, listo para pautar.</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>7 páginas: Inicio, Academia, Planes, El libro, Sobre Carolina, Preguntas y Contacto.</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>Inscripción propia: los datos te llegan por mail y a una planilla.</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>Página de bienvenida después de pagar, con el grupo de WhatsApp.</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>Pixel de Meta, lista para hacer publicidad en Instagram.</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>Cada página preparada para aparecer en Google.</li>
           </ul>
           <div class="escala-meta">
-            <div><svg class="ico"><use href="#i-shield"/></svg><span><b>Sirve si</b>vas a mover la web en redes o con publicidad y querés que convierta.</span></div>
-            <div><svg class="ico"><use href="#i-card"/></svg><span><b>Costo mensual tuyo</b>Ninguno nuevo: la publico en un servicio gratuito que alcanza para este tráfico. El dominio sigue siendo tuyo.</span></div>
+            <div><svg class="ico"><use href="#i-shield"/></svg><span><b>Sirve si</b>vas a mover la web en redes o con publicidad.</span></div>
+            <div><svg class="ico"><use href="#i-card"/></svg><span><b>Costo mensual tuyo</b>Ninguno nuevo. El dominio sigue siendo tuyo.</span></div>
           </div>
         </div>
       </article>
@@ -722,7 +761,7 @@
         <div class="escala-head">
           <div class="escala-top"><span class="ico-box"><svg class="ico"><use href="#i-dashboard"/></svg></span><span class="escala-num">Opción 3</span></div>
           <div class="escala-title">Club online</div>
-          <p class="escala-tagline">La web nueva más un área de socias: la plataforma sabe quién pagó, le da acceso a la academia y te muestra todo en un panel. Se hace en dos etapas.</p>
+          <p class="escala-tagline">La web con secciones más un área de socias: la plataforma sabe quién pagó, le da acceso a la academia y te muestra todo en un panel. Se hace en dos etapas.</p>
         </div>
         <div class="escala-price">
           <div class="escala-price-stages">
@@ -749,68 +788,34 @@
 
     </div>
 
-    <!-- COMPARATIVA -->
-    <div class="cmp" role="table" aria-label="Comparativa de las tres opciones">
-      <div class="cmp-row cmp-head" role="row">
-        <div role="columnheader">De un vistazo</div>
-        <div role="columnheader">1 · Puesta a punto</div>
-        <div role="columnheader">2 · Web nueva</div>
-        <div role="columnheader">3 · Club online</div>
-      </div>
-      <div class="cmp-row" role="row">
-        <div class="cmp-k" role="rowheader">Pagos funcionando</div>
-        <div data-e="Puesta a punto" role="cell">Sí</div>
-        <div data-e="Web nueva" role="cell">Sí</div>
-        <div data-e="Club online" role="cell">Sí, y registrados en el panel</div>
-      </div>
-      <div class="cmp-row" role="row">
-        <div class="cmp-k" role="rowheader">Diseño</div>
-        <div data-e="Puesta a punto" role="cell">El actual, ordenado</div>
-        <div data-e="Web nueva" role="cell">Nuevo, con la marca</div>
-        <div data-e="Club online" role="cell">Nuevo, con la marca</div>
-      </div>
-      <div class="cmp-row" role="row">
-        <div class="cmp-k" role="rowheader">Inscripción</div>
-        <div data-e="Puesta a punto" role="cell">Formulario de Google corregido</div>
-        <div data-e="Web nueva" role="cell">Propia, a mail y planilla</div>
-        <div data-e="Club online" role="cell">Cuenta de socia</div>
-      </div>
-      <div class="cmp-row" role="row">
-        <div class="cmp-k" role="rowheader">Quién pagó y quién no</div>
-        <div data-e="Puesta a punto" role="cell" class="no">Lo mirás en Mercado Pago</div>
-        <div data-e="Web nueva" role="cell" class="no">Lo mirás en Mercado Pago</div>
-        <div data-e="Club online" role="cell">Panel propio, al día</div>
-      </div>
-      <div class="cmp-row" role="row">
-        <div class="cmp-k" role="rowheader">Contenido de la academia</div>
-        <div data-e="Puesta a punto" role="cell" class="no">No</div>
-        <div data-e="Web nueva" role="cell" class="no">No</div>
-        <div data-e="Club online" role="cell">Aula para socias (etapa 2)</div>
-      </div>
-      <div class="cmp-row" role="row">
-        <div class="cmp-k" role="rowheader">Medición</div>
-        <div data-e="Puesta a punto" role="cell">Analytics</div>
-        <div data-e="Web nueva" role="cell">Analytics y Pixel de Meta</div>
-        <div data-e="Club online" role="cell">Analytics y Pixel de Meta</div>
-      </div>
-      <div class="cmp-row" role="row">
-        <div class="cmp-k" role="rowheader">Costo mensual tuyo</div>
-        <div data-e="Puesta a punto" role="cell">El hosting actual</div>
-        <div data-e="Web nueva" role="cell">Ninguno nuevo</div>
-        <div data-e="Club online" role="cell">Aprox. USD 45</div>
-      </div>
-      <div class="cmp-row" role="row">
-        <div class="cmp-k" role="rowheader">Mantenimiento</div>
-        <div data-e="Puesta a punto" role="cell">$40.000/mes, opcional</div>
-        <div data-e="Web nueva" role="cell">$40.000/mes, opcional</div>
-        <div data-e="Club online" role="cell">$90.000/mes, 3 meses incluidos</div>
-      </div>
-      <div class="cmp-row" role="row">
-        <div class="cmp-k" role="rowheader">Plazo</div>
-        <div data-e="Puesta a punto" role="cell">1 semana</div>
-        <div data-e="Web nueva" role="cell">3 a 4 semanas</div>
-        <div data-e="Club online" role="cell">5 a 6 + 3 a 4 semanas</div>
-      </div>
+    </div>
+
+    <div class="tabla-wrap">
+      <div class="tabla-titulo">De un vistazo</div>
+      <table class="tabla">
+        <thead><tr><th>&nbsp;</th><th><span class="n">Opción 1</span>Una página<small>$260.000</small></th><th class="col-reco"><span class="n">Opción 2</span>Con secciones<small>$460.000</small></th><th><span class="n">Opción 3</span>Club online<small>$1.300.000</small></th></tr></thead>
+        <tbody>
+          <tr class="grupo"><td colspan="4">Diseño</td></tr>
+          <tr><td>Diseño nuevo con tu marca</td><td class="si"><svg class="ico" aria-label="Incluido"><use href="#i-check"/></svg></td><td class="si col-reco"><svg class="ico" aria-label="Incluido"><use href="#i-check"/></svg></td><td class="si"><svg class="ico" aria-label="Incluido"><use href="#i-check"/></svg></td></tr>
+          <tr><td>Pensado primero para el celular</td><td class="si"><svg class="ico" aria-label="Incluido"><use href="#i-check"/></svg></td><td class="si col-reco"><svg class="ico" aria-label="Incluido"><use href="#i-check"/></svg></td><td class="si"><svg class="ico" aria-label="Incluido"><use href="#i-check"/></svg></td></tr>
+          <tr><td>Páginas</td><td class="valor">1</td><td class="valor col-reco">7</td><td class="valor">7<small>+ área de socias</small></td></tr>
+          <tr class="grupo"><td colspan="4">Para vender más</td></tr>
+          <tr><td>Planes y libro cobrando</td><td class="si"><svg class="ico" aria-label="Incluido"><use href="#i-check"/></svg></td><td class="si col-reco"><svg class="ico" aria-label="Incluido"><use href="#i-check"/></svg></td><td class="si"><svg class="ico" aria-label="Incluido"><use href="#i-check"/></svg></td></tr>
+          <tr><td>El ahorro de cada plan a la vista</td><td class="si"><svg class="ico" aria-label="Incluido"><use href="#i-check"/></svg></td><td class="si col-reco"><svg class="ico" aria-label="Incluido"><use href="#i-check"/></svg></td><td class="si"><svg class="ico" aria-label="Incluido"><use href="#i-check"/></svg></td></tr>
+          <tr><td>Inscripción</td><td class="valor">Google</td><td class="valor col-reco">Propia</td><td class="valor">Con cuenta</td></tr>
+          <tr><td>Bienvenida después de pagar</td><td class="no-tiene" aria-label="No incluido">—</td><td class="si col-reco"><svg class="ico" aria-label="Incluido"><use href="#i-check"/></svg></td><td class="si"><svg class="ico" aria-label="Incluido"><use href="#i-check"/></svg></td></tr>
+          <tr><td>Listo para publicidad en Instagram</td><td class="no-tiene" aria-label="No incluido">—</td><td class="si col-reco"><svg class="ico" aria-label="Incluido"><use href="#i-check"/></svg></td><td class="si"><svg class="ico" aria-label="Incluido"><use href="#i-check"/></svg></td></tr>
+          <tr class="grupo"><td colspan="4">Para no hacer todo a mano</td></tr>
+          <tr><td>Ver quién pagó y quién no</td><td class="no-tiene" aria-label="No incluido">—</td><td class="no-tiene col-reco" aria-label="No incluido">—</td><td class="si"><svg class="ico" aria-label="Incluido"><use href="#i-check"/></svg></td></tr>
+          <tr><td>Libro en PDF automático al pagar</td><td class="no-tiene" aria-label="No incluido">—</td><td class="no-tiene col-reco" aria-label="No incluido">—</td><td class="si"><svg class="ico" aria-label="Incluido"><use href="#i-check"/></svg></td></tr>
+          <tr><td>Aula con clases para socias (etapa 2)</td><td class="no-tiene" aria-label="No incluido">—</td><td class="no-tiene col-reco" aria-label="No incluido">—</td><td class="si"><svg class="ico" aria-label="Incluido"><use href="#i-check"/></svg></td></tr>
+          <tr class="grupo"><td colspan="4">Tiempo y costo</td></tr>
+          <tr><td>Plazo</td><td class="valor">2 semanas</td><td class="valor col-reco">3 a 4 semanas</td><td class="valor">8 a 10 semanas</td></tr>
+          <tr><td>Forma de pago</td><td class="valor">1 pago</td><td class="valor col-reco">1 o 2 pagos</td><td class="valor">Por etapa</td></tr>
+          <tr><td>Mantenimiento</td><td class="valor">$40.000/mes<small>opcional</small></td><td class="valor col-reco">$40.000/mes<small>opcional</small></td><td class="valor">$90.000/mes<small>3 meses incluidos</small></td></tr>
+          <tr><td>Costo mensual extra</td><td class="valor">Ninguno</td><td class="valor col-reco">Ninguno</td><td class="valor">USD 45</td></tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </section>
@@ -819,20 +824,20 @@
 
   <!-- RECORRIDO -->
   <section class="fade">
-    <div class="eyebrow">Opciones 2 y 3</div>
-    <h2>Cómo se recorre la web nueva</h2>
-    <p class="section-intro">Cada sección contesta la duda que tiene la visita en ese momento, hasta llegar al plan.</p>
+    <div class="eyebrow">En las tres opciones</div>
+    <h2>Qué va a tener tu web</h2>
+    <p class="section-intro">En la opción 1, todo en una página que se recorre de arriba abajo. En la 2 y la 3, cada tema tiene además su propia página.</p>
     <ol class="recorrido">
-      <li><div><b>Primera pantalla</b>«Ella se mueve. Ella conduce.» en grande, una foto real de la comunidad y los dos botones.</div></li>
-      <li><div><b>Para quién es</b>Conductoras y pasajeras, cada una con lo que gana al sumarse.</div></li>
-      <li><div><b>Cómo funciona</b>Te anotás, elegís el plan, entrás al grupo. Tres pasos.</div></li>
-      <li><div><b>Qué incluye</b>Academia, comunidad y red de apoyo, con ejemplos concretos.</div></li>
-      <li><div><b>Planes</b>Con lo que incluye cada uno, el ahorro a la vista y el anual destacado.</div></li>
-      <li><div><b>El libro</b>Tapa, de qué trata y dónde comprarlo, con los tres medios.</div></li>
-      <li><div><b>Quién está detrás</b>La historia de quien fundó SheMove y por qué lo hizo.</div></li>
-      <li><div><b>Voces y alianzas</b>Testimonios de socias y las alianzas actuales.</div></li>
-      <li><div><b>Preguntas frecuentes</b>Cómo se cancela, qué pasa después de pagar, si sirve desde otro país.</div></li>
-      <li><div><b>Cierre</b>Inscripción y contacto por WhatsApp.</div></li>
+      <li><div><b>Primera pantalla</b>Tu frase en grande, tu foto y dos botones: ver planes o sumarse.</div></li>
+      <li><div><b>Para quién es</b>Conductoras y pasajeras, y qué gana cada una.</div></li>
+      <li><div><b>Cómo funciona</b>Te anotás, elegís el plan, entrás al grupo.</div></li>
+      <li><div><b>Qué incluye</b>Academia, comunidad y red de apoyo.</div></li>
+      <li><div><b>Planes</b>Precio por mes, ahorro y el anual destacado.</div></li>
+      <li><div><b>El libro</b>De qué trata y dónde comprarlo.</div></li>
+      <li><div><b>Quién está detrás</b>Tu historia y por qué creaste SheMove.</div></li>
+      <li><div><b>Voces y alianzas</b>Testimonios de socias y tus alianzas.</div></li>
+      <li><div><b>Preguntas frecuentes</b>Cómo se cancela, qué pasa después de pagar.</div></li>
+      <li><div><b>Contacto</b>Inscripción y WhatsApp.</div></li>
     </ol>
   </section>
 
@@ -840,43 +845,33 @@
   <section class="fade">
     <div class="eyebrow">Formas de pago</div>
     <h2>Cómo se paga</h2>
-    <p class="section-intro">En cualquier opción. En la opción 3, etapa por etapa.</p>
-
-    <div class="pago-opts">
-      <div class="pago-opt"><span class="ico-box"><svg class="ico"><use href="#i-card"/></svg></span><div><b>50% y 50%</b><span>Mitad al inicio, mitad contra entrega.</span></div></div>
-      <div class="pago-opt"><span class="ico-box"><svg class="ico"><use href="#i-tag"/></svg></span><div><b>Todo adelantado: 10% menos</b><span>Pagás el total al inicio y te descuento un 10%.</span></div></div>
-    </div>
-
-    <div class="pagos" role="table" aria-label="Montos por opción">
-      <div class="pagos-row pagos-head" role="row">
-        <div role="columnheader">Opción</div>
-        <div role="columnheader">Al inicio</div>
-        <div role="columnheader">Contra entrega</div>
-        <div role="columnheader">Adelantado −10%</div>
+    <p class="section-intro">Por transferencia o Mercado Pago.</p>
+    <div class="pago-cards">
+      <div class="pago-card">
+        <span class="n">Opción 1</span>
+        <span class="t">Rediseño en una página</span>
+        <span class="monto">$260.000</span>
+        <p>En un solo pago, al empezar.</p>
       </div>
-      <div class="pagos-row" role="row">
-        <div class="pagos-name" role="rowheader">1 · Puesta a punto<small>$220.000</small></div>
-        <div data-k="Al inicio" role="cell">$110.000</div>
-        <div data-k="Contra entrega" role="cell">$110.000</div>
-        <div data-k="Adelantado −10%" class="pagos-best" role="cell">$198.000</div>
+      <div class="pago-card is-reco">
+        <span class="n">Opción 2</span>
+        <span class="t">Web con secciones</span>
+        <span class="monto">$460.000</span>
+        <p>En un pago, o en dos:</p>
+        <div class="pago-lineas">
+          <div><span>Al empezar</span><b>$230.000</b></div>
+          <div><span>Al entregar</span><b>$230.000</b></div>
+        </div>
       </div>
-      <div class="pagos-row" role="row">
-        <div class="pagos-name" role="rowheader">2 · Web nueva<small>$560.000</small></div>
-        <div data-k="Al inicio" role="cell">$280.000</div>
-        <div data-k="Contra entrega" role="cell">$280.000</div>
-        <div data-k="Adelantado −10%" class="pagos-best" role="cell">$504.000</div>
-      </div>
-      <div class="pagos-row" role="row">
-        <div class="pagos-name" role="rowheader">3 · Club online, etapa 1<small>$850.000</small></div>
-        <div data-k="Al inicio" role="cell">$425.000</div>
-        <div data-k="Contra entrega" role="cell">$425.000</div>
-        <div data-k="Adelantado −10%" class="pagos-best" role="cell">$765.000</div>
-      </div>
-      <div class="pagos-row" role="row">
-        <div class="pagos-name" role="rowheader">3 · Club online, etapa 2<small>$450.000</small></div>
-        <div data-k="Al inicio" role="cell">$225.000</div>
-        <div data-k="Contra entrega" role="cell">$225.000</div>
-        <div data-k="Adelantado −10%" class="pagos-best" role="cell">$405.000</div>
+      <div class="pago-card">
+        <span class="n">Opción 3</span>
+        <span class="t">Club online</span>
+        <span class="monto">Por etapa</span>
+        <p>Mitad al empezar y mitad al entregar cada etapa. Si pagás la etapa entera al empezar, 10% menos.</p>
+        <div class="pago-lineas">
+          <div><span>Etapa 1</span><b>$425.000 + $425.000</b></div>
+          <div><span>Etapa 2</span><b>$225.000 + $225.000</b></div>
+        </div>
       </div>
     </div>
   </section>
@@ -886,12 +881,12 @@
     <div class="eyebrow">Para arrancar</div>
     <h2>Qué necesito de tu lado</h2>
     <div class="need-grid">
-      <div class="need"><svg class="ico"><use href="#i-server"/></svg><span>Acceso al WordPress y al dominio<small>Todas las opciones</small></span></div>
+      <div class="need"><svg class="ico"><use href="#i-server"/></svg><span>Acceso al dominio</span></div>
       <div class="need"><svg class="ico"><use href="#i-card"/></svg><span>Acceso a Mercado Pago<small>Para revisar los planes; en la opción 3, para conectarlos</small></span></div>
       <div class="need"><svg class="ico"><use href="#i-star"/></svg><span>Qué incluye cada plan<small>Los beneficios concretos, aunque sea en una lista</small></span></div>
       <div class="need"><svg class="ico"><use href="#i-chat"/></svg><span>Links de las redes y del grupo de WhatsApp</span></div>
-      <div class="need"><svg class="ico"><use href="#i-image"/></svg><span>Fotos reales de la comunidad<small>Opciones 2 y 3. Si no hay, te paso la lista de las que hacen falta</small></span></div>
-      <div class="need"><svg class="ico"><use href="#i-pen"/></svg><span>La historia de la fundadora y testimonios<small>Opciones 2 y 3. Alcanza con audios de WhatsApp</small></span></div>
+      <div class="need"><svg class="ico"><use href="#i-image"/></svg><span>Fotos reales de la comunidad<small>Si no hay, te paso la lista de las que hacen falta</small></span></div>
+      <div class="need"><svg class="ico"><use href="#i-pen"/></svg><span>Tu historia y testimonios de socias<small>Alcanza con audios de WhatsApp</small></span></div>
       <div class="need"><svg class="ico"><use href="#i-book"/></svg><span>El libro en PDF<small>Opción 3, para la entrega automática</small></span></div>
       <div class="need"><svg class="ico"><use href="#i-play"/></svg><span>Las clases y materiales<small>Opción 3, etapa 2</small></span></div>
     </div>
