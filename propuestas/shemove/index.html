@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Propuesta — Web SheMove Club Academy</title>
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@200..700&display=swap" />
+  <script>document.documentElement.classList.add('js');</script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* Paleta y tipografía del sitio (css/style.css) */
+    :root {
+      --bg: #0A0B0D;
+      --bg-card: #101217;
+      --bg-soft: #14171D;
+      --ink: #EDEBE8;
+      --text: #E4E2DF;
+      --text-mid: #A3A9B4;
+      --text-dim: #858C99;
+      --border: #1F232B;
+      --border-strong: #343A45;
+      --accent: #FF2D46;
+      --accent-soft: rgb(255 45 70 / .12);
+      --ok: #3DD68C;
+      --icon: #C9CDD4;
+      --icon-bg: rgb(237 235 232 / .06);
+      --sans:  'Archivo', system-ui, -apple-system, 'Segoe UI', sans-serif;
+      --serif: 'Instrument Serif', Georgia, 'Times New Roman', serif;
+      --mono:  'JetBrains Mono', ui-monospace, 'SFMono-Regular', Consolas, monospace;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      font-variation-settings: 'wdth' 100, 'wght' 380;
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    strong { color: var(--ink); font-weight: 560; }
+    img { display: block; max-width: 100%; height: auto; }
+
+    .ico {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+      fill: none;
+      stroke: var(--icon);
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .ico-box {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 4px;
+      background: var(--icon-bg);
+      flex-shrink: 0;
+    }
+
+    /* ── PROGRESS BAR ── */
+    #progress {
+      position: fixed;
+      top: 0; left: 0;
+      height: 2px;
+      width: 0%;
+      background: var(--accent);
+      z-index: 999;
+      transition: width 0.1s linear;
+    }
+
+    /* ── LAYOUT ── */
+    .wrap { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+    .wrap-wide { max-width: 1140px; margin: 0 auto; padding: 0 24px; }
+
+    /* ── HERO ── */
+    .hero { padding: 88px 0 64px; border-bottom: 1px solid var(--border); }
+
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 22px;
+    }
+
+    .eyebrow::before {
+      content: '';
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 0 4px var(--accent-soft);
+      flex: none;
+    }
+
+    .hero h1 {
+      font-size: clamp(34px, 5.6vw, 52px);
+      font-weight: 400;
+      font-variation-settings: 'wdth' 100, 'wght' 330;
+      line-height: 1.08;
+      letter-spacing: -0.025em;
+      color: var(--ink);
+      margin-bottom: 18px;
+    }
+
+    .hero h1 em { font-family: var(--serif); font-style: italic; font-weight: 400; font-variation-settings: normal; font-size: 1.16em; letter-spacing: -.008em; }
+
+    .hero-sub { font-size: 17px; color: var(--text-mid); max-width: 580px; margin-bottom: 40px; }
+
+    .hero-meta { display: flex; gap: 20px 40px; flex-wrap: wrap; }
+
+    .hero-meta-item label {
+      display: block;
+      font-size: 11px;
+      font-weight: 560;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 4px;
+    }
+
+    .hero-meta-item span { font-size: 15px; font-weight: 560; color: var(--ink); }
+
+    /* ── SECTIONS ── */
+    section { padding: 64px 0; border-bottom: 1px solid var(--border); }
+
+    h2 {
+      font-size: 28px;
+      font-weight: 400;
+      font-variation-settings: 'wdth' 100, 'wght' 380;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin-bottom: 12px;
+    }
+
+    h3 { font-size: 18px; font-weight: 560; color: var(--ink); letter-spacing: -0.01em; margin: 40px 0 8px; }
+
+    .section-intro { font-size: 15px; color: var(--text-mid); margin-bottom: 32px; max-width: 620px; }
+    .p { font-size: 15px; color: var(--text-mid); max-width: 640px; margin-bottom: 18px; }
+
+    /* ── DIAGNÓSTICO: datos ── */
+    .datos {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 28px;
+    }
+
+    .dato { display: flex; gap: 14px; align-items: flex-start; padding: 20px; background: var(--bg-card); }
+    .dato + .dato { border-left: 1px solid var(--border); }
+    .dato b { display: block; font-size: 17px; font-weight: 560; color: var(--ink); line-height: 1.3; }
+    .dato span { font-size: 13px; color: var(--text-mid); line-height: 1.45; }
+
+    .callout {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      padding: 18px 20px;
+      border-left: 2px solid var(--accent);
+      background: var(--bg-card);
+      border-radius: 0 4px 4px 0;
+      font-size: 15px;
+      color: var(--text);
+    }
+
+    .callout.is-ok { border-left-color: var(--ok); }
+    .callout.is-ok .ico { stroke: var(--ok); }
+
+    /* ── CAPTURAS ── */
+    .shot { border: 1px solid var(--border-strong); border-radius: 4px; overflow: hidden; background: var(--bg-card); }
+    .shot-bar { display: flex; align-items: center; gap: 6px; padding: 9px 12px; border-bottom: 1px solid var(--border); background: var(--bg-soft); }
+    .shot-bar i { width: 8px; height: 8px; border-radius: 50%; background: var(--border-strong); }
+    .shot-bar span { margin-left: 8px; font-family: var(--mono); font-size: 11px; color: var(--text-dim); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    figcaption { margin-top: 10px; font-size: 13px; color: var(--text-mid); line-height: 1.5; }
+    figure { margin-bottom: 28px; }
+
+    .pair { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 10px; }
+    .pair-label { display: flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 560; color: var(--text-mid); margin-bottom: 8px; }
+    .pair-label .ico { width: 16px; height: 16px; }
+    .pair-label.is-bad .ico { stroke: var(--accent); }
+    .pair-label.is-ok .ico { stroke: var(--ok); }
+
+    code { font-family: var(--mono); font-size: .88em; color: var(--ink); background: var(--bg-soft); padding: 1px 6px; border-radius: 3px; }
+
+    /* ── HALLAZGOS ── */
+    .hall { list-style: none; border: 1px solid var(--border); border-radius: 4px; overflow: hidden; margin-bottom: 28px; }
+    .hall li { display: grid; grid-template-columns: 24px 1fr; gap: 12px; padding: 14px 18px; font-size: 14px; color: var(--text); line-height: 1.5; background: var(--bg-card); }
+    .hall li + li { border-top: 1px solid var(--border); }
+    .hall .ico { width: 18px; height: 18px; margin-top: 2px; stroke: var(--accent); }
+    .hall small { display: block; font-size: 13px; color: var(--text-mid); }
+
+    /* ── ESCALAS ── */
+    .escalas { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; align-items: stretch; }
+
+    .escala {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .escala.is-reco { border-color: var(--accent); }
+
+    .reco {
+      position: absolute;
+      top: 22px;
+      right: 20px;
+      font-size: 11px;
+      font-weight: 560;
+      padding: 3px 9px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+    }
+
+    .escala-head { padding: 24px 24px 20px; border-bottom: 1px solid var(--border); }
+    .escala-top { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+
+    .escala-num {
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .escala-title { font-size: 19px; font-weight: 560; letter-spacing: -0.01em; color: var(--ink); line-height: 1.25; margin-bottom: 8px; }
+    .escala-tagline { font-size: 13px; color: var(--text-mid); line-height: 1.5; }
+
+    .escala-price { padding: 20px 24px; border-bottom: 1px solid var(--border); background: var(--bg-soft); }
+    .escala-price-value { font-size: 30px; font-weight: 560; letter-spacing: -0.02em; color: var(--ink); line-height: 1.1; }
+
+    .escala-price-stages { display: flex; flex-direction: column; gap: 6px; }
+    .escala-price-stages div { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; font-size: 13px; color: var(--text-mid); }
+    .escala-price-stages b { font-size: 21px; font-weight: 560; color: var(--ink); letter-spacing: -0.01em; }
+
+    .escala-facts { margin-top: 14px; display: flex; flex-direction: column; gap: 6px; }
+    .escala-facts div { display: flex; gap: 10px; align-items: flex-start; font-size: 13px; color: var(--text-mid); line-height: 1.4; }
+    .escala-facts .ico { width: 16px; height: 16px; margin-top: 1px; }
+    .escala-facts b { color: var(--text); font-weight: 560; }
+
+    .escala-body { padding: 20px 24px 24px; display: flex; flex-direction: column; gap: 18px; flex: 1; }
+
+    .ticks { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+    .ticks li { display: flex; gap: 10px; font-size: 14px; color: var(--text); line-height: 1.45; }
+    .ticks .ico { width: 16px; height: 16px; margin-top: 2px; }
+    .ticks-plus { font-size: 12px; font-weight: 560; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-dim); }
+
+    .escala-meta { display: flex; flex-direction: column; gap: 12px; margin-top: auto; padding-top: 16px; border-top: 1px solid var(--border); }
+    .escala-meta div { display: flex; gap: 10px; align-items: flex-start; font-size: 13px; color: var(--text-mid); line-height: 1.45; }
+    .escala-meta .ico { width: 16px; height: 16px; margin-top: 2px; stroke: var(--text-dim); }
+    .escala-meta b { display: block; font-size: 11px; font-weight: 560; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-dim); }
+
+    .etapas { display: flex; flex-direction: column; gap: 10px; }
+    .etapa { padding: 12px 14px; border-radius: 4px; background: var(--bg-soft); font-size: 13px; color: var(--text-mid); line-height: 1.45; }
+    .etapa b { display: block; font-size: 12px; font-weight: 560; color: var(--accent); margin-bottom: 2px; }
+
+    /* ── COMPARATIVA ── */
+    .cmp { margin-top: 40px; border: 1px solid var(--border); border-radius: 4px; overflow: hidden; }
+    .cmp-row { display: grid; grid-template-columns: 180px repeat(3, 1fr); border-bottom: 1px solid var(--border); }
+    .cmp-row:last-child { border-bottom: none; }
+    .cmp-row > div { padding: 13px 18px; font-size: 13px; line-height: 1.5; color: var(--text); }
+    .cmp-row > div + div { border-left: 1px solid var(--border); }
+    .cmp-head > div { font-family: var(--mono); font-size: 11px; font-weight: 560; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-dim); background: var(--bg-soft); }
+    .cmp-k { font-weight: 560; color: var(--ink) !important; background: var(--bg-card); }
+    .cmp .no { color: var(--text-dim); }
+
+    /* ── RECORRIDO (opción 2) ── */
+    .recorrido { list-style: none; counter-reset: r; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .recorrido li { counter-increment: r; display: grid; grid-template-columns: 30px 1fr; gap: 10px; padding: 14px 16px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 4px; font-size: 13px; color: var(--text-mid); line-height: 1.45; }
+    .recorrido li::before { content: counter(r, decimal-leading-zero); font-family: var(--mono); font-size: 11px; color: var(--accent); padding-top: 2px; }
+    .recorrido b { display: block; font-size: 14px; color: var(--ink); font-weight: 560; margin-bottom: 2px; }
+
+    /* ── PAGOS ── */
+    .pago-opts { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
+    .pago-opt { display: flex; gap: 14px; align-items: flex-start; background: var(--bg-card); border: 1px solid var(--border); border-radius: 4px; padding: 16px; }
+    .pago-opt b { display: block; font-size: 15px; font-weight: 560; color: var(--ink); margin-bottom: 2px; }
+    .pago-opt span { font-size: 13px; color: var(--text-mid); }
+
+    .pagos { border: 1px solid var(--border); border-radius: 4px; overflow: hidden; }
+    .pagos-row { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; border-bottom: 1px solid var(--border); }
+    .pagos-row:last-child { border-bottom: none; }
+    .pagos-row > div { padding: 13px 18px; font-size: 14px; color: var(--text); font-variant-numeric: tabular-nums; }
+    .pagos-row > div + div { text-align: right; }
+    .pagos-head > div { font-family: var(--mono); font-size: 11px; font-weight: 560; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-dim); background: var(--bg-soft); }
+    .pagos-name { font-weight: 560; color: var(--ink) !important; }
+    .pagos-name small { display: block; font-weight: 400; font-size: 12px; color: var(--text-dim); }
+    .pagos-best { color: var(--accent) !important; font-weight: 560; }
+
+    /* ── NECESITO / NO INCLUIDO ── */
+    .need-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .need { display: flex; gap: 12px; align-items: center; padding: 12px 14px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 4px; font-size: 14px; color: var(--text); line-height: 1.4; }
+    .need small { display: block; font-size: 12px; color: var(--text-dim); }
+
+    .no-wrap { display: flex; flex-wrap: wrap; gap: 8px; }
+    .no-chip { display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px; border: 1px solid var(--border); border-radius: 999px; font-size: 13px; color: var(--text-mid); }
+    .no-chip .ico { width: 14px; height: 14px; stroke: var(--text-dim); }
+
+    /* ── CIERRE ── */
+    .cierre p { font-size: 17px; color: var(--text); margin-bottom: 24px; max-width: 600px; }
+
+    .portfolio-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      border: 1px solid var(--accent);
+      border-radius: 4px;
+      padding: 13px 20px;
+      font-size: 14px;
+      font-weight: 560;
+      color: var(--accent);
+      text-decoration: none;
+      transition: background 0.15s, color 0.15s;
+    }
+
+    .portfolio-link .ico { width: 16px; height: 16px; transition: stroke 0.15s; }
+    .portfolio-link:hover { background: var(--accent); color: var(--bg); }
+    .portfolio-link:hover .ico { stroke: var(--bg); }
+
+    footer { padding: 32px 0 40px; text-align: center; font-size: 13px; color: var(--text-dim); }
+
+    /* ── FADE IN (solo si corre el JS; sin JS la página se ve entera) ── */
+    .js .fade { opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease; }
+    .js .fade.visible { opacity: 1; transform: none; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .js .fade { opacity: 1; transform: none; transition: none; }
+    }
+
+    /* ── TABLET ── */
+    @media (max-width: 980px) {
+      .escalas { grid-template-columns: 1fr; max-width: 812px; margin: 0 auto; }
+      .cmp { max-width: 812px; margin-left: auto; margin-right: auto; }
+      .cmp-head { display: none; }
+      .cmp-row { grid-template-columns: 1fr; }
+      .cmp-row > div + div { border-left: none; border-top: 1px solid var(--border); }
+      .cmp-row > div[data-e]::before {
+        content: attr(data-e);
+        display: block;
+        font-size: 11px;
+        font-weight: 560;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--accent);
+        margin-bottom: 2px;
+      }
+      .cmp-k { font-size: 14px !important; }
+    }
+
+    /* ── MOBILE ── */
+    @media (max-width: 640px) {
+      .wrap, .wrap-wide { padding: 0 16px; }
+      .hero { padding: 60px 0 48px; }
+      section { padding: 52px 0; }
+      .datos { grid-template-columns: 1fr; }
+      .dato + .dato { border-left: none; border-top: 1px solid var(--border); }
+      .pair, .recorrido { grid-template-columns: 1fr; }
+      .escala-head, .escala-price, .escala-body { padding-left: 18px; padding-right: 18px; }
+      .pago-opts, .need-grid { grid-template-columns: 1fr; }
+      .pagos-head { display: none; }
+      .pagos-row { grid-template-columns: 1fr 1fr; }
+      .pagos-row > div { padding: 10px 16px; }
+      .pagos-row > div + div { text-align: left; }
+      .pagos-name { grid-column: 1 / -1; padding-top: 16px !important; padding-bottom: 4px !important; }
+      .pagos-row > div[data-k]::before {
+        content: attr(data-k);
+        display: block;
+        font-size: 11px;
+        font-weight: 560;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--text-dim);
+      }
+      .pagos-row > div[data-k]:last-child { grid-column: 1 / -1; padding-bottom: 16px; }
+    }
+
+    @media print {
+      body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      #progress { display: none; }
+      .js .fade { opacity: 1; transform: none; transition: none; }
+      .escala, .cmp-row, .pagos-row, .need, figure, .hall li, .recorrido li { break-inside: avoid; }
+      h2, h3 { break-after: avoid; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Íconos de línea -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-card" viewBox="0 0 24 24"><rect width="20" height="14" x="2" y="5" rx="2"/><path d="M2 10h20"/></symbol>
+  <symbol id="i-split" viewBox="0 0 24 24"><path d="M16 3h5v5"/><path d="M8 3H3v5"/><path d="M12 22v-8.3a4 4 0 0 0-1.17-2.83L3 3"/><path d="m15 9 6-6"/></symbol>
+  <symbol id="i-copy" viewBox="0 0 24 24"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+  <symbol id="i-alert" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></symbol>
+  <symbol id="i-wrench" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></symbol>
+  <symbol id="i-layout" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18M9 21V9"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></symbol>
+  <symbol id="i-tag" viewBox="0 0 24 24"><path d="M12.59 2.59A2 2 0 0 0 11.17 2H4a2 2 0 0 0-2 2v7.17a2 2 0 0 0 .59 1.42l8.7 8.7a2.43 2.43 0 0 0 3.42 0l6.58-6.58a2.43 2.43 0 0 0 0-3.42z"/><circle cx="7.5" cy="7.5" r="1"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></symbol>
+  <symbol id="i-server" viewBox="0 0 24 24"><rect width="20" height="8" x="2" y="2" rx="2"/><rect width="20" height="8" x="2" y="14" rx="2"/><path d="M6 6h.01M6 18h.01"/></symbol>
+  <symbol id="i-image" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="3" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.09-3.09a2 2 0 0 0-2.82 0L6 21"/></symbol>
+  <symbol id="i-pen" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></symbol>
+  <symbol id="i-book" viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m10 9 5 3-5 3z"/></symbol>
+  <symbol id="i-dashboard" viewBox="0 0 24 24"><rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="16" rx="1"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24"><path d="M11.5 2.3a.6.6 0 0 1 1 0l2.6 5.4 5.9.8a.6.6 0 0 1 .3 1l-4.3 4.2 1 5.9a.6.6 0 0 1-.8.6L12 17.4l-5.3 2.8a.6.6 0 0 1-.8-.6l1-5.9-4.3-4.2a.6.6 0 0 1 .3-1l5.9-.8z"/></symbol>
+</svg>
+
+<div id="progress"></div>
+
+<div class="wrap">
+
+  <!-- HERO -->
+  <header class="hero fade">
+    <div class="eyebrow">Propuesta de desarrollo web</div>
+    <h1>Una web que <em>sume socias</em> a SheMove</h1>
+    <p class="hero-sub">
+      Revisé la página entera, probé cada botón y cada pago. Abajo está lo que encontré y tres formas de resolverlo, de la más rápida a la más completa, con lo que cuesta cada una.
+    </p>
+    <div class="hero-meta">
+      <div class="hero-meta-item"><label>Preparado para</label><span>Carito · SheMove Club Academy</span></div>
+      <div class="hero-meta-item"><label>Preparado por</label><span>Lautaro</span></div>
+      <div class="hero-meta-item"><label>Fecha</label><span>Octubre 2026</span></div>
+    </div>
+  </header>
+
+  <!-- DIAGNÓSTICO -->
+  <section class="fade">
+    <div class="eyebrow">Diagnóstico</div>
+    <h2>Cómo está hoy</h2>
+    <p class="section-intro">Capturas del 15 de octubre de 2026, en computadora y en celular.</p>
+
+    <div class="datos">
+      <div class="dato">
+        <span class="ico-box"><svg class="ico"><use href="#i-card"/></svg></span>
+        <div><b>2 de 3 planes no cobran</b><span>El mensual y el trimestral llevan a una página de error.</span></div>
+      </div>
+      <div class="dato">
+        <span class="ico-box"><svg class="ico"><use href="#i-split"/></svg></span>
+        <div><b>2 caminos sueltos</b><span>Un formulario de Google por un lado, los pagos por otro.</span></div>
+      </div>
+      <div class="dato">
+        <span class="ico-box"><svg class="ico"><use href="#i-copy"/></svg></span>
+        <div><b>3 planes iguales</b><span>Solo cambia la duración. No dicen qué incluyen ni cuánto se ahorra.</span></div>
+      </div>
+    </div>
+
+    <figure>
+      <div class="shot">
+        <div class="shot-bar"><i></i><i></i><i></i><span>shemoveclubacademy.com.ar</span></div>
+        <img src="hoy-hero.jpg" width="1440" height="900" alt="Primera pantalla del sitio actual en computadora" loading="lazy" />
+      </div>
+      <figcaption>La primera pantalla. El mensaje principal está en dos tarjetas con letra chica, y el único botón lleva a un formulario fuera del sitio.</figcaption>
+    </figure>
+
+    <h3>Lo urgente: los botones de pago</h3>
+    <p class="p">A las direcciones del plan mensual y del trimestral se les pegó una flecha (<code>↗</code>) al final, y con eso Mercado Pago no las reconoce. Los planes están bien creados: con la dirección limpia, el cobro abre normalmente. Hoy, cualquiera que toque «Unete» en esos dos planes ve esto:</p>
+
+    <div class="pair">
+      <div>
+        <div class="pair-label is-bad"><svg class="ico"><use href="#i-x"/></svg>Plan trimestral, tal como está</div>
+        <div class="shot"><img src="mp-roto.jpg" width="900" height="450" alt="Mercado Pago: Esta página no existe" loading="lazy" /></div>
+      </div>
+      <div>
+        <div class="pair-label is-ok"><svg class="ico"><use href="#i-check"/></svg>El mismo plan, con la dirección corregida</div>
+        <div class="shot"><img src="mp-ok.jpg" width="900" height="450" alt="Mercado Pago: plan de suscripción de 55.000 por trimestre" loading="lazy" /></div>
+      </div>
+    </div>
+    <p class="p" style="margin-bottom:0">Funcionan el plan anual y el pago del libro por Mercado Pago. Como el sitio no tiene medición, no hay forma de saber cuántas personas tocaron esos botones desde que se publicó.</p>
+
+    <h3>Los planes</h3>
+    <figure>
+      <div class="shot">
+        <img src="hoy-planes.jpg" width="1400" height="739" alt="Sección de planes del sitio actual" loading="lazy" />
+      </div>
+      <figcaption>Los tres dicen «Participa en la comunidad». El trimestral ahorra $5.000 y el anual ahorra $60.000 (tres meses gratis), y no figura en ningún lado: es el mejor argumento para vender el anual.</figcaption>
+    </figure>
+
+    <h3>El resto</h3>
+    <ul class="hall">
+      <li><svg class="ico"><use href="#i-alert"/></svg><span>El formulario de inscripción obliga a contestar las preguntas de conductora a todas.<small>«¿Tenés auto propio? (solo si eligió Conductora)» es obligatoria, así que una pasajera tiene que responder si tiene auto para poder enviarlo.</small></span></li>
+      <li><svg class="ico"><use href="#i-alert"/></svg><span>Al final del formulario hay una pregunta sin título con una sola opción: «Opción 1».<small><img src="form-opcion1.jpg" width="900" height="150" alt="Pregunta vacía con la opción «Opción 1»" loading="lazy" style="margin-top:10px;border:1px solid var(--border);border-radius:4px;max-width:420px" /></small></span></li>
+      <li><svg class="ico"><use href="#i-alert"/></svg><span>No queda claro el orden: ¿primero me anoto o primero pago?<small>Quien paga no deja sus datos y quien se anota no pasa por los planes. Tampoco hay una página de «gracias» que diga qué sigue después de pagar.</small></span></li>
+      <li><svg class="ico"><use href="#i-alert"/></svg><span>En Google y en la pestaña del navegador el sitio se llama «My WordPress Blog».<small>Quedó el texto de fábrica de WordPress, y también sigue publicada la entrada de ejemplo «Hello world».</small></span></li>
+      <li><svg class="ico"><use href="#i-alert"/></svg><span>No aparece quién está detrás, ni testimonios, ni preguntas frecuentes, ni las redes.<small>Para una comunidad que habla de seguridad y confianza, es lo primero que una mujer va a querer ver antes de pagar.</small></span></li>
+      <li><svg class="ico"><use href="#i-alert"/></svg><span>Los textos mezclan «tú» y «vos» y les faltan tildes.<small>«Elige tu plan» junto a «este espacio también es para vos», «Compralo Aca», «UNETE».</small></span></li>
+      <li><svg class="ico"><use href="#i-alert"/></svg><span>No hay Google Analytics ni Pixel de Meta.<small>Si se pauta en redes, no se puede saber qué anuncio trajo a cada socia.</small></span></li>
+    </ul>
+
+    <div class="callout is-ok">
+      <svg class="ico"><use href="#i-check"/></svg>
+      <span><strong>Lo que ya está bien y se mantiene:</strong> el nombre, el logo y la paleta bordó y amarilla tienen personalidad; la idea se entiende en la primera línea; las alianzas dan respaldo; los planes ya existen en Mercado Pago y el botón de WhatsApp funciona. No hay que empezar de cero con la marca.</span>
+    </div>
+  </section>
+
+</div>
+
+<!-- OPCIONES -->
+<section class="fade">
+  <div class="wrap">
+    <div class="eyebrow">Las tres opciones</div>
+    <h2>Tres formas de resolverlo</h2>
+    <p class="section-intro">Cada una incluye todo lo de la anterior. Lo que cambia es cuánto trabajo hace la web por vos.</p>
+  </div>
+
+  <div class="wrap-wide">
+    <div class="escalas">
+
+      <!-- OPCIÓN 1 -->
+      <article class="escala">
+        <div class="escala-head">
+          <div class="escala-top"><span class="ico-box"><svg class="ico"><use href="#i-wrench"/></svg></span><span class="escala-num">Opción 1</span></div>
+          <div class="escala-title">Puesta a punto</div>
+          <p class="escala-tagline">La misma página, sobre el WordPress que ya tenés, funcionando bien y diciendo lo que tiene que decir.</p>
+        </div>
+        <div class="escala-price">
+          <div class="escala-price-value">$220.000</div>
+          <div class="escala-facts">
+            <div><svg class="ico"><use href="#i-clock"/></svg><span><b>1 semana</b> desde que recibo los accesos</span></div>
+            <div><svg class="ico"><use href="#i-wrench"/></svg><span>Mantenimiento <b>$40.000/mes</b>, opcional</span></div>
+          </div>
+        </div>
+        <div class="escala-body">
+          <ul class="ticks">
+            <li><svg class="ico"><use href="#i-check"/></svg>Los tres planes y el libro cobrando, probados de punta a punta.</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>Textos corregidos: un solo tono, tildes, y cada plan con lo que incluye y cuánto se ahorra.</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>Primera pantalla reordenada: el mensaje grande y dos botones claros, «Ver planes» y «Anotarme».</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>Formulario arreglado: preguntas de conductora solo para conductoras y sin la pregunta vacía.</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>Nombre correcto en Google, imagen para compartir por WhatsApp y entrada de ejemplo borrada.</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>Redes en el pie y Google Analytics con el clic a cada plan medido.</li>
+          </ul>
+          <div class="escala-meta">
+            <div><svg class="ico"><use href="#i-shield"/></svg><span><b>Sirve si</b>querés dejar de perder pagos ya, sin cambiar la página.</span></div>
+            <div><svg class="ico"><use href="#i-card"/></svg><span><b>Costo mensual tuyo</b>El hosting que ya pagás. Nada nuevo.</span></div>
+          </div>
+        </div>
+      </article>
+
+      <!-- OPCIÓN 2 -->
+      <article class="escala is-reco">
+        <span class="reco">La que recomiendo</span>
+        <div class="escala-head">
+          <div class="escala-top"><span class="ico-box"><svg class="ico"><use href="#i-layout"/></svg></span><span class="escala-num">Opción 2</span></div>
+          <div class="escala-title">Web nueva</div>
+          <p class="escala-tagline">Diseño desde cero con la marca de SheMove, armada para que una visita entienda, confíe y se suscriba en el mismo recorrido.</p>
+        </div>
+        <div class="escala-price">
+          <div class="escala-price-value">$560.000</div>
+          <div class="escala-facts">
+            <div><svg class="ico"><use href="#i-clock"/></svg><span><b>3 a 4 semanas</b> desde que recibo el material</span></div>
+            <div><svg class="ico"><use href="#i-wrench"/></svg><span>Mantenimiento <b>$40.000/mes</b>, opcional</span></div>
+          </div>
+        </div>
+        <div class="escala-body">
+          <div class="ticks-plus">Todo lo de la opción 1, más</div>
+          <ul class="ticks">
+            <li><svg class="ico"><use href="#i-check"/></svg>Diseño propio, pensado primero para el celular, que es donde llegan las visitas de redes.</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>Un recorrido en orden: qué es, para quién, cómo funciona, planes, libro, quién está detrás y preguntas frecuentes.</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>Inscripción propia en el sitio: los datos te llegan por mail y a una planilla, y del formulario se pasa directo al plan.</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>Página de bienvenida después del pago, con el link al grupo de WhatsApp.</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>Pixel de Meta además de Analytics, listo para pautar.</li>
+          </ul>
+          <div class="escala-meta">
+            <div><svg class="ico"><use href="#i-shield"/></svg><span><b>Sirve si</b>vas a mover la web en redes o con publicidad y querés que convierta.</span></div>
+            <div><svg class="ico"><use href="#i-card"/></svg><span><b>Costo mensual tuyo</b>Ninguno nuevo: la publico en un servicio gratuito que alcanza para este tráfico. El dominio sigue siendo tuyo.</span></div>
+          </div>
+        </div>
+      </article>
+
+      <!-- OPCIÓN 3 -->
+      <article class="escala">
+        <div class="escala-head">
+          <div class="escala-top"><span class="ico-box"><svg class="ico"><use href="#i-dashboard"/></svg></span><span class="escala-num">Opción 3</span></div>
+          <div class="escala-title">Club online</div>
+          <p class="escala-tagline">La web nueva más un área de socias: la plataforma sabe quién pagó, le da acceso a la academia y te muestra todo en un panel. Se hace en dos etapas.</p>
+        </div>
+        <div class="escala-price">
+          <div class="escala-price-stages">
+            <div><span>Etapa 1</span><b>$850.000</b></div>
+            <div><span>Etapa 2</span><b>$450.000</b></div>
+          </div>
+          <div class="escala-facts">
+            <div><svg class="ico"><use href="#i-clock"/></svg><span><b>5 a 6 semanas</b> + <b>3 a 4 semanas</b></span></div>
+            <div><svg class="ico"><use href="#i-wrench"/></svg><span>Mantenimiento <b>$90.000/mes</b>, los 3 primeros meses incluidos</span></div>
+          </div>
+        </div>
+        <div class="escala-body">
+          <div class="ticks-plus">Todo lo de la opción 2, más</div>
+          <div class="etapas">
+            <div class="etapa"><b>Etapa 1 · Socias y cobros</b>Cuenta de socia con usuario y contraseña. Suscripción de Mercado Pago conectada: el alta, la renovación y la baja se registran solas. Mail de bienvenida automático con el grupo de WhatsApp. El libro se entrega en PDF apenas se paga. Panel con socias activas, vencidas y altas del mes, exportable a Excel.</div>
+            <div class="etapa"><b>Etapa 2 · Academia</b>Aula con clases en video, guías y materiales por módulo, solo para socias al día. Progreso de cada socia y contenido que cargás vos desde el panel.</div>
+          </div>
+          <div class="escala-meta">
+            <div><svg class="ico"><use href="#i-shield"/></svg><span><b>Sirve si</b>la academia va a tener contenido propio y querés dejar de controlar pagos a mano.</span></div>
+            <div><svg class="ico"><use href="#i-card"/></svg><span><b>Costo mensual tuyo</b>Infraestructura (servidor y base de datos), aprox. USD 45. Sujeto a cambios del proveedor.</span></div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- COMPARATIVA -->
+    <div class="cmp" role="table" aria-label="Comparativa de las tres opciones">
+      <div class="cmp-row cmp-head" role="row">
+        <div role="columnheader">De un vistazo</div>
+        <div role="columnheader">1 · Puesta a punto</div>
+        <div role="columnheader">2 · Web nueva</div>
+        <div role="columnheader">3 · Club online</div>
+      </div>
+      <div class="cmp-row" role="row">
+        <div class="cmp-k" role="rowheader">Pagos funcionando</div>
+        <div data-e="Puesta a punto" role="cell">Sí</div>
+        <div data-e="Web nueva" role="cell">Sí</div>
+        <div data-e="Club online" role="cell">Sí, y registrados en el panel</div>
+      </div>
+      <div class="cmp-row" role="row">
+        <div class="cmp-k" role="rowheader">Diseño</div>
+        <div data-e="Puesta a punto" role="cell">El actual, ordenado</div>
+        <div data-e="Web nueva" role="cell">Nuevo, con la marca</div>
+        <div data-e="Club online" role="cell">Nuevo, con la marca</div>
+      </div>
+      <div class="cmp-row" role="row">
+        <div class="cmp-k" role="rowheader">Inscripción</div>
+        <div data-e="Puesta a punto" role="cell">Formulario de Google corregido</div>
+        <div data-e="Web nueva" role="cell">Propia, a mail y planilla</div>
+        <div data-e="Club online" role="cell">Cuenta de socia</div>
+      </div>
+      <div class="cmp-row" role="row">
+        <div class="cmp-k" role="rowheader">Quién pagó y quién no</div>
+        <div data-e="Puesta a punto" role="cell" class="no">Lo mirás en Mercado Pago</div>
+        <div data-e="Web nueva" role="cell" class="no">Lo mirás en Mercado Pago</div>
+        <div data-e="Club online" role="cell">Panel propio, al día</div>
+      </div>
+      <div class="cmp-row" role="row">
+        <div class="cmp-k" role="rowheader">Contenido de la academia</div>
+        <div data-e="Puesta a punto" role="cell" class="no">No</div>
+        <div data-e="Web nueva" role="cell" class="no">No</div>
+        <div data-e="Club online" role="cell">Aula para socias (etapa 2)</div>
+      </div>
+      <div class="cmp-row" role="row">
+        <div class="cmp-k" role="rowheader">Medición</div>
+        <div data-e="Puesta a punto" role="cell">Analytics</div>
+        <div data-e="Web nueva" role="cell">Analytics y Pixel de Meta</div>
+        <div data-e="Club online" role="cell">Analytics y Pixel de Meta</div>
+      </div>
+      <div class="cmp-row" role="row">
+        <div class="cmp-k" role="rowheader">Costo mensual tuyo</div>
+        <div data-e="Puesta a punto" role="cell">El hosting actual</div>
+        <div data-e="Web nueva" role="cell">Ninguno nuevo</div>
+        <div data-e="Club online" role="cell">Aprox. USD 45</div>
+      </div>
+      <div class="cmp-row" role="row">
+        <div class="cmp-k" role="rowheader">Mantenimiento</div>
+        <div data-e="Puesta a punto" role="cell">$40.000/mes, opcional</div>
+        <div data-e="Web nueva" role="cell">$40.000/mes, opcional</div>
+        <div data-e="Club online" role="cell">$90.000/mes, 3 meses incluidos</div>
+      </div>
+      <div class="cmp-row" role="row">
+        <div class="cmp-k" role="rowheader">Plazo</div>
+        <div data-e="Puesta a punto" role="cell">1 semana</div>
+        <div data-e="Web nueva" role="cell">3 a 4 semanas</div>
+        <div data-e="Club online" role="cell">5 a 6 + 3 a 4 semanas</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+
+  <!-- RECORRIDO -->
+  <section class="fade">
+    <div class="eyebrow">Opciones 2 y 3</div>
+    <h2>Cómo se recorre la web nueva</h2>
+    <p class="section-intro">Cada sección contesta la duda que tiene la visita en ese momento, hasta llegar al plan.</p>
+    <ol class="recorrido">
+      <li><div><b>Primera pantalla</b>«Ella se mueve. Ella conduce.» en grande, una foto real de la comunidad y los dos botones.</div></li>
+      <li><div><b>Para quién es</b>Conductoras y pasajeras, cada una con lo que gana al sumarse.</div></li>
+      <li><div><b>Cómo funciona</b>Te anotás, elegís el plan, entrás al grupo. Tres pasos.</div></li>
+      <li><div><b>Qué incluye</b>Academia, comunidad y red de apoyo, con ejemplos concretos.</div></li>
+      <li><div><b>Planes</b>Con lo que incluye cada uno, el ahorro a la vista y el anual destacado.</div></li>
+      <li><div><b>El libro</b>Tapa, de qué trata y dónde comprarlo, con los tres medios.</div></li>
+      <li><div><b>Quién está detrás</b>La historia de quien fundó SheMove y por qué lo hizo.</div></li>
+      <li><div><b>Voces y alianzas</b>Testimonios de socias y las alianzas actuales.</div></li>
+      <li><div><b>Preguntas frecuentes</b>Cómo se cancela, qué pasa después de pagar, si sirve desde otro país.</div></li>
+      <li><div><b>Cierre</b>Inscripción y contacto por WhatsApp.</div></li>
+    </ol>
+  </section>
+
+  <!-- FORMAS DE PAGO -->
+  <section class="fade">
+    <div class="eyebrow">Formas de pago</div>
+    <h2>Cómo se paga</h2>
+    <p class="section-intro">En cualquier opción. En la opción 3, etapa por etapa.</p>
+
+    <div class="pago-opts">
+      <div class="pago-opt"><span class="ico-box"><svg class="ico"><use href="#i-card"/></svg></span><div><b>50% y 50%</b><span>Mitad al inicio, mitad contra entrega.</span></div></div>
+      <div class="pago-opt"><span class="ico-box"><svg class="ico"><use href="#i-tag"/></svg></span><div><b>Todo adelantado: 10% menos</b><span>Pagás el total al inicio y te descuento un 10%.</span></div></div>
+    </div>
+
+    <div class="pagos" role="table" aria-label="Montos por opción">
+      <div class="pagos-row pagos-head" role="row">
+        <div role="columnheader">Opción</div>
+        <div role="columnheader">Al inicio</div>
+        <div role="columnheader">Contra entrega</div>
+        <div role="columnheader">Adelantado −10%</div>
+      </div>
+      <div class="pagos-row" role="row">
+        <div class="pagos-name" role="rowheader">1 · Puesta a punto<small>$220.000</small></div>
+        <div data-k="Al inicio" role="cell">$110.000</div>
+        <div data-k="Contra entrega" role="cell">$110.000</div>
+        <div data-k="Adelantado −10%" class="pagos-best" role="cell">$198.000</div>
+      </div>
+      <div class="pagos-row" role="row">
+        <div class="pagos-name" role="rowheader">2 · Web nueva<small>$560.000</small></div>
+        <div data-k="Al inicio" role="cell">$280.000</div>
+        <div data-k="Contra entrega" role="cell">$280.000</div>
+        <div data-k="Adelantado −10%" class="pagos-best" role="cell">$504.000</div>
+      </div>
+      <div class="pagos-row" role="row">
+        <div class="pagos-name" role="rowheader">3 · Club online, etapa 1<small>$850.000</small></div>
+        <div data-k="Al inicio" role="cell">$425.000</div>
+        <div data-k="Contra entrega" role="cell">$425.000</div>
+        <div data-k="Adelantado −10%" class="pagos-best" role="cell">$765.000</div>
+      </div>
+      <div class="pagos-row" role="row">
+        <div class="pagos-name" role="rowheader">3 · Club online, etapa 2<small>$450.000</small></div>
+        <div data-k="Al inicio" role="cell">$225.000</div>
+        <div data-k="Contra entrega" role="cell">$225.000</div>
+        <div data-k="Adelantado −10%" class="pagos-best" role="cell">$405.000</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUÉ NECESITO -->
+  <section class="fade">
+    <div class="eyebrow">Para arrancar</div>
+    <h2>Qué necesito de tu lado</h2>
+    <div class="need-grid">
+      <div class="need"><svg class="ico"><use href="#i-server"/></svg><span>Acceso al WordPress y al dominio<small>Todas las opciones</small></span></div>
+      <div class="need"><svg class="ico"><use href="#i-card"/></svg><span>Acceso a Mercado Pago<small>Para revisar los planes; en la opción 3, para conectarlos</small></span></div>
+      <div class="need"><svg class="ico"><use href="#i-star"/></svg><span>Qué incluye cada plan<small>Los beneficios concretos, aunque sea en una lista</small></span></div>
+      <div class="need"><svg class="ico"><use href="#i-chat"/></svg><span>Links de las redes y del grupo de WhatsApp</span></div>
+      <div class="need"><svg class="ico"><use href="#i-image"/></svg><span>Fotos reales de la comunidad<small>Opciones 2 y 3. Si no hay, te paso la lista de las que hacen falta</small></span></div>
+      <div class="need"><svg class="ico"><use href="#i-pen"/></svg><span>La historia de la fundadora y testimonios<small>Opciones 2 y 3. Alcanza con audios de WhatsApp</small></span></div>
+      <div class="need"><svg class="ico"><use href="#i-book"/></svg><span>El libro en PDF<small>Opción 3, para la entrega automática</small></span></div>
+      <div class="need"><svg class="ico"><use href="#i-play"/></svg><span>Las clases y materiales<small>Opción 3, etapa 2</small></span></div>
+    </div>
+  </section>
+
+  <!-- NO INCLUIDO -->
+  <section class="fade">
+    <div class="eyebrow">Fuera de alcance</div>
+    <h2>Qué no está incluido</h2>
+    <div class="no-wrap">
+      <span class="no-chip"><svg class="ico"><use href="#i-x"/></svg>Sesión de fotos o grabación de video</span>
+      <span class="no-chip"><svg class="ico"><use href="#i-x"/></svg>Armado o grabación de las clases</span>
+      <span class="no-chip"><svg class="ico"><use href="#i-x"/></svg>Campañas publicitarias</span>
+      <span class="no-chip"><svg class="ico"><use href="#i-x"/></svg>Gestión de redes</span>
+      <span class="no-chip"><svg class="ico"><use href="#i-x"/></svg>Comisiones de Mercado Pago</span>
+    </div>
+  </section>
+
+  <!-- CIERRE -->
+  <section class="fade cierre">
+    <div class="eyebrow">Siguiente paso</div>
+    <h2>Elegí la opción y arrancamos</h2>
+    <p>Decime cuál te cierra, o si querés que repasemos alguna, y te paso el cronograma con lo que necesito primero.</p>
+    <a class="portfolio-link" href="https://lautaromendez.com.ar/portfolio" target="_blank" rel="noopener">Ver trabajos anteriores<svg class="ico"><use href="#i-arrow"/></svg></a>
+  </section>
+
+</div>
+
+<footer>
+  <div class="wrap">Propuesta preparada por Lautaro · 15 de octubre de 2026</div>
+</footer>
+
+<script>
+  // Progress bar
+  window.addEventListener('scroll', () => {
+    const scrollTop = document.documentElement.scrollTop;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    document.getElementById('progress').style.width = pct + '%';
+  });
+
+  // Fade in on scroll
+  const fades = document.querySelectorAll('.fade');
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.04 });
+    fades.forEach(el => observer.observe(el));
+  } else {
+    fades.forEach(el => el.classList.add('visible'));
+  }
+</script>
+
+</body>
+</html>
