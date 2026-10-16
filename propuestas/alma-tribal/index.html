@@ -217,6 +217,8 @@
     .pago-lineas { display: flex; flex-direction: column; gap: 8px; margin-top: 4px; }
     .pago-lineas div { display: flex; justify-content: space-between; gap: 10px; padding: 10px 12px; border-radius: 6px; background: var(--soft); font-size: 13.5px; color: var(--mid); font-variant-numeric: tabular-nums; }
     .pago-lineas b { color: var(--ink); font-weight: 560; }
+    .pago-lineas .is-ahorro { background: var(--accent-soft); color: var(--accent); }
+    .pago-lineas .is-ahorro b { color: var(--accent); }
 
     /* NECESITO / NO INCLUIDO */
     .need-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
@@ -371,12 +373,12 @@
     <div class="ab-bloque">
       <div class="ab-cab"><h3>Los talleres</h3><span>Opciones 2 y 3</span></div>
       <figure><div class="shot"><div class="shot-bar"><i></i><i></i><i></i><span>almatribal.com.ar/#talleres</span></div><img src="vista-talleres.jpg" width="1440" height="900" alt="Agenda de talleres con fecha, lugar, valor y botón para anotarse" loading="lazy" /></div></figure>
-      <p class="ab-nota">Todos tus talleres juntos, presenciales y online. Los cargás vos desde el celular: título, fecha, lugar, valor y foto. Cuando pasa la fecha, desaparece solo.</p>
+      <p class="ab-nota">Todos tus talleres juntos, presenciales y online. Los cargás vos desde el celular, en una planilla: título, fecha, lugar, valor y foto. Cuando pasa la fecha, desaparece solo.</p>
     </div>
     <div class="ab-bloque">
       <div class="ab-cab"><h3>Anotarse</h3><span>Opciones 2 y 3</span></div>
       <figure><div class="shot"><div class="shot-bar"><i></i><i></i><i></i><span>almatribal.com.ar/#talleres</span></div><img src="vista-inscripcion.jpg" width="1440" height="900" alt="Formulario de inscripción con elección entre constelar o ser representante y pago de seña con Mercado Pago" loading="lazy" /></div></figure>
-      <p class="ab-nota">La persona elige si viene a constelar o como representante, y reserva con una seña por Mercado Pago. A vos te llega el aviso y tenés la lista de inscriptos al día, sin anotar nada a mano ni perseguir transferencias por WhatsApp.</p>
+      <p class="ab-nota">La persona elige si viene a constelar o como representante, y reserva con una seña por Mercado Pago. A vos te llega un mail y la lista de inscriptos queda en tu planilla, sin anotar nada a mano ni perseguir transferencias por WhatsApp.</p>
     </div>
   </div>
   <div class="wrap">
@@ -436,11 +438,11 @@
     <p class="section-intro">Revisé escuelas y consteladoras de Argentina y talleres online que se venden en la región. Esto es lo que hacen bien, y cómo quedarías vos.</p>
     <div class="comp">
       <div class="comp-row comp-head"><div>Lo que hacen otras</div><div>Alma Tribal hoy</div><div>Con la propuesta</div></div>
-      <div class="comp-row"><div><b>Agenda de talleres en un solo lugar</b><small>Escuela Mariana Ferraro: agenda con filtro presencial u online</small></div><div class="hoy" data-k="Alma Tribal hoy">Placas sueltas en Instagram</div><div class="nuevo" data-k="Con la propuesta">Agenda que cargás vos, con fecha, lugar y valor</div></div>
+      <div class="comp-row"><div><b>Agenda de talleres en un solo lugar</b><small>Escuela Mariana Ferraro: agenda con filtro presencial u online</small></div><div class="hoy" data-k="Alma Tribal hoy">Placas sueltas en Instagram</div><div class="nuevo" data-k="Con la propuesta">Agenda que cargás vos desde el celular, con fecha, lugar y valor</div></div>
       <div class="comp-row"><div><b>Turnos con formulario y precio claro</b><small>Una consteladora de Neuquén publica el valor de la sesión y precios en dólares y euros para el exterior</small></div><div class="hoy" data-k="Alma Tribal hoy">Hay que escribir para preguntar</div><div class="nuevo" data-k="Con la propuesta">Pedido de sesión con el tema y los horarios ya contados</div></div>
       <div class="comp-row"><div><b>Cobran la inscripción online</b><small>Talleres por Zoom vendidos con pago online, grupos de 10 personas y horario de Argentina</small></div><div class="hoy" data-k="Alma Tribal hoy">Transferencia coordinada por WhatsApp</div><div class="nuevo" data-k="Con la propuesta">Seña o pago con Mercado Pago al anotarse (opciones 2 y 3)</div></div>
-      <div class="comp-row"><div><b>Lista de novedades por mail</b><small>Escuela Mariana Ferraro: suscripción en todas las páginas</small></div><div class="hoy" data-k="Alma Tribal hoy">No está</div><div class="nuevo" data-k="Con la propuesta">«Avisame del próximo taller» (opciones 2 y 3) y carta mensual (opción 3)</div></div>
-      <div class="comp-row"><div><b>Contenido para leer o escuchar</b><small>Blogs con notas sobre dinero, pareja, destino; formación online con área de alumnos</small></div><div class="hoy" data-k="Alma Tribal hoy">Solo posteos</div><div class="nuevo" data-k="Con la propuesta">Notas hechas a partir de tus audios y un taller grabado (opción 3)</div></div>
+      <div class="comp-row"><div><b>Lista de novedades por mail</b><small>Escuela Mariana Ferraro: suscripción en todas las páginas</small></div><div class="hoy" data-k="Alma Tribal hoy">No está</div><div class="nuevo" data-k="Con la propuesta">«Avisame del próximo taller» (opciones 2 y 3)</div></div>
+      <div class="comp-row"><div><b>Contenido para leer o escuchar</b><small>Blogs con notas sobre dinero, pareja, destino; formación online con área de alumnos</small></div><div class="hoy" data-k="Alma Tribal hoy">Solo posteos</div><div class="nuevo" data-k="Con la propuesta">Notas que publicás vos, las primeras hechas con tus audios (opción 3)</div></div>
     </div>
   </div>
 </section>
@@ -461,7 +463,7 @@
       <li><svg class="ico"><use href="#i-moon"/></svg><span><b>Funciona mientras descansás</b>Inscripciones, pagos y avisos salen solos, sin que tengas que responder cada mensaje.</span></li>
       <li><svg class="ico"><use href="#i-search"/></svg><span><b>Que te encuentren en Google</b>Por tu nombre, por «constelaciones familiares» y por las zonas donde trabajás.</span></li>
       <li><svg class="ico"><use href="#i-mic"/></svg><span><b>Escrita con tu voz</b>Los textos salen de tus palabras y tus audios, no de una plantilla.</span></li>
-      <li><svg class="ico"><use href="#i-user"/></svg><span><b>Una persona responsable</b>Si algo falla o querés cambiar algo, sabés a quién escribirle.</span></li>
+      <li><svg class="ico"><use href="#i-user"/></svg><span><b>Tuya, sin cuota mensual</b>Todo queda a tu nombre y lo manejás vos. No dependés de nadie.</span></li>
     </ul>
   </section>
 </div>
@@ -471,7 +473,7 @@
   <div class="wrap">
     <div class="eyebrow">Las tres opciones</div>
     <h2>Tres formas de hacerlo</h2>
-    <p class="section-intro">Las tres incluyen tu página propia, lista para poner en la bio de Instagram. Cada una suma lo de la anterior; lo que cambia es cuánto trabajo te ahorra a vos y cuánto podés darle a tu comunidad.</p>
+    <p class="section-intro">Las tres son tuyas desde el primer día: quedan a tu nombre y las manejás vos desde el celular, sin pagarle a nadie todos los meses. Cada una suma lo de la anterior.</p>
   </div>
   <div class="wrap-wide">
     <div class="escalas">
@@ -480,27 +482,25 @@
         <div class="escala-head">
           <div class="escala-top"><span class="ico-box"><svg class="ico"><use href="#i-link"/></svg></span><span class="escala-num">Opción 1</span></div>
           <div class="escala-title">Página propia</div>
-          <p class="escala-tagline">Para volver con todo ordenado: una página tuya con todo lo que hacés, para el link de la bio.</p>
+          <p class="escala-tagline">Una página tuya con todo lo que hacés, para el link de la bio. Para anotarse, te escriben por WhatsApp.</p>
         </div>
         <div class="escala-price">
           <div class="escala-price-value">$300.000</div>
           <div class="escala-facts">
-            <div><svg class="ico"><use href="#i-card"/></svg><span><b>1 pago</b>, o <b>2 de $150.000</b></span></div>
+            <div><svg class="ico"><use href="#i-card"/></svg><span><b>2 pagos de $150.000</b>, o <b>$270.000</b> en uno</span></div>
             <div><svg class="ico"><use href="#i-clock"/></svg><span><b>2 semanas</b> desde que recibo el material</span></div>
-            <div><svg class="ico"><use href="#i-wrench"/></svg><span>Cambios de fechas y textos <b>$30.000/mes</b>, opcional</span></div>
           </div>
         </div>
         <div class="escala-body">
           <ul class="ticks">
             <li><svg class="ico"><use href="#i-check"/></svg>Una página con tu dominio: quién sos, qué es constelar, talleres, sesiones y WhatsApp.</li>
             <li><svg class="ico"><use href="#i-check"/></svg>Textos escritos a partir de tus audios: me contás y yo lo redacto.</li>
-            <li><svg class="ico"><use href="#i-check"/></svg>Próximos talleres con fecha, lugar y valor; yo los actualizo cuando me pasás las fechas.</li>
-            <li><svg class="ico"><use href="#i-check"/></svg>Botón de WhatsApp con el mensaje ya armado según lo que la persona quiera consultar.</li>
-            <li><svg class="ico"><use href="#i-check"/></svg>Registro en Google con tu nombre y tu perfil de Google.</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>Los talleres los cargás vos en una planilla de Google desde el celular, y aparecen solos en la página.</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>Botón de WhatsApp con el mensaje ya armado.</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>Registro en Google con tu nombre.</li>
           </ul>
           <div class="escala-meta">
-            <div><svg class="ico"><use href="#i-shield"/></svg><span><b>Sirve si</b>querés volver rápido, con una imagen pareja, y manejar los talleres como hasta ahora.</span></div>
-            <div><svg class="ico"><use href="#i-card"/></svg><span><b>Costo mensual tuyo</b>Ninguno. Solo el dominio, una vez por año.</span></div>
+            <div><svg class="ico"><use href="#i-shield"/></svg><span><b>Sirve si</b>querés volver rápido, con todo en un solo lugar, y seguir coordinando por WhatsApp.</span></div>
           </div>
         </div>
       </article>
@@ -509,87 +509,83 @@
         <span class="reco">La que recomiendo</span>
         <div class="escala-head">
           <div class="escala-top"><span class="ico-box"><svg class="ico"><use href="#i-cal"/></svg></span><span class="escala-num">Opción 2</span></div>
-          <div class="escala-title">Web con agenda e inscripciones</div>
+          <div class="escala-title">Web con inscripciones</div>
           <p class="escala-tagline">Tu web completa: la gente ve los talleres, se anota y paga la seña sola. Vos solo mirás la lista.</p>
         </div>
         <div class="escala-price">
           <div class="escala-price-value">$690.000</div>
           <div class="escala-facts">
-            <div><svg class="ico"><use href="#i-card"/></svg><span><b>2 pagos de $345.000</b></span></div>
+            <div><svg class="ico"><use href="#i-card"/></svg><span><b>2 pagos de $345.000</b>, o <b>$621.000</b> en uno</span></div>
             <div><svg class="ico"><use href="#i-clock"/></svg><span><b>4 semanas</b> desde que recibo el material</span></div>
-            <div><svg class="ico"><use href="#i-wrench"/></svg><span>Mantenimiento <b>$45.000/mes</b>, los 2 primeros meses incluidos</span></div>
           </div>
         </div>
         <div class="escala-body">
           <div class="ticks-plus">Todo lo de la opción 1, más</div>
           <ul class="ticks">
-            <li><svg class="ico"><use href="#i-check"/></svg>Web con secciones propias: Talleres, Qué es constelar, Sesiones, Soy Silvina, Testimonios y Contacto.</li>
-            <li><svg class="ico"><use href="#i-check"/></svg>Agenda de talleres que cargás vos desde el celular, con filtro presencial u online.</li>
-            <li><svg class="ico"><use href="#i-check"/></svg>Inscripción con seña o pago completo por Mercado Pago, eligiendo constelar o representar.</li>
-            <li><svg class="ico"><use href="#i-check"/></svg>Lista de inscriptos por taller y aviso al instante de cada nueva inscripción.</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>Web con secciones: Talleres, Qué es constelar, Sesiones, Soy Silvina, Testimonios y Contacto.</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>Inscripción desde la web: la persona elige constelar o representar y paga la seña con Mercado Pago.</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>Cada inscripción te llega por mail y queda anotada en tu planilla.</li>
             <li><svg class="ico"><use href="#i-check"/></svg>Pedido de sesión individual con el tema y los horarios ya contados.</li>
-            <li><svg class="ico"><use href="#i-check"/></svg>«Avisame del próximo taller»: arma tu propia lista de contactos.</li>
-            <li><svg class="ico"><use href="#i-check"/></svg>Preguntas frecuentes y testimonios.</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>«Avisame del próximo taller»: tu propia lista de contactos.</li>
           </ul>
           <div class="escala-meta">
             <div><svg class="ico"><use href="#i-shield"/></svg><span><b>Sirve si</b>querés que los talleres se llenen y se cobren solos, y dedicar tu energía a los encuentros.</span></div>
-            <div><svg class="ico"><use href="#i-card"/></svg><span><b>Costo mensual tuyo</b>Ninguno nuevo. Mercado Pago cobra su comisión por cada pago.</span></div>
           </div>
         </div>
       </article>
 
       <article class="escala">
         <div class="escala-head">
-          <div class="escala-top"><span class="ico-box"><svg class="ico"><use href="#i-video"/></svg></span><span class="escala-num">Opción 3</span></div>
-          <div class="escala-title">Web + contenido nutritivo</div>
-          <p class="escala-tagline">La web con agenda más un espacio para compartir lo que sabés: notas, una carta mensual y un taller grabado que se vende solo. Se hace en dos etapas.</p>
+          <div class="escala-top"><span class="ico-box"><svg class="ico"><use href="#i-mic"/></svg></span><span class="escala-num">Opción 3</span></div>
+          <div class="escala-title">Web con panel y notas</div>
+          <p class="escala-tagline">La web con inscripciones, más un panel para cambiar todo vos misma y publicar notas para tu comunidad.</p>
         </div>
         <div class="escala-price">
-          <div class="escala-price-stages">
-            <div><span>Etapa 1 · la opción 2</span><b>$690.000</b></div>
-            <div><span>Etapa 2 · contenido</span><b>$540.000</b></div>
-          </div>
+          <div class="escala-price-value">$950.000</div>
           <div class="escala-facts">
-            <div><svg class="ico"><use href="#i-clock"/></svg><span><b>4 semanas</b> + <b>4 semanas</b></span></div>
-            <div><svg class="ico"><use href="#i-wrench"/></svg><span>Mantenimiento <b>$60.000/mes</b>, los 3 primeros meses incluidos</span></div>
+            <div><svg class="ico"><use href="#i-card"/></svg><span><b>2 pagos de $475.000</b>, o <b>$855.000</b> en uno</span></div>
+            <div><svg class="ico"><use href="#i-clock"/></svg><span><b>5 semanas</b> desde que recibo el material</span></div>
           </div>
         </div>
         <div class="escala-body">
           <div class="ticks-plus">Todo lo de la opción 2, más</div>
-          <div class="etapas">
-            <div class="etapa"><b>Tus audios, convertidos en notas</b>Me mandás audios de WhatsApp sobre un tema (la pareja, los hijos, el dinero, los duelos) y los convierto en notas para la web. Incluye las primeras 8.</div>
-            <div class="etapa"><b>Carta mensual</b>Un mail a tu lista con la nota del mes y los próximos talleres, con tu diseño y listo para mandar.</div>
-            <div class="etapa"><b>Un taller grabado a la venta</b>Una página para venderlo, cobro por Mercado Pago y acceso con usuario para ver los videos. Un ingreso que no depende de que estés presente. Incluye la edición básica de hasta 4 videos.</div>
-          </div>
+          <ul class="ticks">
+            <li><svg class="ico"><use href="#i-check"/></svg>Un panel con tu usuario para cambiar textos, fotos, talleres y testimonios, sin tocar nada técnico.</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>Sección de notas que publicás vos: escribís, subís una foto y listo.</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>Las primeras 6 notas ya cargadas, escritas a partir de tus audios.</li>
+          </ul>
           <div class="escala-meta">
-            <div><svg class="ico"><use href="#i-shield"/></svg><span><b>Sirve si</b>tu vuelta es también compartir lo que aprendiste, y querés un ingreso que no dependa de tu agenda.</span></div>
-            <div><svg class="ico"><use href="#i-card"/></svg><span><b>Costo mensual tuyo</b>Alojamiento de los videos, aprox. USD 10. Sujeto a cambios del proveedor.</span></div>
+            <div><svg class="ico"><use href="#i-shield"/></svg><span><b>Sirve si</b>tu vuelta es también compartir lo que sabés, y querés poder cambiar cualquier cosa sin pedírselo a nadie.</span></div>
           </div>
         </div>
       </article>
     </div>
 
+    <div class="callout is-ok" style="max-width:900px;margin:28px auto 0">
+      <svg class="ico"><use href="#i-check"/></svg>
+      <span><strong>En las tres, todo queda a tu nombre y sin costo mensual:</strong> el dominio, el alojamiento (en un plan gratuito), la planilla, tu Mercado Pago. Te dejo un video corto que muestra cómo cargar un taller y ver los inscriptos, y tenés <strong>30 días de garantía</strong>: si algo no anda como quedamos, lo arreglo sin cargo.</span>
+    </div>
+
     <div class="tabla-wrap">
       <div class="tabla-titulo">De un vistazo</div>
       <table class="tabla">
-        <thead><tr><th>&nbsp;</th><th><span class="n">Opción 1</span>Página propia<small>$300.000</small></th><th class="col-reco"><span class="n">Opción 2</span>Agenda e inscripciones<small>$690.000</small></th><th><span class="n">Opción 3</span>+ Contenido<small>$1.230.000</small></th></tr></thead>
+        <thead><tr><th>&nbsp;</th><th><span class="n">Opción 1</span>Página propia<small>$300.000</small></th><th class="col-reco"><span class="n">Opción 2</span>Con inscripciones<small>$690.000</small></th><th><span class="n">Opción 3</span>Con panel y notas<small>$950.000</small></th></tr></thead>
         <tbody>
           <tr class="grupo"><td colspan="4">Presencia</td></tr>
           <tr><td>Página propia con tu dominio</td><td class="valor">1 página</td><td class="valor col-reco">Web completa</td><td class="valor">Web completa<small>+ notas</small></td></tr>
           <tr><td>Aparecer en Google</td><td class="si"><svg class="ico" aria-label="Incluido"><use href="#i-check"/></svg></td><td class="si col-reco"><svg class="ico" aria-label="Incluido"><use href="#i-check"/></svg></td><td class="si"><svg class="ico" aria-label="Incluido"><use href="#i-check"/></svg></td></tr>
           <tr class="grupo"><td colspan="4">Talleres y sesiones</td></tr>
-          <tr><td>Agenda que cargás vos</td><td class="no-tiene" aria-label="No incluido">—</td><td class="si col-reco"><svg class="ico" aria-label="Incluido"><use href="#i-check"/></svg></td><td class="si"><svg class="ico" aria-label="Incluido"><use href="#i-check"/></svg></td></tr>
+          <tr><td>Cargás los talleres vos</td><td class="valor">Planilla</td><td class="valor col-reco">Planilla</td><td class="valor">Panel</td></tr>
           <tr><td>Inscripción y seña con Mercado Pago</td><td class="no-tiene" aria-label="No incluido">—</td><td class="si col-reco"><svg class="ico" aria-label="Incluido"><use href="#i-check"/></svg></td><td class="si"><svg class="ico" aria-label="Incluido"><use href="#i-check"/></svg></td></tr>
           <tr><td>Pedido de sesión individual</td><td class="valor">Por WhatsApp</td><td class="valor col-reco">Desde la web</td><td class="valor">Desde la web</td></tr>
-          <tr class="grupo"><td colspan="4">Comunidad</td></tr>
           <tr><td>Lista propia de contactos</td><td class="no-tiene" aria-label="No incluido">—</td><td class="si col-reco"><svg class="ico" aria-label="Incluido"><use href="#i-check"/></svg></td><td class="si"><svg class="ico" aria-label="Incluido"><use href="#i-check"/></svg></td></tr>
-          <tr><td>Notas a partir de tus audios y carta mensual</td><td class="no-tiene" aria-label="No incluido">—</td><td class="no-tiene col-reco" aria-label="No incluido">—</td><td class="si"><svg class="ico" aria-label="Incluido"><use href="#i-check"/></svg></td></tr>
-          <tr><td>Taller grabado a la venta</td><td class="no-tiene" aria-label="No incluido">—</td><td class="no-tiene col-reco" aria-label="No incluido">—</td><td class="si"><svg class="ico" aria-label="Incluido"><use href="#i-check"/></svg></td></tr>
+          <tr class="grupo"><td colspan="4">Contenido</td></tr>
+          <tr><td>Cambiar textos y fotos vos misma</td><td class="no-tiene" aria-label="No incluido">—</td><td class="no-tiene col-reco" aria-label="No incluido">—</td><td class="si"><svg class="ico" aria-label="Incluido"><use href="#i-check"/></svg></td></tr>
+          <tr><td>Notas que publicás vos</td><td class="no-tiene" aria-label="No incluido">—</td><td class="no-tiene col-reco" aria-label="No incluido">—</td><td class="valor">6 cargadas</td></tr>
           <tr class="grupo"><td colspan="4">Tiempo y costo</td></tr>
-          <tr><td>Plazo</td><td class="valor">2 semanas</td><td class="valor col-reco">4 semanas</td><td class="valor">8 semanas</td></tr>
-          <tr><td>Forma de pago</td><td class="valor">1 o 2 pagos</td><td class="valor col-reco">2 pagos</td><td class="valor">Por etapa</td></tr>
-          <tr><td>Mantenimiento</td><td class="valor">$30.000/mes<small>opcional</small></td><td class="valor col-reco">$45.000/mes<small>2 meses incluidos</small></td><td class="valor">$60.000/mes<small>3 meses incluidos</small></td></tr>
-          <tr><td>Costo mensual extra</td><td class="valor">Ninguno</td><td class="valor col-reco">Ninguno</td><td class="valor">USD 10</td></tr>
+          <tr><td>Plazo</td><td class="valor">2 semanas</td><td class="valor col-reco">4 semanas</td><td class="valor">5 semanas</td></tr>
+          <tr><td>En un solo pago</td><td class="valor">$270.000</td><td class="valor col-reco">$621.000</td><td class="valor">$855.000</td></tr>
+          <tr><td>Costo mensual</td><td class="valor">Ninguno</td><td class="valor col-reco">Ninguno</td><td class="valor">Ninguno</td></tr>
         </tbody>
       </table>
     </div>
@@ -601,22 +597,19 @@
   <section class="fade">
     <div class="eyebrow">Formas de pago</div>
     <h2>Cómo se paga</h2>
-    <p class="section-intro">Por transferencia o Mercado Pago, con factura.</p>
+    <p class="section-intro">En dos pagos, mitad al empezar y mitad al entregar. Si preferís pagar todo al empezar, <strong>10% menos</strong>. Por transferencia o Mercado Pago, con factura.</p>
     <div class="pago-cards">
       <div class="pago-card">
         <span class="n">Opción 1</span><span class="t">Página propia</span><span class="monto">$300.000</span>
-        <p>En un pago, o en dos:</p>
-        <div class="pago-lineas"><div><span>Al empezar</span><b>$150.000</b></div><div><span>Al entregar</span><b>$150.000</b></div></div>
+        <div class="pago-lineas"><div><span>Al empezar</span><b>$150.000</b></div><div><span>Al entregar</span><b>$150.000</b></div><div class="is-ahorro"><span>Todo al empezar</span><b>$270.000</b></div></div>
       </div>
       <div class="pago-card is-reco">
-        <span class="n">Opción 2</span><span class="t">Agenda e inscripciones</span><span class="monto">$690.000</span>
-        <p>En dos pagos:</p>
-        <div class="pago-lineas"><div><span>Al empezar</span><b>$345.000</b></div><div><span>Al entregar</span><b>$345.000</b></div></div>
+        <span class="n">Opción 2</span><span class="t">Web con inscripciones</span><span class="monto">$690.000</span>
+        <div class="pago-lineas"><div><span>Al empezar</span><b>$345.000</b></div><div><span>Al entregar</span><b>$345.000</b></div><div class="is-ahorro"><span>Todo al empezar</span><b>$621.000</b></div></div>
       </div>
       <div class="pago-card">
-        <span class="n">Opción 3</span><span class="t">Web + contenido</span><span class="monto">Por etapa</span>
-        <p>Mitad al empezar y mitad al entregar cada etapa. La etapa 2 la arrancamos cuando vos quieras.</p>
-        <div class="pago-lineas"><div><span>Etapa 1</span><b>$345.000 + $345.000</b></div><div><span>Etapa 2</span><b>$270.000 + $270.000</b></div></div>
+        <span class="n">Opción 3</span><span class="t">Web con panel y notas</span><span class="monto">$950.000</span>
+        <div class="pago-lineas"><div><span>Al empezar</span><b>$475.000</b></div><div><span>Al entregar</span><b>$475.000</b></div><div class="is-ahorro"><span>Todo al empezar</span><b>$855.000</b></div></div>
       </div>
     </div>
   </section>
@@ -630,6 +623,7 @@
       <div class="need"><svg class="ico"><use href="#i-image"/></svg><span>Tus fotos en el tamaño original<small>Las de Instagram llegan chicas para una web</small></span></div>
       <div class="need"><svg class="ico"><use href="#i-cal"/></svg><span>Los próximos talleres que tengas en mente<small>Aunque sean ideas, sin fecha cerrada</small></span></div>
       <div class="need"><svg class="ico"><use href="#i-star"/></svg><span>Testimonios de quienes pasaron por tus talleres<small>Con su permiso para publicarlos</small></span></div>
+      <div class="need"><svg class="ico"><use href="#i-mail"/></svg><span>Una cuenta de Gmail<small>Ahí quedan la planilla y el alojamiento, a tu nombre</small></span></div>
       <div class="need"><svg class="ico"><use href="#i-file"/></svg><span>Tu logo original<small>Si no lo tenés, lo redibujo</small></span></div>
       <div class="need"><svg class="ico"><use href="#i-server"/></svg><span>Un dominio a tu nombre<small>Por ejemplo almatribal.com.ar; te ayudo a sacarlo</small></span></div>
       <div class="need"><svg class="ico"><use href="#i-card"/></svg><span>Tu cuenta de Mercado Pago<small>Opciones 2 y 3</small></span></div>
@@ -644,7 +638,7 @@
       <span class="no-chip"><svg class="ico"><use href="#i-x"/></svg>Sesión de fotos</span>
       <span class="no-chip"><svg class="ico"><use href="#i-x"/></svg>Manejo de tu Instagram (bio, destacados, publicaciones)</span>
       <span class="no-chip"><svg class="ico"><use href="#i-x"/></svg>Anuncios pagos en Instagram</span>
-      <span class="no-chip"><svg class="ico"><use href="#i-x"/></svg>Grabar los videos del taller</span>
+      <span class="no-chip"><svg class="ico"><use href="#i-x"/></svg>Cambios después de los 30 días de garantía (se cotizan aparte)</span>
       <span class="no-chip"><svg class="ico"><use href="#i-x"/></svg>El costo del dominio y las comisiones de Mercado Pago</span>
     </div>
     <p class="p" style="margin-top:18px">Para la vuelta te recomiendo una sesión de fotos nueva: es lo que más se nota en la web. Si más adelante querés anuncios para llenar los talleres, te armo una propuesta aparte.</p>
