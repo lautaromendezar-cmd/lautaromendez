@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Alma Tribal — Constelaciones familiares con Silvina</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap" />
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+  <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600&display=swap" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #ffffff;
+      --alt: #f6f3f5;
+      --ink: #221a20;
+      --text: #3a3138;
+      --mid: #6d6269;
+      --dim: #9a8f96;
+      --line: #e8e1e5;
+      --plum: #6e2a5c;
+      --plum-dark: #4f1d42;
+      --plum-soft: #f3e9f0;
+      --sea: #1f6f78;
+      --serif: 'Newsreader', Georgia, serif;
+      --sans: 'General Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: var(--sans); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    img { display: block; max-width: 100%; height: auto; }
+    a { color: inherit; }
+    .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+    .ico { width: 18px; height: 18px; flex-shrink: 0; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+
+    .aviso { background: var(--ink); color: #fff; font-size: 12.5px; text-align: center; padding: 7px 16px; }
+
+    /* NAV */
+    nav { position: sticky; top: 0; z-index: 20; background: rgb(255 255 255 / .94); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+    nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 62px; gap: 16px; }
+    .marca { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .marca svg { width: 26px; height: 26px; stroke: var(--plum); fill: none; stroke-width: 1.3; }
+    .marca b { font-family: var(--serif); font-size: 21px; font-weight: 500; color: var(--ink); letter-spacing: -.01em; }
+    .menu { display: flex; gap: 26px; font-size: 14.5px; }
+    .menu a { text-decoration: none; color: var(--mid); }
+    .menu a:hover { color: var(--plum); }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 11px 18px; border-radius: 6px; font-size: 14.5px; font-weight: 500; text-decoration: none; border: 1px solid var(--plum); color: var(--plum); background: #fff; cursor: pointer; font-family: inherit; transition: background .15s, color .15s; }
+    .btn:hover { background: var(--plum-soft); }
+    .btn.fill { background: var(--plum); color: #fff; }
+    .btn.fill:hover { background: var(--plum-dark); }
+    .btn.chico { padding: 8px 14px; font-size: 13.5px; }
+
+    /* HERO */
+    .hero { padding: 56px 0 64px; }
+    .hero .wrap { display: grid; grid-template-columns: 1.15fr .85fr; gap: 56px; align-items: center; }
+    .kicker { font-size: 13px; font-weight: 500; color: var(--plum); margin-bottom: 14px; }
+    h1 { font-family: var(--serif); font-weight: 400; font-size: clamp(34px, 4.6vw, 50px); line-height: 1.08; letter-spacing: -.02em; color: var(--ink); margin-bottom: 18px; }
+    h1 em { font-style: italic; color: var(--plum); }
+    .hero p { font-size: 17px; color: var(--mid); max-width: 520px; margin-bottom: 26px; }
+    .hero-btns { display: flex; gap: 10px; flex-wrap: wrap; }
+    .hero-datos { display: flex; gap: 28px; margin-top: 32px; padding-top: 22px; border-top: 1px solid var(--line); font-size: 13.5px; color: var(--mid); flex-wrap: wrap; }
+    .hero-datos b { display: block; font-size: 20px; font-weight: 500; color: var(--ink); }
+    .hero-foto { position: relative; }
+    .hero-foto img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 10px; }
+    .hero-cita { position: absolute; left: -28px; bottom: 28px; max-width: 250px; background: #fff; border-radius: 8px; padding: 14px 16px; box-shadow: 0 10px 30px rgb(34 26 32 / .14); font-family: var(--serif); font-size: 17px; line-height: 1.3; color: var(--ink); }
+    .hero-cita small { display: block; margin-top: 6px; font-family: var(--sans); font-size: 12px; color: var(--dim); }
+
+    section { padding: 72px 0; }
+    section.alt { background: var(--alt); }
+    h2 { font-family: var(--serif); font-weight: 400; font-size: clamp(28px, 3.4vw, 36px); line-height: 1.15; letter-spacing: -.015em; color: var(--ink); margin-bottom: 10px; }
+    .intro { font-size: 16px; color: var(--mid); max-width: 600px; margin-bottom: 32px; }
+    .cab { display: flex; justify-content: space-between; align-items: flex-end; gap: 20px; flex-wrap: wrap; }
+
+    /* TALLERES */
+    .filtros { display: flex; gap: 6px; margin-bottom: 20px; }
+    .filtros button { font-family: inherit; font-size: 13.5px; padding: 7px 14px; border-radius: 999px; border: 1px solid var(--line); background: #fff; color: var(--mid); cursor: pointer; }
+    .filtros button.on { background: var(--ink); border-color: var(--ink); color: #fff; }
+    .talleres { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .taller { background: #fff; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; display: flex; flex-direction: column; }
+    .taller img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; }
+    .taller .ph { aspect-ratio: 16 / 10; background: linear-gradient(135deg, #1f6f78, #6e2a5c); display: flex; align-items: center; justify-content: center; color: #fff; font-family: var(--serif); font-size: 22px; }
+    .taller-body { padding: 16px 18px 18px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+    .fecha { display: flex; gap: 8px; align-items: center; font-size: 13px; font-weight: 500; color: var(--plum); }
+    .taller h3 { font-family: var(--serif); font-weight: 500; font-size: 21px; line-height: 1.2; color: var(--ink); }
+    .taller p { font-size: 14px; color: var(--mid); line-height: 1.5; }
+    .taller-meta { display: flex; flex-direction: column; gap: 4px; font-size: 13.5px; color: var(--text); margin-top: 2px; }
+    .taller-meta span { display: flex; gap: 8px; align-items: center; }
+    .taller-meta .ico { width: 15px; height: 15px; color: var(--dim); }
+    .taller-pie { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: auto; padding-top: 14px; border-top: 1px solid var(--line); }
+    .precio { font-size: 17px; font-weight: 500; color: var(--ink); }
+    .precio small { display: block; font-size: 12px; font-weight: 400; color: var(--dim); }
+    .cupos { font-size: 12px; color: var(--sea); font-weight: 500; }
+
+    .avisame { margin-top: 22px; display: flex; align-items: center; justify-content: space-between; gap: 18px; flex-wrap: wrap; padding: 18px 20px; border: 1px dashed var(--plum); border-radius: 10px; background: #fff; }
+    .avisame p { font-size: 15px; color: var(--text); max-width: 520px; }
+    .avisame form { display: flex; gap: 8px; flex-wrap: wrap; }
+    input, select, textarea { font-family: inherit; font-size: 14.5px; padding: 10px 12px; border: 1px solid var(--line); border-radius: 6px; background: #fff; color: var(--ink); }
+    input:focus, select:focus, textarea:focus { outline: 2px solid var(--plum-soft); border-color: var(--plum); }
+
+    /* QUÉ ES */
+    .dos { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+    .que p { font-size: 16px; color: var(--text); margin-bottom: 14px; }
+    .faq { border-top: 1px solid var(--line); }
+    .faq details { border-bottom: 1px solid var(--line); }
+    .faq summary { list-style: none; cursor: pointer; padding: 15px 0; display: flex; justify-content: space-between; gap: 14px; font-weight: 500; color: var(--ink); font-size: 15.5px; }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq summary::after { content: '+'; color: var(--plum); font-size: 20px; line-height: 1; }
+    .faq details[open] summary::after { content: '–'; }
+    .faq details p { font-size: 14.5px; color: var(--mid); padding: 0 0 16px; }
+
+    /* SESIONES */
+    .modos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .modo { background: #fff; border: 1px solid var(--line); border-radius: 10px; padding: 22px; display: flex; flex-direction: column; gap: 10px; }
+    .modo .ico { width: 22px; height: 22px; color: var(--plum); }
+    .modo h3 { font-family: var(--serif); font-weight: 500; font-size: 21px; color: var(--ink); }
+    .modo p { font-size: 14.5px; color: var(--mid); }
+    .modo .btn { margin-top: auto; align-self: flex-start; }
+
+    /* SOY SILVINA */
+    .soy { display: grid; grid-template-columns: .8fr 1.2fr; gap: 56px; align-items: center; }
+    .soy img { border-radius: 10px; aspect-ratio: 1; object-fit: cover; width: 100%; }
+    .soy blockquote { font-family: var(--serif); font-size: 24px; line-height: 1.3; color: var(--ink); margin: 0 0 18px; border-left: 2px solid var(--plum); padding-left: 18px; }
+    .soy p { font-size: 15.5px; color: var(--text); margin-bottom: 12px; }
+    .lugares { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+    .lugares span { font-size: 13px; padding: 6px 12px; border-radius: 999px; background: var(--alt); color: var(--mid); }
+
+    /* TESTIMONIOS */
+    .testis { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .testi { background: #fff; border: 1px solid var(--line); border-radius: 10px; padding: 22px; }
+    .testi p { font-family: var(--serif); font-size: 18px; line-height: 1.4; color: var(--ink); margin-bottom: 14px; }
+    .testi span { font-size: 13px; color: var(--dim); }
+
+    /* CONTACTO */
+    .contacto { background: var(--plum-dark); color: #fff; }
+    .contacto h2 { color: #fff; }
+    .contacto .intro { color: rgb(255 255 255 / .75); }
+    .contacto .btn { border-color: #fff; color: var(--plum-dark); background: #fff; }
+    .contacto .btn.linea { background: transparent; color: #fff; }
+    footer { padding: 26px 0; font-size: 13px; color: var(--dim); text-align: center; }
+
+    /* MODAL */
+    dialog { margin: auto; border: none; border-radius: 12px; padding: 0; width: min(460px, calc(100% - 32px)); box-shadow: 0 30px 80px rgb(0 0 0 / .3); }
+    dialog::backdrop { background: rgb(34 26 32 / .55); }
+    .md-cab { padding: 20px 22px 16px; border-bottom: 1px solid var(--line); }
+    .md-cab small { font-size: 12.5px; color: var(--plum); font-weight: 500; }
+    .md-cab h3 { font-family: var(--serif); font-weight: 500; font-size: 22px; color: var(--ink); line-height: 1.2; }
+    .md-body { padding: 18px 22px 22px; display: flex; flex-direction: column; gap: 12px; }
+    .md-body label { font-size: 13px; color: var(--mid); display: flex; flex-direction: column; gap: 5px; }
+    .rol { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .rol label { flex-direction: row; align-items: flex-start; gap: 8px; padding: 10px 12px; border: 1px solid var(--line); border-radius: 6px; cursor: pointer; color: var(--text); font-size: 13.5px; line-height: 1.35; }
+    .rol label b { display: block; color: var(--ink); font-weight: 500; }
+    .rol input { margin-top: 3px; accent-color: var(--plum); }
+    .md-total { display: flex; justify-content: space-between; align-items: baseline; padding: 12px 14px; background: var(--alt); border-radius: 6px; font-size: 14px; color: var(--mid); }
+    .md-total b { font-size: 18px; color: var(--ink); font-weight: 500; }
+    .mp { background: #009ee3; border-color: #009ee3; color: #fff; }
+    .mp:hover { background: #0087c2; }
+    .md-ok { text-align: center; padding: 34px 26px; }
+    .md-ok .ico { width: 40px; height: 40px; color: var(--sea); margin: 0 auto 12px; }
+    .md-ok p { font-size: 14.5px; color: var(--mid); margin-top: 8px; }
+    .cerrar { position: absolute; top: 12px; right: 12px; border: none; background: none; cursor: pointer; color: var(--dim); padding: 6px; }
+
+    .wa { position: fixed; right: 18px; bottom: 18px; width: 52px; height: 52px; border-radius: 50%; background: #25d366; color: #fff; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 24px rgb(0 0 0 / .2); z-index: 30; }
+    .wa svg { width: 26px; height: 26px; fill: #fff; }
+
+    @media (max-width: 900px) {
+      .menu { display: none; }
+      .hero .wrap, .dos, .soy { grid-template-columns: 1fr; gap: 32px; }
+      .hero-foto { max-width: 420px; }
+      .hero-cita { left: 12px; bottom: 12px; }
+      .talleres, .modos, .testis { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 640px) {
+      .wrap { padding: 0 16px; }
+      .hero { padding: 20px 0 48px; }
+      .hero .wrap { gap: 24px; }
+      .hero-foto { order: -1; max-width: none; }
+      .hero-foto img { aspect-ratio: 4 / 3; object-position: center 20%; }
+      .hero-cita { font-size: 15px; max-width: 220px; padding: 10px 12px; }
+      section { padding: 52px 0; }
+      nav .btn { display: none; }
+      .hero-datos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; font-size: 12.5px; line-height: 1.35; }
+      .hero-datos b { font-size: 16px; }
+      .avisame form { width: 100%; }
+      .avisame input { flex: 1; min-width: 0; }
+      .rol { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-cal" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
+  <symbol id="i-screen" viewBox="0 0 24 24"><rect width="20" height="14" x="2" y="3" rx="2"/><path d="M8 21h8M12 17v4"/></symbol>
+  <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v1"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m8 12 3 3 5-6"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+  <symbol id="logo" viewBox="0 0 32 32"><path d="M16 2 29 9.5v13L16 30 3 22.5v-13z"/><path d="M16 2 9 14l7 16 7-16zM3 9.5 9 14l-6 8.5M29 9.5 23 14l6 8.5M9 14h14"/></symbol>
+</svg>
+
+<div class="aviso">Boceto para Silvina · fechas, precios, textos y testimonios son de ejemplo</div>
+
+<nav>
+  <div class="wrap">
+    <a class="marca" href="#"><svg><use href="#logo"/></svg><b>Alma Tribal</b></a>
+    <div class="menu"><a href="#talleres">Talleres</a><a href="#constelar">Qué es constelar</a><a href="#sesiones">Sesiones</a><a href="#silvina">Soy Silvina</a></div>
+    <a class="btn fill chico" href="#talleres">Próximos talleres</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div>
+      <div class="kicker">Constelaciones familiares · Buenos Aires y online</div>
+      <h1>Mirar tu historia familiar para <em>hacer lugar a lo nuevo</em></h1>
+      <p>Hace 15 años acompaño a personas y grupos a ordenar lo que traen de su familia. En talleres, en sesiones individuales y en lugares que ayudan a bajar el ritmo.</p>
+      <div class="hero-btns">
+        <a class="btn fill" href="#talleres">Ver próximos talleres</a>
+        <a class="btn" href="#sesiones">Pedir una sesión</a>
+      </div>
+      <div class="hero-datos">
+        <span><b>15 años</b>constelando</span>
+        <span><b>+6.000</b>personas en la comunidad</span>
+        <span><b>Presencial y online</b>talleres y sesiones</span>
+      </div>
+    </div>
+    <div class="hero-foto">
+      <img src="img/silvina.jpg" width="512" height="640" alt="Silvina, consteladora" />
+      <div class="hero-cita">«Más que consteladora, soy una especie de partera.»<small>Silvina</small></div>
+    </div>
+  </div>
+</header>
+
+<section class="alt" id="talleres">
+  <div class="wrap">
+    <div class="cab">
+      <div>
+        <h2>Próximos talleres</h2>
+        <p class="intro">Elegí uno y anotate: podés participar constelando tu tema o como representante.</p>
+      </div>
+    </div>
+    <div class="filtros" role="group" aria-label="Filtrar talleres">
+      <button class="on" data-f="todos">Todos</button><button data-f="presencial">Presenciales</button><button data-f="online">Online</button>
+    </div>
+    <div class="talleres">
+      <article class="taller" data-m="presencial">
+        <img src="img/taller.jpg" width="640" height="640" alt="Taller de constelaciones" loading="lazy" />
+        <div class="taller-body">
+          <span class="fecha"><svg class="ico"><use href="#i-cal"/></svg>Sábado 8 de noviembre</span>
+          <h3>Constelaciones + 5Ritmos</h3>
+          <p>Movimiento y constelaciones en un mismo encuentro, con Pablo Gumina.</p>
+          <div class="taller-meta">
+            <span><svg class="ico"><use href="#i-pin"/></svg>Fuel · Niceto Vega 5390, Palermo</span>
+            <span><svg class="ico"><use href="#i-clock"/></svg>18 a 21 h</span>
+          </div>
+          <div class="taller-pie"><div class="precio">$30.000<small>Seña $10.000</small></div><button class="btn fill chico" data-t="Constelaciones + 5Ritmos" data-p="30000" data-s="10000">Anotarme</button></div>
+          <span class="cupos">Quedan 6 lugares para constelar</span>
+        </div>
+      </article>
+      <article class="taller" data-m="presencial">
+        <img src="img/caballos.jpg" width="480" height="290" alt="Caballos en el campo" loading="lazy" />
+        <div class="taller-body">
+          <span class="fecha"><svg class="ico"><use href="#i-cal"/></svg>Sábado 22 de noviembre</span>
+          <h3>Constelaciones con caballos</h3>
+          <p>Una jornada al aire libre con dinámicas junto a los caballos, con la Lic. Samanta Pistocchi.</p>
+          <div class="taller-meta">
+            <span><svg class="ico"><use href="#i-pin"/></svg>Reserva Loma Verde</span>
+            <span><svg class="ico"><use href="#i-clock"/></svg>11 a 17 h</span>
+          </div>
+          <div class="taller-pie"><div class="precio">$35.000<small>Seña $10.000</small></div><button class="btn fill chico" data-t="Constelaciones con caballos" data-p="35000" data-s="10000">Anotarme</button></div>
+          <span class="cupos">Quedan 9 lugares</span>
+        </div>
+      </article>
+      <article class="taller" data-m="online">
+        <div class="ph">Online</div>
+        <div class="taller-body">
+          <span class="fecha"><svg class="ico"><use href="#i-cal"/></svg>Jueves 4 de diciembre</span>
+          <h3>Constelaciones online: cerrar el año</h3>
+          <p>Un encuentro por Zoom para mirar lo que dejó este año y lo que querés llevar al próximo.</p>
+          <div class="taller-meta">
+            <span><svg class="ico"><use href="#i-screen"/></svg>Por Zoom · desde cualquier lugar</span>
+            <span><svg class="ico"><use href="#i-clock"/></svg>19 a 21:30 h</span>
+          </div>
+          <div class="taller-pie"><div class="precio">$18.000<small>Pago completo</small></div><button class="btn fill chico" data-t="Constelaciones online: cerrar el año" data-p="18000" data-s="18000">Anotarme</button></div>
+          <span class="cupos">Grupo reducido</span>
+        </div>
+      </article>
+    </div>
+    <div class="avisame">
+      <p><strong>¿Ninguna fecha te queda bien?</strong> Dejá tu WhatsApp o tu mail y te aviso cuando haya un taller nuevo.</p>
+      <form onsubmit="event.preventDefault(); this.innerHTML='<span style=&quot;font-size:14.5px;color:#1f6f78;font-weight:500&quot;>Listo, te aviso del próximo.</span>'">
+        <input type="text" placeholder="WhatsApp o mail" aria-label="WhatsApp o mail" required />
+        <button class="btn fill chico">Avisame</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section id="constelar">
+  <div class="wrap dos">
+    <div class="que">
+      <h2>Qué es constelar</h2>
+      <p>En una constelación, otras personas del grupo representan a los miembros de tu familia. Al verlos ubicados en el espacio aparece algo que desde adentro de la historia cuesta ver.</p>
+      <p>No hace falta saber nada antes ni contar todo en público. Podés venir a constelar un tema propio o a participar como representante, que también mueve mucho.</p>
+      <img src="img/lugar.jpg" width="360" height="640" alt="Entrada a uno de los espacios donde se hacen los talleres" loading="lazy" style="border-radius:10px;aspect-ratio:16/9;object-fit:cover;width:100%;margin-top:22px" />
+    </div>
+    <div class="faq">
+      <details open><summary>¿Tengo que constelar si voy a un taller?</summary><p>No. Al anotarte elegís si querés constelar un tema o participar como representante. Los lugares para constelar son pocos por taller.</p></details>
+      <details><summary>¿Qué tengo que llevar?</summary><p>Ropa cómoda y, si querés, algo para escribir. En los talleres al aire libre te aviso por WhatsApp unos días antes qué más conviene llevar.</p></details>
+      <details><summary>¿Funciona online?</summary><p>Sí. En las sesiones online trabajamos con figuras o con el grupo por Zoom. Muchas personas de otras ciudades y de otros países constelan así.</p></details>
+      <details><summary>¿Cuánto dura una sesión individual?</summary><p>Alrededor de una hora y media. Antes te pido que me cuentes brevemente el tema para preparar el encuentro.</p></details>
+      <details><summary>¿Reemplaza a una terapia o a un tratamiento?</summary><p>No. Es un acompañamiento complementario. Si estás en tratamiento médico o psicológico, lo sostenés como siempre.</p></details>
+      <details><summary>¿Cómo pago?</summary><p>Con Mercado Pago o por transferencia. En los talleres presenciales se reserva el lugar con una seña.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="sesiones">
+  <div class="wrap">
+    <h2>Sesiones individuales</h2>
+    <p class="intro">Para trabajar un tema propio con más tiempo y en privado. Contame en dos líneas qué te trae y te propongo un horario.</p>
+    <div class="modos">
+      <div class="modo"><svg class="ico"><use href="#i-user"/></svg><h3>Presencial</h3><p>En Buenos Aires. Alrededor de una hora y media.</p><button class="btn chico" data-s-modo="Presencial">Pedir turno</button></div>
+      <div class="modo"><svg class="ico"><use href="#i-screen"/></svg><h3>Online</h3><p>Por Zoom, desde donde estés. Valor en pesos para Argentina y en dólares para el exterior.</p><button class="btn chico" data-s-modo="Online">Pedir turno</button></div>
+      <div class="modo"><svg class="ico"><use href="#i-users"/></svg><h3>Para grupos e instituciones</h3><p>Talleres para equipos, escuelas, centros culturales o fundaciones.</p><button class="btn chico" data-s-modo="Grupos">Consultar</button></div>
+    </div>
+  </div>
+</section>
+
+<section id="silvina">
+  <div class="wrap soy">
+    <img src="img/silvina-2.jpg" width="640" height="640" alt="Silvina" loading="lazy" />
+    <div>
+      <h2>Soy Silvina</h2>
+      <blockquote>Si bien me especialicé en Constelaciones Familiares, en realidad, soy una especie de partera.</blockquote>
+      <p>Acá va tu historia contada con tus palabras: cómo llegaste a las constelaciones, con quién te formaste y qué aprendiste en estos 15 años de talleres y sesiones.</p>
+      <p>También tu vuelta, si querés contarla: lo que viviste estos dos años y cómo cambió tu forma de acompañar.</p>
+      <div class="lugares"><span>Teatro Picadero</span><span>Fuel Palermo</span><span>Reserva Loma Verde</span><span>Casa de Artistas, San Andrés de Giles</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <h2>Lo que dicen quienes pasaron por un taller</h2>
+    <p class="intro">Testimonios reales, con el permiso de cada persona.</p>
+    <div class="testis">
+      <div class="testi"><p>«Fui como representante y salí entendiendo algo de mi propia familia que no había visto nunca.»</p><span>Ejemplo · taller en Palermo</span></div>
+      <div class="testi"><p>«Silvina sostiene el grupo con muchísimo cuidado. Me sentí acompañada todo el tiempo.»</p><span>Ejemplo · sesión individual</span></div>
+      <div class="testi"><p>«La jornada con los caballos fue de las experiencias más fuertes que tuve.»</p><span>Ejemplo · Loma Verde</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="contacto">
+  <div class="wrap">
+    <h2>¿Querés hacerme una consulta?</h2>
+    <p class="intro">Escribime por WhatsApp y te respondo personalmente.</p>
+    <div class="hero-btns"><a class="btn" href="#" onclick="return false">Escribir por WhatsApp</a><a class="btn linea" href="#" onclick="return false">@alma_tribal</a></div>
+  </div>
+</section>
+
+<footer>Alma Tribal · Constelaciones familiares con Silvina · Buenos Aires</footer>
+
+<a class="wa" href="#" onclick="return false" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.4-.7-2.8-1.1-4.6-4-4.8-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2.1 1-2.4c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .5l-.3.5-.4.5c-.1.1-.3.3-.1.6.2.3.8 1.3 1.6 2.1 1.1 1 2 1.3 2.3 1.4.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.6-.1l2 1c.3.1.5.2.5.3.1.2.1.7-.1 1.1z"/></svg></a>
+
+<dialog id="md">
+  <button class="cerrar" aria-label="Cerrar" onclick="md.close()"><svg class="ico"><use href="#i-x"/></svg></button>
+  <div id="md-in"></div>
+</dialog>
+
+<script>
+  const md = document.getElementById('md'), mdIn = document.getElementById('md-in');
+  const pesos = n => '$' + Number(n).toLocaleString('es-AR');
+
+  document.querySelectorAll('.filtros button').forEach(b => b.addEventListener('click', () => {
+    document.querySelectorAll('.filtros button').forEach(x => x.classList.toggle('on', x === b));
+    document.querySelectorAll('.taller').forEach(t => t.style.display = (b.dataset.f === 'todos' || t.dataset.m === b.dataset.f) ? '' : 'none');
+  }));
+
+  const ok = (titulo, texto) => { mdIn.innerHTML = `<div class="md-ok"><svg class="ico"><use href="#i-check"/></svg><h3 style="font-family:var(--serif);font-weight:500;font-size:22px;color:var(--ink)">${titulo}</h3><p>${texto}</p></div>`; };
+
+  document.querySelectorAll('[data-t]').forEach(b => b.addEventListener('click', () => {
+    const { t, p, s } = b.dataset;
+    mdIn.innerHTML = `
+      <div class="md-cab"><small>Inscripción</small><h3>${t}</h3></div>
+      <form class="md-body">
+        <label>Nombre y apellido<input required /></label>
+        <label>WhatsApp<input required inputmode="tel" /></label>
+        <div class="rol">
+          <label><input type="radio" name="rol" checked /><span><b>Quiero constelar</b>Traigo un tema propio</span></label>
+          <label><input type="radio" name="rol" /><span><b>Representante</b>Participo sin constelar</span></label>
+        </div>
+        <div class="md-total"><span>${s === p ? 'Total' : 'Seña para reservar'}</span><b>${pesos(s)}</b></div>
+        <button class="btn mp">Pagar con Mercado Pago</button>
+        <span style="font-size:12.5px;color:var(--dim);text-align:center">También podés pagar por transferencia</span>
+      </form>`;
+    mdIn.querySelector('form').addEventListener('submit', e => { e.preventDefault(); ok('¡Tu lugar está reservado!', 'Te llega la confirmación por mail y Silvina te escribe por WhatsApp unos días antes con los detalles.'); });
+    md.showModal();
+  }));
+
+  document.querySelectorAll('[data-s-modo]').forEach(b => b.addEventListener('click', () => {
+    mdIn.innerHTML = `
+      <div class="md-cab"><small>Sesión individual · ${b.dataset.sModo}</small><h3>Pedir un turno</h3></div>
+      <form class="md-body">
+        <label>Nombre<input required /></label>
+        <label>WhatsApp<input required inputmode="tel" /></label>
+        <label>¿Qué te gustaría trabajar? (dos líneas alcanzan)<textarea rows="3"></textarea></label>
+        <label>¿Qué días y horarios te quedan mejor?<input /></label>
+        <button class="btn fill">Enviar</button>
+      </form>`;
+    mdIn.querySelector('form').addEventListener('submit', e => { e.preventDefault(); ok('¡Recibido!', 'Silvina te escribe por WhatsApp para coordinar el día.'); });
+    md.showModal();
+  }));
+</script>
+</body>
+</html>
