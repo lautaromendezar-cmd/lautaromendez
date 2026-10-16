@@ -12,6 +12,7 @@ vercel.json         redirects, trailingSlash, headers de caché y seguridad
 css/style.css       una sola hoja, secciones separadas por banner
 js/main.js          funciones con nombre llamadas desde init()
 js/pixel.js         el píxel de Meta, compartido por las dos páginas
+js/origen.js        agrega "(ref: origen)" al mensaje de WhatsApp
 assets/hero/        el video del hero + su imagen fija (parallax/ y vectorial/ archivados)
 assets/work/        las 8 capturas del bento
 assets/og.jpg       imagen de Open Graph (1200×630)

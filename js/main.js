@@ -657,7 +657,10 @@ function contactForm() {
       (datos.text || '').trim()
     ].join('\n');
 
-    const url = WA_BASE + '?text=' + encodeURIComponent(mensaje);
+    /* js/origen.js le agrega "(ref: …)" con de dónde llegó la visita. Si no
+       cargó, el mensaje sale igual sin la marca. */
+    const conOrigen = window.lmConOrigen || ((t) => t);
+    const url = WA_BASE + '?text=' + encodeURIComponent(conOrigen(mensaje));
 
     /* Si el bloqueador igual se lo come, window.open devuelve null: ahí se
        navega en la misma pestaña, que siempre funciona. Perder el mensaje

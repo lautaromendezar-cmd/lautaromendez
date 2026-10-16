@@ -25,7 +25,12 @@ async function open(w = 1440, h = 900, opts = {}) {
   if (opts.rm) await page.emulateMediaFeatures([{ name: 'prefers-reduced-motion', value: 'reduce' }]);
   const errs = [];
   page.on('pageerror', e => errs.push(e.message));
-  page.on('console', m => { if (m.type() === 'error') errs.push(m.text()); });
+  /* /_vercel/insights/ sólo existe servido por Vercel: abierto como archivo
+     siempre da "not found", y eso no es un error del sitio */
+  page.on('console', m => {
+    if (m.type() !== 'error' || /_vercel\/insights/.test(m.location()?.url || '')) return;
+    errs.push(m.text());
+  });
   await page.goto(URL, { waitUntil: 'networkidle0' });
   await page.evaluate(() => document.fonts.ready);
   page.__errs = errs;
