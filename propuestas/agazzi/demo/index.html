@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Agazzi Aberturas — idea de diseño</title>
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+  <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600&display=swap" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy: #0c2236;
+      --navy-2: #12304a;
+      --blue: #0b7fd1;
+      --blue-d: #0868ad;
+      --blue-soft: #e8f3fc;
+      --ink: #0f1720;
+      --text: #2a3440;
+      --mid: #5b6673;
+      --dim: #8a94a0;
+      --line: #e3e6ea;
+      --soft: #f4f5f7;
+      --white: #fff;
+      --sans: 'General Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--sans); font-weight: 400; color: var(--text); background: var(--white); font-size: 16px; line-height: 1.55; -webkit-font-smoothing: antialiased; }
+    img { display: block; max-width: 100%; height: auto; }
+    a { color: inherit; text-decoration: none; }
+    h1, h2, h3 { font-weight: 560; color: var(--ink); letter-spacing: -0.02em; line-height: 1.12; }
+    .wrap { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
+    .ico { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; flex: none; }
+
+    .btn { display: inline-flex; align-items: center; gap: 10px; padding: 13px 20px; border-radius: 6px; font-size: 15px; font-weight: 560; transition: background .15s, color .15s, border-color .15s; cursor: pointer; border: 1px solid transparent; font-family: inherit; }
+    .btn-blue { background: var(--blue); color: #fff; }
+    .btn-blue:hover { background: var(--blue-d); }
+    .btn-line { border-color: rgb(255 255 255 / .5); color: #fff; }
+    .btn-line:hover { background: rgb(255 255 255 / .12); }
+    .btn-ghost { border-color: var(--line); color: var(--ink); background: #fff; }
+    .btn-ghost:hover { border-color: var(--ink); }
+
+    /* HEADER */
+    .top { position: sticky; top: 0; z-index: 20; background: rgb(255 255 255 / .96); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+    .top .wrap { display: flex; align-items: center; justify-content: space-between; height: 72px; gap: 24px; }
+    .logo img { height: 34px; width: auto; }
+    .nav { display: flex; gap: 26px; font-size: 14.5px; font-weight: 500; color: var(--text); }
+    .nav a:hover { color: var(--blue); }
+    .top-cta { display: flex; gap: 10px; align-items: center; }
+    .top-wa { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 500; color: var(--mid); }
+    .top .btn { padding: 10px 16px; font-size: 14px; }
+    .burger { display: none; width: 40px; height: 40px; border: 1px solid var(--line); border-radius: 6px; align-items: center; justify-content: center; background: #fff; }
+
+    /* HERO */
+    .hero { position: relative; min-height: 640px; display: flex; align-items: flex-end; color: #fff; overflow: hidden; }
+    .hero > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 60%; }
+    .hero::before { content: ''; position: absolute; inset: 0; z-index: 1; background: linear-gradient(90deg, rgb(8 22 36 / .86) 0%, rgb(8 22 36 / .6) 42%, rgb(8 22 36 / .08) 75%), linear-gradient(0deg, rgb(8 22 36 / .55), transparent 45%); }
+    .hero .wrap { position: relative; z-index: 2; width: 100%; padding-top: 120px; padding-bottom: 64px; }
+    .kicker { display: inline-flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 500; letter-spacing: .04em; color: rgb(255 255 255 / .82); margin-bottom: 18px; }
+    .kicker::before { content: ''; width: 22px; height: 1.5px; background: #5fb6f0; }
+    .hero h1 { color: #fff; font-size: clamp(34px, 4.6vw, 54px); max-width: 640px; margin-bottom: 18px; }
+    .hero p { font-size: 18px; max-width: 520px; color: rgb(255 255 255 / .86); margin-bottom: 30px; }
+    .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+
+    .trust { background: var(--navy); color: rgb(255 255 255 / .82); font-size: 14px; }
+    .trust .wrap { display: flex; flex-wrap: wrap; gap: 10px 34px; padding-top: 16px; padding-bottom: 16px; }
+    .trust .wrap > span { display: inline-flex; align-items: center; gap: 9px; }
+    .trust b { color: #fff; font-weight: 560; }
+    .trust .ico { color: #5fb6f0; }
+
+    section { padding: 88px 0; }
+    .alt { background: var(--soft); }
+    .eyebrow { font-size: 13px; font-weight: 560; color: var(--blue); letter-spacing: .02em; margin-bottom: 12px; }
+    .h2 { font-size: clamp(28px, 3.2vw, 38px); max-width: 680px; margin-bottom: 14px; }
+    .lead { font-size: 17px; color: var(--mid); max-width: 600px; }
+    .head-row { display: flex; justify-content: space-between; align-items: flex-end; gap: 32px; flex-wrap: wrap; margin-bottom: 40px; }
+
+    /* COTIZADOR */
+    .cotiz { display: grid; grid-template-columns: 1fr 380px; gap: 28px; align-items: start; }
+    .panel { background: #fff; border: 1px solid var(--line); border-radius: 10px; padding: 28px; }
+    .step { font-size: 12.5px; font-weight: 560; color: var(--dim); letter-spacing: .04em; text-transform: uppercase; margin-bottom: 12px; }
+    .tipos { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin-bottom: 26px; }
+    .tipo { border: 1px solid var(--line); border-radius: 8px; padding: 14px 10px 12px; text-align: center; font-size: 13.5px; font-weight: 500; color: var(--text); cursor: pointer; background: #fff; font-family: inherit; transition: border-color .15s, background .15s; }
+    .tipo svg { width: 46px; height: 46px; margin: 0 auto 8px; display: block; stroke: var(--mid); stroke-width: 1.4; fill: none; }
+    .tipo.on { border-color: var(--blue); background: var(--blue-soft); color: var(--ink); }
+    .tipo.on svg { stroke: var(--blue); }
+    .fila { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 12px; margin-bottom: 22px; }
+    .campo label { display: block; font-size: 13px; font-weight: 500; color: var(--mid); margin-bottom: 6px; }
+    .campo input, .campo select { width: 100%; height: 44px; border: 1px solid var(--line); border-radius: 6px; padding: 0 12px; font: inherit; font-size: 15px; color: var(--ink); background: #fff; }
+    .campo input:focus, .campo select:focus { outline: 2px solid var(--blue-soft); border-color: var(--blue); }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 26px; }
+    .chip { border: 1px solid var(--line); border-radius: 999px; padding: 8px 14px; font-size: 13.5px; font-weight: 500; background: #fff; cursor: pointer; font-family: inherit; color: var(--text); }
+    .chip.on { border-color: var(--blue); background: var(--blue-soft); color: var(--ink); }
+    .panel-foot { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; padding-top: 22px; border-top: 1px solid var(--line); }
+    .sugerida { font-size: 14px; color: var(--mid); }
+    .sugerida b { color: var(--ink); font-weight: 560; }
+
+    .resumen { position: sticky; top: 96px; background: var(--navy); color: #fff; border-radius: 10px; padding: 24px; }
+    .resumen h3 { color: #fff; font-size: 18px; margin-bottom: 4px; }
+    .resumen > p { font-size: 13.5px; color: rgb(255 255 255 / .65); margin-bottom: 18px; }
+    .items { list-style: none; display: flex; flex-direction: column; gap: 8px; margin-bottom: 18px; }
+    .items li { display: grid; grid-template-columns: 1fr auto; gap: 4px 12px; padding: 12px 14px; background: rgb(255 255 255 / .07); border-radius: 6px; font-size: 14px; }
+    .items li b { font-weight: 560; }
+    .items li small { grid-column: 1 / -1; color: rgb(255 255 255 / .6); font-size: 12.5px; }
+    .items .x { background: none; border: 0; color: rgb(255 255 255 / .5); cursor: pointer; font-size: 18px; line-height: 1; }
+    .vacio { font-size: 14px; color: rgb(255 255 255 / .55); padding: 14px; border: 1px dashed rgb(255 255 255 / .2); border-radius: 6px; }
+    .minimo { display: flex; gap: 10px; font-size: 13px; color: rgb(255 255 255 / .7); margin-bottom: 18px; line-height: 1.45; }
+    .minimo .ico { color: #5fb6f0; margin-top: 1px; }
+    .resumen .btn { width: 100%; justify-content: center; }
+    .resumen .alt-wa { display: block; text-align: center; font-size: 13.5px; color: rgb(255 255 255 / .7); margin-top: 12px; }
+    .resumen .alt-wa:hover { color: #fff; }
+
+    /* PROCESO */
+    .pasos { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--line); }
+    .paso { padding: 26px 26px 0 0; }
+    .paso + .paso { padding-left: 26px; border-left: 1px solid var(--line); }
+    .paso .n { font-size: 13px; font-weight: 560; color: var(--blue); margin-bottom: 10px; }
+    .paso h3 { font-size: 18px; margin-bottom: 6px; }
+    .paso p { font-size: 14.5px; color: var(--mid); }
+
+    /* LÍNEAS */
+    .lineas { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; }
+    .linea { background: #fff; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; display: flex; flex-direction: column; }
+    .linea img { aspect-ratio: 1 / 0.86; object-fit: cover; background: #ecebe8; }
+    .linea div { padding: 16px 16px 18px; }
+    .linea h3 { font-size: 17px; margin-bottom: 4px; }
+    .linea p { font-size: 13.5px; color: var(--mid); margin-bottom: 10px; }
+    .linea .spec { font-size: 12.5px; font-weight: 560; color: var(--ink); }
+    .linea a { display: inline-flex; gap: 6px; align-items: center; margin-top: 10px; font-size: 13px; font-weight: 560; color: var(--blue); }
+
+    /* OBRAS */
+    .obras { display: grid; grid-template-columns: 1.4fr 1fr 1fr; grid-template-rows: 260px 260px; gap: 14px; }
+    .obra { position: relative; border-radius: 10px; overflow: hidden; }
+    .obra:first-child { grid-row: span 2; }
+    .obra img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
+    .obra:hover img { transform: scale(1.03); }
+    .obra figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: 40px 18px 16px; background: linear-gradient(0deg, rgb(8 22 36 / .78), transparent); color: #fff; font-size: 15px; font-weight: 560; }
+    .obra figcaption small { display: block; font-weight: 400; font-size: 13px; color: rgb(255 255 255 / .78); }
+
+    /* FÁBRICA */
+    .fabrica { display: grid; grid-template-columns: 1.1fr 1fr; gap: 56px; align-items: center; }
+    .fabrica-img { border-radius: 10px; overflow: hidden; aspect-ratio: 4 / 3; }
+    .fabrica-img img { width: 100%; height: 100%; object-fit: cover; }
+    .datos-f { display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin-top: 30px; border-top: 1px solid var(--line); }
+    .datos-f div { padding: 18px 0; border-bottom: 1px solid var(--line); }
+    .datos-f div:nth-child(odd) { padding-right: 20px; }
+    .datos-f b { display: block; font-size: 22px; font-weight: 560; color: var(--ink); letter-spacing: -0.01em; }
+    .datos-f span { font-size: 14px; color: var(--mid); }
+    .marcas { display: flex; gap: 10px 22px; flex-wrap: wrap; margin-top: 22px; font-size: 13.5px; color: var(--mid); }
+    .marcas b { color: var(--ink); font-weight: 560; }
+
+    /* ARQUITECTOS */
+    .arq { position: relative; color: #fff; overflow: hidden; background: var(--navy); }
+    .arq > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .32; }
+    .arq::before { content: ''; position: absolute; inset: 0; z-index: 1; background: linear-gradient(90deg, rgb(12 34 54 / .96) 35%, rgb(12 34 54 / .55)); }
+    .arq .wrap { position: relative; z-index: 2; display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+    .arq .eyebrow { color: #7cc4f3; }
+    .arq .h2 { color: #fff; }
+    .arq .lead { color: rgb(255 255 255 / .75); margin-bottom: 28px; }
+    .arq-list { list-style: none; display: flex; flex-direction: column; }
+    .arq-list li { display: flex; gap: 14px; padding: 16px 0; border-bottom: 1px solid rgb(255 255 255 / .14); font-size: 15px; color: rgb(255 255 255 / .9); }
+    .arq-list li:first-child { border-top: 1px solid rgb(255 255 255 / .14); }
+    .arq-list .ico { color: #7cc4f3; margin-top: 2px; }
+    .arq-list small { display: block; font-size: 13.5px; color: rgb(255 255 255 / .6); }
+
+    /* CONTACTO */
+    .sedes { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
+    .sede { border: 1px solid var(--line); border-radius: 10px; padding: 24px; background: #fff; }
+    .sede h3 { font-size: 17px; margin-bottom: 6px; }
+    .sede p { font-size: 14.5px; color: var(--mid); margin-bottom: 14px; }
+    .sede a { display: inline-flex; gap: 8px; align-items: center; font-size: 14px; font-weight: 560; color: var(--blue); }
+
+    footer { background: var(--navy); color: rgb(255 255 255 / .6); font-size: 13.5px; padding: 36px 0; }
+    footer .wrap { display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; }
+    footer img { height: 28px; width: auto; }
+
+    .wa-float { position: fixed; right: 22px; bottom: 22px; z-index: 30; width: 54px; height: 54px; border-radius: 50%; background: #25d366; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 24px rgb(0 0 0 / .18); }
+    .wa-float svg { width: 28px; height: 28px; fill: #fff; }
+
+    .toast { position: fixed; left: 50%; bottom: 28px; transform: translate(-50%, 20px); opacity: 0; background: var(--ink); color: #fff; padding: 14px 20px; border-radius: 8px; font-size: 14px; transition: .25s; z-index: 40; max-width: calc(100% - 32px); }
+    .toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+    @media (max-width: 1080px) {
+      .nav, .top-wa { display: none; }
+      .lineas { grid-template-columns: repeat(3, 1fr); }
+      .cotiz { grid-template-columns: 1fr; }
+      .resumen { position: static; }
+      .tipos { grid-template-columns: repeat(5, 1fr); }
+    }
+    @media (max-width: 760px) {
+      .wrap { padding: 0 16px; }
+      .top .wrap { height: 62px; }
+      .logo img { height: 28px; }
+      .top .btn { display: none; }
+      .burger { display: inline-flex; }
+      .hero { min-height: 560px; }
+      .hero > img { object-position: 62% center; }
+      .hero::before { background: linear-gradient(0deg, rgb(8 22 36 / .94) 30%, rgb(8 22 36 / .7) 62%, rgb(8 22 36 / .25)); }
+      .hero .wrap { padding-bottom: 36px; }
+      .hero p { font-size: 16px; margin-bottom: 24px; }
+      .hero-ctas .btn { flex: 1 1 100%; justify-content: center; }
+      .trust .wrap { flex-direction: column; gap: 8px; }
+      section { padding: 60px 0; }
+      .panel { padding: 18px; }
+      .tipos { grid-template-columns: repeat(3, 1fr); }
+      .fila { grid-template-columns: 1fr 1fr; }
+      .pasos { grid-template-columns: 1fr 1fr; border-top: 0; gap: 0; }
+      .paso, .paso + .paso { padding: 18px 14px 18px 0; border-left: 0; border-top: 1px solid var(--line); }
+      .lineas { grid-template-columns: 1fr 1fr; }
+      .obras { grid-template-columns: 1fr 1fr; grid-template-rows: 240px 160px 160px; }
+      .obra:first-child { grid-column: 1 / -1; grid-row: auto; }
+      .fabrica, .arq .wrap { grid-template-columns: 1fr; gap: 32px; }
+      .sedes { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></symbol>
+  <symbol id="i-factory" viewBox="0 0 24 24"><path d="M2 20V9l6 4V9l6 4V4h8v16z"/><path d="M6 17h2M11 17h2M16 17h2"/></symbol>
+  <symbol id="i-award" viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M15.5 13 17 22l-5-3-5 3 1.5-9"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.7 9a1 1 0 0 1-.6 0C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.2-2.7a1.2 1.2 0 0 1 1.6 0C14.5 3.8 17 5 19 5a1 1 0 0 1 1 1z"/></symbol>
+  <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></symbol>
+  <symbol id="i-file" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h6"/></symbol>
+  <symbol id="i-ruler" viewBox="0 0 24 24"><path d="M21.3 15.3a2.4 2.4 0 0 1 0 3.4l-2.6 2.6a2.4 2.4 0 0 1-3.4 0L2.7 8.7a2.4 2.4 0 0 1 0-3.4l2.6-2.6a2.4 2.4 0 0 1 3.4 0z"/><path d="m14.5 12.5 2-2M11.5 9.5l2-2M8.5 6.5l2-2M17.5 15.5l2-2"/></symbol>
+  <symbol id="i-calendar" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></symbol>
+  <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v1"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+</svg>
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="#"><img src="img/logotipo-agazzi-full-color-completo-768x197.webp" width="768" height="197" alt="Agazzi Aberturas" /></a>
+    <nav class="nav">
+      <a href="#lineas">Líneas</a>
+      <a href="#obras">Obras</a>
+      <a href="#fabrica">La fábrica</a>
+      <a href="#arquitectos">Arquitectos</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <div class="top-cta">
+      <a class="top-wa" href="#contacto"><svg class="ico" viewBox="0 0 24 24"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>11 2366-0601</a>
+      <a class="btn btn-blue" href="#cotizar">Cotizar mis aberturas</a>
+      <button class="burger" aria-label="Menú"><svg class="ico"><use href="#i-menu"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<section class="hero" style="padding:0">
+  <img src="img/portafolio-agazzi-aberturas-1.webp" width="1600" height="900" alt="Casa con grandes paños corredizos de PVC" />
+  <div class="wrap">
+    <div class="kicker">Fábrica de aberturas de PVC · CABA y GBA</div>
+    <h1>Aberturas de PVC a medida, de nuestra fábrica a tu casa</h1>
+    <p>Fabricamos en Grand Bourg y colocamos en el día, sin romper paredes. Menos ruido, menos frío y menos gasto de luz y gas.</p>
+    <div class="hero-ctas">
+      <a class="btn btn-blue" href="#cotizar">Cotizar mis aberturas<svg class="ico"><use href="#i-arrow"/></svg></a>
+      <a class="btn btn-line" href="#arquitectos">Soy arquitecto o desarrollador</a>
+    </div>
+  </div>
+</section>
+
+<div class="trust">
+  <div class="wrap">
+    <span><svg class="ico"><use href="#i-clock"/></svg><span><b>Más de 80 años</b> de oficio familiar</span></span>
+    <span><svg class="ico"><use href="#i-factory"/></svg><span><b>Fábrica propia</b> en Grand Bourg</span></span>
+    <span><svg class="ico"><use href="#i-shield"/></svg><span>Perfiles <b>Muchtek</b>, herrajes <b>Roto</b> y <b>Giesse</b></span></span>
+    <span><svg class="ico"><use href="#i-award"/></svg><span>Premio <b>Desarrollo Empresarial 2025</b></span></span>
+  </div>
+</div>
+
+<!-- COTIZADOR -->
+<section class="alt" id="cotizar">
+  <div class="wrap">
+    <div class="head-row">
+      <div>
+        <div class="eyebrow">Cotizador</div>
+        <h2 class="h2">Armá tu pedido abertura por abertura</h2>
+        <p class="lead">Elegí el tipo, cargá las medidas y sumá todas las que necesites. Te llega un presupuesto a medida, sin escribir un mail largo.</p>
+      </div>
+    </div>
+
+    <div class="cotiz">
+      <div class="panel">
+        <div class="step">1 · Tipo de abertura</div>
+        <div class="tipos" id="tipos">
+          <button class="tipo on" data-t="Corrediza" data-l="Advance"><svg viewBox="0 0 48 48"><rect x="5" y="9" width="38" height="30" rx="1.5"/><path d="M24 9v30M15 21l-4 3 4 3M33 21l4 3-4 3"/></svg>Corrediza</button>
+          <button class="tipo" data-t="De abrir" data-l="Efficient"><svg viewBox="0 0 48 48"><rect x="9" y="7" width="30" height="34" rx="1.5"/><path d="M9 7l22 17L9 41"/></svg>De abrir</button>
+          <button class="tipo" data-t="Oscilobatiente" data-l="Efficient"><svg viewBox="0 0 48 48"><rect x="9" y="7" width="30" height="34" rx="1.5"/><path d="M9 7l22 17L9 41M9 41l15-22 15 22"/></svg>Oscilobatiente</button>
+          <button class="tipo" data-t="Paño fijo" data-l="Efficient"><svg viewBox="0 0 48 48"><rect x="7" y="9" width="34" height="30" rx="1.5"/><path d="M14 32l6-6M20 32l12-12"/></svg>Paño fijo</button>
+          <button class="tipo" data-t="Puerta balcón" data-l="Prime"><svg viewBox="0 0 48 48"><rect x="7" y="4" width="34" height="40" rx="1.5"/><path d="M24 4v40M19 26h2M27 26h2"/></svg>Puerta balcón</button>
+        </div>
+
+        <div class="step">2 · Medidas y cantidad</div>
+        <div class="fila">
+          <div class="campo"><label for="an">Ancho (cm)</label><input id="an" type="number" inputmode="numeric" value="180" min="30" /></div>
+          <div class="campo"><label for="al">Alto (cm)</label><input id="al" type="number" inputmode="numeric" value="200" min="30" /></div>
+          <div class="campo"><label for="ca">Cantidad</label><input id="ca" type="number" inputmode="numeric" value="1" min="1" /></div>
+          <div class="campo"><label for="amb">Ambiente</label><select id="amb"><option>Living</option><option>Dormitorio</option><option>Cocina</option><option>Baño</option><option>Otro</option></select></div>
+        </div>
+
+        <div class="step">3 · Vidrio y color</div>
+        <div class="chips" data-g="vidrio">
+          <button class="chip on">DVH</button><button class="chip">DVH laminado</button><button class="chip">Control solar</button><button class="chip">No sé, que me asesoren</button>
+        </div>
+        <div class="chips" data-g="color">
+          <button class="chip on">Blanco</button><button class="chip">Negro</button><button class="chip">Símil madera</button><button class="chip">Gris</button>
+          <button class="chip" data-toggle="mosq">+ Mosquitero</button>
+        </div>
+
+        <div class="panel-foot">
+          <span class="sugerida">Línea sugerida: <b id="sug">Advance</b> · la confirma un asesor</span>
+          <button class="btn btn-ghost" id="add">Agregar al pedido<svg class="ico"><use href="#i-arrow"/></svg></button>
+        </div>
+      </div>
+
+      <aside class="resumen">
+        <h3>Tu pedido</h3>
+        <p>Podés sumar fotos o planos al enviar.</p>
+        <ul class="items" id="items">
+          <li><span><b>2 × Corrediza</b> 180 × 200 cm</span><button class="x" aria-label="Quitar">×</button><small>Living · DVH · Blanco · Advance</small></li>
+          <li><span><b>3 × Oscilobatiente</b> 100 × 120 cm</span><button class="x" aria-label="Quitar">×</button><small>Dormitorio · DVH · Blanco · Efficient</small></li>
+        </ul>
+        <div class="minimo"><svg class="ico"><use href="#i-info"/></svg><span>Trabajamos solo en PVC, con un pedido mínimo de USD 1.199 + IVA.</span></div>
+        <button class="btn btn-blue" id="send">Pedir presupuesto</button>
+        <a class="alt-wa" href="#contacto">o mandalo por WhatsApp</a>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESO -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow">Cómo trabajamos</div>
+    <h2 class="h2" style="margin-bottom:36px">Del pedido a la colocación, en cuatro pasos</h2>
+    <div class="pasos">
+      <div class="paso"><div class="n">01</div><h3>Pedido</h3><p>Nos pasás medidas, fotos o planos. Te asesoramos con el perfil y el vidrio.</p></div>
+      <div class="paso"><div class="n">02</div><h3>Presupuesto</h3><p>Te mandamos una cotización clara, abertura por abertura.</p></div>
+      <div class="paso"><div class="n">03</div><h3>Fabricación</h3><p>Medimos en obra y fabricamos en nuestra planta de Grand Bourg.</p></div>
+      <div class="paso"><div class="n">04</div><h3>Colocación</h3><p>Instalamos en el día, sin obra, sin polvo. Tu casa queda lista.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- LÍNEAS -->
+<section class="alt" id="lineas">
+  <div class="wrap">
+    <div class="head-row">
+      <div>
+        <div class="eyebrow">Líneas</div>
+        <h2 class="h2">Cinco líneas Muchtek, una para cada vano</h2>
+        <p class="lead">Todas con más de 50 años de vida útil y bajo mantenimiento. Cada una con su ficha técnica para descargar.</p>
+      </div>
+    </div>
+    <div class="lineas">
+      <article class="linea"><img src="img/efficient-58-69.webp" width="1110" height="960" alt="Perfil línea Efficient" loading="lazy" /><div><h3>Efficient</h3><p>De abrir, oscilobatiente, proyectante y plegable.</p><span class="spec">Doble contacto · máxima hermeticidad</span><br /><a href="#">Ficha técnica<svg class="ico"><use href="#i-arrow"/></svg></a></div></article>
+      <article class="linea"><img src="img/advance.webp" width="1110" height="960" alt="Perfil línea Advance" loading="lazy" /><div><h3>Advance</h3><p>La corrediza con mejor relación costo-beneficio.</p><span class="spec">Hasta 6 hojas móviles</span><br /><a href="#">Ficha técnica<svg class="ico"><use href="#i-arrow"/></svg></a></div></article>
+      <article class="linea"><img src="img/prime.webp" width="1110" height="960" alt="Perfil línea Prime" loading="lazy" /><div><h3>Prime</h3><p>Corrediza alta, con más entrada de luz.</p><span class="spec">Hasta 2,3 m de alto</span><br /><a href="#">Ficha técnica<svg class="ico"><use href="#i-arrow"/></svg></a></div></article>
+      <article class="linea"><img src="img/jumbo.webp" width="1110" height="960" alt="Perfil línea Jumbo" loading="lazy" /><div><h3>Jumbo</h3><p>Grandes paños y vistas panorámicas.</p><span class="spec">Hasta 3 m de alto · con mosquitero</span><br /><a href="#">Ficha técnica<svg class="ico"><use href="#i-arrow"/></svg></a></div></article>
+      <article class="linea"><img src="img/evolution.webp" width="1110" height="960" alt="Perfil línea Evolution" loading="lazy" /><div><h3>Evolution</h3><p>La de mayor prestación, para alta gama.</p><span class="spec">Hasta 3,6 m · triple vidriado</span><br /><a href="#">Ficha técnica<svg class="ico"><use href="#i-arrow"/></svg></a></div></article>
+    </div>
+  </div>
+</section>
+
+<!-- OBRAS -->
+<section id="obras">
+  <div class="wrap">
+    <div class="head-row">
+      <div>
+        <div class="eyebrow">Obras</div>
+        <h2 class="h2">Obras terminadas, con nombre y apellido</h2>
+        <p class="lead">Cada obra con su línea, su zona y lo que resolvimos.</p>
+      </div>
+      <a class="btn btn-ghost" href="#">Ver todas las obras<svg class="ico"><use href="#i-arrow"/></svg></a>
+    </div>
+    <div class="obras">
+      <figure class="obra"><img src="img/agazzi-aberturas-proyecto-2-1.webp" width="1440" height="810" alt="Departamento con vista a la ciudad" loading="lazy" /><figcaption>Piso alto con vista abierta<small>Línea Jumbo · CABA</small></figcaption></figure>
+      <figure class="obra"><img src="img/agazzi-aberturas-proyecto-1-1.webp" width="1440" height="810" alt="Edificio residencial" loading="lazy" /><figcaption>Edificio residencial<small>Línea Advance</small></figcaption></figure>
+      <figure class="obra"><img src="img/agazzi-aberturas-proyecto-5-1.webp" width="1440" height="810" alt="Casa de ladrillo con ventanas blancas" loading="lazy" /><figcaption>Recambio en casa de ladrillo<small>Línea Efficient</small></figcaption></figure>
+      <figure class="obra"><img src="img/portafolio-agazzi-aberturas-4.webp" width="1600" height="900" alt="Casa moderna de dos plantas" loading="lazy" /><figcaption>Casa de dos plantas<small>Línea Prime</small></figcaption></figure>
+      <figure class="obra"><img src="img/agazzi-aberturas-proyecto-4-1.webp" width="1440" height="810" alt="Doble altura con ventanas símil madera" loading="lazy" /><figcaption>Doble altura símil madera<small>Línea Efficient</small></figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- FÁBRICA -->
+<section class="alt" id="fabrica">
+  <div class="wrap fabrica">
+    <div class="fabrica-img"><img src="img/fabrica-aberturas-de-pvc-agazzi-1.webp" width="1600" height="877" alt="Planta de Agazzi en Grand Bourg" loading="lazy" /></div>
+    <div>
+      <div class="eyebrow">La fábrica</div>
+      <h2 class="h2">No revendemos: fabricamos</h2>
+      <p class="lead">Nuestra planta de Grand Bourg arma cada abertura con maquinaria de precisión. Trato directo con quien la fabrica, sin intermediarios.</p>
+      <div class="datos-f">
+        <div><b>80+ años</b><span>de oficio familiar</span></div>
+        <div><b>2 sedes</b><span>showroom en Palermo y planta en Grand Bourg</span></div>
+        <div><b>5 líneas</b><span>de perfiles Muchtek</span></div>
+        <div><b>En el día</b><span>colocación sin romper paredes</span></div>
+      </div>
+      <div class="marcas"><span>Perfiles <b>Muchtek</b></span><span>Herrajes <b>Roto</b> · <b>Giesse</b></span><span>Vidrios <b>Vasa</b></span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ARQUITECTOS -->
+<section class="arq" id="arquitectos">
+  <img src="img/portafolio-agazzi-aberturas-2.webp" width="1600" height="900" alt="" loading="lazy" />
+  <div class="wrap">
+    <div>
+      <div class="eyebrow">Para arquitectos y desarrolladores</div>
+      <h2 class="h2">Un proveedor que cumple los plazos de obra</h2>
+      <p class="lead">Desde el anteproyecto hasta la postventa. Mandanos los planos y te devolvemos el cómputo.</p>
+      <a class="btn btn-blue" href="#">Enviar planos para cotizar<svg class="ico"><use href="#i-arrow"/></svg></a>
+    </div>
+    <ul class="arq-list">
+      <li><svg class="ico"><use href="#i-file"/></svg><span>Fichas técnicas de cada línea<small>Transmitancia, aislación acústica, medidas máximas</small></span></li>
+      <li><svg class="ico"><use href="#i-ruler"/></svg><span>Cómputo desde tus planos<small>Subís el PDF o el DWG y te respondemos por obra</small></span></li>
+      <li><svg class="ico"><use href="#i-calendar"/></svg><span>Plazos de entrega pactados por escrito</span></li>
+      <li><svg class="ico"><use href="#i-user"/></svg><span>Un contacto comercial para toda la obra</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto">
+  <div class="wrap">
+    <div class="eyebrow">Contacto</div>
+    <h2 class="h2" style="margin-bottom:32px">Vení a ver las aberturas en persona</h2>
+    <div class="sedes">
+      <div class="sede"><h3>Showroom Palermo</h3><p>Lucio N. Mansilla 3999, esquina Aráoz, CABA. Con turno.</p><a href="#"><svg class="ico"><use href="#i-pin"/></svg>Cómo llegar</a></div>
+      <div class="sede"><h3>Planta Grand Bourg</h3><p>Fragata Heroína 4870, Área de Promoción El Triángulo.</p><a href="#"><svg class="ico"><use href="#i-pin"/></svg>Cómo llegar</a></div>
+      <div class="sede"><h3>WhatsApp y mail</h3><p>11 2366-0601<br />info@agazziaberturas.com.ar</p><a href="#"><svg class="ico" viewBox="0 0 24 24"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>Escribinos</a></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <img src="img/logotipo-agazzi-blanco-completo.png" width="800" height="208" alt="Agazzi Aberturas" />
+    <span>Más de 80 años trabajando con la misma pasión</span>
+  </div>
+</footer>
+
+<a class="wa-float" href="#contacto" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.1.1.3 0 .5l-.3.5-.4.5c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.1 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.7-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.3Z"/></svg></a>
+
+<div class="toast" id="toast">Es una idea de diseño: en la web real, el pedido llega ordenado a tu HubSpot.</div>
+
+<script>
+  const $ = s => document.querySelector(s);
+  let tipo = 'Corrediza', linea = 'Advance';
+  document.querySelectorAll('.tipo').forEach(b => b.addEventListener('click', () => {
+    document.querySelectorAll('.tipo').forEach(x => x.classList.remove('on'));
+    b.classList.add('on'); tipo = b.dataset.t; linea = b.dataset.l;
+    const al = +$('#al').value;
+    if (tipo === 'Corrediza' && al > 230) linea = al > 300 ? 'Evolution' : 'Jumbo';
+    $('#sug').textContent = linea;
+  }));
+  $('#al').addEventListener('input', () => { const a = document.querySelector('.tipo.on'); a && a.click(); });
+  document.querySelectorAll('.chips').forEach(g => g.addEventListener('click', e => {
+    const c = e.target.closest('.chip'); if (!c) return;
+    if (c.dataset.toggle) { c.classList.toggle('on'); return; }
+    g.querySelectorAll('.chip:not([data-toggle])').forEach(x => x.classList.remove('on')); c.classList.add('on');
+  }));
+  const pick = g => document.querySelector(`.chips[data-g="${g}"] .chip.on:not([data-toggle])`)?.textContent || '';
+  $('#add').addEventListener('click', () => {
+    const li = document.createElement('li');
+    const mosq = document.querySelector('[data-toggle="mosq"]').classList.contains('on') ? ' · Mosquitero' : '';
+    li.innerHTML = `<span><b>${$('#ca').value} × ${tipo}</b> ${$('#an').value} × ${$('#al').value} cm</span><button class="x" aria-label="Quitar">×</button><small>${$('#amb').value} · ${pick('vidrio')} · ${pick('color')}${mosq} · ${linea}</small>`;
+    $('#items').appendChild(li);
+  });
+  $('#items').addEventListener('click', e => { if (e.target.classList.contains('x')) e.target.closest('li').remove(); });
+  $('#send').addEventListener('click', () => { const t = $('#toast'); t.classList.add('show'); setTimeout(() => t.classList.remove('show'), 3200); });
+</script>
+</body>
+</html>
