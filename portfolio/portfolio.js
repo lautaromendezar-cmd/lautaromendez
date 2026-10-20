@@ -35,6 +35,7 @@ const RUBROS = {
 };
 
 const PROYECTOS = [
+  { img: 'port-aldetallemotos.webp',    n: 'Al Detalle Motos',           r: 'Motos · Catálogo de accesorios',    cat: 'ecommerce',   url: 'https://aldetallemotos.vercel.app/' },
   { img: 'port-productos-moneda.webp',  n: 'Productos Moneda',           r: 'Alimentos · Arroz y legumbres',     cat: 'industria',   url: 'https://productosmoneda.com.ar/' },
   { img: 'port-smc.webp',               n: 'SMC Arquitectura',           r: 'Construcción · Llave en mano',      cat: 'industria',   url: 'https://smc-topaz.vercel.app/' },
   { img: 'port-destapaciones-hoy.webp', n: 'Destapaciones HOY',          r: 'Servicios · Destapaciones 24 hs',   cat: 'servicios',   url: 'https://destapacioneshoy.com.ar/' },

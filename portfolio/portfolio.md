@@ -9,7 +9,7 @@ familia nueva — si cambia la paleta de la home, esta página cambia sola.
 index.html      la página
 portfolio.css   sólo lo propio: hero, filtros, grilla, cierre
 portfolio.js    los datos + el comportamiento
-trabajos/       las 44 capturas (webp, 16:9)
+trabajos/       las 45 capturas (webp, 16:9)
 ```
 
 ---
