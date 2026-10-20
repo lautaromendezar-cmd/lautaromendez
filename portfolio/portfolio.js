@@ -71,7 +71,6 @@ const PROYECTOS = [
   { img: 'port-evelyn.webp',            n: 'Evelyn Orozco',              r: 'Portfolio · Arte visual',           cat: 'otros',       url: 'https://evvyart.com.ar/' },
   { img: 'port-jorgeribak.webp',        n: 'Jorge Ribak',                r: 'Magia · One-page',                  cat: 'otros',       url: 'https://jorgeribak.com.ar/' },
   { img: 'port-federestivo.webp',       n: 'Fede Restivo',               r: 'Fitness · Entrenamiento',           cat: 'otros',       url: 'https://federestivo.com/' },
-  { img: 'port-aldetalle.webp',         n: 'Al Detalle Motos',           r: 'E-commerce · Repuestos',            cat: 'ecommerce',   url: 'https://aldetallemotos.com.ar/' },
   { img: 'port-elite.webp',             n: 'Elite Movil Accesorios',     r: 'E-commerce · Accesorios celular',   cat: 'ecommerce',   url: 'https://elitemovil.com.ar/' },
   { img: 'port-barba.webp',             n: 'Grupo Barba',                r: 'Distribución · One-page',           cat: 'otros',       url: 'https://grupobarba.com.ar/' },
   { img: 'port-tiendanube-barba.webp',  n: 'Tienda Nube Grupo Barba',    r: 'E-commerce · Tienda Nube',          cat: 'ecommerce',   url: 'https://distribuidoragrupobarba.mitiendanube.com/' },
