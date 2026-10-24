@@ -75,7 +75,7 @@ const PROYECTOS = [
   { img: 'port-elite.webp',             n: 'Elite Movil Accesorios',     r: 'E-commerce · Accesorios celular',   cat: 'ecommerce',   url: 'https://elitemovil.com.ar/' },
   { img: 'port-barba.webp',             n: 'Grupo Barba',                r: 'Distribución · One-page',           cat: 'otros',       url: 'https://grupobarba.com.ar/' },
   { img: 'port-tiendanube-barba.webp',  n: 'Tienda Nube Grupo Barba',    r: 'E-commerce · Tienda Nube',          cat: 'ecommerce',   url: 'https://distribuidoragrupobarba.mitiendanube.com/' },
-  { img: 'port-santabarrica.webp',      n: 'Santa Barrica',              r: 'E-commerce · Tienda de vinos',      cat: 'ecommerce',   url: 'https://club.santabarrica.com.ar/' },
+  { img: 'port-santabarrica.webp',      n: 'Santa Barrica',              r: 'Club de vinos · Membresías',        cat: 'ecommerce',   url: 'https://club.santabarrica.com.ar/' },
   { img: 'port-tr3.webp',               n: 'TR3 Viajes y Turismo',       r: 'Turismo · Hotelería',               cat: 'turismo',     url: 'https://www.tr3viajesyturismo.com/' },
   { img: 'port-magicdoor.webp',         n: 'Magic Door',                 r: 'Servicios · Eventos para empresas', cat: 'servicios',   url: 'https://www.magicdoor.com.ar/' },
   { img: 'port-adequate.webp',          n: 'Adequate',                   r: 'Inmobiliaria · Landing page',       cat: 'otros',       url: 'https://adequate.lat/' },
