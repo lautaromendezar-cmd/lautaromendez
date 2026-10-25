@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacidad — Lautaro Mendez</title>
+<!-- existe porque Google la pide para publicar la app OAuth «Auditoria SEO»;
+     no va al sitemap ni al menú, y no tiene por qué salir en búsquedas -->
+<meta name="robots" content="noindex, follow">
+<meta name="description" content="Qué datos de Google lee la herramienta Auditoria SEO y qué hace con ellos.">
+<meta name="theme-color" content="#0A0B0D">
+<link rel="canonical" href="https://lautaromendez.com.ar/privacidad/">
+
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@200..700&display=swap">
+<link rel="stylesheet" href="/css/style.css">
+
+<style>
+  .priv { padding-block: clamp(120px, 16vw, 180px) clamp(60px, 8vw, 100px); max-width: 68ch; }
+  .priv__t {
+    margin-top: clamp(14px, 2vw, 24px);
+    font-size: clamp(34px, 5.6vw, 64px);
+    line-height: 1.04;
+    letter-spacing: -.022em;
+    font-variation-settings: var(--fv-display);
+  }
+  .priv__f { margin-top: 14px; font-family: var(--mono); font-size: 13px; color: var(--fog); }
+  .priv h2 {
+    margin-top: clamp(34px, 4vw, 48px);
+    font-size: clamp(20px, 2.4vw, 26px);
+    font-variation-settings: var(--fv-display);
+    letter-spacing: -.01em;
+  }
+  .priv p, .priv li { margin-top: 12px; color: var(--fog); line-height: 1.6; }
+  .priv ul { padding-left: 1.1em; }
+  .priv a { color: var(--bone); text-decoration: underline; text-underline-offset: 3px; }
+</style>
+</head>
+
+<body>
+<header class="hd is-stuck">
+  <div class="hd__in">
+    <a class="mark" href="/" aria-label="Lautaro Mendez, ir al inicio">
+      <span class="lock lock--mark"><span class="lock__a">Lautaro</span><span class="lock__b">Mendez.</span></span>
+    </a>
+  </div>
+</header>
+
+<main class="wrap priv">
+  <p class="eyebrow"><i class="dot"></i>Privacidad</p>
+  <h1 class="priv__t">Auditoria SEO</h1>
+  <p class="priv__f">Última actualización: 25 de octubre de 2026</p>
+
+  <p>Auditoria SEO es una herramienta interna de Lautaro Mendez para revisar el
+    estado de los sitios web que hace y mantiene para sus clientes. No es un
+    servicio abierto al público: la usa sólo él.</p>
+
+  <h2>Qué datos de Google lee</h2>
+  <p>Con el permiso de sólo lectura de Google Search Console
+    (<code>webmasters.readonly</code>) lee, de las propiedades a las que la cuenta
+    tiene acceso, las búsquedas, clics, impresiones y posiciones de cada sitio.
+    No puede modificar nada en Search Console ni en ninguna otra cuenta de Google.</p>
+
+  <h2>Para qué los usa</h2>
+  <ul>
+    <li>Detectar problemas en los sitios (páginas caídas, búsquedas que se pierden).</li>
+    <li>Armar recomendaciones e informes para el dueño de cada sitio.</li>
+  </ul>
+  <p>Los datos no se venden, no se comparten con terceros y no se usan para
+    publicidad ni para entrenar modelos de inteligencia artificial. El uso de la
+    información recibida de las API de Google se ajusta a la
+    <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" rel="noopener">Política de datos del usuario de los servicios de API de Google</a>,
+    incluidos los requisitos de uso limitado.</p>
+
+  <h2>Dónde se guardan</h2>
+  <p>Los resultados de cada revisión se guardan en un almacenamiento privado en
+    Vercel, al que sólo accede la herramienta. Las credenciales de acceso se
+    guardan cifradas como variables de entorno y nunca se publican.</p>
+
+  <h2>Cómo revocar el acceso</h2>
+  <p>El acceso se quita en cualquier momento desde
+    <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener">myaccount.google.com/permissions</a>.
+    Si querés que se borren los datos de tu sitio, escribime y los elimino.</p>
+
+  <h2>Contacto</h2>
+  <p>Lautaro Mendez · Buenos Aires, Argentina ·
+    <a href="https://wa.me/5491130011145?text=Hola%20Lautaro%2C%20te%20escribo%20por%20la%20pol%C3%ADtica%20de%20privacidad." target="_blank" rel="noopener">WhatsApp</a></p>
+</main>
+
+<footer class="ft" style="padding-block: clamp(48px, 7vw, 90px) 34px">
+  <div class="wrap ft__in">
+    <div class="ft__bar">
+      <p>© <span id="year">2026</span> Lautaro Mendez · Buenos Aires</p>
+      <nav class="ft__nav" aria-label="Pie">
+        <a href="/">Inicio</a>
+        <a href="/portfolio/">Portfolio</a>
+        <a href="https://www.instagram.com/lautaromendez" target="_blank" rel="noopener">Instagram</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
