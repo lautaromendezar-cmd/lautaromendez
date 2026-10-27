@@ -131,6 +131,11 @@
     .mp-logos { display: flex; gap: 8px; align-items: center; margin-top: 8px; font-size: 12px; color: var(--dim); }
     .mp-tag { display: inline-flex; align-items: center; gap: 6px; padding: 3px 8px; border-radius: 4px; background: #e6f6fd; color: #00669a; font-weight: 600; }
 
+    .circuitos { margin-top: 20px; display: grid; grid-template-columns: 280px 1fr; gap: 20px; align-items: center; padding: 22px 24px; border: 1px solid var(--line); border-radius: 12px; background: var(--teal-soft); }
+    .circuitos b { display: block; font-size: 17px; margin-bottom: 2px; }
+    .circuitos p { font-size: 14px; color: var(--mid); }
+    .circuitos .chip { background: #fff; }
+
     /* VIAJES */
     .viajes { display: grid; grid-template-columns: 1.3fr 1fr 1fr; grid-auto-rows: 250px; gap: 16px; }
     .viaje { position: relative; border-radius: 12px; overflow: hidden; color: #fff; display: flex; align-items: flex-end; }
@@ -215,7 +220,6 @@
     .contador b { min-width: 18px; text-align: center; }
     select, input { font: inherit; font-size: 14.5px; padding: 9px 11px; border: 1px solid var(--line); border-radius: 8px; width: 100%; color: var(--ink); background: #fff; }
     .campos { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 6px 0 16px; }
-    .campos input:first-child { grid-column: span 2; }
     .total { display: flex; justify-content: space-between; align-items: baseline; padding: 14px 0; border-top: 1px solid var(--line); margin-bottom: 12px; }
     .total b { font-size: 26px; letter-spacing: -0.02em; }
     .total small { display: block; font-size: 12.5px; color: var(--teal-ink); font-weight: 600; text-align: right; }
@@ -264,7 +268,7 @@
       .caja-main { padding: 22px 18px; }
       .fechas-op { grid-template-columns: 1fr 1fr; }
       .campos { grid-template-columns: 1fr; }
-      .campos input:first-child { grid-column: auto; }
+      .circuitos { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -286,7 +290,7 @@
   <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></symbol>
 </svg>
 
-<div class="aviso">Idea de diseño para Giro Turístico · <b>las salidas, fechas, precios y reseñas son de ejemplo</b> · las fotos de las salidas son de referencia</div>
+<div class="aviso">Idea de diseño para Giro Turístico · salidas y viajes tomados de tus redes · <b>fechas, precios, fotos y reseñas de ejemplo</b></div>
 
 <header class="top">
   <div class="wrap">
@@ -345,6 +349,11 @@
       <div class="paso"><span class="paso-n">2</span><div><b>Pagás con Mercado Pago</b><p>Tarjeta de crédito en cuotas, débito o dinero en cuenta.</p><div class="mp-logos"><span class="mp-tag">Mercado Pago</span>pago protegido</div></div></div>
       <div class="paso"><span class="paso-n">3</span><div><b>Te llega el voucher</b><p>Con el punto de encuentro y el horario. Julia te escribe el día antes.</p></div></div>
     </div>
+
+    <div class="circuitos">
+      <div><b>Circuitos por Buenos Aires</b><p>Las salidas de Mi Buenos Aires Querido, en el mismo lugar y con la misma compra.</p></div>
+      <div class="chips"><span class="chip">Palacios porteños</span><span class="chip">Avenida de Mayo</span><span class="chip">Balvanera Art Nouveau</span><span class="chip">Tango, historietas y túneles</span><span class="chip">Del arte vivo al arte de la muerte</span></div>
+    </div>
   </div>
 </section>
 
@@ -359,11 +368,11 @@
       </div>
     </div>
     <div class="viajes">
-      <article class="viaje"><img src="img/Talampaya.jpg" alt="Parque Talampaya" loading="lazy" /><div class="viaje-body"><span class="viaje-tag">Salida grupal · 8 noches</span><h3>Norte argentino cultural</h3><p>Salta, Jujuy, Talampaya e Ischigualasto, con guía y alojamiento.</p><a href="#" class="btn btn-wa js-wa" data-msg="Hola Julia, quiero info del viaje Norte argentino cultural."><svg class="ico"><use href="#i-chat"/></svg>Consultar</a></div></article>
-      <article class="viaje"><img src="img/buzios.jpg" alt="Playa de Búzios" loading="lazy" /><div class="viaje-body"><span class="viaje-tag">7 noches</span><h3>Búzios</h3><p>Aéreo, traslados y posada frente al mar.</p><a href="#" class="btn btn-wa js-wa" data-msg="Hola Julia, quiero info del viaje a Búzios."><svg class="ico"><use href="#i-chat"/></svg>Consultar</a></div></article>
-      <article class="viaje"><img src="img/costa.jpg" alt="Positano, Costa Amalfitana" loading="lazy" /><div class="viaje-body"><span class="viaje-tag">Salida grupal · 15 noches</span><h3>Italia y Costa Amalfitana</h3><p>Roma, Florencia, Nápoles y Positano.</p><a href="#" class="btn btn-wa js-wa" data-msg="Hola Julia, quiero info del viaje Italia y Costa Amalfitana."><svg class="ico"><use href="#i-chat"/></svg>Consultar</a></div></article>
-      <article class="viaje"><img src="img/croacia.jpg" alt="Dubrovnik, Croacia" loading="lazy" /><div class="viaje-body"><span class="viaje-tag">Salida grupal · 14 noches</span><h3>Croacia y Balcanes</h3><p>Dubrovnik, Split, Montenegro y Eslovenia.</p><a href="#" class="btn btn-wa js-wa" data-msg="Hola Julia, quiero info del viaje Croacia y Balcanes."><svg class="ico"><use href="#i-chat"/></svg>Consultar</a></div></article>
-      <article class="viaje"><img src="img/grecia.jpg" alt="Santorini, Grecia" loading="lazy" /><div class="viaje-body"><span class="viaje-tag">12 noches</span><h3>Turquía y Grecia</h3><p>Estambul, Capadocia, Atenas e islas.</p><a href="#" class="btn btn-wa js-wa" data-msg="Hola Julia, quiero info del viaje Turquía y Grecia."><svg class="ico"><use href="#i-chat"/></svg>Consultar</a></div></article>
+      <article class="viaje"><img src="img/aurora.jpg" alt="Aurora boreal en Tromsø" loading="lazy" /><div class="viaje-body"><span class="viaje-tag">Salida grupal · 27 ene y 3 mar 2027</span><h3>Escandinavia y auroras boreales</h3><p>Tromsø, Copenhague, Oslo y Estocolmo, con crucero y trineo con renos. USD 7.878.</p><a href="#" class="btn btn-wa js-wa" data-msg="Hola Julia, quiero info del viaje Escandinavia y auroras boreales."><svg class="ico"><use href="#i-chat"/></svg>Consultar</a></div></article>
+      <article class="viaje"><img src="img/guatemala.jpg" alt="Arco de Santa Catalina, Antigua Guatemala" loading="lazy" /><div class="viaje-body"><span class="viaje-tag">Salida grupal · 13 abr 2027</span><h3>Guatemala y Honduras</h3><p>Volcanes, mercados mayas y Caribe all inclusive. USD 3.699.</p><a href="#" class="btn btn-wa js-wa" data-msg="Hola Julia, quiero info del viaje Guatemala y Honduras."><svg class="ico"><use href="#i-chat"/></svg>Consultar</a></div></article>
+      <article class="viaje"><img src="img/cartagena.jpg" alt="Murallas de Cartagena" loading="lazy" /><div class="viaje-body"><span class="viaje-tag">Salida grupal · 8 mar 2027</span><h3>Cartagena, Barú y Canal de Panamá</h3><p>11 días con vuelo desde Buenos Aires. USD 3.099.</p><a href="#" class="btn btn-wa js-wa" data-msg="Hola Julia, quiero info del viaje Cartagena, Barú y Canal de Panamá."><svg class="ico"><use href="#i-chat"/></svg>Consultar</a></div></article>
+      <article class="viaje"><img src="img/lisboa.jpg" alt="Alfama, Lisboa" loading="lazy" /><div class="viaje-body"><span class="viaje-tag">18 días</span><h3>España y Portugal</h3><p>Lisboa, Oporto, Sintra, Fátima y seis regiones de España.</p><a href="#" class="btn btn-wa js-wa" data-msg="Hola Julia, quiero info del viaje España y Portugal."><svg class="ico"><use href="#i-chat"/></svg>Consultar</a></div></article>
+      <article class="viaje"><img src="img/Talampaya.jpg" alt="Parque Talampaya" loading="lazy" /><div class="viaje-body"><span class="viaje-tag">Salida grupal</span><h3>Norte argentino cultural</h3><p>Salta, Jujuy y Talampaya, con guía y alojamiento.</p><a href="#" class="btn btn-wa js-wa" data-msg="Hola Julia, quiero info del viaje Norte argentino cultural."><svg class="ico"><use href="#i-chat"/></svg>Consultar</a></div></article>
     </div>
     <div class="medida">
       <div><b>¿Tenés otro destino en mente?</b><p>Contame cuándo, con quién y qué te gustaría, y te armo el viaje a medida.</p></div>
@@ -395,9 +404,9 @@
   <div class="wrap">
     <div class="sec-head"><div><div class="kick">Reseñas</div><h2>Lo que cuentan los que viajaron</h2></div></div>
     <div class="resenas">
-      <div class="resena"><div class="estrellas">★★★★★</div>«Fuimos a Areco con mi mamá y fue un día redondo. Julia estuvo en cada detalle, hasta nos guardó lugar adelante en la combi.»<footer><b>Marcela G.</b>Salida a San Antonio de Areco</footer></div>
+      <div class="resena"><div class="estrellas">★★★★★</div>«Fuimos a Areco y Duggan con mi mamá y fue un día redondo. Julia estuvo en cada detalle, hasta nos guardó lugar adelante en la combi.»<footer><b>Marcela G.</b>Areco y Duggan</footer></div>
       <div class="resena"><div class="estrellas">★★★★★</div>«Segundo viaje grupal con Giro. Todo organizado, buen grupo y precios claros desde el principio.»<footer><b>Roberto y Ana</b>Norte argentino cultural</footer></div>
-      <div class="resena"><div class="estrellas">★★★★★</div>«Compré la salida a Colonia desde el celular en dos minutos y el voucher me llegó al instante.»<footer><b>Lucía P.</b>Colonia del Sacramento</footer></div>
+      <div class="resena"><div class="estrellas">★★★★★</div>«Compré la salida a Mercedes desde el celular en dos minutos y el voucher me llegó al instante.»<footer><b>Lucía P.</b>Mercedes y Altamira</footer></div>
     </div>
   </div>
 </section>
@@ -443,11 +452,11 @@
         <div class="fila" style="margin-bottom:16px"><span>Menores de 12 <small style="color:var(--dim)">(20% menos)</small></span><div class="contador"><button data-c="me" data-d="-1" aria-label="Menos">−</button><b id="c-me">0</b><button data-c="me" data-d="1" aria-label="Más">+</button></div></div>
         <p class="paso-tit">3. ¿Dónde subís?</p>
         <select style="margin-bottom:16px"><option>Obelisco · 7:00</option><option>Plaza Italia, Palermo · 7:20</option><option>Estación Belgrano C · 7:40</option></select>
-        <p class="paso-tit">4. Tus datos</p>
-        <div class="campos"><input placeholder="Nombre y apellido" /><input placeholder="WhatsApp" inputmode="tel" /><input placeholder="Email" type="email" /></div>
+        <p class="paso-tit">4. Datos del titular</p>
+        <div class="campos"><input placeholder="Nombre y apellido" /><input placeholder="DNI" inputmode="numeric" /><input placeholder="WhatsApp" inputmode="tel" /><input placeholder="Email" type="email" /></div>
         <div class="total"><span>Total</span><div><b id="m-total"></b><small id="m-cuotas"></small></div></div>
         <button class="btn btn-mp" id="pagar"><svg class="ico"><use href="#i-card"/></svg>Pagar con Mercado Pago</button>
-        <p class="letra">Vas a pagar en la página segura de Mercado Pago. Cancelación sin costo hasta 72 h antes.</p>
+        <p class="letra">Después del pago te pedimos nombre y DNI de cada pasajero. Pagás en la página segura de Mercado Pago.</p>
       </div>
       <div class="ok" id="m-ok" hidden>
         <div class="ok-ico"><svg class="ico"><use href="#i-check"/></svg></div>
@@ -464,11 +473,11 @@
 
 <script>
   const SALIDAS = [
-    { id: 'areco', t: 'San Antonio de Areco y estancia', img: 'img/areco.jpg', dur: '7 a 19 h', zona: 'Provincia de Buenos Aires', precio: 98000, inc: ['Traslado en combi', 'Guía durante el día', 'Almuerzo de campo en estancia', 'Show criollo'], fechas: [['nov', 'Sáb', 14, 6], ['nov', 'Sáb', 28, 12], ['dic', 'Sáb', 12, 0]] },
-    { id: 'colonia', t: 'Colonia del Sacramento', img: 'img/colonia.jpg', dur: '7:30 a 21 h', zona: 'Uruguay · con ferry', precio: 189000, inc: ['Ferry ida y vuelta', 'Caminata por el casco histórico', 'Guía en Colonia', 'Seguro de viaje'], fechas: [['nov', 'Dom', 8, 3], ['nov', 'Dom', 22, 10], ['dic', 'Dom', 6, 14]] },
-    { id: 'tigre', t: 'Tigre y Delta en lancha', img: 'img/tigre.jpg', dur: '9 a 17 h', zona: 'Tigre', precio: 62000, inc: ['Traslado en combi', 'Paseo en lancha por el Delta', 'Puerto de Frutos', 'Guía'], fechas: [['nov', 'Sáb', 7, 9], ['nov', 'Sáb', 21, 15], ['dic', 'Sáb', 5, 15]] },
-    { id: 'mg', t: 'Isla Martín García', img: 'img/martingarcia.jpg', dur: '8 a 19 h', zona: 'Río de la Plata', precio: 115000, inc: ['Catamarán desde Tigre', 'Visita guiada por la isla', 'Almuerzo', 'Traslado en combi'], fechas: [['nov', 'Dom', 15, 4], ['dic', 'Dom', 13, 18]] },
-    { id: 'laplata', t: 'La Plata, catedral y museo', img: 'img/laplata.jpg', dur: '9 a 18 h', zona: 'La Plata', precio: 55000, inc: ['Traslado en combi', 'Subida a la torre de la catedral', 'Museo de Ciencias Naturales', 'Guía'], fechas: [['nov', 'Sáb', 21, 11], ['dic', 'Sáb', 19, 16]] },
+    { id: 'areco', t: 'Areco y Duggan', img: 'img/areco.jpg', dur: '7:30 a 19 h', zona: 'San Antonio de Areco', precio: 140000, inc: ['Casco histórico y Museo Gauchesco', 'Museo Las Lilas', 'Almuerzo de vacío al horno de barro en Duggan', 'Traslado en combi'], fechas: [['nov', 'Sáb', 14, 6], ['nov', 'Sáb', 28, 12], ['dic', 'Sáb', 12, 0]] },
+    { id: 'mercedes', t: 'Mercedes y Altamira: viñedo y almuerzo de campo', img: 'img/mercedes.jpg', dur: '8 a 19 h', zona: 'Mercedes', precio: 145000, inc: ['Viñedo en las ruinas de una fábrica de 1947', 'Dos vinos y mini tapeo', 'Almuerzo de campo', 'Traslado en combi'], fechas: [['nov', 'Sáb', 21, 3], ['dic', 'Sáb', 5, 14]] },
+    { id: 'sanisidro', t: 'San Isidro y Villa Ocampo', img: 'img/villaocampo.jpg', dur: '9 a 17 h', zona: 'San Isidro', precio: 68000, inc: ['Casco histórico de San Isidro', 'Visita a Villa Ocampo', 'Merienda', 'Traslado en combi'], fechas: [['nov', 'Dom', 8, 9], ['nov', 'Dom', 22, 15]] },
+    { id: 'uribelarrea', t: 'Cañuelas y Uribelarrea', img: 'img/uribelarrea.jpg', dur: '8:30 a 19 h', zona: 'Cañuelas', precio: 95000, inc: ['El pueblo de Uribelarrea', 'Almuerzo de campo', 'Productos regionales', 'Traslado en combi'], fechas: [['nov', 'Dom', 15, 4], ['dic', 'Dom', 13, 18]] },
+    { id: 'delta', t: 'Tigre, Nordelta y Dique Luján', img: 'img/tigre.jpg', dur: '9 a 18 h', zona: 'Tigre', precio: 75000, inc: ['Dique Luján y Villa La Ñata', 'Paseo por Nordelta', 'Puerto de Frutos', 'Traslado en combi'], fechas: [['nov', 'Sáb', 7, 11], ['dic', 'Sáb', 19, 16]] },
   ];
   const MES = { nov: 'Nov', dic: 'Dic' };
   const $ = (s, el = document) => el.querySelector(s);
@@ -542,6 +551,7 @@
     const t = total(), pax = cant.ad + cant.me;
     $('#m-voucher').innerHTML = `<div><span>Salida</span><b>${actual.t}</b></div><div><span>Fecha</span><b>${fechaSel[1]} ${fechaSel[2]} de ${fechaSel[0] === 'nov' ? 'noviembre' : 'diciembre'}</b></div><div><span>Pasajeros</span><b>${pax}</b></div><div><span>Pagado</span><b>${peso(t)}</b></div><div><span>Reserva</span><b>GT-${Math.floor(1000 + Math.random() * 9000)}</b></div>`;
     $('#m-form').hidden = true; $('#m-ok').hidden = false;
+    if (window.lmVisto) lmVisto('compra');
   });
 
   // WhatsApp: en el boceto no se manda nada, se muestra el mensaje
@@ -553,5 +563,6 @@
     t.classList.add('show'); clearTimeout(tt); tt = setTimeout(() => t.classList.remove('show'), 3800);
   }));
 </script>
+<script src="/propuestas/_visto.js" data-p="giro-turistico" data-n="Giro Turístico" data-e="boceto" defer></script>
 </body>
 </html>
