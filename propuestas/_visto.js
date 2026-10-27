@@ -17,8 +17,8 @@
   const enviar = (e, extra) => {
     if (ya(e)) return;
     const body = JSON.stringify(Object.assign({ p, n, e }, extra));
-    if (!(navigator.sendBeacon && navigator.sendBeacon('/api/visto', body))) {
-      fetch('/api/visto', { method: 'POST', body, keepalive: true }).catch(() => {});
+    if (!(navigator.sendBeacon && navigator.sendBeacon('/api/visto/', body))) {
+      fetch('/api/visto/', { method: 'POST', body, keepalive: true }).catch(() => {});
     }
   };
   window.lmVisto = enviar;
