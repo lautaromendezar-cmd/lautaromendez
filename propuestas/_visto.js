@@ -39,14 +39,22 @@
     if (ev.target.closest && ev.target.closest('a[href*="wa.me"], a[href*="api.whatsapp.com"]')) enviar('whatsapp');
   });
 
-  // Tiempo con la pestaña a la vista; se manda al salir, si pasó de 20 segundos
-  let activo = 0, desde = Date.now();
+  // Tiempo con la pestaña a la vista; se manda al salir, si pasó de 20 segundos.
+  // pagehide cubre los navegadores de WhatsApp/Instagram, que a veces cierran sin visibilitychange.
+  let activo = 0, desde = document.visibilityState === 'visible' ? Date.now() : 0;
+  const acumulado = () => activo + (desde ? Date.now() - desde : 0);
   const salir = () => {
-    activo += Date.now() - desde;
+    activo = acumulado(); desde = 0;
     const seg = Math.round(activo / 1000);
     if (seg >= 20) enviar('tiempo', { s: seg });
   };
   document.addEventListener('visibilitychange', () => {
     if (document.visibilityState === 'hidden') salir(); else desde = Date.now();
   });
+  addEventListener('pagehide', salir);
+
+  // Aviso a los 30 segundos a la vista, aunque no cierren la página
+  const reloj = setInterval(() => {
+    if (acumulado() >= 30000) { enviar('leyendo'); clearInterval(reloj); }
+  }, 5000);
 })();

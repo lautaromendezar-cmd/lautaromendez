@@ -7,6 +7,7 @@ const EVENTOS = {
   boceto: ['🖥️', 'abrió el boceto'],
   compra: ['🛒', 'probó comprar en el boceto'],
   tiempo: ['⏱️', 'estuvo leyendo'],
+  leyendo: ['⏳', 'lleva 30 s con la página abierta'],
   web: ['📬', 'entró a la web'],
   seccion: ['👀', 'llegó a'],
   whatsapp: ['💬', 'tocó WhatsApp'],
