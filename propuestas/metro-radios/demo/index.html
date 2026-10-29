@@ -125,11 +125,8 @@
     .aire-txt .cat { margin: 0; }
     .aire-txt h3 { font-family: var(--head); font-size: 26px; font-weight: 800; line-height: 1.15; letter-spacing: -.01em; }
     .aire-txt p { color: #c4c4cc; font-size: 15px; }
-    .aire-audio { display: flex; align-items: center; gap: 12px; padding: 12px 14px; border-radius: 8px; background: var(--negro-2); border: 1px solid #2a2a31; }
-    .aire-audio .radio-play { width: 36px; height: 36px; }
-    .onda { flex: 1; height: 26px; display: flex; align-items: center; gap: 3px; }
-    .onda i { flex: 1; background: #4a4a55; border-radius: 2px; }
-    .aire-audio small { font-size: 12.5px; color: #a8a8b2; }
+    .aire-txt h3.nota { cursor: pointer; }
+    .aire-txt h3.nota:hover { color: #ff7fe0; }
     .ia-tag { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: #a8a8b2; }
     .ia-tag .ico { width: 14px; height: 14px; color: var(--mag); }
 
@@ -145,20 +142,21 @@
     .pub-cuadro p { font-size: 14px; color: #c3d6ec; margin-top: 6px; }
     .pub-cuadro span.pub-btn { align-self: flex-start; margin-top: 14px; padding: 8px 14px; border-radius: 6px; background: #fff; color: #0a2240; font-weight: 600; font-size: 13.5px; }
 
-    /* GRILLA */
-    .grilla-tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
-    .grilla-tabs button { padding: 8px 14px; border-radius: 999px; border: 1px solid var(--line); font-size: 13.5px; font-weight: 500; color: var(--text); background: #fff; }
-    .grilla-tabs button.on { background: var(--ink); border-color: var(--ink); color: #fff; }
-    .grilla { list-style: none; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
-    .grilla li { display: grid; grid-template-columns: 110px 1fr auto; gap: 16px; align-items: center; padding: 14px 18px; }
-    .grilla li + li { border-top: 1px solid var(--line); }
-    .grilla .hora { font-family: var(--head); font-weight: 700; color: var(--ink); font-variant-numeric: tabular-nums; }
-    .grilla b { display: block; font-weight: 600; color: var(--ink); }
-    .grilla small { font-size: 13px; color: var(--mid); }
-    .grilla .local { font-size: 11.5px; font-weight: 600; padding: 3px 9px; border-radius: 999px; background: var(--mag-soft); color: var(--mag-d); }
-    .grilla .red { font-size: 11.5px; font-weight: 500; padding: 3px 9px; border-radius: 999px; background: var(--bg-alt); color: var(--mid); }
-    .grilla li.ahora { background: #fff5fc; box-shadow: inset 3px 0 0 var(--mag); }
-    .grilla li.ahora .hora::after { content: ' · ahora'; color: var(--mag); font-size: 12px; }
+    /* QUÉ SUENA */
+    .suena { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+    .sn { display: flex; flex-direction: column; gap: 12px; padding: 18px; border: 1px solid var(--line); border-radius: 10px; text-align: left; background: #fff; transition: border-color .15s; }
+    .sn:hover { border-color: var(--mag); }
+    .sn.on { border-color: var(--mag); box-shadow: inset 0 3px 0 var(--mag); }
+    .sn-cab { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+    .sn-cab b { font-family: var(--head); font-weight: 700; font-size: 15px; color: var(--ink); }
+    .sn-cab .frec { font-family: var(--head); font-weight: 800; color: var(--mag); }
+    .sn-cab .radio-play { width: 34px; height: 34px; color: #fff; }
+    .sn-ahora small { display: block; font-size: 11.5px; font-weight: 600; letter-spacing: .05em; text-transform: uppercase; color: var(--mag); margin-bottom: 2px; }
+    .sn-ahora strong { display: block; font-family: var(--head); font-size: 17px; font-weight: 700; color: var(--ink); line-height: 1.25; }
+    .sn-ahora span { font-size: 13.5px; color: var(--mid); }
+    .sn ul { list-style: none; border-top: 1px solid var(--line); padding-top: 10px; display: flex; flex-direction: column; gap: 4px; }
+    .sn li { font-size: 13px; color: var(--mid); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .sn li i { font-style: normal; color: var(--dim); font-variant-numeric: tabular-nums; margin-right: 6px; }
 
     /* ANUNCIÁ */
     .anun { background: var(--negro); color: #fff; padding: 56px 0; margin-top: 10px; }
@@ -231,7 +229,7 @@
     @media (max-width: 1000px) {
       .radios-grid { grid-template-columns: repeat(2, 1fr); }
       .tapa, .dos { grid-template-columns: 1fr; }
-      .cifras, .formatos { grid-template-columns: repeat(2, 1fr); }
+      .cifras, .formatos, .suena { grid-template-columns: repeat(2, 1fr); }
       .pl-sponsor { display: none; }
     }
     @media (max-width: 760px) {
@@ -248,8 +246,6 @@
       .pub-ancho { flex-direction: column; align-items: flex-start; padding: 20px; }
       .pub-ancho b { font-size: 20px; }
       .mini { grid-template-columns: 110px 1fr; }
-      .grilla li { grid-template-columns: 64px 1fr; }
-      .grilla li > span:last-child { grid-column: 2; justify-self: start; }
       .lector { padding: 0 0 90px; }
       .lector-in { border-radius: 0; }
       .lector-cerrar { position: fixed; }
@@ -262,7 +258,7 @@
       .radio-play { width: 34px; height: 34px; }
       .radio b { font-size: 13.5px; }
       .radio small { font-size: 11.5px; }
-      .cifras, .formatos { grid-template-columns: 1fr; }
+      .cifras, .formatos, .suena { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -294,10 +290,10 @@
   <div class="wrap nav-in">
     <a href="#" class="on">Portada</a>
     <a href="#concepcion">Concepción y el sur</a>
-    <a href="#deportes">Deportes</a>
-    <a href="#aire">Del aire</a>
+    <a href="#deportes">Deportes y ciudad</a>
+    <a href="#vecinos">Vecinos reporteros</a>
     <a href="#pais">País</a>
-    <a href="#grilla">Programación</a>
+    <a href="#suena">Qué suena</a>
     <a href="#anunciar" class="nav-anun">Anunciá con nosotros</a>
   </div>
 </nav>
@@ -344,7 +340,7 @@
   </section>
 
   <section class="sec" id="deportes">
-    <div class="sec-cab"><h2>Deportes</h2><a href="#">Ver todas</a></div>
+    <div class="sec-cab"><h2>Deportes y ciudad</h2><a href="#">Ver todas</a></div>
     <div class="grid3">
       <article class="nota" data-n="4">
         <div class="nota-img"><img src="img/futbol.jpg" width="1280" height="714" alt="Partido de fútbol de la liga" loading="lazy" /></div>
@@ -359,28 +355,24 @@
         <div class="meta">hace 5 horas</div>
       </article>
       <article class="nota" data-n="6">
-        <div class="nota-img"><img src="img/estudio.jpg" width="1280" height="714" alt="Estudio de radio" loading="lazy" /><span class="vivo-tag"><i></i>En el aire</span></div>
-        <span class="cat">Del aire</span>
-        <h3>Cortes de agua en verano: lo que se habló esta mañana en Metro Noticias</h3>
+        <div class="nota-img"><img src="img/muni.jpg" width="1280" height="714" alt="Conferencia de prensa en la municipalidad" loading="lazy" /></div>
+        <span class="cat">Municipio</span>
+        <h3>Cortes de agua en verano: el municipio presentó el cronograma por barrio</h3>
         <div class="meta">hace 1 hora</div>
       </article>
     </div>
   </section>
 
-  <section class="sec" id="aire">
-    <div class="sec-cab"><h2>Del aire</h2><a href="#">Todos los programas</a></div>
+  <section class="sec" id="vecinos">
+    <div class="sec-cab"><h2>Vecinos reporteros</h2><a href="#">Cómo mandar tu foto</a></div>
     <div class="aire">
-      <div class="aire-img"><img src="img/estudio.jpg" width="1280" height="714" alt="Locutor en el estudio de Metro" loading="lazy" /><span class="vivo-tag"><i></i>Metro Noticias · 91.9</span></div>
+      <div class="aire-img"><img src="img/vecino.jpg" width="1280" height="714" alt="Un vecino saca una foto de su calle inundada" loading="lazy" /><span class="vivo-tag"><i></i>Llegó por WhatsApp</span></div>
       <div class="aire-txt">
-        <span class="cat">Despertate con Metro · hoy, 8:15</span>
-        <h3>«Este verano no puede volver a pasar lo de enero»: vecinos del sur y los cortes de agua</h3>
-        <p>Una entrevista de 20 minutos al aire, convertida en nota con las frases más importantes y el audio original para escuchar.</p>
-        <div class="aire-audio">
-          <button class="radio-play" type="button" aria-label="Escuchar el fragmento"><svg class="ico ico-fill"><use href="#i-play"/></svg></button>
-          <div class="onda" id="onda"></div>
-          <small>4:32</small>
-        </div>
-        <span class="ia-tag"><svg class="ico"><use href="#i-spark"/></svg>Nota armada a partir del programa y revisada por la redacción</span>
+        <span class="cat">Vecinos reporteros · hoy, 18:40</span>
+        <h3 class="nota" data-n="7">Calles anegadas en el barrio Oeste después de la tormenta: las fotos que mandaron los vecinos</h3>
+        <p>Un vecino mandó fotos y un audio de un minuto al WhatsApp de la radio. Con eso se armó la nota, que la radio revisó antes de publicarla.</p>
+        <a class="btn btn-mag" href="#" style="align-self:flex-start"><svg class="ico"><use href="#i-wa"/></svg>Mandá tu foto o audio</a>
+        <span class="ia-tag"><svg class="ico"><use href="#i-spark"/></svg>Nota armada con IA a partir del audio del vecino y revisada por la radio</span>
       </div>
     </div>
   </section>
@@ -405,10 +397,9 @@
     </div>
   </section>
 
-  <section class="sec" id="grilla">
-    <div class="sec-cab"><h2>Programación de hoy</h2></div>
-    <div class="grilla-tabs" id="tabs"></div>
-    <ul class="grilla" id="grillaLista"></ul>
+  <section class="sec" id="suena">
+    <div class="sec-cab"><h2>Qué está sonando</h2></div>
+    <div class="suena" id="suenaGrid"></div>
   </section>
 </main>
 
@@ -513,30 +504,21 @@
   audio.addEventListener('pause', pintar);
   audio.addEventListener('waiting', () => { document.getElementById('plEstado').textContent = 'Conectando…'; });
   document.getElementById('plBtn').addEventListener('click', () => tocar());
-  document.querySelectorAll('[data-r]').forEach(b => b.addEventListener('click', () => tocar(RADIOS.find(r => r.id === b.dataset.r))));
 
-  // Onda decorativa del fragmento
-  document.getElementById('onda').innerHTML = Array.from({ length: 48 }, (_, i) => `<i style="height:${20 + Math.round(Math.abs(Math.sin(i * 1.7) * 60 + Math.sin(i * .4) * 20))}%"></i>`).join('');
 
-  // Grilla de programación
-  const GRILLA = {
-    mn: [['06:00', 'Despertate con Metro', 'Noticias de Concepción y el sur, el clima y el tránsito', 1], ['09:00', 'Radio Mitre en cadena', 'Desde Buenos Aires', 0], ['13:00', 'Metro Noticias Mediodía', 'Lo que pasó en la mañana en la zona', 1], ['14:00', 'Radio Mitre en cadena', 'Desde Buenos Aires', 0], ['20:00', 'Deportes del Sur', 'Liga Tucumana, básquet y todo el deporte local', 1]],
-    ms: [['07:00', 'La mañana de Station', 'Música y saludos de los oyentes', 1], ['12:00', 'Programación en cadena', 'Música las 24 horas', 0], ['18:00', 'Vuelta a casa', 'Los éxitos del momento', 1]],
-    ml: [['08:00', 'Arriba Latina', 'Cumbia, cuarteto y lo más pedido', 1], ['12:00', 'Programación en cadena', 'Música latina las 24 horas', 0], ['21:00', 'Noche de bailanta', 'Para arrancar el finde', 1]],
-    mc: [['00:00', 'Clásicos de siempre', 'Rock y pop de los 70, 80 y 90', 0], ['10:00', 'Discos que marcaron', 'Un disco completo, con su historia', 1], ['19:00', 'Clásicos de siempre', 'Música sin cortes', 0]],
+  // Qué está sonando: cada transmisión ya informa el tema al aire (acá, de ejemplo)
+  const SUENA = {
+    mn: ['En cadena con Radio Mitre', 'Noticias en vivo desde Buenos Aires', [['10:30', 'Tanda local'], ['10:00', 'Radio Mitre, en cadena']]],
+    ms: ['Dua Lipa', 'Houdini', [['10:41', 'Ed Sheeran — Perfect'], ['10:37', 'Coldplay — Viva la Vida']]],
+    ml: ["La K'onga", 'Ya no vuelvas', [['10:42', 'Karol G — Provenza'], ['10:38', 'Los Palmeras — Bombón asesino']]],
+    mc: ['Soda Stereo', 'De música ligera', [['10:40', "Queen — Don't Stop Me Now"], ['10:35', 'The Police — Every Breath You Take']]],
   };
-  let tab = 'mn';
-  function pintarGrilla() {
-    document.getElementById('tabs').innerHTML = RADIOS.map(r => `<button type="button" data-t="${r.id}" class="${r.id === tab ? 'on' : ''}">${r.nombre} ${r.frec}</button>`).join('');
-    const ahora = new Date(); const min = ahora.getHours() * 60 + ahora.getMinutes();
-    const filas = GRILLA[tab];
-    let idx = -1; filas.forEach((f, i) => { const [h, m] = f[0].split(':').map(Number); if (h * 60 + m <= min) idx = i; });
-    if (idx < 0) idx = filas.length - 1;
-    document.getElementById('grillaLista').innerHTML = filas.map((f, i) =>
-      `<li class="${i === idx ? 'ahora' : ''}"><span class="hora">${f[0]}</span><span><b>${f[1]}</b><small>${f[2]}</small></span><span class="${f[3] ? 'local' : 'red'}">${f[3] ? 'Producción local' : 'En cadena'}</span></li>`).join('');
-    document.querySelectorAll('[data-t]').forEach(b => b.addEventListener('click', () => { tab = b.dataset.t; pintarGrilla(); }));
-  }
-  pintarGrilla();
+  document.getElementById('suenaGrid').innerHTML = RADIOS.map(r => {
+    const [t, sub, antes] = SUENA[r.id];
+    return `<button class="sn" type="button" data-r="${r.id}"><span class="sn-cab"><b>${r.nombre} <span class="frec">${r.frec}</span></b><span class="radio-play">${icoPlay}</span></span><span class="sn-ahora"><small>Sonando ahora</small><strong>${t}</strong><span>${sub}</span></span><ul>${antes.map(a => `<li><i>${a[0]}</i>${a[1]}</li>`).join('')}</ul></button>`;
+  }).join('');
+
+  document.querySelectorAll('[data-r]').forEach(b => b.addEventListener('click', () => tocar(RADIOS.find(r => r.id === b.dataset.r))));
 
   // Fecha de hoy
   const f = new Date().toLocaleDateString('es-AR', { weekday: 'long', day: 'numeric', month: 'long' });
@@ -544,13 +526,14 @@
 
   // Notas: se abren encima, sin recargar, para que la radio no se corte
   const NOTAS = [
-    { img: 'zafra', cat: 'Producción', t: 'La zafra entra en su último mes: piden precaución en la ruta 38 por el tránsito de camiones cañeros', b: 'Los ingenios del sur trabajan a pleno hasta mediados de noviembre.', c: ['Con la molienda en su tramo final, el movimiento de camiones cañeros en la ruta 38 y en los caminos vecinales del sur de la provincia está en su punto más alto. Desde Tránsito pidieron circular con luces bajas encendidas, respetar la velocidad máxima y no adelantarse en curvas ni puentes.', 'Los ingenios de la zona estiman cerrar la zafra a mediados de noviembre. En los accesos a Concepción, Alberdi y Aguilares habrá controles en los horarios de mayor tránsito.', 'Si ves una situación de riesgo en la ruta, podés avisar al aire por WhatsApp a Metro Noticias.'] },
-    { img: 'obra', cat: 'Ciudad', t: 'Empezó el pavimento de 12 cuadras en el barrio San Martín', b: 'La obra durará unos tres meses y se hará por tramos.', c: ['Las máquinas llegaron esta semana al barrio y empezaron por las cuadras más cercanas a la escuela. Los vecinos tendrán desvíos señalizados mientras dure cada tramo.', 'La obra incluye cordón cuneta y desagües, uno de los reclamos que más se escuchó al aire durante el invierno.'] },
+    { img: 'zafra', cat: 'Producción', t: 'La zafra entra en su último mes: piden precaución en la ruta 38 por el tránsito de camiones cañeros', b: 'Los ingenios del sur trabajan a pleno hasta mediados de noviembre.', c: ['Con la molienda en su tramo final, el movimiento de camiones cañeros en la ruta 38 y en los caminos vecinales del sur de la provincia está en su punto más alto. Desde Tránsito pidieron circular con luces bajas encendidas, respetar la velocidad máxima y no adelantarse en curvas ni puentes.', 'Los ingenios de la zona estiman cerrar la zafra a mediados de noviembre. En los accesos a Concepción, Alberdi y Aguilares habrá controles en los horarios de mayor tránsito.', 'Si ves una situación de riesgo en la ruta, mandá la foto al WhatsApp de Metro Radios.'] },
+    { img: 'obra', cat: 'Ciudad', t: 'Empezó el pavimento de 12 cuadras en el barrio San Martín', b: 'La obra durará unos tres meses y se hará por tramos.', c: ['Las máquinas llegaron esta semana al barrio y empezaron por las cuadras más cercanas a la escuela. Los vecinos tendrán desvíos señalizados mientras dure cada tramo.', 'La obra incluye cordón cuneta y desagües, uno de los reclamos que más mandaron los vecinos durante el invierno.'] },
     { img: 'plaza', cat: 'Agenda', t: 'Feria de artesanos en la plaza: este sábado se suman 40 puestos', b: 'Habrá música en vivo y comidas típicas desde las 10 de la mañana.', c: ['La feria de los sábados crece: a los puestos de siempre se suman 40 nuevos artesanos de Concepción y de localidades vecinas.', 'La entrada es libre y gratuita. Si llueve, se pasa al domingo.'] },
-    { img: 'lluvia', cat: 'Clima', t: 'Alerta amarilla por tormentas para el sur de la provincia desde la tarde', b: 'Se esperan lluvias intensas, ráfagas y posible caída de granizo.', c: ['El alerta rige desde las 16 hasta la madrugada del viernes para el sur de Tucumán. Recomiendan no sacar la basura, asegurar objetos sueltos y evitar circular por calles anegadas.', 'Seguí el pronóstico actualizado en Metro Noticias 91.9.'] },
-    { img: 'futbol', cat: 'Liga Tucumana', t: 'Clásico del sur: triunfo 2 a 1 en el último minuto y pasaje a semifinales', b: 'Un gol de cabeza en el descuento definió el partido.', c: ['En una tarde a cancha llena, el local lo dio vuelta en el segundo tiempo y se metió entre los cuatro mejores del torneo.', 'El partido completo se relató en Deportes del Sur, por Metro Noticias 91.9.'] },
+    { img: 'lluvia', cat: 'Clima', t: 'Alerta amarilla por tormentas para el sur de la provincia desde la tarde', b: 'Se esperan lluvias intensas, ráfagas y posible caída de granizo.', c: ['El alerta rige desde las 16 hasta la madrugada del viernes para el sur de Tucumán. Recomiendan no sacar la basura, asegurar objetos sueltos y evitar circular por calles anegadas.', 'Si tu calle se inunda, mandá la foto al WhatsApp de Metro Radios.'] },
+    { img: 'futbol', cat: 'Liga Tucumana', t: 'Clásico del sur: triunfo 2 a 1 en el último minuto y pasaje a semifinales', b: 'Un gol de cabeza en el descuento definió el partido.', c: ['En una tarde a cancha llena, el local lo dio vuelta en el segundo tiempo y se metió entre los cuatro mejores del torneo.', 'Las fotos del partido las mandaron hinchas al WhatsApp de la radio.'] },
     { img: 'calle', cat: 'Comercio', t: 'Semana del Comercio: 60 locales del centro con descuentos hasta el domingo', b: 'Hay rebajas, cuotas sin interés y sorteos entre quienes compren.', c: ['Los comercios adheridos están identificados con una calcomanía en la vidriera. Hay descuentos en ropa, calzado, electrodomésticos y gastronomía.', 'El sábado los locales del centro abren en horario corrido.'] },
-    { img: 'estudio', cat: 'Del aire', t: 'Cortes de agua en verano: lo que se habló esta mañana en Metro Noticias', b: 'Vecinos y especialistas pasaron por el programa. Acá están las frases más importantes.', c: ['Durante 20 minutos, Despertate con Metro abrió el micrófono a vecinos del sur que sufrieron cortes el verano pasado. Contaron qué barrios fueron los más afectados y qué piden para esta temporada.', '«Este verano no puede volver a pasar lo de enero», resumió una vecina. Desde la cooperativa respondieron al aire y se comprometieron a informar los cortes programados por la radio.', 'Esta nota se armó a partir del programa y la revisó la redacción antes de publicarse.'] },
+    { img: 'muni', cat: 'Municipio', t: 'Cortes de agua en verano: el municipio presentó el cronograma por barrio', b: 'Los cortes programados se avisarán con 48 horas de anticipación.', c: ['En una conferencia de prensa, el municipio y la cooperativa de agua presentaron el plan para el verano: qué barrios tendrán cortes programados, en qué horarios y cómo se va a avisar.', 'Habrá camiones cisterna para las zonas altas, que fueron las más afectadas en enero.', 'Esta nota se armó a partir del comunicado oficial y la revisó la radio antes de publicarla.'] },
+    { img: 'vecino', cat: 'Vecinos reporteros', t: 'Calles anegadas en el barrio Oeste después de la tormenta: las fotos que mandaron los vecinos', b: 'El agua tardó más de dos horas en bajar en varias cuadras.', c: ['Después de la tormenta de la tarde, varios vecinos del barrio Oeste mandaron fotos y audios al WhatsApp de la radio. Contaron que el agua llegó a la vereda en al menos cuatro cuadras y que los desagües no daban abasto.', '«Cada vez que llueve fuerte pasa lo mismo», contó uno de ellos en un audio.', 'La nota se armó con IA a partir de los audios y la revisó la radio antes de publicarla. Si tu calle se inunda, mandá la foto al WhatsApp de Metro Radios.'] },
   ];
   const lector = document.getElementById('lector');
   function abrir(i) {
