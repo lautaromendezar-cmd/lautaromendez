@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="description" content="Que tus 4 radios se escuchen, se lean y se vendan: lo que vi, una idea de cómo se vería tu web y tres opciones con precio." />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="es_AR" />
+  <meta property="og:site_name" content="Lautaro Méndez" />
+  <meta property="og:url" content="https://lautaromendez.com.ar/propuestas/metro-radios/" />
+  <meta property="og:title" content="Propuesta para Metro Radios" />
+  <meta property="og:description" content="Que tus 4 radios se escuchen, se lean y se vendan: lo que vi, una idea de cómo se vería tu web y tres opciones con precio." />
+  <meta property="og:image" content="https://lautaromendez.com.ar/propuestas/metro-radios/og.jpg" />
+  <meta property="og:image:secure_url" content="https://lautaromendez.com.ar/propuestas/metro-radios/og.jpg" />
+  <meta property="og:image:type" content="image/jpeg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Propuesta para Metro Radios" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://lautaromendez.com.ar/propuestas/metro-radios/og.jpg" />
+  <title>Propuesta — Metro Radios</title>
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+  <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600&display=swap" />
+  <script>document.documentElement.classList.add('js');</script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* Paleta de Metro Radios: el magenta y el negro de su logo */
+    :root {
+      --bg: #ffffff;
+      --bg-alt: #f6f4f6;
+      --card: #ffffff;
+      --soft: #f6f4f6;
+      --ink: #18212b;
+      --text: #36404b;
+      --mid: #66717c;
+      --dim: #97a0a8;
+      --line: #e8e4e8;
+      --line-strong: #d4cdd4;
+      --navy: #0c0c0e;
+      --accent: #c2009e;
+      --accent-soft: #fbe8f6;
+      --bad: #d14343;
+      --ok: #1a9a5b;
+      --sans: 'General Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: var(--sans); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    strong { color: var(--ink); font-weight: 560; }
+    img { display: block; max-width: 100%; height: auto; }
+
+    .ico { width: 20px; height: 20px; flex-shrink: 0; fill: none; stroke: var(--mid); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+    .ico-box { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 6px; background: var(--accent-soft); flex-shrink: 0; }
+    .ico-box .ico { stroke: var(--accent); }
+
+    #progress { position: fixed; top: 0; left: 0; height: 3px; width: 0%; background: var(--accent); z-index: 999; transition: width .1s linear; }
+
+    .wrap { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+    .wrap-wide { max-width: 1140px; margin: 0 auto; padding: 0 24px; }
+
+    /* HERO */
+    .hero { padding: 80px 0 60px; }
+    .hero-logo { height: 34px; width: auto; margin-bottom: 44px; }
+    .eyebrow { display: flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 560; letter-spacing: .02em; color: var(--accent); margin-bottom: 14px; }
+    .hero h1 { font-size: clamp(32px, 5vw, 46px); font-weight: 560; line-height: 1.1; letter-spacing: -0.025em; color: var(--ink); margin-bottom: 18px; max-width: 720px; }
+    .hero-sub { font-size: 17px; color: var(--mid); max-width: 600px; margin-bottom: 38px; }
+    .hero-meta { display: flex; gap: 20px 40px; flex-wrap: wrap; padding-top: 24px; border-top: 1px solid var(--line); }
+    .hero-meta-item label { display: block; font-size: 12px; font-weight: 500; color: var(--dim); margin-bottom: 2px; }
+    .hero-meta-item span { font-size: 15px; font-weight: 560; color: var(--ink); }
+
+    /* SECCIONES */
+    section { padding: 72px 0; }
+    section.alt { background: var(--bg-alt); }
+    h2 { font-size: 30px; font-weight: 560; letter-spacing: -0.02em; color: var(--ink); line-height: 1.2; margin-bottom: 12px; }
+    h3 { font-size: 18px; font-weight: 560; color: var(--ink); letter-spacing: -0.01em; margin: 40px 0 10px; }
+    .section-intro { font-size: 16px; color: var(--mid); margin-bottom: 32px; max-width: 640px; }
+    .p { font-size: 15.5px; color: var(--mid); max-width: 660px; margin-bottom: 18px; }
+
+    /* DATOS */
+    .datos { display: grid; grid-template-columns: repeat(3, 1fr); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; margin-bottom: 28px; background: var(--card); }
+    .dato { display: flex; gap: 14px; align-items: flex-start; padding: 20px; }
+    .dato + .dato { border-left: 1px solid var(--line); }
+    .dato b { display: block; font-size: 17px; font-weight: 560; color: var(--ink); line-height: 1.3; margin-bottom: 2px; }
+    .dato span { font-size: 13.5px; color: var(--mid); line-height: 1.45; }
+
+    .callout { display: flex; gap: 14px; align-items: flex-start; padding: 18px 20px; border-left: 3px solid var(--accent); background: var(--card); border-radius: 0 6px 6px 0; font-size: 15px; color: var(--text); }
+    .callout .ico { stroke: var(--accent); margin-top: 2px; }
+    .callout.is-ok { border-left-color: var(--ok); }
+    .callout.is-ok .ico { stroke: var(--ok); }
+
+    /* CAPTURAS */
+    .shot { border: 1px solid var(--line-strong); border-radius: 6px; overflow: hidden; background: var(--card); }
+    .shot-bar { display: flex; align-items: center; gap: 6px; padding: 9px 12px; border-bottom: 1px solid var(--line); background: var(--soft); }
+    .shot-bar i { width: 8px; height: 8px; border-radius: 50%; background: var(--line-strong); }
+    .shot-bar span { margin-left: 8px; font-size: 12px; color: var(--dim); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    figcaption { margin-top: 10px; font-size: 13.5px; color: var(--mid); line-height: 1.5; }
+    figure { margin-bottom: 28px; }
+
+    /* ANTES / DESPUÉS */
+    .ab-bloque { margin-bottom: 56px; }
+    .ab-cab { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap; margin-bottom: 14px; }
+    .ab-cab h3 { margin: 0; }
+    .ab-cab span { font-size: 13px; color: var(--dim); }
+    .ab-nota { margin-top: 12px; font-size: 14.5px; color: var(--mid); line-height: 1.55; max-width: 760px; }
+
+    .ba { --pos: 50%; position: relative; aspect-ratio: 16 / 10; border: 1px solid var(--line-strong); border-radius: 8px; overflow: hidden; background: var(--soft); user-select: none; -webkit-user-select: none; }
+    .ba img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .ba .ba-antes { clip-path: inset(0 calc(100% - var(--pos)) 0 0); }
+    .ba-linea { position: absolute; top: 0; bottom: 0; left: var(--pos); width: 2px; margin-left: -1px; background: #fff; box-shadow: 0 0 0 1px rgb(0 0 0 / .2); pointer-events: none; }
+    .ba-tirador { position: absolute; top: 50%; left: var(--pos); width: 46px; height: 46px; margin: -23px 0 0 -23px; border-radius: 50%; background: #fff; box-shadow: 0 6px 20px rgb(0 0 0 / .25); display: flex; align-items: center; justify-content: center; pointer-events: none; }
+    .ba-tirador .ico { width: 16px; height: 16px; stroke: var(--ink); stroke-width: 2.2; }
+    .ba-tag { position: absolute; bottom: 14px; padding: 5px 12px; border-radius: 999px; font-size: 12px; font-weight: 560; background: rgb(15 23 32 / .82); color: #fff; pointer-events: none; }
+    .ba-tag-antes { left: 14px; }
+    .ba-tag-despues { right: 14px; background: var(--accent); }
+    .ba input { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: ew-resize; margin: 0; }
+    .ba:has(input:focus-visible) { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+    .ab-moviles { display: grid; grid-template-columns: 300px 1fr; gap: 40px; align-items: center; max-width: 760px; margin: 0 auto; }
+    .ab-movil-txt p { font-size: 15.5px; color: var(--text); margin-bottom: 16px; }
+    .ab-movil { text-align: center; }
+    .ab-movil img { border: 1px solid var(--line-strong); border-radius: 28px; }
+    .ab-movil .ba-tag { position: static; display: inline-block; margin-top: 12px; }
+
+    .demo-cta { display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; padding: 22px 24px; border: 1px solid var(--accent); background: var(--accent-soft); border-radius: 8px; }
+    .demo-cta p { font-size: 15px; color: var(--text); max-width: 520px; }
+
+    /* HALLAZGOS */
+    .hall { list-style: none; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; margin-bottom: 28px; background: var(--card); }
+    .hall li { display: grid; grid-template-columns: 24px 1fr; gap: 12px; padding: 14px 18px; font-size: 14.5px; color: var(--text); line-height: 1.5; }
+    .hall li + li { border-top: 1px solid var(--line); }
+    .hall .ico { width: 18px; height: 18px; margin-top: 2px; stroke: var(--bad); }
+    .hall small { display: block; font-size: 13.5px; color: var(--mid); }
+
+    /* COMPETENCIA */
+    .comp { border: 1px solid var(--line); border-radius: 8px; overflow: hidden; background: var(--card); }
+    .comp-row { display: grid; grid-template-columns: 1.25fr 1fr 1fr; border-bottom: 1px solid var(--line); }
+    .comp-row:last-child { border-bottom: none; }
+    .comp-row > div { padding: 14px 18px; font-size: 14px; line-height: 1.5; color: var(--text); }
+    .comp-row > div + div { border-left: 1px solid var(--line); }
+    .comp-head > div { font-size: 12.5px; font-weight: 560; color: var(--dim); background: var(--soft); padding-top: 11px; padding-bottom: 11px; }
+    .comp-row b { display: block; font-weight: 560; color: var(--ink); }
+    .comp-row small { display: block; font-size: 12.5px; color: var(--dim); }
+    .comp .hoy { color: var(--mid); }
+    .comp .nuevo { color: var(--ink); }
+
+    /* CUENTAS */
+    .cuentas { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 28px; }
+    .cuenta { padding: 22px; background: var(--card); border: 1px solid var(--line); border-radius: 8px; }
+    .cuenta b { display: block; font-size: 22px; font-weight: 560; letter-spacing: -0.01em; color: var(--ink); line-height: 1.2; margin-bottom: 8px; }
+    .cuenta p { font-size: 14px; color: var(--mid); line-height: 1.5; }
+    .nove { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .nove li { display: flex; gap: 12px; padding: 14px 16px; background: var(--card); border: 1px solid var(--line); border-radius: 8px; font-size: 14px; color: var(--mid); line-height: 1.45; }
+    .nove li .ico { stroke: var(--accent); margin-top: 1px; }
+    .nove b { display: block; color: var(--ink); font-weight: 560; font-size: 14.5px; }
+
+    /* ESCALAS */
+    .escalas { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; align-items: stretch; }
+    .escala { position: relative; display: flex; flex-direction: column; background: var(--card); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+    .escala.is-reco { border: 2px solid var(--accent); }
+    .reco { position: absolute; top: 22px; right: 20px; font-size: 12px; font-weight: 560; padding: 3px 10px; border-radius: 999px; background: var(--accent-soft); color: var(--accent); }
+    .escala-head { padding: 24px 24px 20px; border-bottom: 1px solid var(--line); }
+    .escala-top { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+    .escala-num { font-size: 13px; font-weight: 560; color: var(--accent); }
+    .escala-title { font-size: 20px; font-weight: 560; letter-spacing: -0.01em; color: var(--ink); line-height: 1.25; margin-bottom: 8px; }
+    .escala-tagline { font-size: 14px; color: var(--mid); line-height: 1.5; }
+    .escala-price { padding: 20px 24px; border-bottom: 1px solid var(--line); background: var(--soft); }
+    .escala-price-value { font-size: 30px; font-weight: 560; letter-spacing: -0.02em; color: var(--ink); line-height: 1.1; }
+    .escala-price-stages { display: flex; flex-direction: column; gap: 6px; }
+    .escala-price-stages div { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; font-size: 13.5px; color: var(--mid); }
+    .escala-price-stages b { font-size: 21px; font-weight: 560; color: var(--ink); letter-spacing: -0.01em; }
+    .escala-facts { margin-top: 14px; display: flex; flex-direction: column; gap: 6px; }
+    .escala-facts div { display: flex; gap: 10px; align-items: flex-start; font-size: 13.5px; color: var(--mid); line-height: 1.4; }
+    .escala-facts .ico { width: 16px; height: 16px; margin-top: 1px; }
+    .escala-facts b { color: var(--text); font-weight: 560; }
+    .escala-body { padding: 20px 24px 24px; display: flex; flex-direction: column; gap: 18px; flex: 1; }
+    .ticks { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+    .ticks li { display: flex; gap: 10px; font-size: 14.5px; color: var(--text); line-height: 1.45; }
+    .ticks .ico { width: 16px; height: 16px; margin-top: 3px; stroke: var(--ok); stroke-width: 2.2; }
+    .ticks-plus { font-size: 12.5px; font-weight: 560; color: var(--dim); }
+    .escala-meta { display: flex; flex-direction: column; gap: 12px; margin-top: auto; padding-top: 16px; border-top: 1px solid var(--line); }
+    .escala-meta div { display: flex; gap: 10px; align-items: flex-start; font-size: 13.5px; color: var(--mid); line-height: 1.45; }
+    .escala-meta .ico { width: 16px; height: 16px; margin-top: 2px; stroke: var(--dim); }
+    .escala-meta b { display: block; font-size: 12px; font-weight: 560; color: var(--dim); }
+    .etapas { display: flex; flex-direction: column; gap: 10px; }
+    .etapa { padding: 12px 14px; border-radius: 6px; background: var(--soft); font-size: 13.5px; color: var(--mid); line-height: 1.45; }
+    .etapa b { display: block; font-size: 13px; font-weight: 560; color: var(--accent); margin-bottom: 2px; }
+
+    /* TABLA DE TILDES */
+    .tabla-wrap { max-width: 900px; margin: 56px auto 0; }
+    .tabla-titulo { font-size: 18px; font-weight: 560; color: var(--ink); margin-bottom: 14px; }
+    .tabla { width: 100%; border-collapse: separate; border-spacing: 0; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; font-size: 14px; background: var(--card); }
+    .tabla th, .tabla td { padding: 10px 14px; border-bottom: 1px solid var(--line); text-align: center; vertical-align: middle; color: var(--text); }
+    .tabla tr:last-child td { border-bottom: none; }
+    .tabla th:first-child, .tabla td:first-child { text-align: left; width: 34%; }
+    .tabla thead th { background: var(--soft); font-weight: 560; color: var(--ink); line-height: 1.3; }
+    .tabla thead th small { display: block; font-size: 12.5px; font-weight: 400; color: var(--dim); margin-top: 2px; }
+    .tabla thead th .n { display: block; font-size: 12px; color: var(--accent); margin-bottom: 4px; }
+    .tabla .col-reco { background: rgb(194 0 158 / .05); }
+    .tabla thead th.col-reco { background: var(--accent-soft); }
+    .tabla .grupo td { padding: 16px 14px 6px; background: var(--bg-alt); border-bottom: none; font-size: 12.5px; font-weight: 560; color: var(--dim); text-align: left; }
+    .tabla .si .ico { width: 16px; height: 16px; stroke: var(--ok); stroke-width: 2.4; margin: 0 auto; display: block; }
+    .tabla .no-tiene { color: var(--line-strong); font-size: 18px; line-height: 1; }
+    .tabla .valor { font-weight: 560; color: var(--ink); }
+    .tabla .valor small { display: block; font-weight: 400; font-size: 12px; color: var(--dim); }
+
+    /* PAGO */
+    .pago-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .pago-card { display: flex; flex-direction: column; gap: 10px; padding: 22px; background: var(--card); border: 1px solid var(--line); border-radius: 8px; }
+    .pago-card.is-reco { border: 2px solid var(--accent); }
+    .pago-card .n { font-size: 13px; font-weight: 560; color: var(--accent); }
+    .pago-card .t { font-size: 15px; font-weight: 560; color: var(--ink); }
+    .pago-card .monto { font-size: 28px; font-weight: 560; letter-spacing: -.02em; color: var(--ink); line-height: 1.1; }
+    .pago-card p { font-size: 14px; color: var(--mid); line-height: 1.5; }
+    .pago-lineas { display: flex; flex-direction: column; gap: 8px; margin-top: 4px; }
+    .pago-lineas div { display: flex; justify-content: space-between; gap: 10px; padding: 10px 12px; border-radius: 6px; background: var(--soft); font-size: 13.5px; color: var(--mid); font-variant-numeric: tabular-nums; }
+    .pago-lineas b { color: var(--ink); font-weight: 560; }
+    .pago-lineas .is-ahorro { background: var(--accent-soft); color: var(--accent); }
+    .pago-lineas .is-ahorro b { color: var(--accent); }
+
+    /* NECESITO / NO INCLUIDO */
+    .need-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .need { display: flex; gap: 12px; align-items: center; padding: 12px 14px; background: var(--card); border: 1px solid var(--line); border-radius: 8px; font-size: 14.5px; color: var(--text); line-height: 1.4; }
+    .need .ico { stroke: var(--accent); }
+    .need small { display: block; font-size: 12.5px; color: var(--dim); }
+    .no-wrap { display: flex; flex-wrap: wrap; gap: 8px; }
+    .no-chip { display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px; border: 1px solid var(--line); border-radius: 999px; font-size: 13.5px; color: var(--mid); background: var(--card); }
+    .no-chip .ico { width: 14px; height: 14px; stroke: var(--dim); }
+
+    /* CIERRE */
+    .cierre p { font-size: 17px; color: var(--text); margin-bottom: 24px; max-width: 600px; }
+    .btn { display: inline-flex; align-items: center; gap: 10px; border: 1px solid var(--accent); border-radius: 6px; padding: 13px 20px; font-size: 14.5px; font-weight: 560; color: var(--accent); text-decoration: none; background: var(--card); transition: background .15s, color .15s; }
+    .btn .ico { width: 16px; height: 16px; stroke: currentColor; }
+    .btn:hover, .btn.is-fill { background: var(--accent); color: #fff; }
+    .btn.is-fill:hover { background: #9a007d; }
+
+    footer { padding: 32px 0 40px; text-align: center; font-size: 13px; color: var(--dim); border-top: 1px solid var(--line); }
+
+    .js .fade { opacity: 0; transform: translateY(16px); transition: opacity .5s ease, transform .5s ease; }
+    .js .fade.visible { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) { .js .fade { opacity: 1; transform: none; transition: none; } }
+
+    @media (max-width: 980px) {
+      .escalas { grid-template-columns: 1fr; max-width: 812px; margin: 0 auto; }
+      .cuentas { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 640px) {
+      .wrap, .wrap-wide { padding: 0 16px; }
+      .hero { padding: 48px 0 44px; }
+      .hero-logo { margin-bottom: 32px; height: 28px; }
+      section { padding: 52px 0; }
+      h2 { font-size: 25px; }
+      .datos { grid-template-columns: 1fr; }
+      .dato + .dato { border-left: none; border-top: 1px solid var(--line); }
+      .ba { aspect-ratio: 16 / 12; }
+      .ab-moviles { grid-template-columns: 1fr; gap: 24px; }
+      .ab-movil img { max-width: 280px; margin: 0 auto; }
+      .ab-movil img { border-radius: 18px; }
+      .comp-head { display: none; }
+      .comp-row { grid-template-columns: 1fr; }
+      .comp-row > div + div { border-left: none; border-top: 1px dashed var(--line); }
+      .comp-row > div[data-k]::before { content: attr(data-k); display: block; font-size: 11.5px; font-weight: 560; color: var(--dim); margin-bottom: 2px; }
+      .nove { grid-template-columns: 1fr; }
+      .pago-cards { grid-template-columns: 1fr; }
+      .tabla { font-size: 12.5px; table-layout: fixed; }
+      .tabla thead th { font-size: 12px; overflow-wrap: anywhere; }
+      .tabla .valor { overflow-wrap: anywhere; }
+      .tabla th, .tabla td { padding: 11px 6px; }
+      .tabla th:first-child, .tabla td:first-child { padding-left: 12px; width: 36%; }
+      .tabla thead th small, .tabla .valor small { display: none; }
+      .escala-head, .escala-price, .escala-body { padding-left: 18px; padding-right: 18px; }
+      .need-grid { grid-template-columns: 1fr; }
+    }
+    @media print {
+      body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      #progress { display: none; }
+      .js .fade { opacity: 1; transform: none; transition: none; }
+      .escala, .need, figure, .hall li, .comp-row, .cuenta { break-inside: avoid; }
+      h2, h3 { break-after: avoid; }
+    }
+  </style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-card" viewBox="0 0 24 24"><rect width="20" height="14" x="2" y="5" rx="2"/><path d="M2 10h20"/></symbol>
+  <symbol id="i-text" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h10"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24"><path d="M11.5 2.3a.6.6 0 0 1 1 0l2.6 5.4 5.9.8a.6.6 0 0 1 .3 1l-4.3 4.2 1 5.9a.6.6 0 0 1-.8.6L12 17.4l-5.3 2.8a.6.6 0 0 1-.8-.6l1-5.9-4.3-4.2a.6.6 0 0 1 .3-1l5.9-.8z"/></symbol>
+  <symbol id="i-chart" viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="m7 15 4-4 3 3 5-6"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+  <symbol id="i-alert" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></symbol>
+  <symbol id="i-wrench" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></symbol>
+  <symbol id="i-layout" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18M9 21V9"/></symbol>
+  <symbol id="i-calc" viewBox="0 0 24 24"><rect width="16" height="20" x="4" y="2" rx="2"/><path d="M8 6h8M8 11h.01M12 11h.01M16 11h.01M8 15h.01M12 15h.01M16 15h.01M8 19h8"/></symbol>
+  <symbol id="i-dashboard" viewBox="0 0 24 24"><rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="16" rx="1"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></symbol>
+  <symbol id="i-server" viewBox="0 0 24 24"><rect width="20" height="8" x="2" y="2" rx="2"/><rect width="20" height="8" x="2" y="14" rx="2"/><path d="M6 6h.01M6 18h.01"/></symbol>
+  <symbol id="i-image" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="3" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.09-3.09a2 2 0 0 0-2.82 0L6 21"/></symbol>
+  <symbol id="i-file" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h6"/></symbol>
+  <symbol id="i-plug" viewBox="0 0 24 24"><path d="M12 22v-5M9 8V2M15 8V2M18 8v5a6 6 0 0 1-12 0V8z"/></symbol>
+  <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 2 3 14h9l-1 8 10-12h-9z"/></symbol>
+  <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v1"/></symbol>
+  <symbol id="i-tag" viewBox="0 0 24 24"><path d="M12.59 2.59A2 2 0 0 0 11.17 2H4a2 2 0 0 0-2 2v7.17a2 2 0 0 0 .59 1.42l8.7 8.7a2.43 2.43 0 0 0 3.42 0l6.58-6.58a2.43 2.43 0 0 0 0-3.42z"/><circle cx="7.5" cy="7.5" r="1"/></symbol>
+  <symbol id="i-chev-l" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></symbol>
+  <symbol id="i-chev-r" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></symbol>
+</svg>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-cal" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-10 6L2 7"/></symbol>
+  <symbol id="i-video" viewBox="0 0 24 24"><path d="m22 8-6 4 6 4z"/><rect width="14" height="12" x="2" y="6" rx="2"/></symbol>
+  <symbol id="i-mic" viewBox="0 0 24 24"><rect width="6" height="12" x="9" y="2" rx="3"/><path d="M19 10v1a7 7 0 0 1-14 0v-1M12 18v4"/></symbol>
+  <symbol id="i-insta" viewBox="0 0 24 24"><rect width="20" height="20" x="2" y="2" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></symbol>
+  <symbol id="i-link" viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9z"/></symbol>
+</svg>
+
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-radio" viewBox="0 0 24 24"><path d="M4.9 19.1C1 15.2 1 8.8 4.9 4.9M7.8 16.2c-2.3-2.3-2.3-6.1 0-8.5M16.2 7.8c2.3 2.3 2.3 6.1 0 8.5M19.1 4.9C23 8.8 23 15.1 19.1 19"/><circle cx="12" cy="12" r="2"/></symbol>
+  <symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/></symbol>
+  <symbol id="i-copy" viewBox="0 0 24 24"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 5-8 12-8 12s-8-7-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></symbol>
+</svg>
+
+<div id="progress"></div>
+
+<div class="wrap">
+  <header class="hero fade">
+    <div class="eyebrow">Propuesta para Metro Radios</div>
+    <h1>Que tus 4 radios se escuchen, se lean y se vendan desde la web</h1>
+    <p class="hero-sub">Recorrí metroradios.com.ar por dentro: de dónde salen las noticias, por qué no cargan las fotos, cómo suenan las radios y por qué la web no aparece en Google. Abajo está lo que encontré, una idea de cómo se vería y tres formas de hacerlo, con lo que cuesta cada una.</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item"><label>Preparado para</label><span>Metro Radios · Concepción, Tucumán</span></div>
+      <div class="hero-meta-item"><label>Preparado por</label><span>Lautaro Méndez</span></div>
+      <div class="hero-meta-item"><label>Fecha</label><span>Octubre 2026</span></div>
+    </div>
+  </header>
+</div>
+
+<!-- ASÍ SE VERÍA -->
+<section class="alt fade">
+  <div class="wrap">
+    <div class="eyebrow">Así se vería</div>
+    <h2>Las radios adelante, Concepción en la portada</h2>
+    <p class="section-intro">Una idea de hacia dónde puede ir, hecha con tu logo y tus 4 radios. <strong>Las radios suenan de verdad</strong>: son tus transmisiones en vivo. Las notas, fotos, horarios y anunciantes son de ejemplo. No es el diseño final: lo definimos juntos al arrancar.</p>
+  </div>
+  <div class="wrap-wide">
+    <div class="ab-bloque">
+      <div class="ab-cab"><h3>Hoy y con la propuesta</h3><span>Arrastrá la línea para comparar</span></div>
+      <div class="ba" id="ba">
+        <img src="vista-pc.jpg" width="1440" height="900" alt="Primera pantalla de la web propuesta" />
+        <img class="ba-antes" src="hoy-pc.jpg" width="1440" height="900" alt="Primera pantalla de la web actual" />
+        <div class="ba-linea"></div>
+        <div class="ba-tirador"><svg class="ico"><use href="#i-chev-l"/></svg><svg class="ico"><use href="#i-chev-r"/></svg></div>
+        <span class="ba-tag ba-tag-antes">Hoy</span><span class="ba-tag ba-tag-despues">Propuesta</span>
+        <input type="range" min="0" max="100" value="50" aria-label="Comparar la web actual con la propuesta" />
+      </div>
+      <p class="ab-nota">Hoy, lo primero que se ve es el logo gigante y cuatro botones que abren una ventanita aparte. Abajo, las notas aparecen como recuadros grises porque las fotos no cargan. En la propuesta, las 4 radios se escuchan con un toque, el reproductor queda fijo abajo y lo primero que se lee es <strong>lo que pasa en Concepción y el sur</strong>.</p>
+    </div>
+    <div class="ab-bloque">
+      <div class="ab-cab"><h3>Leer sin que se corte la radio</h3><span>El reproductor queda siempre abajo</span></div>
+      <figure><div class="shot"><div class="shot-bar"><i></i><i></i><i></i><span>metroradios.com.ar</span></div><img src="vista-nota.jpg" width="1440" height="900" alt="Una nota abierta mientras la radio sigue sonando en el reproductor de abajo" loading="lazy" /></div></figure>
+      <p class="ab-nota">Alguien pone Metro Noticias, abre una nota, después otra, y la radio sigue sonando. Mientras más tiempo se queda, más banners ve. El reproductor también se puede vender: «Metro Noticias, presentado por…».</p>
+    </div>
+    <div class="ab-bloque">
+      <div class="ab-cab"><h3>Del aire a la web</h3><span>Opción 3</span></div>
+      <figure><div class="shot"><div class="shot-bar"><i></i><i></i><i></i><span>metroradios.com.ar/#aire</span></div><img src="vista-aire.jpg" width="1440" height="900" alt="Una entrevista del programa convertida en nota, con el audio para escuchar" loading="lazy" /></div></figure>
+      <p class="ab-nota">Lo que se dice en tus programas locales se convierte en notas, con las frases más importantes y el audio original. Es contenido que no tiene nadie más, y es lo que hace que Google te muestre cuando alguien busca algo de Concepción.</p>
+    </div>
+    <div class="ab-bloque">
+      <div class="ab-cab"><h3>Anunciá con nosotros</h3><span>Para vender la web junto con el aire</span></div>
+      <figure><div class="shot"><div class="shot-bar"><i></i><i></i><i></i><span>metroradios.com.ar/#anunciar</span></div><img src="vista-anunciar.jpg" width="1440" height="900" alt="Página para anunciantes con formatos, cifras y contacto por WhatsApp" loading="lazy" /></div></figure>
+      <p class="ab-nota">Una página para mandarle a cualquier comercio: dónde aparece su marca, qué formatos hay y un botón de WhatsApp. Cada mes, la web te dice cuántas veces se vio cada banner, para mostrárselo al anunciante.</p>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="ab-bloque">
+      <div class="ab-cab"><h3>En el celular</h3><span>Donde te escucha casi todo el mundo</span></div>
+      <div class="ab-moviles">
+        <div class="ab-movil"><img src="vista-movil.jpg" width="601" height="1023" alt="La web propuesta en el celular" loading="lazy" /><span class="ba-tag ba-tag-despues">Propuesta</span></div>
+        <div class="ab-movil-txt">
+          <p>Hoy, en el celular, la primera pantalla son los cuatro botones uno debajo del otro, y cada uno abre una ventana que el teléfono suele bloquear. En la propuesta:</p>
+          <ul class="ticks">
+            <li><svg class="ico"><use href="#i-check"/></svg>Las 4 radios entran en una pantalla y suenan con un toque</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>La radio sigue sonando mientras leés</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>Noticias de Concepción y el sur, con fotos que cargan</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>La programación del día, con lo que está al aire ahora</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>Lugares para anunciantes que no molestan al leer</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="demo-cta">
+      <p><strong>Abrí la idea completa y poné play.</strong> Probá abrir una nota con la radio sonando. Abrila también en el celular.</p>
+      <a class="btn is-fill" href="demo/" target="_blank" rel="noopener">Abrir la idea de diseño<svg class="ico"><use href="#i-arrow"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <!-- DIAGNÓSTICO -->
+  <section class="fade">
+    <div class="eyebrow">Diagnóstico</div>
+    <h2>Cómo está hoy</h2>
+    <p class="section-intro">Revisado el 29 de octubre de 2026, como lo vería un oyente que entra desde el celular o desde Google.</p>
+
+    <div class="datos">
+      <div class="dato"><span class="ico-box"><svg class="ico"><use href="#i-copy"/></svg></span><div><b>2.038 notas copiadas</b><span>de otros medios, palabra por palabra. Ninguna es de Concepción.</span></div></div>
+      <div class="dato"><span class="ico-box"><svg class="ico"><use href="#i-image"/></svg></span><div><b>Fotos rotas</b><span>Se guardan cortadas, por eso se ven recuadros grises.</span></div></div>
+      <div class="dato"><span class="ico-box"><svg class="ico"><use href="#i-clock"/></svg></span><div><b>Hasta 50 segundos</b><span>tardó en terminar de cargar la portada en mis pruebas.</span></div></div>
+    </div>
+
+    <h3>Lo más importante: las noticias que «se actualizan solas»</h3>
+    <figure>
+      <div class="shot"><div class="shot-bar"><i></i><i></i><i></i><span>metroradios.com.ar/politica/…</span></div><img src="hoy-nota.jpg" width="1440" height="900" alt="Una nota de la web actual, firmada por Sistema +R, con el espacio de la foto vacío" loading="lazy" /></div>
+      <figcaption>Las notas las publica un programa automático, firmado como «Sistema +R». Copia notas enteras de otro medio nacional, incluidos sus links, y las sube a tu web. Por eso no aparecés en Google: Google ve el mismo texto en dos lugares y siempre muestra el original. Mientras más notas copiadas, peor. Además, copiar notas completas de otro medio te expone a un reclamo. No es culpa tuya: es como viene configurada la web. Pero es lo primero que hay que cambiar.</figcaption>
+    </figure>
+
+    <h3>El resto</h3>
+    <ul class="hall">
+      <li><svg class="ico"><use href="#i-alert"/></svg><span>No hay nada de Concepción ni del sur.<small>Las secciones son Argentina y el mundo, Política, Deportes, Cine y series, Tecno y Música. Lo único local es el clima. Justo lo que tus radios tienen y nadie más.</small></span></li>
+      <li><svg class="ico"><use href="#i-alert"/></svg><span>Las radios se escuchan en una ventanita aparte.<small>Cada botón abre una ventana emergente, que en el celular muchas veces se bloquea. Si la cerrás o cambiás de pestaña, la radio se corta. Una de las cuatro dio error la primera vez que la probé.</small></span></li>
+      <li><svg class="ico"><use href="#i-alert"/></svg><span>No hay ningún lugar para anunciantes.<small>Ni banners, ni una página que diga cómo anunciar, ni un WhatsApp comercial. Hoy la web no te deja vender nada.</small></span></li>
+      <li><svg class="ico"><use href="#i-alert"/></svg><span>No está la programación.<small>No se puede ver qué programa está al aire ni cuáles son de producción propia.</small></span></li>
+      <li><svg class="ico"><use href="#i-alert"/></svg><span>Es muy pesada.<small>La plantilla carga muchas cosas que no se usan, más el fondo de burbujas. En el celular, con datos, mucha gente se va antes de que termine.</small></span></li>
+      <li><svg class="ico"><use href="#i-alert"/></svg><span>Las notas no dicen quién las escribió.<small>Todas firman «Sistema +R», y muchas tienen menos de 10 lecturas.</small></span></li>
+    </ul>
+
+    <div class="callout is-ok">
+      <svg class="ico"><use href="#i-check"/></svg>
+      <span><strong>Lo que ya tenés y vale mucho:</strong> cuatro radios en el aire (Metro Noticias 91.9 con Mitre, Metro Station 94.1, Metro Latina 104.9 y Metro Classic 102.5), con transmisiones por internet que andan bien. Además, un logo fuerte y fácil de reconocer, tu dominio .com.ar y una web en WordPress, así que no hay que empezar de cero. Y lo más valioso: estás en Concepción, donde la información local la tenés vos.</span>
+    </div>
+  </section>
+</div>
+
+<!-- COMPETENCIA -->
+<section class="alt fade">
+  <div class="wrap">
+    <div class="eyebrow">Qué hacen otros</div>
+    <h2>Lo que muestran los demás</h2>
+    <p class="section-intro">Miré radios y medios digitales de Tucumán, como LV12 o Contexto Tucumán, y busqué medios propios de Concepción. Casi todos miran a la capital: <strong>el sur de la provincia está mucho menos cubierto en internet</strong>.</p>
+    <div class="comp">
+      <div class="comp-row comp-head"><div>Lo que hacen otros</div><div>Metro hoy</div><div>Con la propuesta</div></div>
+      <div class="comp-row"><div><b>Reproductor siempre a mano</b><small>LV12 tiene su radio en vivo en la misma página</small></div><div class="hoy" data-k="Metro hoy">Ventanita aparte que el celular bloquea</div><div class="nuevo" data-k="Con la propuesta">Reproductor fijo con las 4 radios, que no se corta</div></div>
+      <div class="comp-row"><div><b>Noticias propias</b><small>Los medios de la capital cubren poco el sur</small></div><div class="hoy" data-k="Metro hoy">Notas nacionales copiadas</div><div class="nuevo" data-k="Con la propuesta">Concepción y el sur primero. <strong>Es tu diferencia</strong></div></div>
+      <div class="comp-row"><div><b>Banners de anunciantes</b><small>Contexto Tucumán muestra anuncios de comercios y organismos de la provincia</small></div><div class="hoy" data-k="Metro hoy">No hay espacios</div><div class="nuevo" data-k="Con la propuesta">4 formatos, con informe mensual para el anunciante</div></div>
+      <div class="comp-row"><div><b>Página para anunciar</b><small>Las radios grandes publican sus formatos y su tarifario</small></div><div class="hoy" data-k="Metro hoy">No hay</div><div class="nuevo" data-k="Con la propuesta">«Anunciá con nosotros», con WhatsApp y tarifario</div></div>
+      <div class="comp-row"><div><b>Programación a la vista</b><small>Lo habitual en las webs de radio</small></div><div class="hoy" data-k="Metro hoy">No está</div><div class="nuevo" data-k="Con la propuesta">La grilla de cada radio, con lo que está al aire ahora</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <!-- LAS CUENTAS -->
+  <section class="fade">
+    <div class="eyebrow">Por qué conviene</div>
+    <h2>La web también puede vender</h2>
+    <p class="section-intro">Hoy la web es un gasto que no te devuelve nada. La idea es que sea un espacio más para vender, junto con el aire, a los mismos comercios que ya te conocen.</p>
+    <div class="cuentas">
+      <div class="cuenta"><b>Un banner paga el mes</b><p>Con un solo comercio en la portada, el mantenimiento de la opción 2 queda cubierto. Todo lo demás es ganancia.</p></div>
+      <div class="cuenta"><b>Combo aire + web</b><p>A cada anunciante le sumás la web a su tanda. Subís lo que paga cada uno sin salir a buscar clientes nuevos.</p></div>
+      <div class="cuenta"><b>El oyente se queda</b><p>Con la radio sonando mientras lee, pasa más tiempo en la web y ve más anuncios.</p></div>
+    </div>
+
+    <h3 style="margin-top:8px">Lo que no se ve y es lo que más rinde</h3>
+    <ul class="nove">
+      <li><svg class="ico"><use href="#i-search"/></svg><span><b>Aparecer en Google</b>Con notas propias de Concepción y el sur, la web aparece cuando alguien busca algo de la zona. Con notas copiadas, eso no pasa nunca.</span></li>
+      <li><svg class="ico"><use href="#i-shield"/></svg><span><b>Sin riesgo de reclamos</b>Se dejan de publicar notas enteras de otros medios. Lo nacional va resumido y con su fuente.</span></li>
+      <li><svg class="ico"><use href="#i-bolt"/></svg><span><b>Rápida en el celular</b>Una web liviana carga en segundos aunque sea con datos, y la radio arranca enseguida.</span></li>
+      <li><svg class="ico"><use href="#i-user"/></svg><span><b>Tuya, a tu nombre</b>El dominio, la web y los accesos quedan a tu nombre. Las notas y los banners los cargás vos.</span></li>
+    </ul>
+  </section>
+</div>
+
+<!-- OPCIONES -->
+<section class="alt fade" id="opciones" data-visto="opciones">
+  <div class="wrap">
+    <div class="eyebrow">Las tres opciones</div>
+    <h2>Tres formas de hacerlo</h2>
+    <p class="section-intro">En las tres se sigue usando WordPress, así no se pierde nada de lo que hay y tu equipo sigue cargando notas como siempre. Y en las tres se apaga el copiado automático de notas. La primera arregla la web que tenés; la segunda y la tercera la hacen de nuevo para vender publicidad. Cada opción suma lo de la anterior.</p>
+  </div>
+  <div class="wrap-wide">
+    <div class="escalas">
+      <article class="escala">
+        <div class="escala-head">
+          <div class="escala-top"><span class="ico-box"><svg class="ico"><use href="#i-wrench"/></svg></span><span class="escala-num">Opción 1</span></div>
+          <div class="escala-title">Arreglar lo que hay</div>
+          <p class="escala-tagline">Tu web de hoy, pero andando: fotos que cargan, radios que suenan en la página y Google sin notas copiadas.</p>
+        </div>
+        <div class="escala-price">
+          <div class="escala-price-value">$280.000</div>
+          <div class="escala-facts">
+            <div><svg class="ico"><use href="#i-card"/></svg><span><b>2 pagos de $140.000</b>, o <b>$252.000</b> en uno</span></div>
+            <div><svg class="ico"><use href="#i-clock"/></svg><span><b>2 semanas</b> desde que recibo los accesos</span></div>
+            <div><svg class="ico"><use href="#i-wrench"/></svg><span><b>Sin costo mensual</b></span></div>
+          </div>
+        </div>
+        <div class="escala-body">
+          <ul class="ticks">
+            <li><svg class="ico"><use href="#i-check"/></svg>Fotos arregladas en las notas.</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>Se apaga el copiado automático y las notas copiadas se esconden de Google.</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>Las 4 radios suenan en la misma página, sin ventanitas aparte.</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>Una sección «Concepción y el sur» para cargar notas propias.</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>Web más liviana y alta en Google, para que te encuentre.</li>
+          </ul>
+          <div class="escala-meta">
+            <div><svg class="ico"><use href="#i-shield"/></svg><span><b>Sirve si</b>querés que la web deje de estar rota ya, con el diseño que tiene, y todavía no pensás vender publicidad en ella.</span></div>
+          </div>
+        </div>
+      </article>
+      <article class="escala is-reco">
+        <span class="reco">La que recomiendo</span>
+        <div class="escala-head">
+          <div class="escala-top"><span class="ico-box"><svg class="ico"><use href="#i-radio"/></svg></span><span class="escala-num">Opción 2</span></div>
+          <div class="escala-title">Radio que vende</div>
+          <p class="escala-tagline">La web nueva del boceto: las 4 radios siempre sonando, Concepción en la portada y espacios para vender.</p>
+        </div>
+        <div class="escala-price">
+          <div class="escala-price-value">$680.000</div>
+          <div class="escala-facts">
+            <div><svg class="ico"><use href="#i-card"/></svg><span><b>2 pagos de $340.000</b>, o <b>$612.000</b> en uno</span></div>
+            <div><svg class="ico"><use href="#i-clock"/></svg><span><b>4 semanas</b> desde que recibo el material</span></div>
+            <div><svg class="ico"><use href="#i-wrench"/></svg><span><b>$40.000 por mes</b> de mantenimiento</span></div>
+          </div>
+        </div>
+        <div class="escala-body">
+          <div class="ticks-plus">Todo lo de la opción 1, más</div>
+          <ul class="ticks">
+            <li><svg class="ico"><use href="#i-check"/></svg>Diseño nuevo, rápido y hecho para el celular.</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>Reproductor fijo con las 4 radios, que sigue sonando mientras se navega.</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>Banners en la portada, dentro de las notas y en el reproductor, que cargás y cambiás vos.</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>Página «Anunciá con nosotros» e informe mensual de cada banner para mostrarle al anunciante.</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>Programación de las 4 radios, con lo que está al aire.</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>Mantenimiento: actualizaciones, seguridad, copias de seguridad y cambios chicos.</li>
+          </ul>
+          <div class="escala-meta">
+            <div><svg class="ico"><use href="#i-shield"/></svg><span><b>Sirve si</b>querés sumar la web a lo que le vendés a tus anunciantes y que la gente te escuche desde ahí.</span></div>
+          </div>
+        </div>
+      </article>
+      <article class="escala">
+        <div class="escala-head">
+          <div class="escala-top"><span class="ico-box"><svg class="ico"><use href="#i-spark"/></svg></span><span class="escala-num">Opción 3</span></div>
+          <div class="escala-title">Medio local con IA</div>
+          <p class="escala-tagline">La radio que vende, más notas propias todos los días a partir de lo que ya se dice al aire.</p>
+        </div>
+        <div class="escala-price">
+          <div class="escala-price-value">$1.200.000</div>
+          <div class="escala-facts">
+            <div><svg class="ico"><use href="#i-card"/></svg><span><b>2 pagos de $600.000</b>, o <b>$1.080.000</b> en uno</span></div>
+            <div><svg class="ico"><use href="#i-clock"/></svg><span><b>6 semanas</b> desde que recibo el material</span></div>
+            <div><svg class="ico"><use href="#i-wrench"/></svg><span><b>$70.000 por mes</b>, con la IA incluida</span></div>
+          </div>
+        </div>
+        <div class="escala-body">
+          <div class="ticks-plus">Todo lo de la opción 2, más</div>
+          <ul class="ticks">
+            <li><svg class="ico"><use href="#i-check"/></svg>Tus programas locales se graban solos y la IA arma notas con el audio. Tu equipo las revisa y las publica.</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>También desde un audio de WhatsApp: el periodista graba lo que vio y vuelve una nota.</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>Resumen semanal por mail para tus oyentes, con un espacio para un patrocinador.</li>
+          </ul>
+          <div class="escala-meta">
+            <div><svg class="ico"><use href="#i-shield"/></svg><span><b>Sirve si</b>tenés programas propios y querés que la web tenga noticias del sur todos los días sin contratar un redactor.</span></div>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <div class="callout is-ok" style="max-width:900px;margin:28px auto 0">
+      <svg class="ico"><use href="#i-check"/></svg>
+      <span><strong>En las tres, todo queda a tu nombre</strong> y te dejo un video corto que muestra cómo cargar una nota y un banner. Tenés <strong>30 días de garantía</strong>: si algo no anda como quedamos, lo arreglo sin cargo. Tus transmisiones siguen con tu proveedor de siempre: la web solo las reproduce.</span>
+    </div>
+    <div class="callout" style="max-width:900px;margin:14px auto 0">
+      <svg class="ico"><use href="#i-wrench"/></svg>
+      <span><strong>Por qué las opciones 2 y 3 llevan mantenimiento:</strong> una web que vende publicidad tiene que estar andando siempre, con los banners mostrándose y contándose bien. Si algo falla un domingo, lo resuelvo yo. En la opción 3 también incluye lo que cuesta la IA cada mes. El mantenimiento empieza el mes siguiente a la entrega.</span>
+    </div>
+
+    <div class="tabla-wrap">
+      <div class="tabla-titulo">De un vistazo</div>
+      <table class="tabla">
+        <thead><tr><th>&nbsp;</th><th><span class="n">Opción 1</span>Arreglar lo que hay<small>$280.000</small></th><th class="col-reco"><span class="n">Opción 2</span>Radio que vende<small>$680.000</small></th><th><span class="n">Opción 3</span>Medio local con IA<small>$1.200.000</small></th></tr></thead>
+        <tbody>
+          <tr class="grupo"><td colspan="4">La web</td></tr>
+          <tr><td>Fotos arregladas y sin notas copiadas</td><td class="si"><svg class="ico" aria-label="Incluido"><use href="#i-check"/></svg></td><td class="si col-reco"><svg class="ico" aria-label="Incluido"><use href="#i-check"/></svg></td><td class="si"><svg class="ico" aria-label="Incluido"><use href="#i-check"/></svg></td></tr>
+          <tr><td>Sección de Concepción y el sur</td><td class="si"><svg class="ico" aria-label="Incluido"><use href="#i-check"/></svg></td><td class="si col-reco"><svg class="ico" aria-label="Incluido"><use href="#i-check"/></svg></td><td class="si"><svg class="ico" aria-label="Incluido"><use href="#i-check"/></svg></td></tr>
+          <tr><td>Diseño</td><td class="valor">El de hoy</td><td class="valor col-reco">Nuevo</td><td class="valor">Nuevo</td></tr>
+          <tr class="grupo"><td colspan="4">Las radios</td></tr>
+          <tr><td>Las 4 radios en la página</td><td class="si"><svg class="ico" aria-label="Incluido"><use href="#i-check"/></svg></td><td class="si col-reco"><svg class="ico" aria-label="Incluido"><use href="#i-check"/></svg></td><td class="si"><svg class="ico" aria-label="Incluido"><use href="#i-check"/></svg></td></tr>
+          <tr><td>Sigue sonando al cambiar de nota</td><td class="no-tiene" aria-label="No incluido">—</td><td class="si col-reco"><svg class="ico" aria-label="Incluido"><use href="#i-check"/></svg></td><td class="si"><svg class="ico" aria-label="Incluido"><use href="#i-check"/></svg></td></tr>
+          <tr><td>Programación</td><td class="no-tiene" aria-label="No incluido">—</td><td class="si col-reco"><svg class="ico" aria-label="Incluido"><use href="#i-check"/></svg></td><td class="si"><svg class="ico" aria-label="Incluido"><use href="#i-check"/></svg></td></tr>
+          <tr class="grupo"><td colspan="4">Para vender</td></tr>
+          <tr><td>Banners e informe para el anunciante</td><td class="no-tiene" aria-label="No incluido">—</td><td class="si col-reco"><svg class="ico" aria-label="Incluido"><use href="#i-check"/></svg></td><td class="si"><svg class="ico" aria-label="Incluido"><use href="#i-check"/></svg></td></tr>
+          <tr><td>Página «Anunciá con nosotros»</td><td class="no-tiene" aria-label="No incluido">—</td><td class="si col-reco"><svg class="ico" aria-label="Incluido"><use href="#i-check"/></svg></td><td class="si"><svg class="ico" aria-label="Incluido"><use href="#i-check"/></svg></td></tr>
+          <tr><td>Notas con IA desde el aire y resumen por mail</td><td class="no-tiene" aria-label="No incluido">—</td><td class="no-tiene col-reco" aria-label="No incluido">—</td><td class="si"><svg class="ico" aria-label="Incluido"><use href="#i-check"/></svg></td></tr>
+          <tr class="grupo"><td colspan="4">Tiempo y costo</td></tr>
+          <tr><td>Plazo</td><td class="valor">2 semanas</td><td class="valor col-reco">4 semanas</td><td class="valor">6 semanas</td></tr>
+          <tr><td>En un solo pago</td><td class="valor">$252.000</td><td class="valor col-reco">$612.000</td><td class="valor">$1.080.000</td></tr>
+          <tr><td>Mantenimiento por mes</td><td class="valor">Ninguno</td><td class="valor col-reco">$40.000</td><td class="valor">$70.000</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <!-- FORMAS DE PAGO -->
+  <section class="fade">
+    <div class="eyebrow">Formas de pago</div>
+    <h2>Cómo se paga</h2>
+    <p class="section-intro">En dos pagos, mitad al empezar y mitad al entregar. Si preferís pagar todo al empezar, <strong>10% menos</strong>. Por transferencia o Mercado Pago, con factura. El mantenimiento de las opciones 2 y 3 se paga por mes, desde el mes siguiente a la entrega.</p>
+    <div class="pago-cards">
+      <div class="pago-card">
+        <span class="n">Opción 1</span><span class="t">Arreglar lo que hay</span><span class="monto">$280.000</span>
+        <div class="pago-lineas"><div><span>Al empezar</span><b>$140.000</b></div><div><span>Al entregar</span><b>$140.000</b></div><div class="is-ahorro"><span>Todo al empezar</span><b>$252.000</b></div><div><span>Por mes</span><b>Nada</b></div></div>
+      </div>
+      <div class="pago-card is-reco">
+        <span class="n">Opción 2</span><span class="t">Radio que vende</span><span class="monto">$680.000</span>
+        <div class="pago-lineas"><div><span>Al empezar</span><b>$340.000</b></div><div><span>Al entregar</span><b>$340.000</b></div><div class="is-ahorro"><span>Todo al empezar</span><b>$612.000</b></div><div><span>Mantenimiento</span><b>$40.000/mes</b></div></div>
+      </div>
+      <div class="pago-card">
+        <span class="n">Opción 3</span><span class="t">Medio local con IA</span><span class="monto">$1.200.000</span>
+        <div class="pago-lineas"><div><span>Al empezar</span><b>$600.000</b></div><div><span>Al entregar</span><b>$600.000</b></div><div class="is-ahorro"><span>Todo al empezar</span><b>$1.080.000</b></div><div><span>Mantenimiento</span><b>$70.000/mes</b></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUÉ NECESITO -->
+  <section class="fade">
+    <div class="eyebrow">Para arrancar</div>
+    <h2>Qué necesito de tu lado</h2>
+    <div class="need-grid">
+      <div class="need"><svg class="ico"><use href="#i-server"/></svg><span>Acceso a tu WordPress y al hosting<small>O el contacto de quien te hizo la web, para pedírselo</small></span></div>
+      <div class="need"><svg class="ico"><use href="#i-link"/></svg><span>Quién tiene el dominio<small>Para confirmar que metroradios.com.ar está a tu nombre</small></span></div>
+      <div class="need"><svg class="ico"><use href="#i-cal"/></svg><span>La programación de las 4 radios<small>Qué programas son propios y cuáles vienen en cadena</small></span></div>
+      <div class="need"><svg class="ico"><use href="#i-image"/></svg><span>Logos y fotos del estudio y del equipo<small>Lo que tengas; si falta algo, lo resolvemos</small></span></div>
+      <div class="need"><svg class="ico"><use href="#i-tag"/></svg><span>Cómo vendés hoy la publicidad<small>Para armar los formatos y la página de anunciantes</small></span></div>
+      <div class="need"><svg class="ico"><use href="#i-user"/></svg><span>Quién va a cargar las notas<small>Le dejo su usuario y el video tutorial</small></span></div>
+      <div class="need"><svg class="ico"><use href="#i-mic"/></svg><span>Opción 3: tus programas locales<small>Días y horarios, para grabarlos y armar las notas</small></span></div>
+      <div class="need"><svg class="ico"><use href="#i-mail"/></svg><span>Un WhatsApp y un mail comercial<small>Para que te escriban los anunciantes</small></span></div>
+    </div>
+  </section>
+
+  <!-- NO INCLUIDO -->
+  <section class="fade">
+    <div class="eyebrow">Fuera de alcance</div>
+    <h2>Qué no está incluido</h2>
+    <div class="no-wrap">
+      <span class="no-chip"><svg class="ico"><use href="#i-x"/></svg>Manejo de tus redes (publicaciones, historias)</span>
+      <span class="no-chip"><svg class="ico"><use href="#i-x"/></svg>Escribir las notas del día a día</span>
+      <span class="no-chip"><svg class="ico"><use href="#i-x"/></svg>El servicio de transmisión de las radios</span>
+      <span class="no-chip"><svg class="ico"><use href="#i-x"/></svg>App propia y avisos al celular</span>
+      <span class="no-chip"><svg class="ico"><use href="#i-x"/></svg>Anuncios pagos en redes o Google</span>
+      <span class="no-chip"><svg class="ico"><use href="#i-x"/></svg>En la opción 1, cambios después de los 30 días de garantía (se cotizan aparte)</span>
+      <span class="no-chip"><svg class="ico"><use href="#i-x"/></svg>El hosting y la renovación del dominio</span>
+    </div>
+    <p class="p" style="margin-top:18px">Si más adelante querés una app con las 4 radios o avisos al celular cuando hay una noticia importante, te armo una propuesta aparte.</p>
+  </section>
+
+  <!-- CIERRE -->
+  <section class="fade cierre" data-visto="final">
+    <div class="eyebrow">Siguiente paso</div>
+    <h2>Elegí la opción y arrancamos</h2>
+    <p>Decime cuál te cierra, o si preferís que lo charlemos en una llamada, y te paso el cronograma con lo que necesito primero. Si arrancamos el lunes 9 de noviembre, con la opción 2 la web está lista a principios de diciembre, a tiempo para vender los banners de las fiestas y del verano.</p>
+    <a class="btn" href="https://lautaromendez.com.ar/portfolio" target="_blank" rel="noopener">Ver trabajos anteriores<svg class="ico"><use href="#i-arrow"/></svg></a>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">Propuesta preparada por Lautaro Méndez · 29 de octubre de 2026 · Precios válidos por 15 días</div>
+</footer>
+
+<script>
+  window.addEventListener('scroll', () => {
+    const h = document.documentElement.scrollHeight - window.innerHeight;
+    document.getElementById('progress').style.width = (h > 0 ? document.documentElement.scrollTop / h * 100 : 0) + '%';
+  });
+  const ba = document.getElementById('ba');
+  ba.querySelector('input').addEventListener('input', e => ba.style.setProperty('--pos', e.target.value + '%'));
+  const fades = document.querySelectorAll('.fade');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } }), { threshold: 0.04 });
+    fades.forEach(el => io.observe(el));
+  } else {
+    fades.forEach(el => el.classList.add('visible'));
+  }
+</script>
+<script src="/propuestas/_visto.js" data-p="metro-radios" data-n="Metro Radios" defer></script>
+</body>
+</html>
