@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="description" content="Tus viajes a medida, listos para reservar: una idea de cómo se vería la web y tres opciones con precio." />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="es_AR" />
+  <meta property="og:site_name" content="Lautaro Méndez" />
+  <meta property="og:url" content="https://lautaromendez.com.ar/propuestas/passion-for-events/" />
+  <meta property="og:title" content="Propuesta para Passion for Events" />
+  <meta property="og:description" content="Tus viajes a medida, listos para reservar: una idea de cómo se vería la web y tres opciones con precio." />
+  <meta property="og:image" content="https://lautaromendez.com.ar/propuestas/passion-for-events/og.jpg" />
+  <meta property="og:image:secure_url" content="https://lautaromendez.com.ar/propuestas/passion-for-events/og.jpg" />
+  <meta property="og:image:type" content="image/jpeg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Propuesta para Passion for Events" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://lautaromendez.com.ar/propuestas/passion-for-events/og.jpg" />
+  <title>Propuesta — Passion for Events</title>
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+  <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600&display=swap" />
+  <script>document.documentElement.classList.add('js');</script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* Paleta de Passion for Events: tinta oscura y bronce, para que manden sus fotos */
+    :root {
+      --bg: #ffffff;
+      --bg-alt: #f4f4f5;
+      --card: #ffffff;
+      --soft: #f4f4f5;
+      --ink: #1d1a17;
+      --text: #45413c;
+      --mid: #6f6a63;
+      --dim: #8f8a83;
+      --line: #e6e4e1;
+      --line-strong: #d2cfca;
+      --accent: #8c5f33;
+      --accent-soft: #f3efea;
+      --ok: #1a8a55;
+      --sans: 'General Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: var(--sans); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    strong { color: var(--ink); font-weight: 560; }
+    img { display: block; max-width: 100%; height: auto; }
+
+    .ico { width: 20px; height: 20px; flex-shrink: 0; fill: none; stroke: var(--mid); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+    .ico-box { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 6px; background: var(--accent-soft); flex-shrink: 0; }
+    .ico-box .ico { stroke: var(--accent); }
+
+    #progress { position: fixed; top: 0; left: 0; height: 3px; width: 0%; background: var(--accent); z-index: 999; transition: width .1s linear; }
+
+    .wrap { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+    .wrap-wide { max-width: 1140px; margin: 0 auto; padding: 0 24px; }
+
+    /* HERO */
+    .hero { padding: 72px 0 60px; }
+    .hero-logo { height: 58px; width: auto; margin-bottom: 40px; }
+    .eyebrow { display: flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 560; letter-spacing: .02em; color: var(--accent); margin-bottom: 14px; }
+    .hero h1 { font-size: clamp(32px, 5vw, 46px); font-weight: 560; line-height: 1.1; letter-spacing: -0.025em; color: var(--ink); margin-bottom: 18px; max-width: 720px; }
+    .hero-sub { font-size: 17px; color: var(--mid); max-width: 600px; margin-bottom: 38px; }
+    .hero-meta { display: flex; gap: 20px 40px; flex-wrap: wrap; padding-top: 24px; border-top: 1px solid var(--line); }
+    .hero-meta-item label { display: block; font-size: 12px; font-weight: 500; color: var(--dim); margin-bottom: 2px; }
+    .hero-meta-item span { font-size: 15px; font-weight: 560; color: var(--ink); }
+
+    /* SECCIONES */
+    section { padding: 72px 0; }
+    section.alt { background: var(--bg-alt); }
+    h2 { font-size: 30px; font-weight: 560; letter-spacing: -0.02em; color: var(--ink); line-height: 1.2; margin-bottom: 12px; }
+    .section-intro { font-size: 16px; color: var(--mid); margin-bottom: 32px; max-width: 640px; }
+    .p { font-size: 15.5px; color: var(--mid); max-width: 660px; margin-bottom: 18px; }
+
+    /* DATOS */
+    .datos { display: grid; grid-template-columns: repeat(3, 1fr); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; margin-bottom: 28px; background: var(--card); }
+    .dato { display: flex; gap: 14px; align-items: flex-start; padding: 20px; }
+    .dato + .dato { border-left: 1px solid var(--line); }
+    .dato b { display: block; font-size: 17px; font-weight: 560; color: var(--ink); line-height: 1.3; margin-bottom: 2px; }
+    .dato span { font-size: 13.5px; color: var(--mid); line-height: 1.45; }
+    .dato .ico-box { display: inline-flex; }
+
+    .callout { display: flex; gap: 14px; align-items: flex-start; padding: 18px 20px; border-left: 3px solid var(--ok); background: var(--card); border-radius: 0 6px 6px 0; font-size: 15px; color: var(--text); }
+    .callout .ico { stroke: var(--ok); margin-top: 2px; }
+
+    /* BOCETO */
+    .shot { border: 1px solid var(--line-strong); border-radius: 6px; overflow: hidden; background: var(--card); margin-bottom: 44px; }
+    .shot-bar { display: flex; align-items: center; gap: 6px; padding: 9px 12px; border-bottom: 1px solid var(--line); background: var(--soft); }
+    .shot-bar i { width: 8px; height: 8px; border-radius: 50%; background: var(--line-strong); }
+    .ab-moviles { display: grid; grid-template-columns: 280px 1fr; gap: 44px; align-items: center; max-width: 760px; margin: 0 auto 44px; }
+    .ab-movil img { border: 1px solid var(--line-strong); border-radius: 24px; }
+    .ab-movil-txt h3 { font-size: 20px; font-weight: 560; letter-spacing: -0.01em; color: var(--ink); line-height: 1.25; margin-bottom: 10px; }
+    .ab-movil-txt p { font-size: 15.5px; color: var(--text); margin-bottom: 14px; }
+    .demo-cta { display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; padding: 22px 24px; border: 1px solid var(--accent); background: var(--card); border-radius: 8px; }
+    .demo-cta p { font-size: 15px; color: var(--text); max-width: 520px; }
+
+    /* ESCALAS */
+    .escalas { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; align-items: stretch; }
+    .escala { position: relative; display: flex; flex-direction: column; background: var(--card); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+    .escala.is-reco { border: 2px solid var(--accent); }
+    .escala-head { padding: 24px 24px 20px; border-bottom: 1px solid var(--line); }
+    .escala-top { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+    .escala-num { font-size: 13px; font-weight: 560; color: var(--accent); }
+    .escala-title { font-size: 20px; font-weight: 560; letter-spacing: -0.01em; color: var(--ink); line-height: 1.25; margin-bottom: 8px; }
+    .escala-tagline { font-size: 14px; color: var(--mid); line-height: 1.5; }
+    .escala-price { padding: 20px 24px; border-bottom: 1px solid var(--line); background: var(--soft); }
+    .escala-price-value { font-size: 30px; font-weight: 560; letter-spacing: -0.02em; color: var(--ink); line-height: 1.1; }
+    .escala-facts { margin-top: 14px; display: flex; flex-direction: column; gap: 6px; }
+    .escala-facts div { display: flex; gap: 10px; align-items: flex-start; font-size: 13.5px; color: var(--mid); line-height: 1.4; }
+    .escala-facts .ico { width: 16px; height: 16px; margin-top: 1px; }
+    .escala-facts b { color: var(--text); font-weight: 560; }
+    .escala-body { padding: 20px 24px 24px; display: flex; flex-direction: column; gap: 18px; flex: 1; }
+    .ticks { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+    .ticks li { display: flex; gap: 10px; font-size: 14.5px; color: var(--text); line-height: 1.45; }
+    .ticks .ico { width: 16px; height: 16px; margin-top: 3px; stroke: var(--ok); stroke-width: 2.2; }
+    .ticks-plus { font-size: 12.5px; font-weight: 560; color: var(--dim); }
+
+    /* NECESITO */
+    .need-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .need { display: flex; gap: 12px; align-items: center; padding: 12px 14px; background: var(--card); border: 1px solid var(--line); border-radius: 8px; font-size: 14.5px; color: var(--text); line-height: 1.4; }
+    .need .ico { stroke: var(--accent); }
+    .need small { display: block; font-size: 12.5px; color: var(--dim); }
+
+    /* CIERRE */
+    .cierre p { font-size: 17px; color: var(--text); margin-bottom: 24px; max-width: 600px; }
+    .btn { display: inline-flex; align-items: center; gap: 10px; border: 1px solid var(--accent); border-radius: 6px; padding: 13px 20px; font-size: 14.5px; font-weight: 560; color: var(--accent); text-decoration: none; background: var(--card); transition: background .15s, color .15s; }
+    .btn .ico { width: 16px; height: 16px; stroke: currentColor; }
+    .btn:hover, .btn.is-fill { background: var(--accent); color: #fff; }
+    .btn.is-fill:hover { background: #734d28; }
+
+    footer { padding: 32px 0 40px; text-align: center; font-size: 13px; color: var(--dim); border-top: 1px solid var(--line); }
+
+    .js .fade { opacity: 0; transform: translateY(16px); transition: opacity .5s ease, transform .5s ease; }
+    .js .fade.visible { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) { .js .fade { opacity: 1; transform: none; transition: none; } }
+
+    @media (max-width: 980px) {
+      .escalas { grid-template-columns: 1fr; max-width: 812px; margin: 0 auto; }
+    }
+    @media (max-width: 640px) {
+      .wrap, .wrap-wide { padding: 0 16px; }
+      .hero { padding: 44px 0 44px; }
+      .hero-logo { margin-bottom: 30px; height: 48px; }
+      section { padding: 52px 0; }
+      h2 { font-size: 25px; }
+      .datos { grid-template-columns: 1fr; }
+      .dato + .dato { border-left: none; border-top: 1px solid var(--line); }
+      .ab-moviles { grid-template-columns: 1fr; gap: 24px; }
+      .ab-movil img { max-width: 270px; margin: 0 auto; }
+      .escala-head, .escala-price, .escala-body { padding-left: 18px; padding-right: 18px; }
+      .need-grid { grid-template-columns: 1fr; }
+    }
+    @media print {
+      body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      #progress { display: none; }
+      .js .fade { opacity: 1; transform: none; transition: none; }
+      .escala, .need { break-inside: avoid; }
+      h2 { break-after: avoid; }
+    }
+  </style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-card" viewBox="0 0 24 24"><rect width="20" height="14" x="2" y="5" rx="2"/><path d="M2 10h20"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+  <symbol id="i-layout" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18M9 21V9"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></symbol>
+  <symbol id="i-image" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="3" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.09-3.09a2 2 0 0 0-2.82 0L6 21"/></symbol>
+  <symbol id="i-file" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h6"/></symbol>
+  <symbol id="i-tag" viewBox="0 0 24 24"><path d="M12.59 2.59A2 2 0 0 0 11.17 2H4a2 2 0 0 0-2 2v7.17a2 2 0 0 0 .59 1.42l8.7 8.7a2.43 2.43 0 0 0 3.42 0l6.58-6.58a2.43 2.43 0 0 0 0-3.42z"/><circle cx="7.5" cy="7.5" r="1"/></symbol>
+  <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24"><path d="M21 12a8.5 8.5 0 0 1-12.6 7.4L3 21l1.6-5.4A8.5 8.5 0 1 1 21 12z"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24"><path d="M11.5 2.3a.6.6 0 0 1 1 0l2.6 5.4 5.9.8a.6.6 0 0 1 .3 1l-4.3 4.2 1 5.9a.6.6 0 0 1-.8.6L12 17.4l-5.3 2.8a.6.6 0 0 1-.8-.6l1-5.9-4.3-4.2a.6.6 0 0 1 .3-1l5.9-.8z"/></symbol>
+</svg>
+
+<div id="progress"></div>
+
+<div class="wrap">
+  <header class="hero fade">
+    <img class="hero-logo" src="demo/img/logo.png" width="628" height="316" alt="Passion Events &amp; Destinations" />
+    <div class="eyebrow">Propuesta para Passion for Events</div>
+    <h1>Tus viajes a medida, listos para reservar</h1>
+    <p class="hero-sub">Hoy tu web te presenta muy bien ante las empresas. Esta es una segunda web, pensada para quien quiere viajar: elige una experiencia y te escribe con todo ya armado.</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item"><label>Preparado para</label><span>Araceli · Passion for Events</span></div>
+      <div class="hero-meta-item"><label>Preparado por</label><span>Lautaro Méndez</span></div>
+      <div class="hero-meta-item"><label>Fecha</label><span>Octubre 2026</span></div>
+    </div>
+  </header>
+</div>
+
+<!-- ASÍ SE VERÍA -->
+<section class="alt fade">
+  <div class="wrap">
+    <div class="eyebrow">Así se vería</div>
+    <h2>Tus experiencias, con foto, precio y un botón</h2>
+    <p class="section-intro">Una idea hecha con tu logo y las fotos de tu web. Los precios y las duraciones son de ejemplo.</p>
+  </div>
+  <div class="wrap-wide">
+    <div class="shot">
+      <div class="shot-bar"><i></i><i></i><i></i></div>
+      <img src="vista-exp.jpg" width="1440" height="900" loading="lazy" alt="Grilla de experiencias: Buenos Aires, Bariloche e Iguazú, con precio de referencia y botón Reservar" />
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="ab-moviles">
+      <div class="ab-movil"><img src="vista-movil.jpg" width="780" height="1688" loading="lazy" alt="En el celular, el panel de reserva con fecha, personas y el mensaje de WhatsApp ya escrito" /></div>
+      <div class="ab-movil-txt">
+        <h3>Reservar lleva menos de un minuto</h3>
+        <p>La persona toca «Reservar», pone la fecha y cuántos son, y se abre WhatsApp con el mensaje escrito.</p>
+        <p>Te llega con la experiencia, la fecha y la cantidad de personas: <strong>ya sabés qué cotizar</strong>, sin ida y vuelta de preguntas.</p>
+      </div>
+    </div>
+    <div class="demo-cta">
+      <p><strong>Abrí la idea completa y probá reservar.</strong> Arriba a la derecha cambia a inglés.</p>
+      <a class="btn is-fill" href="demo/" target="_blank" rel="noopener">Abrir la idea de diseño<svg class="ico"><use href="#i-arrow"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <!-- DIAGNÓSTICO -->
+  <section class="fade">
+    <div class="eyebrow">Diagnóstico</div>
+    <h2>Cómo está hoy</h2>
+    <div class="datos">
+      <div class="dato"><span class="ico-box"><svg class="ico"><use href="#i-globe"/></svg></span><div><b>Solo en inglés</b><span>No hay versión en español.</span></div></div>
+      <div class="dato"><span class="ico-box"><svg class="ico"><use href="#i-tag"/></svg></span><div><b>15 tipos de viaje</b><span>Listados por nombre, sin duración ni precio de referencia.</span></div></div>
+      <div class="dato"><span class="ico-box"><svg class="ico"><use href="#i-chat"/></svg></span><div><b>WhatsApp genérico</b><span>Te llega un «Hello», sin saber qué viaje buscan.</span></div></div>
+    </div>
+    <p class="p">Para una empresa que busca un DMC, tu web funciona, y <strong>no hay que tocarla</strong>. Pero quien quiere un viaje a medida tiene que completar una consulta o escribirte sin saber por dónde empezar. La web nueva le muestra qué podés armarle y le da un paso claro.</p>
+    <div class="callout">
+      <svg class="ico"><use href="#i-check"/></svg>
+      <span><strong>Lo que ya está bien:</strong> tus fotos, los 8 destinos y clientes como Melaleuca, Canon, Accor y Zurich. Es la confianza que casi ninguna web de viajes puede mostrar, y la nueva la aprovecha.</span>
+    </div>
+  </section>
+</div>
+
+<!-- OPCIONES -->
+<section class="alt fade" id="opciones" data-visto="opciones">
+  <div class="wrap">
+    <div class="eyebrow">Las tres opciones</div>
+    <h2>Tres formas de hacerlo</h2>
+    <p class="section-intro">Cada opción suma lo de la anterior. Como cada viaje se cotiza, ninguna cobra online: la reserva termina en una conversación con vos. <strong>¿Español o inglés?</strong> Si tus viajeros vienen de afuera, te conviene desde la opción 2.</p>
+  </div>
+  <div class="wrap-wide">
+    <div class="escalas">
+      <article class="escala">
+        <div class="escala-head">
+          <div class="escala-top"><span class="ico-box"><svg class="ico"><use href="#i-layout"/></svg></span><span class="escala-num">Opción 1</span></div>
+          <div class="escala-title">Esencial</div>
+          <p class="escala-tagline">Tus experiencias online, listas para que te escriban.</p>
+        </div>
+        <div class="escala-price">
+          <div class="escala-price-value">$550.000</div>
+          <div class="escala-facts">
+            <div><svg class="ico"><use href="#i-card"/></svg><span><b>50% al inicio</b> y <b>50% a la entrega</b></span></div>
+            <div><svg class="ico"><use href="#i-clock"/></svg><span><b>3 semanas</b></span></div>
+          </div>
+        </div>
+        <div class="escala-body">
+          <ul class="ticks">
+            <li><svg class="ico"><use href="#i-check"/></svg>Web de experiencias en español, con fotos y precio de referencia.</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>Botón de reserva por WhatsApp con el mensaje armado.</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>Diseño pensado para celular y computadora.</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>Yo cargo tus experiencias iniciales.</li>
+          </ul>
+        </div>
+      </article>
+      <article class="escala is-reco">
+        <div class="escala-head">
+          <div class="escala-top"><span class="ico-box"><svg class="ico"><use href="#i-globe"/></svg></span><span class="escala-num">Opción 2 · La que recomiendo</span></div>
+          <div class="escala-title">Recomendada</div>
+          <p class="escala-tagline">Para llegar a viajeros de afuera y actualizar la web sin depender de nadie.</p>
+        </div>
+        <div class="escala-price">
+          <div class="escala-price-value">$850.000</div>
+          <div class="escala-facts">
+            <div><svg class="ico"><use href="#i-card"/></svg><span><b>50% al inicio</b> y <b>50% a la entrega</b></span></div>
+            <div><svg class="ico"><use href="#i-clock"/></svg><span><b>4 semanas</b></span></div>
+          </div>
+        </div>
+        <div class="escala-body">
+          <div class="ticks-plus">Todo lo de la opción 1, más</div>
+          <ul class="ticks">
+            <li><svg class="ico"><use href="#i-check"/></svg>Versión bilingüe, en español e inglés.</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>Panel para que cargues y edites tus experiencias.</li>
+          </ul>
+        </div>
+      </article>
+      <article class="escala">
+        <div class="escala-head">
+          <div class="escala-top"><span class="ico-box"><svg class="ico"><use href="#i-star"/></svg></span><span class="escala-num">Opción 3</span></div>
+          <div class="escala-title">Premium</div>
+          <p class="escala-tagline">Para recibir pedidos más completos y que te encuentren en Google.</p>
+        </div>
+        <div class="escala-price">
+          <div class="escala-price-value">$1.200.000</div>
+          <div class="escala-facts">
+            <div><svg class="ico"><use href="#i-card"/></svg><span><b>50% al inicio</b> y <b>50% a la entrega</b></span></div>
+            <div><svg class="ico"><use href="#i-clock"/></svg><span><b>6 semanas</b></span></div>
+          </div>
+        </div>
+        <div class="escala-body">
+          <div class="ticks-plus">Todo lo de la opción 2, más</div>
+          <ul class="ticks">
+            <li><svg class="ico"><use href="#i-check"/></svg>Formulario «Armá tu viaje» para pedir cotización.</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>Galerías por destino y testimonios.</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>SEO básico para aparecer en Google.</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+
+    <div class="callout" style="max-width:900px;margin:28px auto 0">
+      <svg class="ico"><use href="#i-check"/></svg>
+      <span><strong>En las tres, todo queda a tu nombre</strong>, con 30 días de garantía. Por transferencia o Mercado Pago, con factura.</span>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <!-- QUÉ NECESITO -->
+  <section class="fade">
+    <div class="eyebrow">Para arrancar</div>
+    <h2>Qué necesito de tu lado</h2>
+    <div class="need-grid">
+      <div class="need"><svg class="ico"><use href="#i-file"/></svg><span>Tus experiencias<small>Qué incluye cada una, duración y precio de referencia</small></span></div>
+      <div class="need"><svg class="ico"><use href="#i-image"/></svg><span>Las fotos<small>Las de tu web, si tenés permiso de uso, u otras</small></span></div>
+      <div class="need"><svg class="ico"><use href="#i-chat"/></svg><span>El WhatsApp que recibe las reservas<small>Si es otro distinto al de tu web</small></span></div>
+      <div class="need"><svg class="ico"><use href="#i-globe"/></svg><span>La dirección de la web<small>Un dominio nuevo, o algo como viajes.pforevents.com</small></span></div>
+    </div>
+    <p class="p" style="margin-top:22px"><strong>No incluye:</strong> manejo de redes, sesiones de fotos ni el dominio. <strong>Extra opcional:</strong> cobrar señas con Mercado Pago, que se cotiza aparte.</p>
+  </section>
+
+  <!-- CIERRE -->
+  <section class="fade cierre" data-visto="final">
+    <div class="eyebrow">Siguiente paso</div>
+    <h2>Elegí la opción y arrancamos</h2>
+    <p>Decime cuál te cierra, o lo charlamos en una llamada.</p>
+    <a class="btn" href="https://lautaromendez.com.ar/portfolio" target="_blank" rel="noopener">Ver trabajos anteriores<svg class="ico"><use href="#i-arrow"/></svg></a>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">Propuesta preparada por Lautaro Méndez · 30 de octubre de 2026 · Precios válidos por 15 días</div>
+</footer>
+
+<script>
+  window.addEventListener('scroll', () => {
+    const h = document.documentElement.scrollHeight - window.innerHeight;
+    document.getElementById('progress').style.width = (h > 0 ? document.documentElement.scrollTop / h * 100 : 0) + '%';
+  });
+  const fades = document.querySelectorAll('.fade');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } }), { threshold: 0.04 });
+    fades.forEach(el => io.observe(el));
+  } else {
+    fades.forEach(el => el.classList.add('visible'));
+  }
+</script>
+<script src="/propuestas/_visto.js" data-p="passion-for-events" data-n="Passion for Events" defer></script>
+</body>
+</html>

@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="description" content="Boceto de la web de viajes a medida de Passion for Events." />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="es_AR" />
+  <meta property="og:site_name" content="Lautaro Méndez" />
+  <meta property="og:url" content="https://lautaromendez.com.ar/propuestas/passion-for-events/demo/" />
+  <meta property="og:title" content="Boceto para Passion for Events" />
+  <meta property="og:description" content="Tus experiencias con foto y precio de referencia, y reserva por WhatsApp con el mensaje ya armado." />
+  <meta property="og:image" content="https://lautaromendez.com.ar/propuestas/passion-for-events/og.jpg" />
+  <meta property="og:image:secure_url" content="https://lautaromendez.com.ar/propuestas/passion-for-events/og.jpg" />
+  <meta property="og:image:type" content="image/jpeg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Boceto para Passion for Events" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://lautaromendez.com.ar/propuestas/passion-for-events/og.jpg" />
+  <title>Passion for Events — Viajes a medida en Argentina</title>
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+  <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=zodiak@400,500&f[]=general-sans@400,500,600&display=swap" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #ffffff;
+      --bg-alt: #f4f4f5;
+      --ink: #1d1a17;
+      --text: #45413c;
+      --mid: #6f6a63;
+      --line: #e6e4e1;
+      --accent: #8c5f33;
+      --wa: #128c5e;
+      --serif: 'Zodiak', Georgia, 'Times New Roman', serif;
+      --sans: 'General Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; scroll-padding-top: 76px; }
+    body { background: var(--bg); color: var(--text); font-family: var(--sans); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    img { display: block; max-width: 100%; height: auto; }
+    a { color: inherit; }
+    button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+    .wrap { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+
+    .aviso { background: var(--ink); color: #fff; font-size: 13px; text-align: center; padding: 8px 16px; }
+
+    /* HEADER */
+    .top { position: sticky; top: 0; z-index: 20; background: #fff; border-bottom: 1px solid var(--line); }
+    .top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 20px; height: 68px; }
+    .top-logo img { height: 42px; width: auto; }
+    .top-nav { display: flex; align-items: center; gap: 28px; font-size: 14.5px; font-weight: 500; }
+    .top-nav a { text-decoration: none; color: var(--text); }
+    .top-nav a:hover { color: var(--accent); }
+    .lang { display: inline-flex; border: 1px solid var(--line); border-radius: 6px; overflow: hidden; font-size: 13px; font-weight: 600; }
+    .lang button { padding: 6px 11px; color: var(--mid); }
+    .lang button[aria-pressed="true"] { background: var(--ink); color: #fff; }
+
+    /* HERO */
+    .hero { position: relative; display: flex; align-items: flex-end; min-height: 560px; height: 72vh; max-height: 720px; color: #fff; }
+    .hero > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 35%; }
+    .hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgb(0 0 0 / .74), rgb(0 0 0 / .46) 48%, rgb(0 0 0 / .04) 78%); }
+    .hero .wrap { position: relative; z-index: 1; width: 100%; padding-bottom: 56px; }
+    .hero h1 { font-family: var(--serif); font-size: clamp(36px, 5vw, 58px); font-weight: 400; line-height: 1.08; letter-spacing: -0.015em; max-width: 680px; margin-bottom: 14px; }
+    .hero p { font-size: 18px; max-width: 540px; margin-bottom: 26px; }
+
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 9px; border-radius: 6px; padding: 13px 22px; font-size: 15px; font-weight: 600; text-decoration: none; background: #fff; color: var(--ink); }
+    .btn:hover { background: #ececeb; }
+    .btn-wa { background: var(--wa); color: #fff; width: 100%; }
+    .btn-wa:hover { background: #0e7550; }
+    .btn svg { width: 18px; height: 18px; fill: currentColor; }
+
+    /* EXPERIENCIAS */
+    .sec { padding: 72px 0; }
+    .sec.alt { background: var(--bg-alt); }
+    .sec-cab { max-width: 620px; margin-bottom: 36px; }
+    h2 { font-family: var(--serif); font-size: clamp(28px, 3.4vw, 38px); font-weight: 400; line-height: 1.15; letter-spacing: -0.01em; color: var(--ink); margin-bottom: 10px; }
+    .sec-cab p { color: var(--mid); }
+
+    .grilla { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px 22px; }
+    .exp { display: flex; flex-direction: column; }
+    .exp-foto { aspect-ratio: 3 / 2; border-radius: 6px; overflow: hidden; margin-bottom: 14px; background: var(--bg-alt); }
+    .exp-foto img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
+    .exp:hover .exp-foto img { transform: scale(1.03); }
+    .exp-dest { font-size: 13px; font-weight: 600; color: var(--accent); margin-bottom: 2px; }
+    .exp h3 { font-family: var(--serif); font-size: 23px; font-weight: 400; line-height: 1.2; color: var(--ink); margin-bottom: 6px; }
+    .exp p { font-size: 14.5px; color: var(--mid); line-height: 1.5; margin-bottom: 14px; }
+    .exp-pie { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin-top: auto; padding-top: 14px; border-top: 1px solid var(--line); }
+    .exp-precio { font-size: 13px; color: var(--mid); line-height: 1.35; }
+    .exp-precio b { display: block; font-size: 17px; font-weight: 560; color: var(--ink); }
+    .exp-res { flex-shrink: 0; padding: 10px 16px; border-radius: 6px; background: var(--ink); color: #fff; font-size: 14px; font-weight: 600; }
+    .exp-res:hover { background: var(--accent); }
+
+    /* PASOS */
+    .pasos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+    .pasos b { display: block; font-family: var(--serif); font-size: 21px; font-weight: 400; color: var(--ink); margin-bottom: 4px; }
+    .pasos span { display: block; font-size: 13px; font-weight: 600; color: var(--accent); margin-bottom: 8px; }
+    .pasos p { font-size: 15px; color: var(--mid); }
+
+    .clientes { padding: 44px 0; border-bottom: 1px solid var(--line); }
+    .clientes p { font-size: 13.5px; color: var(--mid); margin-bottom: 8px; }
+    .clientes div { font-size: 16px; font-weight: 500; color: var(--ink); }
+
+    footer { background: var(--ink); color: #c9c5bf; padding: 40px 0; font-size: 14px; }
+    footer .wrap { display: flex; align-items: center; justify-content: space-between; gap: 20px 40px; flex-wrap: wrap; }
+    footer img { height: 44px; width: auto; }
+
+    /* PANEL DE RESERVA */
+    dialog { width: min(460px, calc(100vw - 32px)); max-height: calc(100dvh - 32px); margin: auto; border: 0; border-radius: 10px; color: var(--text); }
+    dialog::backdrop { background: rgb(0 0 0 / .55); }
+    .res-foto { height: 130px; }
+    .res-foto img { width: 100%; height: 100%; object-fit: cover; }
+    .res-cuerpo { padding: 20px 22px 22px; }
+    .res-cuerpo h3 { font-family: var(--serif); font-size: 24px; font-weight: 400; line-height: 1.2; color: var(--ink); margin-bottom: 16px; }
+    .res-cerrar { position: absolute; top: 10px; right: 10px; width: 34px; height: 34px; border-radius: 50%; background: rgb(0 0 0 / .6); color: #fff; font-size: 20px; line-height: 1; }
+    .campos { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 14px; }
+    label { display: block; font-size: 13px; font-weight: 500; color: var(--mid); }
+    input { display: block; width: 100%; height: 44px; margin-top: 4px; padding: 0 10px; border: 1px solid #cfcbc6; border-radius: 6px; font: inherit; color: var(--ink); background: #fff; }
+    .res-msj-t { font-size: 13px; font-weight: 500; color: var(--mid); margin-bottom: 4px; }
+    .res-msj { padding: 10px 12px; margin-bottom: 14px; border-radius: 6px; background: #e4f5ea; color: var(--ink); font-size: 14px; line-height: 1.45; white-space: pre-line; }
+    .res-nota { margin-top: 10px; font-size: 13px; color: var(--mid); text-align: center; }
+
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .exp-foto img { transition: none; } }
+    @media (max-width: 900px) {
+      .grilla { grid-template-columns: repeat(2, 1fr); }
+      .pasos { grid-template-columns: 1fr; gap: 22px; }
+      .top-nav a { display: none; }
+    }
+    @media (max-width: 600px) {
+      .wrap { padding: 0 16px; }
+      .grilla { grid-template-columns: 1fr; }
+      .hero { min-height: 480px; height: 68vh; }
+      .hero .wrap { padding-bottom: 36px; }
+      .hero p { font-size: 16.5px; }
+      .sec { padding: 52px 0; }
+      .top-logo img { height: 36px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="aviso" data-i="aviso">Boceto: los precios, duraciones y textos son de ejemplo.</div>
+
+<header class="top">
+  <div class="wrap">
+    <a class="top-logo" href="#" aria-label="Passion for Events"><img src="img/logo.png" width="628" height="316" alt="Passion Events &amp; Destinations" /></a>
+    <nav class="top-nav">
+      <a href="#experiencias" data-i="navExp">Experiencias</a>
+      <a href="#como" data-i="navComo">Cómo funciona</a>
+      <div class="lang" role="group" aria-label="Idioma / Language">
+        <button type="button" data-lang="es" aria-pressed="true">ES</button>
+        <button type="button" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <img src="img/mendoza.jpg" width="1400" height="933" alt="Una pareja camina entre viñedos con la cordillera de fondo" />
+  <div class="wrap">
+    <h1 data-i="heroT">Argentina, diseñada a tu medida</h1>
+    <p data-i="heroP">Elegí una experiencia, contanos cuándo y con quién viajás, y armamos el viaje con vos.</p>
+    <a class="btn" href="#experiencias" data-i="heroB">Ver experiencias</a>
+  </div>
+</section>
+
+<section class="sec" id="experiencias">
+  <div class="wrap">
+    <div class="sec-cab">
+      <h2 data-i="expT">Experiencias</h2>
+      <p data-i="expP">Son un punto de partida: cada viaje se adapta a tus fechas, tu grupo y tus intereses.</p>
+    </div>
+    <div class="grilla" id="grilla"></div>
+  </div>
+</section>
+
+<section class="sec alt" id="como">
+  <div class="wrap">
+    <div class="sec-cab"><h2 data-i="comoT">Cómo funciona</h2></div>
+    <div class="pasos">
+      <div><span>1</span><b data-i="p1T">Elegí tu experiencia</b><p data-i="p1P">Mirá las fotos, qué incluye y el precio de referencia.</p></div>
+      <div><span>2</span><b data-i="p2T">Reservá por WhatsApp</b><p data-i="p2P">Poné la fecha y cuántos son. El mensaje se arma solo.</p></div>
+      <div><span>3</span><b data-i="p3T">Recibí tu cotización</b><p data-i="p3P">Te respondemos con el viaje a medida y el precio final.</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="clientes">
+  <div class="wrap">
+    <p data-i="cliT">Grupos de 17 a 202 personas confiaron en nosotros</p>
+    <div>Melaleuca · Canon · Accor · Zurich · Panasonic · Tupperware · CompTIA · SanlamAllianz · PMI</div>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <img src="img/logo-blanco.png" width="628" height="316" alt="Passion Events &amp; Destinations" />
+    <div>Juan Bautista Alberdi 431, of. 303, Olivos, Buenos Aires</div>
+  </div>
+</footer>
+
+<dialog id="res" aria-labelledby="resT">
+  <button class="res-cerrar" type="button" id="resCerrar" aria-label="Cerrar">&times;</button>
+  <div class="res-foto"><img id="resFoto" src="img/bue.jpg" alt="" /></div>
+  <div class="res-cuerpo">
+    <h3 id="resT"></h3>
+    <div class="campos">
+      <label><span data-i="fFecha">Fecha</span><input type="date" id="fFecha" /></label>
+      <label><span data-i="fPers">Personas</span><input type="number" id="fPers" min="1" max="300" value="2" inputmode="numeric" /></label>
+    </div>
+    <div class="res-msj-t" data-i="fMsj">Tu mensaje</div>
+    <div class="res-msj" id="resMsj"></div>
+    <a class="btn btn-wa" id="resWa" href="#" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.9 5-1.3A10 10 0 1 0 12 2zm5.5 14c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-1.7-.1-.4-.1-.9-.3-1.5-.6-2.700-1.200-4.400-3.900-4.600-4.100-.1-.2-1.100-1.400-1.100-2.700s.7-1.900 1-2.200c.2-.3.500-.3.700-.3h.5c.2 0 .4 0 .6.400l.8 1.900c.1.200.1.300 0 .500l-.3.500-.4.400c-.1.100-.3.300-.1.600.2.300.8 1.300 1.700 2.100 1.200 1 2.100 1.300 2.400 1.500.3.100.5.100.7-.1l.9-1.100c.2-.3.400-.2.600-.1l1.900.9c.3.100.5.200.5.300.1.100.1.600-.1 1.200z"/></svg>
+      <span data-i="fBtn">Reservar por WhatsApp</span>
+    </a>
+    <p class="res-nota" data-i="fNota">Es una consulta: todavía no pagás nada.</p>
+  </div>
+</dialog>
+
+<script>
+  // Cada experiencia sale de su web; duración y precio son de ejemplo
+  const EXP = [
+    { foto: 'bue', precio: 'USD 900', es: ['Buenos Aires', 'Tango y arquitectura', 'Milongas, el Colón y la ciudad a tu ritmo.', '4 noches'], en: ['Buenos Aires', 'Tango & Architecture', 'Milongas, Teatro Colón and the city at your pace.', '4 nights'] },
+    { foto: 'bariloche', precio: 'USD 1.400', es: ['Bariloche', 'Camino de los 7 Lagos', 'Lagos, montaña y la ruta lejos de las multitudes.', '5 noches'], en: ['Bariloche', 'The Seven Lakes Route', 'Lakes, mountains and the road away from the crowds.', '5 nights'] },
+    { foto: 'iguazu', precio: 'USD 800', es: ['Iguazú', 'Maravillas naturales', 'Las Cataratas de cerca, con guía privado.', '3 noches'], en: ['Iguazú', 'Natural Wonders', 'The Falls up close, with a private guide.', '3 nights'] },
+    { foto: 'mendoza', precio: 'USD 1.200', es: ['Mendoza', 'La Ruta del Vino', 'Bodegas, Malbec y la cordillera de fondo.', '4 noches'], en: ['Mendoza', 'The Wine Route', 'Wineries, Malbec and the Andes as a backdrop.', '4 nights'] },
+    { foto: 'calafate', precio: 'USD 1.500', es: ['El Calafate', 'Patagonia Mía', 'El glaciar Perito Moreno y la Patagonia profunda.', '4 noches'], en: ['El Calafate', 'Patagonia Mia', 'The Perito Moreno Glacier and deep Patagonia.', '4 nights'] },
+    { foto: 'estancia', precio: 'USD 180', es: ['Pampa', 'Día de gauchos y estancia', 'Caballos, polo, asado y folclore, cerca de Buenos Aires.', '1 día'], en: ['Pampas', 'Gauchos & Pampa Day', 'Horses, polo, asado and folklore near Buenos Aires.', '1 day'] },
+  ];
+
+  const T = {
+    es: {
+      aviso: 'Boceto: los precios, duraciones y textos son de ejemplo.', navExp: 'Experiencias', navComo: 'Cómo funciona',
+      heroT: 'Argentina, diseñada a tu medida', heroP: 'Elegí una experiencia, contanos cuándo y con quién viajás, y armamos el viaje con vos.', heroB: 'Ver experiencias',
+      expT: 'Experiencias', expP: 'Son un punto de partida: cada viaje se adapta a tus fechas, tu grupo y tus intereses.',
+      comoT: 'Cómo funciona', p1T: 'Elegí tu experiencia', p1P: 'Mirá las fotos, qué incluye y el precio de referencia.', p2T: 'Reservá por WhatsApp', p2P: 'Poné la fecha y cuántos son. El mensaje se arma solo.', p3T: 'Recibí tu cotización', p3P: 'Te respondemos con el viaje a medida y el precio final.',
+      cliT: 'Grupos de 17 a 202 personas confiaron en nosotros',
+      fFecha: 'Fecha', fPers: 'Personas', fMsj: 'Tu mensaje', fBtn: 'Reservar por WhatsApp', fNota: 'Es una consulta: todavía no pagás nada.',
+      desde: 'Desde', porP: 'por persona', reservar: 'Reservar', aDefinir: 'a definir',
+      msj: (t, f, p) => `Hola! Quiero reservar «${t}».\nFecha: ${f}\nPersonas: ${p}\n¿Me pasan la cotización?`,
+    },
+    en: {
+      aviso: 'Sketch: prices, durations and copy are examples.', navExp: 'Experiences', navComo: 'How it works',
+      heroT: 'Argentina, tailor-made for you', heroP: 'Pick an experience, tell us when and who you’re traveling with, and we’ll design the trip together.', heroB: 'See experiences',
+      expT: 'Experiences', expP: 'A starting point: every trip is adapted to your dates, your group and your interests.',
+      comoT: 'How it works', p1T: 'Choose your experience', p1P: 'See the photos, what’s included and the reference price.', p2T: 'Book on WhatsApp', p2P: 'Add your date and group size. The message writes itself.', p3T: 'Get your quote', p3P: 'We reply with your tailor-made trip and final price.',
+      cliT: 'Groups from 17 to 202 people have trusted us',
+      fFecha: 'Date', fPers: 'Guests', fMsj: 'Your message', fBtn: 'Book on WhatsApp', fNota: 'This is an inquiry: you don’t pay anything yet.',
+      desde: 'From', porP: 'per person', reservar: 'Book', aDefinir: 'to be defined',
+      msj: (t, f, p) => `Hello! I’d like to book “${t}”.\nDate: ${f}\nGuests: ${p}\nCould you send me a quote?`,
+    },
+  };
+
+  const WA = '5491126793201';
+  const q = s => document.querySelector(s);
+  const dlg = q('#res'), fFecha = q('#fFecha'), fPers = q('#fPers');
+  let lang = new URLSearchParams(location.search).get('lang') === 'en' ? 'en' : 'es';
+  let actual = 0;
+
+  function pintar() {
+    const t = T[lang];
+    document.documentElement.lang = lang;
+    document.querySelectorAll('[data-i]').forEach(el => { el.textContent = t[el.dataset.i]; });
+    document.querySelectorAll('[data-lang]').forEach(b => b.setAttribute('aria-pressed', b.dataset.lang === lang));
+    q('#grilla').innerHTML = EXP.map((e, i) => {
+      const [dest, tit, desc, dur] = e[lang];
+      return `<article class="exp">
+        <div class="exp-foto"><img src="img/${e.foto}.jpg" width="1400" height="933" loading="lazy" alt="${tit}" /></div>
+        <div class="exp-dest">${dest} · ${dur}</div>
+        <h3>${tit}</h3>
+        <p>${desc}</p>
+        <div class="exp-pie">
+          <div class="exp-precio">${t.desde}<b>${e.precio}</b>${t.porP}</div>
+          <button class="exp-res" type="button" data-n="${i}">${t.reservar}</button>
+        </div>
+      </article>`;
+    }).join('');
+    if (dlg.open) mensaje();
+  }
+
+  function mensaje() {
+    const t = T[lang], tit = EXP[actual][lang][1];
+    const fecha = fFecha.value ? fFecha.value.split('-').reverse().join('/') : t.aDefinir;
+    const texto = t.msj(tit, fecha, fPers.value || 1);
+    q('#resT').textContent = tit;
+    q('#resMsj').textContent = texto;
+    q('#resWa').href = `https://wa.me/${WA}?text=${encodeURIComponent(texto)}`;
+  }
+
+  q('#grilla').addEventListener('click', e => {
+    const b = e.target.closest('.exp-res');
+    if (!b) return;
+    actual = +b.dataset.n;
+    q('#resFoto').src = `img/${EXP[actual].foto}.jpg`;
+    mensaje();
+    dlg.showModal();
+  });
+  [fFecha, fPers].forEach(el => el.addEventListener('input', mensaje));
+  q('#resCerrar').addEventListener('click', () => dlg.close());
+  dlg.addEventListener('click', e => { if (e.target === dlg) dlg.close(); });
+  document.querySelectorAll('[data-lang]').forEach(b => b.addEventListener('click', () => { lang = b.dataset.lang; pintar(); }));
+
+  fFecha.min = new Date().toISOString().slice(0, 10);
+  pintar();
+</script>
+<script src="/propuestas/_visto.js" data-p="passion-for-events" data-n="Passion for Events" data-e="boceto" defer></script>
+</body>
+</html>
