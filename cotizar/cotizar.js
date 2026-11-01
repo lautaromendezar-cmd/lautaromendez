@@ -177,6 +177,11 @@
     adelante(actual + 1);
   });
 
+  /* Enter en el nombre pasa al WhatsApp en vez de intentar enviar */
+  $('nombre').addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') { e.preventDefault(); $('tel').focus(); }
+  });
+
   atras.addEventListener('click', () => history.back());
 
   /* Tecla atrás del celular: vuelve de a una pregunta y al final cierra */
@@ -204,6 +209,12 @@
       err.textContent = 'Decime cómo te llamás.';
       err.hidden = false;
       $('nombre').focus();
+      return;
+    }
+    if (valor('tel').replace(/\D/g, '').length < 8) {
+      err.textContent = 'Pasame un WhatsApp para poder escribirte.';
+      err.hidden = false;
+      $('tel').focus();
       return;
     }
     const falta = REQUERIDOS.find((n) => !valor(n));
@@ -238,7 +249,7 @@
       let origen = '';
       try { origen = (JSON.parse(localStorage.getItem('lm_origen') || 'null') || {}).v || ''; } catch (e3) { /* modo privado */ }
       const datos = JSON.stringify({
-        nombre: valor('nombre'), negocio: valor('negocio'), donde: valor('donde'),
+        nombre: valor('nombre'), tel: valor('tel'), negocio: valor('negocio'), donde: valor('donde'),
         tiempo: valor('tiempo'), precio: valor('precio'),
         origen: q.get('utm_source') || origen, campana: q.get('utm_campaign') || '', anuncio: q.get('utm_content') || '',
         /* para el evento del servidor (API de conversiones) */

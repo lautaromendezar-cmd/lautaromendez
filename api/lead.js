@@ -14,7 +14,7 @@ const crypto = require('crypto');
 //                    desde el servidor como SubmitApplication, con el mismo
 //                    event_id que usó el píxel: llega aunque el celular tenga un
 //                    bloqueador, y si llegan los dos Meta se queda con uno.
-const CAMPOS = ['nombre', 'negocio', 'donde', 'tiempo', 'precio', 'origen', 'campana', 'anuncio', 'evento', 'url', 'fbp', 'fbc'];
+const CAMPOS = ['nombre', 'tel', 'negocio', 'donde', 'tiempo', 'precio', 'origen', 'campana', 'anuncio', 'evento', 'url', 'fbp', 'fbc'];
 const LARGO = 160;
 const LARGO_URL = 600;
 
@@ -24,6 +24,12 @@ async function conversionesMeta(v, valor, req) {
   if (ip) user_data.client_ip_address = ip;
   if (v.fbp) user_data.fbp = v.fbp;
   if (v.fbc) user_data.fbc = v.fbc;
+  /* Meta pide el teléfono hasheado y con código de país */
+  let tel = v.tel.replace(/\D/g, '').replace(/^0+/, '');
+  if (tel.length >= 8) {
+    if (!tel.startsWith('54')) tel = `549${tel.replace(/^15/, '')}`;
+    user_data.ph = [crypto.createHash('sha256').update(tel).digest('hex')];
+  }
   const cuerpo = {
     data: [{
       event_name: 'SubmitApplication',
@@ -77,7 +83,8 @@ module.exports = async (req, res) => {
   const v = Object.fromEntries(CAMPOS.map((c) => [c, String(b[c] || '').replace(/[\r\n\t]+/g, ' ').trim().slice(0, c === 'url' ? LARGO_URL : LARGO)]));
   const valor = Number(b.valor) > 0 ? Math.round(Number(b.valor)) : 0;
   const fecha = new Date().toLocaleString('es-AR', { timeZone: 'America/Argentina/Buenos_Aires', hour12: false });
-  const fila = [fecha, v.campana, v.anuncio, v.nombre, v.negocio, v.donde, v.tiempo, v.precio, v.origen];
+  /* El WhatsApp va en Notas (columna N): de J a M completa Lautaro a mano */
+  const fila = [fecha, v.campana, v.anuncio, v.nombre, v.negocio, v.donde, v.tiempo, v.precio, v.origen, '', '', '', '', v.tel ? `WhatsApp: ${v.tel}` : ''];
 
   const tareas = [];
   if (v.evento && /^cz-[a-z0-9-]{6,40}$/.test(v.evento) && process.env.META_PIXEL_ID && process.env.META_CAPI_TOKEN) {
@@ -102,7 +109,7 @@ module.exports = async (req, res) => {
       body: JSON.stringify({
         topic: process.env.NTFY_TOPIC,
         title: `Lead: ${v.nombre}`,
-        message: `${v.negocio} · ${v.precio} · ${v.tiempo}${v.campana ? ` · ${v.campana}` : ''}`,
+        message: `${v.tel} · ${v.negocio} · ${v.precio} · ${v.tiempo}${v.campana ? ` · ${v.campana}` : ''}`,
         priority: 4,
       }),
     }));

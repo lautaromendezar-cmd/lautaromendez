@@ -152,6 +152,7 @@
     const fotos = filas.map((f) => {
       const c = f.querySelector('img').cloneNode();
       c.loading = 'eager';
+      c.alt = '';
       visor.append(c);
       return c;
     });
@@ -161,7 +162,9 @@
       activa = i;
       filas.forEach((f, n) => f.classList.toggle('es-on', n === i));
       fotos.forEach((f, n) => f.classList.toggle('es-on', n === i));
-      $('#visorC').textContent = filas[i].querySelector('.r__c')?.textContent || '';
+      const enlace = filas[i].querySelector('.r__c');
+      $('#visorC').textContent = enlace?.textContent || '';
+      $('#visorC').href = enlace?.href || '/portfolio/';
     };
     elegir(0);
 
