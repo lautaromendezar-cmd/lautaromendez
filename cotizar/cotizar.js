@@ -51,6 +51,8 @@
   const ga = (nombre, params) => {
     try {
       if (window.gtag) gtag('event', nombre, Object.assign({ pagina: location.pathname, anuncio: q.get('utm_content') || '', campana: q.get('utm_campaign') || '' }, params || {}));
+      /* Mismo nombre en Clarity, para filtrar grabaciones por paso */
+      if (window.clarity) clarity('event', params && params.paso ? `${nombre}_${params.paso}` : nombre);
     } catch (e) { /* bloqueador */ }
   };
 
