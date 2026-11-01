@@ -223,8 +223,8 @@ body.es-oscuro .top__b { color: var(--negro); background: #fff; }
 
 .cierre { position: relative; display: grid; place-items: center; min-height: 100svh; margin-top: clamp(88px, 11vw, 160px); padding: 96px var(--gut); overflow: hidden; text-align: center; }
 .cierre__f { position: absolute; inset: -8%; overflow: hidden; perspective: 1200px; }
-.cierre__f img { width: 100%; height: 100%; object-fit: cover; transform-origin: 50% 50%; will-change: transform; }
-.cierre::after { content: ''; position: absolute; inset: 0; background: radial-gradient(70% 62% at 50% 50%, rgb(11 11 13 / .58), rgb(11 11 13 / .18) 70%), linear-gradient(180deg, var(--negro), transparent 22%, transparent 80%, var(--negro)); }
+.cierre__f img { width: 100%; height: 100%; object-fit: cover; filter: brightness(.62); transform-origin: 50% 50%; will-change: transform; }
+.cierre::after { content: ''; position: absolute; inset: 0; background: radial-gradient(72% 66% at 50% 50%, rgb(11 11 13 / .82), rgb(11 11 13 / .5) 70%), linear-gradient(180deg, var(--negro), rgb(11 11 13 / .3) 22%, rgb(11 11 13 / .3) 80%, var(--negro)); }
 .cierre__in { position: relative; z-index: 1; }
 .cierre__h { font-size: clamp(50px, 9vw, 148px); line-height: .96; letter-spacing: -.045em; font-variation-settings: 'wdth' 100, 'wght' 480; }
 .cierre__h em { color: var(--rojo); }
