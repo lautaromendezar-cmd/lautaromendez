@@ -7,8 +7,41 @@
 //   NTFY_TOPIC       el mismo canal del aviso de lectura
 const crypto = require('crypto');
 
-const CAMPOS = ['nombre', 'negocio', 'donde', 'tiempo', 'precio', 'origen', 'campana', 'anuncio'];
+//   META_PIXEL_ID    el píxel «Lautaro Web Pixel» (el mismo de js/pixel.js)
+//   META_CAPI_TOKEN  token de la API de conversiones (Administrador de eventos →
+//                    Configuración → Generar token de acceso). Con los dos
+//                    cargados, cada solicitud que pasa el filtro se manda también
+//                    desde el servidor como SubmitApplication, con el mismo
+//                    event_id que usó el píxel: llega aunque el celular tenga un
+//                    bloqueador, y si llegan los dos Meta se queda con uno.
+const CAMPOS = ['nombre', 'negocio', 'donde', 'tiempo', 'precio', 'origen', 'campana', 'anuncio', 'evento', 'url', 'fbp', 'fbc'];
 const LARGO = 160;
+const LARGO_URL = 600;
+
+async function conversionesMeta(v, valor, req) {
+  const ip = String(req.headers['x-forwarded-for'] || '').split(',')[0].trim();
+  const user_data = { client_user_agent: req.headers['user-agent'] || '' };
+  if (ip) user_data.client_ip_address = ip;
+  if (v.fbp) user_data.fbp = v.fbp;
+  if (v.fbc) user_data.fbc = v.fbc;
+  const cuerpo = {
+    data: [{
+      event_name: 'SubmitApplication',
+      event_time: Math.floor(Date.now() / 1000),
+      event_id: v.evento,
+      action_source: 'website',
+      event_source_url: v.url,
+      user_data,
+      custom_data: { value: valor, currency: 'ARS', content_category: v.precio },
+    }],
+  };
+  const r = await fetch(`https://graph.facebook.com/v21.0/${process.env.META_PIXEL_ID}/events?access_token=${encodeURIComponent(process.env.META_CAPI_TOKEN)}`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(cuerpo),
+  });
+  if (!r.ok) throw new Error(`meta ${r.status} ${(await r.text()).slice(0, 200)}`);
+}
 
 const b64 = (s) => Buffer.from(s).toString('base64url');
 
@@ -41,11 +74,15 @@ module.exports = async (req, res) => {
   const ua = req.headers['user-agent'] || '';
   if (/bot|crawl|spider|preview|facebookexternalhit|headless/i.test(ua)) return res.status(204).end();
 
-  const v = Object.fromEntries(CAMPOS.map((c) => [c, String(b[c] || '').replace(/[\r\n\t]+/g, ' ').trim().slice(0, LARGO)]));
+  const v = Object.fromEntries(CAMPOS.map((c) => [c, String(b[c] || '').replace(/[\r\n\t]+/g, ' ').trim().slice(0, c === 'url' ? LARGO_URL : LARGO)]));
+  const valor = Number(b.valor) > 0 ? Math.round(Number(b.valor)) : 0;
   const fecha = new Date().toLocaleString('es-AR', { timeZone: 'America/Argentina/Buenos_Aires', hour12: false });
   const fila = [fecha, v.campana, v.anuncio, v.nombre, v.negocio, v.donde, v.tiempo, v.precio, v.origen];
 
   const tareas = [];
+  if (v.evento && /^cz-[a-z0-9-]{6,40}$/.test(v.evento) && process.env.META_PIXEL_ID && process.env.META_CAPI_TOKEN) {
+    tareas.push(conversionesMeta(v, valor, req));
+  }
   if (process.env.LEADS_SHEET_ID && process.env.LEADS_SA_EMAIL && process.env.LEADS_SA_KEY) {
     tareas.push((async () => {
       const t = await token();

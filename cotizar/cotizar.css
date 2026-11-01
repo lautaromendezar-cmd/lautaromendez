@@ -94,8 +94,13 @@ body.es-oscuro .top__b { color: var(--negro); background: #fff; }
   font-variation-settings: 'wdth' 100, 'wght' 480;
   animation: entra 1s var(--ease) both;
 }
-.t:nth-child(-n+6) { filter: blur(1.8px); }
-.t:nth-child(n+7):nth-child(-n+12) { filter: blur(.7px); }
+/* Profundidad sólo en el campo en perspectiva de escritorio. Antes estaba
+   fuera del media query y, por especificidad, le ganaba al `filter: none`
+   del celular: las webs del hero salían borrosas en el teléfono. */
+@media (min-width: 900px) {
+  .t:nth-child(-n+6) { filter: blur(1.8px); }
+  .t:nth-child(n+7):nth-child(-n+12) { filter: blur(.7px); }
+}
 @keyframes entra { from { opacity: 0; transform: translateY(24px); } }
 .hero__p { margin-top: 26px; font-size: clamp(19px, 1.6vw, 22px); font-variation-settings: 'wdth' 100, 'wght' 500; letter-spacing: -.01em; }
 .hero__n { margin-top: 16px; color: #5C6068; font-size: 15.5px; }
@@ -229,6 +234,13 @@ body.es-oscuro .top__b { color: var(--negro); background: #fff; }
 .cierre__h { font-size: clamp(50px, 9vw, 148px); line-height: .96; letter-spacing: -.045em; font-variation-settings: 'wdth' 100, 'wght' 480; }
 .cierre__h em { color: var(--rojo); }
 
+/* ═══ PIE ════════════════════════════════════════════════════════════════ */
+.pie { display: flex; flex-wrap: wrap; gap: 14px 28px; justify-content: space-between; align-items: center; padding: 28px var(--gut) calc(28px + env(safe-area-inset-bottom)); color: var(--gris); font-size: 14px; border-top: 1px solid rgb(237 235 232 / .1); }
+.pie nav { display: flex; flex-wrap: wrap; gap: 6px 22px; }
+.pie a { color: var(--hueso); text-decoration: none; }
+.pie a:hover { color: var(--rojo); }
+.hero__n a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
+
 /* ═══ FORMULARIO ═════════════════════════════════════════════════════════ */
 .form {
   position: fixed;
@@ -276,7 +288,9 @@ body.es-oscuro .top__b { color: var(--negro); background: #fff; }
 @media (max-width: 899px) {
   .hero { display: flex; flex-direction: column; height: auto; min-height: 100svh; padding-top: 76px; }
   .hero__tx { position: static; order: -1; padding: 0 var(--gut); transform: none; }
-  .h1 { font-size: clamp(44px, 12.8vw, 74px); }
+  /* El titular nace visible: es lo primero que ve el que viene del anuncio y
+     en 4G la entrada desde opacity 0 lo retrasaba hasta que llegaba la fuente. */
+  .h1 { font-size: clamp(44px, 12.8vw, 74px); animation: none; }
   .hero__p { margin-top: 18px; }
   .cta { width: 100%; justify-content: center; margin-top: 20px; }
   .campo { position: relative; inset: auto; flex: none; margin-top: 22px; perspective: none; -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
@@ -290,6 +304,7 @@ body.es-oscuro .top__b { color: var(--negro); background: #fff; }
   .plan__t { min-height: 0; }
   .fija:not([hidden]) { display: block; }
   .cierre { min-height: 80svh; padding-bottom: 110px; }
+  .pie { padding-bottom: calc(96px + env(safe-area-inset-bottom)); }   /* deja lugar al botón fijo */
   .cta--l { width: auto; padding: 0 28px; font-size: 18px; }
 }
 @media (prefers-reduced-motion: reduce) {

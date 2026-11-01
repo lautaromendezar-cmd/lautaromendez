@@ -41,9 +41,23 @@
   let noTocarHasta = 0;   /* tapa el segundo toque de un doble toque */
   let timerAvance = 0;
 
-  const meta = (tipo, evento) => {
-    try { if (window.fbq) fbq(tipo, evento); } catch (e) { /* un bloqueador no frena el contacto */ }
+  const meta = (tipo, evento, datos, opciones) => {
+    try { if (window.fbq) fbq(tipo, evento, datos, opciones); } catch (e) { /* un bloqueador no frena el contacto */ }
   };
+
+  /* GA4: el embudo del formulario, paso por paso, con el anuncio que trajo a
+     la persona. Es lo que responde «dónde se queda la gente» por anuncio. */
+  const q = new URLSearchParams(location.search);
+  const ga = (nombre, params) => {
+    try {
+      if (window.gtag) gtag('event', nombre, Object.assign({ pagina: location.pathname, anuncio: q.get('utm_content') || '', campana: q.get('utm_campaign') || '' }, params || {}));
+    } catch (e) { /* bloqueador */ }
+  };
+
+  /* Valor estimado del lead según el rango de presupuesto que eligió: deja a
+     Meta y a GA4 distinguir una solicitud de $400.000 de una de $1.500.000. */
+  const VALOR = { 'Más de $1.200.000': 1200000, '$600.000 a $1.200.000': 900000, '$360.000 a $600.000': 480000 };
+  const galleta = (n) => { const m = document.cookie.match(new RegExp('(?:^|; )' + n + '=([^;]*)')); return m ? decodeURIComponent(m[1]) : ''; };
   const valor = (n) => form.elements[n].value.trim();
   const queda = (n, v) => AFUERA[n] === v;
   const pasoDe = (nombre) => pasos.findIndex((p) => p.querySelector(`[name="${nombre}"]`));
@@ -67,6 +81,7 @@
     hondo += 1;
     history.pushState({ cz: i, h: hondo }, '');
     muestra(i, true);
+    ga('cotizar_paso', { paso: i + 1 });
   };
 
   const abrir = (e) => {
@@ -75,17 +90,19 @@
     form.hidden = false;
     dlg.hidden = false;
     document.body.classList.add('lock');
-    document.querySelectorAll('main, .top, .fija').forEach((el) => { el.inert = true; });
+    document.querySelectorAll('main, .top, .fija, .pie').forEach((el) => { el.inert = true; });
     hondo = 1;
     history.pushState({ cz: 0, h: 1 }, '');
     muestra(0, true);
+    const bloque = origenFoco && origenFoco.closest('section, header, .fija');
+    ga('cotizar_abrir', { lugar: bloque ? (bloque.id || bloque.className.split(' ')[0]) : 'otro' });
   };
 
   const ocultar = () => {
     clearTimeout(timerAvance);
     dlg.hidden = true;
     document.body.classList.remove('lock');
-    document.querySelectorAll('main, .top, .fija').forEach((el) => { el.inert = false; });
+    document.querySelectorAll('main, .top, .fija, .pie').forEach((el) => { el.inert = false; });
     if (origenFoco) origenFoco.focus({ preventScroll: true });
   };
 
@@ -97,6 +114,7 @@
 
   const descartar = () => {
     meta('trackCustom', 'CotizarDescartado');
+    ga('cotizar_descartado', { motivo: queda('tiempo', valor('tiempo')) ? 'no arrancó' : 'presupuesto' });
     noTocarHasta = 0;
     hondo += 1;
     history.pushState({ cz: actual, h: hondo }, '');
@@ -112,7 +130,7 @@
       $(nombre).focus();
       return;
     }
-    if (!iniciado) { iniciado = true; meta('trackCustom', 'CotizarInicio'); }
+    if (!iniciado) { iniciado = true; meta('trackCustom', 'CotizarInicio'); ga('cotizar_inicio'); }
     adelante(actual + 1);
   };
 
@@ -202,22 +220,29 @@
     ].join('\n');
     const mensaje = window.lmConOrigen ? window.lmConOrigen(texto) : texto;
 
-    if (!medido) {
+    /* El mismo id va al píxel (eventID) y al servidor (event_id): si los dos
+       llegan, Meta los deduplica; si un bloqueador frena al píxel, llega el
+       del servidor igual. */
+    const idEvento = 'cz-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 8);
+    const valorLead = VALOR[valor('precio')] || 0;
+    const primera = !medido;
+    if (primera) {
       medido = true;
       try { sessionStorage.setItem('cz_enviado', '1'); } catch (e2) { /* modo privado */ }
-      meta('track', 'SubmitApplication');
+      meta('track', 'SubmitApplication', { value: valorLead, currency: 'ARS', content_category: valor('precio') }, { eventID: idEvento });
       /* No se despacha lm:form-ok: pixel.js lo contaría como Lead */
-      if (window.gtag) gtag('event', 'formulario_enviado', { pagina: location.pathname });
+      ga('formulario_enviado', { value: valorLead, currency: 'ARS', presupuesto: valor('precio'), tiempo: valor('tiempo') });
     }
     /* Queda en la planilla aunque después no toque enviar en WhatsApp */
     try {
-      const q = new URLSearchParams(location.search);
       let origen = '';
       try { origen = (JSON.parse(localStorage.getItem('lm_origen') || 'null') || {}).v || ''; } catch (e3) { /* modo privado */ }
       const datos = JSON.stringify({
         nombre: valor('nombre'), negocio: valor('negocio'), donde: valor('donde'),
         tiempo: valor('tiempo'), precio: valor('precio'),
-        origen: q.get('utm_source') || origen, campana: q.get('utm_campaign') || '', anuncio: q.get('utm_content') || ''
+        origen: q.get('utm_source') || origen, campana: q.get('utm_campaign') || '', anuncio: q.get('utm_content') || '',
+        /* para el evento del servidor (API de conversiones) */
+        evento: primera ? idEvento : '', valor: valorLead, url: location.href, fbp: galleta('_fbp'), fbc: galleta('_fbc') || (q.get('fbclid') ? 'fb.1.' + Date.now() + '.' + q.get('fbclid') : '')
       });
       /* sendBeacon sobrevive a la salida de la página (abrir WhatsApp la deja
          atrás); fetch keepalive es el respaldo */
