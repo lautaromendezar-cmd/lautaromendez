@@ -209,6 +209,22 @@
       /* No se despacha lm:form-ok: pixel.js lo contaría como Lead */
       if (window.gtag) gtag('event', 'formulario_enviado', { pagina: location.pathname });
     }
+    /* Queda en la planilla aunque después no toque enviar en WhatsApp */
+    try {
+      const q = new URLSearchParams(location.search);
+      let origen = '';
+      try { origen = (JSON.parse(localStorage.getItem('lm_origen') || 'null') || {}).v || ''; } catch (e3) { /* modo privado */ }
+      fetch('/api/lead/', {
+        method: 'POST',
+        keepalive: true,
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          nombre: valor('nombre'), negocio: valor('negocio'), donde: valor('donde'),
+          tiempo: valor('tiempo'), precio: valor('precio'),
+          origen: q.get('utm_source') || origen, campana: q.get('utm_campaign') || '', anuncio: q.get('utm_content') || ''
+        })
+      }).catch(() => {});
+    } catch (e4) { /* nunca frena el contacto */ }
     $('enviar').textContent = 'Abriendo WhatsApp';
 
     /* api.whatsapp.com y no wa.me: pixel.js contaría Lead con un enlace a wa.me */
