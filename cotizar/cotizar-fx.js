@@ -105,7 +105,7 @@
         stagger: { amount: .1, from: 'random' }
       }, .08)
       /* de claro a negro */
-      .to(hero, { '--wipe': '0%', duration: .16, ease: 'power3.inOut' }, .3)
+      .to(hero, { '--wipe': '0%', duration: .16, ease: 'power3.inOut', onUpdate() { document.body.classList.toggle('es-oscuro', this.progress() > .5); } }, .3)
       /* el plano se endereza y las webs caen en fila */
       .to(plano, { rotationX: 0, rotationZ: 0, scale: 1, duration: .34, ease: 'power2.inOut' }, .44);
 
@@ -132,13 +132,6 @@
   });
 
   /* ── Celular: mismo gesto, sin fijar la pantalla ────────────────────────── */
-  mm.add('(max-width: 899px)', () => {
-    const plano = $('#plano');
-    gsap.fromTo(plano,
-      { rotationX: 50, rotationZ: -36, scale: 1.2 },
-      { rotationX: 16, rotationZ: -8, scale: 1.05, ease: 'none',
-        scrollTrigger: { trigger: '#campo', start: 'top 70%', end: 'bottom top', scrub: .4 } });
-  });
 
   /* ── Texto que se enciende ──────────────────────────────────────────────── */
   gsap.from(partir($('#t2'), false), {
@@ -230,7 +223,23 @@
   mm.add('(max-width: 899px)', () => { viaja('.r img', 28); });
 
   /* Cierre: el campo de webs flota y el titular se acerca */
-  gsap.to('.cierre__plano', { y: -140, ease: 'none', scrollTrigger: { trigger: '.cierre', start: 'top bottom', end: 'bottom top', scrub: true } });
+  /* La imagen del cierre: se acerca con el scroll y sigue al puntero o al celular */
+  const cierreImg = $('#cierreImg');
+  gsap.fromTo(cierreImg, { scale: 1.25, yPercent: -6 }, { scale: 1, yPercent: 6, ease: 'none',
+    scrollTrigger: { trigger: '.cierre', start: 'top bottom', end: 'bottom top', scrub: .4 } });
+  const sigueX = gsap.quickTo(cierreImg, 'x', { duration: .9, ease: 'power3' });
+  const sigueY = gsap.quickTo(cierreImg, 'y', { duration: .9, ease: 'power3' });
+  const giraY = gsap.quickTo(cierreImg, 'rotationY', { duration: .9, ease: 'power3' });
+  const giraX = gsap.quickTo(cierreImg, 'rotationX', { duration: .9, ease: 'power3' });
+  const mover = (nx, ny) => { sigueX(nx * 30); sigueY(ny * 22); giraY(nx * 4); giraX(-ny * 3); };
+  if (matchMedia('(pointer: fine)').matches) {
+    window.addEventListener('mousemove', (e) => mover(e.clientX / innerWidth - .5, e.clientY / innerHeight - .5), { passive: true });
+  } else if ('DeviceOrientationEvent' in window) {
+    window.addEventListener('deviceorientation', (e) => {
+      if (e.gamma == null) return;
+      mover(gsap.utils.clamp(-.5, .5, e.gamma / 60), gsap.utils.clamp(-.5, .5, (e.beta - 45) / 60));
+    }, { passive: true });
+  }
   gsap.fromTo('.cierre__in', { scale: .92 }, { scale: 1, ease: 'none',
     scrollTrigger: { trigger: '.cierre', start: 'top bottom', end: 'top 20%', scrub: .5 } });
 

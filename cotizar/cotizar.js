@@ -230,6 +230,19 @@
   };
   window.addEventListener('pageshow', liberar);
 
+  /* Filas del hero en celular: se duplican para que el loop no tenga salto */
+  if (matchMedia('(max-width: 899px)').matches) {
+    document.querySelectorAll('.fila').forEach((fl) => {
+      [...fl.children].forEach((img) => fl.appendChild(img.cloneNode(true)));
+    });
+  }
+
+  /* El header cambia de color al salir del hero claro. Con GSAP en escritorio lo
+     maneja la cortina del scrub; en los demás casos, esto. */
+  if (!window.gsap || matchMedia('(prefers-reduced-motion: reduce)').matches || matchMedia('(max-width: 899px)').matches) {
+    new IntersectionObserver(([e]) => { document.body.classList.toggle('es-oscuro', !e.isIntersecting); }, { rootMargin: '-60px 0px 0px 0px' }).observe($('hero'));
+  }
+
   /* Botón fijo del celular: aparece cuando el hero sale de pantalla */
   const fija = $('fija');
   if ('IntersectionObserver' in window) {
