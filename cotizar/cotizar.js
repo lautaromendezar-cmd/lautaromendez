@@ -1,7 +1,7 @@
 /* ══════════════════════════════════════════════════════════════════════════
    FORMULARIO DE /cotizar/
 
-   Pantalla completa, una pregunta por vez. Filtra antes de WhatsApp: si no
+   Pantalla completa, 5 preguntas de a una. Filtra antes de WhatsApp: si no
    arrancó o tiene menos de $360.000 no se abre el chat.
 
    Eventos de Meta:
@@ -28,7 +28,7 @@
     negocio: { min: 3, error: 'Contame qué negocio tenés y en qué ciudad.' },
     donde: { min: 4, error: 'Pasame algo donde pueda ver tu negocio.' }
   };
-  const REQUERIDOS = ['negocio', 'donde', 'tiempo', 'que', 'precio', 'cuando'];
+  const REQUERIDOS = ['negocio', 'donde', 'tiempo', 'precio'];
   const AFUERA = { tiempo: 'Todavía no arrancó', precio: 'Menos de $360.000' };
 
   let actual = 0;
@@ -198,9 +198,7 @@
       `Negocio: ${valor('negocio')}`,
       `Dónde verlo: ${valor('donde')}`,
       `Funciona hace: ${valor('tiempo')}`,
-      `Necesito: ${valor('que')}`,
-      `Presupuesto: ${valor('precio')}`,
-      `Para cuándo: ${valor('cuando')}`
+      `Presupuesto: ${valor('precio')}`
     ].join('\n');
     const mensaje = window.lmConOrigen ? window.lmConOrigen(texto) : texto;
 
