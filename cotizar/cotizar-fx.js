@@ -161,6 +161,7 @@
       activa = i;
       filas.forEach((f, n) => f.classList.toggle('es-on', n === i));
       fotos.forEach((f, n) => f.classList.toggle('es-on', n === i));
+      $('#visorC').textContent = filas[i].querySelector('.r__c')?.textContent || '';
     };
     elegir(0);
 
@@ -185,7 +186,7 @@
     return () => {
       st.scrollTrigger?.kill();
       rub.classList.remove('rub--fx');
-      visor.replaceChildren();
+      visor.replaceChildren($('#visorC'));
     };
   });
 
