@@ -237,6 +237,11 @@ body.es-oscuro .top__b { color: var(--negro); background: #fff; }
 .cierre__h { font-size: clamp(50px, 9vw, 148px); line-height: .96; letter-spacing: -.045em; font-variation-settings: 'wdth' 100, 'wght' 480; }
 .cierre__h em { color: var(--rojo); }
 
+/* ═══ TESTIMONIOS ════════════════════════════════════════════════════════ */
+.citas__l { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(28px, 4vw, 56px); margin-top: 44px; }
+.cita blockquote { font-family: var(--serif); font-size: clamp(27px, 2.6vw, 36px); font-style: italic; line-height: 1.16; letter-spacing: -.01em; }
+.cita figcaption { margin-top: 16px; color: var(--gris); font-size: 15px; }
+
 /* ═══ PIE ════════════════════════════════════════════════════════════════ */
 .pie { display: flex; flex-wrap: wrap; gap: 14px 28px; justify-content: space-between; align-items: center; padding: 28px var(--gut) calc(28px + env(safe-area-inset-bottom)); color: var(--gris); font-size: 14px; border-top: 1px solid rgb(237 235 232 / .1); }
 .pie nav { display: flex; flex-wrap: wrap; gap: 6px 22px; }
@@ -306,7 +311,7 @@ body.es-oscuro .top__b { color: var(--negro); background: #fff; }
   .fila:nth-child(3) { --vel: 42s; }
   .t { width: 58vw; filter: none; box-shadow: none; border-radius: 5px; }
   @keyframes marquee { to { transform: translateX(calc(-50% - 5px)); } }
-  .planes, .pasos ol, .faq { grid-template-columns: minmax(0, 1fr); }
+  .planes, .pasos ol, .faq, .citas__l { grid-template-columns: minmax(0, 1fr); }
   .plan__t { min-height: 0; }
   .fija:not([hidden]) { display: block; }
   .cierre { min-height: 80svh; padding-bottom: 110px; }
