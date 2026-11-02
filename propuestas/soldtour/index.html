@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="description" content="Una web simple para que las empresas te consulten por WhatsApp: qué incluye, cuánto sale y cómo arrancamos." />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="es_AR" />
+  <meta property="og:site_name" content="Lautaro Méndez" />
+  <meta property="og:url" content="https://lautaromendez.com.ar/propuestas/soldtour/" />
+  <meta property="og:title" content="Propuesta para Soldtour — Jorge" />
+  <meta property="og:description" content="Una web simple para que las empresas te consulten por WhatsApp: qué incluye, cuánto sale y cómo arrancamos." />
+  <meta property="og:image" content="https://lautaromendez.com.ar/propuestas/soldtour/og.jpg" />
+  <meta property="og:image:secure_url" content="https://lautaromendez.com.ar/propuestas/soldtour/og.jpg" />
+  <meta property="og:image:type" content="image/jpeg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Propuesta para Soldtour" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://lautaromendez.com.ar/propuestas/soldtour/og.jpg" />
+  <title>Propuesta — Soldtour</title>
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+  <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600&display=swap" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #ffffff;
+      --bg-alt: #f2f5f9;
+      --card: #ffffff;
+      --ink: #15202e;
+      --text: #36414f;
+      --mid: #5f6b7a;
+      --dim: #7d8896;
+      --line: #dfe5ec;
+      --accent: #1d4fc4;
+      --accent-soft: #e6edfb;
+      --ok: #16864f;
+      --sans: 'General Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: var(--sans); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    strong { color: var(--ink); font-weight: 560; }
+
+    .wrap { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+
+    .hero { padding: 72px 0 52px; }
+    .eyebrow { font-size: 13px; font-weight: 560; letter-spacing: .02em; color: var(--accent); margin-bottom: 12px; }
+    .hero h1 { font-size: clamp(32px, 5vw, 46px); font-weight: 560; line-height: 1.1; letter-spacing: -0.025em; color: var(--ink); margin-bottom: 16px; max-width: 700px; }
+    .hero-sub { font-size: 17px; color: var(--mid); max-width: 600px; }
+
+    section { padding: 60px 0; }
+    section.alt { background: var(--bg-alt); }
+    h2 { font-size: 28px; font-weight: 560; letter-spacing: -0.02em; color: var(--ink); line-height: 1.2; margin-bottom: 12px; }
+    .intro { font-size: 16px; color: var(--mid); margin-bottom: 28px; max-width: 640px; }
+
+    .ico { width: 16px; height: 16px; flex-shrink: 0; fill: none; stroke: var(--ok); stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; margin-top: 4px; }
+    .ticks { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+    .ticks li { display: flex; gap: 10px; font-size: 15px; color: var(--text); line-height: 1.45; }
+
+    .dos { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; align-items: center; }
+    .chat { background: #e7f6e3; border-radius: 10px 10px 10px 2px; padding: 16px 18px; font-size: 14.5px; line-height: 1.55; color: var(--ink); max-width: 340px; }
+    .chat b { font-weight: 560; }
+    .chat-nota { margin-top: 8px; font-size: 13px; color: var(--dim); }
+
+    .escalas { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: stretch; }
+    .escala { position: relative; display: flex; flex-direction: column; gap: 16px; padding: 24px; background: var(--card); border: 1px solid var(--line); border-radius: 8px; }
+    .escala.is-reco { border: 2px solid var(--accent); }
+    .reco { position: absolute; top: 22px; right: 20px; font-size: 12px; font-weight: 560; padding: 3px 10px; border-radius: 999px; background: var(--accent-soft); color: var(--accent); }
+    .escala-num { font-size: 13px; font-weight: 560; color: var(--accent); }
+    .escala-title { font-size: 20px; font-weight: 560; letter-spacing: -0.01em; color: var(--ink); line-height: 1.25; margin-top: 2px; }
+    .precio { font-size: 32px; font-weight: 560; letter-spacing: -0.02em; color: var(--ink); line-height: 1.1; }
+    .precio-det { margin-top: 6px; font-size: 13.5px; color: var(--mid); line-height: 1.5; }
+    .nota { margin-top: 20px; font-size: 14px; color: var(--mid); max-width: 700px; }
+
+    .ads { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .ad { padding: 22px 24px; background: var(--card); border: 1px solid var(--line); border-radius: 8px; }
+    .ad span { display: block; font-size: 13px; font-weight: 560; color: var(--mid); margin-bottom: 4px; }
+    .ad b { display: block; font-size: 26px; font-weight: 560; letter-spacing: -0.02em; color: var(--ink); line-height: 1.15; }
+    .ad p { margin-top: 8px; font-size: 14px; color: var(--mid); line-height: 1.5; }
+
+    .pasos { list-style: none; counter-reset: p; display: flex; flex-direction: column; gap: 12px; margin-bottom: 28px; max-width: 640px; }
+    .pasos li { counter-increment: p; display: grid; grid-template-columns: 28px 1fr; gap: 10px; font-size: 15.5px; line-height: 1.5; }
+    .pasos li::before { content: counter(p); display: flex; align-items: center; justify-content: center; width: 26px; height: 26px; border-radius: 50%; background: var(--accent-soft); color: var(--accent); font-size: 13px; font-weight: 560; }
+
+    .btn { display: inline-block; border-radius: 6px; padding: 14px 22px; font-size: 15px; font-weight: 560; color: #fff; background: var(--accent); text-decoration: none; transition: background .15s; }
+    .btn:hover { background: #163c96; }
+    .btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+    footer { padding: 28px 0 36px; text-align: center; font-size: 13px; color: var(--dim); border-top: 1px solid var(--line); }
+
+    @media (max-width: 720px) {
+      .wrap { padding: 0 16px; }
+      .hero { padding: 48px 0 40px; }
+      section { padding: 46px 0; }
+      h2 { font-size: 24px; }
+      .dos, .escalas, .ads { grid-template-columns: 1fr; }
+      .dos { gap: 24px; }
+    }
+    @media print {
+      body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .escala, .ad { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+</svg>
+
+<div class="wrap">
+  <header class="hero">
+    <div class="eyebrow">Propuesta para Jorge · Soldtour</div>
+    <h1>Una web simple para que las empresas te consulten por WhatsApp</h1>
+    <p class="hero-sub">Escuché tus audios. Te dejo lo que haría, cuánto sale y cómo arrancamos.</p>
+  </header>
+</div>
+
+<section class="alt">
+  <div class="wrap dos">
+    <div>
+      <div class="eyebrow">Lo que me pediste</div>
+      <h2>El formulario no quedó viejo</h2>
+      <p class="intro" style="margin-bottom:0">Para traslados de empresas viene muy bien. Quien te consulta completa lo que necesitás saber para cotizar, y te llega ordenado al WhatsApp.</p>
+    </div>
+    <div>
+      <div class="chat"><b>Nueva consulta</b><br />Empresa: Metalúrgica del Sur<br />Servicio: traslado de personal<br />Personas: 18<br />Recorrido: Constitución a Pilar<br />Horario: lunes a viernes, 6 h</div>
+      <p class="chat-nota">Ejemplo de cómo llegaría.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow">Mi recomendación</div>
+    <h2>Hacerla nueva y que quede a tu nombre</h2>
+    <p class="intro" style="margin-bottom:18px">Es más simple que recuperar la anterior y no volvés a depender de otra persona para que siga en línea.</p>
+    <ul class="ticks">
+      <li><svg class="ico"><use href="#i-check"/></svg><span>Traslado empresarial y city tour bien explicados, sin charter ni pagos online.</span></li>
+      <li><svg class="ico"><use href="#i-check"/></svg><span>Formulario y botón de WhatsApp, pensados para usar desde el celular.</span></li>
+      <li><svg class="ico"><use href="#i-check"/></svg><span>Lista para promocionarla en Google Ads cuando quieras.</span></li>
+      <li><svg class="ico"><use href="#i-check"/></svg><span>Diseño propio, hecho a mano por mí, con hasta tres rondas de cambios.</span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="alt" id="opciones" data-visto="opciones">
+  <div class="wrap">
+    <div class="eyebrow">Cuánto sale</div>
+    <h2>Dos opciones, con número cerrado</h2>
+    <p class="intro">Se paga 50% para arrancar y 50% antes de publicar, cuando ya viste la web terminada.</p>
+    <div class="escalas">
+      <article class="escala is-reco">
+        <span class="reco">La que recomiendo</span>
+        <div>
+          <div class="escala-num">Opción 1</div>
+          <div class="escala-title">Web de una página</div>
+        </div>
+        <div>
+          <div class="precio">$360.000</div>
+          <p class="precio-det">2 pagos de $180.000, o $324.000 en uno<br />Lista en 7 a 10 días · Sin costo mensual</p>
+        </div>
+        <ul class="ticks">
+          <li><svg class="ico"><use href="#i-check"/></svg><span>Hasta 6 secciones: servicios, flota, quiénes son y contacto.</span></li>
+          <li><svg class="ico"><use href="#i-check"/></svg><span>Formulario y WhatsApp directo.</span></li>
+          <li><svg class="ico"><use href="#i-check"/></svg><span>Es lo que necesitás para arrancar con Google Ads.</span></li>
+        </ul>
+      </article>
+      <article class="escala">
+        <div>
+          <div class="escala-num">Opción 2</div>
+          <div class="escala-title">Sitio completo</div>
+        </div>
+        <div>
+          <div class="precio">$460.000</div>
+          <p class="precio-det">2 pagos de $230.000, o $414.000 en uno<br />Lista en 3 a 4 semanas · $50.000 por mes de mantenimiento</p>
+        </div>
+        <ul class="ticks">
+          <li><svg class="ico"><use href="#i-check"/></svg><span>De 5 a 10 páginas, con una propia para cada servicio.</span></li>
+          <li><svg class="ico"><use href="#i-check"/></svg><span>Panel para que edites el contenido.</span></li>
+          <li><svg class="ico"><use href="#i-check"/></svg><span>Mail propio, ficha de Google y Analytics.</span></li>
+        </ul>
+      </article>
+    </div>
+    <p class="nota">No incluye el dominio, que se renueva una vez al año y queda a tu nombre, ni sesiones de fotos.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow">Después: Google Ads</div>
+    <h2>Aparecer cuando una empresa busca traslado</h2>
+    <p class="intro">Es opcional y arranca cuando la web esté publicada. Te sugiero probar tres meses con una campaña. Si no te sirve, se corta sin penalidad.</p>
+    <div class="ads">
+      <div class="ad"><span>Lo pagás a Google</span><b>$150.000 por mes</b><p>Monto sugerido. Se puede subir, bajar o pausar, y no pasa por mí.</p></div>
+      <div class="ad"><span>Lo que cobro yo</span><b>$150.000 por mes</b><p>Armado de la campaña, revisión de las búsquedas y un informe mensual.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="arrancar" data-visto="final">
+  <div class="wrap">
+    <div class="eyebrow">Para arrancar</div>
+    <h2>Tres pasos</h2>
+    <ol class="pasos">
+      <li><span><strong>Elegí la opción</strong> y charlamos 10 minutos si te queda alguna duda.</span></li>
+      <li><span><strong>Fijate a nombre de quién está soldtour.com.ar.</strong> Se ve en nic.ar o se lo podés preguntar a quien hizo la web. Si es tuyo, la nueva va ahí.</span></li>
+      <li><span><strong>Pasame logo, fotos de las combis</strong> y una lista de tus servicios. Los textos los escribo yo.</span></li>
+    </ol>
+    <a class="btn" href="https://wa.me/5491130011145?text=Hola%20Lautaro%2C%20vi%20la%20propuesta%20para%20Soldtour" target="_blank" rel="noopener">Escribime por WhatsApp</a>
+  </div>
+</section>
+
+<footer>Propuesta preparada por Lautaro Méndez · 2 de noviembre de 2026 · Precios válidos por 15 días</footer>
+
+<script src="/propuestas/_visto.js" data-p="soldtour" data-n="Jorge" defer></script>
+</body>
+</html>
