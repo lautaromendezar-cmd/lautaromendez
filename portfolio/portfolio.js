@@ -38,6 +38,7 @@ const PROYECTOS = [
   { img: 'port-aldetallemotos.webp',    n: 'Al Detalle Motos',           r: 'Motos · Catálogo de accesorios',    cat: 'ecommerce',   url: 'https://aldetallemotos.vercel.app/' },
   { img: 'port-productos-moneda.webp',  n: 'Productos Moneda',           r: 'Alimentos · Arroz y legumbres',     cat: 'industria',   url: 'https://productosmoneda.com.ar/' },
   { img: 'port-smc.webp',               n: 'SMC Arquitectura',           r: 'Construcción · Llave en mano',      cat: 'industria',   url: 'https://smconstrucciones.com.ar/' },
+  { img: 'port-manos-expertas.webp',   n: 'Manos Expertas',             r: 'Servicios · Electricista 24 hs',    cat: 'servicios',   url: 'https://manosexpertas.com.ar/' },
   { img: 'port-la-perla.webp',          n: 'La Perla Destapaciones',     r: 'Servicios · Plomería y gas 24 hs',  cat: 'servicios',   url: 'https://laperladestapaciones.com.ar/' },
   { img: 'port-destapaciones-hoy.webp', n: 'Destapaciones HOY',          r: 'Servicios · Destapaciones 24 hs',   cat: 'servicios',   url: 'https://destapacioneshoy.com.ar/' },
   { img: 'port-requecho.webp',          n: 'Requecho',                   r: 'Industria · Revestimiento textil',  cat: 'industria',   url: 'https://requecho.com/' },
