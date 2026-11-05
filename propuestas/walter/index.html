@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="description" content="Una web para un estudio de arquitectura y construcción de Humahuaca: una idea hecha con sus bocetos y obras, y tres opciones con precio." />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="es_AR" />
+  <meta property="og:site_name" content="Lautaro Méndez" />
+  <meta property="og:url" content="https://lautaromendez.com.ar/propuestas/walter/" />
+  <meta property="og:title" content="Propuesta para Walter" />
+  <meta property="og:description" content="Una idea de la web con tus bocetos y obras, y tres opciones con precio final." />
+  <meta property="og:image" content="https://lautaromendez.com.ar/propuestas/walter/og.jpg" />
+  <meta property="og:image:secure_url" content="https://lautaromendez.com.ar/propuestas/walter/og.jpg" />
+  <meta property="og:image:type" content="image/jpeg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Propuesta para Walter" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://lautaromendez.com.ar/propuestas/walter/og.jpg" />
+  <title>Propuesta — Walter</title>
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+  <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600&display=swap" />
+  <script>document.documentElement.classList.add('js');</script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* Paleta de Walter: el cielo rojo sobre los cerros */
+    :root {
+      --bg: #ffffff;
+      --bg-alt: #f4f5f7;
+      --card: #ffffff;
+      --soft: #f4f5f7;
+      --ink: #1f1620;
+      --text: #36404b;
+      --mid: #66717c;
+      --dim: #97a0a8;
+      --line: #e4e7ec;
+      --line-strong: #d0d5dd;
+      --accent: #b9553a;
+      --accent-dark: #93412b;
+      --accent-soft: #fbefea;
+      --bad: #d14343;
+      --ok: #1a9a5b;
+      --sans: 'General Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: var(--sans); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    strong { color: var(--ink); font-weight: 560; }
+    img { display: block; max-width: 100%; height: auto; }
+
+    .ico { width: 20px; height: 20px; flex-shrink: 0; fill: none; stroke: var(--mid); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+    .ico-box { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 6px; background: var(--accent-soft); flex-shrink: 0; }
+    .ico-box .ico { stroke: var(--accent); }
+
+    #progress { position: fixed; top: 0; left: 0; height: 3px; width: 0%; background: var(--accent); z-index: 999; transition: width .1s linear; }
+
+    .wrap { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+    .wrap-wide { max-width: 1140px; margin: 0 auto; padding: 0 24px; }
+
+    /* HERO */
+    .hero { padding: 80px 0 60px; }
+    .eyebrow { display: flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 560; letter-spacing: .02em; color: var(--accent); margin-bottom: 14px; }
+    .hero h1 { font-size: clamp(32px, 5vw, 46px); font-weight: 560; line-height: 1.1; letter-spacing: -0.025em; color: var(--ink); margin-bottom: 18px; max-width: 720px; }
+    .hero-sub { font-size: 17px; color: var(--mid); max-width: 620px; margin-bottom: 38px; }
+    .hero-meta { display: flex; gap: 20px 40px; flex-wrap: wrap; padding-top: 24px; border-top: 1px solid var(--line); }
+    .hero-meta-item label { display: block; font-size: 12px; font-weight: 500; color: var(--dim); margin-bottom: 2px; }
+    .hero-meta-item span { font-size: 15px; font-weight: 560; color: var(--ink); }
+
+    /* SECCIONES */
+    section { padding: 72px 0; }
+    section.alt { background: var(--bg-alt); }
+    h2 { font-size: 30px; font-weight: 560; letter-spacing: -0.02em; color: var(--ink); line-height: 1.2; margin-bottom: 12px; }
+    h3 { font-size: 18px; font-weight: 560; color: var(--ink); letter-spacing: -0.01em; margin: 40px 0 10px; }
+    .section-intro { font-size: 16px; color: var(--mid); margin-bottom: 32px; max-width: 660px; }
+    .p { font-size: 15.5px; color: var(--mid); max-width: 660px; margin-bottom: 18px; }
+
+    /* DATOS */
+    .datos { display: grid; grid-template-columns: repeat(3, 1fr); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; margin-bottom: 28px; background: var(--card); }
+    .dato { display: flex; gap: 14px; align-items: flex-start; padding: 20px; }
+    .dato + .dato { border-left: 1px solid var(--line); }
+    .dato b { display: block; font-size: 17px; font-weight: 560; color: var(--ink); line-height: 1.3; margin-bottom: 2px; }
+    .dato span { font-size: 13.5px; color: var(--mid); line-height: 1.45; }
+
+    .callout { display: flex; gap: 14px; align-items: flex-start; padding: 18px 20px; border-left: 3px solid var(--accent); background: var(--card); border-radius: 0 6px 6px 0; font-size: 15px; color: var(--text); }
+    .callout .ico { stroke: var(--accent); margin-top: 2px; }
+    .callout.is-ok { border-left-color: var(--ok); }
+    .callout.is-ok .ico { stroke: var(--ok); }
+
+    /* CAPTURAS */
+    .shot { border: 1px solid var(--line-strong); border-radius: 6px; overflow: hidden; background: var(--card); }
+    .shot-bar { display: flex; align-items: center; gap: 6px; padding: 9px 12px; border-bottom: 1px solid var(--line); background: var(--soft); }
+    .shot-bar i { width: 8px; height: 8px; border-radius: 50%; background: var(--line-strong); }
+    .shot-bar span { margin-left: 8px; font-size: 12px; color: var(--dim); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    figcaption { margin-top: 10px; font-size: 13.5px; color: var(--mid); line-height: 1.5; }
+    figure { margin-bottom: 28px; }
+
+    /* ANTES / DESPUÉS */
+    .ab-bloque { margin-bottom: 40px; }
+    .ab-nota { margin-top: 12px; font-size: 14.5px; color: var(--mid); line-height: 1.55; max-width: 760px; }
+    .ba { --pos: 50%; position: relative; aspect-ratio: 16 / 10; border: 1px solid var(--line-strong); border-radius: 8px; overflow: hidden; background: var(--soft); user-select: none; -webkit-user-select: none; }
+    .ba img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top; }
+    .ba .ba-antes { clip-path: inset(0 calc(100% - var(--pos)) 0 0); }
+    .ba-linea { position: absolute; top: 0; bottom: 0; left: var(--pos); width: 2px; margin-left: -1px; background: #fff; box-shadow: 0 0 0 1px rgb(0 0 0 / .2); pointer-events: none; }
+    .ba-tirador { position: absolute; top: 50%; left: var(--pos); width: 46px; height: 46px; margin: -23px 0 0 -23px; border-radius: 50%; background: #fff; box-shadow: 0 6px 20px rgb(0 0 0 / .25); display: flex; align-items: center; justify-content: center; pointer-events: none; }
+    .ba-tirador .ico { width: 16px; height: 16px; stroke: var(--ink); stroke-width: 2.2; }
+    .ba-tag { position: absolute; bottom: 14px; padding: 5px 12px; border-radius: 999px; font-size: 12px; font-weight: 560; background: rgb(15 23 32 / .82); color: #fff; pointer-events: none; }
+    .ba-tag-antes { left: 14px; }
+    .ba-tag-despues { right: 14px; background: var(--accent); }
+    .ba input { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: ew-resize; margin: 0; }
+    .ba:has(input:focus-visible) { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+    .refs { list-style: none; display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 32px; }
+    .refs li { padding: 14px 16px; background: var(--card); border: 1px solid var(--line); border-radius: 8px; font-size: 14px; color: var(--mid); line-height: 1.45; }
+    .refs b { display: block; font-size: 14.5px; font-weight: 560; color: var(--ink); margin-bottom: 2px; }
+
+    .demo-cta { display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; padding: 22px 24px; border: 1px solid var(--accent); background: var(--accent-soft); border-radius: 8px; }
+    .demo-cta p { font-size: 15px; color: var(--text); max-width: 520px; }
+
+    /* HALLAZGOS */
+    .hall { list-style: none; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; margin-bottom: 28px; background: var(--card); }
+    .hall li { display: grid; grid-template-columns: 24px 1fr; gap: 12px; padding: 14px 18px; font-size: 14.5px; color: var(--text); line-height: 1.5; }
+    .hall li + li { border-top: 1px solid var(--line); }
+    .hall .ico { width: 18px; height: 18px; margin-top: 2px; stroke: var(--bad); }
+    .hall small { display: block; font-size: 13.5px; color: var(--mid); }
+
+    /* OPCIONES */
+    .escalas { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; align-items: stretch; }
+    .escala { position: relative; display: flex; flex-direction: column; background: var(--card); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+    .escala.is-reco { border: 2px solid var(--accent); }
+    .reco { position: absolute; top: 22px; right: 20px; font-size: 12px; font-weight: 560; padding: 3px 10px; border-radius: 999px; background: var(--accent-soft); color: var(--accent); }
+    .escala-head { padding: 24px 24px 20px; border-bottom: 1px solid var(--line); }
+    .escala-top { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+    .escala-num { font-size: 13px; font-weight: 560; color: var(--accent); }
+    .escala-title { font-size: 20px; font-weight: 560; letter-spacing: -0.01em; color: var(--ink); line-height: 1.25; margin-bottom: 8px; }
+    .escala-tagline { font-size: 14px; color: var(--mid); line-height: 1.5; }
+    .escala-price { padding: 20px 24px; border-bottom: 1px solid var(--line); background: var(--soft); }
+    .escala-price-value { font-size: 30px; font-weight: 560; letter-spacing: -0.02em; color: var(--ink); line-height: 1.1; }
+    .escala-facts { margin-top: 14px; display: flex; flex-direction: column; gap: 6px; }
+    .escala-facts div { display: flex; gap: 10px; align-items: flex-start; font-size: 13.5px; color: var(--mid); line-height: 1.4; }
+    .escala-facts .ico { width: 16px; height: 16px; margin-top: 1px; }
+    .escala-facts b { color: var(--text); font-weight: 560; }
+    .escala-body { padding: 20px 24px 24px; display: flex; flex-direction: column; gap: 18px; flex: 1; }
+    .ticks { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+    .ticks li { display: flex; gap: 10px; font-size: 14.5px; color: var(--text); line-height: 1.45; }
+    .ticks .ico { width: 16px; height: 16px; margin-top: 3px; stroke: var(--ok); stroke-width: 2.2; }
+    .ticks-plus { font-size: 12.5px; font-weight: 560; color: var(--dim); }
+
+    /* NECESITO */
+    .need-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .need { display: flex; gap: 12px; align-items: center; padding: 12px 14px; background: var(--card); border: 1px solid var(--line); border-radius: 8px; font-size: 14.5px; color: var(--text); line-height: 1.4; }
+    .need .ico { stroke: var(--accent); }
+    .need small { display: block; font-size: 12.5px; color: var(--dim); }
+
+    /* CIERRE */
+    .cierre p { font-size: 17px; color: var(--text); margin-bottom: 24px; max-width: 600px; }
+    .btn { display: inline-flex; align-items: center; gap: 10px; border: 1px solid var(--accent); border-radius: 6px; padding: 13px 20px; font-size: 14.5px; font-weight: 560; color: var(--accent); text-decoration: none; background: var(--card); transition: background .15s, color .15s; }
+    .btn .ico { width: 16px; height: 16px; stroke: currentColor; }
+    .btn:hover, .btn.is-fill { background: var(--accent); color: #fff; }
+    .btn.is-fill:hover { background: var(--accent-dark); }
+
+    footer { padding: 32px 0 40px; text-align: center; font-size: 13px; color: var(--dim); border-top: 1px solid var(--line); }
+
+    .js .fade { opacity: 0; transform: translateY(16px); transition: opacity .5s ease, transform .5s ease; }
+    .js .fade.visible { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) { .js .fade { opacity: 1; transform: none; transition: none; } }
+
+    @media (max-width: 980px) {
+      .escalas { grid-template-columns: 1fr; max-width: 812px; margin: 0 auto; }
+    }
+    @media (max-width: 640px) {
+      .wrap, .wrap-wide { padding: 0 16px; }
+      .hero { padding: 48px 0 44px; }
+      section { padding: 52px 0; }
+      h2 { font-size: 25px; }
+      .datos { grid-template-columns: 1fr; }
+      .dato + .dato { border-left: none; border-top: 1px solid var(--line); }
+      .ba { aspect-ratio: 16 / 12; }
+      .refs { grid-template-columns: 1fr; }
+      .escala-head, .escala-price, .escala-body { padding-left: 18px; padding-right: 18px; }
+      .need-grid { grid-template-columns: 1fr; }
+    }
+    @media print {
+      body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      #progress { display: none; }
+      .js .fade { opacity: 1; transform: none; transition: none; }
+      .escala, .need, figure, .hall li { break-inside: avoid; }
+      h2, h3 { break-after: avoid; }
+    }
+
+    .duo-shots { display: grid; grid-template-columns: 1fr 260px; gap: 20px; align-items: start; margin-bottom: 28px; }
+    .duo-shots .movil { border: 1px solid var(--line-strong); border-radius: 18px; overflow: hidden; }
+    .tabla { width: 100%; border-collapse: collapse; background: var(--card); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; font-size: 14.5px; margin-bottom: 18px; }
+    .tabla th, .tabla td { text-align: left; padding: 12px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+    .tabla th { font-size: 12.5px; font-weight: 560; color: var(--mid); background: var(--soft); }
+    .tabla td:first-child { color: var(--ink); font-weight: 560; }
+    .tabla .si { color: var(--ok); } .tabla .no { color: var(--bad); }
+    .tabla-wrap { overflow-x: auto; }
+    @media (max-width: 760px) { .duo-shots { grid-template-columns: 1fr; } .duo-shots .movil { max-width: 260px; } }
+  </style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-card" viewBox="0 0 24 24"><rect width="20" height="14" x="2" y="5" rx="2"/><path d="M2 10h20"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+  <symbol id="i-alert" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></symbol>
+  <symbol id="i-wrench" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></symbol>
+  <symbol id="i-layout" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18M9 21V9"/></symbol>
+  <symbol id="i-dashboard" viewBox="0 0 24 24"><rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="16" rx="1"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></symbol>
+  <symbol id="i-server" viewBox="0 0 24 24"><rect width="20" height="8" x="2" y="2" rx="2"/><rect width="20" height="8" x="2" y="14" rx="2"/><path d="M6 6h.01M6 18h.01"/></symbol>
+  <symbol id="i-image" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="3" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.09-3.09a2 2 0 0 0-2.82 0L6 21"/></symbol>
+  <symbol id="i-file" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h6"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></symbol>
+  <symbol id="i-link" viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><rect width="14" height="20" x="5" y="2" rx="2"/><path d="M12 18h.01"/></symbol>
+  <symbol id="i-text" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h10"/></symbol>
+  <symbol id="i-chev-l" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></symbol>
+  <symbol id="i-chev-r" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></symbol>
+  <symbol id="i-filter" viewBox="0 0 24 24"><path d="M22 3H2l8 9.46V19l4 2v-8.54z"/></symbol>
+  <symbol id="i-pencil" viewBox="0 0 24 24"><path d="M17 3a2.85 2.85 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/></symbol>
+  <symbol id="i-map" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></symbol>
+  <symbol id="i-msg" viewBox="0 0 24 24"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></symbol>
+</svg>
+
+<div id="progress"></div>
+
+<div class="wrap">
+  <header class="hero fade">
+    <div class="eyebrow">Propuesta para Walter</div>
+    <h1>Que quien te escriba ya haya visto cómo trabajás, y venga con ganas de construir</h1>
+    <p class="hero-sub">Escuché tu audio y miré las fotos: el laboratorio del hospital, el hostal, las maquetas y los bocetos a mano. Con eso armé una idea de la web, menos seria y más artesanal como pediste, y tres opciones con precio final.</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item"><label>Preparado para</label><span>Walter · Arquitectura y construcción, Humahuaca</span></div>
+      <div class="hero-meta-item"><label>Preparado por</label><span>Lautaro Méndez</span></div>
+      <div class="hero-meta-item"><label>Fecha</label><span>Noviembre 2026</span></div>
+    </div>
+  </header>
+</div>
+
+<section class="alt fade">
+  <div class="wrap">
+    <div class="eyebrow">Así se vería</div>
+    <h2>Pintada con ese cielo rojo, y escrita a mano</h2>
+    <p class="section-intro">Tomé los colores de la foto del atardecer y usé una letra con trazo de lápiz para las notas, como en tus bocetos. Las obras no siguen un molde: cada una se muestra con lo que tiene.</p>
+  </div>
+  <div class="wrap-wide">
+    <div class="duo-shots">
+      <figure style="margin:0"><div class="shot"><div class="shot-bar"><i></i><i></i><i></i><span>Inicio · en la computadora</span></div><img src="vista-pc.jpg" width="1440" height="900" alt="Inicio de la web propuesta en computadora" /></div></figure>
+      <figure style="margin:0"><div class="movil"><img src="vista-movil.jpg" width="520" height="1126" alt="Inicio de la web propuesta en celular" /></div></figure>
+    </div>
+    <figure>
+      <div class="shot"><div class="shot-bar"><i></i><i></i><i></i><span>Cuaderno de obras</span></div><img src="obras-pc.jpg" alt="Sección de obras con antes, durante y después" loading="lazy" /></div>
+      <figcaption>El laboratorio con su antes, durante y después; el hostal con un antes y después que se arrastra con el dedo; y los proyectos que quedaron en maqueta, con su boceto al lado.</figcaption>
+    </figure>
+  </div>
+  <div class="wrap">
+    <div class="demo-cta">
+      <p><strong>Abrí la idea completa</strong> y probá «Contame tu proyecto» al final: son las preguntas que filtran antes de que te llegue la consulta. Mirala también en el celular.</p>
+      <a class="btn is-fill" href="demo/" target="_blank" rel="noopener">Abrir la idea de diseño<svg class="ico"><use href="#i-arrow"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <section class="fade">
+    <div class="eyebrow">Diagnóstico</div>
+    <h2>Cómo está hoy</h2>
+    <div class="datos">
+      <div class="dato"><span class="ico-box"><svg class="ico"><use href="#i-msg"/></svg></span><div><b>~50 consultas por mes</b><span>con un solo video en Facebook. La demanda existe.</span></div></div>
+      <div class="dato"><span class="ico-box"><svg class="ico"><use href="#i-filter"/></svg></span><div><b>Sin filtro</b><span>todas llegan igual al WhatsApp, las serias y las que no.</span></div></div>
+      <div class="dato"><span class="ico-box"><svg class="ico"><use href="#i-image"/></svg></span><div><b>Sin web ni redes</b><span>tus obras, bocetos y maquetas están solo en tu celular.</span></div></div>
+    </div>
+    <p class="p">Me dijiste que no te molesta cotizar 50 para quedarte con uno valioso, pero que cuanto menos trabajo al pedo, mejor. Hoy la persona te escribe sin haber visto nada tuyo y sin contarte nada de su proyecto. Además:</p>
+    <ul class="hall">
+      <li><svg class="ico"><use href="#i-alert"/></svg><span>Para saber si una consulta es seria, tenés que preguntar todo de nuevo cada vez.<small>Dónde es, si tiene terreno, con cuánto cuenta y para cuándo.</small></span></li>
+      <li><svg class="ico"><use href="#i-alert"/></svg><span>El que busca un arquitecto en la Quebrada no te encuentra.<small>Busqué estudios de arquitectura en Humahuaca, Tilcara y Purmamarca, y en Google no aparece ninguno con web propia. El lugar está libre.</small></span></li>
+      <li><svg class="ico"><use href="#i-alert"/></svg><span>Con anuncios que mandan directo al WhatsApp, Meta te trae al que toca, no al que va a construir.<small>Es lo que les pasó con Bolivia: tantos mensajes que no daban abasto.</small></span></li>
+    </ul>
+    <div class="callout is-ok">
+      <svg class="ico"><use href="#i-check"/></svg>
+      <span><strong>Lo que ya está bien:</strong> tenés un material que casi nadie tiene. Bocetos a mano, maquetas hechas por vos, obras con su antes y después, y una búsqueda de materiales (cerámicos rojos como los de antes, ladrillos a medida) que habla sola. No hay que inventar nada: hay que mostrarlo.</span>
+    </div>
+  </section>
+
+  <section class="fade" style="padding-top:0">
+    <div class="eyebrow">Con y sin web</div>
+    <h2>Lo que cambia</h2>
+    <div class="tabla-wrap">
+    <table class="tabla">
+      <tr><th></th><th>Hoy</th><th>Con la propuesta</th></tr>
+      <tr><td>Antes de escribirte</td><td class="no">No vio ninguna obra tuya</td><td class="si">Vio tus obras, tus bocetos y cómo trabajás</td></tr>
+      <tr><td>La consulta</td><td class="no">«Hola, ¿cuánto sale una casa?»</td><td class="si">Qué quiere hacer, dónde, si tiene terreno, con cuánto y para cuándo</td></tr>
+      <tr><td>El que no va en serio</td><td class="no">Te escribe igual</td><td class="si">Se baja solo en las preguntas</td></tr>
+      <tr><td>En Google</td><td class="no">No aparecés</td><td class="si">Aparecés por «arquitecto en Humahuaca» y la zona</td></tr>
+      <tr><td>Obras nuevas</td><td class="no">Quedan en el celular</td><td class="si">Las subís vos desde el panel (opciones 2 y 3)</td></tr>
+    </table>
+    </div>
+  </section>
+
+  <section class="fade" style="padding-top:0">
+    <div class="eyebrow">Las cuentas</div>
+    <h2>Con una obra, la web está paga varias veces</h2>
+    <p class="p">La web cuesta una parte chica de los honorarios de una sola obra. Y lo que no se ve: cada consulta que el filtro deja afuera son 20 minutos de charla y un presupuesto que no tenés que hacer. Con 50 consultas por mes, son horas.</p>
+  </section>
+</div>
+
+<section class="alt fade" id="opciones" data-visto="opciones">
+  <div class="wrap">
+    <div class="eyebrow">Las tres opciones</div>
+    <h2>Tres formas de hacerlo</h2>
+    <p class="section-intro">Me pediste un costo final sin sorpresas: <strong>el precio es final, pagando todo al empezar</strong>. Si preferís dos pagos (mitad al empezar y mitad al entregar), va con un 10% más. Cada opción suma lo de la anterior.</p>
+  </div>
+  <div class="wrap-wide">
+    <div class="escalas">
+      <article class="escala">
+        
+        <div class="escala-head">
+          <div class="escala-top"><span class="ico-box"><svg class="ico"><use href="#i-layout"/></svg></span><span class="escala-num">Opción 1</span></div>
+          <div class="escala-title">Carpeta de obras</div>
+          <p class="escala-tagline">Una sola página que muestra cómo trabajás, con tus obras cargadas.</p>
+        </div>
+        <div class="escala-price">
+          <div class="escala-price-value">$360.000</div>
+          <div class="escala-facts">
+            <div><svg class="ico"><use href="#i-card"/></svg><span><b>Final, en un pago</b>, o <b>2 pagos de $198.000</b></span></div>
+            <div><svg class="ico"><use href="#i-clock"/></svg><span><b>2 semanas</b></span></div>
+            <div><svg class="ico"><use href="#i-wrench"/></svg><span><b>Sin costo mensual</b></span></div>
+          </div>
+        </div>
+        <div class="escala-body">
+          
+          <ul class="ticks"><li><svg class="ico"><use href="#i-check"/></svg>Presentación, cómo trabajás (boceto, maqueta y obra) y servicios con las zonas.</li><li><svg class="ico"><use href="#i-check"/></svg>Hasta 6 obras, cada una contada a su manera: antes y después, bocetos o maqueta.</li><li><svg class="ico"><use href="#i-check"/></svg>Diseño a medida con la paleta del cielo rojo y una letra con trazo de mano.</li><li><svg class="ico"><use href="#i-check"/></svg>Botón de WhatsApp siempre a la vista.</li></ul>
+        </div>
+      </article>
+      <article class="escala is-reco">
+        <span class="reco">La que recomiendo</span>
+        <div class="escala-head">
+          <div class="escala-top"><span class="ico-box"><svg class="ico"><use href="#i-filter"/></svg></span><span class="escala-num">Opción 2</span></div>
+          <div class="escala-title">Web con panel y filtro</div>
+          <p class="escala-tagline">Como la de SMC que te mandé, con tu estilo y el filtro de consultas.</p>
+        </div>
+        <div class="escala-price">
+          <div class="escala-price-value">$480.000</div>
+          <div class="escala-facts">
+            <div><svg class="ico"><use href="#i-card"/></svg><span><b>Final, en un pago</b>, o <b>2 pagos de $264.000</b></span></div>
+            <div><svg class="ico"><use href="#i-clock"/></svg><span><b>3 semanas</b></span></div>
+            <div><svg class="ico"><use href="#i-wrench"/></svg><span><b>Sin costo mensual</b></span></div>
+          </div>
+        </div>
+        <div class="escala-body">
+          <div class="ticks-plus">Todo lo de la opción 1, más</div>
+          <ul class="ticks"><li><svg class="ico"><use href="#i-check"/></svg>Panel simple para que subas obras nuevas vos, desde el celular, cuando quieras.</li><li><svg class="ico"><use href="#i-check"/></svg>Una página por obra, sin un molde fijo: con fotos, bocetos, maqueta o lo que tenga.</li><li><svg class="ico"><use href="#i-check"/></svg>«Contame tu proyecto»: 5 preguntas (qué, dónde, terreno, inversión y cuándo) que te llegan ordenadas al WhatsApp.</li><li><svg class="ico"><use href="#i-check"/></svg>Sección de materiales y la búsqueda de proveedores.</li></ul>
+        </div>
+      </article>
+      <article class="escala">
+        
+        <div class="escala-head">
+          <div class="escala-top"><span class="ico-box"><svg class="ico"><use href="#i-map"/></svg></span><span class="escala-num">Opción 3</span></div>
+          <div class="escala-title">Lista para campañas</div>
+          <p class="escala-tagline">La web, más una página de entrada para los anuncios de Jujuy, Salta y Bolivia.</p>
+        </div>
+        <div class="escala-price">
+          <div class="escala-price-value">$650.000</div>
+          <div class="escala-facts">
+            <div><svg class="ico"><use href="#i-card"/></svg><span><b>Final, en un pago</b>, o <b>2 pagos de $357.500</b></span></div>
+            <div><svg class="ico"><use href="#i-clock"/></svg><span><b>4 semanas</b></span></div>
+            <div><svg class="ico"><use href="#i-wrench"/></svg><span><b>Sin costo mensual</b></span></div>
+          </div>
+        </div>
+        <div class="escala-body">
+          <div class="ticks-plus">Todo lo de la opción 2, más</div>
+          <ul class="ticks"><li><svg class="ico"><use href="#i-check"/></svg>Página de campaña aparte, hecha para quien llega desde un anuncio, con el filtro adelante.</li><li><svg class="ico"><use href="#i-check"/></svg>Medición de Meta y Google: sabés qué anuncio trae consultas serias y cuál solo clics.</li><li><svg class="ico"><use href="#i-check"/></svg>Planilla con todas las consultas, para ver de dónde vienen y cuántas se concretan.</li></ul>
+        </div>
+      </article>
+    </div>
+    <div class="callout is-ok" style="max-width:900px;margin:28px auto 0">
+      <svg class="ico"><use href="#i-check"/></svg>
+      <span><strong>En las tres, todo queda a tu nombre</strong> (dominio y alojamiento gratis en tu cuenta), con un video corto que muestra cómo hacer cambios y <strong>30 días de garantía</strong>. Sin costo mensual: después, los cambios grandes se cotizan aparte. Por transferencia o Mercado Pago, con factura.</span>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <section class="fade">
+    <div class="eyebrow">Para arrancar</div>
+    <h2>Qué necesito de tu lado</h2>
+    <div class="need-grid">
+      <div class="need"><svg class="ico"><use href="#i-image"/></svg><span>Fotos de cada obra<small>Las que tengas: antes, durante, después, maqueta o boceto</small></span></div>
+      <div class="need"><svg class="ico"><use href="#i-msg"/></svg><span>Un audio corto por obra<small>Qué era, qué hiciste y dónde; yo lo paso a texto</small></span></div>
+      <div class="need"><svg class="ico"><use href="#i-pencil"/></svg><span>El nombre de la sociedad<small>Y el logo si hay; si no, armo uno simple con letra a mano</small></span></div>
+      <div class="need"><svg class="ico"><use href="#i-server"/></svg><span>Un Gmail a tu nombre<small>Para dejar todo en tu cuenta: dominio, web y panel</small></span></div>
+    </div>
+    <p class="p" style="margin-top:22px"><strong>No incluye:</strong> manejo de redes, renders 3D ni el armado de los anuncios en Meta o Google. Si querés que los anuncios lleven a la web y medir cuáles traen consultas serias, te armo una propuesta aparte.</p>
+  </section>
+
+  <section class="fade cierre" data-visto="final">
+    <div class="eyebrow">Siguiente paso</div>
+    <h2>Elegí la opción y arrancamos</h2>
+    <p>Decime cuál te cierra, o lo charlamos por llamada. Si arrancamos el lunes 16 de noviembre, la opción recomendada está en línea la primera semana de diciembre.</p>
+    <a class="btn" href="https://lautaromendez.com.ar/portfolio" target="_blank" rel="noopener">Ver trabajos anteriores<svg class="ico"><use href="#i-arrow"/></svg></a>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">Propuesta preparada por Lautaro Méndez · 5 de noviembre de 2026 · Precios válidos por 15 días</div>
+</footer>
+
+<script>
+  window.addEventListener('scroll', () => {
+    const h = document.documentElement.scrollHeight - window.innerHeight;
+    document.getElementById('progress').style.width = (h > 0 ? document.documentElement.scrollTop / h * 100 : 0) + '%';
+  });
+  const fades = document.querySelectorAll('.fade');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } }), { threshold: 0.04 });
+    fades.forEach(el => io.observe(el));
+  } else {
+    fades.forEach(el => el.classList.add('visible'));
+  }
+</script>
+<script src="/propuestas/_visto.js" data-p="walter" data-n="Walter" defer></script>
+</body>
+</html>
