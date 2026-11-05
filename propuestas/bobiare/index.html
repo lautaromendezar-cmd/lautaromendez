@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="description" content="Nueva web para Bobiare S.A.: rediseño, cotización online, tienda para la línea propia y posicionamiento en Google y en las búsquedas con IA. Tres opciones con precio." />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="es_AR" />
+  <meta property="og:site_name" content="Lautaro Méndez" />
+  <meta property="og:url" content="https://lautaromendez.com.ar/propuestas/bobiare/" />
+  <meta property="og:title" content="Propuesta para Bobiare S.A." />
+  <meta property="og:description" content="Lo que vi, una idea de la web nueva con tienda y tres opciones con precio." />
+  <meta property="og:image" content="https://lautaromendez.com.ar/propuestas/bobiare/og.jpg" />
+  <meta property="og:image:secure_url" content="https://lautaromendez.com.ar/propuestas/bobiare/og.jpg" />
+  <meta property="og:image:type" content="image/jpeg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Propuesta para Bobiare S.A." />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://lautaromendez.com.ar/propuestas/bobiare/og.jpg" />
+  <title>Propuesta — Bobiare S.A.</title>
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+  <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600&display=swap" />
+  <script>document.documentElement.classList.add('js');</script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* Paleta de Bobiare: el azul de su logo */
+    :root {
+      --bg: #ffffff;
+      --bg-alt: #f4f5f7;
+      --card: #ffffff;
+      --soft: #f4f5f7;
+      --ink: #0c1830;
+      --text: #36404b;
+      --mid: #66717c;
+      --dim: #97a0a8;
+      --line: #e4e7ec;
+      --line-strong: #d0d5dd;
+      --accent: #1f48b0;
+      --accent-dark: #163787;
+      --accent-soft: #e9effb;
+      --bad: #d14343;
+      --ok: #1a9a5b;
+      --sans: 'General Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: var(--sans); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    strong { color: var(--ink); font-weight: 560; }
+    img { display: block; max-width: 100%; height: auto; }
+
+    .ico { width: 20px; height: 20px; flex-shrink: 0; fill: none; stroke: var(--mid); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+    .ico-box { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 6px; background: var(--accent-soft); flex-shrink: 0; }
+    .ico-box .ico { stroke: var(--accent); }
+
+    #progress { position: fixed; top: 0; left: 0; height: 3px; width: 0%; background: var(--accent); z-index: 999; transition: width .1s linear; }
+
+    .wrap { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+    .wrap-wide { max-width: 1140px; margin: 0 auto; padding: 0 24px; }
+
+    /* HERO */
+    .hero { padding: 80px 0 60px; }
+    .eyebrow { display: flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 560; letter-spacing: .02em; color: var(--accent); margin-bottom: 14px; }
+    .hero h1 { font-size: clamp(32px, 5vw, 46px); font-weight: 560; line-height: 1.1; letter-spacing: -0.025em; color: var(--ink); margin-bottom: 18px; max-width: 720px; }
+    .hero-sub { font-size: 17px; color: var(--mid); max-width: 620px; margin-bottom: 38px; }
+    .hero-meta { display: flex; gap: 20px 40px; flex-wrap: wrap; padding-top: 24px; border-top: 1px solid var(--line); }
+    .hero-meta-item label { display: block; font-size: 12px; font-weight: 500; color: var(--dim); margin-bottom: 2px; }
+    .hero-meta-item span { font-size: 15px; font-weight: 560; color: var(--ink); }
+
+    /* SECCIONES */
+    section { padding: 72px 0; }
+    section.alt { background: var(--bg-alt); }
+    h2 { font-size: 30px; font-weight: 560; letter-spacing: -0.02em; color: var(--ink); line-height: 1.2; margin-bottom: 12px; }
+    h3 { font-size: 18px; font-weight: 560; color: var(--ink); letter-spacing: -0.01em; margin: 40px 0 10px; }
+    .section-intro { font-size: 16px; color: var(--mid); margin-bottom: 32px; max-width: 660px; }
+    .p { font-size: 15.5px; color: var(--mid); max-width: 660px; margin-bottom: 18px; }
+
+    /* DATOS */
+    .datos { display: grid; grid-template-columns: repeat(3, 1fr); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; margin-bottom: 28px; background: var(--card); }
+    .dato { display: flex; gap: 14px; align-items: flex-start; padding: 20px; }
+    .dato + .dato { border-left: 1px solid var(--line); }
+    .dato b { display: block; font-size: 17px; font-weight: 560; color: var(--ink); line-height: 1.3; margin-bottom: 2px; }
+    .dato span { font-size: 13.5px; color: var(--mid); line-height: 1.45; }
+
+    .callout { display: flex; gap: 14px; align-items: flex-start; padding: 18px 20px; border-left: 3px solid var(--accent); background: var(--card); border-radius: 0 6px 6px 0; font-size: 15px; color: var(--text); }
+    .callout .ico { stroke: var(--accent); margin-top: 2px; }
+    .callout.is-ok { border-left-color: var(--ok); }
+    .callout.is-ok .ico { stroke: var(--ok); }
+
+    /* CAPTURAS */
+    .shot { border: 1px solid var(--line-strong); border-radius: 6px; overflow: hidden; background: var(--card); }
+    .shot-bar { display: flex; align-items: center; gap: 6px; padding: 9px 12px; border-bottom: 1px solid var(--line); background: var(--soft); }
+    .shot-bar i { width: 8px; height: 8px; border-radius: 50%; background: var(--line-strong); }
+    .shot-bar span { margin-left: 8px; font-size: 12px; color: var(--dim); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    figcaption { margin-top: 10px; font-size: 13.5px; color: var(--mid); line-height: 1.5; }
+    figure { margin-bottom: 28px; }
+
+    /* ANTES / DESPUÉS */
+    .ab-bloque { margin-bottom: 40px; }
+    .ab-nota { margin-top: 12px; font-size: 14.5px; color: var(--mid); line-height: 1.55; max-width: 760px; }
+    .ba { --pos: 50%; position: relative; aspect-ratio: 16 / 10; border: 1px solid var(--line-strong); border-radius: 8px; overflow: hidden; background: var(--soft); user-select: none; -webkit-user-select: none; }
+    .ba img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top; }
+    .ba .ba-antes { clip-path: inset(0 calc(100% - var(--pos)) 0 0); }
+    .ba-linea { position: absolute; top: 0; bottom: 0; left: var(--pos); width: 2px; margin-left: -1px; background: #fff; box-shadow: 0 0 0 1px rgb(0 0 0 / .2); pointer-events: none; }
+    .ba-tirador { position: absolute; top: 50%; left: var(--pos); width: 46px; height: 46px; margin: -23px 0 0 -23px; border-radius: 50%; background: #fff; box-shadow: 0 6px 20px rgb(0 0 0 / .25); display: flex; align-items: center; justify-content: center; pointer-events: none; }
+    .ba-tirador .ico { width: 16px; height: 16px; stroke: var(--ink); stroke-width: 2.2; }
+    .ba-tag { position: absolute; bottom: 14px; padding: 5px 12px; border-radius: 999px; font-size: 12px; font-weight: 560; background: rgb(15 23 32 / .82); color: #fff; pointer-events: none; }
+    .ba-tag-antes { left: 14px; }
+    .ba-tag-despues { right: 14px; background: var(--accent); }
+    .ba input { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: ew-resize; margin: 0; }
+    .ba:has(input:focus-visible) { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+    .refs { list-style: none; display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 32px; }
+    .refs li { padding: 14px 16px; background: var(--card); border: 1px solid var(--line); border-radius: 8px; font-size: 14px; color: var(--mid); line-height: 1.45; }
+    .refs b { display: block; font-size: 14.5px; font-weight: 560; color: var(--ink); margin-bottom: 2px; }
+
+    .demo-cta { display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; padding: 22px 24px; border: 1px solid var(--accent); background: var(--accent-soft); border-radius: 8px; }
+    .demo-cta p { font-size: 15px; color: var(--text); max-width: 520px; }
+
+    /* HALLAZGOS */
+    .hall { list-style: none; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; margin-bottom: 28px; background: var(--card); }
+    .hall li { display: grid; grid-template-columns: 24px 1fr; gap: 12px; padding: 14px 18px; font-size: 14.5px; color: var(--text); line-height: 1.5; }
+    .hall li + li { border-top: 1px solid var(--line); }
+    .hall .ico { width: 18px; height: 18px; margin-top: 2px; stroke: var(--bad); }
+    .hall small { display: block; font-size: 13.5px; color: var(--mid); }
+
+    /* OPCIONES */
+    .escalas { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; align-items: stretch; }
+    .escala { position: relative; display: flex; flex-direction: column; background: var(--card); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+    .escala.is-reco { border: 2px solid var(--accent); }
+    .reco { position: absolute; top: 22px; right: 20px; font-size: 12px; font-weight: 560; padding: 3px 10px; border-radius: 999px; background: var(--accent-soft); color: var(--accent); }
+    .escala-head { padding: 24px 24px 20px; border-bottom: 1px solid var(--line); }
+    .escala-top { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+    .escala-num { font-size: 13px; font-weight: 560; color: var(--accent); }
+    .escala-title { font-size: 20px; font-weight: 560; letter-spacing: -0.01em; color: var(--ink); line-height: 1.25; margin-bottom: 8px; }
+    .escala-tagline { font-size: 14px; color: var(--mid); line-height: 1.5; }
+    .escala-price { padding: 20px 24px; border-bottom: 1px solid var(--line); background: var(--soft); }
+    .escala-price-value { font-size: 30px; font-weight: 560; letter-spacing: -0.02em; color: var(--ink); line-height: 1.1; }
+    .escala-facts { margin-top: 14px; display: flex; flex-direction: column; gap: 6px; }
+    .escala-facts div { display: flex; gap: 10px; align-items: flex-start; font-size: 13.5px; color: var(--mid); line-height: 1.4; }
+    .escala-facts .ico { width: 16px; height: 16px; margin-top: 1px; }
+    .escala-facts b { color: var(--text); font-weight: 560; }
+    .escala-body { padding: 20px 24px 24px; display: flex; flex-direction: column; gap: 18px; flex: 1; }
+    .ticks { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+    .ticks li { display: flex; gap: 10px; font-size: 14.5px; color: var(--text); line-height: 1.45; }
+    .ticks .ico { width: 16px; height: 16px; margin-top: 3px; stroke: var(--ok); stroke-width: 2.2; }
+    .ticks-plus { font-size: 12.5px; font-weight: 560; color: var(--dim); }
+
+    /* NECESITO */
+    .need-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .need { display: flex; gap: 12px; align-items: center; padding: 12px 14px; background: var(--card); border: 1px solid var(--line); border-radius: 8px; font-size: 14.5px; color: var(--text); line-height: 1.4; }
+    .need .ico { stroke: var(--accent); }
+    .need small { display: block; font-size: 12.5px; color: var(--dim); }
+
+    /* CIERRE */
+    .cierre p { font-size: 17px; color: var(--text); margin-bottom: 24px; max-width: 600px; }
+    .btn { display: inline-flex; align-items: center; gap: 10px; border: 1px solid var(--accent); border-radius: 6px; padding: 13px 20px; font-size: 14.5px; font-weight: 560; color: var(--accent); text-decoration: none; background: var(--card); transition: background .15s, color .15s; }
+    .btn .ico { width: 16px; height: 16px; stroke: currentColor; }
+    .btn:hover, .btn.is-fill { background: var(--accent); color: #fff; }
+    .btn.is-fill:hover { background: var(--accent-dark); }
+
+    footer { padding: 32px 0 40px; text-align: center; font-size: 13px; color: var(--dim); border-top: 1px solid var(--line); }
+
+    .js .fade { opacity: 0; transform: translateY(16px); transition: opacity .5s ease, transform .5s ease; }
+    .js .fade.visible { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) { .js .fade { opacity: 1; transform: none; transition: none; } }
+
+    @media (max-width: 980px) {
+      .escalas { grid-template-columns: 1fr; max-width: 812px; margin: 0 auto; }
+    }
+    @media (max-width: 640px) {
+      .wrap, .wrap-wide { padding: 0 16px; }
+      .hero { padding: 48px 0 44px; }
+      section { padding: 52px 0; }
+      h2 { font-size: 25px; }
+      .datos { grid-template-columns: 1fr; }
+      .dato + .dato { border-left: none; border-top: 1px solid var(--line); }
+      .ba { aspect-ratio: 16 / 12; }
+      .refs { grid-template-columns: 1fr; }
+      .escala-head, .escala-price, .escala-body { padding-left: 18px; padding-right: 18px; }
+      .need-grid { grid-template-columns: 1fr; }
+    }
+    @media print {
+      body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      #progress { display: none; }
+      .js .fade { opacity: 1; transform: none; transition: none; }
+      .escala, .need, figure, .hall li { break-inside: avoid; }
+      h2, h3 { break-after: avoid; }
+    }
+
+    /* Tablas comparativas */
+    .tabla-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 8px; background: var(--card); }
+    .cmp { width: 100%; border-collapse: collapse; font-size: 14.5px; min-width: 560px; }
+    .cmp th, .cmp td { text-align: left; padding: 12px 16px; border-bottom: 1px solid var(--line); vertical-align: top; line-height: 1.45; }
+    .cmp thead th { font-size: 13px; font-weight: 560; color: var(--mid); background: var(--soft); }
+    .cmp tr:last-child td { border-bottom: 0; }
+    .cmp td:first-child { color: var(--ink); font-weight: 500; }
+    .cmp td.no { color: var(--bad); }
+    .cmp td.si { color: var(--ok); }
+    .vistazo td:not(:first-child), .vistazo th:not(:first-child) { text-align: center; white-space: nowrap; }
+    .vistazo .th-reco { color: var(--accent); }
+    .sirve { margin-top: auto; font-size: 13.5px; color: var(--mid); padding-top: 14px; border-top: 1px solid var(--line); }
+    .sirve b { color: var(--ink); font-weight: 560; }
+    @media (max-width: 640px) { .cmp { font-size: 13.5px; } .cmp th, .cmp td { padding: 10px 12px; } }
+  </style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-card" viewBox="0 0 24 24"><rect width="20" height="14" x="2" y="5" rx="2"/><path d="M2 10h20"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+  <symbol id="i-alert" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></symbol>
+  <symbol id="i-wrench" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></symbol>
+  <symbol id="i-layout" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18M9 21V9"/></symbol>
+  <symbol id="i-dashboard" viewBox="0 0 24 24"><rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="16" rx="1"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></symbol>
+  <symbol id="i-server" viewBox="0 0 24 24"><rect width="20" height="8" x="2" y="2" rx="2"/><rect width="20" height="8" x="2" y="14" rx="2"/><path d="M6 6h.01M6 18h.01"/></symbol>
+  <symbol id="i-image" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="3" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.09-3.09a2 2 0 0 0-2.82 0L6 21"/></symbol>
+  <symbol id="i-file" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h6"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></symbol>
+  <symbol id="i-link" viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><rect width="14" height="20" x="5" y="2" rx="2"/><path d="M12 18h.01"/></symbol>
+  <symbol id="i-text" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h10"/></symbol>
+  <symbol id="i-chev-l" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></symbol>
+  <symbol id="i-chev-r" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></symbol>
+
+  <symbol id="i-cart" viewBox="0 0 24 24"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></symbol>
+</svg>
+
+<div id="progress"></div>
+
+<div class="wrap">
+  <header class="hero fade">
+    <div class="eyebrow">Propuesta para Bobiare S.A.</div>
+    <h1>Que la web consiga clientes industriales y venda la línea propia</h1>
+    <p class="hero-sub">Revisé bobiaresa.com.ar en computadora y en celular, leí la auditoría que preparó Sebastián y escuché lo que necesitan: renovar la imagen, sumar una tienda para los productos nuevos y aparecer en las búsquedas de hoy, incluidas las que se hacen con IA. Acá va una idea de cómo se vería y tres opciones con precio.</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item"><label>Preparado para</label><span>Bobiare S.A. · a pedido de Sebastián</span></div>
+      <div class="hero-meta-item"><label>Preparado por</label><span>Lautaro Méndez</span></div>
+      <div class="hero-meta-item"><label>Fecha</label><span>Noviembre 2026</span></div>
+    </div>
+  </header>
+</div>
+
+<!-- ASÍ SE VERÍA -->
+<section class="alt fade">
+  <div class="wrap">
+    <div class="eyebrow">Así se vería</div>
+    <h2>Una planta seria, con números, cotización y tienda</h2>
+    <p class="section-intro">Una idea hecha con el logo, las fotos de la planta y los servicios de Bobiare. Las cifras, los casos y los productos son de ejemplo, para mostrar dónde va cada cosa.</p>
+  </div>
+  <div class="wrap-wide">
+    <div class="ab-bloque">
+      <div class="ba" id="ba">
+        <img src="vista-pc.jpg" width="1440" height="900" alt="Primera pantalla de la web propuesta" />
+        <img class="ba-antes" src="hoy-pc.jpg" width="1440" height="900" alt="Primera pantalla de bobiaresa.com.ar hoy" />
+        <div class="ba-linea"></div>
+        <div class="ba-tirador"><svg class="ico"><use href="#i-chev-l"/></svg><svg class="ico"><use href="#i-chev-r"/></svg></div>
+        <span class="ba-tag ba-tag-antes">Hoy</span><span class="ba-tag ba-tag-despues">Propuesta</span>
+        <input type="range" min="0" max="100" value="50" aria-label="Comparar bobiaresa.com.ar hoy con la propuesta" />
+      </div>
+      <p class="ab-nota">Arrastrá la línea para comparar. La primera pantalla dice en una frase qué hace Bobiare, muestra la escala con números y ofrece dos caminos: <strong>cotizar una pieza</strong> o <strong>ver los productos</strong>. Ya no hay que esperar a que pase un carrusel para entenderlo.</p>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="demo-cta">
+      <p><strong>Abrí la idea completa</strong>: los servicios, los sectores, la tienda, la tabla de «qué entra», los casos y el formulario de cotización. Probala también en el celular.</p>
+      <a class="btn is-fill" href="demo/" target="_blank" rel="noopener">Abrir la idea de diseño<svg class="ico"><use href="#i-arrow"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <!-- DIAGNÓSTICO -->
+  <section class="fade">
+    <div class="eyebrow">Diagnóstico</div>
+    <h2>Cómo está hoy</h2>
+
+    <div class="datos">
+      <div class="dato"><span class="ico-box"><svg class="ico"><use href="#i-phone"/></svg></span><div><b>«Soy PARTICULAR»</b><span>es el mensaje con el que arranca el WhatsApp de arriba, también para una empresa.</span></div></div>
+      <div class="dato"><span class="ico-box"><svg class="ico"><use href="#i-dashboard"/></svg></span><div><b>Sin números</b><span>ni medidas, ni volumen, ni casos: «máxima tecnología», sin pruebas.</span></div></div>
+      <div class="dato"><span class="ico-box"><svg class="ico"><use href="#i-clock"/></svg></span><div><b>© 2024</b><span>en el pie, y un diseño con carrusel que ya se ve de otra época.</span></div></div>
+    </div>
+
+    <figure>
+      <div class="shot"><div class="shot-bar"><i></i><i></i><i></i><span>bobiaresa.com.ar</span></div><img src="hoy-pc.jpg" width="1440" height="900" alt="Portada de bobiaresa.com.ar hoy" loading="lazy" /></div>
+      <figcaption>La portada hoy: tres frases que van pasando («Recuperar. Reforzar. Renovar.») y un botón «Ver más». No hay un pedido de cotización a la vista.</figcaption>
+    </figure>
+
+    <p class="p">Coincido con lo principal de la auditoría de Sebastián: la web explica el rubro, pero no le da al comprador industrial razones para elegir a Bobiare ni un camino claro para pedir precio. Además:</p>
+    <ul class="hall">
+      <li><svg class="ico"><use href="#i-alert"/></svg><span>Un solo camino de contacto para todos.<small>Un jefe de compras con 2.000 piezas y un particular con una silla reciben el mismo formulario.</small></span></li>
+      <li><svg class="ico"><use href="#i-alert"/></svg><span>Las 13 industrias llevan a la misma página.<small>Quien busca «granallado para maquinaria agrícola» no encuentra una página para su caso.</small></span></li>
+      <li><svg class="ico"><use href="#i-alert"/></svg><span>Pintura en polvo y pintura líquida no tienen página propia.<small>Son el centro del negocio y en Google compiten con una sola página genérica.</small></span></li>
+      <li><svg class="ico"><use href="#i-alert"/></svg><span>Hay servicios publicados que hoy no se venden.<small>El taller metalúrgico, los prototipos y la limpieza láser aparecen en la web y en el blog; conviene confirmar qué sigue vigente.</small></span></li>
+      <li><svg class="ico"><use href="#i-alert"/></svg><span>No hay dónde vender los productos nuevos.<small>Ni tienda, ni pago online, ni sección para una línea propia.</small></span></li>
+      <li><svg class="ico"><use href="#i-alert"/></svg><span>Pilar no figura en el contacto ni en el pie.<small>Solo se anuncia en una nota del blog.</small></span></li>
+    </ul>
+
+    <div class="callout is-ok">
+      <svg class="ico"><use href="#i-check"/></svg>
+      <span><strong>Lo que ya está bien:</strong> más de 35 años de trayectoria, fotos reales de la planta, un blog técnico con más de 13 notas que ya sirven para Google, el WhatsApp en todas las páginas y una web que se ve correctamente en el celular. No se tira nada: las notas y las direcciones que Google ya conoce se mantienen.</span>
+    </div>
+  </section>
+</div>
+
+<!-- COMPARATIVA -->
+<section class="alt fade">
+  <div class="wrap">
+    <div class="eyebrow">Lo que busca quien compra</div>
+    <h2>Lo que necesita ver un comprador industrial</h2>
+    <p class="section-intro">Ingeniería y compras eligen proveedor comparando datos. Esto es lo que buscan, cómo está hoy y cómo quedaría.</p>
+    <div class="tabla-wrap">
+      <table class="cmp">
+        <thead><tr><th>Lo que busca</th><th>Hoy</th><th>Con la propuesta</th></tr></thead>
+        <tbody>
+          <tr><td>Saber si su pieza entra</td><td class="no">No hay medidas ni pesos</td><td class="si">Tabla «qué entra y qué hacemos» y ficha PDF</td></tr>
+          <tr><td>Ver que pueden con su volumen</td><td class="no">«Líneas para producción en serie»</td><td class="si">Piezas por mes, plantas y plazos, con números</td></tr>
+          <tr><td>Pruebas de que ya lo hicieron</td><td class="no">Sin casos ni clientes</td><td class="si">Casos con fotos y números (opción 3)</td></tr>
+          <tr><td>Pedir precio sin ida y vuelta</td><td class="no">Formulario genérico</td><td class="si">«Cotizar mi pieza» con medidas, cantidad y adjuntos</td></tr>
+          <tr><td>Una página para su sector</td><td class="no">13 sectores en una sola página</td><td class="si">Maquinaria agrícola, mobiliario y artesanos</td></tr>
+          <tr><td>Comprar un producto online</td><td class="no">No existe</td><td class="si">Tienda con Mercado Pago y envíos</td></tr>
+          <tr><td>Encontrarlos al preguntarle a una IA</td><td class="no">Títulos genéricos («Inicio»)</td><td class="si">Preguntas frecuentes, datos de la empresa y títulos por servicio y zona</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <section class="fade">
+    <div class="eyebrow">Las cuentas</div>
+    <h2>Con un cliente de serie, se paga</h2>
+    <p class="p">Un fabricante que manda piezas todos los meses vale mucho más que lo que cuesta la web. Si la web nueva trae <strong>un solo cliente industrial de serie</strong> en el año, o vende unas pocas decenas de productos de la línea propia, ya se pagó.</p>
+    <div class="callout">
+      <svg class="ico"><use href="#i-search"/></svg>
+      <span><strong>Lo que no se ve:</strong> cada consulta que hoy llega como «Soy PARTICULAR», sin medidas ni cantidad, le lleva tiempo al equipo de ventas. Con el formulario nuevo, las consultas llegan clasificadas (empresa o particular, servicio, cantidad) y con lo necesario para cotizar.</span>
+    </div>
+  </section>
+</div>
+
+<!-- OPCIONES -->
+<section class="alt fade" id="opciones" data-visto="opciones">
+  <div class="wrap">
+    <div class="eyebrow">Las tres opciones</div>
+    <h2>Tres formas de hacerlo</h2>
+    <p class="section-intro">En las tres, la web es nueva y se conservan las notas del blog y las direcciones que Google ya conoce. Cada opción suma lo de la anterior. En dos pagos (mitad al empezar y mitad al entregar), o <strong>10% menos</strong> pagando todo al empezar.</p>
+  </div>
+  <div class="wrap-wide">
+    <div class="escalas">
+      <article class="escala">
+        <div class="escala-head">
+          <div class="escala-top"><span class="ico-box"><svg class="ico"><use href="#i-layout"/></svg></span><span class="escala-num">Opción 1</span></div>
+          <div class="escala-title">Web nueva</div>
+          <p class="escala-tagline">Rediseño completo, ordenado para el comprador industrial y con pedido de cotización.</p>
+        </div>
+        <div class="escala-price">
+          <div class="escala-price-value">$600.000</div>
+          <div class="escala-facts">
+            <div><svg class="ico"><use href="#i-card"/></svg><span><b>2 pagos de $300.000</b>, o <b>$540.000</b> en uno</span></div>
+            <div><svg class="ico"><use href="#i-clock"/></svg><span><b>3 semanas</b></span></div>
+            <div><svg class="ico"><use href="#i-wrench"/></svg><span><b>Sin costo mensual</b></span></div>
+          </div>
+        </div>
+        <div class="escala-body">
+          <ul class="ticks">
+            <li><svg class="ico"><use href="#i-check"/></svg>Diseño nuevo, con la home ordenada como en el boceto.</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>Páginas separadas: granallado y arenado, pintura en polvo, pintura líquida y el servicio combinado.</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>Tabla de «qué entra y qué hacemos», con los datos de la planta.</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>«Cotizar mi pieza» con formulario por tipo de cliente, y WhatsApp con el mensaje correcto.</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>Las dos plantas, el blog migrado y títulos preparados para Google.</li>
+          </ul>
+          <p class="sirve"><b>Sirve si</b> primero quieren ordenar la imagen y las consultas, y la tienda puede esperar.</p>
+        </div>
+      </article>
+      <article class="escala is-reco">
+        <span class="reco">La que recomiendo</span>
+        <div class="escala-head">
+          <div class="escala-top"><span class="ico-box"><svg class="ico"><use href="#i-cart"/></svg></span><span class="escala-num">Opción 2</span></div>
+          <div class="escala-title">Web nueva + tienda</div>
+          <p class="escala-tagline">Todo lo que pidieron: rediseño, tienda para la línea propia y búsquedas de hoy.</p>
+        </div>
+        <div class="escala-price">
+          <div class="escala-price-value">$900.000</div>
+          <div class="escala-facts">
+            <div><svg class="ico"><use href="#i-card"/></svg><span><b>2 pagos de $450.000</b>, o <b>$810.000</b> en uno</span></div>
+            <div><svg class="ico"><use href="#i-clock"/></svg><span><b>5 semanas</b></span></div>
+            <div><svg class="ico"><use href="#i-wrench"/></svg><span><b>Sin costo mensual</b></span></div>
+          </div>
+        </div>
+        <div class="escala-body">
+          <div class="ticks-plus">Todo lo de la opción 1, más</div>
+          <ul class="ticks">
+            <li><svg class="ico"><use href="#i-check"/></svg>Tienda para hasta 5 productos, con cobro por Mercado Pago, envíos y retiro en planta.</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>Un panel simple para cambiar precios, fotos y stock sin depender de nadie.</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>Páginas para maquinaria agrícola, mobiliario metálico y artesanos y restauradores.</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>Preparada para las búsquedas con IA: preguntas frecuentes, datos de la empresa en el formato que leen Google y los asistentes, y la ficha de Google Maps de las dos plantas revisada.</li>
+          </ul>
+          <p class="sirve"><b>Sirve si</b> quieren lanzar los productos con la web nueva y empezar a aparecer por sector.</p>
+        </div>
+      </article>
+      <article class="escala">
+        <div class="escala-head">
+          <div class="escala-top"><span class="ico-box"><svg class="ico"><use href="#i-file"/></svg></span><span class="escala-num">Opción 3</span></div>
+          <div class="escala-title">Completa</div>
+          <p class="escala-tagline">La web con tienda, más las herramientas para salir a buscar clientes.</p>
+        </div>
+        <div class="escala-price">
+          <div class="escala-price-value">$1.200.000</div>
+          <div class="escala-facts">
+            <div><svg class="ico"><use href="#i-card"/></svg><span><b>2 pagos de $600.000</b>, o <b>$1.080.000</b> en uno</span></div>
+            <div><svg class="ico"><use href="#i-clock"/></svg><span><b>7 semanas</b></span></div>
+            <div><svg class="ico"><use href="#i-wrench"/></svg><span><b>Sin costo mensual</b></span></div>
+          </div>
+        </div>
+        <div class="escala-body">
+          <div class="ticks-plus">Todo lo de la opción 2, más</div>
+          <ul class="ticks">
+            <li><svg class="ico"><use href="#i-check"/></svg>3 casos reales con fotos y números, redactados con ustedes.</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>Ficha técnica en PDF con el diseño de la web, para mandar a cada empresa que contacten.</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>Notas técnicas ordenadas por proceso y sector, y un panel para cargar nuevas.</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>Cada consulta queda en una planilla con su origen (Google, WhatsApp, anuncios) y un resumen por mes de visitas y consultas.</li>
+          </ul>
+          <p class="sirve"><b>Sirve si</b> la web va a ser parte de la salida a buscar clientes, como plantea la auditoría.</p>
+        </div>
+      </article>
+    </div>
+
+    <div class="wrap" style="padding:0;margin-top:40px">
+      <h3 style="margin-top:0">De un vistazo</h3>
+      <div class="tabla-wrap">
+        <table class="cmp vistazo">
+          <thead><tr><th></th><th>Opción 1</th><th class="th-reco">Opción 2</th><th>Opción 3</th></tr></thead>
+          <tbody>
+            <tr><td>Diseño nuevo y página por servicio</td><td>✓</td><td>✓</td><td>✓</td></tr>
+            <tr><td>Cotizar mi pieza y tabla de «qué entra»</td><td>✓</td><td>✓</td><td>✓</td></tr>
+            <tr><td>Tienda para 5 productos con panel</td><td>—</td><td>✓</td><td>✓</td></tr>
+            <tr><td>Páginas por sector</td><td>—</td><td>✓</td><td>✓</td></tr>
+            <tr><td>Preparada para búsquedas con IA</td><td>—</td><td>✓</td><td>✓</td></tr>
+            <tr><td>Casos, ficha PDF y notas ordenadas</td><td>—</td><td>—</td><td>✓</td></tr>
+            <tr><td>Registro de consultas y resumen mensual</td><td>—</td><td>—</td><td>✓</td></tr>
+            <tr><td><b>Plazo</b></td><td>3 semanas</td><td>5 semanas</td><td>7 semanas</td></tr>
+            <tr><td><b>En 2 pagos</b></td><td>$600.000</td><td>$900.000</td><td>$1.200.000</td></tr>
+            <tr><td><b>En 1 pago (−10%)</b></td><td>$540.000</td><td>$810.000</td><td>$1.080.000</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="callout is-ok" style="max-width:900px;margin:28px auto 0">
+      <svg class="ico"><use href="#i-check"/></svg>
+      <span><strong>En las tres, todo queda a nombre de Bobiare</strong>: el dominio, el alojamiento (gratis, sin costo mensual) y los accesos. Se entrega con un video corto que muestra cómo hacer cambios y <strong>30 días de garantía</strong>. Después, los cambios se cotizan aparte.</span>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <!-- CÓMO SE PAGA -->
+  <section class="fade">
+    <div class="eyebrow">Cómo se paga</div>
+    <h2>Dos formas</h2>
+    <div class="need-grid">
+      <div class="need"><svg class="ico"><use href="#i-card"/></svg><span>En 2 pagos<small>Mitad al empezar y mitad al entregar, al precio de lista</small></span></div>
+      <div class="need"><svg class="ico"><use href="#i-check"/></svg><span>En 1 pago al empezar, 10% menos<small>Por transferencia o Mercado Pago, con factura</small></span></div>
+    </div>
+  </section>
+
+  <!-- QUÉ NECESITO -->
+  <section class="fade" style="padding-top:0">
+    <div class="eyebrow">Para arrancar</div>
+    <h2>Qué necesito de su lado</h2>
+    <div class="need-grid">
+      <div class="need"><svg class="ico"><use href="#i-server"/></svg><span>Acceso al dominio y a la web actual<small>O el contacto de quien los maneja; el mail de ventas no se toca</small></span></div>
+      <div class="need"><svg class="ico"><use href="#i-dashboard"/></svg><span>Los datos de la planta<small>Medidas máximas, volumen, plazos y zonas de retiro, confirmados por producción</small></span></div>
+      <div class="need"><svg class="ico"><use href="#i-cart"/></svg><span>Los productos de la línea propia<small>Fotos, medidas, precio y costo de envío (opciones 2 y 3)</small></span></div>
+      <div class="need"><svg class="ico"><use href="#i-image"/></svg><span>Fotos de trabajos y de la planta<small>Si hace falta, se coordina una jornada de fotos aparte</small></span></div>
+      <div class="need"><svg class="ico"><use href="#i-shield"/></svg><span>Qué servicios siguen vigentes<small>Taller metalúrgico, prototipos y limpieza láser</small></span></div>
+      <div class="need"><svg class="ico"><use href="#i-file"/></svg><span>3 trabajos para contar<small>Con autorización del cliente (opción 3)</small></span></div>
+    </div>
+    <p class="p" style="margin-top:22px"><strong>No incluye:</strong> manejo de redes, sesión de fotos profesional, escribir notas todos los meses, ni anuncios en Google o Meta. Si les interesa salir a buscar clientes con anuncios, les armo una propuesta aparte.</p>
+  </section>
+
+  <!-- CIERRE -->
+  <section class="fade cierre" data-visto="final">
+    <div class="eyebrow">Siguiente paso</div>
+    <h2>Elijan la opción y arrancamos</h2>
+    <p>Díganme cuál les cierra, o lo charlamos en una llamada con Sebastián. Si arrancamos el lunes 16 de noviembre, la opción recomendada está en línea antes de fin de año, a tiempo para lanzar los productos.</p>
+    <a class="btn" href="https://lautaromendez.com.ar/portfolio" target="_blank" rel="noopener">Ver trabajos anteriores<svg class="ico"><use href="#i-arrow"/></svg></a>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">Propuesta preparada por Lautaro Méndez · 5 de noviembre de 2026 · Precios válidos por 15 días</div>
+</footer>
+
+<script>
+  window.addEventListener('scroll', () => {
+    const h = document.documentElement.scrollHeight - window.innerHeight;
+    document.getElementById('progress').style.width = (h > 0 ? document.documentElement.scrollTop / h * 100 : 0) + '%';
+  });
+  const ba = document.getElementById('ba');
+  ba.querySelector('input').addEventListener('input', e => ba.style.setProperty('--pos', e.target.value + '%'));
+  const fades = document.querySelectorAll('.fade');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } }), { threshold: 0.04 });
+    fades.forEach(el => io.observe(el));
+  } else {
+    fades.forEach(el => el.classList.add('visible'));
+  }
+</script>
+<script src="/propuestas/_visto.js" data-p="bobiare" data-n="Bobiare" defer></script>
+</body>
+</html>

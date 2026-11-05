@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Bobiare S.A. — Granallado y pintura industrial (boceto)</title>
+  <meta name="description" content="Boceto de la nueva web de Bobiare: granallado, arenado y pintura en polvo y líquida en una sola planta, con cotización online y tienda de productos propios." />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="es_AR" />
+  <meta property="og:site_name" content="Lautaro Méndez" />
+  <meta property="og:url" content="https://lautaromendez.com.ar/propuestas/bobiare/demo/" />
+  <meta property="og:title" content="Bobiare — idea de la nueva web" />
+  <meta property="og:description" content="Granallado y pintura en una sola planta, cotización online y tienda de productos propios." />
+  <meta property="og:image" content="https://lautaromendez.com.ar/propuestas/bobiare/og.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #ffffff;
+      --alt: #f3f5f8;
+      --ink: #0c1830;
+      --text: #354155;
+      --mid: #5f6b7d;
+      --dim: #8d97a6;
+      --line: #e1e6ed;
+      --blue: #1f48b0;
+      --blue-dark: #163787;
+      --blue-soft: #e9effb;
+      --steel: #121b2c;
+      --ok: #1a9a5b;
+      --head: 'Barlow', 'Segoe UI', system-ui, sans-serif;
+      --sans: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: var(--sans); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+    img { display: block; max-width: 100%; height: auto; }
+    a { color: inherit; }
+    h1, h2, h3 { font-family: var(--head); color: var(--ink); letter-spacing: -0.01em; line-height: 1.1; }
+    .wrap { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+    .ico { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
+
+    .aviso { background: #fff7d6; color: #6b5300; font-size: 13px; text-align: center; padding: 8px 16px; border-bottom: 1px solid #f0e1a0; }
+
+    /* HEADER */
+    .top { position: sticky; top: 0; z-index: 50; background: rgb(255 255 255 / .96); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+    .top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 20px; height: 72px; }
+    .logo img { height: 40px; width: auto; }
+    .nav { display: flex; align-items: center; gap: 26px; font-size: 14.5px; font-weight: 500; }
+    .nav a { text-decoration: none; color: var(--text); }
+    .nav a:hover { color: var(--blue); }
+    .nav a.btn, .nav a.btn:hover { color: #fff; }
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 20px; border-radius: 6px; font-size: 15px; font-weight: 600; text-decoration: none; border: 1px solid transparent; cursor: pointer; font-family: var(--sans); transition: background .15s, color .15s, border-color .15s; }
+    .btn-blue { background: var(--blue); color: #fff; }
+    .btn-blue:hover { background: var(--blue-dark); }
+    .btn-line { border-color: rgb(255 255 255 / .5); color: #fff; }
+    .btn-line:hover { background: rgb(255 255 255 / .1); }
+    .btn-ghost { border-color: var(--line); color: var(--ink); background: #fff; }
+    .btn-ghost:hover { border-color: var(--blue); color: var(--blue); }
+    .btn-sm { padding: 9px 16px; font-size: 14px; }
+    .menu-btn { display: none; background: none; border: 0; padding: 8px; color: var(--ink); cursor: pointer; }
+
+    /* HERO */
+    .hero { position: relative; color: #fff; background: var(--steel); overflow: hidden; }
+    .hero-bg { position: absolute; inset: 0; background: url(img/hero.jpg) 70% 30% / cover no-repeat; opacity: .55; }
+    .hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgb(12 24 48 / .95) 0%, rgb(12 24 48 / .75) 45%, rgb(12 24 48 / .2) 100%); }
+    .hero .wrap { position: relative; z-index: 1; padding-top: 96px; padding-bottom: 72px; }
+    .kicker { display: inline-block; font-size: 13px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: #9fb8ff; margin-bottom: 18px; }
+    .hero h1 { color: #fff; font-size: clamp(36px, 5.4vw, 60px); font-weight: 700; max-width: 720px; margin-bottom: 20px; }
+    .hero p { font-size: 18px; color: rgb(255 255 255 / .82); max-width: 600px; margin-bottom: 32px; }
+    .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+    .cifras { display: grid; grid-template-columns: repeat(4, 1fr); margin-top: 64px; border-top: 1px solid rgb(255 255 255 / .18); }
+    .cifra { padding: 22px 20px 0 0; }
+    .cifra b { display: block; font-family: var(--head); font-size: 34px; font-weight: 700; color: #fff; line-height: 1.1; }
+    .cifra span { font-size: 14px; color: rgb(255 255 255 / .7); }
+
+    section { padding: 88px 0; }
+    section.alt { background: var(--alt); }
+    .sec-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; margin-bottom: 36px; flex-wrap: wrap; }
+    .sec-head h2 { font-size: clamp(30px, 3.6vw, 40px); font-weight: 700; max-width: 640px; }
+    .sec-head p { color: var(--mid); max-width: 460px; font-size: 15.5px; }
+    .eyebrow { font-size: 13px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--blue); margin-bottom: 10px; }
+
+    /* SERVICIOS */
+    .servs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .serv { background: #fff; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; display: flex; flex-direction: column; text-decoration: none; transition: border-color .15s, transform .15s; }
+    .serv:hover { border-color: var(--blue); transform: translateY(-2px); }
+    .serv img { aspect-ratio: 16 / 10; object-fit: cover; width: 100%; }
+    .serv-body { padding: 22px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+    .serv h3 { font-size: 23px; font-weight: 700; }
+    .serv p { font-size: 14.5px; color: var(--mid); }
+    .serv ul { list-style: none; display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+    .serv li { font-size: 12.5px; padding: 3px 10px; border-radius: 999px; background: var(--alt); color: var(--text); }
+    .serv .mas { margin-top: auto; padding-top: 12px; font-size: 14px; font-weight: 600; color: var(--blue); display: flex; align-items: center; gap: 6px; }
+    .combo { margin-top: 20px; display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; padding: 24px 28px; border-radius: 10px; background: var(--ink); color: #fff; }
+    .combo b { font-family: var(--head); font-size: 22px; font-weight: 700; display: block; margin-bottom: 4px; }
+    .combo span { color: rgb(255 255 255 / .75); font-size: 15px; }
+
+    /* INDUSTRIAS */
+    .inds { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .ind { position: relative; border-radius: 10px; overflow: hidden; min-height: 280px; display: flex; align-items: flex-end; text-decoration: none; color: #fff; }
+    .ind img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .4s; }
+    .ind:hover img { transform: scale(1.04); }
+    .ind::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgb(12 24 48 / 0) 30%, rgb(12 24 48 / .92) 100%); }
+    .ind div { position: relative; z-index: 1; padding: 22px; }
+    .ind h3 { color: #fff; font-size: 24px; font-weight: 700; margin-bottom: 4px; }
+    .ind p { font-size: 14px; color: rgb(255 255 255 / .8); }
+    .otras { margin-top: 18px; font-size: 14.5px; color: var(--mid); }
+    .otras a { color: var(--blue); font-weight: 600; }
+
+    /* TIENDA */
+    .prods { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+    .prod { background: #fff; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; display: flex; flex-direction: column; }
+    .prod img { aspect-ratio: 1; object-fit: cover; width: 100%; background: #ebe9e6; }
+    .prod-body { padding: 18px; display: flex; flex-direction: column; gap: 6px; flex: 1; }
+    .prod h3 { font-size: 19px; font-weight: 600; }
+    .prod small { font-size: 13px; color: var(--mid); }
+    .prod .precio { font-family: var(--head); font-size: 24px; font-weight: 700; color: var(--ink); margin-top: auto; padding-top: 8px; }
+    .prod .cuotas { font-size: 12.5px; color: var(--ok); font-weight: 500; }
+    .prod .btn { margin-top: 10px; justify-content: center; }
+    .tienda-pie { margin-top: 22px; display: flex; gap: 28px; flex-wrap: wrap; font-size: 14px; color: var(--mid); }
+    .tienda-pie span { display: flex; align-items: center; gap: 8px; }
+    .tienda-pie .ico { color: var(--blue); }
+
+    /* PASOS */
+    .pasos { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; counter-reset: p; border-top: 2px solid var(--ink); }
+    .paso { padding: 24px 24px 0 0; counter-increment: p; }
+    .paso::before { content: "0" counter(p); display: block; font-family: var(--head); font-weight: 700; font-size: 15px; color: var(--blue); margin-bottom: 10px; }
+    .paso h3 { font-size: 21px; font-weight: 700; margin-bottom: 6px; }
+    .paso p { font-size: 14.5px; color: var(--mid); }
+
+    /* CAPACIDADES */
+    .cap { display: grid; grid-template-columns: 1.1fr 1fr; gap: 40px; align-items: start; }
+    .tabla { width: 100%; border-collapse: collapse; background: #fff; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; font-size: 14.5px; }
+    .tabla th, .tabla td { text-align: left; padding: 13px 18px; border-bottom: 1px solid var(--line); vertical-align: top; }
+    .tabla th { width: 42%; font-weight: 500; color: var(--mid); }
+    .tabla td { color: var(--ink); font-weight: 500; }
+    .tabla tr:last-child th, .tabla tr:last-child td { border-bottom: 0; }
+    .cap-fotos { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .cap-fotos img { border-radius: 8px; aspect-ratio: 4 / 3; object-fit: cover; width: 100%; }
+    .cap-fotos img:first-child { grid-column: span 2; aspect-ratio: 16 / 9; }
+    .cap-acciones { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 20px; }
+    .no-hacemos { margin-top: 18px; font-size: 14px; color: var(--mid); }
+
+    /* CASOS */
+    .casos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .caso { background: #fff; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
+    .caso img { aspect-ratio: 16 / 10; object-fit: cover; width: 100%; }
+    .caso-body { padding: 20px; }
+    .caso .sector { font-size: 12.5px; font-weight: 600; color: var(--blue); text-transform: uppercase; letter-spacing: .05em; }
+    .caso h3 { font-size: 20px; font-weight: 700; margin: 6px 0 8px; }
+    .caso p { font-size: 14px; color: var(--mid); }
+    .caso dl { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--line); }
+    .caso dt { font-size: 12px; color: var(--dim); }
+    .caso dd { font-family: var(--head); font-size: 18px; font-weight: 700; color: var(--ink); }
+
+    /* COTIZAR */
+    .cotizar { background: var(--ink); color: #fff; }
+    .cot { display: grid; grid-template-columns: .85fr 1.15fr; gap: 56px; }
+    .cotizar h2 { color: #fff; font-size: clamp(30px, 3.6vw, 42px); font-weight: 700; margin-bottom: 14px; }
+    .cotizar .eyebrow { color: #9fb8ff; }
+    .cot-txt p { color: rgb(255 255 255 / .75); margin-bottom: 22px; }
+    .cot-lista { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px; }
+    .cot-lista li { display: flex; gap: 10px; font-size: 15px; color: rgb(255 255 255 / .9); }
+    .cot-lista .ico { color: #6fd39f; margin-top: 2px; }
+    .wa { display: inline-flex; align-items: center; gap: 10px; color: #fff; font-weight: 600; text-decoration: none; font-size: 15px; }
+    .wa svg { width: 22px; height: 22px; fill: #25d366; }
+    form { background: #fff; color: var(--text); border-radius: 12px; padding: 28px; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .seg { grid-column: span 2; display: grid; grid-template-columns: 1fr 1fr; gap: 0; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+    .seg label { text-align: center; padding: 11px; font-size: 14px; font-weight: 600; cursor: pointer; color: var(--mid); }
+    .seg input { position: absolute; opacity: 0; pointer-events: none; }
+    .seg label:has(input:checked) { background: var(--blue); color: #fff; }
+    .campo { display: flex; flex-direction: column; gap: 6px; }
+    .campo.full { grid-column: span 2; }
+    .campo label { font-size: 13px; font-weight: 600; color: var(--ink); }
+    .campo input, .campo select, .campo textarea { font: inherit; font-size: 15px; padding: 11px 12px; border: 1px solid var(--line); border-radius: 6px; background: #fff; color: var(--ink); width: 100%; }
+    .campo input:focus, .campo select:focus, .campo textarea:focus { outline: 2px solid var(--blue); outline-offset: -1px; border-color: var(--blue); }
+    .campo textarea { min-height: 84px; resize: vertical; }
+    .archivo { border: 1px dashed #b9c3d3; border-radius: 6px; padding: 14px; font-size: 14px; color: var(--mid); text-align: center; }
+    form .btn { grid-column: span 2; justify-content: center; padding: 14px; }
+    .form-nota { grid-column: span 2; font-size: 12.5px; color: var(--dim); text-align: center; }
+
+    /* FAQ + SEDES */
+    .faq-sedes { display: grid; grid-template-columns: 1.2fr 1fr; gap: 48px; }
+    details { border-bottom: 1px solid var(--line); }
+    summary { list-style: none; cursor: pointer; padding: 18px 0; font-weight: 600; color: var(--ink); display: flex; justify-content: space-between; gap: 16px; font-size: 16px; }
+    summary::-webkit-details-marker { display: none; }
+    summary::after { content: "+"; font-size: 22px; line-height: 1; color: var(--blue); }
+    details[open] summary::after { content: "−"; }
+    details p { padding: 0 0 18px; font-size: 15px; color: var(--mid); }
+    .sede { border: 1px solid var(--line); border-radius: 10px; padding: 20px; background: #fff; margin-bottom: 14px; }
+    .sede b { font-family: var(--head); font-size: 20px; color: var(--ink); display: block; }
+    .sede span { font-size: 14.5px; color: var(--mid); display: block; }
+    .sede-foto { border-radius: 10px; aspect-ratio: 16 / 9; object-fit: cover; width: 100%; margin-bottom: 14px; }
+
+    footer { background: var(--steel); color: rgb(255 255 255 / .7); padding: 56px 0 32px; font-size: 14px; }
+    .foot { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 32px; margin-bottom: 40px; }
+    .foot img { height: 52px; width: auto; margin-bottom: 14px; }
+    .foot h4 { color: #fff; font-size: 14px; margin-bottom: 12px; font-weight: 600; }
+    .foot a { display: block; text-decoration: none; margin-bottom: 7px; }
+    .foot a:hover { color: #fff; }
+    .foot-bot { border-top: 1px solid rgb(255 255 255 / .12); padding-top: 22px; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; font-size: 13px; }
+
+    .wa-float { position: fixed; right: 20px; bottom: 20px; z-index: 60; width: 56px; height: 56px; border-radius: 50%; background: #25d366; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 24px rgb(0 0 0 / .2); }
+    .wa-float svg { width: 30px; height: 30px; fill: #fff; }
+
+    @media (max-width: 980px) {
+      .nav { display: none; }
+      .nav.open { display: flex; position: absolute; top: 72px; left: 0; right: 0; flex-direction: column; align-items: stretch; gap: 0; background: #fff; border-bottom: 1px solid var(--line); padding: 8px 24px 20px; }
+      .nav.open a { padding: 12px 0; border-bottom: 1px solid var(--line); }
+      .nav.open .btn { margin-top: 12px; justify-content: center; border: 0; color: #fff; }
+      .menu-btn { display: block; }
+      .servs, .inds, .casos { grid-template-columns: 1fr 1fr; }
+      .prods { grid-template-columns: 1fr 1fr; }
+      .pasos { grid-template-columns: 1fr 1fr; row-gap: 24px; }
+      .cap, .cot, .faq-sedes { grid-template-columns: 1fr; gap: 36px; }
+      .foot { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 640px) {
+      .wrap { padding: 0 16px; }
+      section { padding: 60px 0; }
+      .hero .wrap { padding-top: 64px; padding-bottom: 48px; }
+      .hero p { font-size: 16px; }
+      .cifras { grid-template-columns: 1fr 1fr; margin-top: 44px; }
+      .cifra b { font-size: 28px; }
+      .servs, .inds, .casos { grid-template-columns: 1fr; }
+      .ind { min-height: 220px; }
+      .prods { gap: 12px; }
+      .prod-body { padding: 14px; }
+      .prod h3 { font-size: 16.5px; }
+      .prod .precio { font-size: 20px; }
+      .prod .btn { padding: 10px; font-size: 13.5px; }
+      .pasos { grid-template-columns: 1fr; }
+      .paso { padding-right: 0; }
+      form { grid-template-columns: 1fr; padding: 20px; }
+      .seg, .campo.full, form .btn, .form-nota { grid-column: span 1; }
+      .tabla th, .tabla td { padding: 11px 12px; font-size: 13.5px; }
+      .foot { grid-template-columns: 1fr; }
+      .logo img { height: 34px; }
+      .top .btn-sm { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+  <symbol id="i-truck" viewBox="0 0 24 24"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2M15 18H9M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.62l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></symbol>
+  <symbol id="i-card" viewBox="0 0 24 24"><rect width="20" height="14" x="2" y="5" rx="2"/><path d="M2 10h20"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></symbol>
+  <symbol id="i-file" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M12 18v-6M9 15l3 3 3-3"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></symbol>
+  <symbol id="i-wa" viewBox="0 0 24 24"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.28-.1-.48-.15-.68.15-.2.3-.77.97-.95 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.14-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.22 1.36.19 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35M12.05 21.5h-.01a9.4 9.4 0 0 1-4.8-1.32l-.34-.2-3.57.94.95-3.48-.22-.36a9.4 9.4 0 0 1-1.44-5.02c0-5.2 4.24-9.43 9.44-9.43a9.4 9.4 0 0 1 9.43 9.44c0 5.2-4.23 9.43-9.44 9.43m8.03-17.46A11.27 11.27 0 0 0 12.05.72C5.8.72.7 5.8.7 12.07c0 2 .52 3.95 1.52 5.67L.6 23.62l6.02-1.58a11.3 11.3 0 0 0 5.42 1.38h.01c6.26 0 11.35-5.09 11.36-11.35 0-3.03-1.18-5.89-3.33-8.03"/></symbol>
+</svg>
+
+<div class="aviso">Boceto de ejemplo: las cifras, los casos, los productos y los precios están puestos para mostrar la idea y se reemplazan por los reales.</div>
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="#"><img src="img/LogoBobiareRetina.png" width="521" height="138" alt="Bobiare S.A." /></a>
+    <nav class="nav" id="nav">
+      <a href="#servicios">Servicios</a>
+      <a href="#industrias">Industrias</a>
+      <a href="#tienda">Tienda</a>
+      <a href="#capacidad">Planta</a>
+      <a href="#casos">Casos</a>
+      <a href="#preguntas">Preguntas</a>
+      <a class="btn btn-blue btn-sm" href="#cotizar">Cotizar mi pieza</a>
+    </nav>
+    <button class="menu-btn" aria-label="Abrir menú" onclick="document.getElementById('nav').classList.toggle('open')"><svg class="ico" style="width:26px;height:26px"><use href="#i-menu"/></svg></button>
+  </div>
+</header>
+
+<section class="hero" style="padding:0">
+  <div class="hero-bg"></div>
+  <div class="wrap">
+    <span class="kicker">Don Torcuato · Pilar · desde hace más de 35 años</span>
+    <h1>Granallado y pintura industrial en un solo proveedor</h1>
+    <p>Recibimos piezas metálicas con óxido o pintura vieja y las devolvemos granalladas y pintadas, en polvo o en líquido. Desde una pieza hasta series de miles por mes, con retiro y entrega en AMBA.</p>
+    <div class="hero-btns">
+      <a class="btn btn-blue" href="#cotizar">Cotizar mi pieza<svg class="ico" style="width:18px;height:18px"><use href="#i-arrow"/></svg></a>
+      <a class="btn btn-line" href="#tienda">Ver productos Bobiare</a>
+    </div>
+    <div class="cifras">
+      <div class="cifra"><b>+35 años</b><span>trabajando para la industria</span></div>
+      <div class="cifra"><b>17.000</b><span>piezas procesadas por mes</span></div>
+      <div class="cifra"><b>2 plantas</b><span>Don Torcuato y Pilar</span></div>
+      <div class="cifra"><b>48 h</b><span>para responder cada cotización</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="servicios">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><div class="eyebrow">Servicios</div><h2>Preparamos la superficie y la pintamos, sin cambiar de proveedor</h2></div>
+      <p>Cada servicio tiene su página con medidas, terminaciones y plazos, para que ingeniería y compras sepan si la pieza entra antes de escribir.</p>
+    </div>
+    <div class="servs">
+      <a class="serv" href="#cotizar">
+        <img src="img/granallado.jpg" width="600" height="419" alt="Vigas granalladas y pintadas en la planta de Bobiare" loading="lazy" />
+        <div class="serv-body">
+          <h3>Granallado y arenado</h3>
+          <p>Quitamos óxido, calamina y pintura vieja, y dejamos la superficie lista para pintar.</p>
+          <ul><li>Cabinas automáticas</li><li>Piezas grandes</li><li>Granallado manual de precisión</li></ul>
+          <span class="mas">Ver medidas y terminaciones <svg class="ico" style="width:16px;height:16px"><use href="#i-arrow"/></svg></span>
+        </div>
+      </a>
+      <a class="serv" href="#cotizar">
+        <img src="img/polvo.jpg" width="641" height="456" alt="Aplicación de pintura en polvo" loading="lazy" />
+        <div class="serv-body">
+          <h3>Pintura en polvo</h3>
+          <p>Terminación pareja y resistente, con horno continuo para producción en serie.</p>
+          <ul><li>Colores RAL</li><li>Texturados y brillantes</li><li>Series</li></ul>
+          <span class="mas">Ver medidas y terminaciones <svg class="ico" style="width:16px;height:16px"><use href="#i-arrow"/></svg></span>
+        </div>
+      </a>
+      <a class="serv" href="#cotizar">
+        <img src="img/estructura.jpg" width="600" height="419" alt="Estructura metálica pintada en líquido" loading="lazy" />
+        <div class="serv-body">
+          <h3>Pintura líquida</h3>
+          <p>Para piezas que no entran al horno, esquemas anticorrosivos y epoxi.</p>
+          <ul><li>Epoxi</li><li>Anticorrosivos</li><li>Estructuras grandes</li></ul>
+          <span class="mas">Ver medidas y terminaciones <svg class="ico" style="width:16px;height:16px"><use href="#i-arrow"/></svg></span>
+        </div>
+      </a>
+    </div>
+    <div class="combo">
+      <div><b>Granallado + pintura, en un mismo lugar</b><span>La pieza entra con óxido y sale pintada. No coordinás dos proveedores ni hay viajes entre procesos.</span></div>
+      <a class="btn btn-blue" href="#cotizar">Cotizar el servicio completo</a>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="industrias">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><div class="eyebrow">Industrias</div><h2>Trabajamos para tu sector</h2></div>
+      <p>Cada sector tiene su página con las piezas típicas, el proceso y un caso real.</p>
+    </div>
+    <div class="inds">
+      <a class="ind" href="#casos"><img src="img/sec-agro.jpg" width="303" height="180" alt="" loading="lazy" /><div><h3>Maquinaria agrícola</h3><p>Chasis, tolvas, gabinetes y componentes, en serie o por reparación.</p></div></a>
+      <a class="ind" href="#casos"><img src="img/sec-muebles.jpg" width="303" height="180" alt="" loading="lazy" /><div><h3>Mobiliario metálico y estanterías</h3><p>Pintura en polvo para fabricantes que necesitan volumen y color parejo.</p></div></a>
+      <a class="ind" href="#casos"><img src="img/sec-artesanos.jpg" width="400" height="277" alt="" loading="lazy" /><div><h3>Artesanos y restauradores</h3><p>Muebles y objetos de hierro: decapado, arenado y repintado, con retiro.</p></div></a>
+    </div>
+    <p class="otras">También atendemos línea blanca, matafuegos y tanques de GNC, autopartes, aberturas, construcción y más. <a href="#">Ver todas las industrias</a></p>
+  </div>
+</section>
+
+<section id="tienda">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><div class="eyebrow">Tienda</div><h2>Productos Bobiare</h2></div>
+      <p>Nuestra línea propia, fabricada y pintada en la planta. Comprás online y lo recibís en tu casa o tu empresa.</p>
+    </div>
+    <div class="prods">
+      <article class="prod"><img src="img/prod-estanteria.jpg" width="800" height="800" alt="Estantería metálica negra" loading="lazy" /><div class="prod-body"><h3>Estantería modular</h3><small>4 estantes · pintura en polvo negra</small><div class="precio">$189.000</div><span class="cuotas">3 cuotas sin interés</span><a class="btn btn-blue" href="#">Comprar</a></div></article>
+      <article class="prod"><img src="img/prod-banco.jpg" width="800" height="800" alt="Banco de trabajo azul" loading="lazy" /><div class="prod-body"><h3>Banco de trabajo</h3><small>Tapa de madera · estructura azul</small><div class="precio">$265.000</div><span class="cuotas">3 cuotas sin interés</span><a class="btn btn-blue" href="#">Comprar</a></div></article>
+      <article class="prod"><img src="img/prod-fogonero.jpg" width="800" height="800" alt="Fogonero de acero negro" loading="lazy" /><div class="prod-body"><h3>Fogonero</h3><small>Ø 70 cm · pintura de alta temperatura</small><div class="precio">$148.000</div><span class="cuotas">3 cuotas sin interés</span><a class="btn btn-blue" href="#">Comprar</a></div></article>
+      <article class="prod"><img src="img/prod-maceta.jpg" width="800" height="800" alt="Maceta rectangular de acero gris" loading="lazy" /><div class="prod-body"><h3>Maceta rectangular</h3><small>100 × 30 cm · grafito</small><div class="precio">$96.000</div><span class="cuotas">3 cuotas sin interés</span><a class="btn btn-blue" href="#">Comprar</a></div></article>
+    </div>
+    <div class="tienda-pie">
+      <span><svg class="ico"><use href="#i-card"/></svg>Pagás con Mercado Pago o transferencia</span>
+      <span><svg class="ico"><use href="#i-truck"/></svg>Envío a todo el país o retiro en planta</span>
+      <span><svg class="ico"><use href="#i-shield"/></svg>Compra para empresas con factura A</span>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="sec-head"><div><div class="eyebrow">Cómo trabajamos</div><h2>De la consulta a la entrega</h2></div></div>
+    <div class="pasos">
+      <div class="paso"><h3>Consulta</h3><p>Nos mandás fotos, plano o medidas y la cantidad. Por la web o por WhatsApp.</p></div>
+      <div class="paso"><h3>Cotización</h3><p>Te respondemos en 48 horas hábiles con precio, terminación y plazo.</p></div>
+      <div class="paso"><h3>Proceso</h3><p>Retiramos las piezas, las granallamos, pintamos y controlamos el espesor.</p></div>
+      <div class="paso"><h3>Entrega</h3><p>Te las devolvemos en tu planta, embaladas y con su remito de control.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="capacidad">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><div class="eyebrow">Planta</div><h2>Qué entra y qué hacemos</h2></div>
+      <p>Los datos que ingeniería y compras necesitan para saber si la pieza entra, sin tener que escribir primero.</p>
+    </div>
+    <div class="cap">
+      <div>
+        <table class="tabla">
+          <tr><th>Pieza más grande (granallado)</th><td>6 × 2,5 × 2 m · hasta 3.000 kg</td></tr>
+          <tr><th>Pieza más grande (horno de polvo)</th><td>4 × 1,2 × 1,8 m</td></tr>
+          <tr><th>Grado de limpieza</th><td>Sa 2½ (ISO 8501-1)</td></tr>
+          <tr><th>Espesor de pintura</th><td>60 a 120 micrones, medido pieza por pieza</td></tr>
+          <tr><th>Colores</th><td>Toda la carta RAL, texturados y brillantes</td></tr>
+          <tr><th>Volumen</th><td>Desde 1 pieza hasta 17.000 por mes</td></tr>
+          <tr><th>Plazo habitual</th><td>5 a 10 días hábiles</td></tr>
+          <tr><th>Retiro y entrega</th><td>AMBA, con camión propio</td></tr>
+        </table>
+        <div class="cap-acciones">
+          <a class="btn btn-blue" href="#"><svg class="ico" style="width:18px;height:18px"><use href="#i-file"/></svg>Descargar ficha técnica (PDF)</a>
+          <a class="btn btn-ghost" href="#cotizar">Cotizar mi pieza</a>
+        </div>
+        <p class="no-hacemos"><strong>No hacemos:</strong> galvanizado, cromado ni piezas de plástico o madera.</p>
+      </div>
+      <div class="cap-fotos">
+        <img src="img/planta.jpg" width="600" height="419" alt="Interior de la planta de Bobiare en Don Torcuato" loading="lazy" />
+        <img src="img/autoelevador.jpg" width="600" height="344" alt="Piezas listas para entregar" loading="lazy" />
+        <img src="img/fachada.jpg" width="600" height="427" alt="Frente de la planta de Bobiare" loading="lazy" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="casos">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><div class="eyebrow">Casos</div><h2>Trabajos reales, con números</h2></div>
+      <p>Contados con la autorización de cada cliente.</p>
+    </div>
+    <div class="casos">
+      <article class="caso"><img src="img/granallado.jpg" width="600" height="419" alt="" loading="lazy" /><div class="caso-body"><span class="sector">Maquinaria agrícola</span><h3>Largueros de tolva, granallados y pintados en serie</h3><p>El fabricante dejó de mandar las piezas a dos talleres distintos.</p><dl><div><dt>Piezas por mes</dt><dd>1.200</dd></div><div><dt>Entrega</dt><dd>7 días</dd></div></dl></div></article>
+      <article class="caso"><img src="img/tanque.jpg" width="600" height="427" alt="" loading="lazy" /><div class="caso-body"><span class="sector">Industria general</span><h3>Tanque de 12 m², recuperado con epoxi</h3><p>Granallado completo y esquema anticorrosivo para volver a usarlo.</p><dl><div><dt>Superficie</dt><dd>12 m²</dd></div><div><dt>Entrega</dt><dd>10 días</dd></div></dl></div></article>
+      <article class="caso"><img src="img/estructura.jpg" width="600" height="419" alt="" loading="lazy" /><div class="caso-body"><span class="sector">Mobiliario metálico</span><h3>Estructuras de góndola en negro texturado</h3><p>Color parejo en todo el lote, para un fabricante de estanterías.</p><dl><div><dt>Piezas por lote</dt><dd>800</dd></div><div><dt>Entrega</dt><dd>5 días</dd></div></dl></div></article>
+    </div>
+  </div>
+</section>
+
+<section class="cotizar" id="cotizar">
+  <div class="wrap cot">
+    <div class="cot-txt">
+      <div class="eyebrow">Cotizar</div>
+      <h2>Contanos qué pieza tenés</h2>
+      <p>Con estos datos te cotizamos sin ida y vuelta. Te respondemos en 48 horas hábiles.</p>
+      <ul class="cot-lista">
+        <li><svg class="ico"><use href="#i-check"/></svg>Una foto o un plano de la pieza</li>
+        <li><svg class="ico"><use href="#i-check"/></svg>Medidas y peso aproximados</li>
+        <li><svg class="ico"><use href="#i-check"/></svg>Cantidad y cada cuánto la necesitás</li>
+        <li><svg class="ico"><use href="#i-check"/></svg>Terminación y color</li>
+      </ul>
+      <a class="wa" href="#"><svg><use href="#i-wa"/></svg>¿Preferís WhatsApp? 11 3073-7099</a>
+    </div>
+    <form onsubmit="event.preventDefault(); this.querySelector('button').textContent='¡Listo! (en el boceto no se envía)';">
+      <div class="seg">
+        <label><input type="radio" name="tipo" checked />Soy una empresa</label>
+        <label><input type="radio" name="tipo" />Soy particular</label>
+      </div>
+      <div class="campo"><label for="f-nom">Nombre y empresa</label><input id="f-nom" type="text" placeholder="Juan Pérez · Metalúrgica Norte" /></div>
+      <div class="campo"><label for="f-tel">WhatsApp o teléfono</label><input id="f-tel" type="tel" placeholder="11 5555-5555" /></div>
+      <div class="campo"><label for="f-srv">Servicio</label><select id="f-srv"><option>Granallado + pintura</option><option>Solo granallado o arenado</option><option>Solo pintura en polvo</option><option>Solo pintura líquida</option><option>No sé, necesito asesoramiento</option></select></div>
+      <div class="campo"><label for="f-cant">Cantidad</label><select id="f-cant"><option>1 a 10 piezas</option><option>10 a 100 piezas</option><option>100 a 1.000 piezas</option><option>Más de 1.000 / producción mensual</option></select></div>
+      <div class="campo full"><label for="f-det">Pieza, medidas y color</label><textarea id="f-det" placeholder="Ej.: 40 chasis de 2,1 × 0,8 m, con óxido, pintura en polvo negra"></textarea></div>
+      <div class="campo full"><div class="archivo">Adjuntá fotos o planos (PDF, JPG, DWG)</div></div>
+      <button class="btn btn-blue" type="submit">Pedir cotización</button>
+      <p class="form-nota">Te llega una copia por mail y queda registrada para el seguimiento.</p>
+    </form>
+  </div>
+</section>
+
+<section id="preguntas">
+  <div class="wrap faq-sedes">
+    <div>
+      <div class="eyebrow">Preguntas frecuentes</div>
+      <h2 style="font-size:clamp(28px,3.4vw,38px);font-weight:700;margin-bottom:12px">Lo que más nos preguntan</h2>
+      <details open><summary>¿Hay una cantidad mínima?</summary><p>No. Trabajamos desde una sola pieza hasta producciones de miles por mes. En series grandes, el precio por pieza baja.</p></details>
+      <details><summary>¿Qué diferencia hay entre granallado y arenado?</summary><p>Los dos limpian la superficie a presión. El granallado usa partículas de acero y es ideal para piezas industriales; el arenado es más suave y sirve para piezas delicadas o de restauración.</p></details>
+      <details><summary>¿Conviene pintura en polvo o líquida?</summary><p>La de polvo es más resistente y pareja, pero la pieza tiene que entrar al horno. La líquida sirve para piezas muy grandes o esquemas especiales como epoxi.</p></details>
+      <details><summary>¿Retiran y entregan las piezas?</summary><p>Sí, en todo AMBA. El costo depende de la zona y del volumen; te lo pasamos junto con la cotización.</p></details>
+      <details><summary>¿Hacen envíos de los productos de la tienda?</summary><p>Sí, a todo el país. También podés retirarlos sin cargo en la planta de Don Torcuato.</p></details>
+    </div>
+    <div>
+      <div class="eyebrow">Plantas</div>
+      <h2 style="font-size:clamp(28px,3.4vw,38px);font-weight:700;margin-bottom:18px">Dónde estamos</h2>
+      <img class="sede-foto" src="img/fachada.jpg" width="600" height="427" alt="Planta de Bobiare en Don Torcuato" loading="lazy" />
+      <div class="sede"><b>Don Torcuato</b><span>J. Zorrilla 2460 · lunes a viernes de 7 a 16</span></div>
+      <div class="sede"><b>Pilar</b><span>Uruguay 600 · lunes a viernes de 7 a 16</span></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div><img src="img/LogoFooter.png" width="257" height="84" alt="Bobiare S.A." /><p>Granallado, arenado y pintura industrial en polvo y líquida. Don Torcuato y Pilar, Buenos Aires.</p></div>
+      <div><h4>Servicios</h4><a href="#servicios">Granallado y arenado</a><a href="#servicios">Pintura en polvo</a><a href="#servicios">Pintura líquida</a><a href="#servicios">Granallado + pintura</a></div>
+      <div><h4>Empresa</h4><a href="#capacidad">Planta y capacidad</a><a href="#casos">Casos</a><a href="#tienda">Tienda</a><a href="#">Recursos técnicos</a></div>
+      <div><h4>Contacto</h4><a href="#">11 3073-7099</a><a href="#">ventas@bobiaresa.com.ar</a><a href="#cotizar">Cotizar mi pieza</a></div>
+    </div>
+    <div class="foot-bot"><span>© 2026 Bobiare S.A.</span><span>Boceto de Lautaro Méndez</span></div>
+  </div>
+</footer>
+
+<a class="wa-float" href="#" aria-label="Escribir por WhatsApp"><svg><use href="#i-wa"/></svg></a>
+
+<script src="/propuestas/_visto.js" data-p="bobiare" data-n="Bobiare" data-e="boceto" defer></script>
+</body>
+</html>
