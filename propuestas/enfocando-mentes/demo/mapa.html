@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Mapa Comercial Estratégico · Ailín Fernández (boceto)</title>
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="es_AR" />
+  <meta property="og:url" content="https://lautaromendez.com.ar/propuestas/enfocando-mentes/demo/mapa.html" />
+  <meta property="og:title" content="Mapa Comercial Estratégico · Boceto" />
+  <meta property="og:description" content="Así se vería el recorrido del test: preguntas, pago y tu informe." />
+  <meta property="og:image" content="https://lautaromendez.com.ar/propuestas/enfocando-mentes/og.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap" />
+  <link rel="stylesheet" href="estilo.css" />
+  <style>
+    .paso { display: none; }
+    .paso.activo { display: block; animation: entra .35s ease; }
+    @keyframes entra { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+    @media (prefers-reduced-motion: reduce) { .paso.activo { animation: none; } }
+
+    .m-hero { background: var(--navy); padding: 64px 0 72px; color: #b4bdca; }
+    .m-hero .wrap { display: grid; grid-template-columns: 1fr 300px; gap: 56px; align-items: center; }
+    .m-hero h1 { font-size: clamp(34px, 4.6vw, 52px); line-height: 1.08; color: #fff; margin-bottom: 18px; }
+    .m-hero h1 em { color: var(--gold-2); font-style: italic; }
+    .m-hero p { font-size: 17px; max-width: 540px; margin-bottom: 28px; }
+    .pasos3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .pasos3 div { background: #fff; border: 1px solid var(--line); border-radius: 10px; padding: 24px; }
+    .pasos3 b { display: block; font-family: var(--serif); font-size: 34px; color: var(--gold); line-height: 1; margin-bottom: 10px; }
+    .pasos3 h3 { font-size: 19px; margin-bottom: 6px; }
+    .pasos3 p { font-size: 14.5px; color: var(--mid); }
+
+    /* Cuestionario */
+    .test { max-width: 680px; margin: 0 auto; padding: 56px 24px 80px; }
+    .test-top { display: flex; justify-content: space-between; align-items: center; font-size: 13.5px; color: var(--mid); margin-bottom: 10px; gap: 12px; }
+    .barra { height: 4px; background: var(--line); border-radius: 4px; overflow: hidden; margin-bottom: 40px; }
+    .barra i { display: block; height: 100%; width: 0; background: var(--gold); transition: width .3s; }
+    .q-tipo { font-size: 12px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+    .q-texto { font-family: var(--serif); font-size: clamp(23px, 3vw, 30px); line-height: 1.25; color: var(--ink); margin-bottom: 28px; font-weight: 600; }
+    .escala5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
+    .escala5 button { padding: 16px 0; font: 600 18px var(--sans); color: var(--ink); background: #fff; border: 1px solid var(--line); border-radius: 8px; cursor: pointer; }
+    .escala5-ref { display: flex; justify-content: space-between; font-size: 12.5px; color: var(--mid); margin-top: 8px; }
+    .opciones { display: flex; flex-direction: column; gap: 10px; }
+    .opciones button { text-align: left; padding: 15px 18px; font: 500 15.5px/1.45 var(--sans); color: var(--text); background: #fff; border: 1px solid var(--line); border-radius: 8px; cursor: pointer; }
+    .escala5 button:hover, .opciones button:hover { border-color: var(--gold); }
+    .escala5 button.sel, .opciones button.sel { border-color: var(--gold); background: var(--gold-soft); color: var(--ink); }
+    .q-nav { display: flex; justify-content: space-between; margin-top: 32px; }
+    .nota-ej { margin-top: 28px; font-size: 13px; color: var(--mid); background: var(--bg-alt); border-radius: 8px; padding: 12px 14px; }
+
+    /* Datos y pago */
+    .form { display: flex; flex-direction: column; gap: 14px; margin-bottom: 26px; }
+    .form label { font-size: 13.5px; font-weight: 600; color: var(--ink); display: flex; flex-direction: column; gap: 6px; }
+    .form input { font: 15.5px var(--sans); padding: 13px 14px; border: 1px solid var(--line); border-radius: 8px; color: var(--ink); }
+    .form input:focus { outline: 2px solid var(--gold); outline-offset: 1px; border-color: transparent; }
+    .modal2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 18px; }
+    .modal2 label { border: 1px solid var(--line); border-radius: 10px; padding: 18px; cursor: pointer; display: block; }
+    .modal2 input { accent-color: var(--gold); margin-right: 8px; }
+    .modal2 b { font-family: var(--serif); font-size: 24px; color: var(--ink); display: block; margin: 6px 0 4px; }
+    .modal2 span { font-size: 13.5px; color: var(--mid); display: block; line-height: 1.4; }
+    .modal2 label:has(input:checked) { border-color: var(--gold); background: var(--gold-soft); }
+    .check { display: flex; gap: 10px; font-size: 13.5px; color: var(--mid); margin-bottom: 22px; align-items: flex-start; }
+    .check input { margin-top: 3px; accent-color: var(--gold); }
+    .btn-mp { width: 100%; background: #009ee3; color: #fff; padding: 15px; font-size: 15.5px; }
+    .btn-mp:hover { background: #0089c6; }
+
+    /* Resultado */
+    .res-hero { background: var(--navy); color: #b4bdca; padding: 56px 0; }
+    .res-hero h1 { color: #fff; font-size: clamp(30px, 4vw, 44px); line-height: 1.1; margin-bottom: 14px; }
+    .res-hero h1 em { color: var(--gold-2); font-style: italic; }
+    .res-hero p { max-width: 600px; font-size: 16.5px; }
+    .res-grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: 40px; }
+    .dim { margin-bottom: 18px; }
+    .dim-top { display: flex; justify-content: space-between; font-size: 14.5px; color: var(--ink); font-weight: 500; margin-bottom: 6px; }
+    .dim-top span { color: var(--mid); font-weight: 400; }
+    .dim-bar { height: 8px; background: var(--line); border-radius: 8px; overflow: hidden; }
+    .dim-bar i { display: block; height: 100%; background: linear-gradient(90deg, var(--navy-3), var(--gold)); border-radius: 8px; transition: width .8s ease; }
+    .estilo { background: var(--navy); border-radius: 10px; padding: 26px; color: #b4bdca; margin-bottom: 18px; }
+    .estilo small { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--gold-2); }
+    .estilo h3 { color: #fff; font-size: 28px; margin: 6px 0 8px; }
+    .estilo p { font-size: 14.5px; }
+    .prios { list-style: none; counter-reset: p; display: flex; flex-direction: column; gap: 10px; }
+    .prios li { counter-increment: p; display: grid; grid-template-columns: 34px 1fr; gap: 12px; background: #fff; border: 1px solid var(--line); border-radius: 10px; padding: 16px; font-size: 14.5px; color: var(--text); }
+    .prios li::before { content: counter(p); width: 34px; height: 34px; border-radius: 50%; background: var(--gold-soft); color: var(--gold); font: 600 16px var(--serif); display: flex; align-items: center; justify-content: center; }
+    .prios b { display: block; color: var(--ink); }
+    .paginas { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .pag { aspect-ratio: 210 / 297; background: #fff; border: 1px solid var(--line); border-radius: 4px; padding: 18px 16px; box-shadow: 0 10px 30px rgb(13 24 41 / .08); display: flex; flex-direction: column; gap: 8px; overflow: hidden; }
+    .pag .ph { font: 600 13px/1.2 var(--serif); color: var(--ink); padding-bottom: 6px; border-bottom: 1px solid var(--gold); }
+    .pag .ln { height: 5px; background: var(--line); border-radius: 3px; }
+    .pag .ln.c { width: 70%; }
+    .pag .sem { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-top: 4px; }
+    .pag .sem div { border: 1px solid var(--line); border-radius: 4px; padding: 6px; font-size: 9px; color: var(--mid); line-height: 1.3; }
+    .pag .sem b { display: block; color: var(--gold); font-size: 9.5px; }
+    .pag .cita { margin: 8px 0; padding: 8px 10px; border-left: 2px solid var(--gold); background: var(--gold-soft); font: italic 10.5px/1.4 var(--serif); color: var(--ink); }
+    .paginas .pdf { padding: 18px; box-shadow: 0 10px 30px rgb(13 24 41 / .15); }
+    .paginas .pdf h4 { font-size: 15px; }
+    .paginas .pdf .pdf-para { font-size: 10px; }
+    .paginas .pdf .pdf-top, .paginas .pdf .pdf-pie { font-size: 7px; }
+    .paginas .pdf .marca-af { font-size: 14px; }
+    .agenda { border: 1px solid var(--gold); background: var(--gold-soft); border-radius: 10px; padding: 22px; margin-top: 18px; display: none; }
+    .agenda.ver { display: block; }
+    .agenda h3 { font-size: 20px; margin-bottom: 4px; }
+    .agenda p { font-size: 14px; color: var(--mid); margin-bottom: 14px; }
+    .turnos { display: flex; flex-wrap: wrap; gap: 8px; }
+    .turnos span { background: #fff; border: 1px solid var(--line); border-radius: 6px; padding: 8px 12px; font-size: 13.5px; color: var(--ink); }
+    .res-h2 { font-size: 26px; margin-bottom: 18px; }
+
+    @media (max-width: 860px) {
+      .m-hero .wrap, .res-grid { grid-template-columns: 1fr; }
+      .m-hero .pdf { max-width: 260px; }
+      .pasos3 { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 560px) {
+      .test { padding: 40px 16px 64px; }
+      .modal2 { grid-template-columns: 1fr; }
+      .escala5 button { padding: 14px 0; }
+      .paginas { grid-template-columns: 1fr 1fr; }
+      .paginas .pdf { grid-column: span 2; max-width: 220px; margin: 0 auto; width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></symbol>
+  <symbol id="i-back" viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></symbol>
+  <symbol id="brujula" viewBox="0 0 200 200"><circle cx="100" cy="100" r="92" fill="none" stroke="#d4b06a" stroke-width="1"/><circle cx="100" cy="100" r="78" fill="none" stroke="#d4b06a" stroke-opacity=".35" stroke-width="1"/><g stroke="#d4b06a" stroke-opacity=".6"><path d="M100 4v14M100 182v14M4 100h14M182 100h14"/></g><path d="M100 26 112 100 100 174 88 100Z" fill="#d4b06a" fill-opacity=".9"/><path d="M100 26 112 100H88Z" fill="#f3dfae"/><path d="M26 100 100 92 174 100 100 108Z" fill="#d4b06a" fill-opacity=".35"/><circle cx="100" cy="100" r="5" fill="#0d1829" stroke="#d4b06a"/></symbol>
+</svg>
+
+<div class="aviso">Boceto: las preguntas, los nombres de las dimensiones y el resultado son de ejemplo. Los reales salen de tu documento. Acá no se cobra nada.</div>
+
+<header class="hdr">
+  <div class="wrap">
+    <a class="marca" href="./"><span class="marca-af">AF</span><span class="marca-txt">Ailín<br>Fernández</span></a>
+    <a class="btn btn-line" href="./">Volver al inicio</a>
+  </div>
+</header>
+
+<!-- PASO 0: presentación -->
+<div class="paso activo" id="p-intro">
+  <section class="m-hero">
+    <div class="wrap">
+      <div>
+        <div class="ceja">Mapa Comercial Estratégico</div>
+        <h1>Tu identidad comercial, <em>en un mapa para pasar a la acción</em></h1>
+        <p>Un cuestionario de 40 preguntas que se responde desde el celular en unos 12 minutos. Con tus respuestas armo un informe a tu medida: tus fortalezas, lo que te está frenando y un plan de 30 días.</p>
+        <button class="btn btn-gold" data-ir="test">Empezar el cuestionario<svg><use href="#i-arrow"/></svg></button>
+      </div>
+      <div class="pdf">
+        <div class="pdf-top"><span class="marca-af">AF</span><span>Enfocando Mentes</span></div>
+        <svg class="pdf-brujula" viewBox="0 0 200 200"><use href="#brujula"/></svg>
+        <h4>Mapa Comercial Estratégico</h4>
+        <div class="pdf-para">Preparado para vos</div>
+        <div class="pdf-pie"><span>2026</span><span>Ailín Fernández</span></div>
+      </div>
+    </div>
+  </section>
+  <section class="alt">
+    <div class="wrap">
+      <div class="ceja">Cómo funciona</div>
+      <h2>Tres pasos, <em>sin vueltas</em></h2>
+      <div class="pasos3" style="margin-top:28px">
+        <div><b>1</b><h3>Respondés</h3><p>40 preguntas sobre cómo vendés, cómo decidís y en qué momento está tu negocio.</p></div>
+        <div><b>2</b><h3>Elegís y pagás</h3><p>El Mapa solo, o el Mapa con una videollamada conmigo. Pagás con Mercado Pago.</p></div>
+        <div><b>3</b><h3>Te llega al mail</h3><p>Tu informe en PDF con tu nombre, tus prioridades y el plan de 30 días.</p></div>
+      </div>
+      <p class="letra-chica" style="color:var(--mid)">Es una herramienta de desarrollo comercial: no es un diagnóstico psicológico ni médico. Tus respuestas son privadas.</p>
+    </div>
+  </section>
+</div>
+
+<!-- PASO 1: cuestionario -->
+<div class="paso" id="p-test">
+  <div class="test">
+    <div class="test-top"><span id="q-num">Pregunta 1 de 6</span><span>En el real son 40</span></div>
+    <div class="barra"><i id="q-barra"></i></div>
+    <div id="q-caja"></div>
+    <div class="q-nav">
+      <button class="btn btn-ghost" id="q-atras"><svg><use href="#i-back"/></svg>Atrás</button>
+      <button class="btn btn-dark" id="q-sig" disabled>Siguiente<svg><use href="#i-arrow"/></svg></button>
+    </div>
+    <p class="nota-ej">Preguntas de ejemplo para mostrar cómo se responde. Las tuyas se cargan tal cual las tenés armadas.</p>
+  </div>
+</div>
+
+<!-- PASO 2: datos y pago -->
+<div class="paso" id="p-pago">
+  <div class="test">
+    <div class="q-tipo">Último paso</div>
+    <div class="q-texto">¿A nombre de quién va tu Mapa?</div>
+    <div class="form">
+      <label>Nombre y apellido<input id="f-nombre" value="Laura Gómez" autocomplete="off" /></label>
+      <label>Mail (ahí te llega el informe)<input type="email" value="laura@ejemplo.com" autocomplete="off" /></label>
+    </div>
+    <div class="modal2">
+      <label><input type="radio" name="mod" value="base" checked />Mapa Comercial<b>$70.000</b><span>Informe en PDF y plan de 30 días.</span></label>
+      <label><input type="radio" name="mod" value="premium" />Mapa + sesión<b>$180.000</b><span>El informe y una videollamada conmigo para trabajarlo.</span></label>
+    </div>
+    <label class="check"><input type="checkbox" checked />Acepto los términos y la política de privacidad. Entiendo que no es un diagnóstico psicológico.</label>
+    <button class="btn btn-mp" data-ir="resultado">Pagar con Mercado Pago</button>
+    <p class="nota-ej">En el boceto no se cobra: el botón salta directo a lo que ve la persona después de pagar.</p>
+  </div>
+</div>
+
+<!-- PASO 3: resultado -->
+<div class="paso" id="p-resultado">
+  <section class="res-hero">
+    <div class="wrap">
+      <div class="ceja">Pago confirmado</div>
+      <h1>Listo, <span id="r-nombre">Laura</span>. <em>Tu Mapa ya está en tu mail.</em></h1>
+      <p>Acá tenés un adelanto. El informe completo, con las acciones y el plan semana a semana, te llegó en PDF.</p>
+    </div>
+  </section>
+  <section style="padding-top:56px">
+    <div class="wrap res-grid">
+      <div>
+        <h2 class="res-h2">Tus seis dimensiones</h2>
+        <div id="r-dims"></div>
+        <h2 class="res-h2" style="margin-top:36px">Tus tres prioridades</h2>
+        <ol class="prios" id="r-prios"></ol>
+      </div>
+      <div>
+        <div class="estilo">
+          <small>Tu estilo tendencial</small>
+          <h3 id="r-estilo">Vincular</h3>
+          <p id="r-estilo-txt"></p>
+        </div>
+        <p style="font-size:13.5px;color:var(--mid)">Es una tendencia según tus respuestas de hoy, no una etiqueta fija.</p>
+        <div class="agenda" id="r-agenda">
+          <h3>Elegí tu videollamada</h3>
+          <p>Como elegiste el Mapa + sesión, reservá el horario para trabajarlo con Ailín.</p>
+          <div class="turnos"><span>Mar 17 · 10:00</span><span>Mar 17 · 15:30</span><span>Jue 19 · 11:00</span><span>Vie 20 · 18:00</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="alt">
+    <div class="wrap">
+      <h2 class="res-h2">Así es el informe que te llega</h2>
+      <div class="paginas">
+        <div class="pdf">
+          <div class="pdf-top"><span class="marca-af">AF</span><span>Enfocando Mentes</span></div>
+          <svg class="pdf-brujula" viewBox="0 0 200 200"><use href="#brujula"/></svg>
+          <h4>Mapa Comercial Estratégico</h4>
+          <div class="pdf-para" id="r-pdf-nombre">Preparado para Laura Gómez</div>
+          <div class="pdf-pie"><span>Noviembre 2026</span><span>Ailín Fernández</span></div>
+        </div>
+        <div class="pag">
+          <div class="ph">Fortalezas y puntos ciegos</div>
+          <div class="ln"></div><div class="ln"></div><div class="ln c"></div>
+          <div class="ln" style="margin-top:8px"></div><div class="ln"></div><div class="ln c"></div>
+          <div class="ln" style="margin-top:8px"></div><div class="ln c"></div>
+          <div class="cita">«Tu cercanía es tu mejor argumento de venta. Lo que falta es pedir la decisión.»</div>
+          <div class="ph" style="margin-top:6px">Puntos ciegos (hipótesis)</div>
+          <div class="ln"></div><div class="ln"></div><div class="ln c"></div>
+          <div class="ln" style="margin-top:8px"></div><div class="ln"></div><div class="ln c"></div>
+        </div>
+        <div class="pag">
+          <div class="ph">Tu plan de 30 días</div>
+          <div class="sem"><div><b>Semana 1</b>Ordenar tu oferta</div><div><b>Semana 2</b>Contar tu valor</div><div><b>Semana 3</b>Seguimiento</div><div><b>Semana 4</b>Cierre y medición</div></div>
+          <div class="ln" style="margin-top:6px"></div><div class="ln"></div><div class="ln c"></div>
+          <div class="ph" style="margin-top:8px">Cómo medirlo</div>
+          <div class="sem"><div><b>Consultas</b>por semana</div><div><b>Seguimientos</b>hechos</div><div><b>Cierres</b>logrados</div><div><b>Ticket</b>promedio</div></div>
+          <div class="ph" style="margin-top:8px">Guion para responder «lo voy a pensar»</div>
+          <div class="ln"></div><div class="ln"></div><div class="ln c"></div>
+        </div>
+      </div>
+      <div style="margin-top:36px;display:flex;gap:12px;flex-wrap:wrap">
+        <button class="btn btn-ghost" data-ir="intro">Volver a empezar</button>
+        <a class="btn btn-dark" href="./">Ir a la web de Ailín</a>
+      </div>
+    </div>
+  </section>
+</div>
+
+<footer class="pie">
+  <div class="wrap"><span>© 2026 Ailín Fernández · Enfocando Mentes</span><span>Boceto de ejemplo</span></div>
+</footer>
+
+<script>
+  const PREG = [
+    { tipo: 'Capacidades', txt: 'Puedo explicar en una frase qué hago y para quién lo hago.', dim: 'Identidad comercial', esc: ['Nada', 'Totalmente'] },
+    { tipo: 'Capacidades', txt: 'Me siento cómoda hablando del precio de lo que ofrezco.', dim: 'Confianza para vender', esc: ['Nada', 'Totalmente'] },
+    { tipo: 'Frecuencia', txt: 'Cuando alguien me consulta y no compra, le vuelvo a escribir.', dim: 'Seguimiento y cierre', esc: ['Nunca', 'Siempre'] },
+    { tipo: 'Frecuencia', txt: 'Muestro mi trabajo y resultados en redes o con mis clientes.', dim: 'Comunicación de valor', esc: ['Nunca', 'Siempre'] },
+    { tipo: 'Preferencias', txt: 'Un cliente te dice «lo voy a pensar». ¿Qué hacés?', estilo: true, ops: [
+      ['Le pregunto cómo está y sigo el vínculo, sin presionar.', 'Vincular'],
+      ['Le muestro los números y por qué le conviene.', 'Estratégico'],
+      ['Le cuento a dónde puede llegar si arranca ahora.', 'Visionario'],
+      ['Le propongo cerrar hoy con una condición especial.', 'Impulsor'],
+      ['Reviso qué me faltó explicar para la próxima.', 'Perfeccionista'] ] },
+    { tipo: 'Contexto', txt: '¿En qué momento está tu negocio?', ops: [
+      ['Recién empiezo, menos de un año.', 3], ['Ya vendo, pero no de forma constante.', 2], ['Vendo constante y quiero crecer.', 4], ['Tengo equipo y quiero ordenar procesos.', 5] ], dim: 'Visión de crecimiento' }
+  ];
+  const ESTILOS = {
+    Vincular: 'Vendés desde la confianza y el vínculo. Tu desafío suele estar en pedir la decisión sin sentir que presionás.',
+    'Estratégico': 'Vendés con argumentos y orden. Tu desafío suele estar en conectar con la emoción de quien compra.',
+    Visionario: 'Vendés contagiando a dónde se puede llegar. Tu desafío suele estar en bajar la idea a pasos concretos.',
+    Impulsor: 'Vendés con energía y decisión. Tu desafío suele estar en sostener el seguimiento en el tiempo.',
+    Perfeccionista: 'Vendés con calidad y detalle. Tu desafío suele estar en mostrarte antes de que todo esté perfecto.'
+  };
+  const resp = [];
+  let i = 0;
+  const $ = s => document.querySelector(s);
+
+  function ir(paso) {
+    document.querySelectorAll('.paso').forEach(p => p.classList.toggle('activo', p.id === 'p-' + paso));
+    window.scrollTo({ top: 0 });
+    if (paso === 'test') { i = 0; pintar(); }
+    if (paso === 'resultado') resultado();
+  }
+  document.addEventListener('click', e => { const b = e.target.closest('[data-ir]'); if (b) ir(b.dataset.ir); });
+
+  function pintar() {
+    const q = PREG[i];
+    $('#q-num').textContent = `Pregunta ${i + 1} de ${PREG.length}`;
+    $('#q-barra').style.width = (i / PREG.length * 100) + '%';
+    let h = `<div class="q-tipo">${q.tipo}</div><div class="q-texto">${q.txt}</div>`;
+    if (q.ops) {
+      h += '<div class="opciones">' + q.ops.map((o, k) => `<button data-v="${k}" class="${resp[i] === k ? 'sel' : ''}">${o[0]}</button>`).join('') + '</div>';
+    } else {
+      h += '<div class="escala5">' + [1, 2, 3, 4, 5].map(v => `<button data-v="${v}" class="${resp[i] === v ? 'sel' : ''}">${v}</button>`).join('') + `</div><div class="escala5-ref"><span>${q.esc[0]}</span><span>${q.esc[1]}</span></div>`;
+    }
+    $('#q-caja').innerHTML = h;
+    $('#q-sig').disabled = resp[i] === undefined;
+    $('#q-atras').style.visibility = i ? 'visible' : 'hidden';
+  }
+  $('#q-caja').addEventListener('click', e => {
+    const b = e.target.closest('button[data-v]'); if (!b) return;
+    resp[i] = +b.dataset.v; pintar();
+    setTimeout(() => { if (i < PREG.length - 1) { i++; pintar(); } else ir('pago'); }, 280);
+  });
+  $('#q-sig').addEventListener('click', () => { if (i < PREG.length - 1) { i++; pintar(); } else ir('pago'); });
+  $('#q-atras').addEventListener('click', () => { if (i) { i--; pintar(); } });
+
+  function resultado() {
+    const nombre = ($('#f-nombre').value || 'Laura Gómez').trim();
+    $('#r-nombre').textContent = nombre.split(' ')[0];
+    $('#r-pdf-nombre').textContent = 'Preparado para ' + nombre;
+    const v = k => resp[k] ?? 3;
+    const est = PREG[4].ops[resp[4] ?? 0][1];
+    const crec = PREG[5].ops[resp[5] ?? 1][1];
+    const dims = [
+      ['Identidad comercial', v(0)], ['Confianza para vender', v(1)], ['Seguimiento y cierre', v(2)],
+      ['Comunicación de valor', v(3)], ['Foco y organización', Math.round((v(0) + v(2)) / 2)], ['Visión de crecimiento', crec]
+    ];
+    $('#r-dims').innerHTML = dims.map(([n, x]) => `<div class="dim"><div class="dim-top">${n}<span>${x} de 5</span></div><div class="dim-bar"><i style="width:0" data-w="${x * 20}%"></i></div></div>`).join('');
+    requestAnimationFrame(() => setTimeout(() => document.querySelectorAll('.dim-bar i').forEach(b => b.style.width = b.dataset.w), 60));
+    const bajas = [...dims].sort((a, b) => a[1] - b[1]).slice(0, 3);
+    const ACC = {
+      'Identidad comercial': 'Escribir tu frase de valor y usarla igual en todos lados.',
+      'Confianza para vender': 'Practicar cómo decís tu precio, sin explicarlo de más.',
+      'Seguimiento y cierre': 'Volver a escribir a cada consulta a los 3 días.',
+      'Comunicación de valor': 'Mostrar un resultado de un cliente por semana.',
+      'Foco y organización': 'Elegir una sola prioridad comercial por semana.',
+      'Visión de crecimiento': 'Definir una meta de ventas concreta para 30 días.'
+    };
+    $('#r-prios').innerHTML = bajas.map(([n]) => `<li><span><b>${n}</b>${ACC[n]}</span></li>`).join('');
+    $('#r-estilo').textContent = est;
+    $('#r-estilo-txt').textContent = ESTILOS[est];
+    $('#r-agenda').classList.toggle('ver', document.querySelector('input[name=mod]:checked').value === 'premium');
+  }
+</script>
+<script src="/propuestas/_visto.js" data-p="enfocando-mentes" data-n="Ailin" data-e="boceto" defer></script>
+</body>
+</html>

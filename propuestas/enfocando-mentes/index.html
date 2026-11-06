@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="description" content="Propuesta para Ailín Fernández: su web de sesiones y el Mapa Comercial Estratégico listo para vender, con tres caminos y precio." />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="es_AR" />
+  <meta property="og:site_name" content="Lautaro Méndez" />
+  <meta property="og:url" content="https://lautaromendez.com.ar/propuestas/enfocando-mentes/" />
+  <meta property="og:title" content="Propuesta para Ailín Fernández" />
+  <meta property="og:description" content="Una idea de tu web y del Mapa Comercial, y tres caminos para hacerlo." />
+  <meta property="og:image" content="https://lautaromendez.com.ar/propuestas/enfocando-mentes/og.jpg" />
+  <meta property="og:image:secure_url" content="https://lautaromendez.com.ar/propuestas/enfocando-mentes/og.jpg" />
+  <meta property="og:image:type" content="image/jpeg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Propuesta para Ailín Fernández" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://lautaromendez.com.ar/propuestas/enfocando-mentes/og.jpg" />
+  <title>Propuesta — Ailín Fernández</title>
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+  <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600&display=swap" />
+  <script>document.documentElement.classList.add('js');</script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* Paleta de Ailín: azul noche y dorado de su marca AF */
+    :root {
+      --bg: #ffffff;
+      --bg-alt: #f4f5f7;
+      --card: #ffffff;
+      --soft: #f4f5f7;
+      --ink: #0d1829;
+      --text: #36404b;
+      --mid: #66717c;
+      --dim: #97a0a8;
+      --line: #e4e7ec;
+      --line-strong: #d0d5dd;
+      --accent: #9a7634;
+      --accent-dark: #7d5f28;
+      --accent-soft: #f7f2e8;
+      --bad: #d14343;
+      --ok: #1a9a5b;
+      --sans: 'General Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: var(--sans); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    strong { color: var(--ink); font-weight: 560; }
+    img { display: block; max-width: 100%; height: auto; }
+
+    .ico { width: 20px; height: 20px; flex-shrink: 0; fill: none; stroke: var(--mid); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+    .ico-box { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 6px; background: var(--accent-soft); flex-shrink: 0; }
+    .ico-box .ico { stroke: var(--accent); }
+
+    #progress { position: fixed; top: 0; left: 0; height: 3px; width: 0%; background: var(--accent); z-index: 999; transition: width .1s linear; }
+
+    .wrap { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+    .wrap-wide { max-width: 1140px; margin: 0 auto; padding: 0 24px; }
+
+    /* HERO */
+    .hero { padding: 80px 0 60px; }
+    .eyebrow { display: flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 560; letter-spacing: .02em; color: var(--accent); margin-bottom: 14px; }
+    .hero h1 { font-size: clamp(32px, 5vw, 46px); font-weight: 560; line-height: 1.1; letter-spacing: -0.025em; color: var(--ink); margin-bottom: 18px; max-width: 720px; }
+    .hero-sub { font-size: 17px; color: var(--mid); max-width: 620px; margin-bottom: 38px; }
+    .hero-meta { display: flex; gap: 20px 40px; flex-wrap: wrap; padding-top: 24px; border-top: 1px solid var(--line); }
+    .hero-meta-item label { display: block; font-size: 12px; font-weight: 500; color: var(--dim); margin-bottom: 2px; }
+    .hero-meta-item span { font-size: 15px; font-weight: 560; color: var(--ink); }
+
+    /* SECCIONES */
+    section { padding: 72px 0; }
+    section.alt { background: var(--bg-alt); }
+    h2 { font-size: 30px; font-weight: 560; letter-spacing: -0.02em; color: var(--ink); line-height: 1.2; margin-bottom: 12px; }
+    h3 { font-size: 18px; font-weight: 560; color: var(--ink); letter-spacing: -0.01em; margin: 40px 0 10px; }
+    .section-intro { font-size: 16px; color: var(--mid); margin-bottom: 32px; max-width: 660px; }
+    .p { font-size: 15.5px; color: var(--mid); max-width: 660px; margin-bottom: 18px; }
+
+    /* DATOS */
+    .datos { display: grid; grid-template-columns: repeat(3, 1fr); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; margin-bottom: 28px; background: var(--card); }
+    .dato { display: flex; gap: 14px; align-items: flex-start; padding: 20px; }
+    .dato + .dato { border-left: 1px solid var(--line); }
+    .dato b { display: block; font-size: 17px; font-weight: 560; color: var(--ink); line-height: 1.3; margin-bottom: 2px; }
+    .dato span { font-size: 13.5px; color: var(--mid); line-height: 1.45; }
+
+    .callout { display: flex; gap: 14px; align-items: flex-start; padding: 18px 20px; border-left: 3px solid var(--accent); background: var(--card); border-radius: 0 6px 6px 0; font-size: 15px; color: var(--text); }
+    .callout .ico { stroke: var(--accent); margin-top: 2px; }
+    .callout.is-ok { border-left-color: var(--ok); }
+    .callout.is-ok .ico { stroke: var(--ok); }
+
+    /* CAPTURAS */
+    .shot { border: 1px solid var(--line-strong); border-radius: 6px; overflow: hidden; background: var(--card); }
+    .shot-bar { display: flex; align-items: center; gap: 6px; padding: 9px 12px; border-bottom: 1px solid var(--line); background: var(--soft); }
+    .shot-bar i { width: 8px; height: 8px; border-radius: 50%; background: var(--line-strong); }
+    .shot-bar span { margin-left: 8px; font-size: 12px; color: var(--dim); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    figcaption { margin-top: 10px; font-size: 13.5px; color: var(--mid); line-height: 1.5; }
+    figure { margin-bottom: 28px; }
+
+    /* ANTES / DESPUÉS */
+    .ab-bloque { margin-bottom: 40px; }
+    .ab-nota { margin-top: 12px; font-size: 14.5px; color: var(--mid); line-height: 1.55; max-width: 760px; }
+    .ba { --pos: 50%; position: relative; aspect-ratio: 16 / 10; border: 1px solid var(--line-strong); border-radius: 8px; overflow: hidden; background: var(--soft); user-select: none; -webkit-user-select: none; }
+    .ba img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top; }
+    .ba .ba-antes { clip-path: inset(0 calc(100% - var(--pos)) 0 0); }
+    .ba-linea { position: absolute; top: 0; bottom: 0; left: var(--pos); width: 2px; margin-left: -1px; background: #fff; box-shadow: 0 0 0 1px rgb(0 0 0 / .2); pointer-events: none; }
+    .ba-tirador { position: absolute; top: 50%; left: var(--pos); width: 46px; height: 46px; margin: -23px 0 0 -23px; border-radius: 50%; background: #fff; box-shadow: 0 6px 20px rgb(0 0 0 / .25); display: flex; align-items: center; justify-content: center; pointer-events: none; }
+    .ba-tirador .ico { width: 16px; height: 16px; stroke: var(--ink); stroke-width: 2.2; }
+    .ba-tag { position: absolute; bottom: 14px; padding: 5px 12px; border-radius: 999px; font-size: 12px; font-weight: 560; background: rgb(15 23 32 / .82); color: #fff; pointer-events: none; }
+    .ba-tag-antes { left: 14px; }
+    .ba-tag-despues { right: 14px; background: var(--accent); }
+    .ba input { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: ew-resize; margin: 0; }
+    .ba:has(input:focus-visible) { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+    .refs { list-style: none; display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 32px; }
+    .refs li { padding: 14px 16px; background: var(--card); border: 1px solid var(--line); border-radius: 8px; font-size: 14px; color: var(--mid); line-height: 1.45; }
+    .refs b { display: block; font-size: 14.5px; font-weight: 560; color: var(--ink); margin-bottom: 2px; }
+
+    .demo-cta { display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; padding: 22px 24px; border: 1px solid var(--accent); background: var(--accent-soft); border-radius: 8px; }
+    .demo-cta p { font-size: 15px; color: var(--text); max-width: 520px; }
+
+    /* HALLAZGOS */
+    .hall { list-style: none; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; margin-bottom: 28px; background: var(--card); }
+    .hall li { display: grid; grid-template-columns: 24px 1fr; gap: 12px; padding: 14px 18px; font-size: 14.5px; color: var(--text); line-height: 1.5; }
+    .hall li + li { border-top: 1px solid var(--line); }
+    .hall .ico { width: 18px; height: 18px; margin-top: 2px; stroke: var(--bad); }
+    .hall small { display: block; font-size: 13.5px; color: var(--mid); }
+
+    /* OPCIONES */
+    .escalas { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; align-items: stretch; }
+    .escala { position: relative; display: flex; flex-direction: column; background: var(--card); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+    .escala.is-reco { border: 2px solid var(--accent); }
+    .reco { position: absolute; top: 22px; right: 20px; font-size: 12px; font-weight: 560; padding: 3px 10px; border-radius: 999px; background: var(--accent-soft); color: var(--accent); }
+    .escala-head { padding: 24px 24px 20px; border-bottom: 1px solid var(--line); }
+    .escala-top { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+    .escala-num { font-size: 13px; font-weight: 560; color: var(--accent); }
+    .escala-title { font-size: 20px; font-weight: 560; letter-spacing: -0.01em; color: var(--ink); line-height: 1.25; margin-bottom: 8px; }
+    .escala-tagline { font-size: 14px; color: var(--mid); line-height: 1.5; }
+    .escala-price { padding: 20px 24px; border-bottom: 1px solid var(--line); background: var(--soft); }
+    .escala-price-value { font-size: 30px; font-weight: 560; letter-spacing: -0.02em; color: var(--ink); line-height: 1.1; }
+    .escala-facts { margin-top: 14px; display: flex; flex-direction: column; gap: 6px; }
+    .escala-facts div { display: flex; gap: 10px; align-items: flex-start; font-size: 13.5px; color: var(--mid); line-height: 1.4; }
+    .escala-facts .ico { width: 16px; height: 16px; margin-top: 1px; }
+    .escala-facts b { color: var(--text); font-weight: 560; }
+    .escala-body { padding: 20px 24px 24px; display: flex; flex-direction: column; gap: 18px; flex: 1; }
+    .ticks { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+    .ticks li { display: flex; gap: 10px; font-size: 14.5px; color: var(--text); line-height: 1.45; }
+    .ticks .ico { width: 16px; height: 16px; margin-top: 3px; stroke: var(--ok); stroke-width: 2.2; }
+    .ticks-plus { font-size: 12.5px; font-weight: 560; color: var(--dim); }
+
+    /* NECESITO */
+    .need-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .need { display: flex; gap: 12px; align-items: center; padding: 12px 14px; background: var(--card); border: 1px solid var(--line); border-radius: 8px; font-size: 14.5px; color: var(--text); line-height: 1.4; }
+    .need .ico { stroke: var(--accent); }
+    .need small { display: block; font-size: 12.5px; color: var(--dim); }
+
+    /* CIERRE */
+    .cierre p { font-size: 17px; color: var(--text); margin-bottom: 24px; max-width: 600px; }
+    .btn { display: inline-flex; align-items: center; gap: 10px; border: 1px solid var(--accent); border-radius: 6px; padding: 13px 20px; font-size: 14.5px; font-weight: 560; color: var(--accent); text-decoration: none; background: var(--card); transition: background .15s, color .15s; }
+    .btn .ico { width: 16px; height: 16px; stroke: currentColor; }
+    .btn:hover, .btn.is-fill { background: var(--accent); color: #fff; }
+    .btn.is-fill:hover { background: var(--accent-dark); }
+
+    footer { padding: 32px 0 40px; text-align: center; font-size: 13px; color: var(--dim); border-top: 1px solid var(--line); }
+
+    .js .fade { opacity: 0; transform: translateY(16px); transition: opacity .5s ease, transform .5s ease; }
+    .js .fade.visible { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) { .js .fade { opacity: 1; transform: none; transition: none; } }
+
+    @media (max-width: 980px) {
+      .escalas { grid-template-columns: 1fr; max-width: 812px; margin: 0 auto; }
+    }
+    @media (max-width: 640px) {
+      .wrap, .wrap-wide { padding: 0 16px; }
+      .hero { padding: 48px 0 44px; }
+      section { padding: 52px 0; }
+      h2 { font-size: 25px; }
+      .datos { grid-template-columns: 1fr; }
+      .dato + .dato { border-left: none; border-top: 1px solid var(--line); }
+      .ba { aspect-ratio: 16 / 12; }
+      .refs { grid-template-columns: 1fr; }
+      .escala-head, .escala-price, .escala-body { padding-left: 18px; padding-right: 18px; }
+      .need-grid { grid-template-columns: 1fr; }
+    }
+    @media print {
+      body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      #progress { display: none; }
+      .js .fade { opacity: 1; transform: none; transition: none; }
+      .escala, .need, figure, .hall li { break-inside: avoid; }
+      h2, h3 { break-after: avoid; }
+    }
+
+    .duo-shots { display: grid; grid-template-columns: 1fr 260px; gap: 20px; align-items: start; margin-bottom: 28px; }
+    .duo-shots .movil { border: 1px solid var(--line-strong); border-radius: 18px; overflow: hidden; }
+    .tabla { width: 100%; border-collapse: collapse; background: var(--card); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; font-size: 14.5px; margin-bottom: 18px; }
+    .tabla th, .tabla td { text-align: left; padding: 12px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+    .tabla th { font-size: 12.5px; font-weight: 560; color: var(--mid); background: var(--soft); }
+    .tabla td:first-child { color: var(--ink); font-weight: 560; }
+    .tabla .si { color: var(--ok); } .tabla .no { color: var(--bad); }
+    .tabla-wrap { overflow-x: auto; }
+    @media (max-width: 760px) { .duo-shots { grid-template-columns: 1fr; } .duo-shots .movil { max-width: 260px; } }
+  </style>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-card" viewBox="0 0 24 24"><rect width="20" height="14" x="2" y="5" rx="2"/><path d="M2 10h20"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+  <symbol id="i-alert" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></symbol>
+  <symbol id="i-wrench" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></symbol>
+  <symbol id="i-layout" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18M9 21V9"/></symbol>
+  <symbol id="i-dashboard" viewBox="0 0 24 24"><rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="16" rx="1"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></symbol>
+  <symbol id="i-server" viewBox="0 0 24 24"><rect width="20" height="8" x="2" y="2" rx="2"/><rect width="20" height="8" x="2" y="14" rx="2"/><path d="M6 6h.01M6 18h.01"/></symbol>
+  <symbol id="i-image" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="3" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.09-3.09a2 2 0 0 0-2.82 0L6 21"/></symbol>
+  <symbol id="i-file" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h6"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></symbol>
+  <symbol id="i-link" viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><rect width="14" height="20" x="5" y="2" rx="2"/><path d="M12 18h.01"/></symbol>
+  <symbol id="i-text" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h10"/></symbol>
+  <symbol id="i-chev-l" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></symbol>
+  <symbol id="i-chev-r" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></symbol>
+  <symbol id="i-filter" viewBox="0 0 24 24"><path d="M22 3H2l8 9.46V19l4 2v-8.54z"/></symbol>
+  <symbol id="i-pencil" viewBox="0 0 24 24"><path d="M17 3a2.85 2.85 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/></symbol>
+  <symbol id="i-map" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></symbol>
+  <symbol id="i-msg" viewBox="0 0 24 24"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></symbol>
+</svg>
+  <symbol id="i-compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m16.2 7.8-2.1 6.3-6.3 2.1 2.1-6.3z"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+  <symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M5.6 5.6l2.8 2.8M15.6 15.6l2.8 2.8M5.6 18.4l2.8-2.8M15.6 8.4l2.8-2.8"/></symbol>
+  <symbol id="i-calendar" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></symbol>
+</svg>
+
+<div id="progress"></div>
+
+<div class="wrap">
+  <header class="hero fade">
+    <div class="eyebrow">Propuesta para Ailín Fernández</div>
+    <h1>Que tus sesiones se encuentren fácil, y que tu Mapa Comercial se venda sin que tengas que estar en cada mensaje</h1>
+    <p class="hero-sub">Escuché tus audios, leí el documento del Mapa Comercial Estratégico y recorrí tu Instagram. Con eso armé una idea de cómo se vería tu web y el recorrido del test, y tres caminos para hacerlo, de menor a mayor.</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item"><label>Preparado para</label><span>Ailín Fernández · Enfocando Mentes</span></div>
+      <div class="hero-meta-item"><label>Preparado por</label><span>Lautaro Méndez</span></div>
+      <div class="hero-meta-item"><label>Fecha</label><span>Noviembre 2026</span></div>
+    </div>
+  </header>
+</div>
+
+<section class="alt fade">
+  <div class="wrap">
+    <div class="eyebrow">Así se vería</div>
+    <h2>Con tu azul, tu dorado y tus palabras</h2>
+    <p class="section-intro">Usé los colores y la letra de tus placas, y los textos los saqué de tus publicaciones: «Detecto lo que te frena», «Trabajo sobre lo que no estás viendo», tus tres formas de trabajar y la sección para empresas.</p>
+  </div>
+  <div class="wrap-wide">
+    <div class="duo-shots">
+      <figure style="margin:0"><div class="shot"><div class="shot-bar"><i></i><i></i><i></i><span>Inicio · en la computadora</span></div><img src="vista-pc.jpg" width="1440" height="900" alt="Inicio de la web propuesta en computadora" /></div></figure>
+      <figure style="margin:0"><div class="movil"><img src="vista-movil.jpg" width="520" height="1126" alt="Inicio de la web propuesta en celular" /></div></figure>
+    </div>
+    <div class="duo-shots">
+      <figure style="margin:0">
+        <div class="shot"><div class="shot-bar"><i></i><i></i><i></i><span>Mapa Comercial · después de pagar</span></div><img src="mapa-resultado.jpg" alt="Pantalla de resultado del Mapa Comercial con las seis dimensiones" loading="lazy" /></div>
+        <figcaption>Después de pagar, la persona ve un adelanto de su resultado y le llega el informe en PDF con su nombre. Si eligió la modalidad con sesión, le aparece tu agenda para reservar.</figcaption>
+      </figure>
+      <figure style="margin:0"><div class="movil"><img src="mapa-test-movil.jpg" width="520" height="1126" alt="Una pregunta del test en el celular" loading="lazy" /></div><figcaption>El test, pregunta por pregunta, desde el celular.</figcaption></figure>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="demo-cta">
+      <p><strong>Abrí la idea completa</strong> y hacé el test de ejemplo: son 6 preguntas que muestran cómo se responde, el paso del pago y cómo llega el resultado. Probalo desde el celular.</p>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <a class="btn" href="demo/" target="_blank" rel="noopener">Ver la web</a>
+        <a class="btn is-fill" href="demo/mapa.html" target="_blank" rel="noopener">Probar el Mapa<svg class="ico"><use href="#i-arrow"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <section class="fade">
+    <div class="eyebrow">Diagnóstico</div>
+    <h2>Cómo está hoy</h2>
+    <div class="datos">
+      <div class="dato"><span class="ico-box"><svg class="ico"><use href="#i-users"/></svg></span><div><b>5.672 seguidores</b><span>en Instagram, con una cuenta verificada y una marca muy definida.</span></div></div>
+      <div class="dato"><span class="ico-box"><svg class="ico"><use href="#i-link"/></svg></span><div><b>El link de la bio no es tuyo</b><span>abre la página de venta de Amplia, no la tuya.</span></div></div>
+      <div class="dato"><span class="ico-box"><svg class="ico"><use href="#i-msg"/></svg></span><div><b>Todo por mensaje</b><span>para comprar una sesión hay que escribirte y esperar.</span></div></div>
+    </div>
+    <ul class="hall">
+      <li><svg class="ico"><use href="#i-alert"/></svg><span>Cada persona que toca el link de tu bio se encuentra con otra empresa.<small>Tu web en Amplia ya no está activa, y el link lleva a la publicidad de ellos. Son visitas que hoy se pierden.</small></span></li>
+      <li><svg class="ico"><use href="#i-alert"/></svg><span>Tus programas no tienen un lugar al que mandar a la gente.<small>IMPULSO, las mentorías y la Sesión de Canalización se explican en placas sueltas que se pierden entre las publicaciones.</small></span></li>
+      <li><svg class="ico"><use href="#i-alert"/></svg><span>El Mapa Comercial depende de tu tiempo.<small>Hoy, cada informe lo hacés vos para cada sesión. Para que se venda a $70.000 sin que estés, el test, el cobro y el informe tienen que funcionar solos.</small></span></li>
+    </ul>
+    <div class="callout is-ok">
+      <svg class="ico"><use href="#i-check"/></svg>
+      <span><strong>Lo que ya está bien:</strong> casi todo lo difícil ya lo tenés. Una marca reconocible (AF, azul y dorado), frases propias que se recuerdan, testimonios reales y algo poco común: <strong>ya vendés un formato parecido al Mapa</strong>, la Sesión de Canalización y Estrategia con informe previo. El Mapa es convertir eso en un producto que se vende solo.</span>
+    </div>
+  </section>
+
+  <section class="fade" style="padding-top:0">
+    <div class="eyebrow">Tu documento, ordenado</div>
+    <h2>Qué hace falta para empezar a vender el Mapa</h2>
+    <p class="p">El documento que armaste está muy bien pensado: tiene el producto, los precios, el recorrido y hasta los cuidados (no hacer diagnósticos, no inventar datos). Pero describe la plataforma completa, con lo que tu propio documento llama «Etapa 2» incluido. Para empezar a vender no hace falta todo junto:</p>
+    <div class="tabla-wrap">
+    <table class="tabla">
+      <tr><th>Lo que pide el documento</th><th>Para empezar a vender</th><th>Cuándo sumarlo</th></tr>
+      <tr><td>Test de 40 preguntas</td><td class="si">Sí, con tus preguntas</td><td>Desde el día uno</td></tr>
+      <tr><td>Cobro con Mercado Pago, dos modalidades</td><td class="si">Sí, $70.000 y $180.000</td><td>Desde el día uno</td></tr>
+      <tr><td>Informe en PDF con su nombre</td><td class="si">Sí, armado con tus textos según lo que respondió</td><td>Desde el día uno</td></tr>
+      <tr><td>Redacción con inteligencia artificial</td><td>No hace falta: tus textos ya lo hacen personal</td><td>Opción 3, cuando ya haya ventas</td></tr>
+      <tr><td>Evaluación gratis inicial</td><td>No</td><td>Opción 3</td></tr>
+      <tr><td>Panel con métricas, roles y versiones</td><td>Una planilla con cada compra y sus respuestas</td><td>Opción 3</td></tr>
+      <tr><td>Seguimiento del plan y analítica avanzada</td><td>No</td><td>Más adelante, con resultados reales</td></tr>
+    </table>
+    </div>
+    <h3>La parte que solo podés hacer vos</h3>
+    <p class="p">Lo que hace bueno al informe no es la IA ni la programación: son <strong>tus criterios</strong>. Además de las 40 preguntas, hace falta definir qué le decís a cada persona según lo que responde. Por ejemplo, qué escribís si alguien sale bajo en «confianza para vender», o cuáles son sus tres prioridades si es de estilo Vincular. Eso lo ordenamos juntos en una planilla simple, y es la parte que más tiempo lleva.</p>
+    <div class="callout">
+      <svg class="ico"><use href="#i-spark"/></svg>
+      <span><strong>¿Y la IA?</strong> Es lo primero que uno piensa, pero no es lo que vende. Con tus textos bien escritos, cada informe ya es personal y dice exactamente lo que vos dirías. La IA suma que el texto fluya como si lo hubieras escrito para esa persona; conviene sumarla cuando ya vendiste los primeros Mapas y sabés qué funciona. Y siempre atada a tus reglas, para que no invente.</span>
+    </div>
+  </section>
+
+  <section class="fade" style="padding-top:0">
+    <div class="eyebrow">Las cuentas</div>
+    <h2>Con 13 Mapas, la opción recomendada está paga</h2>
+    <p class="p">Con el Mapa a $70.000, la opción 2 se paga con 13 informes, o con 5 si eligen la modalidad con sesión. Y lo que no se ve: cada Mapa se vende aunque estés en una sesión, y quien compra el Mapa con videollamada llega a tu encuentro con el diagnóstico hecho, así que la sesión rinde más.</p>
+  </section>
+</div>
+
+<section class="alt fade" id="opciones" data-visto="opciones">
+  <div class="wrap">
+    <div class="eyebrow">Las tres opciones</div>
+    <h2>Tres caminos, de menor a mayor</h2>
+    <p class="section-intro">Cada opción suma lo de la anterior. El precio es en dos pagos (mitad al empezar y mitad al entregar); <strong>pagando todo al empezar, sale un 10% menos</strong>.</p>
+  </div>
+  <div class="wrap-wide">
+    <div class="escalas">
+      <article class="escala">
+        <div class="escala-head">
+          <div class="escala-top"><span class="ico-box"><svg class="ico"><use href="#i-layout"/></svg></span><span class="escala-num">Opción 1</span></div>
+          <div class="escala-title">Web de tus servicios</div>
+          <p class="escala-tagline">Lo que pediste primero: una web para tus sesiones y programas.</p>
+        </div>
+        <div class="escala-price">
+          <div class="escala-price-value">$500.000</div>
+          <div class="escala-facts">
+            <div><svg class="ico"><use href="#i-card"/></svg><span>2 pagos de $250.000, o <b>$450.000 en un pago</b></span></div>
+            <div><svg class="ico"><use href="#i-clock"/></svg><span><b>2 semanas</b></span></div>
+            <div><svg class="ico"><use href="#i-wrench"/></svg><span><b>Sin costo mensual</b></span></div>
+          </div>
+        </div>
+        <div class="escala-body">
+          <ul class="ticks"><li><svg class="ico"><use href="#i-check"/></svg>Inicio, cómo trabajás y quién sos, con tus textos y tu marca.</li><li><svg class="ico"><use href="#i-check"/></svg>Mentorías, IMPULSO y la Sesión de Canalización, cada una con su botón a tu WhatsApp.</li><li><svg class="ico"><use href="#i-check"/></svg>Sección para empresas y equipos.</li><li><svg class="ico"><use href="#i-check"/></svg>Tu dominio propio, para que el link de la bio sea tuyo.</li></ul>
+          <p style="font-size:13.5px;color:var(--mid)"><strong>Sirve si</strong> querés ordenar lo que ya vendés y dejar el Mapa para más adelante.</p>
+        </div>
+      </article>
+      <article class="escala is-reco">
+        <span class="reco">La que recomiendo</span>
+        <div class="escala-head">
+          <div class="escala-top"><span class="ico-box"><svg class="ico"><use href="#i-compass"/></svg></span><span class="escala-num">Opción 2</span></div>
+          <div class="escala-title">Web + Mapa Comercial</div>
+          <p class="escala-tagline">El Mapa listo para vender solo, sin construir toda la plataforma de una.</p>
+        </div>
+        <div class="escala-price">
+          <div class="escala-price-value">$900.000</div>
+          <div class="escala-facts">
+            <div><svg class="ico"><use href="#i-card"/></svg><span>2 pagos de $450.000, o <b>$810.000 en un pago</b></span></div>
+            <div><svg class="ico"><use href="#i-clock"/></svg><span><b>5 semanas</b> desde que tengamos tus textos</span></div>
+            <div><svg class="ico"><use href="#i-wrench"/></svg><span><b>Sin costo mensual</b></span></div>
+          </div>
+        </div>
+        <div class="escala-body">
+          <div class="ticks-plus">Todo lo de la opción 1, más</div>
+          <ul class="ticks"><li><svg class="ico"><use href="#i-check"/></svg>Página del Mapa y test de 40 preguntas desde el celular.</li><li><svg class="ico"><use href="#i-check"/></svg>Cobro con Mercado Pago en las dos modalidades.</li><li><svg class="ico"><use href="#i-check"/></svg>Informe en PDF con su nombre, armado con tus textos según lo que respondió, que le llega solo al mail.</li><li><svg class="ico"><use href="#i-check"/></svg>En la modalidad con sesión, tu agenda para que reserve la videollamada.</li><li><svg class="ico"><use href="#i-check"/></svg>Aviso de cada compra y una planilla con todas las respuestas.</li></ul>
+          <p style="font-size:13.5px;color:var(--mid)"><strong>Sirve si</strong> querés empezar a vender el Mapa y ver cómo responde la gente antes de invertir más.</p>
+        </div>
+      </article>
+      <article class="escala">
+        <div class="escala-head">
+          <div class="escala-top"><span class="ico-box"><svg class="ico"><use href="#i-dashboard"/></svg></span><span class="escala-num">Opción 3</span></div>
+          <div class="escala-title">Mapa con IA y panel</div>
+          <p class="escala-tagline">La versión completa de tu documento, para cuando el Mapa ya se vende.</p>
+        </div>
+        <div class="escala-price">
+          <div class="escala-price-value">$1.400.000</div>
+          <div class="escala-facts">
+            <div><svg class="ico"><use href="#i-card"/></svg><span>2 pagos de $700.000, o <b>$1.260.000 en un pago</b></span></div>
+            <div><svg class="ico"><use href="#i-clock"/></svg><span><b>8 semanas</b></span></div>
+            <div><svg class="ico"><use href="#i-wrench"/></svg><span><b>Sin costo mensual</b>; la IA se paga por uso, centavos de dólar por informe</span></div>
+          </div>
+        </div>
+        <div class="escala-body">
+          <div class="ticks-plus">Todo lo de la opción 2, más</div>
+          <ul class="ticks"><li><svg class="ico"><use href="#i-check"/></svg>Redacción del informe con IA, siempre dentro de tus reglas.</li><li><svg class="ico"><use href="#i-check"/></svg>Test gratis corto con un resumen que invita a comprar el Mapa.</li><li><svg class="ico"><use href="#i-check"/></svg>Tu panel: ventas, informes, reenviar un PDF, cambiar precios y textos.</li><li><svg class="ico"><use href="#i-check"/></svg>Los números del recorrido: cuántas empiezan el test, cuántas terminan y cuántas compran.</li></ul>
+          <p style="font-size:13.5px;color:var(--mid)"><strong>Sirve si</strong> ya sabés que el Mapa se vende y querés hacerlo crecer.</p>
+        </div>
+      </article>
+    </div>
+    <div class="callout is-ok" style="max-width:900px;margin:28px auto 0">
+      <svg class="ico"><use href="#i-check"/></svg>
+      <span><strong>Se puede ir por partes:</strong> si arrancás con la opción 2 y después querés la 3, pagás solo la diferencia, sin rehacer nada. En las tres, todo queda a tu nombre (dominio y alojamiento gratis en tu cuenta), con un video corto que muestra cómo hacer cambios y <strong>30 días de garantía</strong>. Mercado Pago cobra su comisión por cada venta, como en cualquier cobro.</span>
+    </div>
+    <div class="wrap" style="padding:0;max-width:900px;margin-top:36px">
+      <h3 style="margin-top:0">De un vistazo</h3>
+      <div class="tabla-wrap">
+      <table class="tabla">
+        <tr><th></th><th>Opción 1</th><th>Opción 2</th><th>Opción 3</th></tr>
+        <tr><td>Web con tus servicios</td><td class="si">Sí</td><td class="si">Sí</td><td class="si">Sí</td></tr>
+        <tr><td>Test y cobro del Mapa</td><td class="no">No</td><td class="si">Sí</td><td class="si">Sí</td></tr>
+        <tr><td>Informe en PDF automático</td><td class="no">No</td><td class="si">Con tus textos</td><td class="si">Con tus textos + IA</td></tr>
+        <tr><td>Test gratis y panel propio</td><td class="no">No</td><td class="no">No</td><td class="si">Sí</td></tr>
+        <tr><td>Precio en 2 pagos</td><td>$500.000</td><td>$900.000</td><td>$1.400.000</td></tr>
+        <tr><td>En un pago</td><td>$450.000</td><td>$810.000</td><td>$1.260.000</td></tr>
+        <tr><td>Plazo</td><td>2 semanas</td><td>5 semanas</td><td>8 semanas</td></tr>
+      </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <section class="fade">
+    <div class="eyebrow">Para arrancar</div>
+    <h2>Qué necesito de tu lado</h2>
+    <div class="need-grid">
+      <div class="need"><svg class="ico"><use href="#i-file"/></svg><span>El test que armaste en el chat<small>Pedile: «Pasame el test completo, con todas las preguntas y opciones, en un solo mensaje», y mandámelo por WhatsApp</small></span></div>
+      <div class="need"><svg class="ico"><use href="#i-pencil"/></svg><span>Qué le decís a cada resultado<small>Lo ordenamos juntos en una planilla; si tenés el ejemplo de informe de 12 páginas, mejor</small></span></div>
+      <div class="need"><svg class="ico"><use href="#i-image"/></svg><span>Tu logo y tus fotos originales<small>Las de las placas, pero sin texto encima</small></span></div>
+      <div class="need"><svg class="ico"><use href="#i-card"/></svg><span>Tu cuenta de Mercado Pago<small>Para cobrar el Mapa directo a tu cuenta</small></span></div>
+      <div class="need"><svg class="ico"><use href="#i-calendar"/></svg><span>Tus horarios para las videollamadas<small>Con tu Google Calendar alcanza</small></span></div>
+      <div class="need"><svg class="ico"><use href="#i-server"/></svg><span>Un Gmail a tu nombre<small>Para dejar todo en tu cuenta: dominio, web y cobros</small></span></div>
+    </div>
+    <p class="p" style="margin-top:22px"><strong>No incluye:</strong> el manejo de tu Instagram, ni escribir las preguntas o los criterios del Mapa, que son tu método (te ayudo a ordenarlos). Si querés anuncios que lleven a la página del Mapa y medir cuántos compran, te armo una propuesta aparte.</p>
+  </section>
+
+  <section class="fade cierre" data-visto="final">
+    <div class="eyebrow">Siguiente paso</div>
+    <h2>Elegí el camino y arrancamos</h2>
+    <p>Decime cuál te cierra, o lo charlamos por llamada. Si arrancamos el lunes 16 de noviembre, la web de tus servicios está en línea antes de fin de mes, y el Mapa, con tus textos listos, antes de las fiestas.</p>
+    <a class="btn" href="https://lautaromendez.com.ar/portfolio" target="_blank" rel="noopener">Ver trabajos anteriores<svg class="ico"><use href="#i-arrow"/></svg></a>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">Propuesta preparada por Lautaro Méndez · 6 de noviembre de 2026 · Precios válidos por 15 días</div>
+</footer>
+
+<script>
+  window.addEventListener('scroll', () => {
+    const h = document.documentElement.scrollHeight - window.innerHeight;
+    document.getElementById('progress').style.width = (h > 0 ? document.documentElement.scrollTop / h * 100 : 0) + '%';
+  });
+  const fades = document.querySelectorAll('.fade');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } }), { threshold: 0.04 });
+    fades.forEach(el => io.observe(el));
+  } else {
+    fades.forEach(el => el.classList.add('visible'));
+  }
+</script>
+<script src="/propuestas/_visto.js" data-p="enfocando-mentes" data-n="Ailin" defer></script>
+</body>
+</html>
