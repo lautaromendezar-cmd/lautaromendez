@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="description" content="Boceto de la web nueva de Claudio Benítez Entertainment: producción de espectáculos y contratación de artistas." />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="es_AR" />
+  <meta property="og:site_name" content="Lautaro Méndez" />
+  <meta property="og:url" content="https://lautaromendez.com.ar/propuestas/claudio-benitez/demo/" />
+  <meta property="og:title" content="Boceto · Claudio Benítez Entertainment" />
+  <meta property="og:description" content="Una idea de la web nueva, en negro y dorado como tus posteos." />
+  <meta property="og:image" content="https://lautaromendez.com.ar/propuestas/claudio-benitez/og.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <title>Claudio Benítez Entertainment · Contratación de artistas y shows</title>
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,500;0,6..96,600;1,6..96,500&family=Manrope:wght@400;500;600;700&display=swap" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* Paleta: el negro y dorado de los posteos de Instagram */
+    :root {
+      --negro: #0a0908;
+      --negro-2: #12100d;
+      --carbon: #1a1713;
+      --linea: #2b261e;
+      --marfil: #f2ebdd;
+      --texto: #c9c1b2;
+      --gris: #8d8577;
+      --oro: #d4b26a;
+      --oro-2: #f0d9a1;
+      --oro-3: #a8853f;
+      --dorado: linear-gradient(120deg, #a8853f 0%, #f0d9a1 45%, #c9a45a 70%, #8e6d2f 100%);
+      --serif: 'Bodoni Moda', 'Didot', Georgia, serif;
+      --sans: 'Manrope', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--negro); color: var(--texto); font-family: var(--sans); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+    img { display: block; max-width: 100%; height: auto; }
+    a { color: inherit; }
+    .ico { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
+
+    .aviso { background: var(--oro); color: #1b150a; font-size: 13px; text-align: center; padding: 7px 16px; font-weight: 600; }
+    .wrap { max-width: 1180px; margin: 0 auto; padding: 0 28px; }
+
+    /* HEADER */
+    header { position: sticky; top: 0; z-index: 50; background: rgb(10 9 8 / .86); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid var(--linea); }
+    .nav { display: flex; align-items: center; gap: 28px; height: 68px; }
+    .marca { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .marca .cb { height: 30px; width: auto; }
+    .marca .txt { height: 13px; width: auto; opacity: .92; }
+    .menu { display: flex; gap: 24px; margin-left: auto; list-style: none; }
+    .menu a { text-decoration: none; font-size: 14px; font-weight: 500; color: var(--texto); transition: color .15s; }
+    .menu a:hover { color: var(--oro-2); }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 9px; padding: 11px 20px; border-radius: 999px; font-size: 14px; font-weight: 600; text-decoration: none; border: 1px solid var(--oro); color: var(--oro-2); background: transparent; cursor: pointer; font-family: inherit; transition: background .15s, color .15s; white-space: nowrap; }
+    .btn:hover { background: rgb(212 178 106 / .12); }
+    .btn.oro { background: var(--dorado); color: #1b150a; border-color: transparent; }
+    .btn.oro:hover { filter: brightness(1.08); }
+    .btn.chico { padding: 8px 15px; font-size: 13px; }
+    .hamb { display: none; margin-left: auto; background: none; border: 1px solid var(--linea); color: var(--marfil); border-radius: 8px; padding: 8px; cursor: pointer; }
+
+    /* HERO */
+    .hero { position: relative; min-height: min(86vh, 760px); display: flex; align-items: flex-end; overflow: hidden; }
+    .hero-foto { position: absolute; inset: 0; }
+    .hero-foto img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 40%; filter: grayscale(.55) sepia(.35) contrast(1.08) brightness(.62); }
+    .hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgb(10 9 8 / .25) 0%, rgb(10 9 8 / .35) 45%, var(--negro) 100%), radial-gradient(ellipse at 70% 20%, rgb(240 217 161 / .16), transparent 60%); }
+    .hero-in { position: relative; z-index: 2; padding: 0 0 64px; width: 100%; }
+    .eyebrow { font-size: 12.5px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--oro); margin-bottom: 16px; }
+    .hero h1 { font-family: var(--serif); font-weight: 500; font-size: clamp(38px, 6vw, 72px); line-height: 1.04; color: var(--marfil); letter-spacing: -0.01em; max-width: 820px; margin-bottom: 18px; }
+    .hero h1 em { font-style: italic; background: var(--dorado); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .hero p { font-size: 17px; max-width: 560px; color: var(--texto); margin-bottom: 28px; }
+    .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+    .datos { position: relative; z-index: 2; display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--linea); border-bottom: 1px solid var(--linea); background: var(--negro); }
+    .datos div { padding: 20px 24px; }
+    .datos div + div { border-left: 1px solid var(--linea); }
+    .datos b { display: block; font-family: var(--serif); font-size: 26px; font-weight: 500; color: var(--oro-2); line-height: 1.15; }
+    .datos span { font-size: 13px; color: var(--gris); }
+
+    /* SECCIONES */
+    section { padding: 88px 0; }
+    .sec-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; margin-bottom: 34px; flex-wrap: wrap; }
+    h2 { font-family: var(--serif); font-weight: 500; font-size: clamp(30px, 4vw, 44px); line-height: 1.1; color: var(--marfil); }
+    h2 em { font-style: italic; color: var(--oro-2); }
+    .sec-sub { color: var(--gris); max-width: 520px; font-size: 15px; margin-top: 10px; }
+
+    /* AGENDA */
+    .agenda { list-style: none; border-top: 1px solid var(--linea); }
+    .fecha { display: grid; grid-template-columns: 92px 76px 1fr auto; gap: 22px; align-items: center; padding: 16px 0; border-bottom: 1px solid var(--linea); transition: background .15s; }
+    .fecha:hover { background: rgb(212 178 106 / .04); }
+    .dia { text-align: center; line-height: 1; }
+    .dia small { display: block; font-size: 11.5px; font-weight: 600; letter-spacing: .14em; color: var(--oro); text-transform: uppercase; }
+    .dia b { display: block; font-family: var(--serif); font-size: 38px; font-weight: 500; color: var(--marfil); margin: 4px 0 2px; }
+    .dia span { font-size: 12px; color: var(--gris); text-transform: uppercase; letter-spacing: .1em; }
+    .fecha img { width: 76px; height: 76px; object-fit: cover; object-position: 50% 20%; border-radius: 6px; }
+    .fecha h3 { font-family: var(--serif); font-size: 23px; font-weight: 500; color: var(--marfil); line-height: 1.2; }
+    .fecha p { font-size: 14px; color: var(--gris); display: flex; align-items: center; gap: 7px; margin-top: 3px; }
+    .fecha .tag { display: inline-block; font-size: 11px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--oro); border: 1px solid var(--linea); border-radius: 999px; padding: 2px 9px; margin-left: 6px; vertical-align: middle; font-family: var(--sans); }
+
+    /* ARTISTAS */
+    .tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 26px; }
+    .tab { padding: 8px 16px; border-radius: 999px; border: 1px solid var(--linea); background: transparent; color: var(--texto); font-family: inherit; font-size: 13.5px; font-weight: 500; cursor: pointer; }
+    .tab.on { background: var(--oro); color: #1b150a; border-color: var(--oro); font-weight: 600; }
+    .grilla { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .art { position: relative; border-radius: 8px; overflow: hidden; background: var(--carbon); border: 1px solid var(--linea); cursor: pointer; text-align: left; font-family: inherit; color: inherit; padding: 0; }
+    .art img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 15%; transition: transform .4s ease; }
+    .art:hover img { transform: scale(1.04); }
+    .art-info { position: absolute; left: 0; right: 0; bottom: 0; padding: 40px 16px 14px; background: linear-gradient(180deg, transparent, rgb(10 9 8 / .92)); }
+    .art-info b { display: block; font-family: var(--serif); font-size: 21px; font-weight: 500; color: var(--marfil); line-height: 1.15; }
+    .art-info span { font-size: 12.5px; color: var(--oro); font-weight: 600; }
+    .art.sin-foto { aspect-ratio: 4 / 5; display: flex; align-items: flex-end; background: radial-gradient(circle at 70% 25%, rgb(240 217 161 / .14), transparent 55%), var(--carbon); }
+    .art.sin-foto .art-info { position: static; background: none; padding: 16px; }
+    .art.sin-foto::before { content: "CB"; position: absolute; top: 16px; left: 16px; font-family: var(--serif); font-size: 15px; color: var(--oro-3); letter-spacing: .1em; }
+    .mas { margin-top: 18px; font-size: 14px; color: var(--gris); }
+
+    /* FICHA */
+    .ficha { position: fixed; inset: 0; z-index: 100; display: none; align-items: center; justify-content: center; padding: 20px; background: rgb(0 0 0 / .78); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
+    .ficha.abierta { display: flex; }
+    .ficha-in { position: relative; display: grid; grid-template-columns: 1fr 1.1fr; max-width: 940px; width: 100%; max-height: calc(100vh - 40px); overflow: auto; background: var(--negro-2); border: 1px solid var(--linea); border-radius: 10px; }
+    .ficha-foto img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 15%; min-height: 320px; }
+    .ficha-txt { padding: 32px 30px; display: flex; flex-direction: column; gap: 16px; }
+    .ficha-txt h3 { font-family: var(--serif); font-size: 36px; font-weight: 500; color: var(--marfil); line-height: 1.05; }
+    .ficha-txt .gen { font-size: 12.5px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--oro); }
+    .ficha-txt p { font-size: 15px; }
+    .video { position: relative; aspect-ratio: 16 / 9; border-radius: 8px; overflow: hidden; border: 1px solid var(--linea); }
+    .video img { width: 100%; height: 100%; object-fit: cover; filter: brightness(.55) grayscale(.3); }
+    .video span { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; color: var(--marfil); font-size: 13px; }
+    .video i { width: 54px; height: 54px; border-radius: 50%; background: var(--dorado); display: flex; align-items: center; justify-content: center; }
+    .video i svg { width: 20px; height: 20px; fill: #1b150a; stroke: none; margin-left: 3px; }
+    .ficha-datos { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 8px 16px; font-size: 13.5px; }
+    .ficha-datos li { border-top: 1px solid var(--linea); padding-top: 8px; }
+    .ficha-datos b { display: block; color: var(--gris); font-weight: 500; font-size: 12px; }
+    .cerrar { position: absolute; top: 12px; right: 12px; z-index: 2; width: 38px; height: 38px; border-radius: 50%; border: 1px solid var(--linea); background: rgb(10 9 8 / .8); color: var(--marfil); cursor: pointer; display: flex; align-items: center; justify-content: center; }
+
+    /* EVENTOS */
+    .galeria { display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 210px; gap: 12px; }
+    .galeria figure { position: relative; overflow: hidden; border-radius: 8px; }
+    .galeria figure.alta { grid-row: span 2; }
+    .galeria figure.ancha { grid-column: span 2; }
+    .galeria img { width: 100%; height: 100%; object-fit: cover; }
+    .galeria figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: 30px 14px 12px; background: linear-gradient(180deg, transparent, rgb(10 9 8 / .9)); font-size: 13px; color: var(--marfil); line-height: 1.35; }
+    .galeria figcaption small { display: block; color: var(--oro); font-size: 11.5px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
+    .rubros { display: flex; flex-wrap: wrap; gap: 8px 22px; margin-top: 26px; font-size: 14px; color: var(--gris); }
+    .rubros span::before { content: "✦"; color: var(--oro); margin-right: 8px; font-size: 11px; }
+
+    /* SERVICIOS + EMPRESA */
+    .alt { background: var(--negro-2); border-top: 1px solid var(--linea); border-bottom: 1px solid var(--linea); }
+    .servicios { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; border: 1px solid var(--linea); border-radius: 8px; overflow: hidden; }
+    .serv { padding: 24px 20px; }
+    .serv + .serv { border-left: 1px solid var(--linea); }
+    .serv b { display: block; font-family: var(--serif); font-size: 13px; color: var(--oro); margin-bottom: 10px; }
+    .serv h3 { font-size: 16px; font-weight: 600; color: var(--marfil); margin-bottom: 6px; line-height: 1.3; }
+    .serv p { font-size: 13.5px; color: var(--gris); line-height: 1.5; }
+    .empresa { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; margin-top: 72px; }
+    .empresa img { border-radius: 8px; aspect-ratio: 5 / 4; object-fit: cover; width: 100%; }
+    .empresa p { margin-bottom: 14px; font-size: 15.5px; }
+    .sello { display: inline-flex; gap: 12px; align-items: center; margin-top: 6px; padding: 12px 16px; border: 1px solid var(--linea); border-radius: 8px; font-size: 13.5px; }
+    .sello b { font-family: var(--serif); font-size: 22px; color: var(--oro-2); font-weight: 500; }
+
+    /* CONTRATAR */
+    .contratar { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 56px; align-items: start; }
+    .pasos { list-style: none; margin-top: 26px; display: flex; flex-direction: column; gap: 14px; }
+    .pasos li { display: flex; gap: 14px; font-size: 14.5px; }
+    .pasos b { font-family: var(--serif); color: var(--oro); font-size: 20px; line-height: 1.2; min-width: 22px; }
+    form { background: var(--negro-2); border: 1px solid var(--linea); border-radius: 10px; padding: 28px; display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    label { display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 500; color: var(--texto); }
+    label.full { grid-column: 1 / -1; }
+    input, select, textarea { font-family: inherit; font-size: 15px; color: var(--marfil); background: var(--negro); border: 1px solid var(--linea); border-radius: 6px; padding: 11px 12px; width: 100%; }
+    input:focus, select:focus, textarea:focus { outline: none; border-color: var(--oro); }
+    textarea { resize: vertical; min-height: 78px; }
+    .form-btns { grid-column: 1 / -1; display: flex; gap: 10px; flex-wrap: wrap; align-items: center; margin-top: 4px; }
+    .form-btns small { color: var(--gris); font-size: 12.5px; }
+
+    /* FAQ */
+    .faq { max-width: 820px; }
+    details { border-bottom: 1px solid var(--linea); padding: 16px 0; }
+    summary { cursor: pointer; font-size: 16.5px; font-weight: 600; color: var(--marfil); list-style: none; display: flex; justify-content: space-between; gap: 16px; }
+    summary::after { content: "+"; color: var(--oro); font-size: 20px; line-height: 1; }
+    details[open] summary::after { content: "−"; }
+    details p { margin-top: 10px; font-size: 15px; color: var(--texto); }
+
+    footer { padding: 48px 0 90px; border-top: 1px solid var(--linea); font-size: 13.5px; color: var(--gris); }
+    .pie { display: flex; justify-content: space-between; gap: 30px; flex-wrap: wrap; align-items: flex-start; }
+    .pie .cb { height: 44px; width: auto; margin-bottom: 12px; }
+    .pie ul { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+    .pie a { text-decoration: none; }
+    .pie a:hover { color: var(--oro-2); }
+
+    .wa { position: fixed; right: 20px; bottom: 20px; z-index: 60; display: flex; align-items: center; gap: 9px; padding: 13px 18px; border-radius: 999px; background: #1fa855; color: #fff; text-decoration: none; font-size: 14px; font-weight: 600; box-shadow: 0 10px 30px rgb(0 0 0 / .4); }
+    .wa svg { width: 20px; height: 20px; fill: #fff; stroke: none; }
+
+    @media (max-width: 1000px) {
+      .grilla { grid-template-columns: repeat(3, 1fr); }
+      .servicios { grid-template-columns: 1fr 1fr; }
+      .serv + .serv { border-left: none; }
+      .serv { border-top: 1px solid var(--linea); }
+      .serv:nth-child(-n+2) { border-top: none; }
+      .serv:nth-child(even) { border-left: 1px solid var(--linea); }
+      .contratar, .empresa { grid-template-columns: 1fr; gap: 32px; }
+      .galeria { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 820px) {
+      .menu, .nav > .btn { display: none; }
+      .hamb { display: flex; }
+      header.abierto .menu { display: flex; flex-direction: column; position: absolute; top: 68px; left: 0; right: 0; background: var(--negro); border-bottom: 1px solid var(--linea); padding: 14px 20px 20px; gap: 14px; }
+      .datos { grid-template-columns: 1fr 1fr; }
+      .datos div:nth-child(3) { border-left: none; }
+      .datos div:nth-child(n+3) { border-top: 1px solid var(--linea); }
+      .ficha-in { grid-template-columns: 1fr; }
+      .ficha-foto img { min-height: 0; aspect-ratio: 4 / 3; }
+    }
+    @media (max-width: 640px) {
+      .wrap { padding: 0 16px; }
+      section { padding: 60px 0; }
+      .hero { min-height: 78vh; }
+      .hero-foto img { object-position: 22% 0%; filter: grayscale(.6) sepia(.35) contrast(1.05) brightness(.45); }
+      .hero-in { padding-bottom: 40px; }
+      .hero p { font-size: 15.5px; }
+      .datos div { padding: 14px 16px; }
+      .datos b { font-size: 21px; }
+      .fecha { grid-template-columns: 60px 1fr; grid-template-areas: "dia info" "dia btn"; gap: 6px 16px; }
+      .fecha .dia { grid-area: dia; }
+      .fecha img { display: none; }
+      .fecha > div:nth-child(3) { grid-area: info; }
+      .fecha > .btn { grid-area: btn; justify-self: start; }
+      .dia b { font-size: 32px; }
+      .fecha h3 { font-size: 20px; }
+      .grilla { grid-template-columns: 1fr 1fr; gap: 10px; }
+      .art-info { padding: 30px 12px 10px; }
+      .art-info b { font-size: 17px; }
+      .galeria { grid-auto-rows: 150px; gap: 8px; }
+      .servicios { grid-template-columns: 1fr; }
+      .serv:nth-child(even) { border-left: none; }
+      .serv:nth-child(2) { border-top: 1px solid var(--linea); }
+      form { grid-template-columns: 1fr; padding: 20px; }
+      .ficha { padding: 0; align-items: stretch; }
+      .ficha-in { border-radius: 0; max-height: 100vh; }
+      .ficha-txt { padding: 22px 18px 28px; }
+      .ficha-txt h3 { font-size: 30px; }
+      .wa span { display: none; }
+      .wa { padding: 14px; }
+    }
+  </style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><path d="M6 4l14 8-14 8z"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-10 6L2 7"/></symbol>
+  <symbol id="i-wa" viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.2 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.1.1.7-.1 1.2Z"/></symbol>
+</svg>
+
+<div class="aviso">Boceto para charlar: artistas, fechas, lugares y textos son de ejemplo</div>
+
+<header id="top">
+  <div class="wrap nav">
+    <a class="marca" href="#top" aria-label="Claudio Benítez Entertainment">
+      <img class="cb" src="img/logo-cb.png" width="311" height="221" alt="CB" />
+      <img class="txt" src="img/logo-texto.png" width="756" height="96" alt="Claudio Benítez Entertainment" />
+    </a>
+    <ul class="menu">
+      <li><a href="#agenda">Agenda</a></li>
+      <li><a href="#artistas">Artistas</a></li>
+      <li><a href="#eventos">Eventos realizados</a></li>
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#contratar">Contratar</a></li>
+    </ul>
+    <a class="btn chico oro" href="#contratar">Cotizá tu show</a>
+    <button class="hamb" aria-label="Abrir menú" onclick="this.closest('header').classList.toggle('abierto')"><svg class="ico"><use href="#i-menu"/></svg></button>
+  </div>
+</header>
+
+<section class="hero" style="padding:0">
+  <div class="hero-foto"><img src="img/hero.jpg" width="1800" height="1260" alt="Show en vivo en un escenario con el público adelante" /></div>
+  <div class="wrap hero-in">
+    <div class="eyebrow">Producción · Booking · Management</div>
+    <h1>Tu evento empieza con una <em>decisión segura</em></h1>
+    <p>Más de 20 años llevando artistas a fiestas nacionales, provinciales y municipales, boliches y eventos privados de todo el país. Cumbia, cuarteto, urbano, rock, pop y folklore.</p>
+    <div class="hero-btns">
+      <a class="btn oro" href="#contratar">Contratar un show</a>
+      <a class="btn" href="#agenda">Ver la agenda</a>
+    </div>
+  </div>
+</section>
+<div class="datos">
+  <div><b>+20 años</b><span>produciendo shows desde 2006</span></div>
+  <div><b>+150 artistas</b><span>de todos los géneros</span></div>
+  <div><b>Todo el país</b><span>giras, fiestas y festivales</span></div>
+  <div><b>ADRA N° 667</b><span>Asociación de Representantes de Artistas</span></div>
+</div>
+
+<section id="agenda">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="eyebrow">Agenda</div>
+        <h2>Próximos <em>shows</em></h2>
+      </div>
+      <p class="sec-sub">Las fechas confirmadas de las próximas semanas. Para llevar alguno de estos artistas a tu evento, consultanos.</p>
+    </div>
+    <ul class="agenda">
+      <li class="fecha">
+        <div class="dia"><small>Jue</small><b>12</b><span>Nov</span></div>
+        <img src="img/a-anaconda.jpg" alt="" loading="lazy" />
+        <div><h3>Anaconda</h3><p><svg class="ico"><use href="#i-pin"/></svg>OMI · Lanús, Buenos Aires</p></div>
+        <a class="btn chico oro" href="#">Entradas</a>
+      </li>
+      <li class="fecha">
+        <div class="dia"><small>Vie</small><b>13</b><span>Nov</span></div>
+        <img src="img/a-konga.jpg" alt="" loading="lazy" />
+        <div><h3>La Konga <span class="tag">Fiesta nacional</span></h3><p><svg class="ico"><use href="#i-pin"/></svg>Polideportivo municipal · San Vicente, Misiones</p></div>
+        <a class="btn chico oro" href="#">Entradas</a>
+      </li>
+      <li class="fecha">
+        <div class="dia"><small>Sáb</small><b>14</b><span>Nov</span></div>
+        <img src="img/a-polaco.jpg" alt="" loading="lazy" />
+        <div><h3>El Polaco <span class="tag">Gira Entre Ríos</span></h3><p><svg class="ico"><use href="#i-pin"/></svg>Mandale Cumbia · Paraná, Entre Ríos</p></div>
+        <a class="btn chico oro" href="#">Entradas</a>
+      </li>
+      <li class="fecha">
+        <div class="dia"><small>Jue</small><b>19</b><span>Nov</span></div>
+        <img src="img/a-ezequiel.jpg" alt="" loading="lazy" />
+        <div><h3>Ezequiel y La Clave</h3><p><svg class="ico"><use href="#i-pin"/></svg>OMI · Lanús, Buenos Aires</p></div>
+        <a class="btn chico oro" href="#">Entradas</a>
+      </li>
+      <li class="fecha">
+        <div class="dia"><small>Sáb</small><b>21</b><span>Nov</span></div>
+        <img src="img/a-ecko.jpg" alt="" loading="lazy" />
+        <div><h3>Ecko</h3><p><svg class="ico"><use href="#i-pin"/></svg>Space · Buenos Aires</p></div>
+        <a class="btn chico oro" href="#">Entradas</a>
+      </li>
+      <li class="fecha">
+        <div class="dia"><small>Sáb</small><b>28</b><span>Nov</span></div>
+        <img src="img/a-matias.jpg" alt="" loading="lazy" />
+        <div><h3>Matías Valdez <span class="tag">Fiesta provincial</span></h3><p><svg class="ico"><use href="#i-pin"/></svg>Predio ferial · Victoria, Entre Ríos</p></div>
+        <a class="btn chico" href="#contratar">Consultar</a>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section id="artistas" class="alt">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="eyebrow">Contratación de artistas</div>
+        <h2>El show que tu <em>evento</em> necesita</h2>
+      </div>
+      <p class="sec-sub">Elegí el género, mirá la ficha con fotos y video, y pedí presupuesto por WhatsApp en un toque.</p>
+    </div>
+    <div class="tabs" role="tablist">
+      <button class="tab on" data-g="cumbia">Cumbia · Cuarteto · Tropical</button>
+      <button class="tab" data-g="urbano">Urbano</button>
+      <button class="tab" data-g="rock">Rock · Pop</button>
+      <button class="tab" data-g="folklore">Folklore</button>
+      <button class="tab" data-g="covers">Bandas covers</button>
+    </div>
+    <div class="grilla" id="grilla"></div>
+    <p class="mas" id="mas"></p>
+  </div>
+</section>
+
+<div class="ficha" id="ficha" role="dialog" aria-modal="true" aria-labelledby="f-nombre">
+  <div class="ficha-in">
+    <button class="cerrar" aria-label="Cerrar" onclick="cerrarFicha()"><svg class="ico"><use href="#i-x"/></svg></button>
+    <div class="ficha-foto"><img id="f-foto" src="" alt="" /></div>
+    <div class="ficha-txt">
+      <div><div class="gen" id="f-gen"></div><h3 id="f-nombre"></h3></div>
+      <p id="f-bio"></p>
+      <div class="video"><img id="f-video" src="img/g-rojo.jpg" alt="" /><span><i><svg><use href="#i-play"/></svg></i>Video del show en vivo</span></div>
+      <ul class="ficha-datos">
+        <li><b>Formato</b>Show en vivo de 60 a 90 minutos</li>
+        <li><b>Ideal para</b>Fiestas populares, boliches y eventos privados</li>
+        <li><b>Cobertura</b>Todo el país</li>
+        <li><b>Incluye</b>Asistencia de road manager</li>
+      </ul>
+      <a class="btn oro" id="f-wa" href="#" target="_blank" rel="noopener"><svg class="ico" style="fill:currentColor;stroke:none"><use href="#i-wa"/></svg>Pedir presupuesto por WhatsApp</a>
+    </div>
+  </div>
+</div>
+
+<section id="eventos">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="eyebrow">Eventos realizados</div>
+        <h2>Lo que ya <em>pasó</em> arriba del escenario</h2>
+      </div>
+      <p class="sec-sub">Fiestas, giras y noches de boliche que produjimos. Cada evento con sus fotos y videos.</p>
+    </div>
+    <div class="galeria">
+      <figure class="ancha alta"><img src="img/escenario.jpg" alt="Artista y organizador en el escenario frente a miles de personas" loading="lazy" /><figcaption><small>Noviembre 2026</small>29° Expo Pymes · Rosario del Tala, Entre Ríos</figcaption></figure>
+      <figure class="alta"><img src="img/g-naranja.jpg" alt="Cantante en el escenario con luces naranjas" loading="lazy" /><figcaption><small>Agosto 2026</small>Gira Entre Ríos · Gualeguaychú</figcaption></figure>
+      <figure><img src="img/g-rojo.jpg" alt="Show en vivo con luces rojas" loading="lazy" /><figcaption><small>Septiembre 2026</small>Forest · Buenos Aires</figcaption></figure>
+      <figure><img src="img/g-verde.jpg" alt="Banda tocando en vivo" loading="lazy" /><figcaption><small>Septiembre 2026</small>OMI · Lanús</figcaption></figure>
+      <figure class="ancha"><img src="img/g-rosa.jpg" alt="Banda en vivo con el público adelante" loading="lazy" style="object-position:50% 40%" /><figcaption><small>Octubre 2026</small>Damas Gratis · OMI, Lanús</figcaption></figure>
+      <figure><img src="img/g-expo.jpg" alt="Cantante en el escenario" loading="lazy" style="object-position:50% 25%" /><figcaption><small>Noviembre 2026</small>Matías Valdez en vivo</figcaption></figure>
+      <figure><img src="img/g-azul.jpg" alt="Escenario con luces azules" loading="lazy" /><figcaption><small>Octubre 2026</small>Club XXI · Quilmes</figcaption></figure>
+    </div>
+    <div class="rubros"><span>Fiestas nacionales</span><span>Fiestas provinciales</span><span>Fiestas municipales</span><span>Boliches y clubes</span><span>Casinos y hoteles</span><span>Eventos privados y corporativos</span></div>
+  </div>
+</section>
+
+<section id="servicios" class="alt">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="eyebrow">Servicios</div>
+        <h2>Todo tu evento, <em>en una sola</em> productora</h2>
+      </div>
+    </div>
+    <div class="servicios">
+      <div class="serv"><b>01</b><h3>Producción integral</h3><p>Lugar, escenario, sonido, luces, vallas y todo lo que necesita un evento grande.</p></div>
+      <div class="serv"><b>02</b><h3>Programación artística</h3><p>Armamos la grilla de casinos, hoteles, clubes, pubs y boliches.</p></div>
+      <div class="serv"><b>03</b><h3>Contratación de artistas</h3><p>Un booking amplio, con precios negociados para cada fecha.</p></div>
+      <div class="serv"><b>04</b><h3>Management</h3><p>Diagnóstico y proyecto de trabajo para artistas que quieren crecer.</p></div>
+      <div class="serv"><b>05</b><h3>Road manager</h3><p>Acompañamos al artista a cualquier punto del país y del exterior.</p></div>
+    </div>
+    <div class="empresa" id="empresa">
+      <img src="img/publico.jpg" alt="Público frente al escenario en un show al aire libre" loading="lazy" />
+      <div>
+        <div class="eyebrow">La empresa</div>
+        <h2 style="margin-bottom:18px">Seriedad y <em>cumplimiento</em>, show tras show</h2>
+        <p>Desde 2006, Claudio Benítez produce y vende artistas a todo el país, con un nombre reconocido por el respeto al cliente y al artista.</p>
+        <p>Trabajamos con artistas nuevos y consagrados, y ponemos a tu disposición venta, promoción, prensa, producción y técnica.</p>
+        <div class="sello"><b>ADRA</b><span>Socio N° 667 de la Asociación de<br />Representantes de Artistas desde 2014</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contratar">
+  <div class="wrap contratar">
+    <div>
+      <div class="eyebrow">Contratación</div>
+      <h2>Contanos tu <em>evento</em></h2>
+      <p class="sec-sub">Con estos datos te pasamos disponibilidad y precio real, sin idas y vueltas.</p>
+      <ol class="pasos">
+        <li><b>1</b><span>Completás el formulario: tarda un minuto.</span></li>
+        <li><b>2</b><span>Te llega a WhatsApp o mail con todos los datos ordenados.</span></li>
+        <li><b>3</b><span>Te respondemos con disponibilidad y presupuesto del artista.</span></li>
+      </ol>
+    </div>
+    <form id="form" onsubmit="return false">
+      <label>Tipo de evento
+        <select id="c-tipo" required>
+          <option value="">Elegí una opción</option>
+          <option>Fiesta nacional, provincial o municipal</option>
+          <option>Boliche, club o pub</option>
+          <option>Casino u hotel</option>
+          <option>Evento privado</option>
+          <option>Evento corporativo</option>
+          <option>Otro</option>
+        </select>
+      </label>
+      <label>Fecha
+        <input id="c-fecha" type="date" required />
+      </label>
+      <label>Lugar
+        <input id="c-lugar" type="text" placeholder="Ciudad y provincia" required />
+      </label>
+      <label>Cantidad de personas
+        <select id="c-gente" required>
+          <option value="">Elegí una opción</option>
+          <option>Hasta 300</option>
+          <option>300 a 1.000</option>
+          <option>1.000 a 5.000</option>
+          <option>Más de 5.000</option>
+        </select>
+      </label>
+      <label class="full">Artista de interés
+        <input id="c-artista" type="text" list="lista-artistas" placeholder="Escribí un nombre o un género" />
+        <datalist id="lista-artistas"></datalist>
+      </label>
+      <label class="full">Algo más que quieras contarnos
+        <textarea id="c-msj" placeholder="Opcional"></textarea>
+      </label>
+      <div class="form-btns">
+        <button class="btn oro" type="button" onclick="enviar('wa')"><svg class="ico" style="fill:currentColor;stroke:none"><use href="#i-wa"/></svg>Enviar por WhatsApp</button>
+        <button class="btn" type="button" onclick="enviar('mail')"><svg class="ico"><use href="#i-mail"/></svg>Por mail</button>
+      </div>
+    </form>
+  </div>
+</section>
+
+<section class="alt" style="padding-top:72px">
+  <div class="wrap faq">
+    <div class="eyebrow">Preguntas frecuentes</div>
+    <h2 style="margin-bottom:22px">Antes de <em>contratar</em></h2>
+    <details><summary>¿Contratar por una productora sale más caro?</summary><p>No. El precio lo pone el artista según la demanda y su convocatoria; la agencia cobra una comisión del artista, no del cliente. Y negociamos para que tengas el mejor precio.</p></details>
+    <details><summary>¿El precio de un artista es fijo?</summary><p>No: cambia según el lugar, la fecha, la capacidad y la cantidad de presentaciones. Por eso te pedimos esos datos en el formulario, para darte un precio exacto.</p></details>
+    <details><summary>¿Llevan artistas al interior?</summary><p>Sí, a cualquier punto del país y al exterior, con asistencia de road manager para que se cumpla todo lo pactado.</p></details>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap pie">
+    <div>
+      <img class="cb" src="img/logo-cb.png" width="311" height="221" alt="CB" />
+      <div>Claudio Benítez Entertainment<br />Producción · Booking · Management</div>
+    </div>
+    <ul>
+      <li><a href="#contratar">Contratar un show</a></li>
+      <li><a href="#agenda">Agenda</a></li>
+      <li><a href="https://www.instagram.com/claudiobenitezprod/" target="_blank" rel="noopener">Instagram @claudiobenitezprod</a></li>
+    </ul>
+    <ul>
+      <li>WhatsApp de ejemplo</li>
+      <li>contacto@claudiobenitez.com.ar</li>
+      <li>Lunes a viernes de 10 a 19</li>
+    </ul>
+  </div>
+</footer>
+
+<a class="wa" href="#contratar" aria-label="Escribinos por WhatsApp"><svg><use href="#i-wa"/></svg><span>Escribinos</span></a>
+
+<script>
+  // WhatsApp de ejemplo: en la web real va el número de Claudio
+  const WA = '5491100000000';
+  const MAIL = 'contacto@claudiobenitez.com.ar';
+
+  const ART = {
+    cumbia: [
+      ['Anaconda', 'anaconda'], ['La Konga', 'konga'], ['El Polaco', 'polaco'], ['Ezequiel y La Clave', 'ezequiel'],
+      ['Damaris', 'damaris'], ['18 Kilates', 'kilates'], ['Walter Encina', 'encina'], ['Miguel Ángel', 'miguel']
+    ],
+    urbano: [['Ecko', 'ecko'], ['Elaggume', 'elaggume'], ['Ponte Perro', 'ponteperro'], ['Matías Valdez', 'matias']],
+    rock: [['Airbag'], ['Los Tipitos'], ['Vilma Palma'], ['Bersuit'], ['Coti'], ['Dancing Mood'], ['El Bordo'], ['Estelares']],
+    folklore: [['Los Nocheros'], ['Los Tekis'], ['Luciano Pereyra'], ['Jorge Rojas'], ['Facundo Toro'], ['La Yunta'], ['Peteco Carabajal'], ['Los Alonsitos']],
+    covers: [['Pasándola Bomba'], ['Canto para Bailar'], ['Mano Arriba'], ['La Bartola'], ['Toco para Vos'], ['Pijama Party'], ['La Reserva'], ['Amapola']]
+  };
+  const NOMBRE = { cumbia: 'Cumbia · Cuarteto · Tropical', urbano: 'Urbano', rock: 'Rock · Pop', folklore: 'Folklore', covers: 'Bandas covers' };
+  const MAS = { cumbia: '+70 artistas de cumbia, cuarteto y tropical en el catálogo completo.', urbano: 'Trap, RKT y cumbia urbana para boliches y fiestas.', rock: '+60 artistas de rock y pop nacional.', folklore: '+25 artistas de folklore y música popular.', covers: 'Bandas tributo y covers para fiestas privadas y corporativas.' };
+
+  const grilla = document.getElementById('grilla');
+  function pintar(g) {
+    grilla.innerHTML = ART[g].map(([n, f]) => f
+      ? `<button class="art" data-n="${n}" data-f="${f}" data-g="${g}"><img src="img/a-${f}.jpg" alt="${n}" loading="lazy" /><div class="art-info"><b>${n}</b><span>Ver ficha</span></div></button>`
+      : `<button class="art sin-foto" data-n="${n}" data-g="${g}"><div class="art-info"><b>${n}</b><span>Ver ficha</span></div></button>`
+    ).join('');
+    document.getElementById('mas').textContent = MAS[g];
+  }
+  pintar('cumbia');
+  document.querySelectorAll('.tab').forEach(t => t.addEventListener('click', () => {
+    document.querySelectorAll('.tab').forEach(x => x.classList.toggle('on', x === t));
+    pintar(t.dataset.g);
+  }));
+  document.getElementById('lista-artistas').innerHTML = Object.values(ART).flat().map(([n]) => `<option value="${n}">`).join('');
+
+  const ficha = document.getElementById('ficha');
+  grilla.addEventListener('click', e => {
+    const b = e.target.closest('.art'); if (!b) return;
+    const n = b.dataset.n, f = b.dataset.f, g = b.dataset.g;
+    document.getElementById('f-nombre').textContent = n;
+    document.getElementById('f-gen').textContent = NOMBRE[g];
+    document.getElementById('f-foto').src = f ? `img/a-${f}.jpg` : 'img/hero.jpg';
+    document.getElementById('f-foto').alt = n;
+    document.getElementById('f-bio').textContent = `Texto de ejemplo: acá va una presentación corta de ${n}, sus temas más conocidos y en qué tipo de eventos funciona mejor. Claudio lo carga una vez y queda en la ficha.`;
+    document.getElementById('f-wa').href = `https://wa.me/${WA}?text=` + encodeURIComponent(`Hola Claudio, quiero un presupuesto para ${n}. Fecha y lugar del evento: `);
+    ficha.classList.add('abierta');
+    document.body.style.overflow = 'hidden';
+  });
+  function cerrarFicha() { ficha.classList.remove('abierta'); document.body.style.overflow = ''; }
+  ficha.addEventListener('click', e => { if (e.target === ficha) cerrarFicha(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') cerrarFicha(); });
+
+  function enviar(via) {
+    const v = id => document.getElementById(id).value.trim();
+    const faltan = ['c-tipo', 'c-fecha', 'c-lugar', 'c-gente'].filter(id => !v(id));
+    if (faltan.length) { document.getElementById(faltan[0]).focus(); document.getElementById(faltan[0]).reportValidity && document.getElementById(faltan[0]).reportValidity(); return; }
+    const fecha = v('c-fecha').split('-').reverse().join('/');
+    const txt = `Hola Claudio, quiero contratar un show.\n\nTipo de evento: ${v('c-tipo')}\nFecha: ${fecha}\nLugar: ${v('c-lugar')}\nCantidad de personas: ${v('c-gente')}\nArtista de interés: ${v('c-artista') || 'a definir'}` + (v('c-msj') ? `\n\n${v('c-msj')}` : '');
+    if (via === 'wa') window.open(`https://wa.me/${WA}?text=` + encodeURIComponent(txt), '_blank');
+    else location.href = `mailto:${MAIL}?subject=` + encodeURIComponent('Consulta de contratación') + '&body=' + encodeURIComponent(txt);
+  }
+  document.querySelectorAll('.menu a').forEach(a => a.addEventListener('click', () => document.querySelector('header').classList.remove('abierto')));
+</script>
+<script src="/propuestas/_visto.js" data-p="claudio-benitez" data-n="Claudio Benítez" data-e="boceto" defer></script>
+</body>
+</html>
