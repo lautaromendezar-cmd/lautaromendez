@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="description" content="Tu diseño, publicado y funcionando: dominio propio, consultas a tu WhatsApp, mail con tu dominio y Google. Tres opciones." />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="es_AR" />
+  <meta property="og:site_name" content="Lautaro Méndez" />
+  <meta property="og:url" content="https://lautaromendez.com.ar/propuestas/tandem-experience/" />
+  <meta property="og:title" content="Propuesta para Tándem Experience" />
+  <meta property="og:description" content="Tu diseño ya está buenísimo. Ahora, que trabaje para vos. Así quedaría publicada y tres opciones." />
+  <meta property="og:image" content="https://lautaromendez.com.ar/propuestas/tandem-experience/og.jpg" />
+  <meta property="og:image:secure_url" content="https://lautaromendez.com.ar/propuestas/tandem-experience/og.jpg" />
+  <meta property="og:image:type" content="image/jpeg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Propuesta para Tándem Experience" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://lautaromendez.com.ar/propuestas/tandem-experience/og.jpg" />
+  <title>Propuesta — Tándem Experience</title>
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+  <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600&display=swap" />
+  <script>document.documentElement.classList.add('js');</script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* Paleta de Tándem: crema, café y el dorado de su diseño (oscurecido para leerse sobre claro) */
+    :root {
+      --bg: #fffdf9;
+      --bg-alt: #f7f1e8;
+      --card: #ffffff;
+      --soft: #f9f4ec;
+      --ink: #3a281b;
+      --text: #4e4035;
+      --mid: #76675a;
+      --dim: #a3968a;
+      --line: #ebe2d5;
+      --line-strong: #d9cbb8;
+      --accent: #946421;
+      --accent-dark: #744c14;
+      --accent-soft: #f6ecdb;
+      --ok: #1a9a5b;
+      --sans: 'General Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: var(--sans); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    strong { color: var(--ink); font-weight: 560; }
+    img { display: block; max-width: 100%; height: auto; }
+
+    .ico { width: 20px; height: 20px; flex-shrink: 0; fill: none; stroke: var(--mid); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+    .ico-box { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 6px; background: var(--accent-soft); flex-shrink: 0; }
+    .ico-box .ico { stroke: var(--accent); }
+
+    #progress { position: fixed; top: 0; left: 0; height: 3px; width: 0%; background: var(--accent); z-index: 999; transition: width .1s linear; }
+
+    .wrap { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+    .wrap-wide { max-width: 1140px; margin: 0 auto; padding: 0 24px; }
+
+    .hero { padding: 80px 0 60px; }
+    .eyebrow { font-size: 13px; font-weight: 560; letter-spacing: .02em; color: var(--accent); margin-bottom: 14px; }
+    .hero h1 { font-size: clamp(32px, 5vw, 46px); font-weight: 560; line-height: 1.1; letter-spacing: -0.025em; color: var(--ink); margin-bottom: 18px; max-width: 720px; }
+    .hero-sub { font-size: 17px; color: var(--mid); max-width: 640px; margin-bottom: 38px; }
+    .hero-meta { display: flex; gap: 20px 40px; flex-wrap: wrap; padding-top: 24px; border-top: 1px solid var(--line); }
+    .hero-meta-item label { display: block; font-size: 12px; font-weight: 500; color: var(--dim); margin-bottom: 2px; }
+    .hero-meta-item span { font-size: 15px; font-weight: 560; color: var(--ink); }
+
+    section { padding: 72px 0; }
+    section.alt { background: var(--bg-alt); }
+    h2 { font-size: 30px; font-weight: 560; letter-spacing: -0.02em; color: var(--ink); line-height: 1.2; margin-bottom: 12px; }
+    h3 { font-size: 18px; font-weight: 560; color: var(--ink); letter-spacing: -0.01em; margin: 40px 0 10px; }
+    .section-intro { font-size: 16px; color: var(--mid); margin-bottom: 32px; max-width: 660px; }
+    .p { font-size: 15.5px; color: var(--mid); max-width: 660px; margin-bottom: 18px; }
+
+    .shot { border: 1px solid var(--line-strong); border-radius: 6px; overflow: hidden; background: var(--card); }
+    .shot-bar { display: flex; align-items: center; gap: 6px; padding: 9px 12px; border-bottom: 1px solid var(--line); background: var(--soft); }
+    .shot-bar i { width: 8px; height: 8px; border-radius: 50%; background: var(--line-strong); }
+    .shot-bar span { margin-left: 8px; font-size: 12px; color: var(--dim); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    figcaption { margin-top: 10px; font-size: 13.5px; color: var(--mid); line-height: 1.5; }
+    figure { margin-bottom: 28px; }
+    .duo-shots { display: grid; grid-template-columns: 1fr 260px; gap: 20px; align-items: start; margin-bottom: 28px; }
+    .duo-shots .movil { border: 1px solid var(--line-strong); border-radius: 18px; overflow: hidden; }
+    .dos-shots { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .dos-shots figure { margin-bottom: 8px; }
+
+    .demo-cta { display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; padding: 22px 24px; border: 1px solid var(--accent); background: var(--accent-soft); border-radius: 8px; margin-top: 20px; }
+    .demo-cta p { font-size: 15px; color: var(--text); max-width: 520px; }
+    .nota { font-size: 14px; color: var(--mid); margin-top: 18px; max-width: 760px; }
+
+    /* LO QUE NO SE VE */
+    .valores { display: grid; grid-template-columns: 1fr 1fr; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; background: var(--card); margin-bottom: 32px; }
+    .valor { display: flex; gap: 14px; align-items: flex-start; padding: 20px; border-bottom: 1px solid var(--line); }
+    .valor:nth-child(odd) { border-right: 1px solid var(--line); }
+    .valor:nth-last-child(-n+2) { border-bottom: 0; }
+    .valor b { display: block; font-size: 16px; font-weight: 560; color: var(--ink); line-height: 1.3; margin-bottom: 3px; }
+    .valor span { font-size: 14px; color: var(--mid); line-height: 1.5; }
+
+    /* OPCIONES */
+    .escalas { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; align-items: stretch; }
+    .escala { position: relative; display: flex; flex-direction: column; background: var(--card); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+    .escala.is-reco { border: 2px solid var(--accent); }
+    .reco { position: absolute; top: 22px; right: 20px; font-size: 12px; font-weight: 560; padding: 3px 10px; border-radius: 999px; background: var(--accent-soft); color: var(--accent); }
+    .escala-head { padding: 24px 24px 20px; border-bottom: 1px solid var(--line); }
+    .escala-top { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+    .escala-num { font-size: 13px; font-weight: 560; color: var(--accent); }
+    .escala-title { font-size: 20px; font-weight: 560; letter-spacing: -0.01em; color: var(--ink); line-height: 1.25; margin-bottom: 8px; }
+    .escala-tagline { font-size: 14px; color: var(--mid); line-height: 1.5; }
+    .escala-price { padding: 20px 24px; border-bottom: 1px solid var(--line); background: var(--soft); }
+    .escala-price-value { font-size: 30px; font-weight: 560; letter-spacing: -0.02em; color: var(--ink); line-height: 1.1; }
+    .escala-price-value small { font-size: 16px; font-weight: 500; color: var(--mid); letter-spacing: 0; }
+    .escala-facts { margin-top: 14px; display: flex; flex-direction: column; gap: 6px; }
+    .escala-facts div { display: flex; gap: 10px; align-items: flex-start; font-size: 13.5px; color: var(--mid); line-height: 1.4; }
+    .escala-facts .ico { width: 16px; height: 16px; margin-top: 1px; }
+    .escala-facts b { color: var(--text); font-weight: 560; }
+    .escala-body { padding: 20px 24px 24px; display: flex; flex-direction: column; gap: 18px; flex: 1; }
+    .ticks { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+    .ticks li { display: flex; gap: 10px; font-size: 14.5px; color: var(--text); line-height: 1.45; }
+    .ticks .ico { width: 16px; height: 16px; margin-top: 3px; stroke: var(--ok); stroke-width: 2.2; }
+    .ticks-plus { font-size: 12.5px; font-weight: 560; color: var(--dim); }
+    .sirve { margin-top: auto; font-size: 13.5px; color: var(--mid); padding-top: 14px; border-top: 1px solid var(--line); }
+    .sirve b { color: var(--ink); font-weight: 560; }
+
+    .tabla-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 8px; background: var(--card); }
+    .cmp { width: 100%; border-collapse: collapse; font-size: 14.5px; min-width: 560px; }
+    .cmp th, .cmp td { text-align: left; padding: 12px 16px; border-bottom: 1px solid var(--line); vertical-align: top; line-height: 1.45; }
+    .cmp thead th { font-size: 13px; font-weight: 560; color: var(--mid); background: var(--soft); }
+    .cmp tr:last-child td { border-bottom: 0; }
+    .cmp td:first-child { color: var(--ink); font-weight: 500; }
+    .vistazo td:not(:first-child), .vistazo th:not(:first-child) { text-align: center; white-space: nowrap; }
+    .vistazo .th-reco { color: var(--accent); }
+
+    .callout { display: flex; gap: 14px; align-items: flex-start; padding: 18px 20px; border-left: 3px solid var(--ok); background: var(--card); border-radius: 0 6px 6px 0; font-size: 15px; color: var(--text); }
+    .callout .ico { stroke: var(--ok); margin-top: 2px; }
+
+    .need-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .need { display: flex; gap: 12px; align-items: center; padding: 12px 14px; background: var(--card); border: 1px solid var(--line); border-radius: 8px; font-size: 14.5px; color: var(--text); line-height: 1.4; }
+    .need .ico { stroke: var(--accent); }
+    .need small { display: block; font-size: 12.5px; color: var(--dim); }
+
+    .cierre p { font-size: 17px; color: var(--text); margin-bottom: 24px; max-width: 600px; }
+    .btn { display: inline-flex; align-items: center; gap: 10px; border: 1px solid var(--accent); border-radius: 6px; padding: 13px 20px; font-size: 14.5px; font-weight: 560; color: var(--accent); text-decoration: none; background: var(--card); transition: background .15s, color .15s; }
+    .btn .ico { width: 16px; height: 16px; stroke: currentColor; }
+    .btn:hover, .btn.is-fill { background: var(--accent); color: #fff; }
+    .btn.is-fill:hover { background: var(--accent-dark); }
+
+    footer { padding: 32px 0 40px; text-align: center; font-size: 13px; color: var(--dim); border-top: 1px solid var(--line); }
+
+    .js .fade { opacity: 0; transform: translateY(16px); transition: opacity .5s ease, transform .5s ease; }
+    .js .fade.visible { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) { .js .fade { opacity: 1; transform: none; transition: none; } }
+
+    @media (max-width: 980px) { .escalas { grid-template-columns: 1fr; max-width: 812px; margin: 0 auto; } }
+    @media (max-width: 760px) { .dos-shots, .duo-shots { grid-template-columns: 1fr; } .duo-shots .movil { max-width: 260px; } }
+    @media (max-width: 640px) {
+      .wrap, .wrap-wide { padding: 0 16px; }
+      .hero { padding: 48px 0 44px; }
+      section { padding: 52px 0; }
+      h2 { font-size: 25px; }
+      .valores { grid-template-columns: 1fr; }
+      .valor:nth-child(odd) { border-right: 0; }
+      .valor:nth-last-child(2) { border-bottom: 1px solid var(--line); }
+      .escala-head, .escala-price, .escala-body { padding-left: 18px; padding-right: 18px; }
+      .need-grid { grid-template-columns: 1fr; }
+      .cmp { font-size: 13.5px; } .cmp th, .cmp td { padding: 10px 12px; }
+    }
+    @media print {
+      body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      #progress { display: none; }
+      .js .fade { opacity: 1; transform: none; transition: none; }
+      .escala, .need, figure { break-inside: avoid; }
+      h2, h3 { break-after: avoid; }
+    }
+  </style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-card" viewBox="0 0 24 24"><rect width="20" height="14" x="2" y="5" rx="2"/><path d="M2 10h20"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></symbol>
+  <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></symbol>
+  <symbol id="i-msg" viewBox="0 0 24 24"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><rect width="14" height="20" x="5" y="2" rx="2"/><path d="M12 18h.01"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></symbol>
+  <symbol id="i-map" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></symbol>
+  <symbol id="i-chart" viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="m7 15 4-4 3 3 6-6"/></symbol>
+  <symbol id="i-wrench" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></symbol>
+  <symbol id="i-layout" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18M9 21V9"/></symbol>
+  <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M21 3v5h-5M3 21v-5h5"/></symbol>
+  <symbol id="i-image" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="3" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.09-3.09a2 2 0 0 0-2.82 0L6 21"/></symbol>
+  <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></symbol>
+</svg>
+
+<div id="progress"></div>
+
+<div class="wrap">
+  <header class="hero fade">
+    <div class="eyebrow">Propuesta para Tándem Experience</div>
+    <h1>Tu diseño ya está buenísimo. Ahora hagamos que trabaje para vos</h1>
+    <p class="hero-sub">Miré la landing que armaste: el crema, el café y el dorado, las itálicas, los cinco formatos y «No organizamos eventos. Creamos planes.» No hay nada que rediseñar. Lo que falta es lo que no se ve en un PDF: que esté online con tu dominio, que las consultas te lleguen y que te encuentren en Google.</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item"><label>Preparado para</label><span>Pamela · Tándem Experience</span></div>
+      <div class="hero-meta-item"><label>Preparado por</label><span>Lautaro Méndez</span></div>
+      <div class="hero-meta-item"><label>Fecha</label><span>Noviembre 2026</span></div>
+    </div>
+  </header>
+</div>
+
+<!-- ASÍ QUEDARÍA -->
+<section class="alt fade">
+  <div class="wrap">
+    <div class="eyebrow">Así quedaría publicada</div>
+    <h2>Tu diseño, terminado y funcionando</h2>
+    <p class="section-intro">Tus textos, tus colores y tus fotos, tal cual el PDF. Lo que cambia es que ahora es una web de verdad: se navega, se adapta al celular y el formulario manda la consulta a tu WhatsApp.</p>
+  </div>
+  <div class="wrap-wide">
+    <div class="duo-shots">
+      <figure style="margin:0"><div class="shot"><div class="shot-bar"><i></i><i></i><i></i><span>tandemexperience.com.ar (por ejemplo)</span></div><img src="vista-pc.jpg" width="1440" height="900" alt="Portada de la web de Tándem en computadora" /></div></figure>
+      <figure style="margin:0"><div class="movil"><img src="vista-movil.jpg" width="520" height="1125" alt="Portada de la web de Tándem en el celular" loading="lazy" /></div></figure>
+    </div>
+    <div class="dos-shots">
+      <figure><div class="shot"><div class="shot-bar"><i></i><i></i><i></i><span>Formatos</span></div><img src="formatos-pc.jpg" width="1440" height="900" alt="Los formatos de Tándem con sus fotos" loading="lazy" /></div><figcaption>Los cinco formatos, con tus fotos y tus textos.</figcaption></figure>
+      <figure><div class="shot"><div class="shot-bar"><i></i><i></i><i></i><span>Contacto</span></div><img src="form-pc.jpg" width="1440" height="900" alt="Formulario Contanos tu plan" loading="lazy" /></div><figcaption>«Contanos tu plan»: al enviarlo, se abre WhatsApp con el mensaje ya escrito, a tu número.</figcaption></figure>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="demo-cta">
+      <p><strong>Abrila y probala</strong>, también en el celular. Completá el formulario: te abre WhatsApp con la consulta armada a tu número (no se manda nada hasta que toques enviar).</p>
+      <a class="btn is-fill" href="demo/" target="_blank" rel="noopener">Ver mi web publicada<svg class="ico"><use href="#i-arrow"/></svg></a>
+    </div>
+    <p class="nota">Dos detalles: en el PDF la tipografía no venía incluida, así que usé Cormorant Garamond, la más parecida a tu serif (si tenés otra elegida, se cambia). Y arriba dice «No organizamos eventos» pero en el pie «No hacemos eventos»: decime cuál preferís y lo dejo igual en los dos lugares.</p>
+  </div>
+</section>
+
+<!-- LO QUE NO SE VE -->
+<div class="wrap">
+  <section class="fade">
+    <div class="eyebrow">Lo que hago yo</div>
+    <h2>Lo que no se ve en el diseño</h2>
+    <p class="section-intro">Un diseño, por bueno que sea, es una imagen: no tiene dirección, no recibe consultas y Google no lo encuentra. Esto es lo que hace que funcione:</p>
+    <div class="valores">
+      <div class="valor"><span class="ico-box"><svg class="ico"><use href="#i-globe"/></svg></span><div><b>Publicada con tu dominio</b><span>Una dirección propia, como tandemexperience.com.ar, a tu nombre.</span></div></div>
+      <div class="valor"><span class="ico-box"><svg class="ico"><use href="#i-msg"/></svg></span><div><b>Consultas a tu WhatsApp</b><span>El formulario llega de verdad, con el tipo de plan, la fecha y los invitados ya escritos.</span></div></div>
+      <div class="valor"><span class="ico-box"><svg class="ico"><use href="#i-mail"/></svg></span><div><b>Mail con tu dominio</b><span>Algo como hola@tandemexperience.com.ar: a una empresa le da más confianza que un Gmail.</span></div></div>
+      <div class="valor"><span class="ico-box"><svg class="ico"><use href="#i-phone"/></svg></span><div><b>Rápida y cómoda en el celular</b><span>Que es donde la van a abrir casi todos, desde Instagram o WhatsApp.</span></div></div>
+      <div class="valor"><span class="ico-box"><svg class="ico"><use href="#i-search"/></svg></span><div><b>Una página por formato en Google</b><span>Para aparecer cuando alguien busca «chef privado a domicilio zona norte» o «team building CABA».</span></div></div>
+      <div class="valor"><span class="ico-box"><svg class="ico"><use href="#i-map"/></svg></span><div><b>Ficha de Google Business</b><span>Tándem en Google Maps y en el buscador, con tus datos, fotos y reseñas.</span></div></div>
+      <div class="valor"><span class="ico-box"><svg class="ico"><use href="#i-chart"/></svg></span><div><b>Analytics y Pixel de Meta</b><span>Para saber cuánta gente entra y, el día que hagas publicidad, que funcione mejor.</span></div></div>
+      <div class="valor"><span class="ico-box"><svg class="ico"><use href="#i-wrench"/></svg></span><div><b>Cambios sin pelearte con el código</b><span>Me escribís «cambiá esta foto» o «sumá un formato» y listo.</span></div></div>
+    </div>
+    <figure>
+      <div class="shot"><div class="shot-bar"><i></i><i></i><i></i><span>/chef-privado-a-domicilio/</span></div><img src="formato-pc.jpg" width="1440" height="900" alt="Página del formato The Private Experience: chef privado a domicilio en CABA y Zona Norte" loading="lazy" /></div>
+      <figcaption>Así sería la página de cada formato (opción 2). Una landing sola compite en Google con una sola búsqueda; con una página por formato, cada servicio tiene la suya. <a href="demo/chef-privado-a-domicilio/" target="_blank" rel="noopener" style="color:var(--accent)">Abrir la de chef privado</a>.</figcaption>
+    </figure>
+  </section>
+</div>
+
+<!-- OPCIONES -->
+<section class="alt fade" id="opciones" data-visto="opciones">
+  <div class="wrap">
+    <div class="eyebrow">Las tres opciones</div>
+    <h2>Tres formas de hacerlo</h2>
+    <p class="section-intro">Como el diseño ya lo hiciste vos, no lo cobro: por eso los precios son mucho más bajos que una web desde cero. Cada opción suma lo de la anterior y se paga <strong>la mitad para arrancar y la mitad a la entrega</strong>.</p>
+  </div>
+  <div class="wrap-wide">
+    <div class="escalas">
+      <article class="escala">
+        <div class="escala-head">
+          <div class="escala-top"><span class="ico-box"><svg class="ico"><use href="#i-layout"/></svg></span><span class="escala-num">Opción 1</span></div>
+          <div class="escala-title">Esencial</div>
+          <p class="escala-tagline">Tu landing online, tal cual la diseñaste, recibiendo consultas.</p>
+        </div>
+        <div class="escala-price">
+          <div class="escala-price-value" data-op="1" data-v="lista">$[PRECIO]</div>
+          <div class="escala-facts">
+            <div><svg class="ico"><use href="#i-card"/></svg><span><b data-op="1" data-v="mitad">2 pagos de $[MITAD]</b></span></div>
+            <div><svg class="ico"><use href="#i-clock"/></svg><span><b data-plazo="1">1 semana</b></span></div>
+          </div>
+        </div>
+        <div class="escala-body">
+          <ul class="ticks">
+            <li><svg class="ico"><use href="#i-check"/></svg>Tu landing publicada tal cual tu diseño, con tus textos y tus fotos.</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>Dominio propio y hosting.</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>Formulario que llega a tu WhatsApp.</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>Pensada para el celular y rápida.</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>SEO básico: título y descripción para Google, y una vista previa linda al compartir el link.</li>
+          </ul>
+          <p class="sirve"><b>Sirve si</b> querés tenerla online ya y sumar lo demás más adelante.</p>
+        </div>
+      </article>
+      <article class="escala is-reco">
+        <span class="reco">La que recomiendo</span>
+        <div class="escala-head">
+          <div class="escala-top"><span class="ico-box"><svg class="ico"><use href="#i-search"/></svg></span><span class="escala-num">Opción 2</span></div>
+          <div class="escala-title">Recomendada</div>
+          <p class="escala-tagline">Online y lista para que te encuentren en Google.</p>
+        </div>
+        <div class="escala-price">
+          <div class="escala-price-value" data-op="2" data-v="lista">$[PRECIO]</div>
+          <div class="escala-facts">
+            <div><svg class="ico"><use href="#i-card"/></svg><span><b data-op="2" data-v="mitad">2 pagos de $[MITAD]</b></span></div>
+            <div><svg class="ico"><use href="#i-clock"/></svg><span><b data-plazo="2">2 semanas</b></span></div>
+          </div>
+        </div>
+        <div class="escala-body">
+          <div class="ticks-plus">Todo lo de la opción 1, más</div>
+          <ul class="ticks">
+            <li><svg class="ico"><use href="#i-check"/></svg>Una página para cada uno de los 5 formatos, pensada para búsquedas como «chef privado a domicilio zona norte», «team building CABA» o «eventos corporativos CABA».</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>Ficha de Google Business, para aparecer en Maps.</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>Google Analytics y Pixel de Meta instalados.</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>Mail con tu dominio.</li>
+          </ul>
+          <p class="sirve"><b>Sirve si</b> querés que te lleguen consultas de gente que todavía no te conoce.</p>
+        </div>
+      </article>
+      <article class="escala">
+        <div class="escala-head">
+          <div class="escala-top"><span class="ico-box"><svg class="ico"><use href="#i-refresh"/></svg></span><span class="escala-num">Opción 3</span></div>
+          <div class="escala-title">Con mantenimiento</div>
+          <p class="escala-tagline">La recomendada, y te olvidás de la web: yo me ocupo.</p>
+        </div>
+        <div class="escala-price">
+          <div class="escala-price-value"><span data-op="3" data-v="lista">$[PRECIO]</span> <small>+ <span data-mensual>$[MENSUAL]</span>/mes</small></div>
+          <div class="escala-facts">
+            <div><svg class="ico"><use href="#i-card"/></svg><span><b data-op="3" data-v="mitad">2 pagos de $[MITAD]</b>, y el mensual desde la entrega</span></div>
+            <div><svg class="ico"><use href="#i-clock"/></svg><span><b data-plazo="3">2 semanas</b></span></div>
+          </div>
+        </div>
+        <div class="escala-body">
+          <div class="ticks-plus">Todo lo de la opción 2, más</div>
+          <ul class="ticks">
+            <li><svg class="ico"><use href="#i-check"/></svg>Cambios chicos todos los meses: fotos, formatos y textos.</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>Soporte por WhatsApp.</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>Control de que todo funcione: el formulario, el mail, el dominio y Google.</li>
+          </ul>
+          <p class="sirve"><b>Sirve si</b> vas a ir sumando eventos y fotos, y no querés pensar en la web.</p>
+        </div>
+      </article>
+    </div>
+
+    <div class="callout" style="max-width:900px;margin:28px auto 0">
+      <svg class="ico"><use href="#i-check"/></svg>
+      <span><strong>Sin costos mensuales escondidos</strong>: el alojamiento no se paga y el mail con tu dominio se lee desde tu mismo Gmail. Lo único fijo es el dominio .com.ar, que se renueva una vez por año en NIC.ar, a tu nombre. Todo queda a nombre de Tándem y se entrega con <strong>30 días de garantía</strong>.</span>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <section class="fade">
+    <div class="eyebrow">Para arrancar</div>
+    <h2>Qué necesito de tu lado</h2>
+    <div class="need-grid">
+      <div class="need"><svg class="ico"><use href="#i-globe"/></svg><span>El nombre de dominio que te guste<small>Te paso dos o tres opciones libres y elegís</small></span></div>
+      <div class="need"><svg class="ico"><use href="#i-image"/></svg><span>Las fotos que quieras usar<small>Las de tu diseño o, mejor todavía, de eventos tuyos</small></span></div>
+      <div class="need"><svg class="ico"><use href="#i-user"/></svg><span>Una cuenta de Google de Tándem<small>Para la ficha de Business y Analytics (opciones 2 y 3)</small></span></div>
+    </div>
+  </section>
+
+  <section class="fade cierre" data-visto="final" style="padding-top:0">
+    <div class="eyebrow">Siguiente paso</div>
+    <h2>Elegí la opción y arrancamos</h2>
+    <p>Decime cuál te cierra, o lo charlamos en una llamada corta. Si arrancamos esta semana, la tenés publicada en <strong id="fin-reco">2 semanas</strong>.</p>
+    <a class="btn" href="https://lautaromendez.com.ar/portfolio" target="_blank" rel="noopener">Ver trabajos anteriores<svg class="ico"><use href="#i-arrow"/></svg></a>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">Propuesta preparada por Lautaro Méndez · 11 de noviembre de 2026 · Precios válidos por 15 días</div>
+</footer>
+
+<script>
+  // PRECIOS Y PLAZOS: cambiar solo acá. Mientras un precio sea null, se ve «$[PRECIO]».
+  const PRECIOS = { 1: 180000, 2: 290000, 3: 290000 };   // pago total; la mitad se calcula sola
+  const MENSUAL = 35000;                                 // opción 3, por mes
+  const PLAZOS = { 1: 1, 2: 2, 3: 2 };             // en semanas
+  const RECOMENDADA = 2;
+
+  const $ = n => '$' + Math.round(n).toLocaleString('es-AR');
+  const sem = n => `${n} semana${n === 1 ? '' : 's'}`;
+  document.querySelectorAll('[data-op]').forEach(el => {
+    const p = PRECIOS[el.dataset.op]; if (!p) return;
+    el.textContent = { lista: $(p), mitad: `2 pagos de ${$(p / 2)}` }[el.dataset.v];
+  });
+  if (MENSUAL) document.querySelectorAll('[data-mensual]').forEach(el => { el.textContent = $(MENSUAL); });
+  document.querySelectorAll('[data-plazo]').forEach(el => { el.textContent = sem(PLAZOS[el.dataset.plazo]); });
+  document.getElementById('fin-reco').textContent = sem(PLAZOS[RECOMENDADA]);
+
+  window.addEventListener('scroll', () => {
+    const h = document.documentElement.scrollHeight - window.innerHeight;
+    document.getElementById('progress').style.width = (h > 0 ? document.documentElement.scrollTop / h * 100 : 0) + '%';
+  });
+  const fades = document.querySelectorAll('.fade');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } }), { threshold: 0.04 });
+    fades.forEach(el => io.observe(el));
+  } else {
+    fades.forEach(el => el.classList.add('visible'));
+  }
+</script>
+<script src="/propuestas/_visto.js" data-p="tandem-experience" data-n="Tándem Experience" defer></script>
+</body>
+</html>
