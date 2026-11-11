@@ -165,7 +165,7 @@
   <symbol id="i-chart" viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="m7 15 4-4 3 3 6-6"/></symbol>
   <symbol id="i-wrench" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></symbol>
   <symbol id="i-layout" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18M9 21V9"/></symbol>
-  <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M21 3v5h-5M3 21v-5h5"/></symbol>
+  <symbol id="i-dashboard" viewBox="0 0 24 24"><rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="16" rx="1"/></symbol>
   <symbol id="i-image" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="3" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.09-3.09a2 2 0 0 0-2.82 0L6 21"/></symbol>
   <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></symbol>
 </svg>
@@ -199,7 +199,7 @@
       <div class="valor"><span class="ico-box"><svg class="ico"><use href="#i-search"/></svg></span><div><b>Una página por formato en Google</b><span>Para aparecer cuando alguien busca «chef privado a domicilio zona norte» o «team building CABA».</span></div></div>
       <div class="valor"><span class="ico-box"><svg class="ico"><use href="#i-map"/></svg></span><div><b>Ficha de Google Business</b><span>Tándem en Google Maps y en el buscador, con tus datos, fotos y reseñas.</span></div></div>
       <div class="valor"><span class="ico-box"><svg class="ico"><use href="#i-chart"/></svg></span><div><b>Analytics y Pixel de Meta</b><span>Para saber cuánta gente entra y, el día que hagas publicidad, que funcione mejor.</span></div></div>
-      <div class="valor"><span class="ico-box"><svg class="ico"><use href="#i-wrench"/></svg></span><div><b>Cambios sin pelearte con el código</b><span>Me escribís «cambiá esta foto» o «sumá un formato» y listo.</span></div></div>
+      <div class="valor"><span class="ico-box"><svg class="ico"><use href="#i-wrench"/></svg></span><div><b>Cambios sin pelearte con el código</b><span>Me escribís «cambiá esta foto» o «sumá un formato», o lo hacés vos desde un panel (opción 3).</span></div></div>
     </div>
     <p class="p" style="margin-bottom:0"><strong>Por qué una página por formato:</strong> una web de una sola página compite en Google por una sola búsqueda. Con una página para cada formato, quien busca chef privado, team building o un venue para su evento llega directo a lo que busca.</p>
   </div>
@@ -265,25 +265,26 @@
       </article>
       <article class="escala">
         <div class="escala-head">
-          <div class="escala-top"><span class="ico-box"><svg class="ico"><use href="#i-refresh"/></svg></span><span class="escala-num">Opción 3</span></div>
-          <div class="escala-title">Con mantenimiento</div>
-          <p class="escala-tagline">La recomendada, y te olvidás de la web: yo me ocupo.</p>
+          <div class="escala-top"><span class="ico-box"><svg class="ico"><use href="#i-dashboard"/></svg></span><span class="escala-num">Opción 3</span></div>
+          <div class="escala-title">Con panel</div>
+          <p class="escala-tagline">La recomendada, y la web la manejás vos, sin depender de nadie.</p>
         </div>
         <div class="escala-price">
-          <div class="escala-price-value"><span data-op="3" data-v="lista">$[PRECIO]</span> <small>+ <span data-mensual>$[MENSUAL]</span>/mes</small></div>
+          <div class="escala-price-value" data-op="3" data-v="lista">$[PRECIO]</div>
           <div class="escala-facts">
-            <div><svg class="ico"><use href="#i-card"/></svg><span><b data-op="3" data-v="mitad">2 pagos de $[MITAD]</b>, y el mensual desde la entrega</span></div>
-            <div><svg class="ico"><use href="#i-clock"/></svg><span><b data-plazo="3">2 semanas</b></span></div>
+            <div><svg class="ico"><use href="#i-card"/></svg><span><b data-op="3" data-v="mitad">2 pagos de $[MITAD]</b></span></div>
+            <div><svg class="ico"><use href="#i-clock"/></svg><span><b data-plazo="3">3 semanas</b></span></div>
           </div>
         </div>
         <div class="escala-body">
           <div class="ticks-plus">Todo lo de la opción 2, más</div>
           <ul class="ticks">
-            <li><svg class="ico"><use href="#i-check"/></svg>Cambios chicos todos los meses: fotos, formatos y textos.</li>
-            <li><svg class="ico"><use href="#i-check"/></svg>Soporte por WhatsApp.</li>
-            <li><svg class="ico"><use href="#i-check"/></svg>Control de que todo funcione: el formulario, el mail, el dominio y Google.</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>Un panel simple, con tu usuario y contraseña, que también funciona desde el celular.</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>Cambiás fotos y textos, y sumás, editás o pausás formatos.</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>Actualizás las preguntas frecuentes y tus datos de contacto.</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>Un video corto que muestra cómo usarlo.</li>
           </ul>
-          <p class="sirve"><b>Sirve si</b> vas a ir sumando eventos y fotos, y no querés pensar en la web.</p>
+          <p class="sirve"><b>Sirve si</b> vas a ir sumando eventos, fotos y formatos, y querés cambiarlos vos en el momento.</p>
         </div>
       </article>
     </div>
@@ -320,9 +321,8 @@
 
 <script>
   // PRECIOS Y PLAZOS: cambiar solo acá. Mientras un precio sea null, se ve «$[PRECIO]».
-  const PRECIOS = { 1: 180000, 2: 290000, 3: 290000 };   // pago total; la mitad se calcula sola
-  const MENSUAL = 35000;                                 // opción 3, por mes
-  const PLAZOS = { 1: 1, 2: 2, 3: 2 };             // en semanas
+  const PRECIOS = { 1: 180000, 2: 290000, 3: 390000 };   // pago total; la mitad se calcula sola
+  const PLAZOS = { 1: 1, 2: 2, 3: 3 };                   // en semanas
   const RECOMENDADA = 2;
 
   const $ = n => '$' + Math.round(n).toLocaleString('es-AR');
@@ -331,7 +331,6 @@
     const p = PRECIOS[el.dataset.op]; if (!p) return;
     el.textContent = { lista: $(p), mitad: `2 pagos de ${$(p / 2)}` }[el.dataset.v];
   });
-  if (MENSUAL) document.querySelectorAll('[data-mensual]').forEach(el => { el.textContent = $(MENSUAL); });
   document.querySelectorAll('[data-plazo]').forEach(el => { el.textContent = sem(PLAZOS[el.dataset.plazo]); });
   document.getElementById('fin-reco').textContent = sem(PLAZOS[RECOMENDADA]);
 
