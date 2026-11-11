@@ -9,7 +9,7 @@ familia nueva — si cambia la paleta de la home, esta página cambia sola.
 index.html      la página
 portfolio.css   sólo lo propio: hero, filtros, grilla, cierre
 portfolio.js    los datos + el comportamiento
-trabajos/       las 46 capturas (webp, 16:9)
+trabajos/       las 47 capturas (webp, 16:9)
 ```
 
 ---
@@ -21,6 +21,11 @@ Un solo lugar: el array `PROYECTOS` en `portfolio.js`.
 ```js
 { img: 'port-NOMBRE.webp', n: 'Nombre Cliente', r: 'Rubro · Detalle', cat: 'turismo', url: 'https://sitio.com/' },
 ```
+
+**El orden del array es el orden de la grilla, y está curado** (11-nov-2026):
+las 15 primeras son la vidriera, y en toda la lista se alternan rubros y
+capturas claras/oscuras para que no queden pegadas las webs de oficios 24 hs.
+Una web nueva no va arriba de todo por ser nueva: se mete donde corresponda.
 
 De ahí salen **solos** la grilla, los botones de rubro, las cuentas de cada
 botón y el número del hero. No hay ningún contador escrito a mano en esta
