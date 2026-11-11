@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="description" content="Boceto de la web nueva de Apartment Hunters BA: alquileres amoblados para extranjeros en Buenos Aires, con buscador, mapa y fichas." />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="es_AR" />
+  <meta property="og:site_name" content="Lautaro Méndez" />
+  <meta property="og:url" content="https://lautaromendez.com.ar/propuestas/apartment-hunters-ba/demo/" />
+  <meta property="og:title" content="Boceto · Apartment Hunters BA" />
+  <meta property="og:description" content="Una idea de la web nueva: bilingüe, con buscador, mapa y fichas para consultar." />
+  <meta property="og:image" content="https://lautaromendez.com.ar/propuestas/apartment-hunters-ba/og.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <title>Apartment Hunters BA · Furnished apartments in Buenos Aires</title>
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600&display=swap" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* Marca: negro y el dorado del logo */
+    :root {
+      --negro: #000000;
+      --noche: #1f1f2e;
+      --noche-2: #171723;
+      --linea: #2e2e40;
+      --linea-2: #3b3b50;
+      --hueso: #f5efe4;
+      --texto: #cfcbd6;
+      --gris: #8f8c9c;
+      --oro: #d6b67e;
+      --oro-2: #efca85;
+      --oro-3: #ddb265;
+      --serif: 'Playfair Display', Georgia, serif;
+      --sans: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--negro); color: var(--texto); font-family: var(--sans); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+    img { display: block; max-width: 100%; height: auto; }
+    a { color: inherit; }
+    button { font-family: inherit; }
+    .ico { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
+
+    /* Idioma: cada texto está escrito en los dos idiomas, no traducido al vuelo */
+    html[data-lang="en"] [lang="es"], html[data-lang="es"] [lang="en"] { display: none !important; }
+
+    .aviso { background: var(--oro); color: #17130a; font-size: 13px; text-align: center; padding: 7px 16px; font-weight: 600; }
+    .wrap { max-width: 1200px; margin: 0 auto; padding: 0 28px; }
+
+    /* HEADER */
+    header { position: sticky; top: 0; z-index: 900; background: rgb(0 0 0 / .86); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid var(--linea); }
+    .nav { display: flex; align-items: center; gap: 26px; height: 76px; }
+    .marca img { height: 54px; width: auto; }
+    .menu { display: flex; gap: 22px; margin-left: auto; list-style: none; }
+    .menu a { text-decoration: none; font-size: 14px; font-weight: 500; color: var(--texto); }
+    .menu a:hover { color: var(--oro-2); }
+    .idioma { display: inline-flex; border: 1px solid var(--linea-2); border-radius: 999px; padding: 3px; }
+    .idioma button { border: 0; background: none; color: var(--gris); font-size: 12.5px; font-weight: 600; padding: 5px 11px; border-radius: 999px; cursor: pointer; letter-spacing: .04em; }
+    .idioma button.on { background: var(--oro); color: #17130a; }
+    .hamb { display: none; background: none; border: 1px solid var(--linea-2); color: var(--hueso); border-radius: 8px; padding: 8px; cursor: pointer; }
+
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 9px; padding: 12px 20px; border-radius: 4px; font-size: 14px; font-weight: 600; text-decoration: none; border: 1px solid var(--oro); color: var(--oro-2); background: transparent; cursor: pointer; transition: background .15s, color .15s, filter .15s; white-space: nowrap; }
+    .btn:hover { background: rgb(214 182 126 / .12); }
+    .btn.oro { background: var(--oro); color: #17130a; border-color: var(--oro); }
+    .btn.oro:hover { filter: brightness(1.08); }
+    .btn.wa { background: #1fa855; border-color: #1fa855; color: #fff; }
+    .btn.wa:hover { filter: brightness(1.08); }
+    .btn.chico { padding: 8px 14px; font-size: 13px; }
+
+    /* HERO */
+    .hero { position: relative; min-height: min(88vh, 780px); display: flex; align-items: flex-end; overflow: hidden; }
+    .hero-foto { position: absolute; inset: 0; }
+    .hero-foto img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 55%; filter: brightness(.55) saturate(.85); }
+    .hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgb(0 0 0 / .35) 0%, rgb(0 0 0 / .2) 40%, rgb(0 0 0 / .92) 100%); }
+    .hero-in { position: relative; z-index: 2; width: 100%; padding-bottom: 46px; }
+    .eyebrow { font-size: 12.5px; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: var(--oro); margin-bottom: 14px; }
+    .hero h1 { font-family: var(--serif); font-weight: 500; font-size: clamp(42px, 7vw, 86px); line-height: 1; color: var(--hueso); letter-spacing: -0.01em; margin-bottom: 18px; }
+    .hero h1 em { color: var(--oro-2); font-style: italic; }
+    .hero-sub { font-size: 17.5px; max-width: 620px; color: #e3dfe8; margin-bottom: 30px; }
+
+    .buscador { display: grid; grid-template-columns: 1.2fr 1fr 1fr 1fr auto; background: rgb(23 23 35 / .94); border: 1px solid var(--linea-2); border-radius: 6px; overflow: hidden; max-width: 1000px; }
+    .campo { display: flex; flex-direction: column; gap: 3px; padding: 12px 16px; border-right: 1px solid var(--linea); min-width: 0; }
+    .campo span { font-size: 11px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--oro); }
+    .campo select { appearance: none; -webkit-appearance: none; background: transparent; border: 0; color: var(--hueso); font: inherit; font-size: 15px; padding: 2px 0; cursor: pointer; width: 100%; }
+    .campo select option { background: var(--noche); color: var(--hueso); }
+    .buscador > .btn { border-radius: 0; padding: 0 30px; font-size: 15px; }
+    .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 18px; }
+
+    .datos { display: grid; grid-template-columns: repeat(4, 1fr); border-bottom: 1px solid var(--linea); background: var(--negro); }
+    .datos div { padding: 20px 24px; }
+    .datos div + div { border-left: 1px solid var(--linea); }
+    .datos b { display: block; font-family: var(--serif); font-size: 23px; font-weight: 500; color: var(--oro-2); line-height: 1.2; }
+    .datos span { font-size: 13px; color: var(--gris); }
+
+    /* SECCIONES */
+    section { padding: 88px 0; }
+    .alt { background: var(--noche-2); border-top: 1px solid var(--linea); border-bottom: 1px solid var(--linea); }
+    .sec-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; margin-bottom: 30px; flex-wrap: wrap; }
+    h2 { font-family: var(--serif); font-weight: 500; font-size: clamp(30px, 4vw, 46px); line-height: 1.1; color: var(--hueso); }
+    h2 em { font-style: italic; color: var(--oro-2); }
+    .sec-sub { color: var(--gris); max-width: 520px; font-size: 15px; margin-top: 10px; }
+
+    /* FILTROS */
+    .filtros { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; padding: 14px; background: var(--noche); border: 1px solid var(--linea); border-radius: 6px; margin-bottom: 18px; }
+    .filtros select { background: var(--negro); color: var(--hueso); border: 1px solid var(--linea-2); border-radius: 4px; padding: 9px 12px; font: inherit; font-size: 14px; cursor: pointer; }
+    .chip { display: inline-flex; align-items: center; gap: 7px; padding: 8px 13px; border-radius: 999px; border: 1px solid var(--linea-2); background: transparent; color: var(--texto); font-size: 13.5px; cursor: pointer; user-select: none; }
+    .chip input { display: none; }
+    .chip:has(input:checked) { border-color: var(--oro); color: var(--oro-2); background: rgb(214 182 126 / .1); }
+    .vista { margin-left: auto; display: inline-flex; border: 1px solid var(--linea-2); border-radius: 4px; overflow: hidden; }
+    .vista button { border: 0; background: none; color: var(--texto); padding: 9px 14px; font-size: 13.5px; cursor: pointer; display: inline-flex; gap: 7px; align-items: center; }
+    .vista button.on { background: var(--oro); color: #17130a; font-weight: 600; }
+    .resultado { display: flex; justify-content: space-between; align-items: center; gap: 12px; font-size: 14px; color: var(--gris); margin-bottom: 16px; flex-wrap: wrap; }
+    .resultado button { background: none; border: 0; color: var(--oro); font-size: 13.5px; cursor: pointer; text-decoration: underline; }
+
+    .catalogo { display: grid; grid-template-columns: 1fr; gap: 18px; }
+    .catalogo.con-mapa { grid-template-columns: 1fr 1fr; align-items: start; }
+    .grilla { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .con-mapa .grilla { grid-template-columns: repeat(2, 1fr); max-height: 720px; overflow: auto; padding-right: 6px; }
+    #mapa { display: none; height: 720px; border-radius: 6px; border: 1px solid var(--linea); position: sticky; top: 90px; background: var(--noche); }
+    .con-mapa #mapa { display: block; }
+    .vacio { grid-column: 1 / -1; padding: 40px; text-align: center; border: 1px dashed var(--linea-2); border-radius: 6px; color: var(--gris); }
+
+    .prop { background: var(--noche); border: 1px solid var(--linea); border-radius: 6px; overflow: hidden; cursor: pointer; text-align: left; color: inherit; padding: 0; display: flex; flex-direction: column; transition: border-color .15s; }
+    .prop:hover, .prop.activa { border-color: var(--oro); }
+    .prop-foto { position: relative; aspect-ratio: 4 / 3; overflow: hidden; }
+    .prop-foto img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s ease; }
+    .prop:hover .prop-foto img { transform: scale(1.04); }
+    .prop-tag { position: absolute; top: 12px; left: 12px; font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; background: rgb(0 0 0 / .78); color: var(--oro-2); padding: 4px 9px; border-radius: 3px; }
+    .prop-info { padding: 14px 16px 16px; display: flex; flex-direction: column; gap: 4px; }
+    .prop-barrio { font-size: 12px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--oro); }
+    .prop-titulo { font-family: var(--serif); font-size: 19px; color: var(--hueso); line-height: 1.25; }
+    .prop-datos { font-size: 13.5px; color: var(--gris); }
+    .prop-precio { margin-top: 6px; font-size: 17px; font-weight: 600; color: var(--hueso); }
+    .prop-precio small { font-size: 13px; font-weight: 400; color: var(--gris); }
+
+    .pin { background: var(--oro); color: #17130a; font: 600 12px/1 var(--sans); padding: 6px 8px; border-radius: 4px; white-space: nowrap; box-shadow: 0 4px 12px rgb(0 0 0 / .5); border: 1px solid #00000040; transform: translate(-50%, -100%); display: inline-block; }
+    .pin.on { background: var(--hueso); }
+    .leaflet-div-icon { background: none; border: 0; }
+    /* OpenStreetMap pasado a oscuro para que acompañe la marca */
+    .leaflet-tile-pane { filter: invert(1) hue-rotate(180deg) grayscale(.75) brightness(.82) contrast(.92); }
+    .leaflet-container { font-family: var(--sans); }
+    .leaflet-popup-content-wrapper, .leaflet-popup-tip { background: var(--noche); color: var(--hueso); }
+
+    /* FICHA */
+    .ficha { position: fixed; inset: 0; z-index: 2000; display: none; align-items: flex-start; justify-content: center; padding: 30px 20px; background: rgb(0 0 0 / .82); overflow: auto; }
+    .ficha.abierta { display: flex; }
+    .ficha-in { position: relative; width: 100%; max-width: 1080px; background: var(--noche-2); border: 1px solid var(--linea); border-radius: 8px; overflow: hidden; }
+    .cerrar { position: absolute; top: 12px; right: 12px; z-index: 5; width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--linea-2); background: rgb(0 0 0 / .8); color: var(--hueso); cursor: pointer; display: flex; align-items: center; justify-content: center; }
+    .galeria { display: grid; grid-template-columns: 2fr 1fr; grid-template-rows: minmax(0, 1fr); gap: 4px; height: 430px; overflow: hidden; }
+    .galeria-main { position: relative; overflow: hidden; min-height: 0; }
+    .galeria-main img { width: 100%; height: 100%; object-fit: cover; }
+    .galeria-lado { display: grid; grid-template-rows: repeat(2, minmax(0, 1fr)); gap: 4px; min-height: 0; }
+    .galeria-lado img { width: 100%; height: 100%; min-height: 0; object-fit: cover; cursor: pointer; }
+    .flecha { position: absolute; top: 50%; transform: translateY(-50%); width: 42px; height: 42px; border-radius: 50%; border: 0; background: rgb(0 0 0 / .65); color: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+    .flecha.izq { left: 12px; } .flecha.der { right: 12px; }
+    .contador { position: absolute; bottom: 12px; left: 12px; font-size: 12.5px; background: rgb(0 0 0 / .7); color: #fff; padding: 4px 10px; border-radius: 3px; }
+    .ficha-body { display: grid; grid-template-columns: 1.35fr 1fr; gap: 36px; padding: 30px 32px 36px; }
+    .ficha-body h3 { font-family: var(--serif); font-size: 32px; font-weight: 500; color: var(--hueso); line-height: 1.15; margin: 6px 0 10px; }
+    .ficha-body h4 { font-size: 12px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--oro); margin: 26px 0 12px; }
+    .hechos { display: flex; flex-wrap: wrap; gap: 8px 22px; font-size: 14.5px; color: var(--texto); padding: 14px 0; border-top: 1px solid var(--linea); border-bottom: 1px solid var(--linea); }
+    .hechos b { color: var(--hueso); font-weight: 600; }
+    .amen { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 9px 18px; font-size: 14.5px; }
+    .amen li { display: flex; gap: 9px; align-items: center; }
+    .amen .ico { color: var(--oro); }
+    .meses { display: grid; grid-template-columns: repeat(6, 1fr); gap: 6px; }
+    .mes { text-align: center; font-size: 12.5px; padding: 8px 0; border-radius: 4px; border: 1px solid var(--linea-2); color: var(--gris); }
+    .mes.libre { border-color: #2f6b4a; color: #9fe0b9; background: rgb(31 168 85 / .1); }
+    .leyenda { display: flex; gap: 16px; font-size: 12.5px; color: var(--gris); margin-top: 8px; }
+    #mini-mapa { height: 220px; border-radius: 6px; border: 1px solid var(--linea); }
+    .nota-mapa { font-size: 12.5px; color: var(--gris); margin-top: 6px; }
+    .consulta { background: var(--noche); border: 1px solid var(--linea); border-radius: 6px; padding: 22px; position: sticky; top: 20px; }
+    .consulta .precio { font-size: 26px; font-weight: 600; color: var(--hueso); }
+    .consulta .precio small { font-size: 14px; font-weight: 400; color: var(--gris); }
+    .consulta form { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 16px; }
+    label { display: flex; flex-direction: column; gap: 5px; font-size: 12.5px; font-weight: 500; color: var(--texto); }
+    label.full { grid-column: 1 / -1; }
+    input, textarea, .consulta select, .form-local select { font: inherit; font-size: 14.5px; color: var(--hueso); background: var(--negro); border: 1px solid var(--linea-2); border-radius: 4px; padding: 10px 11px; width: 100%; }
+    input:focus, textarea:focus, select:focus { outline: none; border-color: var(--oro); }
+    textarea { resize: vertical; min-height: 70px; }
+    .consulta .btn { width: 100%; }
+    .o { text-align: center; font-size: 12.5px; color: var(--gris); margin: 12px 0; }
+    .ok { display: none; margin-top: 14px; padding: 14px; border: 1px solid #2f6b4a; background: rgb(31 168 85 / .1); border-radius: 4px; font-size: 14px; color: #c6eed6; }
+    .ok.si { display: block; }
+    .crm { display: flex; gap: 8px; align-items: center; font-size: 12px; color: var(--gris); margin-top: 10px; }
+
+    /* LOCALES */
+    .locales { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border: 1px solid var(--linea); border-radius: 8px; overflow: hidden; }
+    .locales-foto { position: relative; min-height: 420px; }
+    .locales-foto img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: brightness(.75); }
+    .locales-txt { padding: 44px 40px; background: var(--noche); }
+    .pasos { list-style: none; margin: 22px 0 26px; display: flex; flex-direction: column; gap: 14px; }
+    .pasos li { display: grid; grid-template-columns: 34px 1fr; gap: 10px; font-size: 15px; }
+    .pasos b { font-family: var(--serif); font-size: 22px; color: var(--oro); line-height: 1.2; }
+    .pasos strong { color: var(--hueso); font-weight: 600; display: block; }
+
+    /* CONFIANZA */
+    .confianza { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+    .confianza img { border-radius: 6px; aspect-ratio: 4 / 5; object-fit: cover; width: 100%; max-height: 560px; }
+    .confianza p { margin-bottom: 14px; font-size: 15.5px; }
+    .tours { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 22px; }
+    .tour { padding: 18px; border: 1px solid var(--linea); border-radius: 6px; background: var(--noche); }
+    .tour .ico { color: var(--oro); width: 22px; height: 22px; margin-bottom: 8px; }
+    .tour b { display: block; color: var(--hueso); font-size: 15.5px; margin-bottom: 4px; }
+    .tour span { font-size: 13.5px; color: var(--gris); }
+    .testis { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 64px; }
+    .testi { padding: 22px; border: 1px dashed var(--linea-2); border-radius: 6px; }
+    .testi p { font-family: var(--serif); font-style: italic; font-size: 17px; color: var(--hueso); line-height: 1.45; margin-bottom: 14px; }
+    .testi small { font-size: 12.5px; color: var(--gris); }
+    .faq { max-width: 860px; margin-top: 70px; }
+    details { border-bottom: 1px solid var(--linea); padding: 16px 0; }
+    summary { cursor: pointer; font-size: 16.5px; font-weight: 600; color: var(--hueso); list-style: none; display: flex; justify-content: space-between; gap: 16px; }
+    summary::-webkit-details-marker { display: none; }
+    summary::after { content: "+"; color: var(--oro); font-size: 20px; line-height: 1; }
+    details[open] summary::after { content: "−"; }
+    details p { margin-top: 10px; font-size: 15px; }
+
+    /* BARRIOS */
+    .barrios { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+    .barrio { position: relative; aspect-ratio: 4 / 5; border-radius: 6px; overflow: hidden; border: 1px solid var(--linea); cursor: pointer; padding: 0; background: var(--noche); text-align: left; color: inherit; }
+    .barrio img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: brightness(.6); transition: transform .4s ease; }
+    .barrio:hover img { transform: scale(1.05); }
+    .barrio div { position: absolute; left: 0; right: 0; bottom: 0; padding: 18px; }
+    .barrio b { display: block; font-family: var(--serif); font-size: 24px; font-weight: 500; color: var(--hueso); }
+    .barrio span { font-size: 12.5px; color: var(--oro-2); }
+    .pagina-barrio { display: none; margin-top: 26px; border: 1px solid var(--linea); border-radius: 8px; overflow: hidden; background: var(--noche); }
+    .pagina-barrio.si { display: block; }
+    .url-bar { display: flex; align-items: center; gap: 8px; padding: 10px 14px; background: var(--negro); border-bottom: 1px solid var(--linea); font-size: 13px; color: var(--gris); overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+    .url-bar code { color: var(--oro-2); font-family: inherit; }
+    .pb-in { padding: 28px; display: grid; grid-template-columns: 1fr 1.2fr; gap: 30px; }
+    .pb-in h3 { font-family: var(--serif); font-size: 30px; font-weight: 500; color: var(--hueso); margin-bottom: 10px; }
+    .pb-lista { display: flex; flex-direction: column; gap: 10px; }
+    .pb-item { display: grid; grid-template-columns: 92px 1fr; gap: 12px; align-items: center; border: 1px solid var(--linea); border-radius: 4px; padding: 8px; cursor: pointer; background: none; color: inherit; text-align: left; }
+    .pb-item:hover { border-color: var(--oro); }
+    .pb-item img { width: 92px; height: 66px; object-fit: cover; border-radius: 3px; }
+    .pb-item b { display: block; color: var(--hueso); font-size: 14.5px; font-weight: 600; }
+    .pb-item span { font-size: 13px; color: var(--gris); }
+
+    /* CONTACTO + PIE */
+    .contacto { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: start; }
+    .form-local { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; background: var(--noche); border: 1px solid var(--linea); border-radius: 6px; padding: 24px; }
+    footer { padding: 48px 0 100px; border-top: 1px solid var(--linea); font-size: 13.5px; color: var(--gris); }
+    .pie { display: flex; justify-content: space-between; gap: 30px; flex-wrap: wrap; }
+    .pie img { height: 54px; width: auto; margin-bottom: 12px; }
+    .pie ul { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+    .pie a { text-decoration: none; }
+    .pie a:hover { color: var(--oro-2); }
+    .wa-flot { position: fixed; right: 20px; bottom: 20px; z-index: 950; display: flex; align-items: center; gap: 9px; padding: 13px 18px; border-radius: 999px; background: #1fa855; color: #fff; text-decoration: none; font-size: 14px; font-weight: 600; box-shadow: 0 10px 30px rgb(0 0 0 / .5); }
+    .wa-flot svg { width: 20px; height: 20px; fill: #fff; }
+
+    @media (max-width: 1060px) {
+      .grilla { grid-template-columns: repeat(2, 1fr); }
+      .catalogo.con-mapa { grid-template-columns: 1fr; }
+      .con-mapa .grilla { max-height: none; overflow: visible; order: 2; }
+      #mapa { position: relative; top: 0; height: 420px; }
+      .barrios { grid-template-columns: repeat(2, 1fr); }
+      .ficha-body { grid-template-columns: 1fr; }
+      .consulta { position: static; }
+    }
+    @media (max-width: 900px) {
+      .menu { display: none; }
+      .hamb { display: flex; margin-left: auto; }
+      .nav > .idioma { margin-left: 0; }
+      header.abierto .menu { display: flex; flex-direction: column; position: absolute; top: 76px; left: 0; right: 0; background: var(--negro); border-bottom: 1px solid var(--linea); padding: 16px 20px 22px; gap: 16px; }
+      .buscador { grid-template-columns: 1fr 1fr; }
+      .campo:nth-child(2) { border-right: 0; }
+      .campo:nth-child(-n+2) { border-bottom: 1px solid var(--linea); }
+      .campo:nth-child(4) { border-right: 0; }
+      .buscador > .btn { grid-column: 1 / -1; padding: 14px; }
+      .datos { grid-template-columns: 1fr 1fr; }
+      .datos div:nth-child(3) { border-left: 0; }
+      .datos div:nth-child(n+3) { border-top: 1px solid var(--linea); }
+      .locales, .confianza, .contacto, .pb-in { grid-template-columns: 1fr; }
+      .locales-foto { min-height: 240px; }
+      .testis { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 640px) {
+      .wrap { padding: 0 16px; }
+      section { padding: 60px 0; }
+      .nav { gap: 12px; height: 62px; }
+      .marca img { height: 44px; }
+      header.abierto .menu { top: 62px; }
+      .hero { min-height: auto; padding-top: 70px; }
+      .hero-sub { font-size: 15.5px; }
+      .campo { padding: 10px 12px; }
+      .campo select { font-size: 14px; }
+      .hero-btns .btn { flex: 1; }
+      .datos div { padding: 14px 16px; }
+      .datos b { font-size: 19px; }
+      .filtros { padding: 12px; }
+      .filtros select { flex: 1 1 140px; }
+      .vista { margin-left: 0; width: 100%; }
+      .vista button { flex: 1; justify-content: center; }
+      .grilla, .con-mapa .grilla { grid-template-columns: 1fr; }
+      #mapa { height: 340px; }
+      .ficha { padding: 0; }
+      .ficha-in { border-radius: 0; border: 0; min-height: 100%; }
+      .galeria { grid-template-columns: 1fr; height: 280px; }
+      .galeria-lado { display: none; }
+      .ficha-body { padding: 22px 16px 30px; gap: 26px; }
+      .ficha-body h3 { font-size: 26px; }
+      .amen { grid-template-columns: 1fr; }
+      .meses { grid-template-columns: repeat(4, 1fr); }
+      .consulta form, .form-local { grid-template-columns: 1fr; }
+      .locales-txt { padding: 28px 20px; }
+      .tours { grid-template-columns: 1fr; }
+      .pb-in { padding: 20px 16px; }
+      .wa-flot span { display: none; }
+      .wa-flot { padding: 14px; }
+    }
+  </style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+  <symbol id="i-l" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></symbol>
+  <symbol id="i-r" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></symbol>
+  <symbol id="i-grid" viewBox="0 0 24 24"><rect width="7" height="7" x="3" y="3" rx="1"/><rect width="7" height="7" x="14" y="3" rx="1"/><rect width="7" height="7" x="3" y="14" rx="1"/><rect width="7" height="7" x="14" y="14" rx="1"/></symbol>
+  <symbol id="i-map" viewBox="0 0 24 24"><path d="M14.1 5.5 9.9 3.5a2 2 0 0 0-1.8 0L3.6 5.7A1 1 0 0 0 3 6.6v12.8a1 1 0 0 0 1.4.9l3.7-1.8a2 2 0 0 1 1.8 0l4.2 2a2 2 0 0 0 1.8 0l4.5-2.2a1 1 0 0 0 .6-.9V4.6a1 1 0 0 0-1.4-.9l-3.7 1.8a2 2 0 0 1-1.8 0z"/><path d="M9 3.2v15M15 5.8v15"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></symbol>
+  <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></symbol>
+  <symbol id="i-video" viewBox="0 0 24 24"><path d="m16 13 5.2 3.5a.5.5 0 0 0 .8-.4V7.9a.5.5 0 0 0-.8-.4L16 11"/><rect width="14" height="12" x="2" y="6" rx="2"/></symbol>
+  <symbol id="i-link" viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></symbol>
+  <symbol id="i-wa" viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.2 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.1.1.7-.1 1.2Z"/></symbol>
+</svg>
+
+<div class="aviso">Boceto para charlar · las fotos son de su catálogo; propiedades, precios, fechas, textos y testimonios son de ejemplo</div>
+
+<header id="top">
+  <div class="wrap nav">
+    <a class="marca" href="#top" aria-label="Apartment Hunters BA"><img src="img/logo.png" width="339" height="189" alt="Apartment Hunters BA · Real Estate" /></a>
+    <ul class="menu">
+      <li><a href="#catalogo"><span lang="en">Apartments</span><span lang="es">Departamentos</span></a></li>
+      <li><a href="#barrios"><span lang="en">Neighborhoods</span><span lang="es">Barrios</span></a></li>
+      <li><a href="#locales"><span lang="en">Commercial</span><span lang="es">Locales</span></a></li>
+      <li><a href="#nosotros"><span lang="en">About us</span><span lang="es">Nosotros</span></a></li>
+      <li><a href="#contacto"><span lang="en">Contact</span><span lang="es">Contacto</span></a></li>
+    </ul>
+    <div class="idioma" role="group" aria-label="Language">
+      <button type="button" data-l="en" class="on">EN</button>
+      <button type="button" data-l="es">ES</button>
+    </div>
+    <button class="hamb" aria-label="Menu" onclick="this.closest('header').classList.toggle('abierto')"><svg class="ico"><use href="#i-menu"/></svg></button>
+  </div>
+</header>
+
+<section class="hero" style="padding-bottom:0">
+  <div class="hero-foto"><img src="img/hero.jpg" width="1200" height="800" alt="Terraza con vista a Buenos Aires" /></div>
+  <div class="wrap hero-in">
+    <div class="eyebrow"><span lang="en">Apartment Hunters BA · Real Estate</span><span lang="es">Apartment Hunters BA · Inmobiliaria</span></div>
+    <h1>Buenos Aires <em>is calling</em></h1>
+    <p class="hero-sub"><span lang="en">Furnished apartments for 3 to 12 months in the best neighborhoods of Buenos Aires. We find it, show it to you in person or on video, and stay with you until you move in.</span><span lang="es">Departamentos amoblados de 3 a 12 meses en los mejores barrios de Buenos Aires. Lo buscamos, te lo mostramos en persona o por video y te acompañamos hasta que te mudás.</span></p>
+
+    <form class="buscador" id="buscador" onsubmit="buscar(event)">
+      <label class="campo"><span><span lang="en">Neighborhood</span><span lang="es">Barrio</span></span>
+        <select id="b-barrio"></select>
+      </label>
+      <label class="campo"><span><span lang="en">Stay</span><span lang="es">Estadía</span></span>
+        <select id="b-op"></select>
+      </label>
+      <label class="campo"><span><span lang="en">Rooms</span><span lang="es">Ambientes</span></span>
+        <select id="b-amb"></select>
+      </label>
+      <label class="campo"><span><span lang="en">Max. price</span><span lang="es">Precio máx.</span></span>
+        <select id="b-precio"></select>
+      </label>
+      <button class="btn oro" type="submit"><span lang="en">Search</span><span lang="es">Buscar</span></button>
+    </form>
+    <div class="hero-btns">
+      <a class="btn" href="#contacto"><span lang="en">Send an inquiry</span><span lang="es">Hacer una consulta</span></a>
+      <a class="btn wa" id="hero-wa" href="#" target="_blank" rel="noopener"><svg class="ico" style="fill:currentColor;stroke:none"><use href="#i-wa"/></svg>WhatsApp</a>
+    </div>
+  </div>
+</section>
+<div class="datos">
+  <div><b>3 – 12</b><span><span lang="en">months, fully furnished</span><span lang="es">meses, totalmente amoblado</span></span></div>
+  <div><b>EN · ES</b><span><span lang="en">we speak your language</span><span lang="es">te atendemos en tu idioma</span></span></div>
+  <div><b><span lang="en">In person or video</span><span lang="es">En persona o video</span></b><span><span lang="en">tours before you arrive</span><span lang="es">recorridos antes de llegar</span></span></div>
+  <div><b>Palermo · Recoleta</b><span><span lang="en">Belgrano, Las Cañitas and more</span><span lang="es">Belgrano, Las Cañitas y más</span></span></div>
+</div>
+
+<!-- CATÁLOGO -->
+<section id="catalogo">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="eyebrow"><span lang="en">Catalog</span><span lang="es">Catálogo</span></div>
+        <h2><span lang="en">Find your <em>place</em></span><span lang="es">Encontrá tu <em>lugar</em></span></h2>
+      </div>
+      <p class="sec-sub"><span lang="en">Combine filters, switch to the map and open any listing to see photos, amenities and availability.</span><span lang="es">Combiná filtros, pasá al mapa y abrí cualquier ficha para ver fotos, comodidades y disponibilidad.</span></p>
+    </div>
+
+    <div class="filtros">
+      <select id="f-barrio" aria-label="Barrio"></select>
+      <select id="f-op" aria-label="Operación"></select>
+      <select id="f-amb" aria-label="Ambientes"></select>
+      <select id="f-precio" aria-label="Precio"></select>
+      <label class="chip"><input type="checkbox" value="terraza" /><span lang="en">Balcony / terrace</span><span lang="es">Balcón / terraza</span></label>
+      <label class="chip"><input type="checkbox" value="mascotas" /><span lang="en">Pet friendly</span><span lang="es">Acepta mascotas</span></label>
+      <label class="chip"><input type="checkbox" value="pileta" /><span lang="en">Pool / gym</span><span lang="es">Pileta / gimnasio</span></label>
+      <div class="vista">
+        <button type="button" data-v="grilla" class="on"><svg class="ico"><use href="#i-grid"/></svg><span lang="en">Grid</span><span lang="es">Grilla</span></button>
+        <button type="button" data-v="mapa"><svg class="ico"><use href="#i-map"/></svg><span lang="en">Map</span><span lang="es">Mapa</span></button>
+      </div>
+    </div>
+    <div class="resultado"><span id="cuenta"></span><button type="button" onclick="limpiar()"><span lang="en">Clear filters</span><span lang="es">Limpiar filtros</span></button></div>
+
+    <div class="catalogo" id="cat">
+      <div class="grilla" id="grilla"></div>
+      <div id="mapa" aria-label="Mapa"></div>
+    </div>
+  </div>
+</section>
+
+<!-- FICHA -->
+<div class="ficha" id="ficha" role="dialog" aria-modal="true" aria-labelledby="f-titulo">
+  <div class="ficha-in">
+    <button class="cerrar" aria-label="Close" onclick="cerrarFicha()"><svg class="ico"><use href="#i-x"/></svg></button>
+    <div class="galeria">
+      <div class="galeria-main">
+        <img id="g-main" src="" alt="" />
+        <button class="flecha izq" aria-label="Previous" onclick="mover(-1)"><svg class="ico"><use href="#i-l"/></svg></button>
+        <button class="flecha der" aria-label="Next" onclick="mover(1)"><svg class="ico"><use href="#i-r"/></svg></button>
+        <span class="contador" id="g-cont"></span>
+      </div>
+      <div class="galeria-lado"><img id="g-2" src="" alt="" onclick="mover(1)" /><img id="g-3" src="" alt="" onclick="mover(2)" /></div>
+    </div>
+    <div class="ficha-body">
+      <div>
+        <div class="prop-barrio" id="fi-barrio"></div>
+        <h3 id="f-titulo"></h3>
+        <div class="hechos" id="f-hechos"></div>
+        <p id="f-desc" style="margin-top:16px;font-size:15.5px"></p>
+        <h4><span lang="en">Amenities</span><span lang="es">Comodidades</span></h4>
+        <ul class="amen" id="f-amen"></ul>
+        <h4><span lang="en">Availability</span><span lang="es">Disponibilidad</span></h4>
+        <div class="meses" id="f-meses"></div>
+        <div class="leyenda"><span style="color:#9fe0b9">■ <span lang="en">Available</span><span lang="es">Disponible</span></span><span>■ <span lang="en">Booked</span><span lang="es">Ocupado</span></span></div>
+        <h4><span lang="en">Location</span><span lang="es">Ubicación</span></h4>
+        <div id="mini-mapa"></div>
+        <p class="nota-mapa"><span lang="en">Approximate area. We share the exact address when you book a tour.</span><span lang="es">Zona aproximada. La dirección exacta se pasa al coordinar la visita.</span></p>
+      </div>
+      <aside class="consulta">
+        <div class="precio" id="fi-precio"></div>
+        <div style="font-size:13px;color:var(--gris);margin-top:2px" id="f-cod"></div>
+        <form id="f-form" onsubmit="consultar(event)">
+          <label><span lang="en">Name</span><span lang="es">Nombre</span><input name="nombre" required autocomplete="name" /></label>
+          <label>Email<input name="email" type="email" required autocomplete="email" /></label>
+          <label><span lang="en">Move-in</span><span lang="es">Desde</span><select name="desde" class="sel-mes"></select></label>
+          <label><span lang="en">How many months</span><span lang="es">Cuántos meses</span><input name="meses" type="number" min="1" max="24" placeholder="6" /></label>
+          <label class="full">WhatsApp<input name="wa" type="tel" placeholder="+1 555 000 0000" autocomplete="tel" /></label>
+          <label class="full"><span lang="en">Message</span><span lang="es">Mensaje</span><textarea name="msj"></textarea></label>
+          <button class="btn oro full" type="submit" style="grid-column:1/-1"><span lang="en">Request info and a tour</span><span lang="es">Pedir info y una visita</span></button>
+        </form>
+        <div class="ok" id="f-ok"><span lang="en">Thanks! We'll write back within the day.</span><span lang="es">¡Gracias! Te escribimos en el día.</span><br /><small style="color:var(--gris)">Boceto: en la web real, esta consulta entra a Zolutium como contacto nuevo, con la propiedad y las fechas.</small></div>
+        <div class="o"><span lang="en">or</span><span lang="es">o</span></div>
+        <a class="btn wa" id="f-wa" href="#" target="_blank" rel="noopener" style="width:100%"><svg class="ico" style="fill:currentColor;stroke:none"><use href="#i-wa"/></svg><span lang="en">Ask on WhatsApp</span><span lang="es">Consultar por WhatsApp</span></a>
+      </aside>
+    </div>
+  </div>
+</div>
+
+<!-- BARRIOS -->
+<section id="barrios" class="alt">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="eyebrow"><span lang="en">Neighborhood guides</span><span lang="es">Guías de barrio</span></div>
+        <h2><span lang="en">Where to <em>live</em> in Buenos Aires</span><span lang="es">Dónde <em>vivir</em> en Buenos Aires</span></h2>
+      </div>
+      <p class="sec-sub"><span lang="en">One page per neighborhood, in English and in Spanish, with what it's like to live there and the apartments available.</span><span lang="es">Una página por barrio, en inglés y en castellano, con cómo es vivir ahí y los departamentos disponibles.</span></p>
+    </div>
+    <div class="barrios" id="barrios-grid"></div>
+    <div class="pagina-barrio" id="pb">
+      <div class="url-bar"><svg class="ico"><use href="#i-link"/></svg><code id="pb-url"></code></div>
+      <div class="pb-in">
+        <div>
+          <div class="eyebrow" id="pb-eyebrow"></div>
+          <h3 id="pb-titulo"></h3>
+          <p id="pb-txt"></p>
+          <p style="font-size:13px;color:var(--gris);margin-top:12px">Texto de ejemplo. Cada barrio tiene su página en /en/ y en /es/, para que Google la muestre en el idioma de quien busca.</p>
+        </div>
+        <div class="pb-lista" id="pb-lista"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOCALES -->
+<section id="locales">
+  <div class="wrap">
+    <div class="locales">
+      <div class="locales-foto"><img src="img/edificio.jpg" width="512" height="768" alt="Fachada de un edificio comercial en Buenos Aires" loading="lazy" /></div>
+      <div class="locales-txt">
+        <div class="eyebrow"><span lang="en">Commercial real estate</span><span lang="es">Locales comerciales</span></div>
+        <h2 style="margin-bottom:14px"><span lang="en">Opening a business <em>in Buenos Aires?</em></span><span lang="es">¿Vas a abrir un negocio <em>en Buenos Aires?</em></span></h2>
+        <p><span lang="en">We help you find the right commercial space: the right street for your business, a fair contract and a clear process, in English or Spanish.</span><span lang="es">Te ayudamos a encontrar el local indicado: la cuadra que le sirve a tu rubro, un contrato justo y un proceso claro, en castellano o en inglés.</span></p>
+        <ol class="pasos">
+          <li><b>1</b><span><strong><span lang="en">Tell us about your business</span><span lang="es">Contanos tu proyecto</span></strong><span lang="en">Type of business, size and budget.</span><span lang="es">Rubro, metros y presupuesto.</span></span></li>
+          <li><b>2</b><span><strong><span lang="en">We shortlist and visit</span><span lang="es">Buscamos y visitamos</span></strong><span lang="en">Spaces that fit, in person or on video.</span><span lang="es">Locales que encajan, en persona o por video.</span></span></li>
+          <li><b>3</b><span><strong><span lang="en">We help you close</span><span lang="es">Te acompañamos al firmar</span></strong><span lang="en">Negotiation and contract, step by step.</span><span lang="es">Negociación y contrato, paso a paso.</span></span></li>
+        </ol>
+        <a class="btn oro" href="#contacto" onclick="document.getElementById('c-tipo').value='local'"><span lang="en">Ask about commercial spaces</span><span lang="es">Consultar por un local</span></a>
+        <p style="font-size:12.5px;color:var(--gris);margin-top:14px">Textos de ejemplo: esta sección se arma con los textos de Yanina.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONFIANZA -->
+<section id="nosotros" class="alt">
+  <div class="wrap">
+    <div class="confianza">
+      <img src="img/canitas.jpg" width="1100" height="825" alt="Dormitorio de un departamento amoblado" loading="lazy" />
+      <div>
+        <div class="eyebrow"><span lang="en">About us</span><span lang="es">Quiénes somos</span></div>
+        <h2 style="margin-bottom:18px"><span lang="en">A person, <em>not a platform</em></span><span lang="es">Una persona, <em>no una plataforma</em></span></h2>
+        <p><span lang="en">Apartment Hunters BA was founded in 2023 by Yanina Cheij to help people from abroad find a home in Buenos Aires: students, expats, digital nomads and professionals.</span><span lang="es">Apartment Hunters BA nació en 2023, de la mano de Yanina Cheij, para ayudar a quienes llegan del exterior a encontrar su casa en Buenos Aires: estudiantes, expatriados, nómadas digitales y profesionales.</span></p>
+        <p><span lang="en">We also handle traditional unfurnished rentals (12 or 24 months), sales and investment.</span><span lang="es">También trabajamos alquileres tradicionales sin muebles (12 o 24 meses), ventas e inversión.</span></p>
+        <div class="tours">
+          <div class="tour"><svg class="ico"><use href="#i-user"/></svg><b><span lang="en">In-person tours</span><span lang="es">Visitas en persona</span></b><span><span lang="en">We walk you through the apartment and the area.</span><span lang="es">Te mostramos el departamento y la zona.</span></span></div>
+          <div class="tour"><svg class="ico"><use href="#i-video"/></svg><b><span lang="en">Virtual tours</span><span lang="es">Visitas por video</span></b><span><span lang="en">See it live from your country before you travel.</span><span lang="es">Lo ves en vivo desde tu país antes de viajar.</span></span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testis">
+      <div class="testi"><p>“Testimonio de ejemplo: acá va lo que cuenta un inquilino real sobre su experiencia.”</p><small>Nombre del cliente · País · Barrio</small></div>
+      <div class="testi"><p>“Testimonio de ejemplo: se cargan solo reseñas reales, con permiso de quien las escribió.”</p><small>Nombre del cliente · País · Barrio</small></div>
+      <div class="testi"><p>“Testimonio de ejemplo: pueden venir de Google o de los mensajes que ya recibieron.”</p><small>Nombre del cliente · País · Barrio</small></div>
+    </div>
+
+    <div class="faq">
+      <div class="eyebrow">FAQ</div>
+      <h2 style="margin-bottom:20px"><span lang="en">Before you <em>arrive</em></span><span lang="es">Antes de <em>llegar</em></span></h2>
+      <details><summary><span lang="en">Can I rent before arriving in Argentina?</span><span lang="es">¿Puedo alquilar antes de llegar a la Argentina?</span></summary><p>Respuesta de ejemplo: se completa con lo que Yanina responde siempre (visita por video, reserva y firma).</p></details>
+      <details><summary><span lang="en">What is included in the monthly price?</span><span lang="es">¿Qué incluye el precio mensual?</span></summary><p>Respuesta de ejemplo: expensas, servicios e internet, según cada propiedad.</p></details>
+      <details><summary><span lang="en">Do I need a local guarantor?</span><span lang="es">¿Necesito garantía argentina?</span></summary><p>Respuesta de ejemplo: se explica cómo funciona para alquileres temporarios y para los de 12 o 24 meses.</p></details>
+      <details><summary><span lang="en">How do I pay, and in which currency?</span><span lang="es">¿Cómo se paga y en qué moneda?</span></summary><p>Respuesta de ejemplo: formas de pago y moneda de cada tipo de alquiler.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto">
+  <div class="wrap contacto">
+    <div>
+      <div class="eyebrow"><span lang="en">Contact</span><span lang="es">Contacto</span></div>
+      <h2 style="margin-bottom:14px"><span lang="en">Tell us what you're <em>looking for</em></span><span lang="es">Contanos qué <em>estás buscando</em></span></h2>
+      <p class="sec-sub"><span lang="en">Dates, budget and neighborhood. We reply the same day with options that fit.</span><span lang="es">Fechas, presupuesto y barrio. Te respondemos en el día con opciones que encajen.</span></p>
+      <div class="hero-btns" style="margin-top:24px">
+        <a class="btn wa" id="c-wa" href="#" target="_blank" rel="noopener"><svg class="ico" style="fill:currentColor;stroke:none"><use href="#i-wa"/></svg>+54 9 11 2640-8944</a>
+        <a class="btn" href="https://www.instagram.com/apartmenthuntersba/" target="_blank" rel="noopener">@apartmenthuntersba</a>
+      </div>
+    </div>
+    <div>
+      <form class="form-local" onsubmit="consultar(event, 'c-ok')">
+        <label><span lang="en">Name</span><span lang="es">Nombre</span><input required autocomplete="name" /></label>
+        <label>Email<input type="email" required autocomplete="email" /></label>
+        <label class="full"><span lang="en">I'm looking for</span><span lang="es">Busco</span>
+          <select id="c-tipo"></select>
+        </label>
+        <label><span lang="en">Move-in</span><span lang="es">Desde</span><select class="sel-mes"></select></label>
+        <label>WhatsApp<input type="tel" autocomplete="tel" /></label>
+        <label class="full"><span lang="en">Message</span><span lang="es">Mensaje</span><textarea></textarea></label>
+        <button class="btn oro" type="submit" style="grid-column:1/-1"><span lang="en">Send</span><span lang="es">Enviar</span></button>
+      </form>
+      <div class="ok" id="c-ok"><span lang="en">Thanks! We'll write back within the day.</span><span lang="es">¡Gracias! Te escribimos en el día.</span><br /><small style="color:var(--gris)">Boceto: en la web real, esta consulta entra a Zolutium.</small></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap pie">
+    <div>
+      <img src="img/logo.png" width="339" height="189" alt="Apartment Hunters BA" />
+      <div>Buenos Aires is calling.</div>
+    </div>
+    <ul>
+      <li><a href="#catalogo"><span lang="en">Furnished apartments</span><span lang="es">Departamentos amoblados</span></a></li>
+      <li><a href="#barrios"><span lang="en">Neighborhoods</span><span lang="es">Barrios</span></a></li>
+      <li><a href="#locales"><span lang="en">Commercial spaces</span><span lang="es">Locales comerciales</span></a></li>
+    </ul>
+    <ul>
+      <li>WhatsApp +54 9 11 2640-8944</li>
+      <li><a href="https://www.instagram.com/apartmenthuntersba/" target="_blank" rel="noopener">Instagram @apartmenthuntersba</a></li>
+      <li>apartmenthuntersba.com</li>
+    </ul>
+  </div>
+</footer>
+
+<a class="wa-flot" id="wa-flot" href="#" target="_blank" rel="noopener" aria-label="WhatsApp"><svg><use href="#i-wa"/></svg><span>WhatsApp</span></a>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+  const WA = '5491126408944';
+  let L_ = 'en';
+  const t = (en, es) => L_ === 'en' ? en : es;
+
+  const BARRIOS = {
+    'palermo-soho': { n: 'Palermo Soho', c: [-34.5885, -58.4305], f: 'soho' },
+    'palermo-hollywood': { n: 'Palermo Hollywood', c: [-34.5815, -58.4385], f: 'studio' },
+    'palermo-chico': { n: 'Palermo Chico', c: [-34.5790, -58.4045], f: 'torre' },
+    'recoleta': { n: 'Recoleta', c: [-34.5892, -58.3970], f: 'recoleta-v' },
+    'belgrano': { n: 'Belgrano', c: [-34.5620, -58.4560], f: 'belgrano' },
+    'las-canitas': { n: 'Las Cañitas', c: [-34.5705, -58.4335], f: 'canitas' },
+    'villa-crespo': { n: 'Villa Crespo', c: [-34.5985, -58.4395], f: 'vc3' },
+    'retiro': { n: 'Retiro', c: [-34.5935, -58.3785], f: 'retiro' },
+    'almagro': { n: 'Almagro', c: [-34.6075, -58.4205], f: 'clasico' }
+  };
+  const TXT_BARRIO = {
+    'palermo-soho': ['Cobbled streets, design shops, cafés and nightlife. The favorite of first-timers in Buenos Aires.', 'Calles empedradas, tiendas de diseño, cafés y vida nocturna. El favorito de quien llega por primera vez.'],
+    'palermo-hollywood': ['Restaurants, bars and studios, a few blocks from the parks.', 'Restaurantes, bares y productoras, a pocas cuadras de los bosques.'],
+    'palermo-chico': ['Quiet, green and residential, next to the museums and the parks.', 'Tranquilo, verde y residencial, al lado de los museos y los parques.'],
+    'recoleta': ['Classic architecture, museums and cafés, close to downtown.', 'Arquitectura clásica, museos y cafés, cerca del centro.'],
+    'belgrano': ['Residential and well connected, with tree-lined streets and good schools.', 'Residencial y bien conectado, con calles arboladas y buenos colegios.'],
+    'las-canitas': ['A small neighborhood with lots of restaurants, close to Palermo.', 'Un barrio chico, lleno de restaurantes, pegado a Palermo.'],
+    'villa-crespo': ['Up-and-coming, creative and more affordable, next to Palermo.', 'En crecimiento, creativo y más accesible, al lado de Palermo.'],
+    'retiro': ['Central, with French-style buildings and quick access to everything.', 'Céntrico, con edificios de estilo francés y acceso rápido a todo.'],
+    'almagro': ['Authentic Buenos Aires, with theaters, bars and subway access.', 'Buenos Aires auténtico, con teatros, bares y subte.']
+  };
+
+  // Propiedades de ejemplo. op: temp (3–12 meses, amoblado), largo (12–24, sin muebles), venta
+  const PROPS = [
+    { id: 'AH-101', b: 'palermo-soho', op: 'temp', amb: 2, m2: 48, ban: 1, p: 1100, fotos: ['soho', 'studio', 'clasico'], am: ['wifi', 'aire', 'lavarropas', 'terraza'], libre: 1, t: ['Bright 1-bedroom with balcony', 'Dos ambientes luminoso con balcón'] },
+    { id: 'AH-102', b: 'recoleta', op: 'temp', amb: 2, m2: 55, ban: 1, p: 950, fotos: ['loft', 'clasico', 'soho'], am: ['wifi', 'aire', 'lavarropas', 'escritorio'], libre: 0, t: ['Loft with mezzanine', 'Loft con entrepiso'] },
+    { id: 'AH-103', b: 'villa-crespo', op: 'temp', amb: 2, m2: 90, ban: 2, p: 1000, fotos: ['vc1', 'vc2', 'vc3', 'vc4', 'vc5'], am: ['wifi', 'aire', 'terraza', 'parrilla', 'lavarropas'], libre: 2, t: ['1-bedroom with 40 m² private terrace', 'Dos ambientes con terraza propia de 40 m²'] },
+    { id: 'AH-104', b: 'palermo-hollywood', op: 'temp', amb: 1, m2: 36, ban: 1, p: 650, fotos: ['studio', 'soho', 'loft'], am: ['wifi', 'aire', 'escritorio', 'mascotas'], libre: 0, t: ['Designer studio', 'Monoambiente de diseño'] },
+    { id: 'AH-105', b: 'recoleta', op: 'temp', amb: 3, m2: 95, ban: 2, p: 1600, fotos: ['clasico', 'canitas', 'soho'], am: ['wifi', 'aire', 'lavarropas', 'seguridad'], libre: 3, t: ['Classic 2-bedroom apartment', 'Tres ambientes clásico'] },
+    { id: 'AH-106', b: 'las-canitas', op: 'temp', amb: 3, m2: 80, ban: 2, p: 1400, fotos: ['canitas', 'hero', 'studio'], am: ['wifi', 'aire', 'terraza', 'pileta', 'seguridad'], libre: 1, t: ['2-bedroom with shared rooftop', 'Tres ambientes con terraza común'] },
+    { id: 'AH-107', b: 'palermo-chico', op: 'temp', amb: 4, m2: 160, ban: 3, p: 3500, fotos: ['torre', 'hero', 'canitas'], am: ['wifi', 'aire', 'pileta', 'seguridad', 'cochera', 'terraza'], libre: 2, t: ['3-bedroom in tower with amenities', 'Cuatro ambientes en torre con amenities'] },
+    { id: 'AH-108', b: 'belgrano', op: 'temp', amb: 2, m2: 50, ban: 1, p: 850, fotos: ['belgrano', 'clasico', 'soho'], am: ['wifi', 'aire', 'lavarropas', 'mascotas'], libre: 0, t: ['Cozy 1-bedroom near the subway', 'Dos ambientes cálido cerca del subte'] },
+    { id: 'AH-109', b: 'almagro', op: 'temp', amb: 1, m2: 32, ban: 1, p: 550, fotos: ['clasico', 'studio', 'belgrano'], am: ['wifi', 'escritorio', 'lavarropas'], libre: 0, t: ['Studio for students', 'Monoambiente para estudiantes'] },
+    { id: 'AH-110', b: 'retiro', op: 'largo', amb: 2, m2: 52, ban: 1, p: 700, fotos: ['retiro', 'clasico', 'soho'], am: ['seguridad', 'lavarropas'], libre: 0, t: ['Unfurnished 1-bedroom, 24 months', 'Dos ambientes sin muebles, 24 meses'] },
+    { id: 'AH-111', b: 'palermo-soho', op: 'largo', amb: 4, m2: 110, ban: 2, p: 1500, fotos: ['palermo4', 'belgrano', 'clasico'], am: ['terraza', 'mascotas', 'lavarropas'], libre: 1, t: ['Unfurnished 3-bedroom, 12 months', 'Cuatro ambientes sin muebles, 12 meses'] },
+    { id: 'AH-112', b: 'recoleta', op: 'venta', amb: 3, m2: 75, ban: 2, p: 189000, fotos: ['recoleta-v', 'clasico', 'canitas'], am: ['terraza', 'seguridad'], libre: 0, t: ['2-bedroom with open views, for sale', 'Tres ambientes con vista abierta, en venta'] },
+    { id: 'AH-113', b: 'palermo-soho', op: 'venta', amb: 3, m2: 82, ban: 2, p: 315000, fotos: ['soho-v', 'torre', 'hero'], am: ['pileta', 'terraza', 'seguridad', 'cochera'], libre: 0, t: ['New development with pool, for sale', 'Edificio a estrenar con pileta, en venta'] }
+  ];
+  const AM = {
+    wifi: ['Fast Wi-Fi', 'Wi-Fi rápido'], aire: ['Air conditioning', 'Aire acondicionado'], lavarropas: ['Washing machine', 'Lavarropas'],
+    terraza: ['Balcony / terrace', 'Balcón / terraza'], parrilla: ['Private grill', 'Parrilla propia'], escritorio: ['Workspace', 'Espacio de trabajo'],
+    mascotas: ['Pet friendly', 'Acepta mascotas'], pileta: ['Pool / gym', 'Pileta / gimnasio'], seguridad: ['24 h doorman', 'Seguridad 24 h'], cochera: ['Parking', 'Cochera']
+  };
+  const OP = { temp: ['Furnished · 3–12 months', 'Amoblado · 3 a 12 meses'], largo: ['Unfurnished · 12–24 months', 'Sin muebles · 12 a 24 meses'], venta: ['For sale', 'En venta'] };
+  const MESES = [['Dec', 'Dic'], ['Jan', 'Ene'], ['Feb', 'Feb'], ['Mar', 'Mar'], ['Apr', 'Abr'], ['May', 'May'], ['Jun', 'Jun'], ['Jul', 'Jul'], ['Aug', 'Ago'], ['Sep', 'Sep'], ['Oct', 'Oct'], ['Nov', 'Nov']];
+  const usd = n => 'USD ' + n.toLocaleString('es-AR');
+  const precioTxt = p => p.op === 'venta' ? usd(p.p) : `${usd(p.p)} <small>${t('/ month', '/ mes')}</small>`;
+  const ambTxt = n => n === 1 ? t('Studio', 'Monoambiente') : t(`${n} rooms`, `${n} ambientes`);
+
+  // ---------- selects (buscador y filtros comparten opciones) ----------
+  function opciones(sel, lista, valor) {
+    sel.innerHTML = lista.map(([v, en, es]) => `<option value="${v}">${t(en, es)}</option>`).join('');
+    if (valor !== undefined && [...sel.options].some(o => o.value === valor)) sel.value = valor;
+  }
+  const LB = () => [['', 'All neighborhoods', 'Todos los barrios'], ...Object.entries(BARRIOS).map(([k, b]) => [k, b.n, b.n])];
+  const LO = () => [['', 'Any stay', 'Cualquier estadía'], ['temp', 'Furnished 3–12 months', 'Amoblado 3 a 12 meses'], ['largo', 'Unfurnished 12–24 months', 'Sin muebles 12 a 24 meses'], ['venta', 'Buy', 'Comprar']];
+  const LA = () => [['', 'Any', 'Cualquiera'], ['1', 'Studio', 'Monoambiente'], ['2', '2 rooms', '2 ambientes'], ['3', '3 rooms', '3 ambientes'], ['4', '4 or more', '4 o más']];
+  const LP = op => op === 'venta'
+    ? [['', 'Any price', 'Cualquier precio'], ['150000', 'Up to USD 150,000', 'Hasta USD 150.000'], ['250000', 'Up to USD 250,000', 'Hasta USD 250.000'], ['500000', 'Up to USD 500,000', 'Hasta USD 500.000']]
+    : [['', 'Any price', 'Cualquier precio'], ['800', 'Up to USD 800 / mo', 'Hasta USD 800 / mes'], ['1200', 'Up to USD 1,200 / mo', 'Hasta USD 1.200 / mes'], ['2000', 'Up to USD 2,000 / mo', 'Hasta USD 2.000 / mes'], ['5000', 'Up to USD 5,000 / mo', 'Hasta USD 5.000 / mes']];
+  const LC = () => [['temp', 'A furnished apartment (3–12 months)', 'Un departamento amoblado (3 a 12 meses)'], ['largo', 'A long-term unfurnished rental', 'Un alquiler largo sin muebles'], ['venta', 'To buy or invest', 'Comprar o invertir'], ['local', 'A commercial space', 'Un local comercial']];
+
+  const $ = id => document.getElementById(id);
+  function pintarSelects() {
+    opciones($('b-barrio'), LB(), $('b-barrio').value); opciones($('f-barrio'), LB(), $('f-barrio').value);
+    opciones($('b-op'), LO(), $('b-op').value); opciones($('f-op'), LO(), $('f-op').value);
+    opciones($('b-amb'), LA(), $('b-amb').value); opciones($('f-amb'), LA(), $('f-amb').value);
+    opciones($('b-precio'), LP($('b-op').value), $('b-precio').value); opciones($('f-precio'), LP($('f-op').value), $('f-precio').value);
+    opciones($('c-tipo'), LC(), $('c-tipo').value);
+    document.querySelectorAll('.sel-mes').forEach(s => opciones(s, [['', 'Choose a month', 'Elegí un mes'], ...MESES.map(([en, es], i) => [i, `${en} ${i ? 2027 : 2026}`, `${es} ${i ? 2027 : 2026}`])], s.value));
+  }
+  $('b-op').addEventListener('change', () => opciones($('b-precio'), LP($('b-op').value)));
+
+  // ---------- catálogo ----------
+  let mapa, capas = [], vistaMapa = false;
+  function filtrar() {
+    const b = $('f-barrio').value, op = $('f-op').value, amb = +$('f-amb').value || 0, max = +$('f-precio').value || 0;
+    const chips = [...document.querySelectorAll('.chip input:checked')].map(i => i.value);
+    return PROPS.filter(p => (!b || p.b === b) && (!op || p.op === op) && (!amb || (amb === 4 ? p.amb >= 4 : p.amb === amb))
+      && (!max || p.p <= max) && (op || !max || p.op !== 'venta') && chips.every(c => p.am.includes(c)));
+  }
+  function tarjeta(p) {
+    return `<button class="prop" data-id="${p.id}"><div class="prop-foto"><img src="img/${p.fotos[0]}.jpg" alt="${t(p.t[0], p.t[1])}" loading="lazy" /><span class="prop-tag">${t(OP[p.op][0], OP[p.op][1])}</span></div>
+      <div class="prop-info"><span class="prop-barrio">${BARRIOS[p.b].n}</span><span class="prop-titulo">${t(p.t[0], p.t[1])}</span>
+      <span class="prop-datos">${ambTxt(p.amb)} · ${p.m2} m² · ${p.ban} ${t(p.ban > 1 ? 'baths' : 'bath', p.ban > 1 ? 'baños' : 'baño')}</span><span class="prop-precio">${precioTxt(p)}</span></div></button>`;
+  }
+  function pintar() {
+    const r = filtrar();
+    $('grilla').innerHTML = r.length ? r.map(tarjeta).join('') : `<div class="vacio">${t('No apartments match these filters. Write to us: we may have something that is not listed yet.', 'No hay departamentos con esos filtros. Escribinos: puede haber algo que todavía no está publicado.')}</div>`;
+    $('cuenta').textContent = t(`${r.length} of ${PROPS.length} listings (sample)`, `${r.length} de ${PROPS.length} propiedades (ejemplo)`);
+    if (vistaMapa) pins(r);
+  }
+  function pins(r) {
+    if (!window.L) return;
+    if (!mapa) {
+      mapa = L.map('mapa', { scrollWheelZoom: false }).setView([-34.585, -58.42], 13);
+      L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '&copy; OpenStreetMap', maxZoom: 19 }).addTo(mapa);
+    }
+    capas.forEach(c => c.remove()); capas = [];
+    r.forEach((p, i) => {
+      const [la, lo] = BARRIOS[p.b].c, d = ((i * 37) % 9 - 4) * 0.0011, e = ((i * 53) % 7 - 3) * 0.0013;
+      const etiqueta = p.op === 'venta' ? 'USD ' + Math.round(p.p / 1000) + 'k' : 'USD ' + p.p.toLocaleString('es-AR');
+      const m = L.marker([la + d, lo + e], { icon: L.divIcon({ html: `<span class="pin" data-id="${p.id}">${etiqueta}</span>`, className: '', iconSize: null }) }).addTo(mapa);
+      m.on('click', () => abrir(p.id));
+      m.on('mouseover', () => document.querySelector(`.prop[data-id="${p.id}"]`)?.classList.add('activa'));
+      m.on('mouseout', () => document.querySelector(`.prop[data-id="${p.id}"]`)?.classList.remove('activa'));
+      capas.push(m);
+    });
+    if (capas.length) mapa.fitBounds(L.featureGroup(capas).getBounds().pad(0.25), { maxZoom: 15 });
+    setTimeout(() => mapa.invalidateSize(), 50);
+  }
+  document.querySelector('.filtros').addEventListener('change', e => {
+    if (e.target.id === 'f-op') opciones($('f-precio'), LP($('f-op').value));
+    pintar();
+  });
+  document.querySelectorAll('.vista button').forEach(b => b.addEventListener('click', () => {
+    document.querySelectorAll('.vista button').forEach(x => x.classList.toggle('on', x === b));
+    vistaMapa = b.dataset.v === 'mapa';
+    $('cat').classList.toggle('con-mapa', vistaMapa);
+    pintar();
+  }));
+  $('grilla').addEventListener('click', e => { const c = e.target.closest('.prop'); if (c) abrir(c.dataset.id); });
+  $('grilla').addEventListener('mouseover', e => { const c = e.target.closest('.prop'); document.querySelectorAll('.pin').forEach(p => p.classList.toggle('on', !!c && p.dataset.id === c.dataset.id)); });
+  function limpiar() {
+    ['f-barrio', 'f-op', 'f-amb'].forEach(id => $(id).value = '');
+    opciones($('f-precio'), LP(''));
+    document.querySelectorAll('.chip input').forEach(i => i.checked = false);
+    pintar();
+  }
+  function buscar(e) {
+    e.preventDefault();
+    $('f-barrio').value = $('b-barrio').value; $('f-op').value = $('b-op').value; $('f-amb').value = $('b-amb').value;
+    opciones($('f-precio'), LP($('f-op').value), $('b-precio').value);
+    pintar();
+    $('catalogo').scrollIntoView({ behavior: 'smooth' });
+  }
+
+  // ---------- ficha ----------
+  let actual = null, foto = 0, mini, miniCapa;
+  function abrir(id) {
+    actual = PROPS.find(p => p.id === id); foto = 0;
+    pintarFicha();
+    $('f-ok').classList.remove('si'); $('f-form').style.display = '';
+    $('ficha').classList.add('abierta'); document.body.style.overflow = 'hidden';
+    if (window.L) {
+      if (!mini) {
+        mini = L.map('mini-mapa', { scrollWheelZoom: false, zoomControl: false, attributionControl: false });
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19 }).addTo(mini);
+      }
+      miniCapa && miniCapa.remove();
+      const c = BARRIOS[actual.b].c;
+      miniCapa = L.circle(c, { radius: 350, color: '#d6b67e', fillColor: '#d6b67e', fillOpacity: .18, weight: 1.5 }).addTo(mini);
+      mini.setView(c, 15); setTimeout(() => mini.invalidateSize(), 60);
+    }
+  }
+  function pintarFicha() {
+    const p = actual; if (!p) return;
+    const n = p.fotos.length, f = i => `img/${p.fotos[(foto + i) % n]}.jpg`;
+    $('g-main').src = f(0); $('g-2').src = f(1); $('g-3').src = f(2); $('g-main').alt = t(p.t[0], p.t[1]);
+    $('g-cont').textContent = `${foto + 1} / ${n}`;
+    $('fi-barrio').textContent = `${BARRIOS[p.b].n} · ${t(OP[p.op][0], OP[p.op][1])}`;
+    $('f-titulo').textContent = t(p.t[0], p.t[1]);
+    $('f-hechos').innerHTML = `<span><b>${ambTxt(p.amb)}</b></span><span><b>${p.m2} m²</b></span><span><b>${p.ban}</b> ${t(p.ban > 1 ? 'bathrooms' : 'bathroom', p.ban > 1 ? 'baños' : 'baño')}</span><span>${t('Code', 'Código')} <b>${p.id}</b></span>`;
+    $('f-desc').textContent = t('Sample description: here goes what makes this apartment special, what is included in the price and what the building and the block are like.', 'Descripción de ejemplo: acá va lo que tiene de especial el departamento, qué incluye el precio y cómo son el edificio y la cuadra.');
+    $('f-amen').innerHTML = p.am.map(a => `<li><svg class="ico"><use href="#i-check"/></svg>${t(AM[a][0], AM[a][1])}</li>`).join('');
+    $('f-meses').innerHTML = p.op === 'venta'
+      ? `<div class="mes libre" style="grid-column:1/-1">${t('Available to visit', 'Disponible para visitar')}</div>`
+      : MESES.map(([en, es], i) => `<div class="mes${i >= p.libre ? ' libre' : ''}">${t(en, es)}</div>`).join('');
+    $('fi-precio').innerHTML = precioTxt(p);
+    $('f-cod').textContent = p.op === 'temp' ? t('Building fees included · minimum 3 months', 'Expensas incluidas · mínimo 3 meses') : p.op === 'largo' ? t('Contract of 12 or 24 months', 'Contrato de 12 o 24 meses') : t('Price for sale', 'Precio de venta');
+    $('f-wa').href = `https://wa.me/${WA}?text=` + encodeURIComponent(t(`Hi! I'm interested in ${p.id} (${t(p.t[0], p.t[1])}, ${BARRIOS[p.b].n}). Is it available?`, `¡Hola! Me interesa ${p.id} (${p.t[1]}, ${BARRIOS[p.b].n}). ¿Está disponible?`));
+  }
+  function mover(d) { if (!actual) return; foto = (foto + d + actual.fotos.length) % actual.fotos.length; pintarFicha(); }
+  function cerrarFicha() { $('ficha').classList.remove('abierta'); document.body.style.overflow = ''; }
+  $('ficha').addEventListener('click', e => { if (e.target === $('ficha')) cerrarFicha(); });
+  document.addEventListener('keydown', e => { if (!$('ficha').classList.contains('abierta')) return; if (e.key === 'Escape') cerrarFicha(); if (e.key === 'ArrowRight') mover(1); if (e.key === 'ArrowLeft') mover(-1); });
+  function consultar(e, ok = 'f-ok') { e.preventDefault(); e.target.style.display = 'none'; $(ok).classList.add('si'); }
+
+  // ---------- barrios ----------
+  let barrioActual = null;
+  function pintarBarrios() {
+    $('barrios-grid').innerHTML = ['palermo-soho', 'recoleta', 'belgrano', 'villa-crespo'].map(k =>
+      `<button class="barrio" data-b="${k}"><img src="img/${BARRIOS[k].f}.jpg" alt="${BARRIOS[k].n}" loading="lazy" /><div><b>${BARRIOS[k].n}</b><span>${t('See the guide', 'Ver la guía')} →</span></div></button>`).join('');
+    if (barrioActual) pintarPaginaBarrio();
+  }
+  function pintarPaginaBarrio() {
+    const k = barrioActual, b = BARRIOS[k];
+    $('pb-url').textContent = 'apartmenthuntersba.com' + t(`/en/neighborhoods/${k}/`, `/es/barrios/${k}/`);
+    $('pb-eyebrow').textContent = t('Neighborhood guide', 'Guía de barrio');
+    $('pb-titulo').textContent = t(`Living in ${b.n}`, `Vivir en ${b.n}`);
+    $('pb-txt').textContent = t(TXT_BARRIO[k][0], TXT_BARRIO[k][1]);
+    const r = PROPS.filter(p => p.b === k);
+    $('pb-lista').innerHTML = r.map(p => `<button class="pb-item" data-id="${p.id}"><img src="img/${p.fotos[0]}.jpg" alt="" loading="lazy" /><span><b>${t(p.t[0], p.t[1])}</b><span>${ambTxt(p.amb)} · ${p.op === 'venta' ? usd(p.p) : usd(p.p) + t(' / month', ' / mes')}</span></span></button>`).join('');
+  }
+  $('barrios-grid').addEventListener('click', e => {
+    const c = e.target.closest('.barrio'); if (!c) return;
+    barrioActual = c.dataset.b; pintarPaginaBarrio(); $('pb').classList.add('si');
+    $('pb').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  });
+  $('pb-lista').addEventListener('click', e => { const c = e.target.closest('.pb-item'); if (c) abrir(c.dataset.id); });
+
+  // ---------- idioma ----------
+  function idioma(l) {
+    L_ = l;
+    document.documentElement.lang = l; document.documentElement.dataset.lang = l;
+    document.querySelectorAll('.idioma button').forEach(b => b.classList.toggle('on', b.dataset.l === l));
+    document.title = t('Apartment Hunters BA · Furnished apartments in Buenos Aires', 'Apartment Hunters BA · Departamentos amoblados en Buenos Aires');
+    const msg = encodeURIComponent(t("Hi! I'm looking for an apartment in Buenos Aires.", '¡Hola! Estoy buscando un departamento en Buenos Aires.'));
+    ['hero-wa', 'c-wa', 'wa-flot'].forEach(id => $(id).href = `https://wa.me/${WA}?text=${msg}`);
+    pintarSelects(); pintar(); pintarBarrios(); pintarFicha();
+    try { history.replaceState(null, '', location.pathname + (l === 'es' ? '?lang=es' : '') + location.hash); } catch (e) {}
+  }
+  document.querySelectorAll('.idioma button').forEach(b => b.addEventListener('click', () => idioma(b.dataset.l)));
+  document.querySelectorAll('.menu a').forEach(a => a.addEventListener('click', () => document.querySelector('header').classList.remove('abierto')));
+  idioma(new URLSearchParams(location.search).get('lang') === 'es' ? 'es' : 'en');
+</script>
+<script src="/propuestas/_visto.js" data-p="apartment-hunters-ba" data-n="Apartment Hunters BA" data-e="boceto" defer></script>
+</body>
+</html>
