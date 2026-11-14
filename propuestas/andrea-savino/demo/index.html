@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>VIP & Exotic Travel Group · Andrea Savino</title>
+<meta name="description" content="Viajes a medida por el mundo, armados por alguien que estuvo ahí. Donde quieras ir, te llevamos." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&display=swap" rel="stylesheet" />
+<link rel="preload" as="image" href="img/hero.jpg" />
+<script>document.documentElement.classList.add('js');</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ink:#0c1113;--ink-2:#131a1d;--ink-3:#1b2427;
+  --ivory:#f3eee6;--paper:#e9e2d6;
+  --sand:#cfa968;--sand-deep:#9c7637;
+  --on-dark:#f3eee6;--on-dark-mute:rgba(243,238,230,.62);--on-dark-dim:rgba(243,238,230,.38);
+  --on-light:#14191b;--on-light-mute:#5b5f5f;
+  --f:'Montserrat',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --gut:clamp(16px,4vw,56px);
+  --ease:cubic-bezier(.2,.7,.1,1);
+}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--ink);color:var(--on-dark);font-family:var(--f);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+.ico-marca{fill:currentColor}
+.ico-trazo{fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+
+/* NAV */
+.nav{position:fixed;inset:0 0 auto 0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:22px var(--gut);transition:background .4s,padding .4s,backdrop-filter .4s}
+.nav.is-solid{background:rgba(12,17,19,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);padding-top:14px;padding-bottom:14px}
+.marca{display:flex;flex-direction:column;line-height:1}
+.marca b{font-weight:700;font-size:15px;letter-spacing:.2em}
+.marca b em{font-style:normal;color:var(--sand)}
+.marca span{font-size:9.5px;letter-spacing:.42em;color:var(--on-dark-mute);margin-top:5px}
+.nav-links{display:flex;gap:34px;font-size:13px;font-weight:500;letter-spacing:.04em}
+.nav-links a{color:var(--on-dark-mute);transition:color .2s}
+.nav-links a:hover{color:var(--on-dark)}
+.nav-der{display:flex;align-items:center;gap:18px}
+.idiomas{display:flex;gap:2px;font-size:12px;font-weight:600;letter-spacing:.08em}
+.idiomas button{padding:6px 8px;color:var(--on-dark-dim);border-radius:4px;transition:color .2s}
+.idiomas button[aria-pressed="true"]{color:var(--on-dark)}
+.btn-wa{display:inline-flex;align-items:center;gap:10px;padding:11px 18px;border-radius:999px;background:var(--on-dark);color:var(--ink);font-size:13px;font-weight:600;transition:background .2s,color .2s}
+.btn-wa svg{width:16px;height:16px}
+.btn-wa:hover{background:var(--sand)}
+
+/* HERO */
+.hero{position:relative;height:100svh;min-height:640px;overflow:hidden;display:flex;align-items:flex-end}
+.hero-foto{position:absolute;inset:-6% 0 0 0;will-change:transform}
+.hero-foto img{width:100%;height:100%;object-fit:cover;object-position:60% 50%}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(12,17,19,.45) 0%,rgba(12,17,19,0) 26%,rgba(12,17,19,0) 45%,rgba(12,17,19,.88) 100%)}
+.hero-in{position:relative;z-index:2;width:100%;padding:0 var(--gut) clamp(40px,7vh,80px);display:grid;grid-template-columns:1fr auto;align-items:end;gap:40px}
+.hero-pre{font-size:13px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--on-dark-mute);margin-bottom:22px}
+.hero h1{font-weight:300;font-size:clamp(46px,8.6vw,138px);line-height:.94;letter-spacing:-.045em;max-width:12ch}
+.hero h1 strong{font-weight:800;display:block}
+.hero h1 > span{display:block;text-wrap:balance}
+.hero-baja{margin-top:28px;max-width:44ch;font-size:clamp(15px,1.3vw,18px);color:var(--on-dark-mute);font-weight:400}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.btn{display:inline-flex;align-items:center;gap:12px;padding:16px 26px;border-radius:999px;font-size:14px;font-weight:600;letter-spacing:.01em;transition:background .25s,color .25s,border-color .25s}
+.btn svg{width:18px;height:18px}
+.btn-claro{background:var(--on-dark);color:var(--ink)}
+.btn-claro:hover{background:var(--sand)}
+.btn-linea{border:1px solid rgba(243,238,230,.4);color:var(--on-dark)}
+.btn-linea:hover{border-color:var(--on-dark);background:rgba(243,238,230,.08)}
+.ahora{display:flex;align-items:center;gap:14px;padding:10px 18px 10px 10px;border-radius:999px;background:rgba(12,17,19,.55);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(243,238,230,.14);max-width:300px}
+.ahora img{width:52px;height:52px;border-radius:50%;object-fit:cover;object-position:50% 20%}
+.ahora small{display:block;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--sand)}
+.ahora span{font-size:14px;font-weight:500;line-height:1.35}
+
+/* MANIFIESTO */
+.manif{background:var(--ivory);color:var(--on-light);padding:clamp(90px,14vw,190px) var(--gut)}
+.manif p{font-size:clamp(28px,4.4vw,66px);font-weight:300;line-height:1.12;letter-spacing:-.035em;max-width:20ch}
+.manif p .k{font-weight:700;color:var(--on-light)}
+.manif p .t{color:#9e9a92}
+.manif-firma{display:flex;align-items:center;gap:16px;margin-top:48px;font-size:14px;color:var(--on-light-mute)}
+.manif-firma img{width:56px;height:56px;border-radius:50%;object-fit:cover;object-position:50% 25%}
+.manif-firma b{display:block;color:var(--on-light);font-weight:600}
+
+/* CIFRAS */
+.cifras{background:var(--ivory);color:var(--on-light);padding:0 var(--gut) clamp(80px,10vw,140px);display:grid;grid-template-columns:repeat(3,1fr);gap:40px}
+.cifra b{display:block;font-size:clamp(44px,6vw,92px);font-weight:200;letter-spacing:-.05em;line-height:1}
+.cifra span{display:block;margin-top:14px;font-size:14px;color:var(--on-light-mute);max-width:26ch}
+
+/* SALIDAS */
+.salidas{padding:clamp(90px,11vw,160px) var(--gut)}
+.cab{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;flex-wrap:wrap;margin-bottom:48px}
+.cab h2{font-size:clamp(38px,6vw,92px);font-weight:300;line-height:.95;letter-spacing:-.045em}
+.cab h2 strong{font-weight:800}
+.cab p{max-width:40ch;color:var(--on-dark-mute);font-size:15px;margin-top:18px}
+.filtros{display:flex;gap:8px;flex-wrap:wrap}
+.filtros button{padding:10px 18px;border-radius:999px;border:1px solid rgba(243,238,230,.18);font-size:13px;font-weight:500;color:var(--on-dark-mute);transition:all .2s}
+.filtros button:hover{color:var(--on-dark);border-color:rgba(243,238,230,.4)}
+.filtros button[aria-pressed="true"]{background:var(--on-dark);color:var(--ink);border-color:var(--on-dark)}
+.grilla{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2vw,28px)}
+.salida{position:relative;display:flex;flex-direction:column;background:var(--ink-2);border-radius:18px;overflow:hidden;transition:transform .5s var(--ease)}
+.salida[hidden]{display:none}
+.salida-foto{position:relative;aspect-ratio:4/4.2;overflow:hidden}
+.salida-foto img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
+.salida:hover .salida-foto img{transform:scale(1.05)}
+.salida-foto::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(12,17,19,0) 45%,rgba(19,26,29,.95) 100%)}
+.salida-fecha{position:absolute;top:16px;left:16px;z-index:2;padding:8px 14px;border-radius:999px;background:rgba(12,17,19,.6);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);font-size:12px;font-weight:600;letter-spacing:.04em}
+.salida-tit{position:absolute;left:22px;right:22px;bottom:16px;z-index:2}
+.salida-tit small{display:block;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--sand);margin-bottom:6px}
+.salida-tit h3{font-size:clamp(24px,2.3vw,32px);font-weight:700;letter-spacing:-.03em;line-height:1.05}
+.salida-cuerpo{padding:6px 22px 22px;display:flex;flex-direction:column;gap:18px;flex:1}
+.salida-inc{font-size:14px;color:var(--on-dark-mute);line-height:1.5}
+.salida-pie{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;margin-top:auto;padding-top:18px;border-top:1px solid rgba(243,238,230,.1)}
+.precio small{display:block;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--on-dark-dim)}
+.precio b{font-size:28px;font-weight:700;letter-spacing:-.03em}
+.precio span{display:block;font-size:12px;color:var(--on-dark-dim)}
+.salida-acc{display:flex;gap:8px}
+.ic-btn{width:46px;height:46px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;border:1px solid rgba(243,238,230,.2);transition:all .2s}
+.ic-btn svg{width:18px;height:18px}
+.ic-btn:hover{border-color:var(--on-dark)}
+.ic-btn.is-wa{background:var(--on-dark);color:var(--ink);border-color:var(--on-dark)}
+.ic-btn.is-wa:hover{background:var(--sand);border-color:var(--sand)}
+.aviso-copia{position:fixed;left:50%;bottom:28px;transform:translate(-50%,20px);opacity:0;z-index:80;padding:12px 20px;border-radius:999px;background:var(--on-dark);color:var(--ink);font-size:14px;font-weight:600;transition:all .35s var(--ease);pointer-events:none}
+.aviso-copia.on{opacity:1;transform:translate(-50%,0)}
+
+/* LO VIVO */
+.vivo{background:var(--paper);color:var(--on-light);padding:clamp(90px,11vw,160px) 0 clamp(60px,8vw,110px);overflow:hidden}
+.vivo-top{position:relative;display:grid;grid-template-columns:7fr 5fr;align-items:end;padding:0 var(--gut)}
+.vivo-foto{position:relative;border-radius:22px;overflow:hidden;aspect-ratio:4/4.3}
+.vivo-foto img{width:100%;height:118%;object-fit:cover;object-position:50% 30%;will-change:transform}
+.vivo-txt{position:relative;z-index:2;padding:0 0 30px 0}
+.vivo-txt h2{font-size:clamp(46px,8vw,128px);font-weight:300;line-height:.9;letter-spacing:-.055em;margin-left:-22%;margin-bottom:36px}
+.vivo-txt h2 strong{font-weight:800;display:block}
+.vivo-txt h2 span{display:inline-block;background:var(--paper);padding:0 .14em 0 .1em;border-radius:0 10px 0 0}
+.vivo-txt p{font-size:16px;color:var(--on-light-mute);max-width:36ch;margin-bottom:14px}
+.vivo-txt p strong{color:var(--on-light);font-weight:600}
+.diario-cab{display:flex;justify-content:space-between;align-items:baseline;gap:20px;padding:0 var(--gut);margin:clamp(70px,9vw,120px) 0 26px}
+.diario-cab h3{font-size:clamp(22px,2.4vw,30px);font-weight:600;letter-spacing:-.02em}
+.diario-cab span{font-size:13px;color:var(--on-light-mute)}
+.diario{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-left:var(--gut);padding:0 var(--gut) 10px;scrollbar-width:none}
+.diario::-webkit-scrollbar{display:none}
+.diario figure{flex:0 0 clamp(220px,24vw,330px);scroll-snap-align:start}
+.diario figure:nth-child(even){margin-top:56px}
+.diario img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:14px}
+.diario figcaption{margin-top:12px;font-size:13px;color:var(--on-light-mute)}
+.diario figcaption b{display:block;color:var(--on-light);font-weight:600;font-size:14px}
+
+/* DESTINOS */
+.destinos{background:var(--ivory);color:var(--on-light);padding:clamp(90px,11vw,160px) var(--gut)}
+.destinos .cab p{color:var(--on-light-mute)}
+.mosaico{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:clamp(150px,17vw,250px);gap:clamp(12px,1.4vw,20px)}
+.tile{position:relative;overflow:hidden;border-radius:18px;color:var(--on-dark)}
+.tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.4s var(--ease)}
+.tile:hover img{transform:scale(1.06)}
+.tile::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(12,17,19,0) 40%,rgba(12,17,19,.82) 100%)}
+.tile-txt{position:absolute;left:24px;right:24px;bottom:22px;z-index:2}
+.tile-txt h3{font-size:clamp(26px,3vw,46px);font-weight:700;letter-spacing:-.04em;line-height:1}
+.tile-txt p{font-size:14px;color:var(--on-dark-mute);margin-top:8px;max-width:34ch}
+.t1{grid-column:span 7;grid-row:span 3}
+.t2{grid-column:span 5;grid-row:span 2}
+.t3{grid-column:span 5;grid-row:span 1}
+.t4{grid-column:span 4;grid-row:span 2}
+.t5{grid-column:span 4;grid-row:span 2}
+.t6{grid-column:span 4;grid-row:span 2}
+.t3 .tile-txt h3{font-size:clamp(22px,2.2vw,32px)}
+.destinos-pie{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;margin-top:44px;padding-top:30px;border-top:1px solid rgba(20,25,27,.12)}
+.destinos-pie p{font-size:clamp(18px,1.8vw,24px);font-weight:300;letter-spacing:-.02em;max-width:40ch}
+.destinos-pie p strong{font-weight:700}
+.btn-osc{background:var(--on-light);color:var(--ivory)}
+.btn-osc:hover{background:var(--sand-deep)}
+
+/* COMO */
+.como{padding:clamp(90px,11vw,160px) var(--gut)}
+.pasos{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(24px,3vw,48px);margin-top:20px}
+.paso b{display:block;font-size:clamp(70px,9vw,140px);font-weight:200;letter-spacing:-.06em;line-height:.9;color:var(--on-dark-dim)}
+.paso h3{font-size:22px;font-weight:600;letter-spacing:-.02em;margin:22px 0 10px}
+.paso p{color:var(--on-dark-mute);font-size:15px;max-width:34ch}
+
+/* IDIOMAS */
+.idiomas-sec{position:relative;padding:clamp(90px,11vw,150px) var(--gut);background:var(--ink-2);overflow:hidden}
+.idiomas-sec .lista{display:flex;flex-wrap:wrap;gap:0 .45em;font-size:clamp(46px,9vw,150px);font-weight:200;line-height:1.02;letter-spacing:-.05em}
+.idiomas-sec .lista span{color:var(--on-dark-dim);transition:color .4s}
+.idiomas-sec .lista span.on{color:var(--on-dark);font-weight:700}
+.idiomas-sec p{margin-top:40px;max-width:52ch;color:var(--on-dark-mute);font-size:16px}
+.idiomas-sec p strong{color:var(--on-dark);font-weight:600}
+
+/* REFERIDOS */
+.refe{position:relative;min-height:84vh;display:flex;align-items:center;overflow:hidden}
+.refe-foto{position:absolute;inset:-8% 0 -8% 0;will-change:transform}
+.refe-foto img{width:100%;height:100%;object-fit:cover}
+.refe::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(12,17,19,.88) 0%,rgba(12,17,19,.55) 45%,rgba(12,17,19,0) 75%)}
+.refe-in{position:relative;z-index:2;padding:0 var(--gut);max-width:820px}
+.refe h2{font-size:clamp(40px,6.4vw,100px);font-weight:300;line-height:.95;letter-spacing:-.05em;margin-bottom:28px}
+.refe h2 strong{font-weight:800;display:block}
+.refe p{color:var(--on-dark-mute);max-width:42ch;font-size:16px;margin-bottom:32px}
+
+/* IG */
+.ig{background:var(--ivory);color:var(--on-light);padding:clamp(80px,10vw,140px) var(--gut)}
+.ig .cab h2{font-size:clamp(32px,4.6vw,70px)}
+.ig .cab p{color:var(--on-light-mute)}
+.ig-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:10px}
+.ig-grid a{position:relative;display:block;aspect-ratio:1;overflow:hidden;border-radius:10px}
+.ig-grid img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease),filter .4s}
+.ig-grid a:hover img{transform:scale(1.06);filter:brightness(.8)}
+
+/* CONTACTO */
+.contacto{display:grid;grid-template-columns:1fr 1fr;min-height:100vh}
+.contacto-foto{position:relative;overflow:hidden}
+.contacto-foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.contacto-form{padding:clamp(70px,9vw,130px) var(--gut);display:flex;flex-direction:column;justify-content:center}
+.contacto h2{font-size:clamp(40px,5.4vw,84px);font-weight:300;line-height:.95;letter-spacing:-.05em;margin-bottom:20px}
+.contacto h2 strong{font-weight:800;display:block}
+.contacto .baja{color:var(--on-dark-mute);margin-bottom:40px;max-width:40ch}
+form{display:grid;gap:26px;max-width:520px}
+label{display:block;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--on-dark-dim);margin-bottom:8px}
+input,select{width:100%;padding:12px 0;font:inherit;font-size:18px;color:var(--on-dark);background:transparent;border:0;border-bottom:1px solid rgba(243,238,230,.22);border-radius:0;outline:none;transition:border-color .2s;-webkit-appearance:none;appearance:none}
+input::placeholder{color:rgba(243,238,230,.3)}
+input:focus,select:focus{border-color:var(--sand)}
+select option{background:var(--ink-2);color:var(--on-dark)}
+.dos{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+form .btn{justify-self:start;margin-top:8px}
+.contacto-alt{margin-top:40px;display:flex;gap:26px;flex-wrap:wrap;font-size:14px;color:var(--on-dark-mute)}
+.contacto-alt a{display:inline-flex;align-items:center;gap:10px;transition:color .2s}
+.contacto-alt a:hover{color:var(--on-dark)}
+.contacto-alt svg{width:18px;height:18px}
+
+footer{padding:40px var(--gut) 44px;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;font-size:13px;color:var(--on-dark-dim);border-top:1px solid rgba(243,238,230,.08)}
+
+.wa-flota{position:fixed;right:22px;bottom:22px;z-index:60;width:60px;height:60px;border-radius:50%;background:#25d366;color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 12px 32px rgba(0,0,0,.35);transition:transform .25s var(--ease)}
+.wa-flota svg{width:30px;height:30px}
+.wa-flota:hover{transform:scale(1.07)}
+
+.boceto{position:fixed;left:50%;transform:translateX(-50%);bottom:14px;white-space:nowrap;z-index:60;padding:8px 14px;border-radius:999px;background:rgba(12,17,19,.7);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);font-size:11px;letter-spacing:.06em;color:var(--on-dark-mute);border:1px solid rgba(243,238,230,.12)}
+
+/* REVEALS: el contenido se ve aunque falle el JS */
+.js .rv{opacity:0;transform:translateY(34px);transition:opacity 1s var(--ease),transform 1.1s var(--ease)}
+.js .rv.in{opacity:1;transform:none}
+.js .rv-d1{transition-delay:.1s}.js .rv-d2{transition-delay:.2s}.js .rv-d3{transition-delay:.3s}
+.js .hero .rv{transition-duration:1.3s}
+@media (prefers-reduced-motion:reduce){.js .rv{opacity:1;transform:none;transition:none}.hero-foto,.vivo-foto img,.refe-foto{transform:none!important}}
+
+@media (max-width:1080px){
+  .nav-links{display:none}
+  .grilla{grid-template-columns:repeat(2,1fr)}
+  .ig-grid{grid-template-columns:repeat(3,1fr)}
+}
+@media (max-width:760px){
+  .nav{padding-top:16px;padding-bottom:16px}
+  .nav .btn-wa span{display:none}
+  .nav .btn-wa{padding:11px}
+  .hero-in{grid-template-columns:1fr}
+  .ahora{max-width:none;align-self:start;margin-right:70px}
+  .hero h1{font-size:clamp(46px,13.5vw,70px)}
+  .cifras{grid-template-columns:1fr;gap:34px}
+  .grilla{grid-template-columns:1fr}
+  .vivo-top{grid-template-columns:1fr}
+  .vivo-txt{padding:0}
+  .vivo-txt h2{margin:-70px 0 26px 0}
+  .vivo-txt h2 span{padding:.08em .14em 0 0}
+  .mosaico{grid-template-columns:1fr 1fr;grid-auto-rows:170px}
+  .t1{grid-column:span 2;grid-row:span 2}
+  .t2,.t3{grid-column:span 2;grid-row:span 1}
+  .t4,.t5{grid-column:span 1;grid-row:span 2}
+  .t6{grid-column:span 2;grid-row:span 2}
+  .tile-txt{left:16px;right:16px;bottom:16px}
+  .tile-txt p{display:none}
+  .t1 .tile-txt p,.t6 .tile-txt p{display:block}
+  .pasos{grid-template-columns:1fr;gap:40px}
+  .contacto{grid-template-columns:1fr}
+  .contacto-foto{height:56vw}
+  .dos{grid-template-columns:1fr}
+  .diario figure:nth-child(even){margin-top:30px}
+  .boceto{display:none}
+  .refe::after{background:linear-gradient(180deg,rgba(12,17,19,.35) 0%,rgba(12,17,19,.9) 70%)}
+  .refe{align-items:flex-end;padding-bottom:60px}
+}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-wa" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></symbol>
+  <symbol id="i-ig" viewBox="0 0 24 24"><path d="M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.308.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.295 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.28-.0607 2.147-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.056-1.2809.0692-1.6898.063-4.948-.0063-3.2583-.021-3.6668-.0817-4.9465-.0607-1.2797-.264-2.1487-.5633-2.9117-.3084-.7889-.72-1.4568-1.3876-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.408-.5606-.216-.96-.4771-1.3819-.895-.422-.4178-.6811-.8186-.9-1.378-.1644-.4234-.3624-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.007-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.408-2.2282.216-.5613.4762-.96.895-1.3816.4188-.4217.8184-.6814 1.3783-.9003.423-.1651 1.0575-.3614 2.227-.4171 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.007 3.5835.005 4.8495.0608 1.169.0508 1.8053.2445 2.228.408.5608.216.96.4754 1.3816.895.4217.4194.6816.8176.9005 1.3787.1653.4217.3617 1.056.4169 2.2263.0602 1.2655.0739 1.645.0796 4.848.0058 3.203-.0055 3.5834-.061 4.848-.051 1.17-.245 1.8055-.408 2.2294-.216.5604-.4763.96-.8954 1.3814-.419.4215-.8181.6811-1.3783.9-.4224.1649-1.0577.3617-2.2262.4174-1.2656.0595-1.6448.072-4.8493.079-3.2045.007-3.5825-.006-4.848-.0608M16.953 5.5864A1.44 1.44 0 1 0 18.39 4.144a1.44 1.44 0 0 0-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.173 6.1493 3.4026-.0065 6.157-2.7701 6.1506-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.156 2.771-6.1496 6.1738M8 12.0077a4 4 0 1 1 4.008 3.9921A3.9996 3.9996 0 0 1 8 12.0077"/></symbol>
+  <symbol id="i-share" viewBox="0 0 24 24"><path d="M4 12v7a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7"/><path d="m16 6-4-4-4 4"/><path d="M12 2v13"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+</svg>
+
+<header class="nav" id="nav">
+  <a class="marca" href="#inicio" aria-label="VIP & Exotic Travel Group"><b>VIP <em>&amp;</em> EXOTIC</b><span>TRAVEL GROUP</span></a>
+  <nav class="nav-links">
+    <a href="#salidas" data-t="nav1">Salidas</a>
+    <a href="#destinos" data-t="nav2">Viajes a medida</a>
+    <a href="#andrea" data-t="nav3">Andrea</a>
+    <a href="#contacto" data-t="nav4">Contacto</a>
+  </nav>
+  <div class="nav-der">
+    <div class="idiomas" role="group" aria-label="Idioma">
+      <button type="button" data-lang="es" aria-pressed="true">ES</button>
+      <button type="button" data-lang="en" aria-pressed="false">EN</button>
+      <button type="button" data-lang="it" aria-pressed="false">IT</button>
+    </div>
+    <a class="btn-wa wa-link" href="#" data-msg="general"><svg class="ico-marca"><use href="#i-wa"/></svg><span data-t="navwa">Escribime</span></a>
+  </div>
+</header>
+
+<main>
+<section class="hero" id="inicio">
+  <div class="hero-foto" id="heroFoto"><img src="img/hero.jpg" width="2048" height="1146" alt="Dunas del Sahara al atardecer, con una caravana a lo lejos" fetchpriority="high" /></div>
+  <div class="hero-in">
+    <div>
+      <p class="hero-pre rv" data-t="hpre">Andrea Savino · Viajes a medida por el mundo</p>
+      <h1 class="rv rv-d1"><span data-t="h1a">Donde quieras ir,</span> <strong data-t="h1b">te llevamos.</strong></h1>
+      <p class="hero-baja rv rv-d2" data-t="hbaja">Viajes armados a tu ritmo, en tu idioma y desde donde estés, por alguien que recorrió cada destino antes de recomendártelo.</p>
+      <div class="hero-ctas rv rv-d3">
+        <a class="btn btn-claro wa-link" href="#" data-msg="armar"><svg class="ico-marca"><use href="#i-wa"/></svg><span data-t="cta1">Armar mi viaje</span></a>
+        <a class="btn btn-linea" href="#salidas"><span data-t="cta2">Ver salidas con fecha</span><svg class="ico-trazo"><use href="#i-arrow"/></svg></a>
+      </div>
+    </div>
+    <div class="ahora rv rv-d3">
+      <img src="img/andrea-calle.jpg" width="960" height="981" alt="Andrea en Singapur" />
+      <div><small data-t="ahora1">Ahora</small><span data-t="ahora2">Andrea está recorriendo Singapur</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="manif">
+  <p class="rv"><span class="t" data-t="m1">No te recomiendo</span> <span class="k" data-t="m2">un lugar que no conozco.</span> <span class="t" data-t="m3">Me quedo</span> <span class="k" data-t="m4">un mes en cada destino,</span> <span class="t" data-t="m5">trato con los hoteles y</span> <span class="k" data-t="m6">pruebo cada excursión</span> <span class="t" data-t="m7">antes de que la hagas vos.</span></p>
+  <div class="manif-firma rv rv-d1"><img src="img/andrea-mezquita.jpg" width="959" height="980" alt="" /><div><b>Andrea Savino</b><span data-t="firma">Viajera y asesora de viajes</span></div></div>
+</section>
+
+<section class="cifras">
+  <div class="cifra rv"><b>10</b><span data-t="c1">años armando viajes por el mundo, y la mayoría de los clientes llega por recomendación.</span></div>
+  <div class="cifra rv rv-d1"><b data-t="c2n">1 mes</b><span data-t="c2">como mínimo en cada lugar que recomiendo.</span></div>
+  <div class="cifra rv rv-d2"><b data-t="c3n">Tu idioma</b><span data-t="c3">en cada servicio: guías y asistencia en español, inglés, italiano o el que hables.</span></div>
+</section>
+
+<section class="salidas" id="salidas">
+  <div class="cab">
+    <div>
+      <h2 class="rv"><span data-t="s1">Salidas</span><br /><strong data-t="s2">con fecha</strong></h2>
+      <p class="rv rv-d1" data-t="sbaja">Paquetes con lugares limitados. Tocá «compartir» y mandale el link a quien viaja con vos.</p>
+    </div>
+    <div class="filtros rv rv-d2" role="group" aria-label="Filtrar salidas">
+      <button type="button" data-f="todas" aria-pressed="true" data-t="f0">Todas</button>
+      <button type="button" data-f="caribe" aria-pressed="false" data-t="f1">Caribe</button>
+      <button type="button" data-f="ciudades" aria-pressed="false" data-t="f2">Ciudades</button>
+      <button type="button" data-f="brasil" aria-pressed="false" data-t="f3">Brasil</button>
+    </div>
+  </div>
+  <div class="grilla" id="grilla"></div>
+</section>
+
+<section class="vivo" id="andrea">
+  <div class="vivo-top">
+    <div class="vivo-foto rv"><img id="vivoImg" src="img/andrea-calle.jpg" width="960" height="981" alt="Andrea con su sombrero blanco en una calle de Singapur" loading="lazy" /></div>
+    <div class="vivo-txt">
+      <h2 class="rv rv-d1"><span data-t="v1">Lo vivo</span><strong><span data-t="v2">para asesorarte</span></strong></h2>
+      <p class="rv rv-d2" data-t="vp1">Viajo tres años seguidos, vuelvo un año a la Argentina y salgo otra vez. En cada lugar me quedo, pruebo y hago contactos directos con hoteles y actividades.</p>
+      <p class="rv rv-d3" data-t="vp2"><strong>Por eso aparezco yo en las fotos:</strong> lo que te propongo, lo conozco.</p>
+    </div>
+  </div>
+  <div class="diario-cab"><h3 data-t="d0">Cuaderno de viaje · Singapur</h3><span data-t="dsw">Deslizá</span></div>
+  <div class="diario">
+    <figure class="rv"><img src="img/andrea-mezquita.jpg" width="959" height="980" alt="" loading="lazy" /><figcaption><b>Kampong Glam</b><span data-t="d1">El barrio de la mezquita dorada</span></figcaption></figure>
+    <figure class="rv rv-d1"><img src="img/andrea-noche.jpg" width="939" height="960" alt="" loading="lazy" /><figcaption><b>Marina Bay</b><span data-t="d2">De noche, desde la costanera</span></figcaption></figure>
+    <figure class="rv rv-d2"><img src="img/singapur-mural.jpg" width="939" height="960" alt="" loading="lazy" /><figcaption><b data-t="d3t">Arte callejero</b><span data-t="d3">Murales que cuentan la historia de la ciudad</span></figcaption></figure>
+    <figure class="rv rv-d3"><img src="img/andrea-mural.jpg" width="960" height="981" alt="" loading="lazy" /><figcaption><b data-t="d4t">Un recorrido para hacer a pie</b><span data-t="d4">Lo sumo a tu itinerario si te gusta el arte</span></figcaption></figure>
+    <figure class="rv"><img src="img/andrea-jardin.jpg" width="959" height="1278" alt="" loading="lazy" /><figcaption><b data-t="d5t">Jardines</b><span data-t="d5">Para una mañana tranquila</span></figcaption></figure>
+    <figure class="rv rv-d1"><img src="img/singapur-arco.jpg" width="960" height="1280" alt="" loading="lazy" /><figcaption><b>Arab Street</b><span data-t="d6">Temprano, antes de que llegue la gente</span></figcaption></figure>
+  </div>
+</section>
+
+<section class="destinos" id="destinos">
+  <div class="cab">
+    <div>
+      <h2 class="rv"><span data-t="x1">Lugares que</span><br /><strong data-t="x2">pocos conocen</strong></h2>
+      <p class="rv rv-d1" data-t="xbaja">La mayoría de mis viajes se arman de cero: elegís el destino y el ritmo, y yo me ocupo de todo lo demás.</p>
+    </div>
+  </div>
+  <div class="mosaico">
+    <a class="tile t1 rv wa-link" href="#" data-msg="destino" data-dest="Bagan"><img src="img/bagan.jpg" width="896" height="1120" alt="Templos de Bagan entre la niebla" loading="lazy" /><div class="tile-txt"><h3>Bagan, Myanmar</h3><p data-t="tb">Más de dos mil templos entre la niebla, vistos desde un globo al amanecer.</p></div></a>
+    <a class="tile t2 rv rv-d1 wa-link" href="#" data-msg="destino" data-dest="Socotra"><img src="img/socotra.jpg" width="896" height="1120" alt="Árboles de sangre de dragón en Socotra" loading="lazy" /><div class="tile-txt"><h3>Socotra</h3><p data-t="ts">Una isla que parece de otro planeta.</p></div></a>
+    <a class="tile t3 rv rv-d2 wa-link" href="#" data-msg="destino" data-dest="Maldivas"><img src="img/maldivas.jpg" width="896" height="1120" alt="Villas sobre el agua en Maldivas" loading="lazy" /><div class="tile-txt"><h3 data-t="tmt">Maldivas</h3></div></a>
+    <a class="tile t4 rv wa-link" href="#" data-msg="destino" data-dest="Varanasi"><img src="img/varanasi.jpg" width="896" height="1120" alt="Botes en el Ganges al amanecer, Varanasi" loading="lazy" /><div class="tile-txt"><h3>Varanasi</h3><p data-t="tv">La ciudad viva más antigua del mundo.</p></div></a>
+    <a class="tile t5 rv rv-d1 wa-link" href="#" data-msg="destino" data-dest="China"><img src="img/guilin.jpg" width="896" height="1120" alt="Río Li entre montañas, Guilin" loading="lazy" /><div class="tile-txt"><h3>China</h3><p data-t="tc">Cinco meses recorriéndola. Mi especialidad.</p></div></a>
+    <a class="tile t6 rv rv-d2 wa-link" href="#" data-msg="destino" data-dest="Marruecos"><img src="img/hero.jpg" width="2048" height="1146" alt="Desierto de Marruecos" loading="lazy" style="object-position:70% 50%" /><div class="tile-txt"><h3 data-t="tmrt">Marruecos</h3><p data-t="tmr">Medinas, desierto y noches de estrellas. También para grupos.</p></div></a>
+  </div>
+  <div class="destinos-pie">
+    <p class="rv" data-t="xpie">¿Tenés un lugar en mente que no está acá? <strong>Contámelo y lo armamos.</strong></p>
+    <a class="btn btn-osc wa-link rv rv-d1" href="#" data-msg="armar"><svg class="ico-marca"><use href="#i-wa"/></svg><span data-t="cta1">Armar mi viaje</span></a>
+  </div>
+</section>
+
+<section class="como">
+  <div class="cab"><h2 class="rv"><span data-t="p0a">Cómo</span><br /><strong data-t="p0b">trabajamos</strong></h2></div>
+  <div class="pasos">
+    <div class="paso rv"><b>01</b><h3 data-t="p1t">Me contás</h3><p data-t="p1">Adónde querés ir, con quién, en qué fechas y a qué ritmo te gusta viajar. Por WhatsApp, por audio si te es más cómodo.</p></div>
+    <div class="paso rv rv-d1"><b>02</b><h3 data-t="p2t">Te armo el viaje</h3><p data-t="p2">Vuelos, hoteles, traslados y excursiones, día por día. Lo ajustamos juntos hasta que quede como lo imaginabas.</p></div>
+    <div class="paso rv rv-d2"><b>03</b><h3 data-t="p3t">Viajás acompañado</h3><p data-t="p3">Con asistencia en tu idioma durante todo el viaje y un equipo que responde aunque estés del otro lado del mundo.</p></div>
+  </div>
+</section>
+
+<section class="idiomas-sec">
+  <div class="lista rv" id="listaIdiomas"><span>Español</span><span>English</span><span>Italiano</span><span>中文</span></div>
+  <p class="rv rv-d1" data-t="idp">Viajan con nosotros desde la Argentina, Italia y Asia. <strong>Cada servicio se contrata en el idioma de quien viaja</strong>, y las salidas parten desde donde estés.</p>
+</section>
+
+<section class="refe">
+  <div class="refe-foto" id="refeFoto"><img src="img/punta-cana.jpg" width="896" height="1120" alt="Playa del Caribe con palmeras al amanecer" loading="lazy" /></div>
+  <div class="refe-in">
+    <h2 class="rv"><span data-t="r1">Recomendá</span> <strong data-t="r2">y viajá de nuevo</strong></h2>
+    <p class="rv rv-d1" data-t="rp">Si alguien viaja por tu recomendación, te llevás una parte de la ganancia para tu próximo viaje. Así crecimos estos diez años: de cliente en cliente.</p>
+    <a class="btn btn-claro wa-link rv rv-d2" href="#" data-msg="referido"><svg class="ico-marca"><use href="#i-wa"/></svg><span data-t="rcta">Quiero saber cómo funciona</span></a>
+  </div>
+</section>
+
+<section class="ig">
+  <div class="cab">
+    <div><h2 class="rv"><span data-t="ig1">Seguí el viaje</span><br /><strong>@andreacsavino</strong></h2></div>
+    <a class="btn btn-osc rv rv-d1" href="https://www.instagram.com/andreacsavino/" target="_blank" rel="noopener"><svg class="ico-marca"><use href="#i-ig"/></svg><span data-t="igcta">Ver en Instagram</span></a>
+  </div>
+  <div class="ig-grid">
+    <a class="rv" href="https://www.instagram.com/andreacsavino/" target="_blank" rel="noopener" aria-label="Instagram"><img src="img/andrea-orquideas.jpg" width="960" height="981" alt="" loading="lazy" /></a>
+    <a class="rv rv-d1" href="https://www.instagram.com/andreacsavino/" target="_blank" rel="noopener" aria-label="Instagram"><img src="img/curazao.jpg" width="896" height="1120" alt="" loading="lazy" /></a>
+    <a class="rv rv-d2" href="https://www.instagram.com/andreacsavino/" target="_blank" rel="noopener" aria-label="Instagram"><img src="img/andrea-noche.jpg" width="939" height="960" alt="" loading="lazy" /></a>
+    <a class="rv" href="https://www.instagram.com/andreacsavino/" target="_blank" rel="noopener" aria-label="Instagram"><img src="img/bahamas.jpg" width="896" height="1120" alt="" loading="lazy" /></a>
+    <a class="rv rv-d1" href="https://www.instagram.com/andreacsavino/" target="_blank" rel="noopener" aria-label="Instagram"><img src="img/andrea-mural.jpg" width="960" height="981" alt="" loading="lazy" /></a>
+    <a class="rv rv-d2" href="https://www.instagram.com/andreacsavino/" target="_blank" rel="noopener" aria-label="Instagram"><img src="img/dubai.jpg" width="896" height="1120" alt="" loading="lazy" /></a>
+  </div>
+</section>
+
+<section class="contacto" id="contacto">
+  <div class="contacto-foto"><img src="img/andrea-jardin.jpg" width="959" height="1278" alt="Andrea saludando en un jardín de Singapur" loading="lazy" style="object-position:50% 30%" /></div>
+  <div class="contacto-form">
+    <h2 class="rv"><span data-t="k1">¿A dónde</span> <strong data-t="k2">querés ir?</strong></h2>
+    <p class="baja rv rv-d1" data-t="kbaja">Completá lo que sepas y te escribo por WhatsApp con una primera idea.</p>
+    <form id="form" class="rv rv-d2">
+      <div><label for="fDest" data-t="l1">Destino</label><input id="fDest" name="destino" data-ph="ph1" placeholder="Japón, Marruecos, todavía no sé…" /></div>
+      <div class="dos">
+        <div><label for="fCuando" data-t="l2">Cuándo</label><input id="fCuando" name="cuando" data-ph="ph2" placeholder="Abril de 2027" /></div>
+        <div><label for="fQuien" data-t="l3">Cuántos viajan</label>
+          <select id="fQuien" name="quien"><option data-t="o1">Viajo solo/a</option><option data-t="o2">En pareja</option><option data-t="o3">En familia</option><option data-t="o4">En grupo</option></select></div>
+      </div>
+      <div><label for="fNombre" data-t="l4">Tu nombre</label><input id="fNombre" name="nombre" autocomplete="name" /></div>
+      <button class="btn btn-claro" type="submit"><svg class="ico-marca"><use href="#i-wa"/></svg><span data-t="kcta">Enviar por WhatsApp</span></button>
+    </form>
+    <div class="contacto-alt rv rv-d3">
+      <a class="wa-link" href="#" data-msg="general"><svg class="ico-marca"><use href="#i-wa"/></svg>+54 9 299 428-2533</a>
+      <a href="https://www.instagram.com/andreacsavino/" target="_blank" rel="noopener"><svg class="ico-marca"><use href="#i-ig"/></svg>@andreacsavino</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <span>VIP &amp; Exotic Travel Group · Andrea Carolina Savino</span>
+  <span data-t="foot">Sede en Neuquén, Argentina. Atendemos desde cualquier lugar del mundo.</span>
+</footer>
+
+<a class="wa-flota wa-link" href="#" data-msg="general" aria-label="WhatsApp"><svg class="ico-marca"><use href="#i-wa"/></svg></a>
+<div class="boceto" data-t="boceto">Boceto · precios y fechas de ejemplo</div>
+<div class="aviso-copia" id="aviso" data-t="copiado">Link copiado</div>
+
+<script>
+const WA = '5492994282533';
+const SALIDAS = [
+  { id:'dubai', cat:'ciudades', img:'dubai.jpg', precio:'2.910', fecha:{es:'16 de abril de 2027',en:'April 16, 2027',it:'16 aprile 2027'},
+    lugar:{es:'Salida grupal acompañada',en:'Escorted group trip',it:'Partenza di gruppo accompagnata'}, tit:{es:'Dubái y Abu Dhabi',en:'Dubai & Abu Dhabi',it:'Dubai e Abu Dhabi'},
+    inc:{es:'Vuelos Emirates desde Ezeiza, 8 noches con desayuno, safari por el desierto y guía en español.',en:'Emirates flights from Buenos Aires, 8 nights with breakfast, desert safari and Spanish-speaking guide.',it:'Voli Emirates da Buenos Aires, 8 notti con colazione, safari nel deserto e guida in spagnolo.'} },
+  { id:'nueva-york', cat:'ciudades', img:'nueva-york.jpg', precio:'2.635', fecha:{es:'26 de diciembre',en:'December 26',it:'26 dicembre'},
+    lugar:{es:'Año Nuevo',en:'New Year’s Eve',it:'Capodanno'}, tit:{es:'Nueva York',en:'New York',it:'New York'},
+    inc:{es:'6 noches en Times Square, vuelos desde Buenos Aires, traslados y paseos por Manhattan.',en:'6 nights in Times Square, flights from Buenos Aires, transfers and Manhattan tours.',it:'6 notti a Times Square, voli da Buenos Aires, transfer e visite a Manhattan.'} },
+  { id:'punta-cana', cat:'caribe', img:'punta-cana.jpg', precio:'1.799', fecha:{es:'21 de diciembre',en:'December 21',it:'21 dicembre'},
+    lugar:{es:'Navidad en familia',en:'Christmas with family',it:'Natale in famiglia'}, tit:{es:'Punta Cana',en:'Punta Cana',it:'Punta Cana'},
+    inc:{es:'7 noches all inclusive en Bahia Principe, vuelos y traslados. Plan familiar.',en:'7 all-inclusive nights at Bahia Principe, flights and transfers. Family plan.',it:'7 notti all inclusive al Bahia Principe, voli e transfer. Piano famiglia.'} },
+  { id:'curazao', cat:'caribe', img:'curazao.jpg', precio:'1.499', fecha:{es:'27 de enero y 8 de febrero',en:'January 27 & February 8',it:'27 gennaio e 8 febbraio'},
+    lugar:{es:'Caribe',en:'Caribbean',it:'Caraibi'}, tit:{es:'Curazao',en:'Curaçao',it:'Curaçao'},
+    inc:{es:'Vuelo directo desde Ezeiza, 7 noches con desayuno y traslados.',en:'Direct flight from Buenos Aires, 7 nights with breakfast and transfers.',it:'Volo diretto da Buenos Aires, 7 notti con colazione e transfer.'} },
+  { id:'bahamas', cat:'caribe', img:'bahamas.jpg', precio:'1.599', fecha:{es:'Noviembre y diciembre',en:'November & December',it:'Novembre e dicembre'},
+    lugar:{es:'Nassau y Paradise Island',en:'Nassau & Paradise Island',it:'Nassau e Paradise Island'}, tit:{es:'Bahamas',en:'Bahamas',it:'Bahamas'},
+    inc:{es:'7 noches con desayuno, vuelos desde Córdoba, Rosario, Mendoza o Ezeiza.',en:'7 nights with breakfast, flights from Córdoba, Rosario, Mendoza or Buenos Aires.',it:'7 notti con colazione, voli da Córdoba, Rosario, Mendoza o Buenos Aires.'} },
+  { id:'florianopolis', cat:'brasil', img:'florianopolis.jpg', precio:'1.065', fecha:{es:'Enero y febrero 2027',en:'January & February 2027',it:'Gennaio e febbraio 2027'},
+    lugar:{es:'Praia dos Ingleses',en:'Praia dos Ingleses',it:'Praia dos Ingleses'}, tit:{es:'Florianópolis',en:'Florianópolis',it:'Florianópolis'},
+    inc:{es:'Vuelo directo desde Córdoba, 7 noches con desayuno y asistencia al viajero.',en:'Direct flight from Córdoba, 7 nights with breakfast and travel insurance.',it:'Volo diretto da Córdoba, 7 notti con colazione e assicurazione di viaggio.'} },
+];
+
+const T = {
+  en:{nav1:'Departures',nav2:'Tailor-made',nav3:'Andrea',nav4:'Contact',navwa:'Message me',hpre:'Andrea Savino · Tailor-made travel worldwide',h1a:'Wherever you want to go,',h1b:'we’ll take you.',hbaja:'Trips built at your pace, in your language and from wherever you are, by someone who has been to every destination before recommending it.',cta1:'Plan my trip',cta2:'See scheduled departures',ahora1:'Right now',ahora2:'Andrea is exploring Singapore',
+    m1:'I don’t recommend',m2:'a place I don’t know.',m3:'I stay',m4:'a month in every destination,',m5:'deal with the hotels and',m6:'try every tour',m7:'before you do.',firma:'Traveller and travel advisor',
+    c1:'years planning trips around the world. Most clients come through referrals.',c2n:'1 month',c2:'at least, in every place I recommend.',c3n:'Your language',c3:'in every service: guides and assistance in Spanish, English, Italian or whatever you speak.',
+    s1:'Scheduled',s2:'departures',sbaja:'Packages with limited seats. Tap “share” and send the link to whoever travels with you.',f0:'All',f1:'Caribbean',f2:'Cities',f3:'Brazil',
+    desde:'From',pp:'per person',consultar:'Ask about this trip',compartir:'Share',
+    v1:'I live it',v2:'to advise you',vp1:'I travel for three years straight, come back to Argentina for one, and leave again. In every place I stay, test everything and build direct contacts with hotels and activities.',vp2:'<strong>That’s why I’m in the photos:</strong> what I offer you, I know first-hand.',
+    d0:'Travel journal · Singapore',dsw:'Swipe',d1:'The neighbourhood of the golden mosque',d2:'At night, from the waterfront',d3t:'Street art',d3:'Murals that tell the city’s story',d4t:'A walk worth taking',d4:'I add it to your itinerary if you love art',d5t:'Gardens',d5:'For a quiet morning',d6:'Early, before the crowds',
+    x1:'Places few',x2:'people know',xbaja:'Most of my trips are built from scratch: you choose the destination and the pace, I take care of everything else.',tb:'Over two thousand temples in the mist, seen from a balloon at sunrise.',ts:'An island that looks like another planet.',tmt:'Maldives',tv:'The oldest living city in the world.',tc:'Five months exploring it. My specialty.',tmrt:'Morocco',tmr:'Medinas, desert and starry nights. Groups welcome.',xpie:'Have a place in mind that isn’t here? <strong>Tell me and we’ll plan it.</strong>',
+    p0a:'How',p0b:'we work',p1t:'You tell me',p1:'Where you want to go, with whom, when, and how you like to travel. On WhatsApp, voice notes welcome.',p2t:'I build the trip',p2:'Flights, hotels, transfers and tours, day by day. We fine-tune it together until it’s what you imagined.',p3t:'You travel looked after',p3:'With assistance in your language throughout the trip, and a team that answers even from the other side of the world.',
+    idp:'Our travellers come from Argentina, Italy and Asia. <strong>Every service is booked in the traveller’s language</strong>, and departures leave from wherever you are.',
+    r1:'Recommend us',r2:'and travel again',rp:'If someone travels thanks to your recommendation, you get a share of the profit for your next trip. That’s how we grew these ten years: client by client.',rcta:'How does it work?',
+    ig1:'Follow the journey',igcta:'See on Instagram',k1:'Where do you',k2:'want to go?',kbaja:'Fill in what you know and I’ll message you on WhatsApp with a first idea.',l1:'Destination',l2:'When',l3:'Travellers',l4:'Your name',o1:'Just me',o2:'As a couple',o3:'With family',o4:'In a group',kcta:'Send via WhatsApp',ph1:'Japan, Morocco, not sure yet…',ph2:'April 2027',
+    foot:'Based in Neuquén, Argentina. We work from anywhere in the world.',boceto:'Mock-up · sample prices and dates',copiado:'Link copied'},
+  it:{nav1:'Partenze',nav2:'Su misura',nav3:'Andrea',nav4:'Contatti',navwa:'Scrivimi',hpre:'Andrea Savino · Viaggi su misura nel mondo',h1a:'Ovunque tu voglia andare,',h1b:'ti portiamo noi.',hbaja:'Viaggi costruiti al tuo ritmo, nella tua lingua e da dove ti trovi, da chi ha visitato ogni destinazione prima di consigliartela.',cta1:'Organizza il mio viaggio',cta2:'Vedi le partenze',ahora1:'Adesso',ahora2:'Andrea sta esplorando Singapore',
+    m1:'Non ti consiglio',m2:'un posto che non conosco.',m3:'Resto',m4:'un mese in ogni destinazione,',m5:'tratto con gli hotel e',m6:'provo ogni escursione',m7:'prima che la faccia tu.',firma:'Viaggiatrice e consulente di viaggio',
+    c1:'anni a organizzare viaggi nel mondo. La maggior parte dei clienti arriva per passaparola.',c2n:'1 mese',c2:'come minimo in ogni posto che consiglio.',c3n:'La tua lingua',c3:'in ogni servizio: guide e assistenza in spagnolo, inglese, italiano o nella lingua che parli.',
+    s1:'Partenze',s2:'con data',sbaja:'Pacchetti a posti limitati. Tocca «condividi» e manda il link a chi viaggia con te.',f0:'Tutte',f1:'Caraibi',f2:'Città',f3:'Brasile',
+    desde:'Da',pp:'a persona',consultar:'Chiedi informazioni',compartir:'Condividi',
+    v1:'Lo vivo',v2:'per consigliarti',vp1:'Viaggio tre anni di fila, torno un anno in Argentina e riparto. In ogni posto mi fermo, provo tutto e creo contatti diretti con hotel e attività.',vp2:'<strong>Per questo nelle foto ci sono io:</strong> quello che ti propongo, lo conosco.',
+    d0:'Diario di viaggio · Singapore',dsw:'Scorri',d1:'Il quartiere della moschea dorata',d2:'Di notte, dal lungomare',d3t:'Arte di strada',d3:'Murales che raccontano la storia della città',d4t:'Un percorso da fare a piedi',d4:'Lo aggiungo al tuo itinerario se ami l’arte',d5t:'Giardini',d5:'Per una mattina tranquilla',d6:'Presto, prima della folla',
+    x1:'Luoghi che',x2:'pochi conoscono',xbaja:'La maggior parte dei miei viaggi nasce da zero: scegli tu la meta e il ritmo, io mi occupo di tutto il resto.',tb:'Oltre duemila templi nella nebbia, visti da una mongolfiera all’alba.',ts:'Un’isola che sembra un altro pianeta.',tmt:'Maldive',tv:'La città viva più antica del mondo.',tc:'Cinque mesi a percorrerla. La mia specialità.',tmrt:'Marocco',tmr:'Medine, deserto e notti stellate. Anche per gruppi.',xpie:'Hai in mente un posto che non è qui? <strong>Raccontamelo e lo organizziamo.</strong>',
+    p0a:'Come',p0b:'lavoriamo',p1t:'Mi racconti',p1:'Dove vuoi andare, con chi, quando e a che ritmo ti piace viaggiare. Su WhatsApp, anche con un vocale.',p2t:'Ti preparo il viaggio',p2:'Voli, hotel, transfer ed escursioni, giorno per giorno. Lo sistemiamo insieme finché è come lo immaginavi.',p3t:'Viaggi seguito',p3:'Con assistenza nella tua lingua per tutto il viaggio e un team che risponde anche dall’altra parte del mondo.',
+    idp:'Viaggiano con noi dall’Argentina, dall’Italia e dall’Asia. <strong>Ogni servizio si prenota nella lingua di chi viaggia</strong>, e le partenze sono da dove ti trovi.',
+    r1:'Consigliaci',r2:'e viaggia di nuovo',rp:'Se qualcuno viaggia grazie al tuo consiglio, ricevi una parte del guadagno per il tuo prossimo viaggio. Così siamo cresciuti in questi dieci anni: cliente dopo cliente.',rcta:'Come funziona?',
+    ig1:'Segui il viaggio',igcta:'Vedi su Instagram',k1:'Dove vuoi',k2:'andare?',kbaja:'Compila quello che sai e ti scrivo su WhatsApp con una prima idea.',l1:'Destinazione',l2:'Quando',l3:'Quanti siete',l4:'Il tuo nome',o1:'Viaggio da solo/a',o2:'In coppia',o3:'In famiglia',o4:'In gruppo',kcta:'Invia su WhatsApp',ph1:'Giappone, Marocco, non so ancora…',ph2:'Aprile 2027',
+    foot:'Sede a Neuquén, Argentina. Lavoriamo da qualsiasi parte del mondo.',boceto:'Bozza · prezzi e date di esempio',copiado:'Link copiato'},
+  es:{desde:'Desde',pp:'por persona',consultar:'Consultar esta salida',compartir:'Compartir',copiado:'Link copiado'}
+};
+let lang = 'es';
+document.querySelectorAll('[data-t]').forEach(el => { const k = el.dataset.t; if (!(k in T.es)) T.es[k] = el.innerHTML; });
+document.querySelectorAll('[data-ph]').forEach(el => { T.es[el.dataset.ph] = el.placeholder; });
+
+const MSG = {
+  general:{es:'Hola Andrea, te escribo desde la web.',en:'Hi Andrea, I’m writing from your website.',it:'Ciao Andrea, ti scrivo dal sito.'},
+  armar:{es:'Hola Andrea, quiero armar un viaje.',en:'Hi Andrea, I’d like to plan a trip.',it:'Ciao Andrea, vorrei organizzare un viaggio.'},
+  destino:{es:'Hola Andrea, me interesa un viaje a ',en:'Hi Andrea, I’m interested in a trip to ',it:'Ciao Andrea, mi interessa un viaggio a '},
+  salida:{es:'Hola Andrea, quiero info de la salida: ',en:'Hi Andrea, I’d like info about this departure: ',it:'Ciao Andrea, vorrei informazioni su questa partenza: '},
+  referido:{es:'Hola Andrea, quiero saber cómo funciona lo de recomendar.',en:'Hi Andrea, how does the referral programme work?',it:'Ciao Andrea, come funziona il programma di passaparola?'}
+};
+const wa = txt => `https://wa.me/${WA}?text=${encodeURIComponent(txt)}`;
+function linkWA(el){
+  const m = el.dataset.msg; let txt = MSG[m][lang];
+  if (m === 'destino') txt += el.dataset.dest + '.';
+  if (m === 'salida') txt += el.dataset.nombre + '.';
+  el.href = wa(txt); el.target = '_blank'; el.rel = 'noopener';
+}
+
+function pintarSalidas(){
+  const g = document.getElementById('grilla'); const t = T[lang]; const tes = T.es;
+  g.innerHTML = SALIDAS.map(s => `
+    <article class="salida rv" id="salida-${s.id}" data-cat="${s.cat}">
+      <div class="salida-foto"><img src="img/${s.img}" width="896" height="1120" alt="${s.tit[lang]}" loading="lazy" />
+        <span class="salida-fecha">${s.fecha[lang]}</span>
+        <div class="salida-tit"><small>${s.lugar[lang]}</small><h3>${s.tit[lang]}</h3></div></div>
+      <div class="salida-cuerpo">
+        <p class="salida-inc">${s.inc[lang]}</p>
+        <div class="salida-pie">
+          <div class="precio"><small>${t.desde||tes.desde}</small><b>USD ${s.precio}</b><span>${t.pp||tes.pp}</span></div>
+          <div class="salida-acc">
+            <button class="ic-btn" type="button" data-share="${s.id}" aria-label="${t.compartir||tes.compartir}"><svg class="ico-trazo"><use href="#i-share"/></svg></button>
+            <a class="ic-btn is-wa wa-link" href="#" data-msg="salida" data-nombre="${s.tit.es} (${s.fecha.es})" aria-label="${t.consultar||tes.consultar}"><svg class="ico-marca"><use href="#i-wa"/></svg></a>
+          </div>
+        </div>
+      </div>
+    </article>`).join('');
+  g.querySelectorAll('.wa-link').forEach(linkWA);
+  aplicarFiltro(); observar(g.querySelectorAll('.rv'));
+}
+let filtro = 'todas';
+function aplicarFiltro(){ document.querySelectorAll('.salida').forEach(c => c.hidden = !(filtro === 'todas' || c.dataset.cat === filtro)); }
+document.querySelectorAll('.filtros button').forEach(b => b.addEventListener('click', () => {
+  filtro = b.dataset.f; document.querySelectorAll('.filtros button').forEach(x => x.setAttribute('aria-pressed', x === b)); aplicarFiltro();
+}));
+document.getElementById('grilla').addEventListener('click', async e => {
+  const b = e.target.closest('[data-share]'); if (!b) return;
+  const s = SALIDAS.find(x => x.id === b.dataset.share);
+  const url = location.href.split('#')[0] + '#salida-' + s.id;
+  if (navigator.share) { try { await navigator.share({ title: s.tit[lang] + ' · VIP & Exotic', url }); return; } catch (_) { return; } }
+  try { await navigator.clipboard.writeText(url); } catch (_) {}
+  const a = document.getElementById('aviso'); a.classList.add('on'); setTimeout(() => a.classList.remove('on'), 1800);
+});
+
+function setLang(l){
+  lang = l; document.documentElement.lang = l;
+  document.querySelectorAll('[data-t]').forEach(el => { const v = (T[l] && T[l][el.dataset.t]) ?? T.es[el.dataset.t]; if (v != null) el.innerHTML = v; });
+  document.querySelectorAll('[data-ph]').forEach(el => { el.placeholder = (T[l] && T[l][el.dataset.ph]) || T.es[el.dataset.ph]; });
+  document.querySelectorAll('.idiomas button').forEach(b => b.setAttribute('aria-pressed', b.dataset.lang === l));
+  document.querySelectorAll('#listaIdiomas span').forEach((s, i) => s.classList.toggle('on', i === {es:0,en:1,it:2}[l]));
+  document.querySelectorAll('.wa-link').forEach(linkWA);
+  pintarSalidas();
+  try { localStorage.setItem('vip-lang', l); } catch (_) {}
+}
+document.querySelectorAll('.idiomas button').forEach(b => b.addEventListener('click', () => setLang(b.dataset.lang)));
+
+document.getElementById('form').addEventListener('submit', e => {
+  e.preventDefault(); const f = e.target;
+  const L = {es:['Destino','Cuándo','Viajan','Nombre'],en:['Destination','When','Travellers','Name'],it:['Destinazione','Quando','Viaggiatori','Nome']}[lang];
+  const txt = `${MSG.armar[lang]}\n${L[0]}: ${f.destino.value || '-'}\n${L[1]}: ${f.cuando.value || '-'}\n${L[2]}: ${f.quien.selectedOptions[0].text}\n${L[3]}: ${f.nombre.value || '-'}`;
+  window.open(wa(txt), '_blank', 'noopener');
+});
+
+/* reveals */
+let io = null;
+function observar(els){
+  if (!io) { els.forEach(el => el.classList.add('in')); return; }
+  els.forEach(el => io.observe(el));
+}
+if ('IntersectionObserver' in window) {
+  io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: .08, rootMargin: '0px 0px -6% 0px' });
+}
+observar(document.querySelectorAll('.rv'));
+setTimeout(() => document.querySelectorAll('.rv').forEach(el => el.classList.add('in')), 4000); // red de seguridad
+
+/* nav sólida + parallax */
+const nav = document.getElementById('nav'); const hf = document.getElementById('heroFoto'); const vi = document.getElementById('vivoImg'); const rf = document.getElementById('refeFoto');
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+let tick = false;
+function onScroll(){
+  const y = scrollY; nav.classList.toggle('is-solid', y > 40);
+  if (!reduce) {
+    if (y < innerHeight * 1.2) hf.style.transform = `translate3d(0,${y * .28}px,0) scale(${1 + y * .00012})`;
+    [[vi, .12], [rf, .1]].forEach(([el, k]) => { const r = el.parentElement.getBoundingClientRect(); if (r.bottom > 0 && r.top < innerHeight) el.style.transform = `translate3d(0,${(r.top + r.height / 2 - innerHeight / 2) * -k}px,0)`; });
+  }
+  tick = false;
+}
+addEventListener('scroll', () => { if (!tick) { requestAnimationFrame(onScroll); tick = true; } }, { passive: true });
+
+let ini = 'es'; try { const s = localStorage.getItem('vip-lang'); if (s && T[s]) ini = s; } catch (_) {}
+setLang(ini); onScroll();
+</script>
+<script src="/propuestas/_visto.js" data-p="andrea-savino" data-n="Andrea Savino" data-e="boceto" defer></script>
+</body>
+</html>

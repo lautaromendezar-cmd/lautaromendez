@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="description" content="Una web para VIP & Exotic Travel Group: tus salidas con un link para compartir, tus viajes a medida y vos en primera persona. Una idea de diseño y tres opciones con precio." />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="es_AR" />
+  <meta property="og:site_name" content="Lautaro Méndez" />
+  <meta property="og:url" content="https://lautaromendez.com.ar/propuestas/andrea-savino/" />
+  <meta property="og:title" content="Propuesta para Andrea Savino · VIP & Exotic Travel Group" />
+  <meta property="og:description" content="Una idea de la web, con tus salidas, tus viajes a medida y tres idiomas. Tres opciones con precio." />
+  <meta property="og:image" content="https://lautaromendez.com.ar/propuestas/andrea-savino/og.jpg" />
+  <meta property="og:image:secure_url" content="https://lautaromendez.com.ar/propuestas/andrea-savino/og.jpg" />
+  <meta property="og:image:type" content="image/jpeg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Propuesta para VIP & Exotic Travel Group" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://lautaromendez.com.ar/propuestas/andrea-savino/og.jpg" />
+  <title>Propuesta — VIP & Exotic Travel Group</title>
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+  <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600&display=swap" />
+  <script>document.documentElement.classList.add('js');</script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* Paleta de VIP & Exotic: tinta oscura y arena del boceto */
+    :root {
+      --bg: #ffffff;
+      --bg-alt: #f4f5f7;
+      --card: #ffffff;
+      --soft: #f4f5f7;
+      --ink: #14191b;
+      --text: #36404b;
+      --mid: #66717c;
+      --dim: #97a0a8;
+      --line: #e4e7ec;
+      --line-strong: #d0d5dd;
+      --accent: #8a6a32;
+      --accent-dark: #6b511f;
+      --accent-soft: #f5efe3;
+      --bad: #d14343;
+      --ok: #1a9a5b;
+      --sans: 'General Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: var(--sans); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    strong { color: var(--ink); font-weight: 560; }
+    img { display: block; max-width: 100%; height: auto; }
+
+    .ico { width: 20px; height: 20px; flex-shrink: 0; fill: none; stroke: var(--mid); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+    .ico-box { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 6px; background: var(--accent-soft); flex-shrink: 0; }
+    .ico-box .ico { stroke: var(--accent); }
+
+    #progress { position: fixed; top: 0; left: 0; height: 3px; width: 0%; background: var(--accent); z-index: 999; transition: width .1s linear; }
+
+    .wrap { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+    .wrap-wide { max-width: 1140px; margin: 0 auto; padding: 0 24px; }
+
+    /* HERO */
+    .hero { padding: 80px 0 60px; }
+    .eyebrow { display: flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 560; letter-spacing: .02em; color: var(--accent); margin-bottom: 14px; }
+    .hero h1 { font-size: clamp(32px, 5vw, 46px); font-weight: 560; line-height: 1.1; letter-spacing: -0.025em; color: var(--ink); margin-bottom: 18px; max-width: 720px; }
+    .hero-sub { font-size: 17px; color: var(--mid); max-width: 620px; margin-bottom: 38px; }
+    .hero-meta { display: flex; gap: 20px 40px; flex-wrap: wrap; padding-top: 24px; border-top: 1px solid var(--line); }
+    .hero-meta-item label { display: block; font-size: 12px; font-weight: 500; color: var(--dim); margin-bottom: 2px; }
+    .hero-meta-item span { font-size: 15px; font-weight: 560; color: var(--ink); }
+
+    /* SECCIONES */
+    section { padding: 72px 0; }
+    section.alt { background: var(--bg-alt); }
+    h2 { font-size: 30px; font-weight: 560; letter-spacing: -0.02em; color: var(--ink); line-height: 1.2; margin-bottom: 12px; }
+    h3 { font-size: 18px; font-weight: 560; color: var(--ink); letter-spacing: -0.01em; margin: 40px 0 10px; }
+    .section-intro { font-size: 16px; color: var(--mid); margin-bottom: 32px; max-width: 660px; }
+    .p { font-size: 15.5px; color: var(--mid); max-width: 660px; margin-bottom: 18px; }
+
+    /* DATOS */
+    .datos { display: grid; grid-template-columns: repeat(3, 1fr); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; margin-bottom: 28px; background: var(--card); }
+    .dato { display: flex; gap: 14px; align-items: flex-start; padding: 20px; }
+    .dato + .dato { border-left: 1px solid var(--line); }
+    .dato b { display: block; font-size: 17px; font-weight: 560; color: var(--ink); line-height: 1.3; margin-bottom: 2px; }
+    .dato span { font-size: 13.5px; color: var(--mid); line-height: 1.45; }
+
+    .callout { display: flex; gap: 14px; align-items: flex-start; padding: 18px 20px; border-left: 3px solid var(--accent); background: var(--card); border-radius: 0 6px 6px 0; font-size: 15px; color: var(--text); }
+    .callout .ico { stroke: var(--accent); margin-top: 2px; }
+    .callout.is-ok { border-left-color: var(--ok); }
+    .callout.is-ok .ico { stroke: var(--ok); }
+
+    /* CAPTURAS */
+    .shot { border: 1px solid var(--line-strong); border-radius: 6px; overflow: hidden; background: var(--card); }
+    .shot-bar { display: flex; align-items: center; gap: 6px; padding: 9px 12px; border-bottom: 1px solid var(--line); background: var(--soft); }
+    .shot-bar i { width: 8px; height: 8px; border-radius: 50%; background: var(--line-strong); }
+    .shot-bar span { margin-left: 8px; font-size: 12px; color: var(--dim); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    figcaption { margin-top: 10px; font-size: 13.5px; color: var(--mid); line-height: 1.5; }
+    figure { margin-bottom: 28px; }
+
+    /* ANTES / DESPUÉS */
+    .ab-bloque { margin-bottom: 40px; }
+    .ab-nota { margin-top: 12px; font-size: 14.5px; color: var(--mid); line-height: 1.55; max-width: 760px; }
+    .ba { --pos: 50%; position: relative; aspect-ratio: 16 / 10; border: 1px solid var(--line-strong); border-radius: 8px; overflow: hidden; background: var(--soft); user-select: none; -webkit-user-select: none; }
+    .ba img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top; }
+    .ba .ba-antes { clip-path: inset(0 calc(100% - var(--pos)) 0 0); }
+    .ba-linea { position: absolute; top: 0; bottom: 0; left: var(--pos); width: 2px; margin-left: -1px; background: #fff; box-shadow: 0 0 0 1px rgb(0 0 0 / .2); pointer-events: none; }
+    .ba-tirador { position: absolute; top: 50%; left: var(--pos); width: 46px; height: 46px; margin: -23px 0 0 -23px; border-radius: 50%; background: #fff; box-shadow: 0 6px 20px rgb(0 0 0 / .25); display: flex; align-items: center; justify-content: center; pointer-events: none; }
+    .ba-tirador .ico { width: 16px; height: 16px; stroke: var(--ink); stroke-width: 2.2; }
+    .ba-tag { position: absolute; bottom: 14px; padding: 5px 12px; border-radius: 999px; font-size: 12px; font-weight: 560; background: rgb(15 23 32 / .82); color: #fff; pointer-events: none; }
+    .ba-tag-antes { left: 14px; }
+    .ba-tag-despues { right: 14px; background: var(--accent); }
+    .ba input { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: ew-resize; margin: 0; }
+    .ba:has(input:focus-visible) { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+    .refs { list-style: none; display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 32px; }
+    .refs li { padding: 14px 16px; background: var(--card); border: 1px solid var(--line); border-radius: 8px; font-size: 14px; color: var(--mid); line-height: 1.45; }
+    .refs b { display: block; font-size: 14.5px; font-weight: 560; color: var(--ink); margin-bottom: 2px; }
+
+    .demo-cta { display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; padding: 22px 24px; border: 1px solid var(--accent); background: var(--accent-soft); border-radius: 8px; }
+    .demo-cta p { font-size: 15px; color: var(--text); max-width: 520px; }
+
+    /* HALLAZGOS */
+    .hall { list-style: none; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; margin-bottom: 28px; background: var(--card); }
+    .hall li { display: grid; grid-template-columns: 24px 1fr; gap: 12px; padding: 14px 18px; font-size: 14.5px; color: var(--text); line-height: 1.5; }
+    .hall li + li { border-top: 1px solid var(--line); }
+    .hall .ico { width: 18px; height: 18px; margin-top: 2px; stroke: var(--bad); }
+    .hall small { display: block; font-size: 13.5px; color: var(--mid); }
+
+    /* OPCIONES */
+    .escalas { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; align-items: stretch; }
+    .escala { position: relative; display: flex; flex-direction: column; background: var(--card); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+    .escala.is-reco { border: 2px solid var(--accent); }
+    .reco { position: absolute; top: 22px; right: 20px; font-size: 12px; font-weight: 560; padding: 3px 10px; border-radius: 999px; background: var(--accent-soft); color: var(--accent); }
+    .escala-head { padding: 24px 24px 20px; border-bottom: 1px solid var(--line); }
+    .escala-top { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+    .escala-num { font-size: 13px; font-weight: 560; color: var(--accent); }
+    .escala-title { font-size: 20px; font-weight: 560; letter-spacing: -0.01em; color: var(--ink); line-height: 1.25; margin-bottom: 8px; }
+    .escala-tagline { font-size: 14px; color: var(--mid); line-height: 1.5; }
+    .escala-price { padding: 20px 24px; border-bottom: 1px solid var(--line); background: var(--soft); }
+    .escala-price-value { font-size: 30px; font-weight: 560; letter-spacing: -0.02em; color: var(--ink); line-height: 1.1; }
+    .escala-facts { margin-top: 14px; display: flex; flex-direction: column; gap: 6px; }
+    .escala-facts div { display: flex; gap: 10px; align-items: flex-start; font-size: 13.5px; color: var(--mid); line-height: 1.4; }
+    .escala-facts .ico { width: 16px; height: 16px; margin-top: 1px; }
+    .escala-facts b { color: var(--text); font-weight: 560; }
+    .escala-body { padding: 20px 24px 24px; display: flex; flex-direction: column; gap: 18px; flex: 1; }
+    .ticks { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+    .ticks li { display: flex; gap: 10px; font-size: 14.5px; color: var(--text); line-height: 1.45; }
+    .ticks .ico { width: 16px; height: 16px; margin-top: 3px; stroke: var(--ok); stroke-width: 2.2; }
+    .ticks-plus { font-size: 12.5px; font-weight: 560; color: var(--dim); }
+
+    /* NECESITO */
+    .need-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .need { display: flex; gap: 12px; align-items: center; padding: 12px 14px; background: var(--card); border: 1px solid var(--line); border-radius: 8px; font-size: 14.5px; color: var(--text); line-height: 1.4; }
+    .need .ico { stroke: var(--accent); }
+    .need small { display: block; font-size: 12.5px; color: var(--dim); }
+
+    /* CIERRE */
+    .cierre p { font-size: 17px; color: var(--text); margin-bottom: 24px; max-width: 600px; }
+    .btn { display: inline-flex; align-items: center; gap: 10px; border: 1px solid var(--accent); border-radius: 6px; padding: 13px 20px; font-size: 14.5px; font-weight: 560; color: var(--accent); text-decoration: none; background: var(--card); transition: background .15s, color .15s; }
+    .btn .ico { width: 16px; height: 16px; stroke: currentColor; }
+    .btn:hover, .btn.is-fill { background: var(--accent); color: #fff; }
+    .btn.is-fill:hover { background: var(--accent-dark); }
+
+    footer { padding: 32px 0 40px; text-align: center; font-size: 13px; color: var(--dim); border-top: 1px solid var(--line); }
+
+    .js .fade { opacity: 0; transform: translateY(16px); transition: opacity .5s ease, transform .5s ease; }
+    .js .fade.visible { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) { .js .fade { opacity: 1; transform: none; transition: none; } }
+
+    @media (max-width: 980px) {
+      .escalas { grid-template-columns: 1fr; max-width: 812px; margin: 0 auto; }
+    }
+    @media (max-width: 640px) {
+      .wrap, .wrap-wide { padding: 0 16px; }
+      .hero { padding: 48px 0 44px; }
+      section { padding: 52px 0; }
+      h2 { font-size: 25px; }
+      .datos { grid-template-columns: 1fr; }
+      .dato + .dato { border-left: none; border-top: 1px solid var(--line); }
+      .ba { aspect-ratio: 16 / 12; }
+      .refs { grid-template-columns: 1fr; }
+      .escala-head, .escala-price, .escala-body { padding-left: 18px; padding-right: 18px; }
+      .need-grid { grid-template-columns: 1fr; }
+    }
+    @media print {
+      body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      #progress { display: none; }
+      .js .fade { opacity: 1; transform: none; transition: none; }
+      .escala, .need, figure, .hall li { break-inside: avoid; }
+      h2, h3 { break-after: avoid; }
+    }
+
+    .duo-shots { display: grid; grid-template-columns: 1fr 260px; gap: 20px; align-items: start; margin-bottom: 28px; }
+    .duo-shots .movil { border: 1px solid var(--line-strong); border-radius: 18px; overflow: hidden; }
+    .dos-shots { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 8px; }
+    .dos-shots figure { margin-bottom: 8px; }
+    @media (max-width: 760px) { .dos-shots { grid-template-columns: 1fr; } .duo-shots { grid-template-columns: 1fr; } .duo-shots .movil { max-width: 260px; } }
+
+    /* Tablas */
+    .tabla-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 8px; background: var(--card); }
+    .cmp { width: 100%; border-collapse: collapse; font-size: 14.5px; min-width: 560px; }
+    .cmp th, .cmp td { text-align: left; padding: 12px 16px; border-bottom: 1px solid var(--line); vertical-align: top; line-height: 1.45; }
+    .cmp thead th { font-size: 13px; font-weight: 560; color: var(--mid); background: var(--soft); }
+    .cmp tr:last-child td { border-bottom: 0; }
+    .cmp td:first-child { color: var(--ink); font-weight: 500; }
+    .cmp td.no { color: var(--bad); }
+    .cmp td.si { color: var(--ok); }
+    .cmp tr.propio td { background: var(--accent-soft); }
+    .cmp .num { text-align: right; white-space: nowrap; font-weight: 560; color: var(--ink); }
+    .vistazo td:not(:first-child), .vistazo th:not(:first-child) { text-align: center; white-space: nowrap; }
+    .vistazo .th-reco { color: var(--accent); }
+    .sirve { margin-top: auto; font-size: 13.5px; color: var(--mid); padding-top: 14px; border-top: 1px solid var(--line); }
+    .sirve b { color: var(--ink); font-weight: 560; }
+    .fuente { font-size: 12.5px; color: var(--dim); margin-top: 10px; }
+    @media (max-width: 640px) { .cmp { font-size: 13.5px; } .cmp th, .cmp td { padding: 10px 12px; } }
+  </style>
+  <style>
+    .hero-foto { margin-top: 34px; border-radius: 10px; overflow: hidden; border: 1px solid var(--line-strong); }
+    .pasos-ig { counter-reset: n; list-style: none; display: grid; gap: 10px; margin: 8px 0 28px; }
+    .pasos-ig li { display: grid; grid-template-columns: 34px 1fr; gap: 12px; padding: 16px 18px; background: var(--card); border: 1px solid var(--line); border-radius: 8px; font-size: 15px; color: var(--text); line-height: 1.5; }
+    .pasos-ig li::before { counter-increment: n; content: counter(n); display: flex; align-items: center; justify-content: center; width: 30px; height: 30px; border-radius: 50%; background: var(--accent-soft); color: var(--accent); font-weight: 560; font-size: 14px; }
+    .pasos-ig small { display: block; font-size: 13.5px; color: var(--mid); margin-top: 2px; }
+    .dominios { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 18px; }
+    .dom { padding: 16px 18px; background: var(--card); border: 1px solid var(--line); border-radius: 8px; }
+    .dom.is-reco { border: 2px solid var(--accent); }
+    .dom b { display: block; font-size: 16.5px; font-weight: 560; color: var(--ink); margin-bottom: 4px; word-break: break-all; }
+    .dom span { font-size: 13.5px; color: var(--mid); line-height: 1.45; display: block; }
+    @media (max-width: 760px) { .dominios { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-card" viewBox="0 0 24 24"><rect width="20" height="14" x="2" y="5" rx="2"/><path d="M2 10h20"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+  <symbol id="i-alert" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></symbol>
+  <symbol id="i-wrench" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></symbol>
+  <symbol id="i-layout" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18M9 21V9"/></symbol>
+  <symbol id="i-dashboard" viewBox="0 0 24 24"><rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="16" rx="1"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></symbol>
+  <symbol id="i-server" viewBox="0 0 24 24"><rect width="20" height="8" x="2" y="2" rx="2"/><rect width="20" height="8" x="2" y="14" rx="2"/><path d="M6 6h.01M6 18h.01"/></symbol>
+  <symbol id="i-image" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="3" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.09-3.09a2 2 0 0 0-2.82 0L6 21"/></symbol>
+  <symbol id="i-file" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h6"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></symbol>
+  <symbol id="i-link" viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><rect width="14" height="20" x="5" y="2" rx="2"/><path d="M12 18h.01"/></symbol>
+  <symbol id="i-text" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h10"/></symbol>
+  <symbol id="i-chev-l" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></symbol>
+  <symbol id="i-chev-r" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></symbol>
+  <symbol id="i-filter" viewBox="0 0 24 24"><path d="M22 3H2l8 9.46V19l4 2v-8.54z"/></symbol>
+  <symbol id="i-map" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></symbol>
+  <symbol id="i-msg" viewBox="0 0 24 24"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></symbol>
+  <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></symbol>
+  <symbol id="i-cart" viewBox="0 0 24 24"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></symbol>
+</svg>
+
+<div id="progress"></div>
+
+<div class="wrap">
+  <header class="hero fade">
+    <div class="eyebrow">Propuesta para VIP &amp; Exotic Travel Group</div>
+    <h1>Un lugar propio para tus viajes, que se comparte con un link y no depende de WhatsApp</h1>
+    <p class="hero-sub">Escuché todos tus audios y recorrí tu Instagram. Con tus salidas, tus fotos de Singapur y tu manera de trabajar armé una idea de cómo se vería la web de VIP &amp; Exotic. Abajo, qué incluye y tres opciones con precio.</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item"><label>Preparado para</label><span>Andrea Savino · VIP &amp; Exotic Travel Group</span></div>
+      <div class="hero-meta-item"><label>Preparado por</label><span>Lautaro Méndez</span></div>
+      <div class="hero-meta-item"><label>Fecha</label><span>Noviembre 2026</span></div>
+    </div>
+  </header>
+</div>
+
+<!-- LO QUE ENTENDÍ -->
+<div class="wrap">
+  <section class="fade" style="padding-top:0">
+    <div class="eyebrow">Lo que me contaste</div>
+    <h2>Lo que la web tiene que resolver</h2>
+    <div class="datos">
+      <div class="dato"><span class="ico-box"><svg class="ico"><use href="#i-msg"/></svg></span><div><b>WhatsApp te limita</b><span>Por la cantidad de envíos a grupos y listas, te bloquearon hace menos de un mes.</span></div></div>
+      <div class="dato"><span class="ico-box"><svg class="ico"><use href="#i-globe"/></svg></span><div><b>Clientes de todos lados</b><span>Argentina, Italia y Asia, cada uno con servicios en su idioma.</span></div></div>
+      <div class="dato"><span class="ico-box"><svg class="ico"><use href="#i-map"/></svg></span><div><b>Vos estuviste ahí</b><span>Un mes como mínimo en cada destino. Eso tiene que verse.</span></div></div>
+    </div>
+    <p class="p">Hoy todo pasa por Instagram y WhatsApp. Funciona, porque en diez años la mayoría de tus clientes llegó por recomendación. Pero las salidas que publicás se pierden en el feed a los pocos días, y para avisarle a tu gente tenés que mandar mensajes masivos, que es justo lo que WhatsApp castiga.</p>
+    <p class="p">La web cambia eso: <strong>cada salida tiene su propio link</strong>. En vez de mandar el flyer a cien contactos, mandás un link, lo ponés en tu estado o en la bio de Instagram, y quien lo recibe lo reenvía a quien viaja con él. La consulta te llega por WhatsApp, pero la inicia el cliente, con el nombre de la salida ya escrito.</p>
+    <div class="callout">
+      <svg class="ico"><use href="#i-alert"/></svg>
+      <span><strong>Para ser claro:</strong> la web no evita que WhatsApp revise tu cuenta, eso lo decide WhatsApp. Lo que hace es que dejes de necesitar los envíos masivos, que es lo que provocó el bloqueo.</span>
+    </div>
+  </section>
+</div>
+
+<!-- ASÍ SE VERÍA -->
+<section class="alt fade">
+  <div class="wrap">
+    <div class="eyebrow">Así se vería</div>
+    <h2>Oscura, editorial y con vos adelante</h2>
+    <p class="section-intro">Una web a la altura de lo que vendés: fotos grandes, mucho aire y tu frase de siempre, «Donde quieras ir, te llevamos», como portada. Arriba a la derecha, el idioma se cambia de verdad: castellano, inglés e italiano.</p>
+  </div>
+  <div class="wrap-wide">
+    <figure>
+      <div class="shot"><div class="shot-bar"><i></i><i></i><i></i><span>Portada</span></div><img src="vista-pc.jpg" width="1440" height="900" alt="Portada de la web propuesta, con el desierto y la frase Donde quieras ir, te llevamos" /></div>
+      <figcaption>Abajo a la derecha, «Ahora: Andrea está recorriendo Singapur». Lo cambiás vos desde el panel cada vez que llegás a un destino nuevo: es la manera más corta de decir «lo que te propongo, lo conozco».</figcaption>
+    </figure>
+    <div class="duo-shots">
+      <figure style="margin:0"><div class="shot"><div class="shot-bar"><i></i><i></i><i></i><span>Salidas con fecha</span></div><img src="salidas-pc.jpg" width="1440" height="900" alt="Grilla de salidas con fecha, precio y botones de compartir y WhatsApp" loading="lazy" /></div>
+        <figcaption>Cada salida con fecha, qué incluye y precio. Dos botones: <strong>compartir</strong> (manda el link de esa salida) y <strong>WhatsApp</strong> (te escribe con la salida ya nombrada). Los filtros separan Caribe, ciudades y Brasil.</figcaption></figure>
+      <figure style="margin:0"><div class="movil"><img src="salidas-movil.jpg" width="780" height="1688" alt="Salidas vistas en el celular" loading="lazy" /></div></figure>
+    </div>
+    <div class="dos-shots">
+      <figure><div class="shot"><div class="shot-bar"><i></i><i></i><i></i><span>Lo vivo para asesorarte</span></div><img src="vivo-pc.jpg" width="1440" height="900" alt="Sección con la foto de Andrea en Singapur" loading="lazy" /></div><figcaption>Tus fotos en primera persona y un «cuaderno de viaje» del último destino, con lo que viste y probaste.</figcaption></figure>
+      <figure><div class="shot"><div class="shot-bar"><i></i><i></i><i></i><span>Viajes a medida</span></div><img src="destinos-pc.jpg" width="1440" height="900" alt="Mosaico de destinos exóticos: Bagan, Socotra, Maldivas" loading="lazy" /></div><figcaption>Los destinos que pocos conocen, que son tu especialidad. Cada uno abre una consulta por WhatsApp.</figcaption></figure>
+    </div>
+    <div class="dos-shots">
+      <figure><div class="shot"><div class="shot-bar"><i></i><i></i><i></i><span>Contacto</span></div><img src="contacto-pc.jpg" width="1440" height="900" alt="Formulario ¿A dónde querés ir? que se envía por WhatsApp" loading="lazy" /></div><figcaption>«¿A dónde querés ir?»: destino, fechas y cuántos viajan. Al enviar, se abre WhatsApp con todo ya escrito.</figcaption></figure>
+      <figure><div class="shot"><div class="shot-bar"><i></i><i></i><i></i><span>En italiano</span></div><img src="vista-it.jpg" width="1440" height="900" alt="La portada en italiano" loading="lazy" /></div><figcaption>La misma web en italiano. También el mensaje de WhatsApp sale en el idioma de quien escribe.</figcaption></figure>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="demo-cta">
+      <p><strong>Abrila y probala:</strong> cambiá el idioma, filtrá las salidas, tocá compartir y mirala en el celular. Las salidas y precios los tomé de tus publicaciones de octubre y las fotos tuyas son de tu Instagram; <strong>las fotos de destinos son ilustrativas</strong> y en la web final van las tuyas o las de los hoteles.</p>
+      <a class="btn is-fill" href="demo/" target="_blank" rel="noopener">Abrir la idea de diseño<svg class="ico"><use href="#i-arrow"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- INSTAGRAM -->
+<div class="wrap">
+  <section class="fade">
+    <div class="eyebrow">Lo que ya está en Instagram</div>
+    <h2>Qué pasa a la web y qué queda en Instagram</h2>
+    <p class="p">Me pediste que lo que ya publicaste esté en la web, y que lo cargue yo. Tenés 854 publicaciones: muchas son salidas con fecha y precio que ya pasaron. Si las pasamos todas, alguien ve un precio de 2024 y te escribe para pedirlo. Por eso te propongo esto:</p>
+    <ol class="pasos-ig">
+      <li><span><strong>Cargo yo todo lo vigente.</strong><small>Las salidas que siguen a la venta y los destinos que seguís ofreciendo, con sus fotos y textos ordenados. En la práctica sale casi todo de los últimos meses.</small></span></li>
+      <li><span><strong>Lo anterior queda en Instagram, a un clic.</strong><small>La web muestra tus últimas fotos y un botón a @andreacsavino. Nada se pierde y no hay precios vencidos a la vista.</small></span></li>
+      <li><span><strong>De ahí en adelante, lo subís vos.</strong><small>Desde el panel, desde el celular: cargar una salida es completar destino, fecha, qué incluye, precio y foto.</small></span></li>
+    </ol>
+    <p class="p">Cada opción dice cuántas salidas y destinos cargo yo al empezar.</p>
+  </section>
+</div>
+
+<!-- DOMINIO -->
+<section class="alt fade">
+  <div class="wrap">
+    <div class="eyebrow">El nombre</div>
+    <h2>La dirección de la web</h2>
+    <p class="section-intro">Como me contaste, la empresa factura a tu nombre y VIP &amp; Exotic es el nombre del área de viajes. Te propongo que la web lleve el nombre de la marca y que vos seas la cara. Estas tres hoy figuran libres (se confirma al registrarlas):</p>
+    <div class="dominios">
+      <div class="dom is-reco"><b>vipexotictravel.com</b><span>La que recomiendo. El .com se entiende igual en Italia o en China, y dice «travel» sin tener que explicarlo.</span></div>
+      <div class="dom"><b>vipexotic.com.ar</b><span>Más corta, pero el .com.ar le dice al cliente de afuera que es una agencia local.</span></div>
+      <div class="dom"><b>andreasavino.com.ar</b><span>Si preferís que la marca seas vos. Sirve también como segunda dirección que lleve a la principal.</span></div>
+    </div>
+    <p class="p">El dominio se registra a tu nombre y lo pagás vos directamente, una vez por año. El alojamiento de la web no tiene costo mensual.</p>
+  </div>
+</section>
+
+<!-- OPCIONES -->
+<section class="fade" id="opciones" data-visto="opciones">
+  <div class="wrap">
+    <div class="eyebrow">Las tres opciones</div>
+    <h2>Tres formas de hacerlo</h2>
+    <p class="section-intro">Cada opción suma lo de la anterior. Se paga <strong>la mitad al empezar y la mitad al entregar</strong>; si preferís pagar todo al empezar, tenés <strong>10% de descuento</strong>.</p>
+  </div>
+  <div class="wrap-wide">
+    <div class="escalas">
+      <article class="escala">
+        <div class="escala-head">
+          <div class="escala-top"><span class="ico-box"><svg class="ico"><use href="#i-layout"/></svg></span><span class="escala-num">Opción 1</span></div>
+          <div class="escala-title">Web con salidas</div>
+          <p class="escala-tagline">Lo urgente: un lugar propio con tus salidas y un link para cada una.</p>
+        </div>
+        <div class="escala-price">
+          <div class="escala-price-value" data-op="1" data-v="lista">$650.000</div>
+          <div class="escala-facts">
+            <div><svg class="ico"><use href="#i-card"/></svg><span><b data-op="1" data-v="mitad">2 pagos de $325.000</b>, o <b data-op="1" data-v="uno">$585.000 en un pago</b></span></div>
+            <div><svg class="ico"><use href="#i-clock"/></svg><span><b data-plazo="1">2 semanas</b></span></div>
+            <div><svg class="ico"><use href="#i-globe"/></svg><span><b>En castellano</b></span></div>
+          </div>
+        </div>
+        <div class="escala-body">
+          <ul class="ticks">
+            <li><svg class="ico"><use href="#i-check"/></svg>El diseño del boceto, en compu y en celular: portada, salidas, «Lo vivo para asesorarte», destinos, cómo trabajás, referidos y contacto.</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>Cada salida con su link para compartir y su botón de WhatsApp con la salida ya nombrada.</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>Formulario «¿A dónde querés ir?» que llega a tu WhatsApp, botón flotante de WhatsApp y enlace a Instagram.</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>Un panel simple para cargar, editar y pausar salidas desde el celular.</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>Cargo yo hasta 8 salidas y 6 destinos vigentes.</li>
+          </ul>
+          <p class="sirve"><b>Sirve si</b> lo que más te urge es dejar de depender de los envíos por WhatsApp.</p>
+        </div>
+      </article>
+      <article class="escala is-reco">
+        <span class="reco">La que recomiendo</span>
+        <div class="escala-head">
+          <div class="escala-top"><span class="ico-box"><svg class="ico"><use href="#i-globe"/></svg></span><span class="escala-num">Opción 2</span></div>
+          <div class="escala-title">Web en tres idiomas</div>
+          <p class="escala-tagline">La del boceto: castellano, inglés e italiano, y todo editable por vos.</p>
+        </div>
+        <div class="escala-price">
+          <div class="escala-price-value" data-op="2" data-v="lista">$950.000</div>
+          <div class="escala-facts">
+            <div><svg class="ico"><use href="#i-card"/></svg><span><b data-op="2" data-v="mitad">2 pagos de $475.000</b>, o <b data-op="2" data-v="uno">$855.000 en un pago</b></span></div>
+            <div><svg class="ico"><use href="#i-clock"/></svg><span><b data-plazo="2">3 semanas</b></span></div>
+            <div><svg class="ico"><use href="#i-globe"/></svg><span><b>Castellano, inglés e italiano</b></span></div>
+          </div>
+        </div>
+        <div class="escala-body">
+          <div class="ticks-plus">Todo lo de la opción 1, más</div>
+          <ul class="ticks">
+            <li><svg class="ico"><use href="#i-check"/></svg>La web completa en inglés e italiano, escrita y no traducida al vuelo, con el mensaje de WhatsApp en el idioma de quien escribe.</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>Desde el panel también cambiás los destinos, el cuaderno de viaje y el «Ahora estoy en…».</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>Cargo yo hasta 15 salidas y 10 destinos, con su texto en los tres idiomas.</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>Lo básico para Google: título y descripción en cada página, y que aparezca la vista previa linda cuando compartís un link.</li>
+          </ul>
+          <p class="sirve"><b>Sirve si</b> querés que la web le hable igual al cliente de Neuquén que al de Milán.</p>
+        </div>
+      </article>
+      <article class="escala">
+        <div class="escala-head">
+          <div class="escala-top"><span class="ico-box"><svg class="ico"><use href="#i-phone"/></svg></span><span class="escala-num">Opción 3</span></div>
+          <div class="escala-title">Tres idiomas + chino + «app»</div>
+          <p class="escala-tagline">Todo lo anterior, pensada para crecer: páginas por destino, chino y un primer paso hacia la app.</p>
+        </div>
+        <div class="escala-price">
+          <div class="escala-price-value" data-op="3" data-v="lista">$1.200.000</div>
+          <div class="escala-facts">
+            <div><svg class="ico"><use href="#i-card"/></svg><span><b data-op="3" data-v="mitad">2 pagos de $600.000</b>, o <b data-op="3" data-v="uno">$1.080.000 en un pago</b></span></div>
+            <div><svg class="ico"><use href="#i-clock"/></svg><span><b data-plazo="3">4 semanas</b></span></div>
+            <div><svg class="ico"><use href="#i-globe"/></svg><span><b>Cuatro idiomas</b></span></div>
+          </div>
+        </div>
+        <div class="escala-body">
+          <div class="ticks-plus">Todo lo de la opción 2, más</div>
+          <ul class="ticks">
+            <li><svg class="ico"><use href="#i-check"/></svg>Versión en chino de las páginas principales, para el público que estás trabajando.</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>Una página propia por destino (Marruecos, China, Bagan…), con su texto y fotos, para que Google te encuentre cuando alguien busca ese viaje.</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>Se instala en el celular como una app, con tu ícono en la pantalla. No es la app completa, pero es el primer paso y queda lista para conectarla.</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>Medición de visitas (Google Analytics y píxel de Meta) para saber qué salida mira más la gente.</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>Una capacitación con vos o con quien cargue las salidas.</li>
+          </ul>
+          <p class="sirve"><b>Sirve si</b> querés dejar la base armada para la app y para salir a buscar clientes afuera.</p>
+        </div>
+      </article>
+    </div>
+
+    <div class="wrap" style="padding:0;margin-top:40px">
+      <h3 style="margin-top:0">De un vistazo</h3>
+      <div class="tabla-wrap">
+        <table class="cmp vistazo">
+          <thead><tr><th></th><th>Opción 1</th><th class="th-reco">Opción 2</th><th>Opción 3</th></tr></thead>
+          <tbody>
+            <tr><td>Diseño del boceto, en compu y celular</td><td>✓</td><td>✓</td><td>✓</td></tr>
+            <tr><td>Salidas con link para compartir y WhatsApp</td><td>✓</td><td>✓</td><td>✓</td></tr>
+            <tr><td>Panel para cargar salidas</td><td>✓</td><td>✓</td><td>✓</td></tr>
+            <tr><td>Salidas y destinos que cargo yo</td><td>8 y 6</td><td>15 y 10</td><td>15 y 10</td></tr>
+            <tr><td>Inglés e italiano</td><td>—</td><td>✓</td><td>✓</td></tr>
+            <tr><td>Panel para destinos, cuaderno y «Ahora estoy en…»</td><td>—</td><td>✓</td><td>✓</td></tr>
+            <tr><td>Chino</td><td>—</td><td>—</td><td>✓</td></tr>
+            <tr><td>Una página por destino para Google</td><td>—</td><td>—</td><td>✓</td></tr>
+            <tr><td>Instalable como app, medición y capacitación</td><td>—</td><td>—</td><td>✓</td></tr>
+            <tr><td><b>Plazo</b></td><td data-plazo="1">2 semanas</td><td data-plazo="2">3 semanas</td><td data-plazo="3">4 semanas</td></tr>
+            <tr><td><b>En 2 pagos</b></td><td data-op="1" data-v="lista">$650.000</td><td data-op="2" data-v="lista">$950.000</td><td data-op="3" data-v="lista">$1.200.000</td></tr>
+            <tr><td><b>En 1 pago (−10%)</b></td><td data-op="1" data-v="uno2">$585.000</td><td data-op="2" data-v="uno2">$855.000</td><td data-op="3" data-v="uno2">$1.080.000</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="callout is-ok" style="max-width:900px;margin:28px auto 0">
+      <svg class="ico"><use href="#i-check"/></svg>
+      <span><strong>En las tres, todo queda a tu nombre</strong>: el dominio, el alojamiento y los accesos. Se entrega con un video corto que muestra cómo cargar una salida, y con <strong>30 días de garantía</strong> para arreglos y cambios chicos. Después, los cambios se cotizan aparte.</span>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <section class="fade" style="padding-top:0">
+    <div class="eyebrow">Más adelante</div>
+    <h2>La app propia</h2>
+    <p class="p">Me contaste que a mediano plazo querés una aplicación para tus clientes. Es un proyecto en sí mismo y conviene hacerlo cuando la web ya esté andando y sepas qué usan más tus clientes. La web se arma pensando en eso: las salidas y los destinos quedan guardados de forma que <strong>la app los pueda leer sin cargar nada dos veces</strong>. Cuando quieras, lo charlamos y te armo una propuesta aparte.</p>
+  </section>
+
+  <section class="fade" style="padding-top:0">
+    <div class="eyebrow">Cómo se paga</div>
+    <h2>Dos formas</h2>
+    <div class="need-grid">
+      <div class="need"><svg class="ico"><use href="#i-card"/></svg><span>En 2 pagos<small>Mitad al empezar y mitad al entregar, al precio de lista</small></span></div>
+      <div class="need"><svg class="ico"><use href="#i-check"/></svg><span>En 1 pago al empezar, 10% menos<small>Por transferencia o Mercado Pago, con factura</small></span></div>
+    </div>
+  </section>
+
+  <section class="fade" style="padding-top:0">
+    <div class="eyebrow">Para arrancar</div>
+    <h2>Qué necesito de tu lado</h2>
+    <div class="need-grid">
+      <div class="need"><svg class="ico"><use href="#i-file"/></svg><span>Las salidas vigentes<small>Destino, fechas, qué incluye y precio. Con mandarme los flyers alcanza: los paso yo</small></span></div>
+      <div class="need"><svg class="ico"><use href="#i-image"/></svg><span>Tus fotos de viaje en buena calidad<small>Las originales del celular, no las de Instagram, que vienen achicadas</small></span></div>
+      <div class="need"><svg class="ico"><use href="#i-layout"/></svg><span>El logo de VIP &amp; Exotic<small>El archivo original, si lo tenés; si no, lo resuelvo</small></span></div>
+      <div class="need"><svg class="ico"><use href="#i-link"/></svg><span>El nombre elegido para la web<small>Y registrarlo a tu nombre; te guío paso a paso</small></span></div>
+    </div>
+    <p class="p" style="margin-top:22px"><strong>No incluye:</strong> manejo de redes, diseño de flyers ni anuncios. Si más adelante querés anuncios para llevar gente a tus salidas, te armo una propuesta aparte.</p>
+  </section>
+
+  <section class="fade cierre" data-visto="final">
+    <div class="eyebrow">Siguiente paso</div>
+    <h2>Elegí la opción y arrancamos</h2>
+    <p>Decime cuál te cierra, o lo charlamos en una llamada o por audio. Si arrancamos el lunes 16 de noviembre y me pasás las salidas esa primera semana, la opción recomendada está lista <span id="fin-reco">la semana del 7 de diciembre</span>, a tiempo para vender las salidas de fin de año y del verano.</p>
+    <a class="btn" href="https://lautaromendez.com.ar/portfolio" target="_blank" rel="noopener">Ver trabajos anteriores<svg class="ico"><use href="#i-arrow"/></svg></a>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">Propuesta preparada por Lautaro Méndez · 14 de noviembre de 2026 · Precios válidos por 15 días</div>
+</footer>
+
+<script>
+  // PRECIOS Y PLAZOS: cambiar solo acá. Precio de lista (en 2 pagos); el de un pago sale con 10% menos.
+  const PRECIOS = { 1: 650000, 2: 950000, 3: 1200000 };
+  const PLAZOS = { 1: 2, 2: 3, 3: 4 };          // en semanas
+  const INICIO = new Date(2026, 10, 16);        // lunes 16 de noviembre de 2026
+  const RECOMENDADA = 2;
+  const DESCUENTO = 0.10;
+
+  const $ = n => '$' + Math.round(n).toLocaleString('es-AR');
+  document.querySelectorAll('[data-op]').forEach(el => {
+    const p = PRECIOS[el.dataset.op]; if (!p) return;
+    const uno = Math.round(p * (1 - DESCUENTO) / 500) * 500;
+    el.textContent = { lista: $(p), mitad: `2 pagos de ${$(p / 2)}`, uno: `${$(uno)} en un pago`, uno2: $(uno) }[el.dataset.v];
+  });
+  document.querySelectorAll('[data-plazo]').forEach(el => { el.textContent = `${PLAZOS[el.dataset.plazo]} semanas`; });
+  const fin = new Date(INICIO); fin.setDate(fin.getDate() + PLAZOS[RECOMENDADA] * 7);
+  document.getElementById('fin-reco').textContent = `la semana del ${fin.getDate()} de ${fin.toLocaleDateString('es-AR', { month: 'long' })}`;
+
+  window.addEventListener('scroll', () => {
+    const h = document.documentElement.scrollHeight - window.innerHeight;
+    document.getElementById('progress').style.width = (h > 0 ? document.documentElement.scrollTop / h * 100 : 0) + '%';
+  });
+  const fades = document.querySelectorAll('.fade');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } }), { threshold: 0.04 });
+    fades.forEach(el => io.observe(el));
+  } else {
+    fades.forEach(el => el.classList.add('visible'));
+  }
+</script>
+<script src="/propuestas/_visto.js" data-p="andrea-savino" data-n="Andrea Savino" defer></script>
+</body>
+</html>
