@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&display=swap" rel="stylesheet" />
-<link rel="preload" as="image" href="img/hero.jpg" />
+<link rel="preload" as="image" href="img/s1.jpg" />
 <script>document.documentElement.classList.add('js');</script>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -52,8 +52,19 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 /* HERO */
 .hero{position:relative;height:100svh;min-height:640px;overflow:hidden;display:flex;align-items:flex-end}
 .hero-foto{position:absolute;inset:-6% 0 0 0;will-change:transform}
-.hero-foto img{width:100%;height:100%;object-fit:cover;object-position:60% 50%}
-.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(12,17,19,.45) 0%,rgba(12,17,19,0) 26%,rgba(12,17,19,0) 45%,rgba(12,17,19,.88) 100%)}
+.hero-foto .sl{position:absolute;inset:0;opacity:0;transition:opacity 1.8s ease}
+.hero-foto .sl.on{opacity:1;z-index:1}
+.hero-foto .sl img{width:100%;height:100%;object-fit:cover;transform:scale(1.1)}
+.hero-foto .sl.on img,.hero-foto .sl.sale img{animation:kb 9s linear forwards}
+@keyframes kb{from{transform:scale(1.1)}to{transform:scale(1)}}
+.hero-der{display:flex;flex-direction:column;align-items:flex-end;gap:18px}
+.hero-lugar{display:flex;align-items:baseline;gap:12px;font-size:13px;color:var(--on-dark-mute);letter-spacing:.04em}
+.hero-lugar b{font-weight:600;color:var(--on-dark);font-size:14px;letter-spacing:.02em;transition:opacity .5s}
+.hero-barra{width:120px;height:2px;background:rgba(243,238,230,.22);border-radius:2px;overflow:hidden;align-self:center}
+.hero-barra i{display:block;height:100%;width:0;background:var(--on-dark)}
+.hero-barra i.corre{animation:barra 6.5s linear forwards}
+@keyframes barra{to{width:100%}}
+.hero::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(12,17,19,.5) 0%,rgba(12,17,19,0) 24%,rgba(12,17,19,0) 40%,rgba(12,17,19,.9) 100%),linear-gradient(90deg,rgba(12,17,19,.55) 0%,rgba(12,17,19,0) 60%)}
 .hero-in{position:relative;z-index:2;width:100%;padding:0 var(--gut) clamp(40px,7vh,80px);display:grid;grid-template-columns:1fr auto;align-items:end;gap:40px}
 .hero-pre{font-size:13px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--on-dark-mute);margin-bottom:22px}
 .hero h1{font-weight:300;font-size:clamp(46px,8.6vw,138px);line-height:.94;letter-spacing:-.045em;max-width:12ch}
@@ -236,7 +247,7 @@ footer{padding:40px var(--gut) 44px;display:flex;justify-content:space-between;a
 .js .rv.in{opacity:1;transform:none}
 .js .rv-d1{transition-delay:.1s}.js .rv-d2{transition-delay:.2s}.js .rv-d3{transition-delay:.3s}
 .js .hero .rv{transition-duration:1.3s}
-@media (prefers-reduced-motion:reduce){.js .rv{opacity:1;transform:none;transition:none}.hero-foto,.vivo-foto img,.refe-foto{transform:none!important}}
+@media (prefers-reduced-motion:reduce){.hero-foto .sl img{animation:none!important;transform:none}.js .rv{opacity:1;transform:none;transition:none}.hero-foto,.vivo-foto img,.refe-foto{transform:none!important}}
 
 @media (max-width:1080px){
   .nav-links{display:none}
@@ -249,6 +260,8 @@ footer{padding:40px var(--gut) 44px;display:flex;justify-content:space-between;a
   .nav .btn-wa{padding:11px}
   .hero-in{grid-template-columns:1fr}
   .ahora{max-width:none;align-self:start;margin-right:70px}
+  .hero-der{align-items:flex-start}
+  .hero::after{background:linear-gradient(180deg,rgba(12,17,19,.5) 0%,rgba(12,17,19,.25) 30%,rgba(12,17,19,.55) 55%,rgba(12,17,19,.92) 100%)}
   .hero h1{font-size:clamp(46px,13.5vw,70px)}
   .cifras{grid-template-columns:1fr;gap:34px}
   .grilla{grid-template-columns:1fr}
@@ -304,7 +317,7 @@ footer{padding:40px var(--gut) 44px;display:flex;justify-content:space-between;a
 
 <main>
 <section class="hero" id="inicio">
-  <div class="hero-foto" id="heroFoto"><img src="img/hero.jpg" width="2048" height="1146" alt="Dunas del Sahara al atardecer, con una caravana a lo lejos" fetchpriority="high" /></div>
+  <div class="hero-foto" id="heroFoto"><div class="sl on"><img src="img/s1.jpg" width="2048" height="1152" alt="Maldivas" fetchpriority="high" /></div><div class="sl"><img src="img/s2.jpg" width="2048" height="1152" alt="Bora Bora" loading="eager" fetchpriority="low" /></div><div class="sl"><img src="img/s3.jpg" width="2048" height="1152" alt="Seychelles" loading="eager" fetchpriority="low" /></div><div class="sl"><img src="img/s4.jpg" width="2048" height="1152" alt="Capadocia, Turquía" loading="eager" fetchpriority="low" /></div><div class="sl"><img src="img/s5.jpg" width="2048" height="1152" alt="Sahara, Marruecos" loading="eager" fetchpriority="low" /></div><div class="sl"><img src="img/s6.jpg" width="2048" height="1152" alt="El Nido, Filipinas" loading="eager" fetchpriority="low" /></div></div>
   <div class="hero-in">
     <div>
       <p class="hero-pre rv" data-t="hpre">Andrea Savino · Viajes a medida por el mundo</p>
@@ -315,9 +328,12 @@ footer{padding:40px var(--gut) 44px;display:flex;justify-content:space-between;a
         <a class="btn btn-linea" href="#salidas"><span data-t="cta2">Ver salidas con fecha</span><svg class="ico-trazo"><use href="#i-arrow"/></svg></a>
       </div>
     </div>
-    <div class="ahora rv rv-d3">
+    <div class="hero-der rv rv-d3">
+    <div class="hero-lugar"><span id="lugarN">01 / 06</span><b id="lugar">Maldivas</b><span class="hero-barra"><i id="barra"></i></span></div>
+    <div class="ahora">
       <img src="img/andrea-calle.jpg" width="960" height="981" alt="Andrea en Singapur" />
       <div><small data-t="ahora1">Ahora</small><span data-t="ahora2">Andrea está recorriendo Singapur</span></div>
+    </div>
     </div>
   </div>
 </section>
@@ -573,7 +589,7 @@ function setLang(l){
   document.querySelectorAll('.idiomas button').forEach(b => b.setAttribute('aria-pressed', b.dataset.lang === l));
   document.querySelectorAll('#listaIdiomas span').forEach((s, i) => s.classList.toggle('on', i === {es:0,en:1,it:2}[l]));
   document.querySelectorAll('.wa-link').forEach(linkWA);
-  pintarSalidas();
+  pintarSalidas(); if (window.marcaLugar) document.getElementById('lugar').textContent = LUGARES[[...document.querySelectorAll('#heroFoto .sl')].findIndex(x => x.classList.contains('on'))][l];
   try { localStorage.setItem('vip-lang', l); } catch (_) {}
 }
 document.querySelectorAll('.idiomas button').forEach(b => b.addEventListener('click', () => setLang(b.dataset.lang)));
@@ -611,6 +627,21 @@ function onScroll(){
 }
 addEventListener('scroll', () => { if (!tick) { requestAnimationFrame(onScroll); tick = true; } }, { passive: true });
 
+
+/* pase de imágenes de la portada */
+const LUGARES = [{"es": "Maldivas", "en": "Maldives", "it": "Maldive"}, {"es": "Bora Bora", "en": "Bora Bora", "it": "Bora Bora"}, {"es": "Seychelles", "en": "Seychelles", "it": "Seychelles"}, {"es": "Capadocia, Turquía", "en": "Cappadocia, Turkey", "it": "Cappadocia, Turchia"}, {"es": "Sahara, Marruecos", "en": "Sahara, Morocco", "it": "Sahara, Marocco"}, {"es": "El Nido, Filipinas", "en": "El Nido, Philippines", "it": "El Nido, Filippine"}];
+(() => {
+  const sl = [...document.querySelectorAll('#heroFoto .sl')]; const barra = document.getElementById('barra');
+  let k = 0;
+  const marca = () => { document.getElementById('lugarN').textContent = String(k + 1).padStart(2, '0') + ' / ' + String(sl.length).padStart(2, '0'); document.getElementById('lugar').textContent = LUGARES[k][lang] || LUGARES[k].es; barra.classList.remove('corre'); void barra.offsetWidth; barra.classList.add('corre'); };
+  window.marcaLugar = marca;
+  marca();
+  setInterval(() => {
+    if (document.hidden) return;
+    const prev = sl[k]; k = (k + 1) % sl.length;
+    sl.forEach(x => x.classList.remove('sale')); prev.classList.add('sale'); prev.classList.remove('on'); sl[k].classList.add('on'); marca();
+  }, 6500);
+})();
 let ini = 'es'; try { const s = localStorage.getItem('vip-lang'); if (s && T[s]) ini = s; } catch (_) {}
 setLang(ini); onScroll();
 </script>
