@@ -10,233 +10,265 @@
   <meta property="og:site_name" content="Lautaro Méndez" />
   <meta property="og:url" content="https://lautaromendez.com.ar/propuestas/varano-trigo/demo/" />
   <meta property="og:title" content="Boceto · Varano-Trigo Estudio Legal" />
-  <meta property="og:description" content="Una idea de la web del estudio, con su identidad: azul marino, arena y dorado." />
+  <meta property="og:description" content="Una idea de la web del estudio: sobria, editorial y pensada para pymes." />
   <meta property="og:image" content="https://lautaromendez.com.ar/propuestas/varano-trigo/og.jpg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta name="twitter:card" content="summary_large_image" />
   <title>Varano-Trigo · Estudio Legal · Asesoría legal para empresas y pymes</title>
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&display=swap" />
-  <script>document.documentElement.classList.add('js');</script>
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+  <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=switzer@300,400,500&f[]=zodiak@300,301,400,401&display=swap" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    /* Identidad de Varano-Trigo */
     :root {
       --marino: #0F2340;
-      --marino-2: #172E50;
-      --marino-3: #0A1A31;
-      --arena: #E8DDD0;
-      --arena-2: #F1EAE1;
-      --neutro: #F7F5FE;
-      --dorado: #C5A880;
-      --dorado-2: #A88B60;
+      --marino-2: #0A182D;
+      --oro: #C5A880;
+      --oro-txt: #8A6F4A;
+      --fondo: #F4F4F5;
       --tinta: #0F2340;
-      --texto: #3B4558;
-      --gris: #6B7487;
-      --linea: #E3DED6;
-      --serif: 'Playfair Display', 'Cormorant Garamond', Georgia, serif;
-      --sans: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+      --texto: #3A4352;
+      --gris: #6E7581;
+      --tenue: #A3A8B1;
+      --linea: #E2E3E6;
+      --sans: 'Switzer', system-ui, -apple-system, 'Segoe UI', sans-serif;
+      --serif: 'Zodiak', Georgia, 'Times New Roman', serif;
+      --pad: clamp(20px, 4vw, 56px);
     }
     html { scroll-behavior: smooth; }
-    body { background: var(--neutro); color: var(--texto); font-family: var(--sans); font-size: 16px; line-height: 1.65; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+    body { background: #fff; color: var(--texto); font-family: var(--sans); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
     img { display: block; max-width: 100%; height: auto; }
-    a { color: inherit; }
-    .ico { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
+    a { color: inherit; text-decoration: none; }
+    em { font-family: var(--serif); font-style: italic; font-weight: 300; letter-spacing: -0.01em; }
+    .ico { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
+    .wrap { max-width: 1360px; margin: 0 auto; padding: 0 var(--pad); }
 
-    .aviso { background: var(--dorado); color: var(--marino); font-size: 13px; text-align: center; padding: 7px 16px; font-weight: 500; }
-    .wrap { max-width: 1180px; margin: 0 auto; padding: 0 32px; }
+    .aviso { background: var(--marino); color: rgb(255 255 255 / .82); font-size: 12.5px; text-align: center; padding: 7px 16px; letter-spacing: .01em; }
+    .aviso b { color: var(--oro); font-weight: 500; }
 
     /* HEADER */
-    header { position: sticky; top: 0; z-index: 50; background: rgb(247 245 254 / .92); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid var(--linea); }
-    .nav { display: flex; align-items: center; gap: 36px; height: 78px; }
-    .marca { display: flex; flex-direction: column; text-decoration: none; line-height: 1; }
-    .marca b { font-family: var(--serif); font-weight: 500; font-size: 23px; letter-spacing: .06em; color: var(--marino); }
-    .marca span { margin-top: 6px; font-size: 9.5px; font-weight: 500; letter-spacing: .42em; color: var(--dorado-2); padding-left: 2px; }
-    .menu { display: flex; gap: 30px; margin-left: auto; list-style: none; }
-    .menu a { text-decoration: none; font-size: 14px; color: var(--texto); transition: color .15s; }
-    .menu a:hover { color: var(--dorado-2); }
-    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 13px 24px; border-radius: 2px; font-size: 14px; font-weight: 500; letter-spacing: .01em; text-decoration: none; border: 1px solid var(--marino); color: var(--marino); background: transparent; cursor: pointer; font-family: inherit; transition: background .2s, color .2s, border-color .2s; white-space: nowrap; }
-    .btn:hover { background: var(--marino); color: #fff; }
-    .btn.is-fill { background: var(--marino); color: #fff; }
-    .btn.is-fill:hover { background: var(--marino-3); }
-    .btn.is-oro { background: var(--dorado); border-color: var(--dorado); color: var(--marino); }
-    .btn.is-oro:hover { background: #d3ba95; border-color: #d3ba95; }
-    .btn.is-claro { border-color: rgb(255 255 255 / .35); color: #fff; }
-    .btn.is-claro:hover { background: rgb(255 255 255 / .08); border-color: #fff; }
+    header { position: sticky; top: 0; z-index: 50; background: rgb(255 255 255 / .9); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--linea); }
+    .nav { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; height: 74px; }
+    .logo { display: inline-flex; flex-direction: column; line-height: 1; }
+    .logo b { font-family: var(--serif); font-weight: 400; font-size: 20px; letter-spacing: .1em; color: var(--marino); }
+    .logo span { margin-top: 6px; font-size: 9px; font-weight: 500; letter-spacing: .48em; color: var(--oro-txt); }
+    .menu { display: flex; gap: 34px; list-style: none; }
+    .menu a { font-size: 14px; color: var(--texto); position: relative; padding: 4px 0; }
+    .menu a::after { content: ""; position: absolute; left: 0; right: 100%; bottom: 0; height: 1px; background: var(--marino); transition: right .3s ease; }
+    .menu a:hover::after { right: 0; }
+    .nav-der { justify-self: end; display: flex; align-items: center; gap: 10px; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 14px 24px; border-radius: 999px; font-size: 14.5px; font-weight: 500; font-family: inherit; border: 1px solid var(--marino); color: var(--marino); background: transparent; cursor: pointer; transition: background .25s, color .25s, border-color .25s; white-space: nowrap; }
+    .btn .ico { width: 16px; height: 16px; transition: transform .25s; }
+    .btn:hover .ico { transform: translateX(3px); }
+    .btn.lleno { background: var(--marino); color: #fff; }
+    .btn.lleno:hover { background: var(--marino-2); }
+    .btn:not(.lleno):hover { background: var(--marino); color: #fff; }
     .nav .btn { padding: 10px 18px; font-size: 13.5px; }
-    .burger { display: none; margin-left: auto; background: none; border: 0; color: var(--marino); cursor: pointer; padding: 8px; }
+    .burger { display: none; background: none; border: 0; color: var(--marino); cursor: pointer; padding: 6px; }
     .burger .ico { width: 24px; height: 24px; }
 
     /* HERO */
-    .hero { position: relative; background: var(--marino); color: #fff; overflow: hidden; }
-    .hero::before { content: ""; position: absolute; inset: 0; background:
-      radial-gradient(900px 500px at 85% 20%, rgb(197 168 128 / .14), transparent 60%),
-      linear-gradient(90deg, transparent calc(100% - 1px), rgb(255 255 255 / .04) 0) 0 0 / 120px 100%; pointer-events: none; }
-    .hero-in { position: relative; display: grid; grid-template-columns: 1.15fr .85fr; gap: 64px; align-items: center; padding-top: 120px; padding-bottom: 128px; }
-    .sobre { display: inline-flex; align-items: center; gap: 14px; font-size: 11.5px; font-weight: 500; letter-spacing: .3em; text-transform: uppercase; color: var(--dorado); margin-bottom: 30px; }
-    .sobre::before { content: ""; width: 36px; height: 1px; background: var(--dorado); }
-    .hero h1 { font-family: var(--serif); font-weight: 400; font-size: clamp(42px, 6vw, 76px); line-height: 1.04; letter-spacing: -0.015em; margin-bottom: 28px; }
-    .hero h1 em { font-style: italic; color: var(--dorado); }
-    .hero-sub { font-size: 18px; color: rgb(255 255 255 / .74); max-width: 500px; margin-bottom: 40px; font-weight: 300; }
-    .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 30px; }
-    .hero-nota { font-size: 13.5px; color: rgb(255 255 255 / .55); display: flex; align-items: center; gap: 10px; }
-    .hero-nota .ico { color: var(--dorado); width: 16px; height: 16px; }
+    .hero { padding-top: 40px; }
+    .hero-top { display: flex; justify-content: space-between; gap: 24px; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--gris); padding-bottom: 18px; border-bottom: 1px solid var(--linea); }
+    .hero-top ul { display: flex; gap: 28px; list-style: none; }
+    .hero-top li { display: flex; gap: 10px; }
+    .hero-top li span { color: var(--oro-txt); }
+    .hero-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 0 24px; padding: 56px 0 72px; align-items: end; }
+    .hero h1 { grid-column: 1 / 9; font-weight: 300; font-size: clamp(52px, 8.6vw, 140px); line-height: .94; letter-spacing: -0.045em; color: var(--marino); }
+    .hero h1 em { color: var(--oro-txt); letter-spacing: -0.03em; }
+    .ln { display: block; overflow: hidden; padding-bottom: .06em; }
+    .ln > span { display: block; }
+    .hero-foto { grid-column: 9 / 13; grid-row: 1 / 3; position: relative; align-self: stretch; }
+    .marco { position: absolute; inset: 22px -22px -22px 22px; border: 1px solid var(--oro); pointer-events: none; }
+    .foto { position: relative; overflow: hidden; height: 100%; min-height: 520px; background: #d9d6d0; }
+    .foto img { position: absolute; inset: -8% 0; width: 100%; height: 116%; object-fit: cover; }
+    .foto figcaption { position: absolute; left: 16px; bottom: 14px; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: #fff; text-shadow: 0 1px 8px rgb(0 0 0 / .4); }
+    .hero-pie { grid-column: 1 / 8; display: flex; gap: 40px; align-items: flex-end; justify-content: space-between; margin-top: 44px; flex-wrap: wrap; }
+    .hero-pie p { max-width: 380px; font-size: 18px; line-height: 1.5; color: var(--texto); }
+    .ctas { display: flex; gap: 10px; flex-wrap: wrap; }
+    .nota-reunion { grid-column: 1 / 8; margin-top: 22px; font-size: 13.5px; color: var(--gris); display: flex; gap: 10px; align-items: center; }
+    .nota-reunion i { width: 7px; height: 7px; border-radius: 50%; background: var(--oro); }
 
-    .placa { position: relative; border: 1px solid rgb(197 168 128 / .35); padding: 44px 40px 36px; background: rgb(255 255 255 / .02); }
-    .placa::before { content: ""; position: absolute; inset: 10px; border: 1px solid rgb(197 168 128 / .14); pointer-events: none; }
-    .placa-mono { font-family: var(--serif); font-size: 108px; line-height: .9; color: transparent; -webkit-text-stroke: 1px var(--dorado); letter-spacing: -.02em; margin-bottom: 34px; }
-    .placa-mono i { font-style: italic; }
-    .placa ol { list-style: none; counter-reset: a; }
-    .placa li { counter-increment: a; display: flex; align-items: baseline; gap: 18px; padding: 15px 0; border-top: 1px solid rgb(255 255 255 / .1); font-family: var(--serif); font-size: 21px; }
-    .placa li::before { content: "0" counter(a); font-family: var(--sans); font-size: 11px; letter-spacing: .14em; color: var(--dorado); }
+    .pilares { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; padding-bottom: 96px; }
+    .pilar { border-top: 1px solid var(--marino); padding-top: 18px; }
+    .pilar small { display: block; font-size: 12px; color: var(--oro-txt); letter-spacing: .1em; margin-bottom: 26px; }
+    .pilar b { display: block; font-weight: 400; font-size: 24px; letter-spacing: -0.02em; color: var(--marino); margin-bottom: 6px; }
+    .pilar p { font-size: 15px; color: var(--gris); max-width: 330px; }
 
-    /* PRINCIPIOS */
-    .principios { background: var(--arena); }
-    .principios .wrap { display: grid; grid-template-columns: repeat(3, 1fr); }
-    .pri { padding: 36px 32px 36px 0; }
-    .pri + .pri { padding-left: 32px; border-left: 1px solid rgb(15 35 64 / .12); }
-    .pri b { display: block; font-family: var(--serif); font-weight: 500; font-size: 22px; color: var(--marino); margin-bottom: 6px; }
-    .pri span { font-size: 14.5px; color: var(--texto); }
+    /* FRASE */
+    .frase { background: var(--fondo); padding: 140px 0; }
+    .frase p { max-width: 1120px; font-weight: 300; font-size: clamp(30px, 3.9vw, 58px); line-height: 1.16; letter-spacing: -0.03em; color: var(--marino); }
+    .frase em { color: var(--oro-txt); }
+    .frase .w { display: inline; }
 
-    /* SECCIONES */
-    section { padding: 120px 0; }
-    .cab { display: flex; justify-content: space-between; align-items: flex-end; gap: 40px; margin-bottom: 56px; }
-    .kicker { font-size: 11.5px; font-weight: 500; letter-spacing: .3em; text-transform: uppercase; color: var(--dorado-2); margin-bottom: 16px; display: flex; align-items: center; gap: 14px; }
-    .kicker::before { content: ""; width: 28px; height: 1px; background: currentColor; }
-    h2 { font-family: var(--serif); font-weight: 400; font-size: clamp(34px, 4.2vw, 50px); line-height: 1.1; color: var(--marino); letter-spacing: -0.01em; }
-    h2 em { font-style: italic; color: var(--dorado-2); }
-    .cab p { max-width: 420px; font-size: 15.5px; color: var(--gris); }
-    .ej { display: inline-block; font-size: 11px; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; color: var(--dorado-2); border: 1px dashed var(--dorado); padding: 3px 9px; border-radius: 2px; margin-top: 14px; }
+    /* COMUNES */
+    section { padding: 130px 0; }
+    .cab { display: grid; grid-template-columns: repeat(12, 1fr); gap: 24px; align-items: end; margin-bottom: 64px; }
+    .cab > div:first-child { grid-column: 1 / 8; }
+    .cab > div:last-child { grid-column: 9 / 13; }
+    .kicker { font-size: 12px; letter-spacing: .16em; text-transform: uppercase; color: var(--oro-txt); margin-bottom: 22px; display: flex; gap: 12px; }
+    .kicker::before { content: attr(data-n); color: var(--tenue); }
+    h2 { font-weight: 300; font-size: clamp(38px, 5vw, 76px); line-height: 1; letter-spacing: -0.04em; color: var(--marino); }
+    h2 em { color: var(--oro-txt); }
+    .cab p { font-size: 16px; color: var(--gris); }
+    .ej { display: inline-block; margin-top: 14px; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--gris); border: 1px solid var(--linea); padding: 4px 10px; border-radius: 999px; }
 
     /* ÁREAS */
-    .areas { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-    .area { position: relative; background: #fff; border: 1px solid var(--linea); padding: 44px 36px 36px; display: flex; flex-direction: column; transition: transform .3s ease, box-shadow .3s ease; }
-    .area::before { content: ""; position: absolute; top: -1px; left: 36px; width: 48px; height: 2px; background: var(--dorado); transition: width .35s ease; }
-    .area:hover { transform: translateY(-4px); box-shadow: 0 24px 50px -28px rgb(15 35 64 / .35); }
-    .area:hover::before { width: calc(100% - 72px); }
-    .area-num { font-family: var(--serif); font-style: italic; font-size: 15px; color: var(--dorado-2); margin-bottom: 18px; }
-    .area h3 { font-family: var(--serif); font-weight: 500; font-size: 27px; line-height: 1.15; color: var(--marino); margin-bottom: 14px; }
-    .area > p { font-size: 14.5px; color: var(--gris); margin-bottom: 26px; }
-    .area ul { list-style: none; border-top: 1px solid var(--linea); margin-bottom: 30px; }
-    .area li { padding: 12px 0; border-bottom: 1px solid var(--linea); font-size: 14.5px; color: var(--texto); display: flex; gap: 12px; align-items: baseline; }
-    .area li::before { content: ""; width: 5px; height: 5px; border-radius: 50%; background: var(--dorado); flex-shrink: 0; transform: translateY(-2px); }
-    .area .mas { margin-top: auto; font-size: 13.5px; font-weight: 500; color: var(--marino); text-decoration: none; display: inline-flex; gap: 8px; align-items: center; }
-    .area .mas .ico { width: 15px; height: 15px; transition: transform .2s; }
-    .area:hover .mas .ico { transform: translateX(4px); }
+    .areas { border-top: 1px solid var(--marino); }
+    .area { display: grid; grid-template-columns: 80px 1.1fr 1.4fr 48px; gap: 24px; padding: 44px 0 46px; border-bottom: 1px solid var(--linea); position: relative; }
+    .area::after { content: ""; position: absolute; left: 0; bottom: -1px; height: 1px; width: 0; background: var(--oro); transition: width .6s cubic-bezier(.2,.7,.2,1); }
+    .area:hover::after { width: 100%; }
+    .area-n { font-family: var(--serif); font-style: italic; font-weight: 300; font-size: 20px; color: var(--oro-txt); padding-top: 6px; }
+    .area h3 { font-weight: 300; font-size: clamp(30px, 3.2vw, 46px); line-height: 1.02; letter-spacing: -0.035em; color: var(--marino); }
+    .area h3 em { color: var(--oro-txt); }
+    .area-txt p { font-size: 16.5px; color: var(--texto); margin-bottom: 22px; max-width: 520px; }
+    .area-txt ul { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 10px 28px; }
+    .area-txt li { font-size: 14.5px; color: var(--gris); padding-left: 16px; position: relative; }
+    .area-txt li::before { content: "—"; position: absolute; left: 0; color: var(--tenue); }
+    .flecha { width: 48px; height: 48px; border: 1px solid var(--linea); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--marino); transition: background .3s, color .3s, border-color .3s, transform .3s; }
+    .area:hover .flecha { background: var(--marino); border-color: var(--marino); color: #fff; transform: rotate(-45deg); }
+
+    /* SITUACIONES */
+    .situ { background: var(--fondo); }
+    .situ-grid { display: grid; grid-template-columns: 5fr 7fr; gap: 72px; align-items: start; }
+    .situ-izq { position: sticky; top: 110px; }
+    .situ-izq h2 { margin-bottom: 26px; }
+    .situ-izq > p { font-size: 16px; color: var(--gris); max-width: 400px; margin-bottom: 36px; }
+    .situ-foto { position: relative; aspect-ratio: 16 / 10; overflow: hidden; }
+    .situ-foto img { width: 100%; height: 100%; object-fit: cover; }
+    .lista { list-style: none; border-top: 1px solid var(--marino); }
+    .lista li { display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: center; padding: 28px 0; border-bottom: 1px solid #DADBDF; transition: padding .35s ease; }
+    .lista li:hover { padding-left: 14px; }
+    .lista b { font-weight: 400; font-size: clamp(20px, 1.9vw, 27px); letter-spacing: -0.02em; line-height: 1.25; color: var(--marino); }
+    .lista span { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--oro-txt); white-space: nowrap; }
 
     /* ESTUDIO */
-    .estudio { background: #fff; }
-    .estudio-in { display: grid; grid-template-columns: .9fr 1.1fr; gap: 80px; align-items: start; margin-bottom: 80px; }
-    .estudio-txt p { font-size: 16.5px; color: var(--texto); margin-bottom: 18px; }
-    .estudio-txt p.lead { font-family: var(--serif); font-size: 24px; line-height: 1.4; color: var(--marino); }
-    .cifras { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--linea); margin-top: 32px; }
-    .cifra { padding: 22px 0 0; }
-    .cifra b { display: block; font-family: var(--serif); font-weight: 400; font-size: 38px; color: var(--marino); line-height: 1; margin-bottom: 8px; }
-    .cifra span { font-size: 13px; color: var(--gris); }
-    .equipo { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
-    .persona .foto { position: relative; aspect-ratio: 4 / 5; background: var(--arena-2); overflow: hidden; margin-bottom: 20px; }
-    .persona .foto svg { position: absolute; left: 50%; bottom: 0; width: 70%; transform: translateX(-50%); fill: #DCCFBE; }
-    .persona .foto small { position: absolute; top: 14px; left: 14px; font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--dorado-2); }
-    .persona b { display: block; font-family: var(--serif); font-weight: 500; font-size: 22px; color: var(--marino); margin-bottom: 2px; }
-    .persona .rol { font-size: 14px; color: var(--texto); }
-    .persona .mat { font-size: 12.5px; color: var(--gris); letter-spacing: .02em; margin-top: 6px; padding-top: 10px; border-top: 1px solid var(--linea); }
+    .estudio { background: var(--marino); color: rgb(255 255 255 / .74); }
+    .estudio h2 { color: #fff; }
+    .estudio h2 em, .estudio .kicker { color: var(--oro); }
+    .estudio .kicker::before { color: rgb(255 255 255 / .35); }
+    .est-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 24px; align-items: start; margin-bottom: 110px; }
+    .est-foto { grid-column: 1 / 6; position: relative; }
+    .est-foto .marco { inset: -22px 22px 22px -22px; border-color: rgb(197 168 128 / .55); }
+    .est-foto .foto { min-height: 0; aspect-ratio: 4 / 5; }
+    .est-txt { grid-column: 7 / 13; padding-top: 12px; }
+    .est-txt h2 { margin-bottom: 40px; }
+    .est-txt p { font-size: 17px; line-height: 1.65; margin-bottom: 18px; max-width: 560px; }
+    .est-txt p.lead { font-size: 23px; line-height: 1.4; color: #fff; font-weight: 300; letter-spacing: -0.01em; }
+    .tira { display: flex; flex-wrap: wrap; gap: 10px 36px; margin-top: 40px; padding-top: 22px; border-top: 1px solid rgb(255 255 255 / .16); font-size: 14px; }
+    .tira b { font-weight: 400; color: #fff; font-size: 22px; letter-spacing: -0.02em; margin-right: 8px; }
+    .equipo-cab { display: flex; justify-content: space-between; align-items: end; gap: 24px; margin-bottom: 36px; padding-bottom: 18px; border-bottom: 1px solid rgb(255 255 255 / .16); }
+    .equipo-cab h3 { font-weight: 300; font-size: 34px; letter-spacing: -0.03em; color: #fff; }
+    .equipo-cab .ej { color: rgb(255 255 255 / .6); border-color: rgb(255 255 255 / .2); margin: 0; }
+    .equipo { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .retrato { aspect-ratio: 4 / 5; background: #16294A; position: relative; overflow: hidden; margin-bottom: 20px; display: flex; align-items: center; justify-content: center; }
+    .retrato::before { content: ""; position: absolute; inset: 0; background: radial-gradient(120% 80% at 50% 0%, rgb(255 255 255 / .07), transparent 60%); }
+    .retrato span { font-family: var(--serif); font-weight: 300; font-style: italic; font-size: 92px; color: rgb(197 168 128 / .45); }
+    .retrato small { position: absolute; left: 14px; bottom: 12px; font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase; color: rgb(255 255 255 / .45); }
+    .persona b { display: block; font-weight: 400; font-size: 23px; letter-spacing: -0.02em; color: #fff; }
+    .persona .rol { font-size: 14.5px; margin-top: 2px; }
+    .persona .mat { font-size: 12.5px; letter-spacing: .04em; color: rgb(255 255 255 / .5); margin-top: 12px; padding-top: 12px; border-top: 1px solid rgb(255 255 255 / .12); }
 
-    /* BLOG */
-    .notas { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-    .nota { background: #fff; border: 1px solid var(--linea); display: flex; flex-direction: column; text-decoration: none; transition: border-color .25s, transform .3s; }
-    .nota:hover { border-color: var(--dorado); transform: translateY(-3px); }
-    .nota-tapa { position: relative; aspect-ratio: 16 / 9; background: var(--marino); color: var(--dorado); display: flex; align-items: flex-end; padding: 22px 24px; overflow: hidden; }
-    .nota-tapa::after { content: attr(data-n); position: absolute; right: 18px; top: -18px; font-family: var(--serif); font-style: italic; font-size: 150px; line-height: 1; color: rgb(197 168 128 / .12); }
-    .nota:nth-child(2) .nota-tapa { background: var(--marino-2); }
-    .nota:nth-child(3) .nota-tapa { background: var(--arena); color: var(--marino); }
-    .nota:nth-child(3) .nota-tapa::after { color: rgb(15 35 64 / .08); }
-    .nota-tapa span { position: relative; font-size: 11px; letter-spacing: .24em; text-transform: uppercase; }
-    .nota-cuerpo { padding: 26px 26px 28px; display: flex; flex-direction: column; flex: 1; }
-    .nota h3 { font-family: var(--serif); font-weight: 500; font-size: 22px; line-height: 1.25; color: var(--marino); margin-bottom: 12px; }
-    .nota p { font-size: 14.5px; color: var(--gris); margin-bottom: 20px; }
-    .nota-pie { margin-top: auto; display: flex; justify-content: space-between; font-size: 12.5px; color: var(--gris); padding-top: 14px; border-top: 1px solid var(--linea); }
-    .nota-pie b { font-weight: 500; color: var(--marino); }
+    /* NOTAS */
+    .notas { border-top: 1px solid var(--marino); }
+    .nota { display: grid; grid-template-columns: 160px 1fr 200px 48px; gap: 24px; align-items: center; padding: 34px 0; border-bottom: 1px solid var(--linea); }
+    .nota-cat { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--oro-txt); }
+    .nota h3 { font-weight: 300; font-size: clamp(22px, 2.3vw, 34px); letter-spacing: -0.03em; line-height: 1.12; color: var(--marino); transition: transform .4s ease; }
+    .nota:hover h3 { transform: translateX(10px); }
+    .nota-meta { font-size: 13.5px; color: var(--gris); }
+    .nota:hover .flecha { background: var(--marino); border-color: var(--marino); color: #fff; transform: rotate(-45deg); }
 
     /* CONTACTO */
-    .contacto { background: var(--marino); color: #fff; }
-    .contacto h2 { color: #fff; }
-    .contacto h2 em { color: var(--dorado); }
-    .contacto .kicker { color: var(--dorado); }
-    .contacto-in { display: grid; grid-template-columns: .85fr 1.15fr; gap: 72px; align-items: start; }
-    .contacto-txt > p { font-size: 16.5px; color: rgb(255 255 255 / .72); margin: 22px 0 40px; max-width: 420px; font-weight: 300; }
-    .datos { list-style: none; border-top: 1px solid rgb(255 255 255 / .12); }
-    .datos li { display: flex; gap: 16px; padding: 18px 0; border-bottom: 1px solid rgb(255 255 255 / .12); font-size: 15px; }
-    .datos .ico { color: var(--dorado); margin-top: 3px; }
-    .datos small { display: block; font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: rgb(255 255 255 / .45); margin-bottom: 2px; }
-    .datos a { text-decoration: none; }
-    .form { background: var(--neutro); color: var(--texto); padding: 44px 44px 40px; }
-    .form h3 { font-family: var(--serif); font-weight: 500; font-size: 26px; color: var(--marino); margin-bottom: 6px; }
-    .form > p { font-size: 14px; color: var(--gris); margin-bottom: 28px; }
-    .campos { display: grid; grid-template-columns: 1fr 1fr; gap: 18px 20px; }
-    .campo { display: flex; flex-direction: column; gap: 6px; }
+    .contacto { background: var(--fondo); }
+    .con-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 24px; align-items: start; }
+    .con-izq { grid-column: 1 / 6; }
+    .con-izq h2 { margin-bottom: 26px; }
+    .con-izq > p { font-size: 17px; color: var(--texto); max-width: 420px; margin-bottom: 44px; }
+    .datos { list-style: none; border-top: 1px solid var(--marino); }
+    .datos li { display: grid; grid-template-columns: 110px 1fr; gap: 16px; padding: 16px 0; border-bottom: 1px solid #DADBDF; font-size: 15.5px; color: var(--marino); }
+    .datos small { font-size: 11.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--gris); padding-top: 3px; }
+    .form { grid-column: 7 / 13; background: #fff; padding: 52px 52px 46px; }
+    .form h3 { font-weight: 300; font-size: 32px; letter-spacing: -0.03em; color: var(--marino); margin-bottom: 4px; }
+    .form > p { font-size: 14.5px; color: var(--gris); margin-bottom: 34px; }
+    .campos { display: grid; grid-template-columns: 1fr 1fr; gap: 26px 28px; }
+    .campo { display: flex; flex-direction: column; gap: 4px; }
     .campo.full { grid-column: 1 / -1; }
-    .campo label { font-size: 11.5px; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; color: var(--marino); }
-    .campo input, .campo textarea { font: inherit; font-size: 15px; color: var(--marino); background: transparent; border: 0; border-bottom: 1px solid #CFC6B9; padding: 9px 0; outline: none; transition: border-color .2s; border-radius: 0; }
-    .campo textarea { resize: vertical; min-height: 96px; }
-    .campo input:focus, .campo textarea:focus { border-color: var(--dorado-2); }
-    .form-pie { display: flex; align-items: center; justify-content: space-between; gap: 18px; margin-top: 28px; flex-wrap: wrap; }
-    .form-pie small { font-size: 12.5px; color: var(--gris); max-width: 280px; line-height: 1.5; }
-    .enviado { display: none; margin-top: 18px; padding: 14px 16px; background: var(--arena-2); border-left: 2px solid var(--dorado); font-size: 14px; color: var(--marino); }
+    .campo label { font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--gris); }
+    .campo input, .campo textarea { font: inherit; font-size: 17px; color: var(--marino); background: transparent; border: 0; border-bottom: 1px solid #CBCDD2; padding: 8px 0 10px; outline: none; border-radius: 0; transition: border-color .25s; }
+    .campo textarea { resize: vertical; min-height: 92px; }
+    .campo input:focus, .campo textarea:focus { border-color: var(--marino); }
+    .form-pie { display: flex; justify-content: space-between; align-items: center; gap: 18px; margin-top: 34px; flex-wrap: wrap; }
+    .form-pie small { font-size: 12.5px; color: var(--gris); max-width: 260px; line-height: 1.5; }
+    .enviado { display: none; margin-top: 20px; padding: 14px 16px; background: var(--fondo); border-left: 2px solid var(--oro); font-size: 14px; color: var(--marino); }
 
     /* FOOTER */
-    footer { background: var(--marino-3); color: rgb(255 255 255 / .6); padding: 56px 0 36px; font-size: 13.5px; }
-    .pie { display: flex; justify-content: space-between; gap: 32px; flex-wrap: wrap; padding-bottom: 32px; border-bottom: 1px solid rgb(255 255 255 / .1); margin-bottom: 24px; }
-    footer .marca b { color: #fff; }
-    footer .marca span { color: var(--dorado); }
-    .pie ul { list-style: none; display: flex; gap: 28px; flex-wrap: wrap; }
-    .pie a { text-decoration: none; }
-    .pie a:hover { color: var(--dorado); }
-    .legal { font-size: 12px; color: rgb(255 255 255 / .4); }
+    footer { background: var(--marino-2); color: rgb(255 255 255 / .55); padding: 90px 0 36px; font-size: 13.5px; }
+    .pie-grande { display: flex; justify-content: space-between; align-items: end; gap: 32px; flex-wrap: wrap; padding-bottom: 44px; border-bottom: 1px solid rgb(255 255 255 / .1); margin-bottom: 26px; }
+    .pie-logo b { display: block; font-family: var(--serif); font-weight: 300; font-size: clamp(44px, 7.5vw, 116px); letter-spacing: .02em; line-height: .9; color: #fff; }
+    .pie-logo span { display: block; margin-top: 14px; font-size: 11px; letter-spacing: .5em; color: var(--oro); }
+    .pie-grande ul { list-style: none; display: flex; flex-direction: column; gap: 6px; font-size: 15px; }
+    .pie-grande a:hover { color: var(--oro); }
+    .legal { display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; font-size: 12px; color: rgb(255 255 255 / .38); }
+    .legal p { max-width: 720px; }
 
-    .wa { position: fixed; right: 22px; bottom: 22px; z-index: 60; width: 56px; height: 56px; border-radius: 50%; background: #25D366; color: #fff; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 28px -8px rgb(0 0 0 / .4); transition: transform .2s; }
+    .wa { position: fixed; right: 22px; bottom: 22px; z-index: 60; width: 56px; height: 56px; border-radius: 50%; background: var(--marino); color: #fff; border: 1px solid rgb(197 168 128 / .7); display: flex; align-items: center; justify-content: center; box-shadow: 0 12px 30px -10px rgb(15 35 64 / .55); transition: transform .25s; }
     .wa:hover { transform: scale(1.06); }
-    .wa svg { width: 28px; height: 28px; fill: currentColor; }
+    .wa svg { width: 25px; height: 25px; fill: currentColor; }
 
-    /* Entradas al hacer scroll */
-    .js .rv { opacity: 0; transform: translateY(26px); transition: opacity .9s cubic-bezier(.2,.7,.2,1), transform .9s cubic-bezier(.2,.7,.2,1); }
-    .js .rv.in { opacity: 1; transform: none; }
-    @media (prefers-reduced-motion: reduce) { .js .rv { opacity: 1; transform: none; transition: none; } html { scroll-behavior: auto; } }
-
-    @media (max-width: 980px) {
-      .hero-in, .estudio-in, .contacto-in { grid-template-columns: 1fr; gap: 48px; }
-      .placa { max-width: 520px; }
-      .areas, .notas { grid-template-columns: 1fr; max-width: 620px; }
-      .equipo { grid-template-columns: repeat(3, 1fr); gap: 16px; }
-      .cab { flex-direction: column; align-items: flex-start; gap: 18px; }
+    @media (max-width: 1080px) {
+      .menu { gap: 22px; }
+      .area { grid-template-columns: 56px 1fr 48px; }
+      .area-txt { grid-column: 2 / 3; grid-row: 2; }
+      .area .flecha { grid-column: 3; grid-row: 1; }
+      .nota { grid-template-columns: 1fr 48px; gap: 10px 24px; }
+      .nota-cat { grid-column: 1; }
+      .nota h3 { grid-column: 1; }
+      .nota-meta { grid-column: 1; }
+      .nota .flecha { grid-column: 2; grid-row: 1 / 4; }
     }
-    @media (max-width: 760px) {
-      .wrap { padding: 0 20px; }
-      .nav { height: 66px; }
-      .menu, .nav > .btn { display: none; }
+    @media (max-width: 900px) {
+      .nav { grid-template-columns: 1fr auto; }
+      .menu, .nav-der .btn { display: none; }
       .burger { display: block; }
-      .nav.abierto .menu { display: flex; flex-direction: column; gap: 0; position: absolute; top: 66px; left: 0; right: 0; background: var(--neutro); border-bottom: 1px solid var(--linea); padding: 8px 20px 18px; }
-      .nav.abierto .menu a { display: block; padding: 12px 0; font-size: 16px; border-bottom: 1px solid var(--linea); }
-      .marca b { font-size: 20px; }
-      .hero-in { padding-top: 72px; padding-bottom: 80px; }
-      .hero-sub { font-size: 16.5px; }
-      .hero-ctas .btn { flex: 1 1 100%; }
-      .placa { padding: 32px 26px 24px; }
-      .placa-mono { font-size: 76px; }
-      .placa li { font-size: 18px; }
-      .principios .wrap { grid-template-columns: 1fr; }
-      .pri, .pri + .pri { padding: 22px 0; border-left: 0; }
-      .pri + .pri { border-top: 1px solid rgb(15 35 64 / .12); }
-      section { padding: 80px 0; }
-      .cab { margin-bottom: 40px; }
-      .area { padding: 36px 26px 28px; }
-      .area::before { left: 26px; }
-      .equipo { grid-template-columns: 1fr 1fr; }
-      .cifra b { font-size: 30px; }
-      .form { padding: 32px 22px 28px; }
+      .nav.abierto .menu { display: flex; flex-direction: column; gap: 0; position: absolute; top: 74px; left: 0; right: 0; background: #fff; border-bottom: 1px solid var(--linea); padding: 6px var(--pad) 18px; }
+      .nav.abierto .menu a { display: block; padding: 13px 0; font-size: 17px; border-bottom: 1px solid var(--linea); }
+      .hero-top ul { display: none; }
+      .hero-grid { grid-template-columns: 1fr; padding: 36px 0 56px; }
+      .hero h1, .hero-pie, .nota-reunion { grid-column: 1; }
+      .hero-foto { grid-column: 1; grid-row: auto; order: 5; margin: 44px 22px 22px 0; }
+      .foto { min-height: 0; aspect-ratio: 4 / 5; max-height: 520px; }
+      .hero h1 { margin-bottom: 28px; }
+      .hero-pie { margin-top: 0; }
+      .pilares { grid-template-columns: 1fr; gap: 28px; padding-bottom: 72px; }
+      .pilar small { margin-bottom: 10px; }
+      .frase { padding: 96px 0; }
+      section { padding: 96px 0; }
+      .cab, .est-grid, .con-grid { grid-template-columns: 1fr; }
+      .cab > div:first-child, .cab > div:last-child, .est-foto, .est-txt, .con-izq, .form { grid-column: 1; }
+      .cab { margin-bottom: 44px; gap: 18px; }
+      .situ-grid { grid-template-columns: 1fr; gap: 48px; }
+      .situ-izq { position: static; }
+      .est-foto { margin: 0 0 40px 22px; }
+      .est-grid { margin-bottom: 80px; }
+      .equipo { grid-template-columns: 1fr 1fr; gap: 28px 16px; }
+      .form { padding: 36px 22px 30px; margin-top: 40px; }
+    }
+    @media (max-width: 600px) {
+      .hero-top { font-size: 11px; }
+      .ctas .btn { flex: 1 1 100%; }
+      .area { grid-template-columns: 1fr 44px; gap: 14px; padding: 32px 0; }
+      .area-n { grid-column: 1; }
+      .area h3 { grid-column: 1; }
+      .area-txt { grid-column: 1 / -1; grid-row: auto; }
+      .area .flecha { grid-column: 2; grid-row: 1 / 3; width: 44px; height: 44px; }
+      .area-txt ul { grid-template-columns: 1fr; }
+      .lista li { grid-template-columns: 1fr; gap: 6px; padding: 22px 0; }
+      .lista span { order: -1; }
+      .persona b { font-size: 19px; }
+      .retrato span { font-size: 60px; }
+      .datos li { grid-template-columns: 1fr; gap: 2px; }
       .campos { grid-template-columns: 1fr; }
       .form-pie .btn { width: 100%; }
     }
@@ -246,150 +278,163 @@
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></symbol>
-  <symbol id="i-cal" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="4" rx="1"/><path d="M16 2v4M8 2v4M3 10h18"/></symbol>
-  <symbol id="i-map" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></symbol>
-  <symbol id="i-mail" viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="1"/><path d="m22 7-10 6L2 7"/></symbol>
-  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
-  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
-  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
-  <symbol id="i-wa" viewBox="0 0 24 24"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.69.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35zM12.05 21.5h-.01a9.4 9.4 0 0 1-4.8-1.31l-.34-.2-3.57.94.95-3.48-.22-.36A9.44 9.44 0 0 1 2.6 12.05C2.6 6.84 6.84 2.6 12.06 2.6c2.52 0 4.9.99 6.68 2.77a9.38 9.38 0 0 1 2.76 6.68c0 5.21-4.24 9.45-9.45 9.45zM20.1 3.95A11.3 11.3 0 0 0 12.05.7C5.79.7.7 5.79.7 12.05c0 2 .52 3.95 1.52 5.67L.6 23.4l5.81-1.52a11.33 11.33 0 0 0 5.63 1.43h.01c6.26 0 11.35-5.09 11.35-11.35 0-3.03-1.18-5.88-3.32-8.02z"/></symbol>
-  <symbol id="persona" viewBox="0 0 100 110"><circle cx="50" cy="34" r="20"/><path d="M8 110c0-26 19-44 42-44s42 18 42 44z"/></symbol>
+  <symbol id="i-ne" viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 8h16M4 16h16"/></symbol>
+  <symbol id="i-wa" viewBox="0 0 24 24"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.490-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.08c.15.2 2.1 3.2 5.08 4.490.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.69.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35zM12.05 21.5h-.01a9.4 9.4 0 0 1-4.8-1.31l-.34-.2-3.57.94.95-3.48-.22-.36A9.44 9.44 0 0 1 2.6 12.05C2.6 6.84 6.84 2.6 12.06 2.6c2.52 0 4.9.99 6.68 2.77a9.38 9.38 0 0 1 2.76 6.68c0 5.21-4.24 9.45-9.45 9.45zM20.1 3.95A11.3 11.3 0 0 0 12.05.7C5.79.7.7 5.79.7 12.05c0 2 .52 3.950 1.52 5.67L.6 23.4l5.81-1.52a11.33 11.33 0 0 0 5.63 1.43h.01c6.26 0 11.35-5.09 11.35-11.35 0-3.03-1.18-5.88-3.32-8.02z"/></symbol>
 </svg>
 
-<div class="aviso">Boceto para charlar: textos, nombres, matrículas, notas y datos de contacto son de ejemplo</div>
+<div class="aviso">Boceto para charlar · <b>textos, nombres, matrículas, notas y datos de contacto son de ejemplo</b></div>
 
 <header>
   <div class="wrap nav" id="nav">
-    <a class="marca" href="#inicio" aria-label="Varano-Trigo Estudio Legal"><b>VARANO-TRIGO</b><span>ESTUDIO LEGAL</span></a>
+    <a class="logo" href="#inicio" aria-label="Varano-Trigo Estudio Legal"><b>VARANO-TRIGO</b><span>ESTUDIO LEGAL</span></a>
     <ul class="menu">
       <li><a href="#areas">Áreas</a></li>
+      <li><a href="#situaciones">Consultas frecuentes</a></li>
       <li><a href="#estudio">El estudio</a></li>
       <li><a href="#notas">Notas</a></li>
       <li><a href="#contacto">Contacto</a></li>
     </ul>
-    <a class="btn is-fill" href="#contacto">Agendar una reunión</a>
-    <button class="burger" aria-label="Abrir menú" onclick="document.getElementById('nav').classList.toggle('abierto')"><svg class="ico"><use href="#i-menu"/></svg></button>
+    <div class="nav-der">
+      <a class="btn lleno" href="#contacto">Agendar una reunión</a>
+      <button class="burger" aria-label="Abrir menú" onclick="document.getElementById('nav').classList.toggle('abierto')"><svg class="ico"><use href="#i-menu"/></svg></button>
+    </div>
   </div>
 </header>
 
 <main id="inicio">
-  <div class="hero">
-    <div class="wrap hero-in">
-      <div>
-        <div class="sobre h-in">Asesoría legal para empresas y pymes</div>
-        <h1 class="h-in">Protegemos lo que <em>construís.</em></h1>
-        <p class="hero-sub h-in">Asesoría cercana, clara y estratégica para pymes en crecimiento.</p>
-        <div class="hero-ctas h-in">
-          <a class="btn is-oro" href="#contacto"><svg class="ico"><use href="#i-cal"/></svg>Agendar una reunión</a>
-          <a class="btn is-claro wa-link" href="#" target="_blank" rel="noopener"><svg class="ico" style="fill:currentColor;stroke:none"><use href="#i-wa"/></svg>Escríbanos por WhatsApp</a>
+  <div class="wrap hero">
+    <div class="hero-top a-in">
+      <span>Asesoría legal para empresas y pymes</span>
+      <ul>
+        <li><span>01</span>Contratos &amp; Corporativo</li>
+        <li><span>02</span>Laboral &amp; Pymes</li>
+        <li><span>03</span>Compliance &amp; Asesoría</li>
+      </ul>
+    </div>
+    <div class="hero-grid">
+      <h1 id="titulo"><span class="ln"><span>Protegemos</span></span><span class="ln"><span>lo que <em>construís.</em></span></span></h1>
+      <div class="hero-foto">
+        <div class="marco a-in"></div>
+        <figure class="foto" id="foto-hero"><img src="img/fachada.jpg" width="1280" height="1600" alt="Fachada de un edificio clásico de Buenos Aires" /><figcaption>Buenos Aires</figcaption></figure>
+      </div>
+      <div class="hero-pie a-in">
+        <p>Asesoría cercana, clara y estratégica para pymes en crecimiento.</p>
+        <div class="ctas">
+          <a class="btn lleno" href="#contacto">Agendar una reunión<svg class="ico"><use href="#i-arrow"/></svg></a>
+          <a class="btn wa-link" href="#" target="_blank" rel="noopener">WhatsApp</a>
         </div>
-        <p class="hero-nota h-in"><svg class="ico"><use href="#i-clock"/></svg>Primera reunión para conocer su caso, en el estudio o por videollamada.</p>
       </div>
-      <div class="placa h-in" aria-hidden="true">
-        <div class="placa-mono">V<i>&amp;</i>T</div>
-        <ol>
-          <li>Contratos &amp; Corporativo</li>
-          <li>Laboral &amp; Pymes</li>
-          <li>Compliance &amp; Asesoría</li>
-        </ol>
-      </div>
+      <p class="nota-reunion a-in"><i></i>Primera reunión para conocer su caso, en el estudio o por videollamada.</p>
+    </div>
+    <div class="pilares">
+      <div class="pilar rv"><small>01</small><b>Cercana</b><p>Hablamos con quien toma las decisiones y conocemos cómo funciona su empresa.</p></div>
+      <div class="pilar rv"><small>02</small><b>Clara</b><p>Explicamos cada paso sin vueltas, para que sepa qué firma y por qué.</p></div>
+      <div class="pilar rv"><small>03</small><b>Estratégica</b><p>Pensamos en lo que viene, no solo en el problema de hoy.</p></div>
     </div>
   </div>
 
-  <div class="principios">
+  <div class="frase">
     <div class="wrap">
-      <div class="pri rv"><b>Cercana</b><span>Hablamos con quien toma las decisiones y conocemos cómo funciona su empresa.</span></div>
-      <div class="pri rv"><b>Clara</b><span>Explicamos cada paso sin vueltas, para que sepa qué firma y por qué.</span></div>
-      <div class="pri rv"><b>Estratégica</b><span>Pensamos en lo que viene, no solo en el problema de hoy.</span></div>
+      <p id="frase">Acompañamos a dueños y socios de pymes en las decisiones que definen su empresa: lo que firman, a quién contratan y cómo crecen <em>sin sorpresas.</em></p>
     </div>
   </div>
 
   <section id="areas">
     <div class="wrap">
-      <div class="cab rv">
-        <div>
-          <div class="kicker">Áreas de práctica</div>
-          <h2>Lo que hacemos <em>por su empresa</em></h2>
+      <div class="cab">
+        <div class="rv">
+          <div class="kicker" data-n="(01)">Áreas de práctica</div>
+          <h2>Tres áreas, <em>un mismo</em> equipo</h2>
         </div>
-        <div>
-          <p>Acompañamos a pymes en el día a día legal y en los momentos que definen su crecimiento.</p>
+        <div class="rv">
+          <p>Cada consulta la sigue un socio del estudio, de la primera reunión al cierre del tema.</p>
           <span class="ej">Textos de ejemplo</span>
         </div>
       </div>
       <div class="areas">
-        <article class="area rv">
-          <div class="area-num">I.</div>
-          <h3>Contratos &amp; Corporativo</h3>
-          <p>Los acuerdos que sostienen su negocio, bien escritos desde el principio.</p>
-          <ul>
-            <li>Contratos comerciales y con proveedores</li>
-            <li>Constitución y reformas de sociedades</li>
-            <li>Acuerdos de socios y accionistas</li>
-            <li>Marcas y registros</li>
-          </ul>
-          <a class="mas" href="#contacto">Ver el área<svg class="ico"><use href="#i-arrow"/></svg></a>
-        </article>
-        <article class="area rv">
-          <div class="area-num">II.</div>
-          <h3>Laboral &amp; Pymes</h3>
-          <p>Relaciones laborales ordenadas, para trabajar tranquilos.</p>
-          <ul>
-            <li>Contratación y registración de personal</li>
-            <li>Despidos y reclamos laborales</li>
-            <li>Auditoría laboral preventiva</li>
-            <li>Negociación y conciliaciones</li>
-          </ul>
-          <a class="mas" href="#contacto">Ver el área<svg class="ico"><use href="#i-arrow"/></svg></a>
-        </article>
-        <article class="area rv">
-          <div class="area-num">III.</div>
-          <h3>Compliance &amp; Asesoría</h3>
-          <p>Reglas internas claras, para crecer sin sorpresas.</p>
-          <ul>
-            <li>Políticas y programas de compliance</li>
-            <li>Protección de datos personales</li>
-            <li>Códigos de conducta y canales de denuncia</li>
-            <li>Asesoría legal permanente para empresas</li>
-          </ul>
-          <a class="mas" href="#contacto">Ver el área<svg class="ico"><use href="#i-arrow"/></svg></a>
-        </article>
+        <a class="area rv" href="#contacto">
+          <div class="area-n">i.</div>
+          <h3>Contratos <em>&amp;</em><br>Corporativo</h3>
+          <div class="area-txt">
+            <p>Los acuerdos que sostienen su negocio, bien escritos desde el principio.</p>
+            <ul><li>Contratos comerciales</li><li>Contratos con proveedores</li><li>Constitución de sociedades</li><li>Acuerdos de socios</li></ul>
+          </div>
+          <span class="flecha"><svg class="ico"><use href="#i-ne"/></svg></span>
+        </a>
+        <a class="area rv" href="#contacto">
+          <div class="area-n">ii.</div>
+          <h3>Laboral <em>&amp;</em><br>Pymes</h3>
+          <div class="area-txt">
+            <p>Relaciones laborales ordenadas, para trabajar tranquilos.</p>
+            <ul><li>Contratación y registración</li><li>Despidos y desvinculaciones</li><li>Reclamos laborales</li><li>Auditoría laboral preventiva</li></ul>
+          </div>
+          <span class="flecha"><svg class="ico"><use href="#i-ne"/></svg></span>
+        </a>
+        <a class="area rv" href="#contacto">
+          <div class="area-n">iii.</div>
+          <h3>Compliance <em>&amp;</em><br>Asesoría</h3>
+          <div class="area-txt">
+            <p>Reglas internas claras, para crecer sin sorpresas.</p>
+            <ul><li>Programas de compliance</li><li>Protección de datos personales</li><li>Códigos de conducta</li><li>Asesoría legal permanente</li></ul>
+          </div>
+          <span class="flecha"><svg class="ico"><use href="#i-ne"/></svg></span>
+        </a>
       </div>
+    </div>
+  </section>
+
+  <section class="situ" id="situaciones">
+    <div class="wrap situ-grid">
+      <div class="situ-izq">
+        <div class="kicker rv" data-n="(02)">Consultas frecuentes</div>
+        <h2 class="rv">Cuándo <em>conviene</em> llamarnos</h2>
+        <p class="rv">Algunas de las situaciones por las que nos consultan las empresas. Mejor antes que después.</p>
+        <figure class="situ-foto rv"><img src="img/sala.jpg" width="1600" height="900" alt="Sala de reuniones del estudio" loading="lazy" /></figure>
+      </div>
+      <ul class="lista">
+        <li class="rv"><b>Un proveedor no cumple lo que firmó.</b><span>Contratos</span></li>
+        <li class="rv"><b>Entra un socio nuevo a la empresa.</b><span>Corporativo</span></li>
+        <li class="rv"><b>Hay que desvincular a un empleado.</b><span>Laboral</span></li>
+        <li class="rv"><b>Llegó una carta documento.</b><span>Laboral</span></li>
+        <li class="rv"><b>Un cliente grande pide un programa de compliance.</b><span>Compliance</span></li>
+        <li class="rv"><b>La empresa guarda datos de sus clientes.</b><span>Compliance</span></li>
+        <li class="rv"><b>Van a firmar un contrato importante.</b><span>Asesoría</span></li>
+      </ul>
     </div>
   </section>
 
   <section class="estudio" id="estudio">
     <div class="wrap">
-      <div class="estudio-in">
-        <div class="rv">
-          <div class="kicker">El estudio</div>
-          <h2>Un estudio <em>a la medida</em> de las pymes</h2>
-          <span class="ej">Texto de ejemplo</span>
+      <div class="est-grid">
+        <div class="est-foto">
+          <div class="marco"></div>
+          <figure class="foto revela"><img src="img/contrato.jpg" width="1280" height="1600" alt="Contrato firmado sobre un escritorio" loading="lazy" /></figure>
         </div>
-        <div class="estudio-txt rv">
-          <p class="lead">Varano-Trigo nace para acompañar a empresas que crecen y necesitan un equipo legal cerca, que entienda su negocio.</p>
-          <p>Trabajamos con dueños, socios y equipos de administración en Ciudad de Buenos Aires y alrededores. Cada consulta la atiende un socio del estudio, desde la primera reunión hasta el cierre del tema.</p>
-          <div class="cifras">
-            <div class="cifra"><b>00</b><span>años de trayectoria</span></div>
-            <div class="cifra"><b>3</b><span>áreas de práctica</span></div>
-            <div class="cifra"><b>CABA</b><span>atención presencial y virtual</span></div>
-          </div>
+        <div class="est-txt">
+          <div class="kicker rv" data-n="(03)">El estudio</div>
+          <h2 class="rv">Un estudio <em>a la medida</em> de las pymes</h2>
+          <p class="lead rv">Varano-Trigo nace para acompañar a empresas que crecen y necesitan un equipo legal cerca, que entienda su negocio.</p>
+          <p class="rv">Trabajamos con dueños, socios y equipos de administración en la Ciudad de Buenos Aires y alrededores. Preferimos prevenir: un buen contrato hoy evita un conflicto mañana.</p>
+          <div class="tira rv"><span><b>00</b>años de trayectoria</span><span><b>3</b>áreas de práctica</span><span><b>CABA</b>presencial y virtual</span></div>
         </div>
       </div>
+      <div class="equipo-cab rv"><h3>Equipo</h3><span class="ej">Nombres y matrículas de ejemplo</span></div>
       <div class="equipo">
         <div class="persona rv">
-          <div class="foto"><small>Foto del equipo</small><svg viewBox="0 0 100 110"><use href="#persona"/></svg></div>
-          <b>Nombre Apellido</b>
+          <div class="retrato"><span>V.</span><small>Foto profesional</small></div>
+          <b>Nombre Varano</b>
           <div class="rol">Socia · Contratos &amp; Corporativo</div>
           <div class="mat">Abogada · CPACF T° 000 F° 000</div>
         </div>
         <div class="persona rv">
-          <div class="foto"><small>Foto del equipo</small><svg viewBox="0 0 100 110"><use href="#persona"/></svg></div>
-          <b>Nombre Apellido</b>
+          <div class="retrato"><span>T.</span><small>Foto profesional</small></div>
+          <b>Nombre Trigo</b>
           <div class="rol">Socia · Laboral &amp; Pymes</div>
           <div class="mat">Abogada · CPACF T° 000 F° 000</div>
         </div>
         <div class="persona rv">
-          <div class="foto"><small>Foto del equipo</small><svg viewBox="0 0 100 110"><use href="#persona"/></svg></div>
+          <div class="retrato"><span>A.</span><small>Foto profesional</small></div>
           <b>Nombre Apellido</b>
           <div class="rol">Asociado · Compliance &amp; Asesoría</div>
           <div class="mat">Abogado · CPACF T° 000 F° 000</div>
@@ -400,56 +445,35 @@
 
   <section id="notas">
     <div class="wrap">
-      <div class="cab rv">
-        <div>
-          <div class="kicker">Notas para pymes</div>
+      <div class="cab">
+        <div class="rv">
+          <div class="kicker" data-n="(04)">Notas para pymes</div>
           <h2>Lo que conviene saber <em>antes</em> de firmar</h2>
         </div>
-        <div>
+        <div class="rv">
           <p>Notas cortas y claras sobre los temas legales que más consultan las empresas.</p>
           <span class="ej">Notas de ejemplo</span>
         </div>
       </div>
       <div class="notas">
-        <a class="nota rv" href="#notas">
-          <div class="nota-tapa" data-n="1"><span>Contratos</span></div>
-          <div class="nota-cuerpo">
-            <h3>Qué tiene que tener un contrato con proveedores</h3>
-            <p>Plazos, precios, penalidades y salida: los puntos que conviene dejar por escrito antes de empezar a trabajar.</p>
-            <div class="nota-pie"><span>5 min de lectura</span><b>Leer nota →</b></div>
-          </div>
-        </a>
-        <a class="nota rv" href="#notas">
-          <div class="nota-tapa" data-n="2"><span>Laboral</span></div>
-          <div class="nota-cuerpo">
-            <h3>Cómo prevenir juicios laborales en tu pyme</h3>
-            <p>Registración, recibos, comunicaciones y los errores más comunes que terminan en un reclamo.</p>
-            <div class="nota-pie"><span>6 min de lectura</span><b>Leer nota →</b></div>
-          </div>
-        </a>
-        <a class="nota rv" href="#notas">
-          <div class="nota-tapa" data-n="3"><span>Compliance</span></div>
-          <div class="nota-cuerpo">
-            <h3>Qué es un programa de compliance y quién lo necesita</h3>
-            <p>Qué exige la ley, cuándo conviene tenerlo aunque no sea obligatorio y por dónde empezar.</p>
-            <div class="nota-pie"><span>7 min de lectura</span><b>Leer nota →</b></div>
-          </div>
-        </a>
+        <a class="nota rv" href="#notas"><span class="nota-cat">Contratos</span><h3>Qué tiene que tener un contrato con proveedores</h3><span class="nota-meta">5 min de lectura</span><span class="flecha"><svg class="ico"><use href="#i-ne"/></svg></span></a>
+        <a class="nota rv" href="#notas"><span class="nota-cat">Laboral</span><h3>Cómo prevenir juicios laborales en tu pyme</h3><span class="nota-meta">6 min de lectura</span><span class="flecha"><svg class="ico"><use href="#i-ne"/></svg></span></a>
+        <a class="nota rv" href="#notas"><span class="nota-cat">Compliance</span><h3>Qué es un programa de compliance y quién lo necesita</h3><span class="nota-meta">7 min de lectura</span><span class="flecha"><svg class="ico"><use href="#i-ne"/></svg></span></a>
       </div>
     </div>
   </section>
 
   <section class="contacto" id="contacto">
-    <div class="wrap contacto-in">
-      <div class="contacto-txt rv">
-        <div class="kicker">Contacto</div>
-        <h2>Primera reunión para <em>conocer su caso</em></h2>
-        <p>Cuéntenos brevemente su consulta y le respondemos para coordinar una reunión, en el estudio o por videollamada.</p>
-        <ul class="datos">
-          <li><svg class="ico" style="fill:currentColor;stroke:none"><use href="#i-wa"/></svg><div><small>WhatsApp</small><a class="wa-link" href="#" target="_blank" rel="noopener">+54 9 11 0000-0000</a></div></li>
-          <li><svg class="ico"><use href="#i-mail"/></svg><div><small>Email</small><a href="#contacto">estudio@varanotrigo.com.ar</a></div></li>
-          <li><svg class="ico"><use href="#i-map"/></svg><div><small>Dirección</small>Av. Ejemplo 1234, piso 5 · CABA</div></li>
-          <li><svg class="ico"><use href="#i-clock"/></svg><div><small>Horario</small>Lunes a viernes de 9 a 18 h</div></li>
+    <div class="wrap con-grid">
+      <div class="con-izq">
+        <div class="kicker rv" data-n="(05)">Contacto</div>
+        <h2 class="rv">Primera reunión para <em>conocer su caso</em></h2>
+        <p class="rv">Cuéntenos brevemente su consulta y le respondemos para coordinar una reunión, en el estudio o por videollamada.</p>
+        <ul class="datos rv">
+          <li><small>WhatsApp</small><a class="wa-link" href="#" target="_blank" rel="noopener">+54 9 11 0000-0000</a></li>
+          <li><small>Email</small><a href="#contacto">estudio@varanotrigo.com.ar</a></li>
+          <li><small>Dirección</small><span>Av. Ejemplo 1234, piso 5 · CABA</span></li>
+          <li><small>Horario</small><span>Lunes a viernes, de 9 a 18 h</span></li>
         </ul>
       </div>
       <form class="form rv" id="form">
@@ -464,7 +488,7 @@
         </div>
         <div class="form-pie">
           <small>La información que nos envíe se trata con confidencialidad.</small>
-          <button class="btn is-fill" type="submit">Enviar consulta<svg class="ico"><use href="#i-arrow"/></svg></button>
+          <button class="btn lleno" type="submit">Enviar consulta<svg class="ico"><use href="#i-arrow"/></svg></button>
         </div>
         <div class="enviado" id="enviado">Esto es un boceto: en la web real, la consulta le llega al mail del estudio y la persona recibe un aviso de que fue recibida.</div>
       </form>
@@ -474,8 +498,8 @@
 
 <footer>
   <div class="wrap">
-    <div class="pie">
-      <a class="marca" href="#inicio"><b>VARANO-TRIGO</b><span>ESTUDIO LEGAL</span></a>
+    <div class="pie-grande">
+      <div class="pie-logo"><b>Varano-Trigo</b><span>ESTUDIO LEGAL</span></div>
       <ul>
         <li><a href="#areas">Áreas</a></li>
         <li><a href="#estudio">El estudio</a></li>
@@ -483,38 +507,67 @@
         <li><a href="#contacto">Contacto</a></li>
       </ul>
     </div>
-    <div class="legal">© 2026 Varano-Trigo Estudio Legal · Ciudad Autónoma de Buenos Aires · Los profesionales del estudio están matriculados en el Colegio Público de la Abogacía de la Capital Federal. El contenido de este sitio es informativo y no constituye asesoramiento legal.</div>
+    <div class="legal">
+      <p>Los profesionales del estudio están matriculados en el Colegio Público de la Abogacía de la Capital Federal. El contenido de este sitio es informativo y no constituye asesoramiento legal.</p>
+      <span>© 2026 Varano-Trigo Estudio Legal · CABA</span>
+    </div>
   </div>
 </footer>
 
 <a class="wa wa-link" href="#" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp"><svg viewBox="0 0 24 24"><use href="#i-wa"/></svg></a>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script>
   // WhatsApp de ejemplo: en la web real va el número del estudio
   const WA = '5491100000000';
   const waTxt = encodeURIComponent('Hola, quisiera coordinar una reunión con el estudio.');
   document.querySelectorAll('.wa-link').forEach(a => a.href = `https://wa.me/${WA}?text=${waTxt}`);
-
-  document.getElementById('form').addEventListener('submit', e => {
-    e.preventDefault();
-    document.getElementById('enviado').style.display = 'block';
-  });
+  document.getElementById('form').addEventListener('submit', e => { e.preventDefault(); document.getElementById('enviado').style.display = 'block'; });
   document.querySelectorAll('.menu a').forEach(a => a.addEventListener('click', () => document.getElementById('nav').classList.remove('abierto')));
 
+  // Animaciones: si GSAP no carga o el sistema pide menos movimiento, todo queda visible sin animar
   const quieto = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (window.gsap && !quieto) {
-    gsap.from('.h-in', { y: 28, opacity: 0, duration: 1.1, stagger: .1, ease: 'power3.out', delay: .1 });
-    gsap.from('.placa li', { x: -14, opacity: 0, duration: .8, stagger: .12, ease: 'power2.out', delay: .7 });
-  }
-  const rvs = document.querySelectorAll('.rv');
-  if ('IntersectionObserver' in window && !quieto) {
-    const io = new IntersectionObserver(es => es.forEach(e => {
-      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
-    }), { threshold: .08, rootMargin: '0px 0px -6% 0px' });
-    rvs.forEach((el, i) => { el.style.transitionDelay = (i % 3) * 90 + 'ms'; io.observe(el); });
-  } else {
-    rvs.forEach(el => el.classList.add('in'));
+  if (window.gsap && window.ScrollTrigger && !quieto) {
+    gsap.registerPlugin(ScrollTrigger);
+    const ease = 'power3.out';
+
+    // Entrada del hero
+    const tl = gsap.timeline({ defaults: { ease } });
+    tl.from('#titulo .ln > span', { yPercent: 105, duration: 1.2, stagger: .12, ease: 'power4.out' })
+      .from('#foto-hero', { clipPath: 'inset(100% 0 0 0)', duration: 1.3, ease: 'power4.inOut', clearProps: 'clipPath' }, 0.1)
+      .from('#foto-hero img', { scale: 1.25, duration: 1.8, clearProps: 'scale' }, 0.1)
+      .from('.a-in', { y: 18, opacity: 0, duration: .9, stagger: .08, clearProps: 'transform,opacity' }, 0.55);
+
+    // Parallax suave de las fotos
+    gsap.utils.toArray('.foto img').forEach(img => {
+      gsap.fromTo(img, { yPercent: -5 }, { yPercent: 5, ease: 'none', scrollTrigger: { trigger: img.parentElement, start: 'top bottom', end: 'bottom top', scrub: true } });
+    });
+
+    // La frase se "pinta" al scrollear
+    const frase = document.getElementById('frase');
+    const partir = el => [...el.childNodes].forEach(n => {
+      if (n.nodeType === 3) {
+        const frag = document.createDocumentFragment();
+        n.textContent.split(/(\s+)/).forEach(t => {
+          if (!t) return;
+          if (/^\s+$/.test(t)) frag.append(t); else { const s = document.createElement('span'); s.className = 'w'; s.textContent = t; frag.append(s); }
+        });
+        n.replaceWith(frag);
+      } else if (n.nodeType === 1) partir(n);
+    });
+    partir(frase);
+    gsap.fromTo('#frase .w', { opacity: .16 }, { opacity: 1, stagger: .1, ease: 'none', scrollTrigger: { trigger: frase, start: 'top 78%', end: 'bottom 45%', scrub: true } });
+
+    // Revelado de la foto del estudio
+    gsap.from('.revela', { clipPath: 'inset(0 0 100% 0)', duration: 1.4, ease: 'power4.inOut', clearProps: 'clipPath', scrollTrigger: { trigger: '.revela', start: 'top 80%' } });
+
+    // Entradas al scrollear (por tandas)
+    gsap.set('.rv', { y: 34, opacity: 0 });
+    ScrollTrigger.batch('.rv', {
+      start: 'top 90%',
+      onEnter: b => gsap.to(b, { y: 0, opacity: 1, duration: 1, stagger: .09, ease, clearProps: 'transform,opacity' })
+    });
   }
 </script>
 <script src="/propuestas/_visto.js" data-p="varano-trigo" data-n="Varano-Trigo (Beatriz)" data-e="boceto" defer></script>
