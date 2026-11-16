@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="robots" content="noindex, nofollow" />
-<title>VIP & Exotic Travel Group · Andrea Savino</title>
+<title>VIP&EXOTIC Travel GROUP · Andrea C. Savino</title>
 <meta name="description" content="Viajes a medida por el mundo, armados por alguien que estuvo ahí. Donde quieras ir, te llevamos." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -242,6 +242,43 @@ footer{padding:40px var(--gut) 44px;display:flex;justify-content:space-between;a
 
 .boceto{position:fixed;left:50%;transform:translateX(-50%);bottom:14px;white-space:nowrap;z-index:60;padding:8px 14px;border-radius:999px;background:rgba(12,17,19,.7);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);font-size:11px;letter-spacing:.06em;color:var(--on-dark-mute);border:1px solid rgba(243,238,230,.12)}
 
+/* ARGENTINA */
+.arg{padding:clamp(90px,11vw,160px) var(--gut)}
+.arg .cab p{color:var(--on-dark-mute)}
+.arg-pre{font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--sand);margin-bottom:18px}
+.arg-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(12px,1.4vw,20px)}
+.arg-grid .tile{aspect-ratio:4/5}
+.arg-grid .tile:nth-child(3n+2){margin-top:clamp(20px,4vw,60px);margin-bottom:calc(-1 * clamp(20px,4vw,60px))}
+.tile small{display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--sand);margin-bottom:8px}
+.arg-pie{margin-top:clamp(70px,8vw,110px);display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;padding-top:30px;border-top:1px solid rgba(243,238,230,.1)}
+.arg-pie p{font-size:clamp(18px,1.8vw,24px);font-weight:300;letter-spacing:-.02em;max-width:44ch;color:var(--on-dark-mute)}
+.arg-pie p strong{font-weight:700;color:var(--on-dark)}
+
+/* MERLO · 10 AÑOS */
+.merlo{position:relative;min-height:92vh;display:flex;align-items:flex-end;overflow:hidden}
+.merlo-foto{position:absolute;inset:0}
+.merlo-foto img{width:100%;height:100%;object-fit:cover}
+.merlo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(12,17,19,.35) 0%,rgba(12,17,19,.1) 35%,rgba(12,17,19,.88) 100%)}
+.merlo-in{position:relative;z-index:2;width:100%;padding:0 var(--gut) clamp(50px,8vh,90px);display:grid;grid-template-columns:auto 1fr;gap:clamp(30px,5vw,80px);align-items:end}
+.merlo-diez{font-size:clamp(120px,19vw,300px);font-weight:200;line-height:.8;letter-spacing:-.07em}
+.merlo-diez small{display:block;font-size:clamp(13px,1.1vw,15px);font-weight:600;letter-spacing:.2em;text-transform:uppercase;margin-top:18px;color:var(--sand)}
+.merlo h2{font-size:clamp(36px,5vw,78px);font-weight:300;line-height:.96;letter-spacing:-.045em;margin-bottom:22px}
+.merlo h2 strong{font-weight:800;display:block}
+.merlo p{color:var(--on-dark-mute);max-width:52ch;font-size:16px;margin-bottom:12px}
+.merlo p strong{color:var(--on-dark);font-weight:600}
+.merlo .btn{margin-top:20px}
+
+/* TESTIMONIOS */
+.testi{background:var(--paper);color:var(--on-light);padding:clamp(90px,11vw,160px) var(--gut)}
+.testi .cab p{color:var(--on-light-mute)}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2vw,28px)}
+.testi-card{background:var(--ivory);border-radius:18px;overflow:hidden;display:flex;flex-direction:column}
+.testi-card img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.testi-card blockquote{padding:26px 26px 0;font-size:clamp(17px,1.4vw,20px);font-weight:400;line-height:1.45;letter-spacing:-.01em}
+.testi-card footer{all:unset;display:block;padding:20px 26px 26px;margin-top:auto;font-size:13px;color:var(--on-light-mute)}
+.testi-card footer b{display:block;color:var(--on-light);font-size:14px;font-weight:600}
+.testi-ej{display:inline-block;margin:0 0 30px;padding:6px 12px;border-radius:999px;border:1px dashed rgba(20,25,27,.3);font-size:12px;color:var(--on-light-mute)}
+
 /* REVEALS: el contenido se ve aunque falle el JS */
 .js .rv{opacity:0;transform:translateY(34px);transition:opacity 1s var(--ease),transform 1.1s var(--ease)}
 .js .rv.in{opacity:1;transform:none}
@@ -285,6 +322,17 @@ footer{padding:40px var(--gut) 44px;display:flex;justify-content:space-between;a
   .boceto{display:none}
   .refe::after{background:linear-gradient(180deg,rgba(12,17,19,.35) 0%,rgba(12,17,19,.9) 70%)}
   .refe{align-items:flex-end;padding-bottom:60px}
+  .arg-grid{grid-template-columns:1fr 1fr}
+  .arg-grid .tile:nth-child(3n+2){margin:0}
+  .arg-grid .tile:nth-child(even){margin-top:30px;margin-bottom:-30px}
+  .arg-grid .tile p{display:none}
+  .merlo-in{grid-template-columns:1fr;gap:10px}
+  .merlo{min-height:100svh}
+  .merlo::after{background:linear-gradient(180deg,rgba(12,17,19,.45) 0%,rgba(12,17,19,.55) 30%,rgba(12,17,19,.88) 60%,rgba(12,17,19,.95) 100%)}
+  .testi-grid{grid-template-columns:1fr}
+}
+@media (min-width:761px) and (max-width:1080px){
+  .testi-grid{grid-template-columns:1fr 1fr}
 }
 </style>
 </head>
@@ -298,9 +346,10 @@ footer{padding:40px var(--gut) 44px;display:flex;justify-content:space-between;a
 </svg>
 
 <header class="nav" id="nav">
-  <a class="marca" href="#inicio" aria-label="VIP & Exotic Travel Group"><b>VIP <em>&amp;</em> EXOTIC</b><span>TRAVEL GROUP</span></a>
+  <a class="marca" href="#inicio" aria-label="VIP&amp;EXOTIC Travel GROUP"><b>VIP<em>&amp;</em>EXOTIC</b><span>Travel GROUP</span></a>
   <nav class="nav-links">
     <a href="#salidas" data-t="nav1">Salidas</a>
+    <a href="#argentina">Argentina</a>
     <a href="#destinos" data-t="nav2">Viajes a medida</a>
     <a href="#andrea" data-t="nav3">Andrea</a>
     <a href="#contacto" data-t="nav4">Contacto</a>
@@ -320,7 +369,7 @@ footer{padding:40px var(--gut) 44px;display:flex;justify-content:space-between;a
   <div class="hero-foto" id="heroFoto"><div class="sl on"><img src="img/s1.jpg" width="2048" height="1152" alt="Maldivas" fetchpriority="high" /></div><div class="sl"><img src="img/s2.jpg" width="2048" height="1152" alt="Bora Bora" loading="eager" fetchpriority="low" /></div><div class="sl"><img src="img/s3.jpg" width="2048" height="1152" alt="Seychelles" loading="eager" fetchpriority="low" /></div><div class="sl"><img src="img/s4.jpg" width="2048" height="1152" alt="Capadocia, Turquía" loading="eager" fetchpriority="low" /></div><div class="sl"><img src="img/s5.jpg" width="2048" height="1152" alt="Sahara, Marruecos" loading="eager" fetchpriority="low" /></div><div class="sl"><img src="img/s6.jpg" width="2048" height="1152" alt="El Nido, Filipinas" loading="eager" fetchpriority="low" /></div></div>
   <div class="hero-in">
     <div>
-      <p class="hero-pre rv" data-t="hpre">Andrea Savino · Viajes a medida por el mundo</p>
+      <p class="hero-pre rv" data-t="hpre">Andrea C. Savino · Viajes a medida por el mundo</p>
       <h1 class="rv rv-d1"><span data-t="h1a">Donde quieras ir,</span> <strong data-t="h1b">te llevamos.</strong></h1>
       <p class="hero-baja rv rv-d2" data-t="hbaja">Viajes armados a tu ritmo, en tu idioma y desde donde estés, por alguien que recorrió cada destino antes de recomendártelo.</p>
       <div class="hero-ctas rv rv-d3">
@@ -340,7 +389,7 @@ footer{padding:40px var(--gut) 44px;display:flex;justify-content:space-between;a
 
 <section class="manif">
   <p class="rv"><span class="t" data-t="m1">No te recomiendo</span> <span class="k" data-t="m2">un lugar que no conozco.</span> <span class="t" data-t="m3">Me quedo</span> <span class="k" data-t="m4">un mes en cada destino,</span> <span class="t" data-t="m5">trato con los hoteles y</span> <span class="k" data-t="m6">pruebo cada excursión</span> <span class="t" data-t="m7">antes de que la hagas vos.</span></p>
-  <div class="manif-firma rv rv-d1"><img src="img/andrea-mezquita.jpg" width="959" height="980" alt="" /><div><b>Andrea Savino</b><span data-t="firma">Viajera y asesora de viajes</span></div></div>
+  <div class="manif-firma rv rv-d1"><img src="img/andrea-mezquita.jpg" width="959" height="980" alt="" /><div><b>Andrea C. Savino</b><span data-t="firma">Viajera y asesora de viajes</span></div></div>
 </section>
 
 <section class="cifras">
@@ -406,6 +455,41 @@ footer{padding:40px var(--gut) 44px;display:flex;justify-content:space-between;a
   </div>
 </section>
 
+<section class="arg" id="argentina">
+  <div class="cab">
+    <div>
+      <p class="arg-pre rv" data-t="apre">Argentina</p>
+      <h2 class="rv"><span data-t="a1">Lo exótico</span><br /><strong data-t="a2">también está acá</strong></h2>
+      <p class="rv rv-d1" data-t="abaja">Del altiplano al fin del mundo. Para quien viene de afuera y para quien vive acá y todavía no lo conoce.</p>
+    </div>
+  </div>
+  <div class="arg-grid">
+    <a class="tile rv wa-link" href="#" data-msg="destino" data-dest="la Puna"><img src="img/ar-puna.jpg" width="1024" height="1280" alt="Salinas Grandes, en la Puna" loading="lazy" /><div class="tile-txt"><small>Jujuy · Salta</small><h3>La Puna</h3><p data-t="ap1">Salares blancos a más de 3.000 metros y pueblos que siguen igual que hace siglos.</p></div></a>
+    <a class="tile rv rv-d1 wa-link" href="#" data-msg="destino" data-dest="Catamarca"><img src="img/ar-catamarca.jpg" width="1024" height="1280" alt="Campo de Piedra Pómez en Catamarca" loading="lazy" /><div class="tile-txt"><small data-t="ac0">Catamarca</small><h3 data-t="ac1">Piedra Pómez</h3><p data-t="ac2">Un desierto de piedra blanca tallada por el viento, al pie de los volcanes.</p></div></a>
+    <a class="tile rv rv-d2 wa-link" href="#" data-msg="destino" data-dest="el Glaciar Perito Moreno"><img src="img/ar-glaciar.jpg" width="1024" height="1280" alt="Pared de hielo del Glaciar Perito Moreno" loading="lazy" /><div class="tile-txt"><small>El Calafate</small><h3 data-t="ag1">Glaciar Perito Moreno</h3><p data-t="ag2">Una pared de hielo de sesenta metros que cruje y se derrumba frente a vos.</p></div></a>
+    <a class="tile rv wa-link" href="#" data-msg="destino" data-dest="Ushuaia"><img src="img/ar-ushuaia.jpg" width="1024" height="1280" alt="Faro en el Canal Beagle, Ushuaia" loading="lazy" /><div class="tile-txt"><small>Tierra del Fuego</small><h3 data-t="au1">Ushuaia</h3><p data-t="au2">La ciudad del fin del mundo: el Canal Beagle, sus faros y sus lobos marinos.</p></div></a>
+    <a class="tile rv rv-d1 wa-link" href="#" data-msg="destino" data-dest="Buenos Aires"><img src="img/ar-tango.jpg" width="1024" height="1280" alt="Pareja bailando tango en un salón de palacio" loading="lazy" /><div class="tile-txt"><small>Buenos Aires</small><h3 data-t="ab1">Palacios y tango</h3><p data-t="ab2">La ciudad de los palacios, de noche, con una milonga de verdad.</p></div></a>
+    <a class="tile rv rv-d2 wa-link" href="#" data-msg="destino" data-dest="una estancia"><img src="img/ar-estancia.jpg" width="1024" height="1280" alt="Casco de estancia con gauchos a caballo" loading="lazy" /><div class="tile-txt"><small data-t="ae0">Llanura pampeana</small><h3 data-t="ae1">Estancias</h3><p data-t="ae2">Días de campo, caballos y asado en cascos históricos.</p></div></a>
+  </div>
+  <div class="arg-pie">
+    <p class="rv" data-t="apie">Para turistas de Italia, de China o de donde vengas: <strong>la Argentina, armada por alguien que la recorrió entera.</strong></p>
+    <a class="btn btn-claro wa-link rv rv-d1" href="#" data-msg="destino" data-dest="la Argentina"><svg class="ico-marca"><use href="#i-wa"/></svg><span data-t="acta">Quiero recorrer la Argentina</span></a>
+  </div>
+</section>
+
+<section class="merlo" id="merlo">
+  <div class="merlo-foto" id="merloFoto"><img src="img/merlo.jpg" width="2048" height="1146" alt="Sierras de los Comechingones sobre Merlo, San Luis, con una cascada" loading="lazy" /></div>
+  <div class="merlo-in">
+    <div class="merlo-diez rv">10<small data-t="ml0">años · 2017–2027</small></div>
+    <div>
+      <h2 class="rv rv-d1"><span data-t="ml1">Merlo, San Luis:</span> <strong data-t="ml2">la mitad de tu estadía, de regalo</strong></h2>
+      <p class="rv rv-d2" data-t="ml3">Para festejar diez años, a quienes viajaron con nosotros les regalamos <strong>la mitad de la estadía en Merlo</strong>: reservás diez días y cinco son de regalo. Desde 2027, con prioridad para nuestros clientes.</p>
+      <p class="rv rv-d2" data-t="ml4">Las sierras de los Comechingones, más de veinte cascadas, tirolesa entre los cerros y una confitería a más de 2.000 metros. Con muy buena conexión desde Buenos Aires.</p>
+      <a class="btn btn-claro wa-link rv rv-d3" href="#" data-msg="merlo"><svg class="ico-marca"><use href="#i-wa"/></svg><span data-t="mlcta">Quiero mi estadía en Merlo</span></a>
+    </div>
+  </div>
+</section>
+
 <section class="como">
   <div class="cab"><h2 class="rv"><span data-t="p0a">Cómo</span><br /><strong data-t="p0b">trabajamos</strong></h2></div>
   <div class="pasos">
@@ -418,6 +502,21 @@ footer{padding:40px var(--gut) 44px;display:flex;justify-content:space-between;a
 <section class="idiomas-sec">
   <div class="lista rv" id="listaIdiomas"><span>Español</span><span>English</span><span>Italiano</span><span>中文</span></div>
   <p class="rv rv-d1" data-t="idp">Viajan con nosotros desde la Argentina, Italia y Asia. <strong>Cada servicio se contrata en el idioma de quien viaja</strong>, y las salidas parten desde donde estés.</p>
+</section>
+
+<section class="testi" id="comentarios">
+  <div class="cab">
+    <div>
+      <h2 class="rv"><span data-t="te1">Lo que cuentan</span><br /><strong data-t="te2">al volver</strong></h2>
+      <p class="rv rv-d1" data-t="tebaja">Comentarios de clientes, con la foto que nos mandaron desde el viaje.</p>
+    </div>
+  </div>
+  <span class="testi-ej rv" data-t="teej">Boceto: acá van los comentarios y las fotos reales de tus clientes</span>
+  <div class="testi-grid">
+    <figure class="testi-card rv"><img src="img/curazao.jpg" width="896" height="1120" alt="" loading="lazy" /><blockquote data-t="tq">«Acá va lo que te escribió al volver, con sus palabras.»</blockquote><footer><b data-t="tn">Nombre del cliente</b><span data-t="tv1">Viaje a Curazao · 2026</span></footer></figure>
+    <figure class="testi-card rv rv-d1"><img src="img/nueva-york.jpg" width="896" height="1120" alt="" loading="lazy" /><blockquote data-t="tq">«Acá va lo que te escribió al volver, con sus palabras.»</blockquote><footer><b data-t="tn">Nombre del cliente</b><span data-t="tv2">Año Nuevo en Nueva York · 2025</span></footer></figure>
+    <figure class="testi-card rv rv-d2"><img src="img/guilin.jpg" width="896" height="1120" alt="" loading="lazy" /><blockquote data-t="tq">«Acá va lo que te escribió al volver, con sus palabras.»</blockquote><footer><b data-t="tn">Nombre del cliente</b><span data-t="tv3">China a medida · 2025</span></footer></figure>
+  </div>
 </section>
 
 <section class="refe">
@@ -468,7 +567,7 @@ footer{padding:40px var(--gut) 44px;display:flex;justify-content:space-between;a
 </main>
 
 <footer>
-  <span>VIP &amp; Exotic Travel Group · Andrea Carolina Savino</span>
+  <span>VIP&amp;EXOTIC Travel GROUP · Andrea C. Savino</span>
   <span data-t="foot">Sede en Neuquén, Argentina. Atendemos desde cualquier lugar del mundo.</span>
 </footer>
 
@@ -500,7 +599,7 @@ const SALIDAS = [
 ];
 
 const T = {
-  en:{nav1:'Departures',nav2:'Tailor-made',nav3:'Andrea',nav4:'Contact',navwa:'Message me',hpre:'Andrea Savino · Tailor-made travel worldwide',h1a:'Wherever you want to go,',h1b:'we’ll take you.',hbaja:'Trips built at your pace, in your language and from wherever you are, by someone who has been to every destination before recommending it.',cta1:'Plan my trip',cta2:'See scheduled departures',ahora1:'Right now',ahora2:'Andrea is exploring Singapore',
+  en:{nav1:'Departures',nav2:'Tailor-made',nav3:'Andrea',nav4:'Contact',navwa:'Message me',hpre:'Andrea C. Savino · Tailor-made travel worldwide',h1a:'Wherever you want to go,',h1b:'we’ll take you.',hbaja:'Trips built at your pace, in your language and from wherever you are, by someone who has been to every destination before recommending it.',cta1:'Plan my trip',cta2:'See scheduled departures',ahora1:'Right now',ahora2:'Andrea is exploring Singapore',
     m1:'I don’t recommend',m2:'a place I don’t know.',m3:'I stay',m4:'a month in every destination,',m5:'deal with the hotels and',m6:'try every tour',m7:'before you do.',firma:'Traveller and travel advisor',
     c1:'years planning trips around the world. Most clients come through referrals.',c2n:'1 month',c2:'at least, in every place I recommend.',c3n:'Your language',c3:'in every service: guides and assistance in Spanish, English, Italian or whatever you speak.',
     s1:'Scheduled',s2:'departures',sbaja:'Packages with limited seats. Tap “share” and send the link to whoever travels with you.',f0:'All',f1:'Caribbean',f2:'Cities',f3:'Brazil',
@@ -512,8 +611,11 @@ const T = {
     idp:'Our travellers come from Argentina, Italy and Asia. <strong>Every service is booked in the traveller’s language</strong>, and departures leave from wherever you are.',
     r1:'Recommend us',r2:'and travel again',rp:'If someone travels thanks to your recommendation, you get a share of the profit for your next trip. That’s how we grew these ten years: client by client.',rcta:'How does it work?',
     ig1:'Follow the journey',igcta:'See on Instagram',k1:'Where do you',k2:'want to go?',kbaja:'Fill in what you know and I’ll message you on WhatsApp with a first idea.',l1:'Destination',l2:'When',l3:'Travellers',l4:'Your name',o1:'Just me',o2:'As a couple',o3:'With family',o4:'In a group',kcta:'Send via WhatsApp',ph1:'Japan, Morocco, not sure yet…',ph2:'April 2027',
+    apre:'Argentina',a1:'The exotic',a2:'is here too',abaja:'From the high plateau to the end of the world. For visitors from abroad, and for locals who haven’t seen it yet.',ap1:'White salt flats above 3,000 metres and villages unchanged for centuries.',ac0:'Catamarca',ac1:'Pumice Stone Field',ac2:'A desert of white rock carved by the wind, at the foot of the volcanoes.',ag1:'Perito Moreno Glacier',ag2:'A sixty-metre wall of ice that cracks and collapses right in front of you.',au1:'Ushuaia',au2:'The city at the end of the world: the Beagle Channel, its lighthouses and sea lions.',ab1:'Palaces and tango',ab2:'The city of palaces, at night, with a real milonga.',ae0:'The Pampas',ae1:'Estancias',ae2:'Country days, horses and asado on historic ranches.',apie:'For travellers from Italy, China or wherever you come from: <strong>Argentina, planned by someone who has travelled all of it.</strong>',acta:'I want to explore Argentina',
+    ml0:'years · 2017–2027',ml1:'Merlo, San Luis:',ml2:'half your stay, on us',ml3:'To celebrate ten years, everyone who has travelled with us gets <strong>half of their stay in Merlo free</strong>: book ten days and five are on us. From 2027, with priority for our clients.',ml4:'The Comechingones hills, over twenty waterfalls, ziplines between the peaks and a tea house above 2,000 metres. Very well connected to Buenos Aires.',mlcta:'I want my stay in Merlo',
+    te1:'What they tell us',te2:'when they’re back',tebaja:'Comments from clients, with the photo they sent us from their trip.',teej:'Mock-up: your clients’ real comments and photos go here',tq:'“This is where their own words go.”',tn:'Client name',tv1:'Trip to Curaçao · 2026',tv2:'New Year in New York · 2025',tv3:'Tailor-made China · 2025',
     foot:'Based in Neuquén, Argentina. We work from anywhere in the world.',boceto:'Mock-up · sample prices and dates',copiado:'Link copied'},
-  it:{nav1:'Partenze',nav2:'Su misura',nav3:'Andrea',nav4:'Contatti',navwa:'Scrivimi',hpre:'Andrea Savino · Viaggi su misura nel mondo',h1a:'Ovunque tu voglia andare,',h1b:'ti portiamo noi.',hbaja:'Viaggi costruiti al tuo ritmo, nella tua lingua e da dove ti trovi, da chi ha visitato ogni destinazione prima di consigliartela.',cta1:'Organizza il mio viaggio',cta2:'Vedi le partenze',ahora1:'Adesso',ahora2:'Andrea sta esplorando Singapore',
+  it:{nav1:'Partenze',nav2:'Su misura',nav3:'Andrea',nav4:'Contatti',navwa:'Scrivimi',hpre:'Andrea C. Savino · Viaggi su misura nel mondo',h1a:'Ovunque tu voglia andare,',h1b:'ti portiamo noi.',hbaja:'Viaggi costruiti al tuo ritmo, nella tua lingua e da dove ti trovi, da chi ha visitato ogni destinazione prima di consigliartela.',cta1:'Organizza il mio viaggio',cta2:'Vedi le partenze',ahora1:'Adesso',ahora2:'Andrea sta esplorando Singapore',
     m1:'Non ti consiglio',m2:'un posto che non conosco.',m3:'Resto',m4:'un mese in ogni destinazione,',m5:'tratto con gli hotel e',m6:'provo ogni escursione',m7:'prima che la faccia tu.',firma:'Viaggiatrice e consulente di viaggio',
     c1:'anni a organizzare viaggi nel mondo. La maggior parte dei clienti arriva per passaparola.',c2n:'1 mese',c2:'come minimo in ogni posto che consiglio.',c3n:'La tua lingua',c3:'in ogni servizio: guide e assistenza in spagnolo, inglese, italiano o nella lingua che parli.',
     s1:'Partenze',s2:'con data',sbaja:'Pacchetti a posti limitati. Tocca «condividi» e manda il link a chi viaggia con te.',f0:'Tutte',f1:'Caraibi',f2:'Città',f3:'Brasile',
@@ -525,6 +627,9 @@ const T = {
     idp:'Viaggiano con noi dall’Argentina, dall’Italia e dall’Asia. <strong>Ogni servizio si prenota nella lingua di chi viaggia</strong>, e le partenze sono da dove ti trovi.',
     r1:'Consigliaci',r2:'e viaggia di nuovo',rp:'Se qualcuno viaggia grazie al tuo consiglio, ricevi una parte del guadagno per il tuo prossimo viaggio. Così siamo cresciuti in questi dieci anni: cliente dopo cliente.',rcta:'Come funziona?',
     ig1:'Segui il viaggio',igcta:'Vedi su Instagram',k1:'Dove vuoi',k2:'andare?',kbaja:'Compila quello che sai e ti scrivo su WhatsApp con una prima idea.',l1:'Destinazione',l2:'Quando',l3:'Quanti siete',l4:'Il tuo nome',o1:'Viaggio da solo/a',o2:'In coppia',o3:'In famiglia',o4:'In gruppo',kcta:'Invia su WhatsApp',ph1:'Giappone, Marocco, non so ancora…',ph2:'Aprile 2027',
+    apre:'Argentina',a1:'L’esotico',a2:'è anche qui',abaja:'Dall’altopiano alla fine del mondo. Per chi arriva dall’estero e per chi vive qui e non l’ha ancora vista.',ap1:'Saline bianche a oltre 3.000 metri e villaggi rimasti uguali da secoli.',ac0:'Catamarca',ac1:'Campo de Piedra Pómez',ac2:'Un deserto di pietra bianca scolpita dal vento, ai piedi dei vulcani.',ag1:'Ghiacciaio Perito Moreno',ag2:'Una parete di ghiaccio di sessanta metri che scricchiola e crolla davanti a te.',au1:'Ushuaia',au2:'La città della fine del mondo: il Canale Beagle, i suoi fari e i leoni marini.',ab1:'Palazzi e tango',ab2:'La città dei palazzi, di notte, con una vera milonga.',ae0:'La Pampa',ae1:'Estancias',ae2:'Giornate in campagna, cavalli e asado in tenute storiche.',apie:'Per chi arriva dall’Italia, dalla Cina o da dove vuoi: <strong>l’Argentina, organizzata da chi l’ha percorsa tutta.</strong>',acta:'Voglio scoprire l’Argentina',
+    ml0:'anni · 2017–2027',ml1:'Merlo, San Luis:',ml2:'metà del soggiorno, in regalo',ml3:'Per festeggiare dieci anni, a chi ha viaggiato con noi regaliamo <strong>metà del soggiorno a Merlo</strong>: prenoti dieci giorni e cinque sono in regalo. Dal 2027, con priorità per i nostri clienti.',ml4:'Le sierras de los Comechingones, oltre venti cascate, zipline tra le vette e una caffetteria a più di 2.000 metri. Ottimi collegamenti da Buenos Aires.',mlcta:'Voglio il mio soggiorno a Merlo',
+    te1:'Cosa raccontano',te2:'al ritorno',tebaja:'Commenti dei clienti, con la foto che ci hanno mandato dal viaggio.',teej:'Bozza: qui vanno i commenti e le foto reali dei tuoi clienti',tq:'«Qui vanno le loro parole, al ritorno.»',tn:'Nome del cliente',tv1:'Viaggio a Curaçao · 2026',tv2:'Capodanno a New York · 2025',tv3:'Cina su misura · 2025',
     foot:'Sede a Neuquén, Argentina. Lavoriamo da qualsiasi parte del mondo.',boceto:'Bozza · prezzi e date di esempio',copiado:'Link copiato'},
   es:{desde:'Desde',pp:'por persona',consultar:'Consultar esta salida',compartir:'Compartir',copiado:'Link copiado'}
 };
@@ -537,6 +642,7 @@ const MSG = {
   armar:{es:'Hola Andrea, quiero armar un viaje.',en:'Hi Andrea, I’d like to plan a trip.',it:'Ciao Andrea, vorrei organizzare un viaggio.'},
   destino:{es:'Hola Andrea, me interesa un viaje a ',en:'Hi Andrea, I’m interested in a trip to ',it:'Ciao Andrea, mi interessa un viaggio a '},
   salida:{es:'Hola Andrea, quiero info de la salida: ',en:'Hi Andrea, I’d like info about this departure: ',it:'Ciao Andrea, vorrei informazioni su questa partenza: '},
+  merlo:{es:'Hola Andrea, viajé con ustedes y quiero mi estadía en Merlo.',en:'Hi Andrea, I’ve travelled with you and I’d like my stay in Merlo.',it:'Ciao Andrea, ho viaggiato con voi e vorrei il mio soggiorno a Merlo.'},
   referido:{es:'Hola Andrea, quiero saber cómo funciona lo de recomendar.',en:'Hi Andrea, how does the referral programme work?',it:'Ciao Andrea, come funziona il programma di passaparola?'}
 };
 const wa = txt => `https://wa.me/${WA}?text=${encodeURIComponent(txt)}`;
@@ -577,7 +683,7 @@ document.getElementById('grilla').addEventListener('click', async e => {
   const b = e.target.closest('[data-share]'); if (!b) return;
   const s = SALIDAS.find(x => x.id === b.dataset.share);
   const url = location.href.split('#')[0] + '#salida-' + s.id;
-  if (navigator.share) { try { await navigator.share({ title: s.tit[lang] + ' · VIP & Exotic', url }); return; } catch (_) { return; } }
+  if (navigator.share) { try { await navigator.share({ title: s.tit[lang] + ' · VIP&EXOTIC', url }); return; } catch (_) { return; } }
   try { await navigator.clipboard.writeText(url); } catch (_) {}
   const a = document.getElementById('aviso'); a.classList.add('on'); setTimeout(() => a.classList.remove('on'), 1800);
 });

@@ -227,6 +227,48 @@
     .dom b { display: block; font-size: 16.5px; font-weight: 560; color: var(--ink); margin-bottom: 4px; word-break: break-all; }
     .dom span { font-size: 13.5px; color: var(--mid); line-height: 1.45; display: block; }
     @media (max-width: 760px) { .dominios { grid-template-columns: 1fr; } }
+
+    /* LO QUE SUMAMOS (15-nov): bloque aparte, en azul, para leerlo en la llamada */
+    :root { --nv: #2350b8; --nv-dark: #173a8a; --nv-soft: #edf2fc; --nv-line: #cfdcf5; }
+    .aviso-nuevo { display: inline-flex; align-items: center; gap: 10px; margin-top: 26px; padding: 10px 16px; border-radius: 999px; background: var(--nv-soft); color: var(--nv-dark); font-size: 14px; font-weight: 560; text-decoration: none; }
+    .aviso-nuevo .ico { stroke: currentColor; width: 16px; height: 16px; }
+    .nuevo { background: var(--nv-soft); padding: 80px 0 88px; }
+    .nuevo .eyebrow { color: var(--nv); }
+    .nuevo h2 { font-size: clamp(28px, 4vw, 38px); }
+    .nuevo strong { color: var(--nv-dark); }
+    .nv-grupo { margin-top: 44px; }
+    .nv-grupo > h3 { margin: 0 0 6px; font-size: 21px; color: var(--nv-dark); }
+    .nv-grupo > p { font-size: 15px; color: var(--mid); margin-bottom: 18px; max-width: 660px; }
+    .nv-items { display: grid; gap: 10px; }
+    .nv-item { display: grid; grid-template-columns: 1fr auto; gap: 6px 24px; align-items: start; padding: 18px 20px; background: #fff; border: 1px solid var(--nv-line); border-radius: 10px; }
+    .nv-item b { display: block; font-size: 16px; font-weight: 560; color: var(--ink); margin-bottom: 3px; }
+    .nv-item span { font-size: 14.5px; color: var(--mid); line-height: 1.5; }
+    .nv-item a { color: var(--nv); font-weight: 560; }
+    .nv-tag { font-size: 13px; font-weight: 560; color: var(--nv); white-space: nowrap; padding-top: 2px; }
+    .nv-extra { cursor: pointer; }
+    .nv-extra input { position: absolute; opacity: 0; pointer-events: none; }
+    .nv-sw { display: inline-flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 560; color: var(--ink); white-space: nowrap; }
+    .nv-sw i { position: relative; width: 38px; height: 22px; border-radius: 999px; background: var(--line-strong); transition: background .2s; }
+    .nv-sw i::after { content: ""; position: absolute; top: 3px; left: 3px; width: 16px; height: 16px; border-radius: 50%; background: #fff; transition: transform .2s; }
+    .nv-extra input:checked + .nv-sw i { background: var(--nv); }
+    .nv-extra input:checked + .nv-sw i::after { transform: translateX(16px); }
+    .nv-extra input:focus-visible + .nv-sw i { outline: 2px solid var(--nv); outline-offset: 2px; }
+    .nv-extra:has(input:not(:checked)) { opacity: .62; }
+    .nv-total { margin-top: 18px; padding: 24px; border-radius: 10px; background: var(--nv-dark); color: #fff; display: grid; grid-template-columns: 1fr auto; gap: 18px 30px; align-items: end; }
+    .nv-total small { display: block; font-size: 13px; color: rgba(255,255,255,.7); margin-bottom: 4px; }
+    .nv-total .tot { font-size: clamp(30px, 4vw, 40px); font-weight: 560; letter-spacing: -0.02em; line-height: 1.1; }
+    .nv-total .det { font-size: 14.5px; color: rgba(255,255,255,.85); line-height: 1.55; text-align: right; }
+    .nv-total .det b { color: #fff; font-weight: 560; }
+    .nv-aclara { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .nv-aclara .nv-item { grid-template-columns: 1fr; }
+    @media (max-width: 640px) {
+      .nuevo { padding: 56px 0 60px; }
+      .nv-item { grid-template-columns: 1fr; }
+      .nv-total { grid-template-columns: 1fr; }
+      .nv-total .det { text-align: left; }
+      .nv-aclara { grid-template-columns: 1fr; }
+    }
+    @media print { .nuevo { -webkit-print-color-adjust: exact; print-color-adjust: exact; } .nv-item { break-inside: avoid; } }
   </style>
 </head>
 <body>
@@ -265,10 +307,11 @@
     <h1>Un lugar propio para tus viajes, que se comparte con un link y no depende de WhatsApp</h1>
     <p class="hero-sub">Escuché todos tus audios y recorrí tu Instagram. Con tus salidas, tus fotos de Singapur y tu manera de trabajar armé una idea de cómo se vería la web de VIP &amp; Exotic. Abajo, qué incluye y tres opciones con precio.</p>
     <div class="hero-meta">
-      <div class="hero-meta-item"><label>Preparado para</label><span>Andrea Savino · VIP &amp; Exotic Travel Group</span></div>
+      <div class="hero-meta-item"><label>Preparado para</label><span>Andrea C. Savino · VIP&amp;EXOTIC Travel GROUP</span></div>
       <div class="hero-meta-item"><label>Preparado por</label><span>Lautaro Méndez</span></div>
-      <div class="hero-meta-item"><label>Fecha</label><span>Noviembre 2026</span></div>
+      <div class="hero-meta-item"><label>Fecha</label><span>14 de noviembre · actualizada el 15</span></div>
     </div>
+    <a class="aviso-nuevo" href="#sumamos">Nuevo: lo que sumamos después de tus mensajes<svg class="ico"><use href="#i-arrow"/></svg></a>
   </header>
 </div>
 
@@ -490,6 +533,51 @@
   </div>
 </section>
 
+<!-- LO QUE SUMAMOS: agregado el 15-nov, después de sus mensajes -->
+<section class="nuevo fade" id="sumamos">
+  <div class="wrap">
+    <div class="eyebrow">Agregado el 15 de noviembre</div>
+    <h2>Lo que sumamos después de tus mensajes</h2>
+    <p class="section-intro">Elegiste la opción 3. Acá está todo lo que me pediste el sábado, en tres partes: lo que entra en ese precio, lo que se suma aparte y lo que conviene dejar claro antes de arrancar. <strong>Ya está en el boceto</strong>: <a href="demo/#argentina" target="_blank" rel="noopener" style="color:var(--nv);font-weight:560">verlo</a>.</p>
+
+    <div class="nv-grupo">
+      <h3>Entra en la opción 3, sin costo extra</h3>
+      <p>Son parte de lo que ya incluye: las páginas por destino, la versión en chino y el contenido que cargo yo.</p>
+      <div class="nv-items">
+        <div class="nv-item"><div><b>El nombre como lo escribís</b><span>VIP&amp;EXOTIC Travel GROUP en toda la web, y vos como Andrea C. Savino.</span></div><span class="nv-tag">Incluido</span></div>
+        <div class="nv-item"><div><b>Argentina exótica</b><span>La Puna, Catamarca, el Glaciar Perito Moreno, Ushuaia, Buenos Aires con sus palacios y el tango, y las estancias. Cada uno con su página, para el turista de afuera y para el de acá. <a href="demo/#argentina" target="_blank" rel="noopener">Ver en el boceto</a></span></div><span class="nv-tag">Incluido</span></div>
+        <div class="nv-item"><div><b>Merlo y los 10 años</b><span>Una página propia para Merlo y un espacio destacado para el regalo del aniversario: reservás diez días y cinco son de regalo. Con tus fotos del lugar y las condiciones que me pases. <a href="demo/#merlo" target="_blank" rel="noopener">Ver en el boceto</a></span></div><span class="nv-tag">Incluido</span></div>
+        <div class="nv-item"><div><b>Comentarios de clientes con la foto de su viaje</b><span>Vos me pasás el comentario y la foto, con el permiso del cliente, y después los sumás desde el panel.</span></div><span class="nv-tag">Incluido</span></div>
+        <div class="nv-item"><div><b>WeChat en la versión china</b><span>Así como WhatsApp en las otras: botón con tu código QR y tu ID de WeChat, para que el cliente chino te escriba por donde ya habla.</span></div><span class="nv-tag">Incluido</span></div>
+      </div>
+    </div>
+
+    <div class="nv-grupo">
+      <h3>Se suma aparte</h3>
+      <p>Las dos cosas nuevas que no estaban en ninguna opción. Si alguna la querés dejar para más adelante, se apaga acá y el total se ajusta solo.</p>
+      <div class="nv-items">
+        <label class="nv-item nv-extra"><div><b>Francés</b><span>La web completa en francés, escrita y no traducida al vuelo, con el mensaje de WhatsApp en francés. Las salidas que cargues después también llevan su texto en francés.</span></div><input type="checkbox" data-extra="frances" checked /><span class="nv-sw"><i></i><span data-precio="frances">$180.000</span></span></label>
+        <label class="nv-item nv-extra"><div><b>Seña online</b><span>Un botón «Reservar con seña» en cada salida, para el cliente que está lejos. Desde la Argentina paga con Mercado Pago, y desde afuera con tarjeta internacional o PayPal. La plata va directo a tu cuenta; la comisión de cada medio de pago queda a tu cargo.</span></div><input type="checkbox" data-extra="sena" checked /><span class="nv-sw"><i></i><span data-precio="sena">$100.000</span></span></label>
+      </div>
+      <div class="nv-total">
+        <div><small>Total con lo que sumamos</small><div class="tot" id="nvTot">$1.480.000</div></div>
+        <div class="det"><b id="nvMitad">2 pagos de $740.000</b>: la mitad al empezar y la mitad al entregar<br />Lista en <b id="nvPlazo">5 semanas</b>, <span id="nvFin">la semana del 21 de diciembre</span></div>
+      </div>
+    </div>
+
+    <div class="nv-grupo">
+      <h3>Lo que conviene dejar claro</h3>
+      <p>Para que sepas exactamente qué esperar.</p>
+      <div class="nv-aclara">
+        <div class="nv-item"><div><b>Los primeros puestos de Google</b><span>Nadie puede garantizar los primeros cinco lugares, y los «trucos» que prometen eso hacen que Google castigue la web. Lo que sí hacemos: una página por destino escrita para lo que la gente busca («viaje a la Puna a medida», «estancia en Merlo»), una web rápida y tu ficha de Google. Así se sube en las búsquedas de tus viajes, en semanas o meses. Para aparecer arriba desde el primer día están los anuncios de Google, que te puedo proponer aparte.</span></div></div>
+        <div class="nv-item"><div><b>Los buscadores chinos</b><span>En China Google no funciona y el buscador es Baidu, que casi no muestra webs alojadas fuera de China: para eso hace falta una licencia que solo puede sacar una empresa china. Lo que sí hacemos: la versión en chino preparada y dada de alta en Baidu, para el turista chino que ya viaja y busca desde afuera, y WeChat como el canal para hablarte.</span></div></div>
+        <div class="nv-item"><div><b>El «&amp;» en la dirección</b><span>Una dirección web no puede llevar «&amp;»: solo letras, números y guiones. La marca se ve con «&amp;» en la web, el logo y la pestaña, y la dirección queda <strong>vipexotictravel.com</strong>, que hoy sigue libre. La registramos a tu nombre en la reunión; cuesta unos USD 15 por año.</span></div></div>
+        <div class="nv-item"><div><b>La app</b><span>La opción 3 ya deja la web instalable en el celular, con tu ícono. La app completa es un proyecto aparte: te paso esa propuesta con la web andando, cuando sepamos qué usan más tus clientes.</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <div class="wrap">
   <section class="fade" style="padding-top:0">
     <div class="eyebrow">Más adelante</div>
@@ -527,7 +615,7 @@
 </div>
 
 <footer>
-  <div class="wrap">Propuesta preparada por Lautaro Méndez · 14 de noviembre de 2026 · Precios válidos por 15 días</div>
+  <div class="wrap">Propuesta preparada por Lautaro Méndez · 14 de noviembre de 2026, actualizada el 15 · Precios válidos por 15 días</div>
 </footer>
 
 <script>
@@ -545,6 +633,22 @@
     el.textContent = { lista: $(p), mitad: `2 pagos de ${$(p / 2)}`, uno: `${$(uno)} en un pago`, uno2: $(uno) }[el.dataset.v];
   });
   document.querySelectorAll('[data-plazo]').forEach(el => { el.textContent = `${PLAZOS[el.dataset.plazo]} semanas`; });
+
+  // LO QUE SUMAMOS (15-nov): precio de los extras y semanas que agregan. Cambiar solo acá.
+  const ELEGIDA = 3;
+  const EXTRAS = { frances: { precio: 180000, semanas: 1 }, sena: { precio: 100000, semanas: 0 } };
+  const larga = d => `la semana del ${d.getDate()} de ${d.toLocaleDateString('es-AR', { month: 'long' })}`;
+  function totalNuevo() {
+    let t = PRECIOS[ELEGIDA], s = PLAZOS[ELEGIDA];
+    document.querySelectorAll('[data-extra]').forEach(c => { if (c.checked) { t += EXTRAS[c.dataset.extra].precio; s += EXTRAS[c.dataset.extra].semanas; } });
+    document.getElementById('nvTot').textContent = $(t);
+    document.getElementById('nvMitad').textContent = `2 pagos de ${$(t / 2)}`;
+    document.getElementById('nvPlazo').textContent = `${s} semanas`;
+    const f = new Date(INICIO); f.setDate(f.getDate() + s * 7); document.getElementById('nvFin').textContent = larga(f);
+  }
+  document.querySelectorAll('[data-precio]').forEach(el => { el.textContent = $(EXTRAS[el.dataset.precio].precio); });
+  document.querySelectorAll('[data-extra]').forEach(c => c.addEventListener('change', totalNuevo));
+  totalNuevo();
   const fin = new Date(INICIO); fin.setDate(fin.getDate() + PLAZOS[RECOMENDADA] * 7);
   document.getElementById('fin-reco').textContent = `la semana del ${fin.getDate()} de ${fin.toLocaleDateString('es-AR', { month: 'long' })}`;
 
