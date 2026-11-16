@@ -542,22 +542,22 @@
 
     <div class="nv-grupo">
       <h3>Entra en la opción 3, sin costo extra</h3>
-      <p>Son parte de lo que ya incluye: las páginas por destino, la versión en chino y el contenido que cargo yo.</p>
+      <p>Son parte de lo que ya incluye: las páginas por destino, los idiomas y el contenido que cargo yo. El francés no estaba y va sin costo.</p>
       <div class="nv-items">
         <div class="nv-item"><div><b>El nombre como lo escribís</b><span>VIP&amp;EXOTIC Travel GROUP en toda la web, y vos como Andrea C. Savino.</span></div><span class="nv-tag">Incluido</span></div>
         <div class="nv-item"><div><b>Argentina exótica</b><span>La Puna, Catamarca, el Glaciar Perito Moreno, Ushuaia, Buenos Aires con sus palacios y el tango, y las estancias. Cada uno con su página, para el turista de afuera y para el de acá. <a href="demo/#argentina" target="_blank" rel="noopener">Ver en el boceto</a></span></div><span class="nv-tag">Incluido</span></div>
         <div class="nv-item"><div><b>Merlo y los 10 años</b><span>Una página propia para Merlo y un espacio destacado para el regalo del aniversario: reservás diez días y cinco son de regalo. Con tus fotos del lugar y las condiciones que me pases. <a href="demo/#merlo" target="_blank" rel="noopener">Ver en el boceto</a></span></div><span class="nv-tag">Incluido</span></div>
         <div class="nv-item"><div><b>Comentarios de clientes con la foto de su viaje</b><span>Vos me pasás el comentario y la foto, con el permiso del cliente, y después los sumás desde el panel.</span></div><span class="nv-tag">Incluido</span></div>
+        <div class="nv-item"><div><b>Francés</b><span>La web completa en francés, escrita y no traducida al vuelo, con el mensaje de WhatsApp en francés. Las salidas que cargues después también llevan su texto en francés.</span></div><span class="nv-tag">Incluido</span></div>
         <div class="nv-item"><div><b>WeChat en la versión china</b><span>Así como WhatsApp en las otras: botón con tu código QR y tu ID de WeChat, para que el cliente chino te escriba por donde ya habla.</span></div><span class="nv-tag">Incluido</span></div>
       </div>
     </div>
 
     <div class="nv-grupo">
       <h3>Se suma aparte</h3>
-      <p>Las dos cosas nuevas que no estaban en ninguna opción. Si alguna la querés dejar para más adelante, se apaga acá y el total se ajusta solo.</p>
+      <p>Lo único nuevo que no estaba en ninguna opción. Si lo querés dejar para más adelante, se apaga acá y el total se ajusta solo.</p>
       <div class="nv-items">
-        <label class="nv-item nv-extra"><div><b>Francés</b><span>La web completa en francés, escrita y no traducida al vuelo, con el mensaje de WhatsApp en francés. Las salidas que cargues después también llevan su texto en francés.</span></div><input type="checkbox" data-extra="frances" checked /><span class="nv-sw"><i></i><span data-precio="frances">$180.000</span></span></label>
-        <label class="nv-item nv-extra"><div><b>Seña online</b><span>Un botón «Reservar con seña» en cada salida, para el cliente que está lejos. Desde la Argentina paga con Mercado Pago, y desde afuera con tarjeta internacional o PayPal. La plata va directo a tu cuenta; la comisión de cada medio de pago queda a tu cargo.</span></div><input type="checkbox" data-extra="sena" checked /><span class="nv-sw"><i></i><span data-precio="sena">$100.000</span></span></label>
+        <label class="nv-item nv-extra"><div><b>Seña online</b><span>Un botón «Reservar con seña» en cada salida, para el cliente que está lejos. Desde la Argentina paga con Mercado Pago, y desde afuera con tarjeta internacional o PayPal. La plata va directo a tu cuenta; la comisión de cada medio de pago queda a tu cargo.</span></div><input type="checkbox" data-extra="sena" checked /><span class="nv-sw"><i></i><span data-precio="sena">$280.000</span></span></label>
       </div>
       <div class="nv-total">
         <div><small>Total con lo que sumamos</small><div class="tot" id="nvTot">$1.480.000</div></div>
@@ -636,10 +636,11 @@
 
   // LO QUE SUMAMOS (15-nov): precio de los extras y semanas que agregan. Cambiar solo acá.
   const ELEGIDA = 3;
-  const EXTRAS = { frances: { precio: 180000, semanas: 1 }, sena: { precio: 100000, semanas: 0 } };
+  const SEMANAS_INCLUIDAS = 1;                  // el francés, que va sin costo, suma una semana
+  const EXTRAS = { sena: { precio: 280000, semanas: 0 } };
   const larga = d => `la semana del ${d.getDate()} de ${d.toLocaleDateString('es-AR', { month: 'long' })}`;
   function totalNuevo() {
-    let t = PRECIOS[ELEGIDA], s = PLAZOS[ELEGIDA];
+    let t = PRECIOS[ELEGIDA], s = PLAZOS[ELEGIDA] + SEMANAS_INCLUIDAS;
     document.querySelectorAll('[data-extra]').forEach(c => { if (c.checked) { t += EXTRAS[c.dataset.extra].precio; s += EXTRAS[c.dataset.extra].semanas; } });
     document.getElementById('nvTot').textContent = $(t);
     document.getElementById('nvMitad').textContent = `2 pagos de ${$(t / 2)}`;
