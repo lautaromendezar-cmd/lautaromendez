@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Angela Violini — boceto</title>
+  <meta name="description" content="Boceto de la web de Angela Violini, artista visual." />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="es_AR" />
+  <meta property="og:url" content="https://lautaromendez.com.ar/propuestas/angie-violini/demo/" />
+  <meta property="og:title" content="Angela Violini — boceto de la web" />
+  <meta property="og:description" content="Una idea de diseño: editorial, minimal, con la obra como protagonista." />
+  <meta property="og:image" content="https://lautaromendez.com.ar/propuestas/angie-violini/og.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+  <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=gambetta@300,400,500,301,401&f[]=switzer@400,500&display=swap" />
+  <script>document.documentElement.classList.add('js');</script>
+  <style>
+    /* ===== Familia común (igual en Angie y Yago): grilla, tipografías, márgenes, ritmo ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --serif: 'Gambetta', Georgia, 'Times New Roman', serif;
+      --sans: 'Switzer', system-ui, -apple-system, 'Segoe UI', sans-serif;
+      --m: clamp(20px, 4.5vw, 64px);          /* margen lateral */
+      --gap: clamp(16px, 2vw, 28px);           /* calle de la grilla */
+      --s: clamp(80px, 12vw, 160px);           /* ritmo vertical entre secciones */
+      --header: 64px;
+      /* ===== Identidad Angie: clara, blanca, la obra manda ===== */
+      --bg: #ffffff;
+      --bg-alt: #f4f4f5;
+      --ink: #141414;
+      --text: #3a3a3a;
+      --mid: #6b6b6b;
+      --dim: #a3a3a3;
+      --line: #e6e6e6;
+      --accent: #8c3b2a;
+    }
+    html { scroll-behavior: smooth; scroll-padding-top: var(--header); }
+    body { background: var(--bg); color: var(--text); font-family: var(--sans); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+    button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+    .tbd { color: var(--dim); }
+
+    .aviso { background: var(--ink); color: #fff; font-size: 12.5px; text-align: center; padding: 8px var(--m); letter-spacing: .01em; }
+    .aviso b { font-weight: 500; }
+
+    header.top { position: sticky; top: 0; z-index: 50; height: var(--header); display: flex; align-items: center; justify-content: space-between; padding: 0 var(--m); background: rgb(255 255 255 / .92); backdrop-filter: blur(10px); border-bottom: 1px solid transparent; transition: border-color .3s; }
+    header.top.scrolled { border-color: var(--line); }
+    .marca { font-family: var(--serif); font-size: 22px; font-weight: 400; letter-spacing: -.01em; color: var(--ink); }
+    nav.menu { display: flex; gap: clamp(16px, 2.4vw, 36px); font-size: 13px; letter-spacing: .04em; text-transform: uppercase; }
+    nav.menu a { color: var(--mid); transition: color .2s; }
+    nav.menu a:hover { color: var(--ink); }
+    .burger { display: none; font-size: 13px; letter-spacing: .04em; text-transform: uppercase; color: var(--ink); }
+
+    .label { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--mid); }
+    .h-sec { font-family: var(--serif); font-weight: 300; font-size: clamp(40px, 6vw, 84px); line-height: 1; letter-spacing: -.025em; color: var(--ink); }
+    .grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: var(--gap); padding: 0 var(--m); }
+    section.sec { padding: var(--s) 0 0; }
+    .sec-head { align-items: end; margin-bottom: clamp(32px, 5vw, 64px); }
+    .sec-head .label { grid-column: 1 / 4; padding-bottom: 10px; }
+    .sec-head .h-sec { grid-column: 4 / 13; }
+
+    /* ===== Obra de ejemplo (placeholder pintado con CSS) ===== */
+    .art { position: relative; overflow: hidden; background: #ddd; }
+    .art::after { content: ""; position: absolute; inset: 0; background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .55 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"); mix-blend-mode: multiply; opacity: .35; pointer-events: none; }
+    .art > .tela { position: absolute; inset: -40px; filter: url(#pincel); }
+    .art .tag { position: absolute; left: 10px; top: 10px; z-index: 2; font-size: 10.5px; letter-spacing: .06em; text-transform: uppercase; color: rgb(255 255 255 / .85); background: rgb(0 0 0 / .28); padding: 3px 7px; border-radius: 2px; }
+
+    /* ===== Home ===== */
+    .hero { position: relative; height: calc(100svh - var(--header) - 33px); min-height: 520px; }
+    .hero .art { position: absolute; inset: 0; }
+    .hero::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 30%; background: linear-gradient(transparent, rgb(0 0 0 / .32)); pointer-events: none; }
+    .hero-cap { position: absolute; left: var(--m); bottom: 24px; z-index: 3; color: #fff; font-size: 13px; line-height: 1.45; text-shadow: 0 1px 12px rgb(0 0 0 / .35); }
+    .hero-cap i { font-family: var(--serif); font-size: 17px; }
+    .hero-cap span { opacity: .8; }
+    .intro { padding: clamp(56px, 8vw, 110px) 0 0; }
+    .intro .label { grid-column: 1 / 4; padding-top: 14px; }
+    .intro-line { grid-column: 4 / 12; font-family: var(--serif); font-weight: 300; font-size: clamp(30px, 4.4vw, 60px); line-height: 1.08; letter-spacing: -.02em; color: var(--ink); }
+    .intro-line em { font-style: italic; }
+    .accesos { margin-top: clamp(48px, 7vw, 96px); }
+    .acceso { grid-column: span 4; border-top: 1px solid var(--ink); padding: 18px 0 8px; display: flex; justify-content: space-between; align-items: baseline; gap: 16px; transition: padding .3s; }
+    .acceso b { font-family: var(--serif); font-weight: 400; font-size: clamp(24px, 2.4vw, 34px); color: var(--ink); letter-spacing: -.01em; }
+    .acceso small { font-size: 12px; color: var(--mid); letter-spacing: .06em; }
+    .acceso:hover { padding-left: 10px; }
+    .acceso p { grid-column: 1 / -1; font-size: 14px; color: var(--mid); }
+
+    /* ===== Obra: índice de series → serie → ficha ===== */
+    .series { row-gap: 48px; }
+    .serie-card { grid-column: span 4; text-align: left; }
+    .serie-card .art { aspect-ratio: 4 / 5; transition: transform .6s cubic-bezier(.2,.7,.2,1); }
+    .serie-card .frame { overflow: hidden; }
+    .serie-card:hover .art { transform: scale(1.035); }
+    .serie-meta { display: flex; justify-content: space-between; align-items: baseline; margin-top: 16px; padding-top: 12px; border-top: 1px solid var(--line); }
+    .serie-meta b { font-family: var(--serif); font-weight: 400; font-size: 26px; color: var(--ink); }
+    .serie-meta span { font-size: 13px; color: var(--mid); }
+    .serie-desc { font-size: 14px; color: var(--mid); margin-top: 6px; }
+
+    .serie-view { display: none; }
+    .serie-view.on { display: block; }
+    .series.off { display: none; }
+    .serie-top { align-items: end; margin-bottom: 40px; }
+    .volver { grid-column: 1 / 4; font-size: 13px; color: var(--mid); letter-spacing: .04em; text-transform: uppercase; text-align: left; padding-bottom: 8px; }
+    .volver:hover { color: var(--ink); }
+    .serie-top h3 { grid-column: 4 / 9; font-family: var(--serif); font-weight: 300; font-size: clamp(34px, 4vw, 56px); line-height: 1; color: var(--ink); letter-spacing: -.02em; }
+    .serie-top p { grid-column: 9 / 13; font-size: 14px; color: var(--mid); }
+    .obras { padding: 0 var(--m); columns: 3; column-gap: var(--gap); }
+    .obra { break-inside: avoid; margin-bottom: 36px; display: block; width: 100%; text-align: left; }
+    .obra .art { transition: opacity .3s; }
+    .obra:hover .art { opacity: .9; }
+    .obra-cap { display: flex; justify-content: space-between; gap: 12px; margin-top: 10px; font-size: 13px; color: var(--mid); }
+    .obra-cap i { font-family: var(--serif); font-size: 17px; color: var(--ink); font-style: italic; }
+    .estado { white-space: nowrap; }
+    .estado::before { content: ""; display: inline-block; width: 7px; height: 7px; border-radius: 50%; margin-right: 6px; background: #4f8a5b; vertical-align: 1px; }
+    .estado.vendida::before { background: var(--accent); }
+
+    .ficha { position: fixed; inset: 0; z-index: 100; background: #fff; display: none; grid-template-columns: 1.35fr 1fr; }
+    .ficha.on { display: grid; }
+    .ficha-img { background: var(--bg-alt); display: flex; align-items: center; justify-content: center; padding: clamp(24px, 5vw, 72px); min-height: 0; }
+    .ficha-img .art { width: 100%; max-height: 100%; box-shadow: 0 30px 60px -30px rgb(0 0 0 / .35); }
+    .ficha-txt { padding: clamp(28px, 4vw, 64px); display: flex; flex-direction: column; overflow-y: auto; }
+    .ficha-close { align-self: flex-end; font-size: 13px; letter-spacing: .04em; text-transform: uppercase; color: var(--mid); }
+    .ficha-close:hover { color: var(--ink); }
+    .ficha-txt .label { margin-top: auto; }
+    .ficha-txt h4 { font-family: var(--serif); font-weight: 300; font-style: italic; font-size: clamp(36px, 4vw, 56px); line-height: 1.02; color: var(--ink); margin: 10px 0 28px; }
+    .ficha-datos { list-style: none; border-top: 1px solid var(--line); margin-bottom: 28px; }
+    .ficha-datos li { display: flex; justify-content: space-between; gap: 16px; padding: 11px 0; border-bottom: 1px solid var(--line); font-size: 14px; }
+    .ficha-datos li span:first-child { color: var(--mid); }
+    .ficha-datos li span:last-child { color: var(--ink); text-align: right; }
+    .ficha-btns { display: flex; flex-direction: column; gap: 10px; }
+    .bt { display: inline-flex; justify-content: center; align-items: center; gap: 10px; padding: 15px 22px; font-size: 13px; letter-spacing: .06em; text-transform: uppercase; border: 1px solid var(--ink); color: var(--ink); transition: background .2s, color .2s; }
+    .bt:hover, .bt.fill { background: var(--ink); color: #fff; }
+    .bt.fill:hover { background: var(--accent); border-color: var(--accent); }
+    .ficha-nav { display: flex; justify-content: space-between; margin-top: 28px; font-size: 13px; color: var(--mid); letter-spacing: .04em; text-transform: uppercase; }
+    .ficha-nav button:hover { color: var(--ink); }
+
+    /* ===== Statement ===== */
+    .statement .label { grid-column: 1 / 4; padding-top: 12px; }
+    .statement-txt { grid-column: 4 / 12; font-family: var(--serif); font-weight: 300; font-size: clamp(24px, 2.6vw, 36px); line-height: 1.3; color: var(--ink); letter-spacing: -.01em; }
+    .statement-txt p + p { margin-top: .8em; }
+    .statement-txt .tbd { color: #b4b4b4; }
+
+    /* ===== Sobre mí ===== */
+    .sobre-foto { grid-column: 1 / 5; }
+    .sobre-foto .art { aspect-ratio: 3 / 4; }
+    .sobre-txt { grid-column: 6 / 13; }
+    .sobre-bio { font-family: var(--serif); font-size: clamp(20px, 1.8vw, 25px); line-height: 1.4; color: var(--ink); font-weight: 300; margin-bottom: 48px; }
+    .cv { display: grid; grid-template-columns: 1fr 1fr; gap: 40px var(--gap); }
+    .cv h5 { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--mid); font-weight: 500; padding-bottom: 10px; border-bottom: 1px solid var(--ink); margin-bottom: 4px; }
+    .cv ul { list-style: none; }
+    .cv li { display: grid; grid-template-columns: 52px 1fr; gap: 12px; padding: 11px 0; border-bottom: 1px solid var(--line); font-size: 14.5px; color: var(--text); line-height: 1.45; }
+    .cv li span:first-child { color: var(--mid); font-variant-numeric: tabular-nums; }
+    .cv li em { font-family: var(--serif); font-size: 16px; color: var(--ink); }
+
+    /* ===== Bestiario ===== */
+    .bestiario { background: var(--bg-alt); margin-top: var(--s); padding: clamp(56px, 8vw, 110px) 0; }
+    .best-l { grid-column: 1 / 6; }
+    .best-l .h-sec { font-style: italic; margin: 12px 0 18px; }
+    .best-l p { font-size: 15px; color: var(--mid); max-width: 380px; }
+    .ep { grid-column: 7 / 13; align-self: center; background: #fff; padding: 28px; display: grid; grid-template-columns: 120px 1fr; gap: 24px; align-items: center; }
+    .ep .art { aspect-ratio: 1; }
+    .ep small { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--mid); }
+    .ep b { display: block; font-family: var(--serif); font-weight: 400; font-size: 24px; line-height: 1.15; color: var(--ink); margin: 6px 0 16px; }
+    .ep-links { display: flex; gap: 8px; flex-wrap: wrap; }
+    .ep-links a { font-size: 12px; letter-spacing: .06em; text-transform: uppercase; padding: 9px 14px; border: 1px solid var(--ink); transition: background .2s, color .2s; }
+    .ep-links a:hover { background: var(--ink); color: #fff; }
+
+    /* ===== Contacto ===== */
+    .contacto-cols .col { grid-column: span 4; border-top: 1px solid var(--ink); padding-top: 18px; }
+    .col b { display: block; font-family: var(--serif); font-weight: 400; font-size: 26px; color: var(--ink); margin-bottom: 8px; }
+    .col p { font-size: 14.5px; color: var(--mid); margin-bottom: 18px; min-height: 3.2em; }
+    .col a { font-size: 13px; letter-spacing: .06em; text-transform: uppercase; color: var(--ink); border-bottom: 1px solid var(--ink); padding-bottom: 2px; }
+    .col a:hover { color: var(--accent); border-color: var(--accent); }
+    footer { margin-top: var(--s); padding: 28px var(--m) 36px; display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; border-top: 1px solid var(--line); font-size: 13px; color: var(--mid); }
+    footer .marca { font-size: 18px; }
+    footer nav { display: flex; gap: 22px; }
+    footer a:hover { color: var(--ink); }
+
+    /* ===== Entrada suave ===== */
+    .js .rv { opacity: 0; transform: translateY(24px); transition: opacity .9s cubic-bezier(.2,.7,.2,1), transform .9s cubic-bezier(.2,.7,.2,1); }
+    .js .rv.in { opacity: 1; transform: none; }
+    .js .hero .art { transform: scale(1.06); transition: transform 2.4s cubic-bezier(.2,.7,.2,1); }
+    .js .hero.in .art { transform: none; }
+    @media (prefers-reduced-motion: reduce) { .js .rv, .js .hero .art { opacity: 1; transform: none; transition: none; } }
+
+    @media (max-width: 900px) {
+      nav.menu { display: none; position: absolute; top: var(--header); left: 0; right: 0; flex-direction: column; gap: 0; background: #fff; border-bottom: 1px solid var(--line); padding: 8px var(--m) 16px; }
+      nav.menu.on { display: flex; }
+      nav.menu a { padding: 12px 0; border-bottom: 1px solid var(--line); font-size: 14px; color: var(--ink); }
+      .burger { display: block; }
+      .sec-head .label, .sec-head .h-sec, .intro .label, .intro-line, .statement .label, .statement-txt, .serie-top h3, .serie-top p, .volver { grid-column: 1 / -1; }
+      .acceso, .serie-card, .contacto-cols .col { grid-column: 1 / -1; }
+      .sobre-foto { grid-column: 1 / -1; max-width: 360px; }
+      .sobre-txt { grid-column: 1 / -1; }
+      .best-l, .ep { grid-column: 1 / -1; }
+      .best-l { margin-bottom: 28px; }
+      .obras { columns: 2; }
+      .ficha { grid-template-columns: 1fr; grid-template-rows: auto 1fr; overflow-y: auto; }
+      .ficha-img { padding: 56px 24px 24px; }
+      .ficha-img .art { max-height: 52svh; width: auto; max-width: 100%; }
+      .ficha-txt { overflow: visible; }
+      .ficha-close { position: absolute; top: 16px; right: 20px; z-index: 3; }
+      .ficha-txt .label { margin-top: 0; }
+    }
+    @media (max-width: 560px) {
+      .cv { grid-template-columns: 1fr; }
+      .obras { columns: 1; }
+      .ep { grid-template-columns: 84px 1fr; padding: 20px; gap: 16px; }
+      .hero { min-height: 460px; height: 78svh; }
+    }
+  </style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="pincel" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".008 .022" numOctaves="4" seed="7" result="t"/><feDisplacementMap in="SourceGraphic" in2="t" scale="46" xChannelSelector="R" yChannelSelector="G"/></filter></svg>
+
+<div class="aviso"><b>Boceto.</b> Las obras son imágenes de ejemplo; títulos, medidas, textos y el episodio también. Todo se reemplaza por lo tuyo.</div>
+
+<header class="top" id="top">
+  <a class="marca" href="#">Angela Violini</a>
+  <button class="burger" aria-expanded="false" aria-controls="menu">Menú</button>
+  <nav class="menu" id="menu">
+    <a href="#obra">Obra</a>
+    <a href="#statement">Statement</a>
+    <a href="#sobre">Sobre mí</a>
+    <a href="#bestiario">Bestiario</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
+</header>
+
+<main>
+  <!-- HOME: obra destacada a pantalla completa -->
+  <div class="hero">
+    <div class="art" data-seed="7" data-pal="0"><span class="tag">Obra destacada · ejemplo</span></div>
+    <div class="hero-cap"><i>Obra destacada</i><br><span>Serie I · óleo sobre tela · 2025</span></div>
+  </div>
+
+  <div class="intro">
+    <div class="grid">
+      <div class="label rv">Artista visual · Buenos Aires</div>
+      <p class="intro-line rv">Una pintura sobre la <em>identidad</em>, el cuerpo, la memoria y el linaje migrante.</p>
+    </div>
+    <div class="grid accesos">
+      <a class="acceso rv" href="#obra"><b>Obra</b><small>01</small></a>
+      <a class="acceso rv" href="#sobre"><b>Sobre mí</b><small>02</small></a>
+      <a class="acceso rv" href="#contacto"><b>Contacto</b><small>03</small></a>
+    </div>
+  </div>
+
+  <!-- OBRA -->
+  <section class="sec" id="obra">
+    <div class="grid sec-head">
+      <div class="label rv">Obra · por series</div>
+      <h2 class="h-sec rv">Obra</h2>
+    </div>
+
+    <div class="grid series" id="series"></div>
+
+    <div class="serie-view" id="serieView">
+      <div class="grid serie-top">
+        <button class="volver" id="volver">← Todas las series</button>
+        <h3 id="serieTitulo"></h3>
+        <p id="serieTexto"></p>
+      </div>
+      <div class="obras" id="obras"></div>
+    </div>
+  </section>
+
+  <!-- STATEMENT -->
+  <section class="sec" id="statement">
+    <div class="grid statement">
+      <div class="label rv">Statement</div>
+      <div class="statement-txt rv">
+        <p>Acá va tu statement, con tus palabras. <span class="tbd">[Texto de Angie: de dónde parte la obra, qué preguntas la mueven, cómo aparecen el cuerpo, la memoria y el linaje migrante en la pintura.]</span></p>
+        <p class="tbd">[Segundo párrafo opcional: técnica, proceso, materiales.]</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOBRE MÍ -->
+  <section class="sec" id="sobre">
+    <div class="grid sec-head">
+      <div class="label rv">Sobre mí</div>
+      <h2 class="h-sec rv">Angela Violini</h2>
+    </div>
+    <div class="grid">
+      <div class="sobre-foto rv"><div class="art" data-seed="31" data-pal="3"><span class="tag">Retrato · ejemplo</span></div></div>
+      <div class="sobre-txt">
+        <p class="sobre-bio rv">Artista visual y Licenciada en Artes Visuales por la Universidad Nacional de las Artes (UNA). Pinta en óleo y acrílico. <span class="tbd">[Bio corta en primera o tercera persona, a completar con Angie.]</span></p>
+        <div class="cv rv">
+          <div>
+            <h5>Formación</h5>
+            <ul><li><span>—</span><span>Licenciatura en Artes Visuales, <em>UNA</em></span></li></ul>
+          </div>
+          <div>
+            <h5>Selecciones</h5>
+            <ul><li><span>2026</span><span>Seleccionada, <em>Premio Prilidiano Pueyrredón</em> (UNA)</span></li></ul>
+          </div>
+          <div>
+            <h5>Exposiciones</h5>
+            <ul>
+              <li><span>2025</span><span><em>Leonardo Collective</em></span></li>
+              <li><span>2024</span><span><em>Cátedra Florio</em>, Salón de los Pasos Perdidos, Facultad de Derecho (UBA)</span></li>
+            </ul>
+          </div>
+          <div>
+            <h5>Obra en venta</h5>
+            <ul><li><span>—</span><span><em>Saatchi Art</em>, obra original y encargos</span></li></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BESTIARIO -->
+  <section class="bestiario" id="bestiario">
+    <div class="grid">
+      <div class="best-l rv">
+        <div class="label">Podcast</div>
+        <h2 class="h-sec">Bestiario</h2>
+        <p>Conversaciones con artistas. Lo conduce Angie, en Spotify y YouTube.</p>
+      </div>
+      <div class="ep rv">
+        <div class="art" data-seed="54" data-pal="2"></div>
+        <div>
+          <small>Último episodio · ejemplo</small>
+          <b>[Título del episodio]</b>
+          <div class="ep-links"><a href="#bestiario">Escuchar en Spotify</a><a href="#bestiario">Ver en YouTube</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section class="sec" id="contacto">
+    <div class="grid sec-head">
+      <div class="label rv">Contacto</div>
+      <h2 class="h-sec rv">Hablemos</h2>
+    </div>
+    <div class="grid contacto-cols">
+      <div class="col rv"><b>Consultas de obra</b><p>Disponibilidad, precio y envío de una obra.</p><a href="#contacto">Escribir por WhatsApp</a></div>
+      <div class="col rv"><b>Encargos</b><p>Obra por encargo: contame la idea, el tamaño y los plazos.</p><a href="#contacto">Enviar un mail</a></div>
+      <div class="col rv"><b>Prensa</b><p>Entrevistas, notas e imágenes en alta resolución.</p><a href="#contacto">Enviar un mail</a></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <span class="marca">Angela Violini</span>
+  <nav><a href="https://www.instagram.com/violini.angela/" target="_blank" rel="noopener">Instagram</a><a href="https://www.saatchiart.com/angelaviolini" target="_blank" rel="noopener">Saatchi Art</a><a href="#bestiario">Bestiario</a></nav>
+</footer>
+
+<!-- FICHA DE OBRA -->
+<div class="ficha" id="ficha" role="dialog" aria-modal="true" aria-label="Ficha de obra">
+  <div class="ficha-img"><div class="art" id="fichaArt"></div></div>
+  <div class="ficha-txt">
+    <button class="ficha-close" id="fichaClose">Cerrar ✕</button>
+    <div class="label" id="fichaSerie"></div>
+    <h4 id="fichaTitulo"></h4>
+    <ul class="ficha-datos" id="fichaDatos"></ul>
+    <div class="ficha-btns">
+      <a class="bt fill" href="#contacto" id="fichaConsultar">Consultar por esta obra</a>
+      <a class="bt" href="https://www.saatchiart.com/angelaviolini" target="_blank" rel="noopener">Ver en Saatchi Art</a>
+    </div>
+    <div class="ficha-nav"><button id="prev">← Anterior</button><button id="next">Siguiente →</button></div>
+  </div>
+</div>
+
+<script>
+  // ---------- Pinturas de ejemplo (placeholder, no son obras reales) ----------
+  const PALETAS = [
+    ['#b8644a', '#e9dccb', '#2e3a4c', '#c9a46c', '#6a2c27'],
+    ['#d9cbb8', '#8c9a8b', '#3b3f3a', '#c27a5a', '#efe8de'],
+    ['#22303f', '#b5543f', '#d8b48a', '#5f6f7d', '#ece3d6'],
+    ['#cfc6bb', '#9b8f84', '#5a4e47', '#e7dfd5', '#b07c62'],
+    ['#7c2f2a', '#e4c9a9', '#1e1b1a', '#a65a3c', '#d9d1c4']
+  ];
+  const rnd = s => () => (s = (s * 16807) % 2147483647) / 2147483647;
+  function pintar(el, seed, pal) {
+    const r = rnd(seed * 97 + 13), P = PALETAS[pal % PALETAS.length];
+    const pick = () => P[Math.floor(r() * P.length)];
+    const n = v => Math.round(v);
+    const capas = [];
+    // formas: elipses de borde neto que el filtro "pincel" vuelve orgánicas
+    const formas = 2 + Math.floor(r() * 2);
+    for (let i = 0; i < formas; i++) {
+      const c = pick();
+      capas.push(`radial-gradient(${n(14 + r() * 26)}% ${n(18 + r() * 34)}% at ${n(15 + r() * 70)}% ${n(15 + r() * 70)}%, ${c} 0 46%, ${c}aa 50%, transparent 53%)`);
+    }
+    // una veladura en franja
+    const p = n(10 + r() * 70), a2 = n(r() * 180), cv = pick();
+    capas.push(`linear-gradient(${a2}deg, transparent 0 ${p}%, ${cv}cc ${p + 1}% ${p + 7}%, transparent ${p + 9}%)`);
+    // campos de color de fondo
+    const a = n(r() * 180), b1 = n(25 + r() * 25), b2 = n(55 + r() * 25);
+    capas.push(`linear-gradient(${a}deg, ${pick()} 0 ${b1}%, ${pick()} ${b1 + 3}% ${b2}%, ${pick()} ${b2 + 3}% 100%)`);
+    let tela = el.querySelector(':scope > .tela');
+    if (!tela) { tela = document.createElement('i'); tela.className = 'tela'; el.prepend(tela); }
+    tela.style.background = capas.join(',');
+  }
+  document.querySelectorAll('.art[data-seed]').forEach(el => pintar(el, +el.dataset.seed, +el.dataset.pal));
+
+  // ---------- Datos de ejemplo: series y obras ----------
+  const FORMATOS = ['3 / 4', '4 / 5', '1 / 1', '5 / 4', '2 / 3', '4 / 3'];
+  const SERIES = [
+    { id: 'i', nombre: 'Serie I', años: '2025', pal: 0, texto: 'Texto breve de la serie: de qué trata, cuándo y por qué. [a completar]' },
+    { id: 'ii', nombre: 'Serie II', años: '2024', pal: 2, texto: 'Texto breve de la serie: de qué trata, cuándo y por qué. [a completar]' },
+    { id: 'iii', nombre: 'Serie III', años: '2023–2024', pal: 4, texto: 'Texto breve de la serie: de qué trata, cuándo y por qué. [a completar]' }
+  ];
+  SERIES.forEach((s, si) => {
+    s.obras = Array.from({ length: 7 }, (_, i) => ({
+      titulo: `Obra ${String(i + 1).padStart(2, '0')}`,
+      tecnica: i % 3 === 2 ? 'Acrílico sobre tela' : 'Óleo sobre tela',
+      medidas: ['100 × 80 cm', '60 × 50 cm', '120 × 120 cm', '80 × 100 cm', '40 × 30 cm'][(i + si) % 5],
+      año: s.años.slice(-4),
+      vendida: (i + si) % 4 === 1,
+      formato: FORMATOS[(i + si * 2) % FORMATOS.length],
+      seed: si * 20 + i + 3
+    }));
+  });
+
+  const $ = id => document.getElementById(id);
+  const seriesEl = $('series'), view = $('serieView'), obrasEl = $('obras');
+  seriesEl.innerHTML = SERIES.map(s => `
+    <button class="serie-card rv" data-serie="${s.id}">
+      <div class="frame"><div class="art" data-seed="${s.obras[0].seed}" data-pal="${s.pal}"></div></div>
+      <div class="serie-meta"><b>${s.nombre}</b><span>${s.años} · ${s.obras.length} obras</span></div>
+      <p class="serie-desc">Ver la serie →</p>
+    </button>`).join('');
+  seriesEl.querySelectorAll('.art').forEach(el => pintar(el, +el.dataset.seed, +el.dataset.pal));
+
+  let actual = null, idx = 0;
+  function abrirSerie(id, scroll = true) {
+    actual = SERIES.find(s => s.id === id);
+    $('serieTitulo').textContent = actual.nombre;
+    $('serieTexto').textContent = actual.texto;
+    obrasEl.innerHTML = actual.obras.map((o, i) => `
+      <button class="obra" data-i="${i}">
+        <div class="art" style="aspect-ratio:${o.formato}"></div>
+        <div class="obra-cap"><span><i>${o.titulo}</i>, ${o.año}</span><span class="estado ${o.vendida ? 'vendida' : ''}">${o.vendida ? 'Vendida' : 'Disponible'}</span></div>
+      </button>`).join('');
+    obrasEl.querySelectorAll('.obra').forEach(b => { const o = actual.obras[+b.dataset.i]; pintar(b.querySelector('.art'), o.seed, actual.pal); b.onclick = () => abrirFicha(+b.dataset.i); });
+    seriesEl.classList.add('off'); view.classList.add('on');
+    if (scroll) $('obra').scrollIntoView({ behavior: 'smooth' });
+  }
+  seriesEl.querySelectorAll('.serie-card').forEach(b => b.onclick = () => abrirSerie(b.dataset.serie));
+  $('volver').onclick = () => { view.classList.remove('on'); seriesEl.classList.remove('off'); $('obra').scrollIntoView({ behavior: 'smooth' }); };
+
+  function abrirFicha(i) {
+    idx = (i + actual.obras.length) % actual.obras.length;
+    const o = actual.obras[idx];
+    const art = $('fichaArt'); art.style.aspectRatio = o.formato; pintar(art, o.seed, actual.pal);
+    $('fichaSerie').textContent = `${actual.nombre} · ${idx + 1} de ${actual.obras.length}`;
+    $('fichaTitulo').textContent = o.titulo;
+    $('fichaDatos').innerHTML = [['Técnica', o.tecnica], ['Medidas', o.medidas], ['Año', o.año], ['Estado', `<span class="estado ${o.vendida ? 'vendida' : ''}">${o.vendida ? 'Vendida' : 'Disponible'}</span>`]].map(([a, b]) => `<li><span>${a}</span><span>${b}</span></li>`).join('');
+    $('fichaConsultar').textContent = o.vendida ? 'Consultar por un encargo similar' : 'Consultar por esta obra';
+    $('ficha').classList.add('on'); document.body.style.overflow = 'hidden';
+  }
+  const cerrar = () => { $('ficha').classList.remove('on'); document.body.style.overflow = ''; };
+  $('fichaClose').onclick = cerrar;
+  $('fichaConsultar').addEventListener('click', cerrar);
+  $('prev').onclick = () => abrirFicha(idx - 1);
+  $('next').onclick = () => abrirFicha(idx + 1);
+  addEventListener('keydown', e => { if (!$('ficha').classList.contains('on')) return; if (e.key === 'Escape') cerrar(); if (e.key === 'ArrowLeft') abrirFicha(idx - 1); if (e.key === 'ArrowRight') abrirFicha(idx + 1); });
+
+  // para las capturas: ?serie=i y ?ficha=2
+  const q = new URLSearchParams(location.search);
+  if (q.get('serie')) { abrirSerie(q.get('serie'), false); if (q.get('ficha')) abrirFicha(+q.get('ficha')); }
+
+  // ---------- Menú, header y entradas ----------
+  const burger = document.querySelector('.burger'), menu = $('menu');
+  burger.onclick = () => { const on = menu.classList.toggle('on'); burger.setAttribute('aria-expanded', on); burger.textContent = on ? 'Cerrar' : 'Menú'; };
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { menu.classList.remove('on'); burger.textContent = 'Menú'; }));
+  addEventListener('scroll', () => $('top').classList.toggle('scrolled', scrollY > 10), { passive: true });
+  requestAnimationFrame(() => document.querySelector('.hero').classList.add('in'));
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: .08 });
+  document.querySelectorAll('.rv').forEach(el => io.observe(el));
+</script>
+<script src="/propuestas/_visto.js" data-p="angie-violini" data-n="Angie Violini" data-e="boceto" defer></script>
+</body>
+</html>
