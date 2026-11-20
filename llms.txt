@@ -1,0 +1,47 @@
+# Lautaro Mendez — Diseño y desarrollo web en Buenos Aires
+
+> Diseñador y desarrollador web freelance con base en Buenos Aires, Argentina. Diseña y programa sitios a mano, uno por uno, con diseño propio y sin plantillas: landing pages, sitios institucionales, portfolios de artistas, tiendas online y desarrollos a medida. Tiene 47 proyectos publicados y trabaja a distancia con clientes de todo el país.
+
+Lautaro trabaja solo, sin agencia de por medio: el mismo que diseña es el que programa y el que atiende el WhatsApp. Responde el mismo día, de lunes a viernes de 9 a 19 h. No tiene precio de lista: con lo que el cliente necesita arma un presupuesto cerrado antes de arrancar. También arma y administra campañas de Google Ads y Meta Ads para los sitios que hace.
+
+## Servicios
+
+- **Landing page**: una sola página con un solo objetivo, preparada para campañas de Google Ads o Meta Ads. Diseño propio, hasta 6 secciones, formulario y WhatsApp directo, carga en menos de 2 segundos. Entrega en 7 a 10 días.
+- **Sitio institucional**: de 5 a 10 páginas, con panel para que el cliente edite el contenido, blog o novedades, SEO técnico, Analytics, ficha de Google y mail propio. Entrega en 3 a 4 semanas.
+- **Desarrollo a medida**: tiendas online, reservas, membresías, catálogos con panel de administración y sistemas internos, con base de datos, usuarios, pagos e integraciones. El alcance queda por escrito antes de empezar.
+- **Portfolios de artistas y profesionales**: sitios editoriales para mostrar obra, trayectoria y contacto.
+- **Campañas de Google Ads y Meta Ads** para los sitios que desarrolla.
+
+## Cómo trabaja
+
+- Diseño propio en todos los casos, nunca plantillas. La mayoría de los sitios están programados a mano (HTML, Next.js) para que carguen rápido y no dependan de plugins; usa WordPress cuando el cliente ya lo maneja.
+- Trabajo remoto por videollamada o WhatsApp, con el sitio visible en línea desde el primer día.
+- Los sitios salen indexables, con sitemap, datos estructurados y Google Analytics.
+- Un sitio común no tiene costo mensual; si lleva base de datos o panel, el servicio mensual se informa antes de contratar.
+
+## Rubros con proyectos publicados
+
+Inmobiliarias y desarrollos, turismo y transfers, e-commerce, estudios jurídicos, salud y kinesiología, gastronomía, industria, educación, servicios técnicos 24 h, consultoras, artistas y entretenimiento.
+
+## Algunos trabajos
+
+- [Liliana Donato](https://www.liliana-donato.com.ar/): portfolio de artista.
+- [Evelyn Orozco](https://evvyart.com.ar/): portfolio de arte visual.
+- [Place Vendôme](https://placevendome.com.ar/): desarrollo inmobiliario premium, con panel autogestionable.
+- [House in Baires](https://www.houseinbaires.com.ar/): alquileres temporarios en Buenos Aires con sistema propio.
+- [Yerba Mate Centenaria](https://yerbamatecentenaria.com.ar/): e-commerce de yerba mate.
+- [PLL Estudio Jurídico](https://www.estudiopll.com.ar/): estudio jurídico.
+- [SMC Arquitectura](https://smconstrucciones.com.ar/): constructora, llave en mano.
+- [Santa Barrica](https://club.santabarrica.com.ar/): club de vinos con membresías y checkout propio.
+- [TR3 Viajes y Turismo](https://www.tr3viajesyturismo.com/): turismo con pagos online.
+- [Fosque](https://fosque.com/): estudios de Pilates Reformer con tres sedes.
+- [PhysioMove](https://www.physiomove.com.ar/): kinesiología deportiva.
+- [Batata Studio](https://batatastudio.com.ar/): estudio de diseño.
+- [Portfolio completo](https://lautaromendez.com.ar/portfolio/): los 47 proyectos, filtrables por rubro.
+
+## Contacto
+
+- Sitio: https://lautaromendez.com.ar/
+- WhatsApp: +54 9 11 3001-1145 (https://wa.me/5491130011145)
+- Instagram: https://www.instagram.com/lautaromendez
+- Base: Buenos Aires, Argentina. Trabaja con clientes de todo el país.
