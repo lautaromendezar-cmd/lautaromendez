@@ -69,34 +69,45 @@
     .barra span { margin-left: 12px; font-size: 13px; color: #71717a; background: #fff; border-radius: 6px; padding: 3px 14px; flex: 0 1 300px; }
     .marco-wrap { padding: 0 24px; }
 
-    /* ---------- Boceto Angie ---------- */
-    .angie { background: #fff; color: #141414; font-family: var(--text); }
-    .a-nav { display: flex; justify-content: space-between; align-items: center; padding: 22px 40px; font-size: 14px; }
-    .a-nav b { font-family: var(--serif); font-weight: 500; font-size: 20px; letter-spacing: -.01em; }
-    .a-nav nav { display: flex; gap: 28px; }
-    .a-nav nav a { text-decoration: none; color: #141414; }
-    .a-hero { display: grid; grid-template-columns: 6fr 5fr; gap: 48px; padding: 30px 40px 56px; align-items: end; }
-    .a-hero .tag { font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); margin-bottom: 26px; }
-    .a-hero h3 { font-family: var(--serif); font-weight: 400; font-size: clamp(54px, 8.4vw, 132px); line-height: .9; letter-spacing: -.035em; margin-bottom: 30px; }
-    .a-hero h3 span { display: block; overflow: hidden; padding-bottom: .14em; margin-bottom: -.08em; }
-    .a-hero h3 span i { display: block; font-style: normal; }
-    .a-hero h3 span:last-child i { font-style: italic; padding-left: .5em; }
-    .a-hero p { font-size: 17px; max-width: 380px; color: #3f3f46; margin-bottom: 28px; }
+    /* ---------- Boceto Angie: la obra se pinta ---------- */
+    .angie { background: #fff; color: #141414; font-family: var(--text); position: relative; overflow: hidden; }
+    .av-top { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; padding: 20px 36px; font-size: 13px; letter-spacing: .06em; position: relative; z-index: 3; }
+    .av-top .sig { font-family: var(--serif); font-style: italic; font-size: 24px; letter-spacing: 0; }
+    .av-top .mid { color: #8a8a90; text-transform: uppercase; font-size: 12px; letter-spacing: .18em; }
+    .av-top .menu { justify-self: end; display: flex; align-items: center; gap: 10px; text-transform: uppercase; font-size: 12px; letter-spacing: .18em; }
+    .av-top .menu i { display: block; width: 22px; height: 1px; background: #141414; box-shadow: 0 5px 0 #141414; margin-top: -5px; }
+    .av-stage { position: relative; display: grid; grid-template-columns: 200px minmax(0, 1fr) 230px; gap: 48px; padding: 24px 36px 40px; align-items: end; }
+    .av-series { align-self: end; padding-bottom: 34px; }
+    .av-series ul { list-style: none; counter-reset: s; }
+    .av-series li { counter-increment: s; }
+    .av-series button { all: unset; cursor: pointer; display: grid; grid-template-columns: 28px 1fr; align-items: baseline; width: 100%; padding: 9px 0; border-top: 1px solid #e4e4e7; font-size: 14px; color: #8a8a90; transition: color .3s, padding .4s; }
+    .av-series button::before { content: '0' counter(s); font-size: 11px; letter-spacing: .08em; }
+    .av-series button b { font-family: var(--serif); font-weight: 400; font-size: 22px; letter-spacing: -.01em; }
+    .av-series button:hover, .av-series button.on { color: #141414; }
+    .av-series button.on { padding-left: 10px; }
+    .av-series button.on::before { color: var(--accent); }
+    .av-series button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+    .av-series .ttl { font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: #8a8a90; margin-bottom: 10px; }
+    .av-obra { position: relative; justify-self: center; width: 100%; max-width: 560px; }
+    .av-canvas { display: block; width: 100%; aspect-ratio: 4 / 5; background: #f1f1f1; cursor: crosshair; touch-action: pan-y; }
+    .av-cap { display: flex; justify-content: space-between; gap: 12px; margin-top: 12px; font-size: 12px; letter-spacing: .06em; color: #8a8a90; }
+    .av-cap b { color: #141414; font-weight: 500; }
+    .av-hint { position: absolute; left: 14px; bottom: 44px; z-index: 3; display: flex; align-items: center; gap: 8px; background: rgba(255,255,255,.9); padding: 6px 12px 6px 8px; border-radius: 99px; font-size: 12px; color: #3f3f46; pointer-events: none; transition: opacity .6s; }
+    .av-hint i { width: 10px; height: 10px; border-radius: 50%; background: var(--accent); animation: avp 1.6s ease-in-out infinite; }
+    @keyframes avp { 50% { transform: scale(1.6); opacity: .5; } }
+    .av-name { position: absolute; inset: 0; pointer-events: none; z-index: 2; mix-blend-mode: difference; color: #fff; font-family: var(--serif); font-weight: 400; letter-spacing: -.045em; line-height: .8; font-size: clamp(64px, 11.5vw, 188px); }
+    .av-name span { position: absolute; display: block; overflow: hidden; padding: 0 .04em .24em; }
+    .av-name span i { display: block; font-style: normal; }
+    .av-name .n1 { left: 26px; top: 4%; }
+    .av-name .n2 { right: 14%; bottom: 4%; }
+    .av-name .n2 i { font-style: italic; }
+    .av-side { align-self: start; padding-top: 150px; }
+    .av-side p { font-family: var(--serif); font-size: 21px; line-height: 1.3; letter-spacing: -.01em; margin-bottom: 26px; }
+    .av-side p em { color: var(--accent); }
+    .av-link { display: flex; justify-content: space-between; padding: 12px 0; border-top: 1px solid #141414; font-size: 14px; text-decoration: none; color: #141414; }
+    .av-link + .av-link { border-top-color: #e4e4e7; }
+    .av-link:hover { color: var(--accent); }
     .a-btns { display: flex; gap: 12px; flex-wrap: wrap; }
-    .a-btn { display: inline-block; padding: 13px 22px; font-size: 15px; text-decoration: none; border: 1px solid #141414; }
-    .a-btn.fill { background: #141414; color: #fff; }
-    .a-obra { position: relative; }
-    .a-obra .img { overflow: hidden; aspect-ratio: 4 / 5; position: relative; }
-    .a-obra img { position: absolute; left: 0; top: -6%; width: 100%; height: 112%; object-fit: cover; }
-    .a-obra figcaption { display: flex; justify-content: space-between; font-size: 13px; color: #71717a; margin-top: 10px; }
-    .a-series { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border-top: 1px solid #e4e4e7; }
-    .a-series a { display: grid; grid-template-columns: 84px 1fr; gap: 16px; align-items: center; padding: 20px 40px; text-decoration: none; color: #141414; border-right: 1px solid #e4e4e7; }
-    .a-series a:last-child { border-right: 0; }
-    .a-series .th { aspect-ratio: 1; overflow: hidden; }
-    .a-series .th img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s; }
-    .a-series a:hover .th img { transform: scale(1.06); }
-    .a-series small { display: block; font-size: 12px; color: #71717a; letter-spacing: .08em; }
-    .a-series b { font-family: var(--serif); font-weight: 400; font-size: 22px; }
 
     /* ---------- Boceto Yago ---------- */
     .yago { background: var(--night); color: #f1ebe4; font-family: var(--text); position: relative; overflow: hidden; }
@@ -199,11 +210,18 @@
     /* ---------- Responsive ---------- */
     @media (max-width: 900px) {
       section { padding: 72px 0; }
-      .a-hero { grid-template-columns: 1fr; gap: 32px; padding: 20px 22px 40px; }
-      .a-nav, .y-nav { padding: 18px 22px; }
-      .a-nav nav, .y-nav nav { display: none; }
-      .a-series { grid-template-columns: 1fr; }
-      .a-series a { padding: 16px 22px; border-right: 0; border-bottom: 1px solid #e4e4e7; }
+      .av-top { grid-template-columns: 1fr auto; padding: 16px 20px; }
+      .av-top .mid { display: none; }
+      .av-stage { grid-template-columns: 1fr; gap: 26px; padding: 70px 20px 30px; }
+      .av-obra { order: -1; max-width: none; }
+      .av-series, .av-side { padding: 0; }
+      .av-series ul { display: grid; grid-template-columns: 1fr 1fr; column-gap: 16px; }
+      .av-name { font-size: clamp(60px, 19vw, 120px); }
+      .av-name .n1 { left: 12px; top: 8px; }
+      .av-name .n2 { right: 26px; bottom: auto; top: var(--n2top, 60%); }
+      .av-hint { bottom: auto; top: 14px; right: 14px; left: auto; }
+      .y-nav { padding: 18px 22px; }
+      .y-nav nav { display: none; }
       .y-foto { width: 100%; height: 62%; inset: 0 0 auto 0; }
       .y-foto::after { background: linear-gradient(0deg, var(--night) 4%, rgba(19,16,14,.2) 60%, rgba(19,16,14,.35) 100%); }
       .y-hero { padding: 300px 22px 48px; min-height: 0; }
@@ -253,23 +271,29 @@
     <div class="marco rv-marco">
       <div class="barra"><i></i><i></i><i></i><span>angieviolini.com.ar</span></div>
       <div class="angie">
-        <div class="a-nav"><b>Angela Violini</b><nav><a href="#angie">Obra</a><a href="#angie">Sobre mí</a><a href="#angie">Bestiario</a><a href="#angie">Contacto</a></nav></div>
-        <div class="a-hero">
-          <div>
-            <div class="tag a-in">Artista visual · Buenos Aires</div>
-            <h3><span><i class="a-ln">Angela</i></span><span><i class="a-ln">Violini</i></span></h3>
-            <p class="a-in">Pintura y grabado sobre la identidad, el cuerpo, la memoria y el linaje migrante.</p>
-            <div class="a-btns a-in"><a class="a-btn fill" href="#angie">Ver la obra</a><a class="a-btn" href="#angie">Encargos</a></div>
+        <div class="av-top"><span class="sig">A. Violini</span><span class="mid">Pintura · Grabado · Dibujo</span><span class="menu">Menú <i></i></span></div>
+        <div class="av-stage">
+          <div class="av-name" aria-hidden="true"><span class="n1"><i class="a-ln">Angela</i></span><span class="n2"><i class="a-ln">Violini</i></span></div>
+          <div class="av-series a-in">
+            <div class="ttl">Series</div>
+            <ul>
+              <li><button type="button" class="on" data-img="img/angie-obra-rostro.jpg" data-t="Serie Identidad"><b>Identidad</b></button></li>
+              <li><button type="button" data-img="img/angie-obra-roja.jpg" data-t="Serie Linaje"><b>Linaje</b></button></li>
+              <li><button type="button" data-img="img/angie-obra-abuela.jpg" data-t="Serie Memoria"><b>Memoria</b></button></li>
+              <li><button type="button" data-img="img/angie-obra-pies.jpg" data-t="Serie Cuerpo"><b>Cuerpo</b></button></li>
+            </ul>
           </div>
-          <figure class="a-obra">
-            <div class="img"><img class="a-img" src="img/angie-obra-rostro.jpg" width="1120" height="1400" alt="Obra de Angela Violini: rostro de mujer en ocres y azules" /></div>
-            <figcaption class="a-in"><span>Obra destacada</span><span>Consultar →</span></figcaption>
+          <figure class="av-obra">
+            <div class="av-hint"><i></i><span class="av-hint-t">Pasá el cursor: la obra se pinta</span></div>
+            <canvas class="av-canvas" role="img" aria-label="Obra de Angela Violini"></canvas>
+            <figcaption class="av-cap"><span><b class="av-num">01 / 04</b> · <span class="av-serie">Serie Identidad</span></span><span>Consultar por esta obra →</span></figcaption>
           </figure>
-        </div>
-        <div class="a-series">
-          <a href="#angie"><span class="th"><img src="img/angie-obra-roja.jpg" alt="" loading="lazy" /></span><span><small>SERIE 01</small><b>Linaje</b></span></a>
-          <a href="#angie"><span class="th"><img src="img/angie-obra-abuela.jpg" alt="" loading="lazy" /></span><span><small>SERIE 02</small><b>Memoria</b></span></a>
-          <a href="#angie"><span class="th"><img src="img/angie-obra-pies.jpg" alt="" loading="lazy" /></span><span><small>SERIE 03</small><b>Cuerpo</b></span></a>
+          <div class="av-side a-in">
+            <p>Pintura y grabado sobre la identidad, el cuerpo, la memoria y el <em>linaje migrante</em>.</p>
+            <a class="av-link" href="#angie">Ver la obra <span>→</span></a>
+            <a class="av-link" href="#angie">Encargos <span>→</span></a>
+            <a class="av-link" href="#angie">Bestiario, el podcast <span>→</span></a>
+          </div>
         </div>
       </div>
     </div>
@@ -454,6 +478,137 @@
   <div class="wrap">Propuesta preparada por Lautaro Méndez · 24 de noviembre de 2026 · Precios válidos por 15 días</div>
 </footer>
 
+<script>
+/* Boceto de Angie: la obra arranca como una prueba de grabado en gris y el pincel le devuelve el color. */
+(function () {
+  var cv = document.querySelector('.av-canvas'); if (!cv) return;
+  var ctx = cv.getContext('2d');
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var mask = document.createElement('canvas'), m = mask.getContext('2d');
+  var tmp = document.createElement('canvas'), t = tmp.getContext('2d');
+  var color = document.createElement('canvas'), gray = document.createElement('canvas');
+  var W = 0, H = 0, img = null, visible = false, auto = [], last = null, idle = 0, clock = 0, started = false;
+  var hint = document.querySelector('.av-hint');
+  if (matchMedia('(hover: none)').matches) document.querySelector('.av-hint-t').textContent = 'Deslizá el dedo: la obra se pinta';
+
+  function placeName() {  // en el celular, «Violini» cae sobre el borde inferior de la obra
+    var st = document.querySelector('.av-stage'), r = cv.getBoundingClientRect(), rs = st.getBoundingClientRect();
+    st.style.setProperty('--n2top', (r.bottom - rs.top - r.height * .16) + 'px');
+  }
+  function size() {
+    var r = cv.getBoundingClientRect(), d = Math.min(devicePixelRatio || 1, 2);
+    W = Math.max(1, Math.round(r.width * d)); H = Math.max(1, Math.round(r.height * d));
+    [cv, mask, tmp, color, gray].forEach(function (c) { c.width = W; c.height = H; });
+    placeName();
+    if (img) { prep(); if (reduce) ctx.drawImage(color, 0, 0); }
+  }
+  function cover(c, im) {
+    var x = c.getContext('2d'), s = Math.max(W / im.width, H / im.height), w = im.width * s, h = im.height * s;
+    x.drawImage(im, (W - w) / 2, (H - h) / 2, w, h);
+  }
+  function prep() {
+    cover(color, img);
+    var g = gray.getContext('2d'); cover(gray, img);
+    try {
+      var d = g.getImageData(0, 0, W, H), p = d.data;
+      for (var i = 0; i < p.length; i += 4) {
+        var l = .3 * p[i] + .59 * p[i + 1] + .11 * p[i + 2];
+        l = 255 - (255 - l) * .72;
+        p[i] = l; p[i + 1] = l * .985; p[i + 2] = l * .96;
+      }
+      g.putImageData(d, 0, 0);
+    } catch (e) { g.filter = 'grayscale(1) brightness(1.15)'; cover(gray, img); g.filter = 'none'; }
+  }
+  function dab(x, y, r, a) {
+    for (var k = 0; k < 6; k++) {
+      var ox = (Math.random() - .5) * r * .9, oy = (Math.random() - .5) * r * .9, rr = r * (.35 + Math.random() * .55);
+      var gr = m.createRadialGradient(x + ox, y + oy, 0, x + ox, y + oy, rr);
+      gr.addColorStop(0, 'rgba(0,0,0,' + a + ')'); gr.addColorStop(1, 'rgba(0,0,0,0)');
+      m.fillStyle = gr; m.beginPath(); m.arc(x + ox, y + oy, rr, 0, 6.3); m.fill();
+    }
+  }
+  function stroke(a, b, r, al) {
+    var dx = b.x - a.x, dy = b.y - a.y, n = Math.min(40, Math.max(1, Math.hypot(dx, dy) / (r * .3)));
+    for (var i = 1; i <= n; i++) dab(a.x + dx * i / n, a.y + dy * i / n, r, al);
+  }
+  function intro() {  // pinceladas anchas en zigzag, de arriba abajo
+    auto = []; last = null; var rows = 8;
+    for (var i = 0; i <= rows; i++) {
+      var y = H * (.05 + .9 * i / rows), l = i % 2 === 0;
+      for (var j = 0; j <= 14; j++) {
+        var f = j / 14;
+        auto.push({ x: W * (l ? -.05 + 1.1 * f : 1.05 - 1.1 * f), y: y + Math.sin(f * 6) * H * .02, r: W * .15, a: .6 });
+      }
+    }
+    started = true;
+  }
+  function frame() {
+    if (visible && img) {
+      clock++;
+      if (auto.length) {
+        for (var i = 0, n = Math.min(3, auto.length); i < n; i++) {
+          var q = auto.shift();
+          if (last && last.auto) stroke(last, q, q.r, q.a); else dab(q.x, q.y, q.r, q.a);
+          last = { x: q.x, y: q.y, auto: true };
+        }
+        if (!auto.length) { last = null; idle = 0; }
+      } else if (++idle > 170) {  // sin cursor: un pincel solo recorre la obra
+        var tt = clock / 95, p = { x: W * (.5 + .38 * Math.sin(tt * 1.3)), y: H * (.5 + .4 * Math.sin(tt * .9 + 1)), ghost: true };
+        if (last && last.ghost) stroke(last, p, W * .09, .22);
+        last = p;
+      }
+      m.globalCompositeOperation = 'destination-out'; m.fillStyle = 'rgba(0,0,0,.0016)'; m.fillRect(0, 0, W, H);
+      m.globalCompositeOperation = 'source-over';
+      ctx.drawImage(gray, 0, 0);
+      t.globalCompositeOperation = 'source-over'; t.clearRect(0, 0, W, H); t.drawImage(color, 0, 0);
+      t.globalCompositeOperation = 'destination-in'; t.drawImage(mask, 0, 0);
+      ctx.drawImage(tmp, 0, 0);
+    }
+    requestAnimationFrame(frame);
+  }
+  function load(src, fresh) {
+    var im = new Image();
+    im.onload = function () {
+      img = im; prep();
+      if (reduce) { ctx.drawImage(color, 0, 0); return; }
+      m.clearRect(0, 0, W, H);
+      if (fresh || started) intro(); else ctx.drawImage(gray, 0, 0);
+    };
+    im.src = src;
+  }
+  function pos(e) { var r = cv.getBoundingClientRect(); return { x: (e.clientX - r.left) / r.width * W, y: (e.clientY - r.top) / r.height * H }; }
+  cv.addEventListener('pointermove', function (e) {
+    if (reduce || auto.length) return;
+    var p = pos(e); idle = 0;
+    if (last && !last.ghost && !last.auto) stroke(last, p, W * .085, .4); else dab(p.x, p.y, W * .085, .4);
+    last = p; if (hint) hint.style.opacity = 0;
+  });
+  cv.addEventListener('pointerleave', function () { last = null; });
+
+  var btns = document.querySelectorAll('.av-series button');
+  btns.forEach(function (b, i) {
+    function go() {
+      if (b.classList.contains('on')) return;
+      btns.forEach(function (x) { x.classList.remove('on'); }); b.classList.add('on');
+      document.querySelector('.av-serie').textContent = b.dataset.t;
+      document.querySelector('.av-num').textContent = '0' + (i + 1) + ' / 04';
+      load(b.dataset.img, true);
+    }
+    b.addEventListener('click', go);
+    if (matchMedia('(hover: hover)').matches) b.addEventListener('mouseenter', go);
+  });
+  btns.forEach(function (b) { var x = new Image(); x.src = b.dataset.img; });  // precarga
+
+  size();
+  addEventListener('resize', function () { var o = W; size(); if (o !== W && img && !reduce) { m.clearRect(0, 0, W, H); intro(); } });
+  load(btns[0].dataset.img, false);
+  new IntersectionObserver(function (es) {
+    visible = es[0].isIntersecting;
+    if (visible && !started && !reduce) setTimeout(function () { if (img && !started) intro(); }, 700);
+  }, { threshold: .35 }).observe(cv);
+  if (!reduce) requestAnimationFrame(frame);
+})();
+</script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
 <script>
@@ -473,14 +628,11 @@
       scrollTrigger: { trigger: el, start: 'top 88%', once: true } });
   });
 
-  // Boceto Angie: el nombre sube, la obra se descubre
-  var ta = gsap.timeline({ scrollTrigger: { trigger: '#angie .marco', start: 'top 70%', once: true } });
-  ta.from('#angie .marco', { y: 60, opacity: 0, duration: 1, ease: 'power3.out', clearProps: 'all' })
-    .from('.a-ln', { yPercent: 110, duration: 1.1, ease: 'power4.out', stagger: .12 }, '-=.5')
-    .from('.a-obra .img', { clipPath: 'inset(100% 0 0 0)', duration: 1.3, ease: 'power4.inOut', clearProps: 'clipPath' }, '<')
-    .from('.a-img', { scale: 1.25, duration: 1.8, ease: 'power3.out' }, '<')
-    .from('.a-in', { opacity: 0, y: 16, duration: .8, stagger: .08, ease: 'power2.out', clearProps: 'all' }, '-=1.1')
-    .from('.a-series a', { opacity: 0, y: 20, duration: .7, stagger: .08, ease: 'power2.out', clearProps: 'all' }, '-=.6');
+  // Boceto Angie: el nombre sube y aparecen series y texto (la pintura la maneja su propio script)
+  gsap.timeline({ scrollTrigger: { trigger: '#angie .marco', start: 'top 70%', once: true } })
+    .from('#angie .marco', { y: 60, opacity: 0, duration: 1, ease: 'power3.out', clearProps: 'all' })
+    .from('.a-ln', { yPercent: 115, duration: 1.2, ease: 'power4.out', stagger: .15 }, '-=.4')
+    .from('.a-in', { opacity: 0, y: 18, duration: .8, stagger: .1, ease: 'power2.out', clearProps: 'all' }, '-=.8');
 
   // Boceto Yago: la luz se enciende sobre la foto
   var ty = gsap.timeline({ scrollTrigger: { trigger: '#yago .marco', start: 'top 70%', once: true } });
@@ -491,7 +643,6 @@
     .from('.y-accesos a', { opacity: 0, y: 20, duration: .7, stagger: .08, ease: 'power2.out', clearProps: 'all' }, '-=.5');
 
   // Leve paralaje de las fotos dentro de los bocetos
-  gsap.to('.a-img', { yPercent: -6, ease: 'none', scrollTrigger: { trigger: '#angie', start: 'top bottom', end: 'bottom top', scrub: true } });
   gsap.to('.y-img', { yPercent: 6, ease: 'none', scrollTrigger: { trigger: '#yago', start: 'top bottom', end: 'bottom top', scrub: true } });
 })();
 </script>
