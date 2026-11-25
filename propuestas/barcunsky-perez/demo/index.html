@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Barcunsky &amp; Pérez — Administración de consorcios e inmobiliaria en Córdoba</title>
+  <meta name="description" content="Administración de consorcios, complejos y propiedades. Alquileres, ventas y tasaciones en Córdoba Capital." />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="es_AR" />
+  <meta property="og:url" content="https://lautaromendez.com.ar/propuestas/barcunsky-perez/demo/" />
+  <meta property="og:title" content="Barcunsky & Pérez — idea de diseño" />
+  <meta property="og:description" content="Así se podría ver la web de Barcunsky & Pérez: servicios, propiedades disponibles y acceso a la autogestión." />
+  <meta property="og:image" content="https://lautaromendez.com.ar/propuestas/barcunsky-perez/og.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" href="img/logo-icono.png" type="image/png" />
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+  <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600&display=swap" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    /* Colores del logo de Barcunsky & Pérez */
+    :root {
+      --navy: #0E2340;
+      --navy-2: #16304f;
+      --orange: #F26A10;
+      --orange-dark: #d65a06;
+      --ink: #0E2340;
+      --text: #33405a;
+      --mid: #66718a;
+      --line: #e3e6ec;
+      --soft: #f4f5f7;
+      --white: #ffffff;
+      --sans: 'General Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+      --r: 10px;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--sans); color: var(--text); background: var(--white); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; }
+    .wrap { max-width: 1200px; margin: 0 auto; padding: 0 28px; }
+    h1, h2, h3 { font-weight: 560; color: var(--ink); letter-spacing: -0.02em; line-height: 1.1; }
+    .ico { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
+
+    /* Aviso de boceto */
+    .aviso { background: #fff4ea; color: #7a3b0b; font-size: 13px; text-align: center; padding: 8px 16px; border-bottom: 1px solid #f6d8bd; }
+
+    /* Encabezado */
+    header.top { position: sticky; top: 0; z-index: 50; background: rgb(255 255 255 / .94); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+    .top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 24px; height: 72px; }
+    .marca { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .marca img { width: 58px; height: auto; }
+    .marca b { display: block; white-space: nowrap; font-size: 17px; font-weight: 600; color: var(--orange); letter-spacing: .01em; line-height: 1.1; }
+    .marca small { display: block; font-size: 11px; font-weight: 500; color: var(--navy); letter-spacing: .04em; text-transform: uppercase; }
+    nav.menu { display: flex; align-items: center; gap: 28px; font-size: 15px; font-weight: 500; }
+    nav.menu a { text-decoration: none; color: var(--navy); }
+    nav.menu a:hover { color: var(--orange); }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 20px; border-radius: 999px; font-size: 15px; font-weight: 560; text-decoration: none; border: 1.5px solid transparent; cursor: pointer; font-family: inherit; transition: background .2s, color .2s, border-color .2s; }
+    .btn-o { background: var(--orange); color: #fff; }
+    .btn-o:hover { background: var(--orange-dark); }
+    .btn-line { border-color: rgb(255 255 255 / .5); color: #fff; }
+    .btn-line:hover { background: #fff; color: var(--navy); }
+    .btn-navy { border-color: var(--navy); color: var(--navy); background: transparent; }
+    .btn-navy:hover { background: var(--navy); color: #fff; }
+    .menu .btn { padding: 9px 16px; font-size: 14px; color: #fff; }
+    .menu .btn:hover { color: #fff; }
+    .hamb { display: none; background: none; border: 0; color: var(--navy); cursor: pointer; }
+
+    /* Hero */
+    .hero { position: relative; background: var(--navy); color: #fff; overflow: hidden; }
+    .hero .wrap { position: relative; z-index: 2; display: grid; grid-template-columns: 1.2fr .8fr; min-height: 600px; align-items: center; }
+    .hero-txt { padding: 80px 0 120px; }
+    .hero-lista { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13px; font-weight: 500; color: rgb(255 255 255 / .7); letter-spacing: .03em; text-transform: uppercase; margin-bottom: 26px; }
+    .hero-lista span::before { content: ""; display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--orange); margin-right: 8px; vertical-align: 2px; }
+    .hero h1 { color: #fff; font-size: clamp(40px, 5vw, 66px); line-height: 1.02; letter-spacing: -0.035em; margin-bottom: 24px; }
+    .hero h1 em { font-style: normal; color: var(--orange); }
+    .hero p { font-size: 18px; color: rgb(255 255 255 / .78); max-width: 500px; margin-bottom: 34px; }
+    .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+    .hero-foto { position: absolute; inset: 0 0 0 50%; z-index: 1; }
+    .hero-foto img { width: 100%; height: 100%; object-fit: cover; object-position: 60% 45%; }
+    .hero-foto::before { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, var(--navy) 0%, rgb(14 35 64 / .55) 30%, rgb(14 35 64 / 0) 65%); z-index: 1; }
+    .hero-pie { position: absolute; right: 28px; bottom: 96px; z-index: 2; font-size: 12.5px; color: rgb(255 255 255 / .85); background: rgb(0 0 0 / .35); padding: 5px 12px; border-radius: 999px; }
+
+    /* Accesos */
+    .accesos { position: relative; z-index: 5; margin-top: -64px; }
+    .accesos-grid { display: grid; grid-template-columns: 1.25fr 1fr 1fr; background: #fff; border-radius: var(--r); box-shadow: 0 24px 60px -28px rgb(14 35 64 / .45); border: 1px solid var(--line); overflow: hidden; }
+    .acceso { padding: 26px 28px; display: flex; flex-direction: column; gap: 6px; text-decoration: none; transition: background .2s; }
+    .acceso + .acceso { border-left: 1px solid var(--line); }
+    a.acceso:hover { background: var(--soft); }
+    .acceso .tag { font-size: 12px; font-weight: 560; color: var(--orange); text-transform: uppercase; letter-spacing: .05em; }
+    .acceso b { font-size: 19px; font-weight: 560; color: var(--navy); }
+    .acceso span { font-size: 14.5px; color: var(--mid); line-height: 1.5; }
+    .acceso .ir { margin-top: 8px; display: inline-flex; align-items: center; gap: 6px; font-size: 14.5px; font-weight: 560; color: var(--navy); }
+    .acceso.principal { background: var(--soft); }
+    .pronto { align-self: flex-start; margin-top: 8px; font-size: 12.5px; font-weight: 560; color: var(--mid); background: var(--soft); border: 1px dashed #c9cfd9; border-radius: 999px; padding: 3px 10px; }
+
+    section { padding: 110px 0; }
+    .eyebrow { font-size: 13px; font-weight: 560; letter-spacing: .06em; text-transform: uppercase; color: var(--orange); margin-bottom: 14px; }
+    .sec-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; margin-bottom: 48px; flex-wrap: wrap; }
+    .sec-head h2 { font-size: clamp(32px, 4vw, 48px); max-width: 640px; }
+    .sec-head p { max-width: 420px; color: var(--mid); }
+
+    /* Servicios */
+    .servicios { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--navy); }
+    .serv { padding: 28px 28px 8px 0; }
+    .serv + .serv { padding-left: 28px; border-left: 1px solid var(--line); }
+    .serv .n { font-size: 14px; font-weight: 560; color: var(--orange); margin-bottom: 34px; }
+    .serv h3 { font-size: 24px; margin-bottom: 12px; }
+    .serv p { font-size: 15.5px; color: var(--mid); }
+    .serv ul { list-style: none; margin-top: 16px; display: flex; flex-direction: column; gap: 6px; font-size: 14.5px; color: var(--text); }
+    .serv li { display: flex; gap: 8px; }
+    .serv li .ico { color: var(--orange); width: 16px; margin-top: 4px; }
+
+    /* Propiedades */
+    .props { background: var(--soft); }
+    .filtros { display: flex; gap: 8px; flex-wrap: wrap; }
+    .chip { font-family: inherit; font-size: 14px; font-weight: 500; padding: 8px 16px; border-radius: 999px; border: 1px solid #cfd5df; background: #fff; color: var(--navy); cursor: pointer; }
+    .chip.on { background: var(--navy); border-color: var(--navy); color: #fff; }
+    .grid-props { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+    .prop { background: #fff; border-radius: var(--r); overflow: hidden; border: 1px solid var(--line); display: flex; flex-direction: column; cursor: pointer; transition: transform .25s, box-shadow .25s; }
+    .prop:hover { transform: translateY(-4px); box-shadow: 0 20px 40px -24px rgb(14 35 64 / .4); }
+    .prop-foto { position: relative; aspect-ratio: 4 / 3; overflow: hidden; }
+    .prop-foto img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s; }
+    .prop:hover .prop-foto img { transform: scale(1.04); }
+    .badge { position: absolute; top: 14px; left: 14px; font-size: 12px; font-weight: 560; padding: 4px 10px; border-radius: 999px; background: #fff; color: var(--navy); }
+    .badge.o { background: var(--orange); color: #fff; left: auto; right: 14px; }
+    .prop-body { padding: 20px 22px 22px; display: flex; flex-direction: column; gap: 6px; flex: 1; }
+    .prop-barrio { font-size: 13px; font-weight: 560; color: var(--orange); text-transform: uppercase; letter-spacing: .04em; }
+    .prop h3 { font-size: 19px; line-height: 1.25; }
+    .prop-dir { font-size: 14px; color: var(--mid); }
+    .prop-car { font-size: 14px; color: var(--text); }
+    .prop-pie { margin-top: auto; padding-top: 14px; display: flex; justify-content: space-between; align-items: center; gap: 12px; border-top: 1px solid var(--line); }
+    .precio b { display: block; font-size: 20px; font-weight: 600; color: var(--navy); line-height: 1.1; }
+    .precio small { font-size: 12.5px; color: var(--mid); }
+    .ver { font-size: 14px; font-weight: 560; color: var(--navy); display: inline-flex; gap: 6px; align-items: center; }
+    .props-nota { margin-top: 30px; font-size: 14.5px; color: var(--mid); text-align: center; }
+
+    /* Ficha */
+    dialog.ficha { border: 0; border-radius: 14px; padding: 0; width: min(920px, calc(100% - 32px)); max-height: calc(100% - 40px); margin: auto; color: var(--text); }
+    dialog.ficha::backdrop { background: rgb(14 35 64 / .6); }
+    .ficha-in { display: grid; grid-template-columns: 1.1fr 1fr; }
+    .ficha-fotos { background: var(--soft); display: flex; flex-direction: column; gap: 4px; }
+    .ficha-fotos img { width: 100%; aspect-ratio: 4/3; object-fit: cover; }
+    .ficha-txt { padding: 32px; display: flex; flex-direction: column; gap: 10px; position: relative; }
+    .ficha-txt h3 { font-size: 26px; }
+    .ficha-txt ul { list-style: none; display: grid; gap: 6px; margin: 8px 0 6px; font-size: 15px; }
+    .ficha-txt li { display: flex; gap: 8px; }
+    .ficha-txt li .ico { color: var(--orange); width: 16px; margin-top: 4px; }
+    .ficha-precio { font-size: 26px; font-weight: 600; color: var(--navy); }
+    .ficha-precio small { display: block; font-size: 13px; font-weight: 400; color: var(--mid); }
+    .cerrar { position: absolute; top: 14px; right: 14px; width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--line); background: #fff; cursor: pointer; font-size: 20px; color: var(--navy); line-height: 1; }
+
+    /* Consorcios */
+    .cons .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+    .cons-foto { position: relative; border-radius: var(--r); overflow: hidden; margin-top: 30px; }
+    .cons-foto img { width: 100%; aspect-ratio: 5 / 4; object-fit: cover; }
+    .cons h2 { font-size: clamp(32px, 4vw, 46px); margin-bottom: 18px; }
+    .cons-intro { color: var(--mid); margin-bottom: 26px; max-width: 520px; }
+    .cons-lista { list-style: none; border-top: 1px solid var(--line); margin-bottom: 30px; }
+    .cons-lista li { display: grid; grid-template-columns: 36px 1fr; gap: 6px; padding: 14px 0; border-bottom: 1px solid var(--line); font-size: 15.5px; }
+    .cons-lista li span { font-size: 13px; font-weight: 560; color: var(--orange); padding-top: 2px; }
+    .cons-lista li b { font-weight: 560; color: var(--navy); }
+    form.pedido { background: var(--navy); color: #fff; border-radius: var(--r); padding: 28px; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    form.pedido h3 { color: #fff; font-size: 20px; grid-column: 1 / -1; margin-bottom: 4px; }
+    form.pedido label { display: flex; flex-direction: column; gap: 6px; font-size: 13px; color: rgb(255 255 255 / .75); }
+    form.pedido .full { grid-column: 1 / -1; }
+    form.pedido input, form.pedido select { font-family: inherit; font-size: 15px; padding: 11px 12px; border-radius: 8px; border: 1px solid rgb(255 255 255 / .2); background: rgb(255 255 255 / .07); color: #fff; width: 100%; }
+    form.pedido select option { color: var(--navy); }
+    form.pedido input::placeholder { color: rgb(255 255 255 / .45); }
+    form.pedido .btn { grid-column: 1 / -1; margin-top: 6px; }
+    .enviado { grid-column: 1 / -1; font-size: 14px; color: #ffd5b5; display: none; }
+
+    /* Tasación */
+    .tasa { padding: 0 0 110px; }
+    .tasa-box { display: grid; grid-template-columns: 1fr 1.2fr; gap: 48px; align-items: center; background: var(--soft); border-radius: var(--r); padding: 48px; }
+    .tasa-box h2 { font-size: clamp(28px, 3.4vw, 40px); margin-bottom: 12px; }
+    .tasa-box p { color: var(--mid); }
+    .tasa form { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .tasa form label { display: flex; flex-direction: column; gap: 6px; font-size: 13px; color: var(--mid); }
+    .tasa form input, .tasa form select { font-family: inherit; font-size: 15px; padding: 11px 12px; border-radius: 8px; border: 1px solid #cfd5df; background: #fff; color: var(--navy); width: 100%; }
+    .tasa form .btn { grid-column: 1 / -1; }
+
+    /* Pie */
+    footer { background: var(--navy); color: rgb(255 255 255 / .75); padding: 72px 0 36px; font-size: 15px; }
+    .pie-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 40px; padding-bottom: 48px; border-bottom: 1px solid rgb(255 255 255 / .14); }
+    .pie-logo { background: #fff; border-radius: var(--r); padding: 14px 18px; display: inline-flex; align-items: center; gap: 12px; margin-bottom: 18px; }
+    .pie-logo img { width: 54px; }
+    .pie-logo b { font-size: 16px; font-weight: 600; color: var(--orange); line-height: 1.15; }
+    .pie-logo small { display: block; font-size: 10.5px; color: var(--navy); text-transform: uppercase; letter-spacing: .04em; font-weight: 500; }
+    footer h4 { font-size: 13px; font-weight: 560; color: #fff; text-transform: uppercase; letter-spacing: .06em; margin-bottom: 14px; }
+    footer ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    footer a { text-decoration: none; }
+    footer a:hover { color: #fff; }
+    .pie-bajo { padding-top: 24px; font-size: 13px; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; color: rgb(255 255 255 / .5); }
+
+    .wa-flot { position: fixed; right: 20px; bottom: 20px; z-index: 60; width: 56px; height: 56px; border-radius: 50%; background: #25D366; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 24px -8px rgb(0 0 0 / .4); }
+    .wa-flot svg { width: 28px; height: 28px; fill: #fff; }
+
+    @media (max-width: 1000px) {
+      .hero .wrap { grid-template-columns: 1fr; }
+      .hero-foto { inset: 0; opacity: .35; }
+      .hero-foto::before { background: linear-gradient(180deg, rgb(14 35 64 / .4), var(--navy)); }
+      .hero-pie { display: none; }
+      .accesos-grid { grid-template-columns: 1fr; }
+      .acceso + .acceso { border-left: 0; border-top: 1px solid var(--line); }
+      .servicios { grid-template-columns: 1fr; }
+      .serv, .serv + .serv { padding: 26px 0; border-left: 0; }
+      .serv + .serv { border-top: 1px solid var(--line); }
+      .serv .n { margin-bottom: 12px; }
+      .grid-props { grid-template-columns: 1fr 1fr; }
+      .cons .wrap { grid-template-columns: 1fr; gap: 0; }
+      .cons-foto { order: 2; margin-top: 36px; }
+      .tasa-box { grid-template-columns: 1fr; padding: 32px; gap: 24px; }
+      .pie-grid { grid-template-columns: 1fr 1fr; }
+      .ficha-in { grid-template-columns: 1fr; }
+      .ficha-fotos img + img { display: none; }
+    }
+    @media (max-width: 820px) {
+      nav.menu a:not(.btn) { display: none; }
+    }
+    @media (max-width: 640px) {
+      .wrap { padding: 0 18px; }
+      .top .wrap { height: 64px; }
+      .marca img { width: 46px; }
+      .marca b { font-size: 15px; }
+      .marca small { display: none; }
+      .hero-txt { padding: 56px 0 104px; }
+      .hero p { font-size: 16.5px; }
+      .hero-ctas .btn { flex: 1 1 100%; }
+      section { padding: 76px 0; }
+      .grid-props { grid-template-columns: 1fr; }
+      form.pedido, .tasa form { grid-template-columns: 1fr; }
+      .tasa { padding-bottom: 76px; }
+      .tasa-box { padding: 24px 20px; }
+      .pie-grid { grid-template-columns: 1fr; gap: 28px; }
+      .ficha-txt { padding: 24px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></symbol>
+  <symbol id="i-ext" viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+  <symbol id="i-wa" viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.4-.5c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.4zM12 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4A9.8 9.8 0 0 1 2.2 12C2.2 6.6 6.6 2.2 12 2.2S21.8 6.6 21.8 12 17.4 21.8 12 21.8zM12 0C5.4 0 0 5.4 0 12c0 2.1.6 4.2 1.6 6L0 24l6.2-1.6c1.8 1 3.8 1.5 5.8 1.5 6.6 0 12-5.4 12-12S18.6 0 12 0z"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+</svg>
+
+<div class="aviso">Idea de diseño de Lautaro Méndez para Barcunsky &amp; Pérez · Los textos, horarios y la dirección son de ejemplo; las propiedades salen de su Instagram.</div>
+
+<header class="top">
+  <div class="wrap">
+    <a class="marca" href="#">
+      <img src="img/logo-icono.png" alt="" width="58" height="23" />
+      <span><b>Barcunsky &amp; Pérez</b><small>Consorcios · Inmobiliaria</small></span>
+    </a>
+    <nav class="menu">
+      <a href="#servicios">Servicios</a>
+      <a href="#propiedades">Propiedades</a>
+      <a href="#consorcios">Consorcios</a>
+      <a href="#tasaciones">Tasaciones</a>
+      <a class="btn btn-o" href="https://admbarcunskyperez.com.ar/tpt/home.aspx" target="_blank" rel="noopener">Autogestión<svg class="ico"><use href="#i-ext"/></svg></a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" style="padding:0">
+  <div class="hero-foto"><img src="img/hero.jpg" alt="Atardecer en Córdoba desde el balcón de un departamento" /></div>
+  <div class="wrap">
+    <div class="hero-txt">
+      <div class="hero-lista g-in"><span>Consorcios</span><span>Alquileres y ventas</span><span>Tasaciones</span></div>
+      <h1 class="g-in">Cuidamos tu edificio<br />y tu <em>propiedad</em>.</h1>
+      <p class="g-in">Administramos consorcios, complejos y propiedades en Córdoba Capital. Y te acompañamos a alquilar, vender o tasar, con trato directo y cuentas claras.</p>
+      <div class="hero-ctas g-in">
+        <a class="btn btn-o" href="#propiedades">Ver propiedades disponibles<svg class="ico"><use href="#i-arrow"/></svg></a>
+        <a class="btn btn-line" href="#consorcios">Administrar mi edificio</a>
+      </div>
+    </div>
+  </div>
+  <div class="hero-pie">B° Güemes · vista desde una de nuestras propiedades</div>
+</section>
+
+<div class="accesos">
+  <div class="wrap">
+    <div class="accesos-grid g-up">
+      <a class="acceso principal" href="https://admbarcunskyperez.com.ar/tpt/home.aspx" target="_blank" rel="noopener">
+        <span class="tag">Consorcistas</span>
+        <b>Mi consorcio</b>
+        <span>Estado de cuenta, expensas y novedades de tu edificio, con tu código de propiedad.</span>
+        <span class="ir">Ingresar<svg class="ico"><use href="#i-ext"/></svg></span>
+      </a>
+      <div class="acceso">
+        <span class="tag">Inquilinos y propietarios</span>
+        <b>Mi alquiler</b>
+        <span>Tu contrato, pagos y recibos, en un solo lugar.</span>
+        <span class="pronto">Muy pronto</span>
+      </div>
+      <a class="acceso" href="https://wa.me/5493517049884?text=Hola%2C%20les%20escribo%20desde%20la%20web." target="_blank" rel="noopener">
+        <span class="tag">Consultas</span>
+        <b>351 704 9884</b>
+        <span>Escribinos por WhatsApp y te respondemos en el día.</span>
+        <span class="ir">Abrir WhatsApp<svg class="ico"><use href="#i-arrow"/></svg></span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<section id="servicios">
+  <div class="wrap">
+    <div class="sec-head g-up">
+      <div><div class="eyebrow">Qué hacemos</div><h2>Todo lo que tu propiedad necesita, con un mismo equipo</h2></div>
+      <p>Desde la liquidación de expensas de un edificio entero hasta el alquiler de un monoambiente.</p>
+    </div>
+    <div class="servicios">
+      <div class="serv g-up">
+        <div class="n">01</div>
+        <h3>Administración de consorcios</h3>
+        <p>Edificios, complejos y propiedades. Nos ocupamos del día a día para que los propietarios no tengan que hacerlo.</p>
+        <ul><li><svg class="ico"><use href="#i-check"/></svg>Liquidación de expensas mes a mes</li><li><svg class="ico"><use href="#i-check"/></svg>Mantenimiento y proveedores</li><li><svg class="ico"><use href="#i-check"/></svg>Estado de cuenta online</li></ul>
+      </div>
+      <div class="serv g-up">
+        <div class="n">02</div>
+        <h3>Alquileres y ventas</h3>
+        <p>Publicamos, mostramos y acompañamos cada operación de punta a punta.</p>
+        <ul><li><svg class="ico"><use href="#i-check"/></svg>Departamentos, casas y locales</li><li><svg class="ico"><use href="#i-check"/></svg>Contratos y garantías</li><li><svg class="ico"><use href="#i-check"/></svg>Cobro y rendición al propietario</li></ul>
+      </div>
+      <div class="serv g-up">
+        <div class="n">03</div>
+        <h3>Tasaciones</h3>
+        <p>Te decimos cuánto vale tu propiedad hoy, para alquilarla o venderla al precio justo.</p>
+        <ul><li><svg class="ico"><use href="#i-check"/></svg>Visita a la propiedad</li><li><svg class="ico"><use href="#i-check"/></svg>Comparación con el mercado del barrio</li><li><svg class="ico"><use href="#i-check"/></svg>Informe por escrito</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="props" id="propiedades">
+  <div class="wrap">
+    <div class="sec-head g-up">
+      <div><div class="eyebrow">Disponibles ahora</div><h2>Propiedades en alquiler</h2></div>
+      <div class="filtros" role="group" aria-label="Filtrar propiedades">
+        <button class="chip on" data-f="todas">Todas</button>
+        <button class="chip" data-f="depto">Departamentos</button>
+        <button class="chip" data-f="local">Locales</button>
+      </div>
+    </div>
+    <div class="grid-props" id="grid"></div>
+    <p class="props-nota">¿Buscás algo que no está acá? <a href="https://wa.me/5493517049884?text=Hola%2C%20estoy%20buscando%20una%20propiedad." target="_blank" rel="noopener"><strong>Contanos qué necesitás</strong></a> y te avisamos cuando entre.</p>
+  </div>
+</section>
+
+<dialog class="ficha" id="ficha">
+  <div class="ficha-in">
+    <div class="ficha-fotos" id="f-fotos"></div>
+    <div class="ficha-txt">
+      <button class="cerrar" id="f-cerrar" aria-label="Cerrar">×</button>
+      <div class="prop-barrio" id="f-barrio"></div>
+      <h3 id="f-titulo"></h3>
+      <div class="prop-dir" id="f-dir"></div>
+      <ul id="f-car"></ul>
+      <div class="ficha-precio" id="f-precio"></div>
+      <a class="btn btn-o" id="f-wa" target="_blank" rel="noopener"><svg class="ico" style="fill:#fff;stroke:none"><use href="#i-wa"/></svg>Consultar por WhatsApp</a>
+    </div>
+  </div>
+</dialog>
+
+<section class="cons" id="consorcios">
+  <div class="wrap">
+    <div>
+      <div class="eyebrow g-up">Para edificios y complejos</div>
+      <h2 class="g-up">¿Tu edificio necesita otra administración?</h2>
+      <p class="cons-intro g-up">Si los números no cierran, nadie responde o los arreglos se demoran, contanos cómo es tu edificio y te preparamos una propuesta sin compromiso.</p>
+      <ul class="cons-lista g-up">
+        <li><span>01</span><div><b>Expensas claras.</b> Cada gasto detallado y con su comprobante.</div></li>
+        <li><span>02</span><div><b>Estado de cuenta online</b> para cada propietario, las 24 horas.</div></li>
+        <li><span>03</span><div><b>Mantenimiento al día</b>, con proveedores de confianza.</div></li>
+        <li><span>04</span><div><b>Asambleas y rendición de cuentas</b> en tiempo y forma.</div></li>
+      </ul>
+      <form class="pedido g-up" onsubmit="event.preventDefault(); this.querySelector('.enviado').style.display='block';">
+        <h3>Pedí una propuesta para tu edificio</h3>
+        <label>Tu nombre<input required placeholder="Nombre y apellido" /></label>
+        <label>WhatsApp<input required inputmode="tel" placeholder="351 …" /></label>
+        <label>Dirección del edificio<input placeholder="Calle y número" /></label>
+        <label>Unidades<select><option>Hasta 10</option><option>De 11 a 30</option><option>De 31 a 60</option><option>Más de 60</option></select></label>
+        <button class="btn btn-o" type="submit">Quiero una propuesta<svg class="ico"><use href="#i-arrow"/></svg></button>
+        <p class="enviado">Esto es un boceto: en la web real, el pedido les llega al mail y queda guardado en una planilla.</p>
+      </form>
+    </div>
+    <figure class="cons-foto g-img"><img src="img/edificio.jpg" alt="Edificio en Nueva Córdoba" loading="lazy" /></figure>
+  </div>
+</section>
+
+<section class="tasa" id="tasaciones">
+  <div class="wrap">
+    <div class="tasa-box g-up">
+      <div>
+        <div class="eyebrow">Tasaciones</div>
+        <h2>¿Cuánto vale tu propiedad hoy?</h2>
+        <p>Dejanos los datos y coordinamos una visita. Te damos un valor real para alquilar o vender.</p>
+      </div>
+      <form onsubmit="event.preventDefault(); this.querySelector('button').textContent='Listo, te escribimos pronto';">
+        <label>Tipo<select><option>Departamento</option><option>Casa</option><option>Local</option><option>Terreno</option></select></label>
+        <label>Para<select><option>Vender</option><option>Alquilar</option><option>Saber cuánto vale</option></select></label>
+        <label>Barrio<input placeholder="Ej.: Alberdi" /></label>
+        <label>WhatsApp<input inputmode="tel" placeholder="351 …" /></label>
+        <button class="btn btn-navy" type="submit">Pedir tasación</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="pie-grid">
+      <div>
+        <div class="pie-logo"><img src="img/logo-icono.png" alt="" /><div><b>Barcunsky &amp; Pérez</b><small>Administración de consorcios<br />y servicios inmobiliarios</small></div></div>
+        <p>Córdoba Capital.<br />Dirección de ejemplo 123 · Lunes a viernes de 9 a 17 h</p>
+      </div>
+      <div><h4>Autogestión</h4><ul><li><a href="https://admbarcunskyperez.com.ar/tpt/home.aspx" target="_blank" rel="noopener">Mi consorcio ↗</a></li><li>Mi alquiler (muy pronto)</li></ul></div>
+      <div><h4>Servicios</h4><ul><li><a href="#consorcios">Administración de consorcios</a></li><li><a href="#propiedades">Alquileres y ventas</a></li><li><a href="#tasaciones">Tasaciones</a></li></ul></div>
+      <div><h4>Contacto</h4><ul><li><a href="https://wa.me/5493517049884" target="_blank" rel="noopener">WhatsApp 351 704 9884</a></li><li><a href="https://www.instagram.com/inmobarcunskyperez/" target="_blank" rel="noopener">Instagram</a></li><li><a href="https://www.facebook.com/barcunskyperez" target="_blank" rel="noopener">Facebook</a></li></ul></div>
+    </div>
+    <div class="pie-bajo"><span>© 2026 Barcunsky &amp; Pérez</span><span>Idea de diseño · Lautaro Méndez</span></div>
+  </div>
+</footer>
+
+<a class="wa-flot" href="https://wa.me/5493517049884?text=Hola%2C%20les%20escribo%20desde%20la%20web." target="_blank" rel="noopener" aria-label="WhatsApp"><svg><use href="#i-wa"/></svg></a>
+
+<script>
+  const PROPS = [
+    { tipo: 'depto', barrio: 'Nueva Córdoba', titulo: 'Departamento de 1 dormitorio con balcón', dir: 'Tránsito Cáceres de Allende 480', fotos: ['nueva-cordoba', 'nueva-cordoba-2'], car: ['Living comedor', 'Cocina con bajo mesada y alacena', '1 dormitorio con placard', 'Antebaño y baño completo', 'Balcón'], precio: 700000 },
+    { tipo: 'depto', barrio: 'Alberdi', titulo: 'Departamento frente a Plaza Jerónimo del Barco', dir: '9 de Julio 2682', fotos: ['alberdi-9dejulio'], car: ['Living comedor', 'Cocina con bajo mesada y alacena', '1 dormitorio con placard', 'Antebaño y baño', 'Balcón'], precio: 560000, badge: 'Desde diciembre' },
+    { tipo: 'depto', barrio: 'General Paz', titulo: 'Monoambiente amplio frente a la plaza', dir: 'Esquiú 263', fotos: ['general-paz'], car: ['Ambiente amplio con cocina', 'Balcón al contrafrente', 'Baño completo'], precio: 450000 },
+    { tipo: 'depto', barrio: 'Alberdi', titulo: 'Departamento de 1 dormitorio con balcón a la calle', dir: 'Caseros 1901', fotos: ['alberdi-caseros'], car: ['Living comedor', 'Cocina separada', '1 dormitorio con placard', 'Antebaño y baño completo', 'Balcón a la calle'], precio: 550000 },
+    { tipo: 'depto', barrio: 'Providencia', titulo: 'Departamento de 2 dormitorios con 2 patios', dir: 'Coronel Olmedo 1124', fotos: ['providencia'], car: ['Living comedor', 'Cocina con bajo mesada y alacena', '2 dormitorios con placard', 'Baño completo', '2 patios'], precio: 700000, badge: 'Desde diciembre' },
+    { tipo: 'local', barrio: 'Centro', titulo: 'Local en Galería Libertad', dir: '9 de Julio 151', fotos: ['local-centro'], car: ['Frente vidriado', 'Planta baja', '25 m² cubiertos aprox.', 'Baño compartido de la galería'], precio: 200000 },
+  ];
+  const fmt = n => '$' + n.toLocaleString('es-AR');
+  const wa = p => 'https://wa.me/5493517049884?text=' + encodeURIComponent(`Hola, me interesa la propiedad de ${p.dir} (${p.barrio}). ¿Me pasan los requisitos?`);
+  const grid = document.getElementById('grid');
+  function pintar(f) {
+    grid.innerHTML = PROPS.map((p, i) => (f === 'todas' || p.tipo === f) ? `
+      <article class="prop" data-i="${i}" tabindex="0">
+        <div class="prop-foto"><img src="img/${p.fotos[0]}.jpg" alt="${p.titulo}" loading="lazy" /><span class="badge">${p.tipo === 'local' ? 'Local' : 'Departamento'}</span>${p.badge ? `<span class="badge o">${p.badge}</span>` : ''}</div>
+        <div class="prop-body">
+          <div class="prop-barrio">${p.barrio}</div>
+          <h3>${p.titulo}</h3>
+          <div class="prop-dir">${p.dir}</div>
+          <div class="prop-pie"><div class="precio"><b>${fmt(p.precio)}</b><small>por mes + expensas</small></div><span class="ver">Ver ficha<svg class="ico"><use href="#i-arrow"/></svg></span></div>
+        </div>
+      </article>` : '').join('');
+  }
+  pintar('todas');
+  document.querySelectorAll('.chip').forEach(c => c.addEventListener('click', () => {
+    document.querySelectorAll('.chip').forEach(x => x.classList.toggle('on', x === c));
+    pintar(c.dataset.f);
+  }));
+  const ficha = document.getElementById('ficha');
+  function abrir(i) {
+    const p = PROPS[i];
+    document.getElementById('f-fotos').innerHTML = p.fotos.map(f => `<img src="img/${f}.jpg" alt="" />`).join('');
+    document.getElementById('f-barrio').textContent = p.barrio;
+    document.getElementById('f-titulo').textContent = p.titulo;
+    document.getElementById('f-dir').textContent = p.dir + ', Córdoba';
+    document.getElementById('f-car').innerHTML = p.car.map(c => `<li><svg class="ico"><use href="#i-check"/></svg>${c}</li>`).join('');
+    document.getElementById('f-precio').innerHTML = `${fmt(p.precio)}<small>por mes, más expensas, impuestos y servicios</small>`;
+    document.getElementById('f-wa').href = wa(p);
+    ficha.showModal();
+  }
+  grid.addEventListener('click', e => { const a = e.target.closest('.prop'); if (a) abrir(+a.dataset.i); });
+  grid.addEventListener('keydown', e => { const a = e.target.closest('.prop'); if (a && e.key === 'Enter') abrir(+a.dataset.i); });
+  document.getElementById('f-cerrar').onclick = () => ficha.close();
+  ficha.addEventListener('click', e => { if (e.target === ficha) ficha.close(); });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script>
+  if (window.gsap && window.ScrollTrigger) {
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.matchMedia().add('(prefers-reduced-motion: no-preference)', () => {
+      gsap.from('.hero .g-in', { y: 28, opacity: 0, duration: .9, stagger: .12, ease: 'power3.out', delay: .1 });
+      gsap.from('.hero-foto img', { scale: 1.12, duration: 1.8, ease: 'power2.out' });
+      gsap.utils.toArray('.g-up').forEach(el => gsap.from(el, { y: 36, opacity: 0, duration: .8, ease: 'power3.out', scrollTrigger: { trigger: el, start: 'top 88%' } }));
+      gsap.utils.toArray('.g-img').forEach(el => gsap.from(el, { clipPath: 'inset(12% 0 12% 0)', duration: 1.1, ease: 'power3.out', scrollTrigger: { trigger: el, start: 'top 85%' } }));
+      ScrollTrigger.batch('.prop', { start: 'top 90%', onEnter: b => gsap.from(b, { y: 40, opacity: 0, duration: .7, stagger: .08, ease: 'power3.out' }) });
+    });
+  }
+</script>
+<script src="/propuestas/_visto.js" data-p="barcunsky-perez" data-n="Barcunsky & Pérez" data-e="boceto" defer></script>
+</body>
+</html>
