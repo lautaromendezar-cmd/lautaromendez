@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Frigorífico 33 — Minorista y mayorista</title>
+  <meta name="description" content="Cortes de vacuno, cerdo, pollo, menudencias, embutidos y huevos. Armá tu pedido y mandalo por WhatsApp." />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="es_AR" />
+  <meta property="og:url" content="https://lautaromendez.com.ar/propuestas/frigorifico-33/demo/" />
+  <meta property="og:title" content="Frigorífico 33 — idea de diseño" />
+  <meta property="og:description" content="Catálogo para armar el pedido y mandarlo por WhatsApp, sin precios." />
+  <meta property="og:image" content="https://lautaromendez.com.ar/propuestas/frigorifico-33/og.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600&family=Playfair+Display:ital,wght@1,700;1,800&display=swap" />
+  <style>
+    :root {
+      --bordo: #8A1C22;
+      --bordo-dark: #6E1419;
+      --bordo-soft: #F6E9EA;
+      --carbon: #1A1513;
+      --ink: #221C1A;
+      --text: #3D3532;
+      --mid: #6E6460;
+      --dim: #9A908B;
+      --line: #E7E2DF;
+      --bg: #FFFFFF;
+      --bg-alt: #F5F4F3;
+      --wa: #1F9D55;
+      --cond: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+      --sans: 'Barlow', system-ui, -apple-system, 'Segoe UI', sans-serif;
+      --script: 'Playfair Display', Georgia, serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scroll-padding-top: 130px; }
+    body { font-family: var(--sans); color: var(--text); background: var(--bg); font-size: 16px; line-height: 1.55; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; }
+    button { font: inherit; cursor: pointer; border: 0; background: none; color: inherit; }
+    .wrap { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+    .ico { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
+
+    .aviso { background: #FFF6E5; color: #6B4A0E; font-size: 13px; text-align: center; padding: 8px 16px; border-bottom: 1px solid #F1DFB8; }
+
+    /* Encabezado */
+    .top { position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,.96); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+    .top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 20px; height: 68px; }
+    .marca { display: flex; align-items: baseline; gap: 6px; text-decoration: none; color: var(--bordo); line-height: 1; }
+    .marca em { font-family: var(--script); font-style: italic; font-weight: 800; font-size: 27px; letter-spacing: -.01em; }
+    .marca b { font-family: var(--cond); font-weight: 700; font-size: 30px; }
+    .nav { display: flex; gap: 28px; font-family: var(--cond); font-weight: 600; font-size: 17px; letter-spacing: .04em; text-transform: uppercase; }
+    .nav a { text-decoration: none; color: var(--ink); }
+    .nav a:hover { color: var(--bordo); }
+    .btn-pedido { display: inline-flex; align-items: center; gap: 8px; background: var(--bordo); color: #fff; border-radius: 999px; padding: 9px 16px; font-family: var(--cond); font-weight: 600; font-size: 17px; letter-spacing: .03em; text-transform: uppercase; }
+    .btn-pedido .n { background: #fff; color: var(--bordo); border-radius: 999px; min-width: 22px; height: 22px; display: inline-grid; place-items: center; font-size: 14px; padding: 0 6px; }
+
+    /* Hero */
+    .hero { position: relative; color: #fff; background: var(--carbon); overflow: hidden; }
+    .hero-foto { position: absolute; inset: 0; }
+    .hero-foto img { width: 100%; height: 100%; object-fit: cover; object-position: 70% 55%; }
+    .hero-foto::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(20,14,12,.94) 0%, rgba(20,14,12,.78) 42%, rgba(20,14,12,.2) 100%); }
+    .hero .wrap { position: relative; padding-top: 110px; padding-bottom: 110px; }
+    .hero-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 22px; }
+    .hero-tags span { font-family: var(--cond); font-weight: 600; font-size: 15px; letter-spacing: .12em; text-transform: uppercase; border: 1px solid rgba(255,255,255,.35); padding: 4px 12px; border-radius: 999px; }
+    .hero h1 { font-family: var(--cond); font-weight: 700; text-transform: uppercase; font-size: clamp(46px, 7.4vw, 96px); line-height: .92; letter-spacing: -.005em; max-width: 760px; }
+    .hero h1 span { color: #E2565C; }
+    .hero p { font-size: 19px; max-width: 520px; margin: 22px 0 34px; color: rgba(255,255,255,.86); }
+    .ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn { display: inline-flex; align-items: center; gap: 10px; padding: 14px 22px; border-radius: 6px; font-family: var(--cond); font-weight: 600; font-size: 19px; letter-spacing: .04em; text-transform: uppercase; text-decoration: none; transition: background .15s, transform .15s; }
+    .btn:active { transform: scale(.98); }
+    .btn-rojo { background: var(--bordo); color: #fff; }
+    .btn-rojo:hover { background: var(--bordo-dark); }
+    .btn-linea { border: 1.5px solid rgba(255,255,255,.6); color: #fff; }
+    .btn-linea:hover { background: rgba(255,255,255,.1); }
+    .btn-wa { background: var(--wa); color: #fff; }
+    .btn-wa:hover { background: #18834A; }
+
+    /* Pasos */
+    .pasos { border-bottom: 1px solid var(--line); }
+    .pasos .wrap { display: grid; grid-template-columns: repeat(3, 1fr); }
+    .paso { display: flex; gap: 16px; align-items: center; padding: 26px 24px; }
+    .paso + .paso { border-left: 1px solid var(--line); }
+    .paso i { font-style: normal; font-family: var(--cond); font-weight: 700; font-size: 42px; color: var(--bordo); line-height: 1; }
+    .paso b { display: block; font-family: var(--cond); font-weight: 600; font-size: 20px; text-transform: uppercase; color: var(--ink); letter-spacing: .02em; line-height: 1.1; }
+    .paso span { font-size: 14.5px; color: var(--mid); }
+
+    /* Secciones */
+    section { padding: 90px 0; }
+    .eyebrow { font-family: var(--cond); font-weight: 600; font-size: 16px; letter-spacing: .16em; text-transform: uppercase; color: var(--bordo); margin-bottom: 10px; }
+    h2 { font-family: var(--cond); font-weight: 700; text-transform: uppercase; font-size: clamp(38px, 5vw, 58px); line-height: .95; color: var(--ink); }
+    .lead { font-size: 17px; color: var(--mid); max-width: 560px; margin-top: 14px; }
+
+    /* Catálogo */
+    .cat-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 30px; flex-wrap: wrap; margin-bottom: 30px; }
+    .buscar { position: relative; width: min(340px, 100%); }
+    .buscar input { width: 100%; font: inherit; font-size: 16px; padding: 12px 14px 12px 42px; border: 1px solid var(--line); border-radius: 8px; background: var(--bg-alt); color: var(--ink); }
+    .buscar input:focus { outline: 2px solid var(--bordo); outline-offset: -1px; background: #fff; }
+    .buscar .ico { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--dim); }
+    .tabs { position: sticky; top: 68px; z-index: 30; background: #fff; display: flex; gap: 6px; overflow-x: auto; padding: 12px 0; margin-bottom: 18px; border-bottom: 1px solid var(--line); scrollbar-width: none; }
+    .tabs::-webkit-scrollbar { display: none; }
+    .tab { flex-shrink: 0; font-family: var(--cond); font-weight: 600; font-size: 17px; letter-spacing: .05em; text-transform: uppercase; padding: 8px 16px; border-radius: 999px; border: 1px solid var(--line); color: var(--ink); }
+    .tab.on { background: var(--ink); border-color: var(--ink); color: #fff; }
+    .grupo { margin-bottom: 40px; }
+    .grupo h3 { display: flex; align-items: center; gap: 12px; font-family: var(--cond); font-weight: 700; font-size: 28px; text-transform: uppercase; color: var(--bordo); margin-bottom: 12px; }
+    .grupo h3 small { font-family: var(--sans); font-weight: 500; font-size: 14px; text-transform: none; color: var(--dim); }
+    .items { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
+    .item { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 16px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); min-height: 74px; transition: background .2s; }
+    .item.sel { background: var(--bordo-soft); }
+    .item-n { font-family: var(--cond); font-weight: 600; font-size: 20px; text-transform: uppercase; color: var(--ink); line-height: 1.05; letter-spacing: .01em; }
+    .item-u { display: block; font-size: 13px; color: var(--dim); margin-top: 3px; }
+    .item-tag { display: inline-block; font-family: var(--sans); font-size: 11px; font-weight: 600; letter-spacing: .03em; color: var(--bordo); background: #fff; border: 1px solid #E8C4C6; padding: 1px 6px; border-radius: 4px; margin-left: 6px; vertical-align: 2px; }
+    .add { flex-shrink: 0; width: 40px; height: 40px; border-radius: 50%; border: 1.5px solid var(--bordo); color: var(--bordo); display: grid; place-items: center; transition: background .15s, color .15s; }
+    .add:hover { background: var(--bordo); color: #fff; }
+    .step { flex-shrink: 0; display: flex; align-items: center; gap: 2px; background: #fff; border: 1.5px solid var(--bordo); border-radius: 999px; padding: 2px; }
+    .step button { width: 32px; height: 32px; border-radius: 50%; color: var(--bordo); display: grid; place-items: center; }
+    .step button:hover { background: var(--bordo-soft); }
+    .step output { min-width: 64px; text-align: center; font-family: var(--cond); font-weight: 600; font-size: 18px; color: var(--ink); }
+    .vacio-busq { padding: 30px; text-align: center; color: var(--mid); border: 1px dashed var(--line); border-radius: 8px; display: none; }
+
+    /* Mayoristas */
+    .mayo { background: var(--carbon); color: #fff; }
+    .mayo .wrap { display: grid; grid-template-columns: 1.05fr 1fr; gap: 60px; align-items: center; }
+    .mayo h2 { color: #fff; }
+    .mayo .lead { color: rgba(255,255,255,.75); }
+    .mayo ul { list-style: none; margin: 26px 0 32px; display: grid; gap: 12px; }
+    .mayo li { display: flex; gap: 12px; align-items: flex-start; font-size: 16.5px; color: rgba(255,255,255,.9); }
+    .mayo li .ico { color: #E2565C; margin-top: 2px; }
+    .mayo-foto { position: relative; border-radius: 10px; overflow: hidden; aspect-ratio: 4/3.4; }
+    .mayo-foto img { width: 100%; height: 100%; object-fit: cover; }
+    .sello { position: absolute; left: 18px; bottom: 18px; background: var(--bordo); color: #fff; padding: 14px 18px; border-radius: 8px; font-family: var(--cond); text-transform: uppercase; line-height: 1; }
+    .sello b { display: block; font-size: 34px; font-weight: 700; }
+    .sello span { font-size: 15px; letter-spacing: .08em; }
+
+    /* Nosotros + contacto */
+    .nos .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
+    .nos p { font-size: 17px; color: var(--text); margin-top: 16px; max-width: 520px; }
+    .cifras { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; margin-top: 34px; border-top: 1px solid var(--line); }
+    .cifras div { padding: 18px 14px 0 0; }
+    .cifras b { display: block; font-family: var(--cond); font-weight: 700; font-size: 44px; color: var(--bordo); line-height: 1; }
+    .cifras span { font-size: 14px; color: var(--mid); }
+    .ficha { background: var(--bg-alt); border-radius: 10px; padding: 32px; display: grid; gap: 22px; align-content: start; }
+    .ficha-row { display: flex; gap: 14px; }
+    .ficha-row .ico { color: var(--bordo); margin-top: 3px; }
+    .ficha-row b { display: block; font-family: var(--cond); font-weight: 600; font-size: 19px; text-transform: uppercase; color: var(--ink); letter-spacing: .02em; }
+    .ficha-row span { font-size: 15.5px; color: var(--mid); }
+    .mapa { height: 170px; border-radius: 8px; background:
+      linear-gradient(90deg, transparent 49%, #ddd7d3 49%, #ddd7d3 51%, transparent 51%) 0 0/90px 90px,
+      linear-gradient(0deg, transparent 49%, #ddd7d3 49%, #ddd7d3 51%, transparent 51%) 0 0/90px 90px, #ECE8E5; position: relative; }
+    .mapa::after { content: ""; position: absolute; left: 50%; top: 46%; width: 22px; height: 22px; background: var(--bordo); border: 4px solid #fff; border-radius: 50% 50% 50% 0; transform: translate(-50%,-50%) rotate(-45deg); box-shadow: 0 4px 12px rgba(0,0,0,.25); }
+
+    footer { background: var(--carbon); color: rgba(255,255,255,.6); padding: 40px 0 110px; font-size: 14px; }
+    footer .wrap { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; align-items: center; }
+    footer .marca { color: #fff; }
+    footer small { display: block; font-size: 12px; color: rgba(255,255,255,.4); margin-top: 8px; }
+
+    /* Barra de pedido */
+    .barra { position: fixed; left: 50%; bottom: 18px; transform: translate(-50%, 140%); z-index: 60; width: min(560px, calc(100% - 24px)); background: var(--ink); color: #fff; border-radius: 14px; padding: 10px 10px 10px 20px; display: flex; align-items: center; justify-content: space-between; gap: 12px; box-shadow: 0 18px 40px -12px rgba(0,0,0,.45); transition: transform .4s cubic-bezier(.2,.8,.2,1); }
+    .barra.on { transform: translate(-50%, 0); }
+    .barra b { font-family: var(--cond); font-weight: 600; font-size: 19px; text-transform: uppercase; letter-spacing: .03em; }
+    .barra span { display: block; font-size: 13px; color: rgba(255,255,255,.65); }
+    .barra .btn { padding: 11px 18px; font-size: 17px; }
+
+    /* Panel del pedido */
+    .velo { position: fixed; inset: 0; background: rgba(20,14,12,.5); z-index: 80; opacity: 0; pointer-events: none; transition: opacity .25s; }
+    .velo.on { opacity: 1; pointer-events: auto; }
+    .panel { position: fixed; top: 0; right: 0; bottom: 0; width: min(440px, 100%); background: #fff; z-index: 90; transform: translateX(100%); transition: transform .35s cubic-bezier(.2,.8,.2,1); display: flex; flex-direction: column; }
+    .panel.on { transform: none; }
+    .panel-h { display: flex; justify-content: space-between; align-items: center; padding: 20px 22px; border-bottom: 1px solid var(--line); }
+    .panel-h b { font-family: var(--cond); font-weight: 700; font-size: 28px; text-transform: uppercase; color: var(--ink); }
+    .cerrar { width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; background: var(--bg-alt); }
+    .panel-b { flex: 1; overflow-y: auto; padding: 8px 22px 22px; }
+    .linea { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 12px 0; border-bottom: 1px solid var(--line); }
+    .linea .item-n { font-size: 18px; }
+    .linea .step output { min-width: 58px; font-size: 17px; }
+    .linea .step button { width: 28px; height: 28px; }
+    .campos { display: grid; gap: 12px; margin-top: 22px; }
+    .campos label { font-size: 13px; font-weight: 600; color: var(--mid); display: grid; gap: 5px; }
+    .campos input, .campos textarea { font: inherit; font-size: 16px; padding: 11px 12px; border: 1px solid var(--line); border-radius: 8px; color: var(--ink); background: #fff; }
+    .campos textarea { resize: vertical; min-height: 64px; }
+    .entrega { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .entrega input { position: absolute; opacity: 0; pointer-events: none; }
+    .entrega span { display: block; text-align: center; padding: 10px; border: 1.5px solid var(--line); border-radius: 8px; font-family: var(--cond); font-weight: 600; font-size: 17px; text-transform: uppercase; color: var(--ink); cursor: pointer; }
+    .entrega input:checked + span { border-color: var(--bordo); background: var(--bordo-soft); color: var(--bordo); }
+    .entrega input:focus-visible + span { outline: 2px solid var(--bordo); }
+    .nota-precio { margin-top: 16px; font-size: 13.5px; color: var(--mid); background: var(--bg-alt); border-radius: 8px; padding: 10px 12px; }
+    .panel-f { padding: 16px 22px 22px; border-top: 1px solid var(--line); }
+    .panel-f .btn { width: 100%; justify-content: center; }
+    .panel-vacio { padding: 40px 0; text-align: center; color: var(--mid); }
+
+    @media (max-width: 960px) {
+      .nav { display: none; }
+      .items { grid-template-columns: 1fr 1fr; }
+      .mayo .wrap, .nos .wrap { grid-template-columns: 1fr; gap: 40px; }
+    }
+    @media (max-width: 640px) {
+      .wrap { padding: 0 16px; }
+      .top .wrap { height: 60px; }
+      .tabs { top: 60px; }
+      .marca em { font-size: 23px; } .marca b { font-size: 26px; }
+      .btn-pedido .t { display: none; }
+      .hero .wrap { padding-top: 70px; padding-bottom: 70px; }
+      .hero-foto::after { background: linear-gradient(180deg, rgba(20,14,12,.7) 0%, rgba(20,14,12,.9) 100%); }
+      .hero p { font-size: 17px; }
+      .ctas .btn { flex: 1; justify-content: center; }
+      .pasos .wrap { grid-template-columns: 1fr; padding: 0; }
+      .paso { padding: 16px; }
+      .paso + .paso { border-left: 0; border-top: 1px solid var(--line); }
+      section { padding: 64px 0; }
+      .items { grid-template-columns: 1fr; }
+      .ficha { padding: 22px; }
+    }
+  </style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+  <symbol id="i-minus" viewBox="0 0 24 24"><path d="M5 12h14"/></symbol>
+  <symbol id="i-bag" viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4zM3 6h18M16 10a4 4 0 0 1-8 0"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
+  <symbol id="i-truck" viewBox="0 0 24 24"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2M15 18H9M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.62L18.3 9.38a1 1 0 0 0-.78-.38H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></symbol>
+  <symbol id="i-wa" viewBox="0 0 24 24"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/><path d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1a5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1"/></symbol>
+</svg>
+
+<div class="aviso">Idea de diseño de Lautaro Méndez para Frigorífico 33 · El logo, la dirección, los horarios y los textos son de ejemplo. Los productos salen de tu lista.</div>
+
+<header class="top">
+  <div class="wrap">
+    <a class="marca" href="#" aria-label="Frigorífico 33"><em>Frigorífico</em><b>33</b></a>
+    <nav class="nav"><a href="#catalogo">Catálogo</a><a href="#mayoristas">Mayoristas</a><a href="#nosotros">Nosotros</a><a href="#contacto">Contacto</a></nav>
+    <button class="btn-pedido" type="button" data-abrir><svg class="ico"><use href="#i-bag"/></svg><span class="t">Mi pedido</span><span class="n" data-cuenta>0</span></button>
+  </div>
+</header>
+
+<section class="hero" style="padding:0">
+  <div class="hero-foto"><img src="img/parrilla.jpg" alt="" width="1280" height="961" fetchpriority="high" /></div>
+  <div class="wrap">
+    <div class="hero-tags g-in"><span>Minorista</span><span>Mayorista</span></div>
+    <h1 class="g-in">Carne de frigorífico, <span>directo a tu mesa</span> o a tu negocio</h1>
+    <p class="g-in">Vacuno, cerdo, pollo, menudencias, embutidos y huevos. Armá tu pedido acá y mandalo por WhatsApp: te confirmamos precio y disponibilidad en el momento.</p>
+    <div class="ctas g-in">
+      <a class="btn btn-rojo" href="#catalogo">Armar mi pedido</a>
+      <a class="btn btn-linea" href="#mayoristas">Soy comercio</a>
+    </div>
+  </div>
+</section>
+
+<div class="pasos">
+  <div class="wrap">
+    <div class="paso g-up"><i>1</i><div><b>Elegí los cortes</b><span>Del catálogo, por categoría o buscando.</span></div></div>
+    <div class="paso g-up"><i>2</i><div><b>Poné kilos o piezas</b><span>Lo que necesites de cada uno.</span></div></div>
+    <div class="paso g-up"><i>3</i><div><b>Mandalo por WhatsApp</b><span>Te llega la lista lista para confirmar.</span></div></div>
+  </div>
+</div>
+
+<section id="catalogo">
+  <div class="wrap">
+    <div class="cat-head">
+      <div class="g-up">
+        <div class="eyebrow">Catálogo</div>
+        <h2>¿Qué vas a llevar?</h2>
+        <p class="lead">Tocá el + en cada producto. Los precios cambian seguido, por eso te los pasamos al confirmar el pedido.</p>
+      </div>
+      <label class="buscar g-up"><svg class="ico"><use href="#i-search"/></svg><input type="search" placeholder="Buscar un corte… (ej: vacío)" aria-label="Buscar en el catálogo" data-buscar /></label>
+    </div>
+    <div class="tabs" data-tabs></div>
+    <div data-catalogo></div>
+    <p class="vacio-busq" data-sinres>No encontramos ese producto. Escribinos igual: <a href="#" data-wa-consulta>consultá por WhatsApp</a>.</p>
+  </div>
+</section>
+
+<section class="mayo" id="mayoristas">
+  <div class="wrap">
+    <div class="g-up">
+      <div class="eyebrow" style="color:#E2565C">Mayoristas</div>
+      <h2>¿Tenés carnicería, restaurante o almacén?</h2>
+      <p class="lead">Trabajamos con comercios de la zona. Usá el mismo catálogo para armar el pedido y marcá «Soy comercio» al enviarlo.</p>
+      <ul>
+        <li><svg class="ico"><use href="#i-check"/></svg>Medias reses de vacuno y de cerdo, y cortes por caja.</li>
+        <li><svg class="ico"><use href="#i-check"/></svg>Precio mayorista a partir de un pedido mínimo.</li>
+        <li><svg class="ico"><use href="#i-check"/></svg>Reparto en camión refrigerado, con días fijos por zona.</li>
+      </ul>
+      <a class="btn btn-wa" href="#" data-wa-mayo><svg class="ico"><use href="#i-wa"/></svg>Pedir la lista mayorista</a>
+    </div>
+    <div class="mayo-foto g-up">
+      <img src="img/cerdo.jpg" alt="Bondiola de cerdo cortada en porciones" width="1000" height="750" loading="lazy" />
+      <div class="sello"><b>Al por mayor</b><span>y al por menor</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="nos" id="nosotros">
+  <div class="wrap">
+    <div class="g-up">
+      <div class="eyebrow">Nosotros</div>
+      <h2>Precio de frigorífico, atención de barrio</h2>
+      <p>Somos Frigorífico 33. Vendemos al público y a comercios, con la carne que llega directo de la faena y cortada en el día. Si no ves lo que buscás en el catálogo, preguntanos: muchas veces lo conseguimos.</p>
+      <div class="cifras">
+        <div><b>+60</b><span>productos en el catálogo</span></div>
+        <div><b>6</b><span>categorías: de vacuno a huevos</span></div>
+        <div><b>2</b><span>formas de comprar: por menor y por mayor</span></div>
+      </div>
+    </div>
+    <div class="ficha g-up" id="contacto">
+      <div class="ficha-row"><svg class="ico"><use href="#i-pin"/></svg><div><b>Dónde estamos</b><span>Av. Ejemplo 1234, Buenos Aires</span></div></div>
+      <div class="ficha-row"><svg class="ico"><use href="#i-clock"/></svg><div><b>Horarios</b><span>Lunes a sábado de 7 a 13 y de 16 a 20</span></div></div>
+      <div class="ficha-row"><svg class="ico"><use href="#i-truck"/></svg><div><b>Envíos</b><span>A domicilio en la zona y reparto a comercios</span></div></div>
+      <div class="mapa" role="img" aria-label="Mapa de ubicación (de ejemplo)"></div>
+      <a class="btn btn-wa" href="#" data-wa-consulta style="justify-content:center"><svg class="ico"><use href="#i-wa"/></svg>Escribinos por WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div><a class="marca" href="#"><em>Frigorífico</em><b>33</b></a><small>Minorista y mayorista · Los precios se confirman al hacer el pedido.</small></div>
+    <div style="text-align:right">© 2026 Frigorífico 33<small>Foto de portada: «Asado tradicional argentino», Wikimedia Commons, CC BY-SA 4.0 · Bondiola: Wikimedia Commons, CC BY-SA 3.0</small></div>
+  </div>
+</footer>
+
+<div class="barra" data-barra>
+  <div><b data-barra-txt>0 productos</b><span>Revisalo y mandalo por WhatsApp</span></div>
+  <button class="btn btn-rojo" type="button" data-abrir>Ver mi pedido</button>
+</div>
+
+<div class="velo" data-velo></div>
+<aside class="panel" data-panel aria-label="Mi pedido" aria-hidden="true">
+  <div class="panel-h"><b>Mi pedido</b><button class="cerrar" type="button" data-cerrar aria-label="Cerrar"><svg class="ico"><use href="#i-x"/></svg></button></div>
+  <div class="panel-b">
+    <div data-lineas></div>
+    <div class="campos" data-campos>
+      <label>Tu nombre<input type="text" data-cliente autocomplete="name" placeholder="Ej: Marta" /></label>
+      <div class="entrega" role="radiogroup" aria-label="Cómo lo recibís">
+        <label><input type="radio" name="ent" value="Retiro en el local" checked /><span>Retiro</span></label>
+        <label><input type="radio" name="ent" value="Envío a domicilio" /><span>Envío</span></label>
+      </div>
+      <div class="entrega" role="radiogroup" aria-label="Tipo de cliente">
+        <label><input type="radio" name="tipo" value="Particular" checked /><span>Particular</span></label>
+        <label><input type="radio" name="tipo" value="Comercio (mayorista)" /><span>Soy comercio</span></label>
+      </div>
+      <label>Algo más (opcional)<textarea data-nota placeholder="Ej: el asado cortado fino, para el sábado"></textarea></label>
+    </div>
+    <p class="nota-precio">Sin precios ni total: te los confirmamos por WhatsApp según el peso real de cada pieza.</p>
+  </div>
+  <div class="panel-f"><a class="btn btn-wa" href="#" target="_blank" rel="noopener" data-enviar><svg class="ico"><use href="#i-wa"/></svg>Enviar pedido por WhatsApp</a></div>
+</aside>
+
+<script>
+// En la web real esto sale de una planilla de Google que actualiza Frigorífico 33.
+// u: unidades posibles (kg, pieza, unidad). t: etiqueta opcional.
+const CATALOGO = [
+  { cat: 'Vacuno', items: [
+    ['Asado', ['kg']], ['Asado parrillero', ['kg']], ['Vacío', ['kg', 'pieza']], ['Matambre', ['kg', 'pieza']], ['Entraña', ['kg']],
+    ['Bife ancho', ['kg']], ['Bife angosto', ['kg']], ['Barra de bife', ['kg', 'pieza']], ['Nalga', ['kg']], ['Cuadrada', ['kg']],
+    ['Peceto', ['kg', 'pieza']], ['Bola de lomo', ['kg']], ['Colita de cuadril', ['kg', 'pieza']], ['Tapa de asado', ['kg']],
+    ['Roast beef', ['kg']], ['Falda', ['kg']], ['Osobuco', ['kg']], ['Picada común', ['kg']], ['Picada especial', ['kg']],
+    ['Media res', ['unidad'], 'Mayorista']
+  ]},
+  { cat: 'Cerdo', items: [
+    ['Carré', ['kg', 'pieza']], ['Carré deshuesado', ['kg', 'pieza']], ['Pechito', ['kg', 'pieza']], ['Bondiola fresca', ['kg', 'pieza']],
+    ['Paleta', ['kg', 'pieza']], ['Jamón', ['kg', 'pieza']], ['Solomillo', ['kg', 'pieza']], ['Matambre de cerdo', ['kg', 'pieza']],
+    ['Pulpa de cerdo', ['kg', 'pieza']], ['Churrasquito', ['kg']], ['Ribs de cerdo', ['kg', 'pieza']], ['Panceta salada', ['pieza']],
+    ['Osobuco de cerdo', ['kg', 'pieza']], ['Pechito completo deshuesado', ['kg']], ['Bondiola congelada', ['kg']],
+    ['Milanesa de cerdo', ['kg'], 'Promo'], ['Cabeza', ['unidad']], ['Patita', ['kg', 'pieza']], ['Rabo', ['kg', 'pieza']],
+    ['Papada', ['kg']], ['Cuerito', ['kg']], ['Grasa', ['kg']], ['Recorte', ['kg']], ['Picada de cerdo', ['kg']],
+    ['Media res de cerdo', ['unidad'], 'Mayorista']
+  ]},
+  { cat: 'Pollo', items: [
+    ['Pollo entero', ['unidad', 'kg']], ['Pata y muslo', ['kg']], ['Suprema', ['kg']], ['Pechuga', ['kg']], ['Alitas', ['kg']],
+    ['Milanesa de pollo', ['kg']], ['Suprema rellena', ['unidad']], ['Menudos de pollo', ['kg']], ['Carcasa', ['kg']]
+  ]},
+  { cat: 'Menudencias', items: [
+    ['Hígado', ['kg']], ['Riñón', ['kg']], ['Mondongo', ['kg']], ['Chinchulines', ['kg']], ['Molleja', ['kg']], ['Lengua', ['unidad', 'kg']], ['Corazón', ['kg']]
+  ]},
+  { cat: 'Embutidos', items: [
+    ['Chorizo', ['kg']], ['Chorizo de cerdo', ['kg']], ['Morcilla', ['kg']], ['Salchicha parrillera', ['kg']], ['Chorizo colorado', ['kg']]
+  ]},
+  { cat: 'Huevos', items: [
+    ['Maple de huevos blancos', ['unidad']], ['Maple de huevos de color', ['unidad']], ['Docena de huevos', ['unidad']]
+  ]}
+];
+const WA = '5491130011145'; // En el boceto el pedido le llega a Lautaro; en la real, al WhatsApp del frigorífico.
+const PASO = { kg: 0.5, pieza: 1, unidad: 1 };
+const pedido = new Map(); // id -> {n, cat, u, q}
+const $ = s => document.querySelector(s);
+const $$ = s => document.querySelectorAll(s);
+const slug = s => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-');
+const fmt = (q, u) => u === 'kg' ? (String(q).replace('.', ',') + ' kg') : (q + ' ' + (u === 'pieza' ? (q === 1 ? 'pieza' : 'piezas') : (q === 1 ? 'unidad' : 'unid.')));
+const sinTilde = s => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+
+function stepHTML(id, it) {
+  return `<div class="step"><button type="button" data-menos="${id}" aria-label="Menos"><svg class="ico"><use href="#i-minus"/></svg></button><output>${fmt(it.q, it.u)}</output><button type="button" data-mas="${id}" aria-label="Más"><svg class="ico"><use href="#i-plus"/></svg></button></div>`;
+}
+function unidadTxt(u) { return u.map(x => x === 'kg' ? 'por kilo' : x === 'pieza' ? 'por pieza' : 'por unidad').join(' o '); }
+
+function render() {
+  const cont = $('[data-catalogo]');
+  cont.innerHTML = CATALOGO.map(g => `
+    <div class="grupo" id="cat-${slug(g.cat)}" data-grupo>
+      <h3>${g.cat} <small>${g.items.length} productos</small></h3>
+      <div class="items">${g.items.map(([n, u, t]) => {
+        const id = slug(g.cat + '-' + n);
+        return `<div class="item" data-item="${id}" data-nombre="${sinTilde(n)}" data-n="${n}" data-cat="${g.cat}" data-u="${u.join(',')}">
+          <div><span class="item-n">${n}${t ? `<span class="item-tag">${t}</span>` : ''}</span><span class="item-u">${unidadTxt(u)}</span></div>
+          <div data-ctrl="${id}"><button class="add" type="button" data-add="${id}" aria-label="Agregar ${n}"><svg class="ico"><use href="#i-plus"/></svg></button></div>
+        </div>`;
+      }).join('')}</div>
+    </div>`).join('');
+  $('[data-tabs]').innerHTML = CATALOGO.map((g, i) => `<button class="tab${i ? '' : ' on'}" type="button" data-tab="cat-${slug(g.cat)}">${g.cat}</button>`).join('');
+}
+
+function pintarItem(id) {
+  const ctrl = document.querySelector(`[data-ctrl="${id}"]`);
+  const it = pedido.get(id);
+  if (ctrl) {
+    ctrl.closest('.item').classList.toggle('sel', !!it);
+    ctrl.innerHTML = it ? stepHTML(id, it) : `<button class="add" type="button" data-add="${id}" aria-label="Agregar"><svg class="ico"><use href="#i-plus"/></svg></button>`;
+  }
+}
+function actualizar() {
+  const n = pedido.size;
+  $$('[data-cuenta]').forEach(e => e.textContent = n);
+  $('[data-barra-txt]').textContent = n + (n === 1 ? ' producto' : ' productos');
+  $('[data-barra]').classList.toggle('on', n > 0 && !$('[data-panel]').classList.contains('on'));
+  const L = $('[data-lineas]');
+  L.innerHTML = n ? [...pedido].map(([id, it]) => `
+    <div class="linea"><div><span class="item-n">${it.n}</span><span class="item-u">${it.cat}${it.us.length > 1 ? ` · <a href="#" data-unidad="${id}">cambiar a ${it.us.find(x => x !== it.u) === 'kg' ? 'kilos' : it.us.find(x => x !== it.u) + 's'}</a>` : ''}</span></div>${stepHTML(id, it)}</div>`).join('')
+    : `<div class="panel-vacio">Todavía no agregaste nada.<br />Tocá el + en los productos del catálogo.</div>`;
+  $('[data-campos]').style.display = n ? '' : 'none';
+  $('[data-enviar]').href = linkWA();
+}
+function cambiar(id, d) {
+  const it = pedido.get(id);
+  if (!it) return;
+  it.q = Math.round((it.q + d * PASO[it.u]) * 10) / 10;
+  if (it.q <= 0) pedido.delete(id);
+  pintarItem(id); actualizar();
+}
+function agregar(id) {
+  const el = document.querySelector(`[data-item="${id}"]`);
+  const us = el.dataset.u.split(',');
+  pedido.set(id, { n: el.dataset.n, cat: el.dataset.cat, us, u: us[0], q: us[0] === 'kg' ? 1 : 1 });
+  pintarItem(id); actualizar();
+}
+function linkWA() {
+  const nombre = ($('[data-cliente]') || {}).value || '';
+  const ent = (document.querySelector('input[name=ent]:checked') || {}).value;
+  const tipo = (document.querySelector('input[name=tipo]:checked') || {}).value;
+  const nota = ($('[data-nota]') || {}).value || '';
+  let t = `Hola Frigorífico 33! Quiero hacer este pedido:\n\n`;
+  const porCat = {};
+  pedido.forEach(it => (porCat[it.cat] ||= []).push(`• ${it.n}: ${fmt(it.q, it.u)}`));
+  for (const c in porCat) t += `*${c}*\n${porCat[c].join('\n')}\n\n`;
+  t += `${ent} · ${tipo}`;
+  if (nombre.trim()) t += `\nNombre: ${nombre.trim()}`;
+  if (nota.trim()) t += `\nNota: ${nota.trim()}`;
+  return `https://wa.me/${WA}?text=${encodeURIComponent(t)}`;
+}
+
+function abrir() { $('[data-panel]').classList.add('on'); $('[data-panel]').setAttribute('aria-hidden', 'false'); $('[data-velo]').classList.add('on'); actualizar(); }
+function cerrar() { $('[data-panel]').classList.remove('on'); $('[data-panel]').setAttribute('aria-hidden', 'true'); $('[data-velo]').classList.remove('on'); actualizar(); }
+
+render(); actualizar();
+document.addEventListener('click', e => {
+  const t = e.target.closest('[data-add],[data-mas],[data-menos],[data-abrir],[data-cerrar],[data-velo],[data-tab],[data-unidad],[data-wa-mayo],[data-wa-consulta]');
+  if (!t) return;
+  if (t.dataset.add) agregar(t.dataset.add);
+  else if (t.dataset.mas) cambiar(t.dataset.mas, 1);
+  else if (t.dataset.menos) cambiar(t.dataset.menos, -1);
+  else if (t.hasAttribute('data-abrir')) abrir();
+  else if (t.hasAttribute('data-cerrar') || t.hasAttribute('data-velo')) cerrar();
+  else if (t.dataset.tab) { e.preventDefault(); document.getElementById(t.dataset.tab).scrollIntoView({ behavior: 'smooth' }); }
+  else if (t.dataset.unidad) {
+    e.preventDefault();
+    const it = pedido.get(t.dataset.unidad);
+    it.u = it.us.find(x => x !== it.u); it.q = 1;
+    pintarItem(t.dataset.unidad); actualizar();
+  }
+  else if (t.hasAttribute('data-wa-mayo')) { e.preventDefault(); window.open(`https://wa.me/${WA}?text=${encodeURIComponent('Hola Frigorífico 33! Tengo un comercio y quiero la lista mayorista.')}`, '_blank', 'noopener'); }
+  else if (t.hasAttribute('data-wa-consulta')) { e.preventDefault(); window.open(`https://wa.me/${WA}?text=${encodeURIComponent('Hola Frigorífico 33! Quería hacer una consulta.')}`, '_blank', 'noopener'); }
+});
+document.addEventListener('input', e => { if (e.target.closest('[data-panel]')) $('[data-enviar]').href = linkWA(); });
+document.addEventListener('change', e => { if (e.target.closest('[data-panel]')) $('[data-enviar]').href = linkWA(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') cerrar(); });
+
+// Buscador
+$('[data-buscar]').addEventListener('input', e => {
+  const q = sinTilde(e.target.value.trim());
+  let total = 0;
+  $$('[data-grupo]').forEach(g => {
+    let vis = 0;
+    g.querySelectorAll('[data-item]').forEach(it => { const ok = !q || it.dataset.nombre.includes(q); it.style.display = ok ? '' : 'none'; vis += ok; });
+    g.style.display = vis ? '' : 'none'; total += vis;
+  });
+  $('[data-sinres]').style.display = total ? 'none' : 'block';
+});
+
+// Pestaña activa según la categoría a la vista
+let tabActual = '';
+function marcarTab() {
+  let id = '';
+  $$('[data-grupo]').forEach(g => { if (g.style.display !== 'none' && g.getBoundingClientRect().top < 200) id = g.id; });
+  if (!id) { const p = [...$$('[data-grupo]')].find(g => g.style.display !== 'none'); id = p ? p.id : ''; }
+  if (id === tabActual) return;
+  tabActual = id;
+  $$('[data-tab]').forEach(b => b.classList.toggle('on', b.dataset.tab === id));
+  const on = document.querySelector('.tab.on'); if (on) on.parentNode.scrollTo({ left: on.offsetLeft - 16, behavior: 'smooth' });
+}
+addEventListener('scroll', marcarTab, { passive: true }); marcarTab();
+</script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script>
+  if (window.gsap && window.ScrollTrigger) {
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.matchMedia().add('(prefers-reduced-motion: no-preference)', () => {
+      gsap.from('.hero .g-in', { y: 32, opacity: 0, duration: .9, stagger: .12, ease: 'power3.out', delay: .1 });
+      gsap.from('.hero-foto img', { scale: 1.12, duration: 2, ease: 'power2.out' });
+      gsap.utils.toArray('.g-up').forEach(el => gsap.from(el, { y: 36, opacity: 0, duration: .8, ease: 'power3.out', scrollTrigger: { trigger: el, start: 'top 90%' } }));
+      gsap.utils.toArray('[data-grupo]').forEach(g => gsap.from(g.querySelectorAll('.item'), { opacity: 0, y: 14, duration: .5, stagger: .025, ease: 'power2.out', scrollTrigger: { trigger: g, start: 'top 85%' } }));
+    });
+  }
+</script>
+<script src="/propuestas/_visto.js" data-p="frigorifico-33" data-n="Frigorífico 33" data-e="boceto" defer></script>
+</body>
+</html>
