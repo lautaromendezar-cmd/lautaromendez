@@ -30,24 +30,24 @@
     body { background: var(--bg); color: var(--text); font-family: var(--sans); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
     strong { color: var(--ink); font-weight: 560; }
 
-    /* Paleta: verde yerba. AJUSTAR ACÁ si cambia. */
+    /* Paleta: negro sobre blanco. AJUSTAR ACÁ si cambia. */
     :root {
       --bg: #ffffff;
-      --bg-alt: #F3F6F4;
+      --bg-alt: #F5F5F4;
       --card: #ffffff;
-      --soft: #F2F5F3;
-      --ink: #14211A;
-      --text: #2F3B34;
-      --mid: #5F6C65;
-      --dim: #8E9A93;
-      --line: #E0E7E3;
-      --line-strong: #CBD5CF;
-      --accent: #1F6B43;
-      --accent-dark: #17523A;
-      --accent-soft: #E6F1EB;
+      --soft: #F4F4F3;
+      --ink: #111111;
+      --text: #333333;
+      --mid: #666666;
+      --dim: #999999;
+      --line: #E6E6E4;
+      --line-strong: #D2D2CF;
+      --accent: #111111;
+      --accent-dark: #000000;
+      --accent-soft: #F0F0EE;
       --warn: #B5631A;
       --warn-soft: #FBF0E3;
-      --ok: #1F6B43;
+      --ok: #111111;
       --sans: 'General Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
     }
 
@@ -71,13 +71,6 @@
     .section-intro { font-size: 16px; color: var(--mid); margin-bottom: 32px; max-width: 660px; }
     .p { font-size: 15.5px; color: var(--mid); max-width: 660px; margin-bottom: 18px; }
 
-    .caminos { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-    .camino { background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 22px; }
-    .camino.is-reco { border: 2px solid var(--accent); }
-    .camino .tag { display: inline-block; font-size: 12px; font-weight: 560; color: var(--accent); margin-bottom: 8px; }
-    .camino b { display: block; font-size: 17px; font-weight: 560; color: var(--ink); margin-bottom: 8px; }
-    .camino p { font-size: 14.5px; color: var(--mid); line-height: 1.55; }
-
     /* Pasos con pantalla */
     .paso { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; padding: 44px 0; }
     .paso + .paso { border-top: 1px solid var(--line); }
@@ -93,11 +86,11 @@
     .ejemplo { font-size: 13px; color: var(--dim); margin-top: 8px; }
 
     /* Celular dibujado */
-    .tel { width: 270px; max-width: 100%; border: 8px solid #1b2420; border-radius: 30px; background: #fff; overflow: hidden; box-shadow: 0 24px 50px -28px rgb(20 33 26 / .5); font-size: 12px; line-height: 1.35; color: var(--text); }
+    .tel { width: 270px; max-width: 100%; border: 8px solid #111; border-radius: 30px; background: #fff; overflow: hidden; box-shadow: 0 24px 50px -28px rgb(0 0 0 / .5); font-size: 12px; line-height: 1.35; color: var(--text); }
     .tel-bar { display: flex; justify-content: space-between; align-items: center; padding: 12px 14px 10px; background: var(--accent); color: #fff; }
     .tel-bar b { font-size: 14px; font-weight: 560; color: #fff; }
     .tel-bar span { font-size: 11px; opacity: .85; }
-    .tel-body { padding: 12px; display: flex; flex-direction: column; gap: 8px; background: #F7F9F8; }
+    .tel-body { padding: 12px; display: flex; flex-direction: column; gap: 8px; background: #F7F7F6; }
     .m-card { background: #fff; border: 1px solid var(--line); border-radius: 8px; padding: 9px 10px; }
     .m-label { font-size: 10.5px; color: var(--dim); display: block; }
     .m-row { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
@@ -118,63 +111,145 @@
     .m-two { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
 
     /* Sistema en la computadora */
-    .app-tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
+    .app-wrap { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .app-tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 18px; }
     .app-tab { font: inherit; font-size: 14px; font-weight: 520; color: var(--mid); background: var(--card); border: 1px solid var(--line-strong); border-radius: 999px; padding: 8px 16px; cursor: pointer; transition: background .15s, color .15s, border-color .15s; }
-    .app-tab:hover { color: var(--ink); border-color: var(--accent); }
+    .app-tab:hover { color: var(--ink); border-color: var(--ink); }
     .app-tab.is-on { background: var(--accent); border-color: var(--accent); color: #fff; }
-    .app-tab:focus-visible, .app-nav button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
-    .app { border: 1px solid var(--line-strong); border-radius: 10px; overflow: hidden; background: #fff; box-shadow: 0 30px 60px -36px rgb(20 33 26 / .5); font-size: 13px; line-height: 1.4; color: var(--text); font-variant-numeric: tabular-nums; }
-    .app-bar { display: flex; align-items: center; gap: 6px; padding: 10px 14px; border-bottom: 1px solid var(--line); background: var(--soft); }
-    .app-bar i { width: 9px; height: 9px; border-radius: 50%; background: var(--line-strong); }
-    .app-bar span { margin-left: 10px; font-size: 12px; color: var(--dim); }
-    .app-grid { display: grid; grid-template-columns: 190px 1fr; min-height: 470px; }
-    .app-side { background: #12241B; padding: 16px 10px; display: flex; flex-direction: column; gap: 3px; }
-    .app-marca { color: #fff; font-weight: 560; font-size: 13.5px; padding: 2px 10px 14px; }
-    .app-marca small { display: block; font-weight: 400; font-size: 11px; color: rgb(255 255 255 / .55); }
-    .app-nav button { font: inherit; font-size: 13px; width: 100%; text-align: left; display: flex; align-items: center; gap: 9px; color: rgb(255 255 255 / .72); background: none; border: 0; border-radius: 6px; padding: 8px 10px; cursor: pointer; }
-    .app-nav button .ico { width: 15px; height: 15px; }
+    .app-tab:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+    .app-nav button:focus-visible { outline: 2px solid #fff; outline-offset: -2px; }
+    .app { border: 1px solid var(--line-strong); border-radius: 12px; overflow: hidden; background: #fff; box-shadow: 0 1px 2px rgb(0 0 0 / .05), 0 50px 90px -50px rgb(0 0 0 / .45); font-size: 13px; line-height: 1.4; color: var(--text); font-variant-numeric: tabular-nums; }
+    .app .ico { stroke: currentColor; width: 15px; height: 15px; }
+    .app-bar { display: flex; align-items: center; gap: 6px; padding: 10px 14px; border-bottom: 1px solid var(--line); background: #EDEDEB; }
+    .app-bar > i { width: 10px; height: 10px; border-radius: 50%; background: #C9C9C5; }
+    .app-url { margin: 0 auto; font-size: 11.5px; color: var(--mid); background: #fff; border: 1px solid var(--line); border-radius: 6px; padding: 3px 60px; }
+    .app-grid { display: grid; grid-template-columns: 214px minmax(0, 1fr); min-height: 660px; }
+
+    .app-side { background: #0F0F0F; padding: 16px 12px 12px; display: flex; flex-direction: column; }
+    .app-marca { display: flex; align-items: center; gap: 10px; padding: 2px 8px 8px; color: #fff; font-weight: 560; font-size: 13.5px; line-height: 1.25; }
+    .app-marca small { display: block; font-weight: 400; font-size: 11px; color: rgb(255 255 255 / .5); }
+    .app-logo { width: 32px; height: 32px; border-radius: 8px; background: #fff; color: #111; display: grid; place-items: center; font-size: 12px; font-weight: 600; letter-spacing: -0.02em; flex-shrink: 0; }
+    .app-grupo { font-size: 10.5px; font-weight: 520; letter-spacing: .07em; text-transform: uppercase; color: rgb(255 255 255 / .38); padding: 18px 10px 6px; }
+    .app-nav { display: flex; flex-direction: column; gap: 2px; }
+    .app-nav button { font: inherit; font-size: 13px; width: 100%; text-align: left; display: flex; align-items: center; gap: 10px; color: rgb(255 255 255 / .68); background: none; border: 0; border-radius: 7px; padding: 8px 10px; cursor: pointer; transition: background .12s, color .12s; }
     .app-nav button:hover { color: #fff; background: rgb(255 255 255 / .07); }
-    .app-nav button.is-on { color: #fff; background: rgb(255 255 255 / .14); font-weight: 520; }
-    .app-user { margin-top: auto; padding: 10px; font-size: 11.5px; color: rgb(255 255 255 / .55); border-top: 1px solid rgb(255 255 255 / .12); }
+    .app-nav button.is-on { color: #111; background: #fff; font-weight: 560; }
+    .app-badge { margin-left: auto; font-size: 10.5px; font-weight: 600; background: rgb(255 255 255 / .16); color: #fff; border-radius: 999px; padding: 1px 7px; }
+    .app-nav button.is-on .app-badge { background: #111; color: #fff; }
+    .app-badge.is-warn { background: #E08A3C; color: #111; }
+    .app-nav button.is-on .app-badge.is-warn { background: #E08A3C; color: #111; }
+    .app-user { margin-top: auto; display: flex; align-items: center; gap: 10px; padding: 12px 8px 2px; border-top: 1px solid rgb(255 255 255 / .12); font-size: 11.5px; color: rgb(255 255 255 / .5); line-height: 1.3; }
     .app-user b { display: block; color: #fff; font-weight: 520; font-size: 12.5px; }
-    .app-main { padding: 20px 22px 24px; min-width: 0; background: #FAFBFA; }
+    .app-av { width: 28px; height: 28px; border-radius: 50%; background: #111; color: #fff; display: grid; place-items: center; font-size: 11px; font-weight: 600; flex-shrink: 0; }
+    .app-user .app-av { background: rgb(255 255 255 / .16); }
+
+    .app-main { display: flex; flex-direction: column; min-width: 0; background: #FAFAF9; }
+    .app-top { display: flex; align-items: center; gap: 14px; padding: 11px 22px; border-bottom: 1px solid var(--line); background: #fff; }
+    .app-search { flex: 1; max-width: 340px; display: flex; align-items: center; gap: 8px; background: var(--soft); border: 1px solid var(--line); border-radius: 8px; padding: 7px 11px; font-size: 12.5px; color: var(--dim); }
+    .app-top-r { margin-left: auto; display: flex; align-items: center; gap: 12px; font-size: 12px; color: var(--mid); }
+    .app-content { padding: 22px 22px 26px; }
     .app-view { display: none; }
-    .app-view.is-on { display: block; }
-    .app-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 14px; }
-    .app-head b { font-size: 18px; font-weight: 560; color: var(--ink); letter-spacing: -0.015em; display: block; }
-    .app-head small { font-size: 12px; color: var(--mid); }
-    .app-btn { display: inline-block; background: var(--accent); color: #fff; font-weight: 560; font-size: 12px; border-radius: 6px; padding: 7px 12px; white-space: nowrap; }
-    .app-btn.is-ghost { background: #fff; color: var(--ink); border: 1px solid var(--line-strong); }
-    .app-box { background: #fff; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
-    .app-box-t { font-size: 11.5px; font-weight: 560; color: var(--mid); padding: 10px 14px; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; gap: 8px; }
+    .app-view.is-on { display: block; animation: appin .22s ease; }
+    @keyframes appin { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+    @media (prefers-reduced-motion: reduce) { .app-view.is-on { animation: none; } }
+
+    .app-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 16px; }
+    .app-head > div > b { font-size: 20px; font-weight: 560; color: var(--ink); letter-spacing: -0.02em; display: block; line-height: 1.2; }
+    .app-head small { font-size: 12.5px; color: var(--mid); }
+    .app-acc { display: flex; gap: 8px; flex-wrap: wrap; }
+    .app-btn { display: inline-flex; align-items: center; justify-content: center; gap: 7px; background: var(--accent); color: #fff; font-weight: 560; font-size: 12.5px; border-radius: 7px; padding: 8px 13px; white-space: nowrap; border: 1px solid var(--accent); }
+    .app-btn.is-ghost { background: #fff; color: var(--ink); border-color: var(--line-strong); }
+    .app-seg { display: inline-flex; gap: 2px; background: var(--soft); border: 1px solid var(--line); border-radius: 8px; padding: 3px; margin-bottom: 12px; }
+    .app-seg span { font-size: 12px; font-weight: 520; color: var(--mid); padding: 5px 11px; border-radius: 6px; white-space: nowrap; }
+    .app-seg span.is-on { background: #fff; color: var(--ink); box-shadow: 0 1px 2px rgb(0 0 0 / .1); }
+    .app-seg em { font-style: normal; color: var(--dim); margin-left: 4px; }
+
+    .app-box { background: #fff; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
+    .app-box-t { font-size: 12px; font-weight: 560; color: var(--ink); padding: 12px 16px; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+    .app-box-t span + span { font-weight: 400; color: var(--mid); }
     .app-t { width: 100%; border-collapse: collapse; }
-    .app-t th { text-align: left; font-size: 11px; font-weight: 520; color: var(--dim); padding: 9px 14px; border-bottom: 1px solid var(--line); white-space: nowrap; }
-    .app-t td { padding: 10px 14px; border-bottom: 1px solid var(--line); vertical-align: middle; }
+    .app-t th { text-align: left; font-size: 11px; font-weight: 520; color: var(--dim); padding: 10px 16px; border-bottom: 1px solid var(--line); white-space: nowrap; background: #FCFCFB; }
+    .app-t td { padding: 11px 16px; border-bottom: 1px solid var(--line); vertical-align: middle; }
     .app-t tr:last-child td { border-bottom: 0; }
-    .app-t td b { font-weight: 560; color: var(--ink); }
-    .app-t .n { text-align: right; white-space: nowrap; }
+    @media (min-width: 1140px) { .app-t td b { white-space: nowrap; } }
+    .app-t td b { font-weight: 560; color: var(--ink); display: block; }
+    .app-t td small { font-size: 11.5px; color: var(--mid); }
+    .app-t .n, .app-t td.x-m { white-space: nowrap; }
+    .app-t .n { text-align: right; }
     .app-t tr.is-sel td { background: var(--accent-soft); }
+    .app-t tr.is-sel td:first-child { box-shadow: inset 3px 0 0 var(--accent); }
+    .app-t tr.grp td { font-size: 10.5px; font-weight: 520; letter-spacing: .06em; text-transform: uppercase; color: var(--dim); background: #FCFCFB; padding: 7px 16px; }
+    .app-t tr.is-old td { color: var(--mid); }
+    .app-t tr.is-nulo td, .app-t tr.is-nulo td b { color: var(--dim); text-decoration: line-through; }
+    .app-t tr.is-nulo td:last-child { text-decoration: none; }
+    .app-t tfoot td { background: #FCFCFB; font-weight: 560; color: var(--ink); border-top: 1px solid var(--line-strong); }
     .app-t .baja { color: var(--warn); font-weight: 560; }
-    .app-cols { display: grid; grid-template-columns: 1.55fr 1fr; gap: 14px; align-items: start; }
-    .app-cols.is-ficha { grid-template-columns: 1fr 1.7fr; }
-    .app-det { padding: 14px; display: flex; flex-direction: column; gap: 8px; }
-    .app-det .lin { display: flex; justify-content: space-between; gap: 10px; font-size: 12.5px; color: var(--mid); }
-    .app-det .tot { display: flex; justify-content: space-between; align-items: baseline; border-top: 1px solid var(--line); padding-top: 10px; margin-top: 2px; }
-    .app-det .tot b { font-size: 18px; font-weight: 560; color: var(--ink); }
-    .app-det .app-btn { text-align: center; padding: 9px 12px; }
-    .app-aviso { display: flex; gap: 8px; align-items: center; background: var(--warn-soft); color: var(--warn); border-radius: 6px; padding: 8px 12px; font-size: 12.5px; font-weight: 500; margin-bottom: 14px; }
-    .app-kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 14px; }
-    .app-kpi { background: #fff; border: 1px solid var(--line); border-radius: 8px; padding: 12px 14px; }
-    .app-kpi span { font-size: 11.5px; color: var(--mid); display: block; }
-    .app-kpi b { font-size: 21px; font-weight: 560; color: var(--ink); letter-spacing: -0.02em; }
-    .app-bars { display: flex; align-items: flex-end; gap: 12px; height: 150px; padding: 16px 14px 12px; }
-    .app-bars div { flex: 1; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; gap: 5px; height: 100%; font-size: 11px; color: var(--dim); }
-    .app-bars i { display: block; width: 100%; max-width: 46px; border-radius: 4px 4px 0 0; background: #BFD9CB; }
-    .app-bars .hoy i { background: var(--accent); }
-    .app-bars em { font-style: normal; font-size: 10.5px; color: var(--mid); }
+
+    .st { display: inline-flex; align-items: center; gap: 6px; font-size: 11.5px; font-weight: 520; color: var(--ink); background: var(--soft); border-radius: 999px; padding: 3px 9px; white-space: nowrap; text-decoration: none; }
+    .st::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--ink); }
+    .st.is-warn { background: var(--warn-soft); color: var(--warn); }
+    .st.is-warn::before { background: var(--warn); }
+    .st.is-off { color: var(--mid); }
+    .st.is-off::before { background: var(--dim); }
+    .nivel { height: 6px; border-radius: 99px; background: var(--line); min-width: 70px; overflow: hidden; }
+    .nivel i { display: block; height: 100%; border-radius: 99px; background: var(--ink); }
+    .nivel.is-warn i { background: var(--warn); }
+
+    .app-cols { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: 16px; align-items: start; }
+    .app-cols.is-ficha { grid-template-columns: minmax(0, 1fr) minmax(0, 1.75fr); }
+    .app-cols.is-par { grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); }
+    .app-det { padding: 16px; display: flex; flex-direction: column; gap: 9px; }
+    .app-det-h b { font-size: 15px; font-weight: 560; color: var(--ink); display: block; }
+    .app-det-h small { font-size: 12px; color: var(--mid); }
+    .app-det .lin { display: grid; grid-template-columns: 1fr auto; gap: 2px 10px; font-size: 12.5px; color: var(--text); padding-top: 9px; border-top: 1px solid var(--line); }
+    .app-det .lin small { grid-column: 1 / -1; font-size: 11.5px; color: var(--mid); }
+    .app-det .tot { display: flex; justify-content: space-between; align-items: baseline; border-top: 1px solid var(--line-strong); padding-top: 11px; }
+    .app-det .tot b { font-size: 20px; font-weight: 560; color: var(--ink); letter-spacing: -0.02em; }
+    .app-nota { display: flex; gap: 9px; align-items: flex-start; font-size: 12px; color: var(--mid); background: var(--soft); border-radius: 7px; padding: 9px 11px; line-height: 1.4; }
+    .app-nota b { color: var(--ink); font-weight: 560; }
+    .app-nota .ico { margin-top: 1px; color: var(--ink); }
+    .app-aviso { display: flex; gap: 9px; align-items: center; background: var(--warn-soft); color: var(--warn); border-radius: 8px; padding: 9px 13px; font-size: 12.5px; font-weight: 500; margin-bottom: 14px; }
+
+    .app-kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 16px; }
+    .app-kpi { background: #fff; border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; }
+    .app-kpi span { font-size: 11.5px; color: var(--mid); display: block; margin-bottom: 2px; }
+    .app-kpi b { font-size: 23px; font-weight: 560; color: var(--ink); letter-spacing: -0.025em; line-height: 1.15; display: block; }
+    .app-kpi small { font-size: 11.5px; color: var(--dim); }
+    .app-kpi.is-neg { background: #111; border-color: #111; }
+    .app-kpi.is-neg span, .app-kpi.is-neg small { color: rgb(255 255 255 / .6); }
+    .app-kpi.is-neg b { color: #fff; }
+    .app-bars { display: flex; align-items: flex-end; gap: 14px; height: 190px; padding: 18px 18px 14px; background: repeating-linear-gradient(to top, transparent 0 39px, var(--line) 39px 40px) 0 -34px / 100% 100% no-repeat; }
+    .app-bars div { flex: 1; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; gap: 6px; height: 100%; font-size: 11.5px; color: var(--mid); }
+    .app-bars i { display: block; width: 100%; max-width: 54px; border-radius: 5px 5px 0 0; background: #D3D3CF; }
+    .app-bars .hoy i { background: var(--ink); }
+    .app-bars .hoy { color: var(--ink); font-weight: 560; }
+    .app-bars em { font-style: normal; font-size: 11px; color: var(--mid); font-weight: 400; }
+    .app-lista { padding: 6px 16px 10px; }
+    .app-lista > div { display: grid; grid-template-columns: 1fr auto; gap: 5px 12px; align-items: center; padding: 9px 0; border-top: 1px solid var(--line); font-size: 12.5px; }
+    .app-lista > div:first-child { border-top: 0; }
+    .app-lista .nivel { grid-column: 1 / -1; }
+    .app-lista b { font-weight: 560; color: var(--ink); }
+
+    .remito { background: #fff; border: 1px solid var(--line-strong); border-radius: 4px; padding: 22px 24px; font-size: 12px; color: var(--text); box-shadow: 0 18px 36px -22px rgb(0 0 0 / .4); }
+    .remito-h { display: flex; justify-content: space-between; gap: 12px; padding-bottom: 14px; border-bottom: 2px solid var(--ink); }
+    .remito-h b { font-size: 15px; font-weight: 600; color: var(--ink); display: block; letter-spacing: -0.01em; }
+    .remito-h small { font-size: 11px; color: var(--mid); }
+    .remito-n { text-align: right; }
+    .remito-n b { font-size: 19px; }
+    .remito-c { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 16px; padding: 12px 0; font-size: 11.5px; color: var(--mid); }
+    .remito-c b { color: var(--ink); font-weight: 560; display: block; font-size: 12.5px; }
+    .remito table { width: 100%; border-collapse: collapse; }
+    .remito th { text-align: left; font-size: 10.5px; font-weight: 520; text-transform: uppercase; letter-spacing: .05em; color: var(--mid); padding: 7px 0; border-top: 1px solid var(--line-strong); border-bottom: 1px solid var(--line-strong); }
+    .remito td { padding: 8px 0; border-bottom: 1px solid var(--line); }
+    .remito .n { text-align: right; white-space: nowrap; }
+    .remito-t { display: flex; justify-content: flex-end; align-items: baseline; gap: 18px; padding: 12px 0 0; font-size: 12px; color: var(--mid); }
+    .remito-t b { font-size: 18px; font-weight: 600; color: var(--ink); }
+    .remito-f { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 34px; font-size: 10.5px; color: var(--dim); }
+    .remito-f span { border-top: 1px solid var(--line-strong); padding-top: 5px; }
+    .remito-pie { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-top: 12px; font-size: 11.5px; color: var(--mid); }
 
     /* Pantalla de oficina dibujada */
-    .pc { width: 100%; max-width: 470px; border: 1px solid var(--line-strong); border-radius: 8px; overflow: hidden; background: #fff; box-shadow: 0 24px 50px -30px rgb(20 33 26 / .45); font-size: 12px; line-height: 1.35; color: var(--text); }
+    .pc { width: 100%; max-width: 470px; border: 1px solid var(--line-strong); border-radius: 8px; overflow: hidden; background: #fff; box-shadow: 0 24px 50px -30px rgb(0 0 0 / .45); font-size: 12px; line-height: 1.35; color: var(--text); }
     .pc-bar { display: flex; align-items: center; gap: 6px; padding: 9px 12px; border-bottom: 1px solid var(--line); background: var(--soft); }
     .pc-bar i { width: 8px; height: 8px; border-radius: 50%; background: var(--line-strong); }
     .pc-bar span { margin-left: 8px; font-size: 11.5px; color: var(--dim); }
@@ -215,7 +290,7 @@
     .prueba span { font-size: 14px; color: var(--mid); line-height: 1.5; }
 
     /* Costo */
-    .costo { display: grid; grid-template-columns: 1fr 1fr; border: 2px solid var(--accent); border-radius: 10px; overflow: hidden; background: var(--card); box-shadow: 0 18px 40px -26px rgb(20 33 26 / .4); }
+    .costo { display: grid; grid-template-columns: 1fr 1fr; border: 2px solid var(--accent); border-radius: 10px; overflow: hidden; background: var(--card); box-shadow: 0 18px 40px -26px rgb(0 0 0 / .4); }
     .costo-precio { padding: 28px; background: var(--accent-soft); }
     .costo-antes { font-size: 15px; color: var(--mid); text-decoration: line-through; }
     .costo-valor { font-size: 42px; font-weight: 560; letter-spacing: -0.03em; color: var(--ink); line-height: 1.1; margin: 2px 0 6px; }
@@ -247,27 +322,34 @@
     .js .fade.visible { opacity: 1; transform: none; }
     @media (prefers-reduced-motion: reduce) { .js .fade { opacity: 1; transform: none; transition: none; } }
 
+    @media (max-width: 1139px) { .app-cols, .app-cols.is-ficha, .app-cols.is-par { grid-template-columns: 1fr; } }
     @media (max-width: 860px) {
       .paso { grid-template-columns: 1fr; gap: 24px; padding: 36px 0; }
       .paso:nth-child(even) .paso-txt { order: 0; }
       .areas { grid-template-columns: 1fr; }
       .costo { grid-template-columns: 1fr; }
       .otras { grid-template-columns: 1fr; }
+      .app-wrap { padding: 0 16px; }
+      .app-tabs { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 4px; scrollbar-width: none; }
+      .app-tabs::-webkit-scrollbar { display: none; }
+      .app-tab { flex-shrink: 0; }
       .app-grid { grid-template-columns: 1fr; min-height: 0; }
-      .app-side { display: none; }
-      .app-main { padding: 14px 12px 16px; }
-      .app-cols, .app-cols.is-ficha { grid-template-columns: 1fr; }
+      .app-side, .app-search, .app-url { display: none; }
+      .app-top { padding: 10px 14px; }
+      .app-content { padding: 16px 12px 18px; }
+      .app-cols, .app-cols.is-ficha, .app-cols.is-par { grid-template-columns: 1fr; }
       .app-kpis { grid-template-columns: 1fr 1fr; }
-      .app-t th, .app-t td { padding: 9px 10px; }
+      .app-t th, .app-t td { padding: 10px 10px; }
       .app-t .x-m { display: none; }
-      .app-kpi b { font-size: 18px; }
+      .app-kpi b { font-size: 19px; }
+      .remito { padding: 16px; }
     }
     @media (max-width: 640px) {
       .wrap, .wrap-wide { padding: 0 16px; }
       .hero { padding: 48px 0 44px; }
       section { padding: 52px 0; }
       h2 { font-size: 25px; }
-      .caminos, .pruebas, .need-grid { grid-template-columns: 1fr; }
+      .pruebas, .need-grid { grid-template-columns: 1fr; }
       .semanas li { grid-template-columns: 1fr; gap: 2px; }
       .costo-precio, .costo-pagos { padding: 22px 18px; }
       .costo-valor { font-size: 36px; }
@@ -297,6 +379,10 @@
   <symbol id="i-signal" viewBox="0 0 24 24"><path d="M2 20h.01M7 20v-4M12 20v-8M17 20V8M22 4v16"/></symbol>
   <symbol id="i-copy" viewBox="0 0 24 24"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></symbol>
   <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></symbol>
+  <symbol id="i-print" viewBox="0 0 24 24"><path d="M6 9V3h12v6M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="7"/></symbol>
+  <symbol id="i-truck" viewBox="0 0 24 24"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2M15 18H9M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.62L18.3 8.4a1 1 0 0 0-.78-.4H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></symbol>
+  <symbol id="i-cash" viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2.5"/><path d="M6 12h.01M18 12h.01"/></symbol>
   <symbol id="i-list" viewBox="0 0 24 24"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></symbol>
 </svg>
 
@@ -305,8 +391,8 @@
 <div class="wrap">
   <header class="hero fade">
     <div class="eyebrow">Propuesta para LaTiNa y Centenaria</div>
-    <h1>Un solo lugar para los pedidos, el stock y las cuentas corrientes</h1>
-    <p class="hero-sub">Nahuel, ordené todo lo que hablamos y lo que me fuiste contestando. Acá está cómo va a funcionar paso a paso, cómo se verían las pantallas, cuánto tarda, cómo lo probamos antes de usarlo y cuánto sale.</p>
+    <h1>Sistema de pedidos, stock y cuentas corrientes</h1>
+    <p class="hero-sub">Cómo funciona, cómo se ven las pantallas, cuánto tarda, cómo lo probamos y cuánto sale.</p>
     <div class="hero-meta">
       <div class="hero-meta-item"><label>Preparado para</label><span>Nahuel</span></div>
       <div class="hero-meta-item"><label>Preparado por</label><span>Lautaro Méndez</span></div>
@@ -314,18 +400,6 @@
     </div>
   </header>
 </div>
-
-<section class="alt fade">
-  <div class="wrap">
-    <div class="eyebrow">La idea</div>
-    <h2>Cada pedido se carga una sola vez</h2>
-    <p class="section-intro">Lo que hacen hoy funciona, pero el mismo dato se copia varias veces a mano. El sistema hace que de un pedido salga todo lo demás.</p>
-    <div class="caminos">
-      <div class="camino"><span class="tag">Hoy</span><b>WhatsApp, Excel y remito a mano</b><p>La vendedora manda el pedido al grupo, el repartidor lo pasa a su Excel y hace el remito a mano. Las cuentas corrientes se llevan en otra planilla.</p></div>
-      <div class="camino is-reco"><span class="tag">Con el sistema</span><b>Un pedido, y de ahí sale todo</b><p>La vendedora lo carga en el celular. De ese pedido sale el remito impreso, se descuenta el stock y se actualiza la cuenta del cliente. Vos lo ves en el momento.</p></div>
-    </div>
-  </div>
-</section>
 
 <div class="wrap-wide">
   <section>
@@ -489,174 +563,332 @@
   </section>
 </div>
 
-<section class="alt fade" data-visto="pantallas">
-  <div class="wrap-wide">
+<section class="alt fade">
+  <div class="app-wrap">
     <div class="eyebrow">En la computadora</div>
     <h2>Así se ve en la oficina</h2>
-    <p class="section-intro">El mismo sistema, en pantalla grande. Tocá cada solapa para ver cómo sería cada parte.</p>
+    <p class="section-intro">El mismo sistema, en pantalla grande. Tocá cada solapa para recorrerlo.</p>
     <div class="app-tabs" role="tablist" aria-label="Pantallas del sistema">
       <button class="app-tab is-on" data-v="pedidos" role="tab" aria-selected="true">Pedidos</button>
+      <button class="app-tab" data-v="remitos" role="tab" aria-selected="false">Remitos</button>
+      <button class="app-tab" data-v="rendicion" role="tab" aria-selected="false">Rendición</button>
       <button class="app-tab" data-v="stock" role="tab" aria-selected="false">Stock</button>
       <button class="app-tab" data-v="cuentas" role="tab" aria-selected="false">Cuentas corrientes</button>
       <button class="app-tab" data-v="precios" role="tab" aria-selected="false">Precios</button>
       <button class="app-tab" data-v="resumen" role="tab" aria-selected="false">Resumen</button>
     </div>
     <div class="app">
-      <div class="app-bar"><i></i><i></i><i></i><span>Sistema de pedidos · LaTiNa y Centenaria</span></div>
+      <div class="app-bar"><i></i><i></i><i></i><span class="app-url">Sistema · LaTiNa y Centenaria</span></div>
       <div class="app-grid">
         <aside class="app-side">
-          <div class="app-marca">LaTiNa · Centenaria<small>Pedidos, stock y cuentas</small></div>
+          <div class="app-marca"><span class="app-logo">LC</span><div>LaTiNa · Centenaria<small>Pedidos, stock y cuentas</small></div></div>
+          <div class="app-grupo">Día a día</div>
           <nav class="app-nav">
-            <button class="is-on" data-v="pedidos"><svg class="ico"><use href="#i-file"/></svg>Pedidos</button>
-            <button data-v="stock"><svg class="ico"><use href="#i-box"/></svg>Stock</button>
+            <button class="is-on" data-v="pedidos"><svg class="ico"><use href="#i-list"/></svg>Pedidos<span class="app-badge">1</span></button>
+            <button data-v="remitos"><svg class="ico"><use href="#i-file"/></svg>Remitos</button>
+            <button data-v="rendicion"><svg class="ico"><use href="#i-cash"/></svg>Rendición</button>
+          </nav>
+          <div class="app-grupo">Control</div>
+          <nav class="app-nav">
+            <button data-v="stock"><svg class="ico"><use href="#i-box"/></svg>Stock<span class="app-badge is-warn">1</span></button>
             <button data-v="cuentas"><svg class="ico"><use href="#i-wallet"/></svg>Cuentas corrientes</button>
             <button data-v="precios"><svg class="ico"><use href="#i-tag"/></svg>Precios</button>
             <button data-v="resumen"><svg class="ico"><use href="#i-chart"/></svg>Resumen</button>
           </nav>
-          <div class="app-user"><b>Oficina</b>Viernes 27/11</div>
+          <div class="app-user"><span class="app-av">OF</span><div><b>Oficina</b>Administración</div></div>
         </aside>
+
         <div class="app-main">
+          <div class="app-top">
+            <div class="app-search"><svg class="ico"><use href="#i-search"/></svg>Buscar cliente, pedido o remito</div>
+            <div class="app-top-r"><span>Viernes 27 de noviembre</span><span class="app-av">OF</span></div>
+          </div>
+          <div class="app-content">
 
-          <div class="app-view is-on" data-view="pedidos">
-            <div class="app-head"><div><b>Pedidos de hoy</b><small>3 pedidos · 1 sin pasar a remito</small></div><span class="app-btn is-ghost">+ Nuevo pedido</span></div>
-            <div class="app-cols">
-              <div class="app-box">
-                <table class="app-t">
-                  <thead><tr><th>Cliente</th><th class="x-m">Cargó</th><th class="n">Total</th><th>Estado</th></tr></thead>
-                  <tbody>
-                    <tr class="is-sel"><td><b>Almacén Don Luis</b></td><td class="x-m">Sofía · 10:42</td><td class="n">$80.800</td><td><span class="m-chip is-warn">Sin remito</span></td></tr>
-                    <tr><td><b>Autoservicio El Ceibo</b></td><td class="x-m">Sofía · 9:15</td><td class="n">$142.500</td><td><span class="m-chip">R-0132 impreso</span></td></tr>
-                    <tr><td><b>Distribuidora del Litoral</b></td><td class="x-m">Nahuel · 8:50</td><td class="n">$612.000</td><td><span class="m-chip">R-0131 impreso</span></td></tr>
-                  </tbody>
-                </table>
+            <!-- PEDIDOS -->
+            <div class="app-view is-on" data-view="pedidos">
+              <div class="app-head">
+                <div><b>Pedidos</b><small>Hoy entraron 3 · queda 1 sin pasar a remito</small></div>
+                <div class="app-acc"><span class="app-btn">+ Nuevo pedido</span></div>
               </div>
-              <div class="app-box">
-                <div class="app-box-t"><span>Almacén Don Luis</span><span>Lista: Comercio</span></div>
-                <div class="app-det">
-                  <div class="lin"><span>6 × Centenaria 1 kg</span><span>$28.800</span></div>
-                  <div class="lin"><span>12 × Centenaria 500 g</span><span>$30.000</span></div>
-                  <div class="lin"><span>10 × LaTiNa 500 g</span><span>$22.000</span></div>
-                  <div class="tot"><span>Total</span><b>$80.800</b></div>
-                  <span class="app-btn">Pasar a remito e imprimir</span>
+              <div class="app-seg"><span class="is-on">Todos<em>7</em></span><span>Sin remito<em>1</em></span><span>Con remito<em>6</em></span></div>
+              <div class="app-cols">
+                <div class="app-box">
+                  <table class="app-t">
+                    <thead><tr><th>Cliente</th><th class="x-m">Cargó</th><th class="n">Total</th><th>Estado</th></tr></thead>
+                    <tbody>
+                      <tr class="grp"><td colspan="4">Hoy</td></tr>
+                      <tr class="is-sel"><td><b>Almacén Don Luis</b><small>Comercio</small></td><td class="x-m">Sofía · 10:42</td><td class="n">$80.800</td><td><span class="st is-warn">Sin remito</span></td></tr>
+                      <tr><td><b>Autoservicio El Ceibo</b><small>Comercio</small></td><td class="x-m">Sofía · 9:15</td><td class="n">$142.500</td><td><span class="st">R-0132</span></td></tr>
+                      <tr><td><b>Distribuidora del Litoral</b><small>Distribuidora</small></td><td class="x-m">Nahuel · 8:50</td><td class="n">$612.000</td><td><span class="st">R-0131</span></td></tr>
+                      <tr class="grp"><td colspan="4">Ayer</td></tr>
+                      <tr class="is-old"><td><b>Distribuidora Río Uruguay</b><small>Distribuidora</small></td><td class="x-m">Nahuel · 16:20</td><td class="n">$404.500</td><td><span class="st is-off">R-0130</span></td></tr>
+                      <tr class="is-old"><td><b>Mercadito San José</b><small>Comercio</small></td><td class="x-m">Sofía · 12:05</td><td class="n">$118.000</td><td><span class="st is-off">R-0129</span></td></tr>
+                      <tr class="is-old"><td><b>Despensa Los Aromos</b><small>Matero</small></td><td class="x-m">Sofía · 11:30</td><td class="n">$96.500</td><td><span class="st is-off">R-0128</span></td></tr>
+                      <tr class="is-old"><td><b>Kiosco La Esquina</b><small>Comercio</small></td><td class="x-m">Sofía · 9:40</td><td class="n">$41.000</td><td><span class="st is-off">R-0127</span></td></tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="app-box">
+                  <div class="app-box-t"><span>Pedido de las 10:42</span><span>Cargó Sofía</span></div>
+                  <div class="app-det">
+                    <div class="app-det-h"><b>Almacén Don Luis</b><small>San Martín 450 · Lista Comercio de la ciudad</small></div>
+                    <div class="lin"><span>6 × Centenaria 1 kg</span><span>$28.800</span><small>$4.800 c/u</small></div>
+                    <div class="lin"><span>12 × Centenaria 500 g</span><span>$30.000</span><small>$2.500 c/u</small></div>
+                    <div class="lin"><span>10 × LaTiNa 500 g</span><span>$22.000</span><small>$2.200 c/u</small></div>
+                    <div class="tot"><span>Total</span><b>$80.800</b></div>
+                    <div class="app-nota"><svg class="ico"><use href="#i-box"/></svg><span><b>Hay stock de todo.</b> Centenaria 500 g queda en 38 paquetes.</span></div>
+                    <div class="app-nota"><svg class="ico"><use href="#i-wallet"/></svg><span>Hoy debe <b>$45.500</b>. Con este remito pasa a <b>$126.300</b>.</span></div>
+                    <span class="app-btn"><svg class="ico"><use href="#i-print"/></svg>Pasar a remito e imprimir</span>
+                    <span class="app-btn is-ghost">Editar pedido</span>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
 
-          <div class="app-view" data-view="stock">
-            <div class="app-head"><div><b>Stock</b><small>Depósito · en paquetes</small></div><span class="app-btn">+ Ingreso de mercadería</span></div>
-            <div class="app-aviso">Centenaria 500 g está por debajo del mínimo: quedan 38 paquetes.</div>
-            <div class="app-box" style="margin-bottom:14px">
-              <table class="app-t">
-                <thead><tr><th>Producto</th><th class="n">En depósito</th><th class="n x-m">Mínimo</th><th>Estado</th></tr></thead>
-                <tbody>
-                  <tr><td><b>Centenaria 1 kg</b></td><td class="n">420</td><td class="n x-m">100</td><td><span class="m-chip">Bien</span></td></tr>
-                  <tr><td><b>Centenaria 500 g</b></td><td class="n baja">38</td><td class="n x-m">60</td><td><span class="m-chip is-warn">Bajo</span></td></tr>
-                  <tr><td><b>LaTiNa 1 kg</b></td><td class="n">310</td><td class="n x-m">100</td><td><span class="m-chip">Bien</span></td></tr>
-                  <tr><td><b>LaTiNa 500 g</b></td><td class="n">264</td><td class="n x-m">60</td><td><span class="m-chip">Bien</span></td></tr>
-                </tbody>
-              </table>
-            </div>
-            <div class="app-box">
-              <div class="app-box-t"><span>Últimos movimientos</span></div>
-              <table class="app-t">
-                <tbody>
-                  <tr><td>Hoy · Remito R-0132 · Autoservicio El Ceibo</td><td class="n">− 45 paquetes</td></tr>
-                  <tr><td>Hoy · Remito R-0131 · Distribuidora del Litoral</td><td class="n">− 180 paquetes</td></tr>
-                  <tr><td>25/11 · Ingreso de mercadería · Centenaria 1 kg</td><td class="n">+ 600 paquetes</td></tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-
-          <div class="app-view" data-view="cuentas">
-            <div class="app-head"><div><b>Cuentas corrientes</b><small>Te deben $729.300 en total</small></div><span class="app-btn">+ Cargar pago</span></div>
-            <div class="app-cols is-ficha">
-              <div class="app-box">
-                <table class="app-t">
-                  <thead><tr><th>Cliente</th><th class="n">Saldo</th></tr></thead>
-                  <tbody>
-                    <tr><td><b>Distribuidora del Litoral</b></td><td class="n">$612.000</td></tr>
-                    <tr class="is-sel"><td><b>Almacén Don Luis</b></td><td class="n">$76.300</td></tr>
-                    <tr><td><b>Kiosco La Esquina</b></td><td class="n">$41.000</td></tr>
-                    <tr><td><b>Autoservicio El Ceibo</b></td><td class="n">$0</td></tr>
-                  </tbody>
-                </table>
+            <!-- REMITOS -->
+            <div class="app-view" data-view="remitos">
+              <div class="app-head">
+                <div><b>Remitos</b><small>3 remitos de hoy · se imprimen con original y copia</small></div>
+                <div class="app-acc"><span class="app-btn is-ghost">Anular remito</span><span class="app-btn"><svg class="ico"><use href="#i-print"/></svg>Imprimir</span></div>
               </div>
-              <div class="app-box">
-                <div class="app-box-t"><span>Almacén Don Luis · Comercio de la ciudad</span><span>Saldo $76.300</span></div>
-                <table class="app-t">
-                  <thead><tr><th>Fecha</th><th>Movimiento</th><th class="n x-m">Importe</th><th class="n">Saldo</th></tr></thead>
-                  <tbody>
-                    <tr><td>20/11</td><td>Remito R-0098</td><td class="n x-m">+ $62.000</td><td class="n">$62.000</td></tr>
-                    <tr><td>24/11</td><td>Pago en efectivo</td><td class="n x-m">− $16.500</td><td class="n">$45.500</td></tr>
-                    <tr><td>27/11</td><td>Remito R-0133</td><td class="n x-m">+ $80.800</td><td class="n">$126.300</td></tr>
-                    <tr><td>27/11</td><td>Pago en efectivo</td><td class="n x-m">− $50.000</td><td class="n"><b>$76.300</b></td></tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-
-          <div class="app-view" data-view="precios">
-            <div class="app-head"><div><b>Precios</b><small>Una lista por tipo de cliente</small></div><span class="app-btn is-ghost">Actualizar precios</span></div>
-            <div class="app-box" style="margin-bottom:14px">
-              <table class="app-t">
-                <thead><tr><th>Producto</th><th class="n">Distribuidora</th><th class="n">Matero</th><th class="n">Comercio</th></tr></thead>
-                <tbody>
-                  <tr><td><b>Centenaria 1 kg</b></td><td class="n">$4.100</td><td class="n">$4.400</td><td class="n">$4.800</td></tr>
-                  <tr><td><b>Centenaria 500 g</b></td><td class="n">$2.150</td><td class="n">$2.300</td><td class="n">$2.500</td></tr>
-                  <tr><td><b>LaTiNa 1 kg</b></td><td class="n">$3.600</td><td class="n">$3.850</td><td class="n">$4.200</td></tr>
-                  <tr><td><b>LaTiNa 500 g</b></td><td class="n">$1.900</td><td class="n">$2.050</td><td class="n">$2.200</td></tr>
-                </tbody>
-              </table>
-            </div>
-            <div class="app-box">
-              <div class="app-box-t"><span>Precios especiales por cliente</span><span>+ Agregar</span></div>
-              <table class="app-t">
-                <tbody>
-                  <tr><td><b>Kiosco La Esquina</b></td><td>LaTiNa 1 kg</td><td class="n">$4.000</td></tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-
-          <div class="app-view" data-view="resumen">
-            <div class="app-head"><div><b>Resumen</b><small>Viernes 27 de noviembre</small></div></div>
-            <div class="app-kpis">
-              <div class="app-kpi"><span>Vendido hoy</span><b>$835.300</b></div>
-              <div class="app-kpi"><span>Cobrado hoy</span><b>$192.500</b></div>
-              <div class="app-kpi"><span>Vendido este mes</span><b>$14,2 M</b></div>
-              <div class="app-kpi"><span>Te deben</span><b>$729.300</b></div>
-            </div>
-            <div class="app-cols">
-              <div class="app-box">
-                <div class="app-box-t"><span>Ventas de la semana</span></div>
-                <div class="app-bars">
-                  <div><em>$540 mil</em><i style="height:58%"></i>Lun</div>
-                  <div><em>$710 mil</em><i style="height:76%"></i>Mar</div>
-                  <div><em>$480 mil</em><i style="height:52%"></i>Mié</div>
-                  <div><em>$660 mil</em><i style="height:71%"></i>Jue</div>
-                  <div class="hoy"><em>$835 mil</em><i style="height:90%"></i>Hoy</div>
+              <div class="app-cols is-par">
+                <div class="app-box">
+                  <table class="app-t">
+                    <thead><tr><th>Remito</th><th>Cliente</th><th class="n">Total</th></tr></thead>
+                    <tbody>
+                      <tr class="grp"><td colspan="3">Hoy</td></tr>
+                      <tr class="is-sel"><td><b>R-0133</b></td><td>Almacén Don Luis</td><td class="n">$80.800</td></tr>
+                      <tr><td><b>R-0132</b></td><td>Autoservicio El Ceibo</td><td class="n">$142.500</td></tr>
+                      <tr><td><b>R-0131</b></td><td>Distribuidora del Litoral</td><td class="n">$612.000</td></tr>
+                      <tr class="grp"><td colspan="3">Ayer</td></tr>
+                      <tr class="is-old"><td><b>R-0130</b></td><td>Distribuidora Río Uruguay</td><td class="n">$404.500</td></tr>
+                      <tr class="is-old"><td><b>R-0129</b></td><td>Mercadito San José</td><td class="n">$118.000</td></tr>
+                      <tr class="is-old"><td><b>R-0128</b></td><td>Despensa Los Aromos</td><td class="n">$96.500</td></tr>
+                      <tr class="is-old"><td><b>R-0127</b></td><td>Kiosco La Esquina</td><td class="n">$41.000</td></tr>
+                      <tr class="is-nulo"><td><b>R-0126</b></td><td>Kiosco La Esquina</td><td class="n"><span class="st is-off">Anulado</span></td></tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div>
+                  <div class="remito">
+                    <div class="remito-h">
+                      <div><b>LaTiNa · Centenaria</b><small>Remito de entrega</small></div>
+                      <div class="remito-n"><b>R-0133</b><small>27/11/2026 · Original</small></div>
+                    </div>
+                    <div class="remito-c">
+                      <div><b>Almacén Don Luis</b>San Martín 450</div>
+                      <div><b>Reparto</b>Marcos</div>
+                    </div>
+                    <table>
+                      <thead><tr><th>Cant.</th><th>Producto</th><th class="n x-m">Precio</th><th class="n">Importe</th></tr></thead>
+                      <tbody>
+                        <tr><td>6</td><td>Centenaria 1 kg</td><td class="n x-m">$4.800</td><td class="n">$28.800</td></tr>
+                        <tr><td>12</td><td>Centenaria 500 g</td><td class="n x-m">$2.500</td><td class="n">$30.000</td></tr>
+                        <tr><td>10</td><td>LaTiNa 500 g</td><td class="n x-m">$2.200</td><td class="n">$22.000</td></tr>
+                      </tbody>
+                    </table>
+                    <div class="remito-t"><span>Total</span><b>$80.800</b></div>
+                    <div class="remito-f"><span>Recibí conforme</span><span>Aclaración</span></div>
+                  </div>
+                  <div class="remito-pie"><span>Al imprimirlo se descontó el stock y se cargó en la cuenta del cliente.</span></div>
                 </div>
               </div>
+            </div>
+
+            <!-- RENDICIÓN -->
+            <div class="app-view" data-view="rendicion">
+              <div class="app-head">
+                <div><b>Rendición del día</b><small>Reparto de Marcos · 3 entregas</small></div>
+                <div class="app-acc"><span class="app-btn">Cerrar rendición</span></div>
+              </div>
+              <div class="app-kpis">
+                <div class="app-kpi"><span>Entregado</span><b>$835.300</b><small>3 remitos</small></div>
+                <div class="app-kpi"><span>Rindió en efectivo</span><b>$50.000</b><small>1 pago</small></div>
+                <div class="app-kpi"><span>Por transferencia</span><b>$142.500</b><small>1 pago</small></div>
+                <div class="app-kpi is-neg"><span>Total cobrado</span><b>$192.500</b><small>El resto queda en cuenta</small></div>
+              </div>
               <div class="app-box">
-                <div class="app-box-t"><span>Quién te debe más</span></div>
                 <table class="app-t">
+                  <thead><tr><th>Cliente</th><th class="x-m">Remito</th><th class="n x-m">Entregado</th><th class="n">Pagó</th><th class="x-m">Forma</th><th class="n">Saldo del cliente</th></tr></thead>
                   <tbody>
-                    <tr><td>Distribuidora del Litoral</td><td class="n">$612.000</td></tr>
-                    <tr><td>Almacén Don Luis</td><td class="n">$76.300</td></tr>
-                    <tr><td>Kiosco La Esquina</td><td class="n">$41.000</td></tr>
+                    <tr><td><b>Almacén Don Luis</b></td><td class="x-m">R-0133</td><td class="n x-m">$80.800</td><td class="n">$50.000</td><td class="x-m"><span class="st">Efectivo</span></td><td class="n">$76.300</td></tr>
+                    <tr><td><b>Autoservicio El Ceibo</b></td><td class="x-m">R-0132</td><td class="n x-m">$142.500</td><td class="n">$142.500</td><td class="x-m"><span class="st">Transferencia</span></td><td class="n">$0</td></tr>
+                    <tr><td><b>Distribuidora del Litoral</b></td><td class="x-m">R-0131</td><td class="n x-m">$612.000</td><td class="n">$0</td><td class="x-m"><span class="st is-off">No pagó hoy</span></td><td class="n">$612.000</td></tr>
                   </tbody>
+                  <tfoot><tr><td>Total</td><td class="x-m"></td><td class="n x-m">$835.300</td><td class="n">$192.500</td><td class="x-m"></td><td class="n">$688.300</td></tr></tfoot>
                 </table>
               </div>
             </div>
-          </div>
 
+            <!-- STOCK -->
+            <div class="app-view" data-view="stock">
+              <div class="app-head">
+                <div><b>Stock</b><small>Un depósito · cantidades en paquetes</small></div>
+                <div class="app-acc"><span class="app-btn is-ghost">Ajustar stock</span><span class="app-btn">+ Ingreso de mercadería</span></div>
+              </div>
+              <div class="app-aviso">Centenaria 500 g está por debajo del mínimo: quedan 38 paquetes.</div>
+              <div class="app-cols">
+                <div class="app-box">
+                  <table class="app-t">
+                    <thead><tr><th>Producto</th><th class="n">En depósito</th><th class="n x-m">Salió hoy</th><th class="x-m" style="width:20%">Nivel</th><th>Estado</th></tr></thead>
+                    <tbody>
+                      <tr><td><b>Centenaria 1 kg</b><small>Mínimo 100</small></td><td class="n">420</td><td class="n x-m">96</td><td class="x-m"><div class="nivel"><i style="width:84%"></i></div></td><td><span class="st">Bien</span></td></tr>
+                      <tr><td><b>Centenaria 500 g</b><small>Mínimo 60</small></td><td class="n baja">38</td><td class="n x-m">62</td><td class="x-m"><div class="nivel is-warn"><i style="width:9%"></i></div></td><td><span class="st is-warn">Bajo</span></td></tr>
+                      <tr><td><b>LaTiNa 1 kg</b><small>Mínimo 100</small></td><td class="n">310</td><td class="n x-m">54</td><td class="x-m"><div class="nivel"><i style="width:62%"></i></div></td><td><span class="st">Bien</span></td></tr>
+                      <tr><td><b>LaTiNa 500 g</b><small>Mínimo 60</small></td><td class="n">264</td><td class="n x-m">41</td><td class="x-m"><div class="nivel"><i style="width:53%"></i></div></td><td><span class="st">Bien</span></td></tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="app-box">
+                  <div class="app-box-t"><span>Últimos movimientos</span></div>
+                  <table class="app-t">
+                    <tbody>
+                      <tr><td><b>Remito R-0133</b><small>Hoy · Almacén Don Luis</small></td><td class="n">− 28</td></tr>
+                      <tr><td><b>Remito R-0132</b><small>Hoy · Autoservicio El Ceibo</small></td><td class="n">− 45</td></tr>
+                      <tr><td><b>Remito R-0131</b><small>Hoy · Distribuidora del Litoral</small></td><td class="n">− 180</td></tr>
+                      <tr><td><b>Ingreso de mercadería</b><small>25/11 · Centenaria 1 kg</small></td><td class="n">+ 600</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <!-- CUENTAS -->
+            <div class="app-view" data-view="cuentas">
+              <div class="app-head">
+                <div><b>Cuentas corrientes</b><small>Te deben $729.300 entre 3 clientes</small></div>
+                <div class="app-acc"><span class="app-btn">+ Cargar pago</span></div>
+              </div>
+              <div class="app-cols is-ficha">
+                <div class="app-box">
+                  <table class="app-t">
+                    <thead><tr><th>Cliente</th><th class="n">Saldo</th></tr></thead>
+                    <tbody>
+                      <tr><td><b>Distribuidora del Litoral</b><small>Distribuidora</small></td><td class="n">$612.000</td></tr>
+                      <tr class="is-sel"><td><b>Almacén Don Luis</b><small>Comercio</small></td><td class="n">$76.300</td></tr>
+                      <tr><td><b>Kiosco La Esquina</b><small>Comercio</small></td><td class="n">$41.000</td></tr>
+                      <tr class="is-old"><td><b>Autoservicio El Ceibo</b><small>Comercio</small></td><td class="n">$0</td></tr>
+                      <tr class="is-old"><td><b>Despensa Los Aromos</b><small>Matero</small></td><td class="n">$0</td></tr>
+                      <tr class="is-old"><td><b>Mercadito San José</b><small>Comercio</small></td><td class="n">$0</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div>
+                  <div class="app-kpis" style="grid-template-columns:repeat(3,1fr)">
+                    <div class="app-kpi is-neg"><span>Saldo de Don Luis</span><b>$76.300</b><small>LaTiNa y Centenaria juntas</small></div>
+                    <div class="app-kpi"><span>Último pago</span><b>$50.000</b><small>Hoy · efectivo</small></div>
+                    <div class="app-kpi"><span>Compró este mes</span><b>$142.800</b><small>2 remitos</small></div>
+                  </div>
+                  <div class="app-box">
+                    <div class="app-box-t"><span>Almacén Don Luis · movimientos</span><span>San Martín 450</span></div>
+                    <table class="app-t">
+                      <thead><tr><th>Fecha</th><th>Movimiento</th><th class="n x-m">Debe</th><th class="n x-m">Pagó</th><th class="n">Saldo</th></tr></thead>
+                      <tbody>
+                        <tr><td>27/11</td><td>Pago en efectivo</td><td class="n x-m"></td><td class="n x-m">$50.000</td><td class="n"><b>$76.300</b></td></tr>
+                        <tr><td>27/11</td><td>Remito R-0133</td><td class="n x-m">$80.800</td><td class="n x-m"></td><td class="n">$126.300</td></tr>
+                        <tr><td>24/11</td><td>Pago en efectivo</td><td class="n x-m"></td><td class="n x-m">$16.500</td><td class="n">$45.500</td></tr>
+                        <tr><td>20/11</td><td>Remito R-0098</td><td class="n x-m">$62.000</td><td class="n x-m"></td><td class="n">$62.000</td></tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- PRECIOS -->
+            <div class="app-view" data-view="precios">
+              <div class="app-head">
+                <div><b>Precios</b><small>Una lista por tipo de cliente · precio por paquete</small></div>
+                <div class="app-acc"><span class="app-btn">Editar precios</span></div>
+              </div>
+              <div class="app-cols">
+                <div class="app-box">
+                  <table class="app-t">
+                    <thead><tr><th>Producto</th><th class="n">Distribuidora</th><th class="n">Matero</th><th class="n">Comercio</th></tr></thead>
+                    <tbody>
+                      <tr class="grp"><td colspan="4">Centenaria</td></tr>
+                      <tr><td><b>Centenaria 1 kg</b></td><td class="n">$4.100</td><td class="n">$4.400</td><td class="n">$4.800</td></tr>
+                      <tr><td><b>Centenaria 500 g</b></td><td class="n">$2.150</td><td class="n">$2.300</td><td class="n">$2.500</td></tr>
+                      <tr class="grp"><td colspan="4">LaTiNa</td></tr>
+                      <tr><td><b>LaTiNa 1 kg</b></td><td class="n">$3.600</td><td class="n">$3.850</td><td class="n">$4.200</td></tr>
+                      <tr><td><b>LaTiNa 500 g</b></td><td class="n">$1.900</td><td class="n">$2.050</td><td class="n">$2.200</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="app-box">
+                  <div class="app-box-t"><span>Precios especiales</span><span>+ Agregar</span></div>
+                  <table class="app-t">
+                    <tbody>
+                      <tr><td><b>Kiosco La Esquina</b><small>LaTiNa 1 kg · lista $4.200</small></td><td class="n"><b>$4.000</b></td></tr>
+                      <tr><td><b>Distribuidora del Litoral</b><small>Centenaria 1 kg · lista $4.100</small></td><td class="n"><b>$3.950</b></td></tr>
+                    </tbody>
+                  </table>
+                  <div class="app-det"><div class="app-nota"><svg class="ico"><use href="#i-tag"/></svg><span>El precio especial le gana a la lista. En cada pedido también se puede cambiar a mano.</span></div></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- RESUMEN -->
+            <div class="app-view" data-view="resumen">
+              <div class="app-head">
+                <div><b>Resumen</b><small>Viernes 27 de noviembre</small></div>
+                <div class="app-seg" style="margin:0"><span class="is-on">Hoy</span><span>Semana</span><span>Mes</span></div>
+              </div>
+              <div class="app-kpis">
+                <div class="app-kpi is-neg"><span>Vendido hoy</span><b>$835.300</b><small>3 pedidos</small></div>
+                <div class="app-kpi"><span>Cobrado hoy</span><b>$192.500</b><small>Efectivo y transferencia</small></div>
+                <div class="app-kpi"><span>Vendido este mes</span><b>$14,2 M</b><small>Noviembre</small></div>
+                <div class="app-kpi"><span>Te deben</span><b>$729.300</b><small>3 clientes</small></div>
+              </div>
+              <div class="app-cols">
+                <div class="app-box">
+                  <div class="app-box-t"><span>Ventas de la semana</span><span>$3,2 M</span></div>
+                  <div class="app-bars">
+                    <div><em>$540 mil</em><i style="height:55%"></i>Lun</div>
+                    <div><em>$710 mil</em><i style="height:72%"></i>Mar</div>
+                    <div><em>$480 mil</em><i style="height:49%"></i>Mié</div>
+                    <div><em>$660 mil</em><i style="height:67%"></i>Jue</div>
+                    <div class="hoy"><em>$835 mil</em><i style="height:85%"></i>Hoy</div>
+                  </div>
+                </div>
+                <div class="app-box">
+                  <div class="app-box-t"><span>Quién te debe</span><span>$729.300</span></div>
+                  <div class="app-lista">
+                    <div><span>Distribuidora del Litoral</span><b>$612.000</b><div class="nivel"><i style="width:84%"></i></div></div>
+                    <div><span>Almacén Don Luis</span><b>$76.300</b><div class="nivel"><i style="width:10%"></i></div></div>
+                    <div><span>Kiosco La Esquina</span><b>$41.000</b><div class="nivel"><i style="width:6%"></i></div></div>
+                  </div>
+                </div>
+              </div>
+              <div class="app-cols" style="margin-top:16px">
+                <div class="app-box">
+                  <div class="app-box-t"><span>Pedidos de hoy</span><span>3 pedidos</span></div>
+                  <table class="app-t">
+                    <tbody>
+                      <tr><td><b>Distribuidora del Litoral</b><small>Cargó Nahuel · R-0131</small></td><td class="n">$612.000</td></tr>
+                      <tr><td><b>Autoservicio El Ceibo</b><small>Cargó Sofía · R-0132</small></td><td class="n">$142.500</td></tr>
+                      <tr><td><b>Almacén Don Luis</b><small>Cargó Sofía · R-0133</small></td><td class="n">$80.800</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="app-box">
+                  <div class="app-box-t"><span>Stock</span><span>1 producto bajo</span></div>
+                  <div class="app-lista">
+                    <div><span>Centenaria 1 kg</span><b>420</b><div class="nivel"><i style="width:84%"></i></div></div>
+                    <div><span>Centenaria 500 g</span><b style="color:var(--warn)">38</b><div class="nivel is-warn"><i style="width:9%"></i></div></div>
+                    <div><span>LaTiNa 1 kg</span><b>310</b><div class="nivel"><i style="width:62%"></i></div></div>
+                    <div><span>LaTiNa 500 g</span><b>264</b><div class="nivel"><i style="width:53%"></i></div></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
         </div>
       </div>
     </div>
-    <p class="ejemplo">Pantallas de muestra con datos inventados. El diseño final se ajusta con tus productos y tu forma de trabajar.</p>
+    <p class="ejemplo" style="margin-top:14px">Pantallas de muestra con datos inventados. El diseño final se ajusta con tus productos y tu forma de trabajar.</p>
   </div>
 </section>
 
@@ -733,7 +965,7 @@
 </section>
 
 <div class="wrap">
-  <section class="fade" id="opciones" data-visto="opciones">
+  <section class="fade" id="opciones">
     <div class="eyebrow">Costo</div>
     <h2>Un solo precio, en tres pagos</h2>
     <p class="section-intro">Es un trabajo aparte del abono mensual de las campañas. Como ya trabajamos juntos, te hago precio de cliente y lo repartimos según avanza el sistema.</p>
@@ -760,7 +992,7 @@
     </div>
   </section>
 
-  <section class="fade" data-visto="final" style="padding-top:0">
+  <section class="fade" style="padding-top:0">
     <div class="eyebrow">Para arrancar</div>
     <h2>Qué necesito de tu lado</h2>
     <div class="need-grid">
@@ -793,6 +1025,5 @@
     fades.forEach(el => io.observe(el));
   } else fades.forEach(el => el.classList.add('visible'));
 </script>
-<script src="/propuestas/_visto.js" data-p="nahuel-sistema" data-n="Nahuel (sistema)" defer></script>
 </body>
 </html>
