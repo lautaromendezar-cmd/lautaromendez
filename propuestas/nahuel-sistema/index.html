@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="description" content="Sistema de pedidos, remitos, stock y cuentas corrientes para LaTiNa y Centenaria: cómo funciona, las pantallas, los tiempos, las pruebas y el costo." />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="es_AR" />
+  <meta property="og:site_name" content="Lautaro Méndez" />
+  <meta property="og:url" content="https://lautaromendez.com.ar/propuestas/nahuel-sistema/" />
+  <meta property="og:title" content="Sistema de pedidos, stock y cuentas corrientes" />
+  <meta property="og:description" content="Cómo funciona, las pantallas, los tiempos, las pruebas y el costo." />
+  <meta property="og:image" content="https://lautaromendez.com.ar/propuestas/nahuel-sistema/og.jpg" />
+  <meta property="og:image:secure_url" content="https://lautaromendez.com.ar/propuestas/nahuel-sistema/og.jpg" />
+  <meta property="og:image:type" content="image/jpeg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Sistema de pedidos, stock y cuentas corrientes" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://lautaromendez.com.ar/propuestas/nahuel-sistema/og.jpg" />
+  <title>Propuesta — Sistema de pedidos, stock y cuentas corrientes</title>
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+  <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600&display=swap" />
+  <script>document.documentElement.classList.add('js');</script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: var(--sans); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+    strong { color: var(--ink); font-weight: 560; }
+
+    /* Paleta: verde yerba. AJUSTAR ACÁ si cambia. */
+    :root {
+      --bg: #ffffff;
+      --bg-alt: #F3F6F4;
+      --card: #ffffff;
+      --soft: #F2F5F3;
+      --ink: #14211A;
+      --text: #2F3B34;
+      --mid: #5F6C65;
+      --dim: #8E9A93;
+      --line: #E0E7E3;
+      --line-strong: #CBD5CF;
+      --accent: #1F6B43;
+      --accent-dark: #17523A;
+      --accent-soft: #E6F1EB;
+      --warn: #B5631A;
+      --warn-soft: #FBF0E3;
+      --ok: #1F6B43;
+      --sans: 'General Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    }
+
+    .ico { width: 20px; height: 20px; flex-shrink: 0; fill: none; stroke: var(--mid); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+    #progress { position: fixed; top: 0; left: 0; height: 3px; width: 0%; background: var(--accent); z-index: 999; }
+    .wrap { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+    .wrap-wide { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+    .hero { padding: 80px 0 60px; }
+    .eyebrow { font-size: 13px; font-weight: 560; letter-spacing: .02em; color: var(--accent); margin-bottom: 14px; }
+    .hero h1 { font-size: clamp(32px, 5vw, 46px); font-weight: 560; line-height: 1.1; letter-spacing: -0.025em; color: var(--ink); margin-bottom: 18px; max-width: 720px; }
+    .hero-sub { font-size: 17px; color: var(--mid); max-width: 640px; margin-bottom: 38px; }
+    .hero-meta { display: flex; gap: 20px 40px; flex-wrap: wrap; padding-top: 24px; border-top: 1px solid var(--line); }
+    .hero-meta-item label { display: block; font-size: 12px; font-weight: 500; color: var(--dim); margin-bottom: 2px; }
+    .hero-meta-item span { font-size: 15px; font-weight: 560; color: var(--ink); }
+
+    section { padding: 72px 0; }
+    section.alt { background: var(--bg-alt); }
+    h2 { font-size: 30px; font-weight: 560; letter-spacing: -0.02em; color: var(--ink); line-height: 1.2; margin-bottom: 12px; }
+    h3 { font-size: 18px; font-weight: 560; color: var(--ink); margin: 0 0 8px; }
+    .section-intro { font-size: 16px; color: var(--mid); margin-bottom: 32px; max-width: 660px; }
+    .p { font-size: 15.5px; color: var(--mid); max-width: 660px; margin-bottom: 18px; }
+
+    .caminos { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .camino { background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 22px; }
+    .camino.is-reco { border: 2px solid var(--accent); }
+    .camino .tag { display: inline-block; font-size: 12px; font-weight: 560; color: var(--accent); margin-bottom: 8px; }
+    .camino b { display: block; font-size: 17px; font-weight: 560; color: var(--ink); margin-bottom: 8px; }
+    .camino p { font-size: 14.5px; color: var(--mid); line-height: 1.55; }
+
+    /* Pasos con pantalla */
+    .paso { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; padding: 44px 0; }
+    .paso + .paso { border-top: 1px solid var(--line); }
+    .paso:nth-child(even) .paso-txt { order: 2; }
+    .paso-num { display: inline-flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 560; color: var(--accent); margin-bottom: 10px; }
+    .paso-num i { font-style: normal; display: inline-flex; align-items: center; justify-content: center; width: 26px; height: 26px; border-radius: 50%; background: var(--accent); color: #fff; font-size: 13px; }
+    .paso-txt h3 { font-size: 22px; letter-spacing: -0.015em; line-height: 1.25; }
+    .paso-txt p { font-size: 15.5px; color: var(--mid); margin-bottom: 14px; }
+    .ticks { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .ticks li { display: flex; gap: 10px; font-size: 14.5px; color: var(--text); line-height: 1.45; }
+    .ticks .ico { width: 16px; height: 16px; margin-top: 3px; stroke: var(--ok); stroke-width: 2.2; }
+    .paso-mock { display: flex; justify-content: center; min-width: 0; }
+    .ejemplo { font-size: 13px; color: var(--dim); margin-top: 8px; }
+
+    /* Celular dibujado */
+    .tel { width: 270px; max-width: 100%; border: 8px solid #1b2420; border-radius: 30px; background: #fff; overflow: hidden; box-shadow: 0 24px 50px -28px rgb(20 33 26 / .5); font-size: 12px; line-height: 1.35; color: var(--text); }
+    .tel-bar { display: flex; justify-content: space-between; align-items: center; padding: 12px 14px 10px; background: var(--accent); color: #fff; }
+    .tel-bar b { font-size: 14px; font-weight: 560; color: #fff; }
+    .tel-bar span { font-size: 11px; opacity: .85; }
+    .tel-body { padding: 12px; display: flex; flex-direction: column; gap: 8px; background: #F7F9F8; }
+    .m-card { background: #fff; border: 1px solid var(--line); border-radius: 8px; padding: 9px 10px; }
+    .m-label { font-size: 10.5px; color: var(--dim); display: block; }
+    .m-row { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+    .m-row b { font-size: 12.5px; font-weight: 560; color: var(--ink); display: block; }
+    .m-row small { font-size: 11px; color: var(--mid); }
+    .m-step { display: inline-flex; align-items: center; border: 1px solid var(--line-strong); border-radius: 6px; overflow: hidden; flex-shrink: 0; }
+    .m-step i { font-style: normal; width: 24px; height: 26px; display: inline-flex; align-items: center; justify-content: center; color: var(--accent); font-weight: 600; font-size: 14px; }
+    .m-step em { font-style: normal; min-width: 24px; text-align: center; font-weight: 560; color: var(--ink); }
+    .m-add { width: 26px; height: 26px; border-radius: 6px; border: 1px solid var(--accent); color: var(--accent); display: inline-flex; align-items: center; justify-content: center; font-weight: 600; flex-shrink: 0; }
+    .m-btn { background: var(--accent); color: #fff; font-weight: 560; font-size: 13px; text-align: center; border-radius: 8px; padding: 10px; }
+    .m-total { display: flex; justify-content: space-between; align-items: baseline; padding: 2px 2px 0; }
+    .m-total b { font-size: 17px; font-weight: 560; color: var(--ink); }
+    .m-chip { display: inline-block; font-size: 10.5px; font-weight: 560; padding: 2px 7px; border-radius: 999px; background: var(--accent-soft); color: var(--accent-dark); white-space: nowrap; }
+    .m-chip.is-warn { background: var(--warn-soft); color: var(--warn); }
+    .m-mov { display: flex; justify-content: space-between; font-size: 11px; color: var(--mid); padding: 4px 0; border-top: 1px dashed var(--line); }
+    .m-mov:first-of-type { border-top: none; }
+    .m-big { font-size: 22px; font-weight: 560; color: var(--ink); letter-spacing: -0.02em; line-height: 1.1; }
+    .m-two { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+
+    /* Sistema en la computadora */
+    .app-tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
+    .app-tab { font: inherit; font-size: 14px; font-weight: 520; color: var(--mid); background: var(--card); border: 1px solid var(--line-strong); border-radius: 999px; padding: 8px 16px; cursor: pointer; transition: background .15s, color .15s, border-color .15s; }
+    .app-tab:hover { color: var(--ink); border-color: var(--accent); }
+    .app-tab.is-on { background: var(--accent); border-color: var(--accent); color: #fff; }
+    .app-tab:focus-visible, .app-nav button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+    .app { border: 1px solid var(--line-strong); border-radius: 10px; overflow: hidden; background: #fff; box-shadow: 0 30px 60px -36px rgb(20 33 26 / .5); font-size: 13px; line-height: 1.4; color: var(--text); font-variant-numeric: tabular-nums; }
+    .app-bar { display: flex; align-items: center; gap: 6px; padding: 10px 14px; border-bottom: 1px solid var(--line); background: var(--soft); }
+    .app-bar i { width: 9px; height: 9px; border-radius: 50%; background: var(--line-strong); }
+    .app-bar span { margin-left: 10px; font-size: 12px; color: var(--dim); }
+    .app-grid { display: grid; grid-template-columns: 190px 1fr; min-height: 470px; }
+    .app-side { background: #12241B; padding: 16px 10px; display: flex; flex-direction: column; gap: 3px; }
+    .app-marca { color: #fff; font-weight: 560; font-size: 13.5px; padding: 2px 10px 14px; }
+    .app-marca small { display: block; font-weight: 400; font-size: 11px; color: rgb(255 255 255 / .55); }
+    .app-nav button { font: inherit; font-size: 13px; width: 100%; text-align: left; display: flex; align-items: center; gap: 9px; color: rgb(255 255 255 / .72); background: none; border: 0; border-radius: 6px; padding: 8px 10px; cursor: pointer; }
+    .app-nav button .ico { width: 15px; height: 15px; }
+    .app-nav button:hover { color: #fff; background: rgb(255 255 255 / .07); }
+    .app-nav button.is-on { color: #fff; background: rgb(255 255 255 / .14); font-weight: 520; }
+    .app-user { margin-top: auto; padding: 10px; font-size: 11.5px; color: rgb(255 255 255 / .55); border-top: 1px solid rgb(255 255 255 / .12); }
+    .app-user b { display: block; color: #fff; font-weight: 520; font-size: 12.5px; }
+    .app-main { padding: 20px 22px 24px; min-width: 0; background: #FAFBFA; }
+    .app-view { display: none; }
+    .app-view.is-on { display: block; }
+    .app-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 14px; }
+    .app-head b { font-size: 18px; font-weight: 560; color: var(--ink); letter-spacing: -0.015em; display: block; }
+    .app-head small { font-size: 12px; color: var(--mid); }
+    .app-btn { display: inline-block; background: var(--accent); color: #fff; font-weight: 560; font-size: 12px; border-radius: 6px; padding: 7px 12px; white-space: nowrap; }
+    .app-btn.is-ghost { background: #fff; color: var(--ink); border: 1px solid var(--line-strong); }
+    .app-box { background: #fff; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+    .app-box-t { font-size: 11.5px; font-weight: 560; color: var(--mid); padding: 10px 14px; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; gap: 8px; }
+    .app-t { width: 100%; border-collapse: collapse; }
+    .app-t th { text-align: left; font-size: 11px; font-weight: 520; color: var(--dim); padding: 9px 14px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+    .app-t td { padding: 10px 14px; border-bottom: 1px solid var(--line); vertical-align: middle; }
+    .app-t tr:last-child td { border-bottom: 0; }
+    .app-t td b { font-weight: 560; color: var(--ink); }
+    .app-t .n { text-align: right; white-space: nowrap; }
+    .app-t tr.is-sel td { background: var(--accent-soft); }
+    .app-t .baja { color: var(--warn); font-weight: 560; }
+    .app-cols { display: grid; grid-template-columns: 1.55fr 1fr; gap: 14px; align-items: start; }
+    .app-cols.is-ficha { grid-template-columns: 1fr 1.7fr; }
+    .app-det { padding: 14px; display: flex; flex-direction: column; gap: 8px; }
+    .app-det .lin { display: flex; justify-content: space-between; gap: 10px; font-size: 12.5px; color: var(--mid); }
+    .app-det .tot { display: flex; justify-content: space-between; align-items: baseline; border-top: 1px solid var(--line); padding-top: 10px; margin-top: 2px; }
+    .app-det .tot b { font-size: 18px; font-weight: 560; color: var(--ink); }
+    .app-det .app-btn { text-align: center; padding: 9px 12px; }
+    .app-aviso { display: flex; gap: 8px; align-items: center; background: var(--warn-soft); color: var(--warn); border-radius: 6px; padding: 8px 12px; font-size: 12.5px; font-weight: 500; margin-bottom: 14px; }
+    .app-kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 14px; }
+    .app-kpi { background: #fff; border: 1px solid var(--line); border-radius: 8px; padding: 12px 14px; }
+    .app-kpi span { font-size: 11.5px; color: var(--mid); display: block; }
+    .app-kpi b { font-size: 21px; font-weight: 560; color: var(--ink); letter-spacing: -0.02em; }
+    .app-bars { display: flex; align-items: flex-end; gap: 12px; height: 150px; padding: 16px 14px 12px; }
+    .app-bars div { flex: 1; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; gap: 5px; height: 100%; font-size: 11px; color: var(--dim); }
+    .app-bars i { display: block; width: 100%; max-width: 46px; border-radius: 4px 4px 0 0; background: #BFD9CB; }
+    .app-bars .hoy i { background: var(--accent); }
+    .app-bars em { font-style: normal; font-size: 10.5px; color: var(--mid); }
+
+    /* Pantalla de oficina dibujada */
+    .pc { width: 100%; max-width: 470px; border: 1px solid var(--line-strong); border-radius: 8px; overflow: hidden; background: #fff; box-shadow: 0 24px 50px -30px rgb(20 33 26 / .45); font-size: 12px; line-height: 1.35; color: var(--text); }
+    .pc-bar { display: flex; align-items: center; gap: 6px; padding: 9px 12px; border-bottom: 1px solid var(--line); background: var(--soft); }
+    .pc-bar i { width: 8px; height: 8px; border-radius: 50%; background: var(--line-strong); }
+    .pc-bar span { margin-left: 8px; font-size: 11.5px; color: var(--dim); }
+    .pc-body { padding: 14px; display: flex; flex-direction: column; gap: 10px; }
+    .pc-title { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+    .pc-title b { font-size: 14px; font-weight: 560; color: var(--ink); }
+    .pc-fila { display: grid; grid-template-columns: 1fr auto; gap: 4px 10px; align-items: center; padding: 9px 0; border-top: 1px solid var(--line); }
+    .pc-fila b { font-size: 12.5px; font-weight: 560; color: var(--ink); display: block; }
+    .pc-fila small { font-size: 11px; color: var(--mid); }
+    .pc-fila .der { text-align: right; }
+    .pc-btn { display: inline-block; background: var(--accent); color: #fff; font-weight: 560; font-size: 11px; border-radius: 6px; padding: 5px 9px; white-space: nowrap; }
+    .pc-aviso { display: flex; gap: 8px; align-items: center; background: var(--warn-soft); color: var(--warn); border-radius: 6px; padding: 7px 10px; font-size: 11.5px; font-weight: 500; }
+    .pc-suma { display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; background: var(--soft); border-radius: 6px; padding: 9px 10px; font-size: 11.5px; color: var(--mid); }
+    .pc-suma b { color: var(--ink); font-weight: 560; }
+
+    /* Funciones */
+    .areas { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .area { background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 20px; }
+    .area > b { display: flex; align-items: center; gap: 10px; font-size: 16px; font-weight: 560; color: var(--ink); margin-bottom: 12px; }
+    .area > b .ico { stroke: var(--accent); }
+    .area .ticks li { font-size: 14px; }
+
+    /* Tiempos */
+    .semanas { list-style: none; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; background: var(--card); }
+    .semanas li { display: grid; grid-template-columns: 110px 1fr; gap: 16px; padding: 16px 20px; align-items: start; }
+    .semanas li + li { border-top: 1px solid var(--line); }
+    .semanas .cuando { font-size: 13px; font-weight: 560; color: var(--accent); padding-top: 2px; }
+    .semanas b { display: block; font-size: 15.5px; font-weight: 560; color: var(--ink); }
+    .semanas span { font-size: 14px; color: var(--mid); }
+    .semanas li.es-hito { background: var(--accent-soft); }
+
+    /* Pruebas */
+    .pruebas { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .prueba { display: flex; gap: 14px; align-items: flex-start; background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 18px; }
+    .prueba .ico-box { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 6px; background: var(--accent-soft); flex-shrink: 0; }
+    .prueba .ico-box .ico { stroke: var(--accent); }
+    .prueba b { display: block; font-size: 15.5px; font-weight: 560; color: var(--ink); margin-bottom: 4px; line-height: 1.3; }
+    .prueba span { font-size: 14px; color: var(--mid); line-height: 1.5; }
+
+    /* Costo */
+    .costo { display: grid; grid-template-columns: 1fr 1fr; border: 2px solid var(--accent); border-radius: 10px; overflow: hidden; background: var(--card); box-shadow: 0 18px 40px -26px rgb(20 33 26 / .4); }
+    .costo-precio { padding: 28px; background: var(--accent-soft); }
+    .costo-antes { font-size: 15px; color: var(--mid); text-decoration: line-through; }
+    .costo-valor { font-size: 42px; font-weight: 560; letter-spacing: -0.03em; color: var(--ink); line-height: 1.1; margin: 2px 0 6px; }
+    .costo-nota { font-size: 14px; color: var(--text); }
+    .costo-pagos { padding: 28px; }
+    .costo-pagos > b { display: block; font-size: 15px; font-weight: 560; color: var(--ink); margin-bottom: 12px; }
+    .pagos { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .pagos li { display: grid; grid-template-columns: 26px 1fr auto; gap: 10px; align-items: center; font-size: 14.5px; color: var(--text); }
+    .pagos i { font-style: normal; display: inline-flex; align-items: center; justify-content: center; width: 26px; height: 26px; border-radius: 50%; border: 1px solid var(--accent); color: var(--accent); font-size: 12.5px; font-weight: 560; }
+    .pagos em { font-style: normal; font-weight: 560; color: var(--ink); white-space: nowrap; }
+    .otras { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 16px; }
+    .otra { background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 18px; }
+    .otra b { display: block; font-size: 15px; font-weight: 560; color: var(--ink); margin-bottom: 4px; }
+    .otra span { font-size: 14px; color: var(--mid); line-height: 1.5; }
+
+    .need-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .need { display: flex; gap: 12px; align-items: center; padding: 12px 14px; background: var(--card); border: 1px solid var(--line); border-radius: 8px; font-size: 14.5px; color: var(--text); line-height: 1.4; }
+    .need .ico { stroke: var(--accent); }
+    .need small { display: block; font-size: 12.5px; color: var(--dim); }
+
+    .cierre p { font-size: 17px; color: var(--text); margin-bottom: 24px; max-width: 600px; }
+    .btn { display: inline-flex; align-items: center; gap: 10px; border: 1px solid var(--accent); border-radius: 6px; padding: 13px 20px; font-size: 14.5px; font-weight: 560; color: var(--accent); text-decoration: none; background: var(--card); transition: background .15s, color .15s; }
+    .btn .ico { width: 16px; height: 16px; stroke: currentColor; }
+    .btn.is-fill { background: var(--accent); color: #fff; }
+    .btn.is-fill:hover { background: var(--accent-dark); }
+    footer { padding: 32px 0 40px; text-align: center; font-size: 13px; color: var(--dim); border-top: 1px solid var(--line); }
+
+    .js .fade { opacity: 0; transform: translateY(16px); transition: opacity .5s ease, transform .5s ease; }
+    .js .fade.visible { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) { .js .fade { opacity: 1; transform: none; transition: none; } }
+
+    @media (max-width: 860px) {
+      .paso { grid-template-columns: 1fr; gap: 24px; padding: 36px 0; }
+      .paso:nth-child(even) .paso-txt { order: 0; }
+      .areas { grid-template-columns: 1fr; }
+      .costo { grid-template-columns: 1fr; }
+      .otras { grid-template-columns: 1fr; }
+      .app-grid { grid-template-columns: 1fr; min-height: 0; }
+      .app-side { display: none; }
+      .app-main { padding: 14px 12px 16px; }
+      .app-cols, .app-cols.is-ficha { grid-template-columns: 1fr; }
+      .app-kpis { grid-template-columns: 1fr 1fr; }
+      .app-t th, .app-t td { padding: 9px 10px; }
+      .app-t .x-m { display: none; }
+      .app-kpi b { font-size: 18px; }
+    }
+    @media (max-width: 640px) {
+      .wrap, .wrap-wide { padding: 0 16px; }
+      .hero { padding: 48px 0 44px; }
+      section { padding: 52px 0; }
+      h2 { font-size: 25px; }
+      .caminos, .pruebas, .need-grid { grid-template-columns: 1fr; }
+      .semanas li { grid-template-columns: 1fr; gap: 2px; }
+      .costo-precio, .costo-pagos { padding: 22px 18px; }
+      .costo-valor { font-size: 36px; }
+      .cierre .btn { width: 100%; justify-content: center; }
+    }
+    @media print {
+      #progress { display: none; }
+      .js .fade { opacity: 1; transform: none; transition: none; }
+      .paso, .area, .prueba, .costo { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></symbol>
+  <symbol id="i-file" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h6"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></symbol>
+  <symbol id="i-msg" viewBox="0 0 24 24"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><rect width="12" height="20" x="6" y="2" rx="2"/><path d="M11 18h2"/></symbol>
+  <symbol id="i-box" viewBox="0 0 24 24"><path d="M21 8 12 3 3 8v8l9 5 9-5z"/><path d="m3 8 9 5 9-5M12 13v8"/></symbol>
+  <symbol id="i-tag" viewBox="0 0 24 24"><path d="M12.6 2.6A2 2 0 0 0 11.2 2H4a2 2 0 0 0-2 2v7.2a2 2 0 0 0 .6 1.4l8.7 8.7a2.4 2.4 0 0 0 3.4 0l6.6-6.6a2.4 2.4 0 0 0 0-3.4z"/><circle cx="7.5" cy="7.5" r=".5"/></symbol>
+  <symbol id="i-wallet" viewBox="0 0 24 24"><path d="M19 7V5a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4"/><path d="M3 6v12a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4"/><path d="M18 12a2 2 0 0 0 0 4h4v-4z"/></symbol>
+  <symbol id="i-chart" viewBox="0 0 24 24"><path d="M3 3v18h18M8 17v-5M13 17V8M18 17v-9"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+  <symbol id="i-signal" viewBox="0 0 24 24"><path d="M2 20h.01M7 20v-4M12 20v-8M17 20V8M22 4v16"/></symbol>
+  <symbol id="i-copy" viewBox="0 0 24 24"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></symbol>
+  <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></symbol>
+  <symbol id="i-list" viewBox="0 0 24 24"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></symbol>
+</svg>
+
+<div id="progress"></div>
+
+<div class="wrap">
+  <header class="hero fade">
+    <div class="eyebrow">Propuesta para LaTiNa y Centenaria</div>
+    <h1>Un solo lugar para los pedidos, el stock y las cuentas corrientes</h1>
+    <p class="hero-sub">Nahuel, ordené todo lo que hablamos y lo que me fuiste contestando. Acá está cómo va a funcionar paso a paso, cómo se verían las pantallas, cuánto tarda, cómo lo probamos antes de usarlo y cuánto sale.</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item"><label>Preparado para</label><span>Nahuel</span></div>
+      <div class="hero-meta-item"><label>Preparado por</label><span>Lautaro Méndez</span></div>
+      <div class="hero-meta-item"><label>Fecha</label><span>Noviembre 2026</span></div>
+    </div>
+  </header>
+</div>
+
+<section class="alt fade">
+  <div class="wrap">
+    <div class="eyebrow">La idea</div>
+    <h2>Cada pedido se carga una sola vez</h2>
+    <p class="section-intro">Lo que hacen hoy funciona, pero el mismo dato se copia varias veces a mano. El sistema hace que de un pedido salga todo lo demás.</p>
+    <div class="caminos">
+      <div class="camino"><span class="tag">Hoy</span><b>WhatsApp, Excel y remito a mano</b><p>La vendedora manda el pedido al grupo, el repartidor lo pasa a su Excel y hace el remito a mano. Las cuentas corrientes se llevan en otra planilla.</p></div>
+      <div class="camino is-reco"><span class="tag">Con el sistema</span><b>Un pedido, y de ahí sale todo</b><p>La vendedora lo carga en el celular. De ese pedido sale el remito impreso, se descuenta el stock y se actualiza la cuenta del cliente. Vos lo ves en el momento.</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap-wide">
+  <section>
+    <div class="wrap" style="padding:0">
+      <div class="eyebrow fade">Cómo funciona</div>
+      <h2 class="fade">El recorrido de un pedido, en 5 pasos</h2>
+      <p class="section-intro fade">Así se verían las pantallas. Los productos, los clientes y los precios son de ejemplo.</p>
+    </div>
+
+    <div class="pasos">
+      <article class="paso fade">
+        <div class="paso-txt">
+          <div class="paso-num"><i>1</i>La vendedora, en la calle</div>
+          <h3>Toma el pedido en el celular</h3>
+          <p>Elige el cliente y toca los productos. El sistema ya sabe qué lista de precios le corresponde y va sumando el total.</p>
+          <ul class="ticks">
+            <li><svg class="ico"><use href="#i-check"/></svg>El precio sale solo, según el tipo de cliente.</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>Si a ese cliente le hacés un precio especial, también lo toma.</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>Vos y la oficina cargan pedidos con la misma pantalla.</li>
+          </ul>
+        </div>
+        <div class="paso-mock">
+          <div class="tel">
+            <div class="tel-bar"><b>Nuevo pedido</b><span>Sofía</span></div>
+            <div class="tel-body">
+              <div class="m-card"><span class="m-label">Cliente</span><div class="m-row"><b>Almacén Don Luis</b><span class="m-chip">Comercio</span></div></div>
+              <div class="m-card"><div class="m-row"><div><b>Centenaria 1 kg</b><small>$4.800</small></div><span class="m-step"><i>−</i><em>6</em><i>+</i></span></div></div>
+              <div class="m-card"><div class="m-row"><div><b>Centenaria 500 g</b><small>$2.500</small></div><span class="m-step"><i>−</i><em>12</em><i>+</i></span></div></div>
+              <div class="m-card"><div class="m-row"><div><b>LaTiNa 1 kg</b><small>$4.200</small></div><span class="m-add">+</span></div></div>
+              <div class="m-card"><div class="m-row"><div><b>LaTiNa 500 g</b><small>$2.200</small></div><span class="m-step"><i>−</i><em>10</em><i>+</i></span></div></div>
+              <div class="m-total"><span>Total</span><b>$80.800</b></div>
+              <div class="m-btn">Enviar pedido</div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="paso fade">
+        <div class="paso-txt">
+          <div class="paso-num"><i>2</i>La oficina</div>
+          <h3>Lo pasa a remito y lo imprime</h3>
+          <p>Los pedidos aparecen en la pantalla de la oficina. Con un clic se hace el remito y sale impreso, con copia para el repartidor.</p>
+          <ul class="ticks">
+            <li><svg class="ico"><use href="#i-check"/></svg>En ese momento se descuenta el stock.</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>El importe se suma solo a la cuenta corriente del cliente.</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>Avisa cuando un producto se está quedando sin stock.</li>
+          </ul>
+        </div>
+        <div class="paso-mock">
+          <div class="pc">
+            <div class="pc-bar"><i></i><i></i><i></i><span>Pedidos de hoy</span></div>
+            <div class="pc-body">
+              <div class="pc-title"><b>Pedidos de hoy</b><span class="m-chip">3 pedidos</span></div>
+              <div class="pc-aviso">Centenaria 500 g: quedan 38 paquetes</div>
+              <div>
+                <div class="pc-fila"><div><b>Almacén Don Luis</b><small>Cargó Sofía · $80.800</small></div><div class="der"><span class="pc-btn">Pasar a remito</span></div></div>
+                <div class="pc-fila"><div><b>Autoservicio El Ceibo</b><small>R-0132 · $142.500</small></div><div class="der"><span class="m-chip">Impreso</span></div></div>
+                <div class="pc-fila"><div><b>Distribuidora del Litoral</b><small>R-0131 · $612.000</small></div><div class="der"><span class="m-chip">Impreso</span></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="paso fade">
+        <div class="paso-txt">
+          <div class="paso-num"><i>3</i>El repartidor</div>
+          <h3>Lleva el pedido y la cuenta en el bolsillo</h3>
+          <p>Desde su celular ve lo que tiene que entregar y cuánto debe cada cliente que visita. Es lo que me pediste hoy.</p>
+          <ul class="ticks">
+            <li><svg class="ico"><use href="#i-check"/></svg>Solo ve los clientes de sus entregas, no el resto.</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>Es de consulta: no puede cambiar nada.</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>Si el cliente rechaza el pedido o suma algo, hace el remito manual y en la oficina se corrige.</li>
+          </ul>
+        </div>
+        <div class="paso-mock">
+          <div class="tel">
+            <div class="tel-bar"><b>Mis entregas</b><span>Marcos · 3</span></div>
+            <div class="tel-body">
+              <div class="m-card">
+                <div class="m-row"><div><b>Almacén Don Luis</b><small>San Martín 450</small></div><span class="m-chip is-warn">Debe $126.300</span></div>
+              </div>
+              <div class="m-card">
+                <span class="m-label">Cuenta corriente</span>
+                <div class="m-mov"><span>20/11 · Remito R-0098</span><span>+ $62.000</span></div>
+                <div class="m-mov"><span>24/11 · Pago en efectivo</span><span>− $16.500</span></div>
+                <div class="m-mov"><span>Hoy · Remito R-0133</span><span>+ $80.800</span></div>
+                <div class="m-total" style="margin-top:6px"><span>Saldo</span><b>$126.300</b></div>
+              </div>
+              <div class="m-card"><div class="m-row"><div><b>Autoservicio El Ceibo</b><small>Urquiza 1220</small></div><span class="m-chip is-warn">Debe $142.500</span></div></div>
+              <div class="m-card"><div class="m-row"><div><b>Distribuidora del Litoral</b><small>Ruta 14 km 54</small></div><span class="m-chip is-warn">Debe $612.000</span></div></div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="paso fade">
+        <div class="paso-txt">
+          <div class="paso-num"><i>4</i>Al final del día</div>
+          <h3>Se carga lo que rinde el repartidor</h3>
+          <p>Igual que hoy, el repartidor rinde en la oficina. Se anota quién pagó y cuánto, y cada pago baja el saldo total del cliente.</p>
+          <ul class="ticks">
+            <li><svg class="ico"><use href="#i-check"/></svg>Pagos parciales, en efectivo o por transferencia.</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>No hay que ver a qué boleta corresponde cada pago.</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>El total rendido queda a la vista para controlar la plata.</li>
+          </ul>
+        </div>
+        <div class="paso-mock">
+          <div class="pc">
+            <div class="pc-bar"><i></i><i></i><i></i><span>Rendición del día</span></div>
+            <div class="pc-body">
+              <div class="pc-title"><b>Rendición · reparto de Marcos</b></div>
+              <div>
+                <div class="pc-fila"><div><b>Almacén Don Luis</b><small>Pagó $50.000 en efectivo</small></div><div class="der"><small>Saldo</small><b>$76.300</b></div></div>
+                <div class="pc-fila"><div><b>Autoservicio El Ceibo</b><small>Pagó $142.500 por transferencia</small></div><div class="der"><small>Saldo</small><b>$0</b></div></div>
+                <div class="pc-fila"><div><b>Distribuidora del Litoral</b><small>No pagó hoy</small></div><div class="der"><small>Saldo</small><b>$612.000</b></div></div>
+              </div>
+              <div class="pc-suma"><span>Efectivo <b>$50.000</b></span><span>Transferencia <b>$142.500</b></span><span>Total <b>$192.500</b></span></div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="paso fade">
+        <div class="paso-txt">
+          <div class="paso-num"><i>5</i>Vos</div>
+          <h3>Ves el negocio desde el celular</h3>
+          <p>Sin pedirle nada a nadie: cuánto se vendió, cuánta mercadería queda y quién te debe.</p>
+          <ul class="ticks">
+            <li><svg class="ico"><use href="#i-check"/></svg>Ventas del día y del mes.</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>Stock de cada producto.</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>Lista de deudores, de mayor a menor.</li>
+          </ul>
+        </div>
+        <div class="paso-mock">
+          <div class="tel">
+            <div class="tel-bar"><b>Resumen</b><span>Nahuel</span></div>
+            <div class="tel-body">
+              <div class="m-two">
+                <div class="m-card"><span class="m-label">Vendido hoy</span><div class="m-big">$835.300</div></div>
+                <div class="m-card"><span class="m-label">Este mes</span><div class="m-big">$14,2 M</div></div>
+              </div>
+              <div class="m-card">
+                <span class="m-label">Stock</span>
+                <div class="m-mov"><span>Centenaria 1 kg</span><span>420</span></div>
+                <div class="m-mov"><span>Centenaria 500 g</span><span class="m-chip is-warn">38 · bajo</span></div>
+                <div class="m-mov"><span>LaTiNa 1 kg</span><span>310</span></div>
+                <div class="m-mov"><span>LaTiNa 500 g</span><span>264</span></div>
+              </div>
+              <div class="m-card">
+                <span class="m-label">Quién me debe</span>
+                <div class="m-mov"><span>Distribuidora del Litoral</span><span>$612.000</span></div>
+                <div class="m-mov"><span>Almacén Don Luis</span><span>$76.300</span></div>
+                <div class="m-mov"><span>Kiosco La Esquina</span><span>$41.000</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+</div>
+
+<section class="alt fade" data-visto="pantallas">
+  <div class="wrap-wide">
+    <div class="eyebrow">En la computadora</div>
+    <h2>Así se ve en la oficina</h2>
+    <p class="section-intro">El mismo sistema, en pantalla grande. Tocá cada solapa para ver cómo sería cada parte.</p>
+    <div class="app-tabs" role="tablist" aria-label="Pantallas del sistema">
+      <button class="app-tab is-on" data-v="pedidos" role="tab" aria-selected="true">Pedidos</button>
+      <button class="app-tab" data-v="stock" role="tab" aria-selected="false">Stock</button>
+      <button class="app-tab" data-v="cuentas" role="tab" aria-selected="false">Cuentas corrientes</button>
+      <button class="app-tab" data-v="precios" role="tab" aria-selected="false">Precios</button>
+      <button class="app-tab" data-v="resumen" role="tab" aria-selected="false">Resumen</button>
+    </div>
+    <div class="app">
+      <div class="app-bar"><i></i><i></i><i></i><span>Sistema de pedidos · LaTiNa y Centenaria</span></div>
+      <div class="app-grid">
+        <aside class="app-side">
+          <div class="app-marca">LaTiNa · Centenaria<small>Pedidos, stock y cuentas</small></div>
+          <nav class="app-nav">
+            <button class="is-on" data-v="pedidos"><svg class="ico"><use href="#i-file"/></svg>Pedidos</button>
+            <button data-v="stock"><svg class="ico"><use href="#i-box"/></svg>Stock</button>
+            <button data-v="cuentas"><svg class="ico"><use href="#i-wallet"/></svg>Cuentas corrientes</button>
+            <button data-v="precios"><svg class="ico"><use href="#i-tag"/></svg>Precios</button>
+            <button data-v="resumen"><svg class="ico"><use href="#i-chart"/></svg>Resumen</button>
+          </nav>
+          <div class="app-user"><b>Oficina</b>Viernes 27/11</div>
+        </aside>
+        <div class="app-main">
+
+          <div class="app-view is-on" data-view="pedidos">
+            <div class="app-head"><div><b>Pedidos de hoy</b><small>3 pedidos · 1 sin pasar a remito</small></div><span class="app-btn is-ghost">+ Nuevo pedido</span></div>
+            <div class="app-cols">
+              <div class="app-box">
+                <table class="app-t">
+                  <thead><tr><th>Cliente</th><th class="x-m">Cargó</th><th class="n">Total</th><th>Estado</th></tr></thead>
+                  <tbody>
+                    <tr class="is-sel"><td><b>Almacén Don Luis</b></td><td class="x-m">Sofía · 10:42</td><td class="n">$80.800</td><td><span class="m-chip is-warn">Sin remito</span></td></tr>
+                    <tr><td><b>Autoservicio El Ceibo</b></td><td class="x-m">Sofía · 9:15</td><td class="n">$142.500</td><td><span class="m-chip">R-0132 impreso</span></td></tr>
+                    <tr><td><b>Distribuidora del Litoral</b></td><td class="x-m">Nahuel · 8:50</td><td class="n">$612.000</td><td><span class="m-chip">R-0131 impreso</span></td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="app-box">
+                <div class="app-box-t"><span>Almacén Don Luis</span><span>Lista: Comercio</span></div>
+                <div class="app-det">
+                  <div class="lin"><span>6 × Centenaria 1 kg</span><span>$28.800</span></div>
+                  <div class="lin"><span>12 × Centenaria 500 g</span><span>$30.000</span></div>
+                  <div class="lin"><span>10 × LaTiNa 500 g</span><span>$22.000</span></div>
+                  <div class="tot"><span>Total</span><b>$80.800</b></div>
+                  <span class="app-btn">Pasar a remito e imprimir</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="app-view" data-view="stock">
+            <div class="app-head"><div><b>Stock</b><small>Depósito · en paquetes</small></div><span class="app-btn">+ Ingreso de mercadería</span></div>
+            <div class="app-aviso">Centenaria 500 g está por debajo del mínimo: quedan 38 paquetes.</div>
+            <div class="app-box" style="margin-bottom:14px">
+              <table class="app-t">
+                <thead><tr><th>Producto</th><th class="n">En depósito</th><th class="n x-m">Mínimo</th><th>Estado</th></tr></thead>
+                <tbody>
+                  <tr><td><b>Centenaria 1 kg</b></td><td class="n">420</td><td class="n x-m">100</td><td><span class="m-chip">Bien</span></td></tr>
+                  <tr><td><b>Centenaria 500 g</b></td><td class="n baja">38</td><td class="n x-m">60</td><td><span class="m-chip is-warn">Bajo</span></td></tr>
+                  <tr><td><b>LaTiNa 1 kg</b></td><td class="n">310</td><td class="n x-m">100</td><td><span class="m-chip">Bien</span></td></tr>
+                  <tr><td><b>LaTiNa 500 g</b></td><td class="n">264</td><td class="n x-m">60</td><td><span class="m-chip">Bien</span></td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="app-box">
+              <div class="app-box-t"><span>Últimos movimientos</span></div>
+              <table class="app-t">
+                <tbody>
+                  <tr><td>Hoy · Remito R-0132 · Autoservicio El Ceibo</td><td class="n">− 45 paquetes</td></tr>
+                  <tr><td>Hoy · Remito R-0131 · Distribuidora del Litoral</td><td class="n">− 180 paquetes</td></tr>
+                  <tr><td>25/11 · Ingreso de mercadería · Centenaria 1 kg</td><td class="n">+ 600 paquetes</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="app-view" data-view="cuentas">
+            <div class="app-head"><div><b>Cuentas corrientes</b><small>Te deben $729.300 en total</small></div><span class="app-btn">+ Cargar pago</span></div>
+            <div class="app-cols is-ficha">
+              <div class="app-box">
+                <table class="app-t">
+                  <thead><tr><th>Cliente</th><th class="n">Saldo</th></tr></thead>
+                  <tbody>
+                    <tr><td><b>Distribuidora del Litoral</b></td><td class="n">$612.000</td></tr>
+                    <tr class="is-sel"><td><b>Almacén Don Luis</b></td><td class="n">$76.300</td></tr>
+                    <tr><td><b>Kiosco La Esquina</b></td><td class="n">$41.000</td></tr>
+                    <tr><td><b>Autoservicio El Ceibo</b></td><td class="n">$0</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="app-box">
+                <div class="app-box-t"><span>Almacén Don Luis · Comercio de la ciudad</span><span>Saldo $76.300</span></div>
+                <table class="app-t">
+                  <thead><tr><th>Fecha</th><th>Movimiento</th><th class="n x-m">Importe</th><th class="n">Saldo</th></tr></thead>
+                  <tbody>
+                    <tr><td>20/11</td><td>Remito R-0098</td><td class="n x-m">+ $62.000</td><td class="n">$62.000</td></tr>
+                    <tr><td>24/11</td><td>Pago en efectivo</td><td class="n x-m">− $16.500</td><td class="n">$45.500</td></tr>
+                    <tr><td>27/11</td><td>Remito R-0133</td><td class="n x-m">+ $80.800</td><td class="n">$126.300</td></tr>
+                    <tr><td>27/11</td><td>Pago en efectivo</td><td class="n x-m">− $50.000</td><td class="n"><b>$76.300</b></td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <div class="app-view" data-view="precios">
+            <div class="app-head"><div><b>Precios</b><small>Una lista por tipo de cliente</small></div><span class="app-btn is-ghost">Actualizar precios</span></div>
+            <div class="app-box" style="margin-bottom:14px">
+              <table class="app-t">
+                <thead><tr><th>Producto</th><th class="n">Distribuidora</th><th class="n">Matero</th><th class="n">Comercio</th></tr></thead>
+                <tbody>
+                  <tr><td><b>Centenaria 1 kg</b></td><td class="n">$4.100</td><td class="n">$4.400</td><td class="n">$4.800</td></tr>
+                  <tr><td><b>Centenaria 500 g</b></td><td class="n">$2.150</td><td class="n">$2.300</td><td class="n">$2.500</td></tr>
+                  <tr><td><b>LaTiNa 1 kg</b></td><td class="n">$3.600</td><td class="n">$3.850</td><td class="n">$4.200</td></tr>
+                  <tr><td><b>LaTiNa 500 g</b></td><td class="n">$1.900</td><td class="n">$2.050</td><td class="n">$2.200</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="app-box">
+              <div class="app-box-t"><span>Precios especiales por cliente</span><span>+ Agregar</span></div>
+              <table class="app-t">
+                <tbody>
+                  <tr><td><b>Kiosco La Esquina</b></td><td>LaTiNa 1 kg</td><td class="n">$4.000</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="app-view" data-view="resumen">
+            <div class="app-head"><div><b>Resumen</b><small>Viernes 27 de noviembre</small></div></div>
+            <div class="app-kpis">
+              <div class="app-kpi"><span>Vendido hoy</span><b>$835.300</b></div>
+              <div class="app-kpi"><span>Cobrado hoy</span><b>$192.500</b></div>
+              <div class="app-kpi"><span>Vendido este mes</span><b>$14,2 M</b></div>
+              <div class="app-kpi"><span>Te deben</span><b>$729.300</b></div>
+            </div>
+            <div class="app-cols">
+              <div class="app-box">
+                <div class="app-box-t"><span>Ventas de la semana</span></div>
+                <div class="app-bars">
+                  <div><em>$540 mil</em><i style="height:58%"></i>Lun</div>
+                  <div><em>$710 mil</em><i style="height:76%"></i>Mar</div>
+                  <div><em>$480 mil</em><i style="height:52%"></i>Mié</div>
+                  <div><em>$660 mil</em><i style="height:71%"></i>Jue</div>
+                  <div class="hoy"><em>$835 mil</em><i style="height:90%"></i>Hoy</div>
+                </div>
+              </div>
+              <div class="app-box">
+                <div class="app-box-t"><span>Quién te debe más</span></div>
+                <table class="app-t">
+                  <tbody>
+                    <tr><td>Distribuidora del Litoral</td><td class="n">$612.000</td></tr>
+                    <tr><td>Almacén Don Luis</td><td class="n">$76.300</td></tr>
+                    <tr><td>Kiosco La Esquina</td><td class="n">$41.000</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <p class="ejemplo">Pantallas de muestra con datos inventados. El diseño final se ajusta con tus productos y tu forma de trabajar.</p>
+  </div>
+</section>
+
+<section class="fade">
+  <div class="wrap-wide">
+    <div class="eyebrow">Qué incluye</div>
+    <h2>Todas las funciones</h2>
+    <p class="section-intro">Se usa desde el celular y desde la computadora. En el celular queda instalado con su ícono, como una aplicación más, sin bajarlo de ninguna tienda.</p>
+    <div class="areas">
+      <div class="area"><b><svg class="ico"><use href="#i-phone"/></svg>Pedidos</b><ul class="ticks">
+        <li><svg class="ico"><use href="#i-check"/></svg>Carga desde el celular, pensada para usar con una mano.</li>
+        <li><svg class="ico"><use href="#i-check"/></svg>Buscador de clientes y de productos.</li>
+        <li><svg class="ico"><use href="#i-check"/></svg>Cambio de precio a mano en un pedido puntual.</li>
+      </ul></div>
+      <div class="area"><b><svg class="ico"><use href="#i-file"/></svg>Remitos</b><ul class="ticks">
+        <li><svg class="ico"><use href="#i-check"/></svg>Nota de pedido impresa con copia, sin nada fiscal.</li>
+        <li><svg class="ico"><use href="#i-check"/></svg>Anular un remito devuelve el stock y la deuda.</li>
+        <li><svg class="ico"><use href="#i-check"/></svg>Historial de remitos por cliente y por fecha.</li>
+      </ul></div>
+      <div class="area"><b><svg class="ico"><use href="#i-box"/></svg>Stock</b><ul class="ticks">
+        <li><svg class="ico"><use href="#i-check"/></svg>Ingreso de mercadería al depósito.</li>
+        <li><svg class="ico"><use href="#i-check"/></svg>Stock actual de cada producto.</li>
+        <li><svg class="ico"><use href="#i-check"/></svg>Productos y presentaciones que podés agregar vos.</li>
+      </ul></div>
+      <div class="area"><b><svg class="ico"><use href="#i-tag"/></svg>Precios</b><ul class="ticks">
+        <li><svg class="ico"><use href="#i-check"/></svg>3 listas: Distribuidora, Matero y Comercio de la ciudad.</li>
+        <li><svg class="ico"><use href="#i-check"/></svg>Cada cliente toma la lista de su tipo.</li>
+        <li><svg class="ico"><use href="#i-check"/></svg>Precio especial para un cliente en particular.</li>
+      </ul></div>
+      <div class="area"><b><svg class="ico"><use href="#i-wallet"/></svg>Cuentas corrientes</b><ul class="ticks">
+        <li><svg class="ico"><use href="#i-check"/></svg>Una sola cuenta por cliente, con LaTiNa y Centenaria juntas.</li>
+        <li><svg class="ico"><use href="#i-check"/></svg>Cobros parciales, en efectivo o transferencia.</li>
+        <li><svg class="ico"><use href="#i-check"/></svg>Lista de «quién me debe», con filtros.</li>
+      </ul></div>
+      <div class="area"><b><svg class="ico"><use href="#i-users"/></svg>Usuarios</b><ul class="ticks">
+        <li><svg class="ico"><use href="#i-check"/></svg>Uno por persona, con su clave.</li>
+        <li><svg class="ico"><use href="#i-check"/></svg>Cada uno ve solo lo que le toca: vendedora, oficina y repartidor.</li>
+        <li><svg class="ico"><use href="#i-check"/></svg>Vos ves todo.</li>
+      </ul></div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <section class="fade">
+    <div class="eyebrow">Tiempos</div>
+    <h2>Seis semanas, y lo vas viendo desde la primera</h2>
+    <p class="section-intro">El plazo corre desde que tenga las listas de precios y el Excel de cuentas corrientes. Cada semana te paso un link para que lo prueben en sus celulares.</p>
+    <ol class="semanas">
+      <li><div class="cuando">Semana 1</div><div><b>Productos, clientes, listas y pedidos</b><span>Cargo sus productos y sus 3 listas. La vendedora ya puede probar a tomar un pedido.</span></div></li>
+      <li><div class="cuando">Semana 2</div><div><b>Remitos, impresión y stock</b><span>La oficina pasa pedidos a remito, imprime y el stock se descuenta.</span></div></li>
+      <li><div class="cuando">Semana 3</div><div><b>Cuentas corrientes y repartidor</b><span>Cobros, rendición del día y la pantalla del repartidor.</span></div></li>
+      <li><div class="cuando">Semana 4</div><div><b>Tu resumen y ajustes</b><span>Ventas, stock y deudores en tu celular. Corrijo lo que hayan visto en las pruebas.</span></div></li>
+      <li><div class="cuando">Semana 5</div><div><b>Prueba en paralelo</b><span>Lo usan una semana junto con el Excel, con los pedidos reales.</span></div></li>
+      <li class="es-hito"><div class="cuando">Semana 6</div><div><b>Arranque</b><span>Se cuenta el depósito, se cargan los saldos de ese día y desde ahí se usa solo el sistema.</span></div></li>
+    </ol>
+  </section>
+</div>
+
+<section class="alt fade">
+  <div class="wrap">
+    <div class="eyebrow">Pruebas</div>
+    <h2>Cómo nos aseguramos de que no falle</h2>
+    <p class="section-intro">Acá se maneja mercadería y plata, así que no se empieza a usar hasta que los números cierren.</p>
+    <div class="pruebas">
+      <div class="prueba"><span class="ico-box"><svg class="ico"><use href="#i-copy"/></svg></span><div><b>Una semana en paralelo con el Excel</b><span>Los mismos pedidos se cargan en los dos lados. Al final, el stock y los saldos tienen que dar igual.</span></div></div>
+      <div class="prueba"><span class="ico-box"><svg class="ico"><use href="#i-phone"/></svg></span><div><b>En sus celulares de verdad</b><span>Lo instalamos en el celular de la vendedora y de cada repartidor antes de arrancar.</span></div></div>
+      <div class="prueba"><span class="ico-box"><svg class="ico"><use href="#i-signal"/></svg></span><div><b>Con mala señal</b><span>Si se corta la señal justo al enviar, el pedido no se pierde y no se carga dos veces.</span></div></div>
+      <div class="prueba"><span class="ico-box"><svg class="ico"><use href="#i-list"/></svg></span><div><b>Saldos revisados uno por uno</b><span>El día del arranque comparamos el saldo de cada cliente contra el Excel antes de darlo por bueno.</span></div></div>
+      <div class="prueba"><span class="ico-box"><svg class="ico"><use href="#i-shield"/></svg></span><div><b>Copia de seguridad todos los días</b><span>Los datos se guardan solos cada día. Si alguien borra algo por error, se recupera.</span></div></div>
+      <div class="prueba"><span class="ico-box"><svg class="ico"><use href="#i-eye"/></svg></span><div><b>Los primeros 60 días, encima</b><span>Reviso todos los días que el stock y las cuentas estén coherentes, y corrijo lo que aparezca.</span></div></div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <section class="fade" id="opciones" data-visto="opciones">
+    <div class="eyebrow">Costo</div>
+    <h2>Un solo precio, en tres pagos</h2>
+    <p class="section-intro">Es un trabajo aparte del abono mensual de las campañas. Como ya trabajamos juntos, te hago precio de cliente y lo repartimos según avanza el sistema.</p>
+    <div class="costo">
+      <div class="costo-precio">
+        <div class="costo-antes">$1.600.000</div>
+        <div class="costo-valor">$1.200.000</div>
+        <div class="costo-nota">Precio para vos, con todo lo de esta página incluido.</div>
+      </div>
+      <div class="costo-pagos">
+        <b>Se paga a medida que avanza</b>
+        <ol class="pagos">
+          <li><i>1</i><span>Al arrancar</span><em>$400.000</em></li>
+          <li><i>2</i><span>Cuando lo prueban con sus datos</span><em>$400.000</em></li>
+          <li><i>3</i><span>Cuando ya lo usan todos los días</span><em>$400.000</em></li>
+        </ol>
+      </div>
+    </div>
+    <div class="otras">
+      <div class="otra"><b>Si preferís cuotas</b><span>6 cuotas mensuales de $200.000, sin interés.</span></div>
+      <div class="otra"><b>Si preferís un pago</b><span>En un solo pago al arrancar, 10% menos: $1.080.000.</span></div>
+      <div class="otra"><b>Mantenimiento del sistema</b><span>Incluido en el abono mensual que ya tenemos por las campañas: arreglos, ajustes y seguimiento. Si algún día ese abono se corta, el mantenimiento del sistema pasa a cobrarse aparte.</span></div>
+      <div class="otra"><b>Base de datos</b><span>Va aparte: USD 25 por mes. Es el servicio donde se guardan los datos y las copias diarias.</span></div>
+    </div>
+  </section>
+
+  <section class="fade" data-visto="final" style="padding-top:0">
+    <div class="eyebrow">Para arrancar</div>
+    <h2>Qué necesito de tu lado</h2>
+    <div class="need-grid">
+      <div class="need"><svg class="ico"><use href="#i-tag"/></svg><span>Las 3 listas de precios<small>Tal cual se las das a los clientes</small></span></div>
+      <div class="need"><svg class="ico"><use href="#i-wallet"/></svg><span>El Excel de cuentas corrientes<small>Como lo tienen hoy, aunque esté desprolijo</small></span></div>
+      <div class="need"><svg class="ico"><use href="#i-users"/></svg><span>La lista de clientes<small>Con el tipo de cada uno</small></span></div>
+      <div class="need"><svg class="ico"><use href="#i-file"/></svg><span>Una foto de un remito actual<small>Para que el impreso tenga lo mismo</small></span></div>
+    </div>
+    <p class="p" style="margin-top:22px"><strong>Por ahora no incluye:</strong> facturación electrónica, más de un depósito, conexión con la Tienda Nube ni uso sin internet. Cualquiera de esas se puede sumar más adelante como una segunda etapa.</p>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">Propuesta preparada por Lautaro Méndez · 27 de noviembre de 2026 · Precios válidos por 15 días</div>
+</footer>
+
+<script>
+  addEventListener('scroll', () => {
+    const h = document.documentElement.scrollHeight - innerHeight;
+    document.getElementById('progress').style.width = (h > 0 ? document.documentElement.scrollTop / h * 100 : 0) + '%';
+  }, { passive: true });
+  document.querySelectorAll('[data-v]').forEach(b => b.addEventListener('click', () => {
+    const v = b.dataset.v;
+    document.querySelectorAll('[data-v]').forEach(x => { const on = x.dataset.v === v; x.classList.toggle('is-on', on); if (x.hasAttribute('role')) x.setAttribute('aria-selected', on); });
+    document.querySelectorAll('[data-view]').forEach(x => x.classList.toggle('is-on', x.dataset.view === v));
+  }));
+  const fades = document.querySelectorAll('.fade');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } }), { threshold: 0.04 });
+    fades.forEach(el => io.observe(el));
+  } else fades.forEach(el => el.classList.add('visible'));
+</script>
+<script src="/propuestas/_visto.js" data-p="nahuel-sistema" data-n="Nahuel (sistema)" defer></script>
+</body>
+</html>
